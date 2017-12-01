@@ -1,0 +1,15 @@
+[Desktop Entry]
+_Name=Power Management
+_Comment=Configure power management
+Icon=mate-power-manager
+Exec=mate-power-preferences
+Terminal=false
+Type=Application
+Categories=Settings;HardwareSettings;
+Keywords=MATE;power;management;preferences;settings;
+OnlyShowIn=MATE;
+StartupNotify=true
+X-MATE-Bugzilla-Bugzilla=MATE
+X-MATE-Bugzilla-Product=mate-power-manager
+X-MATE-Bugzilla-Component=mate-power-preferences
+X-MATE-Bugzilla-Version=@VERSION@

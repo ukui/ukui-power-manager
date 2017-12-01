@@ -231,7 +231,7 @@ gpm_engine_get_warning (GpmEngine *engine, UpDevice *device)
 		warning_type = gpm_engine_get_warning_percentage (engine, device);
 
 	} else if (kind == UP_DEVICE_KIND_BATTERY) {
-		/* only use the time when it is accurate, and MateConf is not disabled */
+		/* only use the time when it is accurate, and UkuiConf is not disabled */
 		if (engine->priv->use_time_primary)
 			warning_type = gpm_engine_get_warning_time (engine, device);
 		else

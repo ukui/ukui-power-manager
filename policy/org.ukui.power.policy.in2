@@ -5,15 +5,15 @@
 <policyconfig>
 
   <!--
-    Policy definitions for MATE Power Manager system-wide actions.
+    Policy definitions for UKUI Power Manager system-wide actions.
     Copyright (c) 2010 Richard Hughes <richard@hughsie.com>
   -->
 
-  <vendor>MATE Power Manager</vendor>
-  <vendor_url>http://www.mate-desktop.org</vendor_url>
+  <vendor>UKUI Power Manager</vendor>
+  <vendor_url>http://www.ukui.org</vendor_url>
   <icon_name>battery</icon_name>
 
-  <action id="org.mate.power.backlight-helper">
+  <action id="org.ukui.power.backlight-helper">
     <!-- SECURITY:
           - A normal active user on the local machine does not need permission
             to change the backlight brightness.
@@ -25,7 +25,7 @@
       <allow_inactive>no</allow_inactive>
       <allow_active>yes</allow_active>
     </defaults>
-    <annotate key="org.freedesktop.policykit.exec.path">@sbindir@/mate-power-backlight-helper</annotate>
+    <annotate key="org.freedesktop.policykit.exec.path">@sbindir@/ukui-power-backlight-helper</annotate>
   </action>
 
 </policyconfig>

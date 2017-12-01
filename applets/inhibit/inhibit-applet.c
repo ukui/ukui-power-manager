@@ -1,6 +1,6 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*-
  *
- * MATE Power Manager Inhibit Applet
+ * UKUI Power Manager Inhibit Applet
  * Copyright (C) 2006 Benjamin Canou <bookeldor@gmail.com>
  * Copyright (C) 2006-2009 Richard Hughes <richard@hughsie.com>
  *
@@ -28,7 +28,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <mate-panel-applet.h>
+#include <ukui-panel-applet.h>
 #include <gtk/gtk.h>
 #include <glib-object.h>
 #include <glib/gi18n.h>
@@ -45,7 +45,7 @@
 #define GPM_INHIBIT_APPLET_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), GPM_TYPE_INHIBIT_APPLET, GpmInhibitAppletClass))
 
 typedef struct{
-	MatePanelApplet parent;
+	UkuiPanelApplet parent;
 	/* applet state */
 	guint cookie;
 	/* the icon and a cache for size*/
@@ -61,7 +61,7 @@ typedef struct{
 } GpmInhibitApplet;
 
 typedef struct{
-	MatePanelAppletClass	parent_class;
+	UkuiPanelAppletClass	parent_class;
 } GpmInhibitAppletClass;
 
 GType                gpm_inhibit_applet_get_type  (void);
@@ -81,7 +81,7 @@ static gboolean	gpm_applet_draw_cb		(GpmInhibitApplet *applet);
 static void	gpm_applet_update_tooltip	(GpmInhibitApplet *applet);
 static gboolean	gpm_applet_click_cb		(GpmInhibitApplet *applet, GdkEventButton *event);
 static void	gpm_applet_dialog_about_cb	(GtkAction *action, gpointer data);
-static gboolean	gpm_applet_cb		        (MatePanelApplet *_applet, const gchar *iid, gpointer data);
+static gboolean	gpm_applet_cb		        (UkuiPanelApplet *_applet, const gchar *iid, gpointer data);
 static void	gpm_applet_destroy_cb		(GtkWidget *widget);
 
 #define GPM_INHIBIT_APPLET_ID		        "InhibitApplet"
@@ -91,8 +91,8 @@ static void	gpm_applet_destroy_cb		(GtkWidget *widget);
 #define GPM_INHIBIT_APPLET_ICON_UNINHIBIT	"gpm-hibernate"
 #define GPM_INHIBIT_APPLET_NAME			_("Power Manager Inhibit Applet")
 #define GPM_INHIBIT_APPLET_DESC			_("Allows user to inhibit automatic power saving.")
-#define MATE_PANEL_APPLET_VERTICAL(p)					\
-	 (((p) == MATE_PANEL_APPLET_ORIENT_LEFT) || ((p) == MATE_PANEL_APPLET_ORIENT_RIGHT))
+#define UKUI_PANEL_APPLET_VERTICAL(p)					\
+	 (((p) == UKUI_PANEL_APPLET_ORIENT_LEFT) || ((p) == UKUI_PANEL_APPLET_ORIENT_RIGHT))
 
 
 /** cookie is returned as an unsigned integer */
@@ -215,7 +215,7 @@ gpm_applet_check_size (GpmInhibitApplet *applet)
 	/* we don't use the size function here, but the yet allocated size because the
 	   size value is false (kind of rounded) */
 	gtk_widget_get_allocation (GTK_WIDGET (applet), &allocation);
-	if (MATE_PANEL_APPLET_VERTICAL(mate_panel_applet_get_orient (MATE_PANEL_APPLET (applet)))) {
+	if (UKUI_PANEL_APPLET_VERTICAL(ukui_panel_applet_get_orient (UKUI_PANEL_APPLET (applet)))) {
 		if (applet->size != allocation.width) {
 			applet->size = allocation.width;
 			gpm_applet_get_icon (applet);
@@ -277,7 +277,7 @@ gpm_applet_draw_cb (GpmInhibitApplet *applet)
 	cr = gdk_cairo_create (gtk_widget_get_window (GTK_WIDGET(applet)));
 
 	/* draw pixmap background */
-	bg_type = mate_panel_applet_get_background (MATE_PANEL_APPLET (applet), &color, &pattern);
+	bg_type = ukui_panel_applet_get_background (UKUI_PANEL_APPLET (applet), &color, &pattern);
 	if (bg_type == PANEL_PIXMAP_BACKGROUND) {
 		/* fill with given background pixmap */
 		cairo_set_source (cr, pattern);
@@ -308,7 +308,7 @@ gpm_applet_draw_cb (GpmInhibitApplet *applet)
  **/
 static void
 gpm_applet_change_background_cb (GpmInhibitApplet *applet,
-				 MatePanelAppletBackgroundType arg1,
+				 UkuiPanelAppletBackgroundType arg1,
 				 cairo_pattern_t *arg2,
 				 gpointer data)
 {
@@ -326,7 +326,7 @@ gpm_applet_update_tooltip (GpmInhibitApplet *applet)
 {
 	const gchar *buf;
 	if (applet->proxy == NULL) {
-		buf = _("Cannot connect to mate-power-manager");
+		buf = _("Cannot connect to ukui-power-manager");
 	} else {
 		if (applet->cookie > 0) {
 			buf = _("Automatic sleep inhibited");
@@ -393,7 +393,7 @@ gpm_applet_dialog_about_cb (GtkAction *action, gpointer data)
 	};
 
 	char copyright[] = \
-		"Copyright \xc2\xa9 2012-2017 MATE developers\n"
+		"Copyright \xc2\xa9 2012-2017 UKUI developers\n"
 		"Copyright \xc2\xa9 2006-2007 Richard Hughes";
 
 	const char *documenters [] = {
@@ -430,7 +430,7 @@ gpm_applet_dialog_about_cb (GtkAction *action, gpointer data)
 	gtk_about_dialog_set_translator_credits (about, translator_credits);
 	gtk_about_dialog_set_logo (about, logo);
 	gtk_about_dialog_set_license (about, license_trans);
-	gtk_about_dialog_set_website (about, "http://www.mate-desktop.org/");
+	gtk_about_dialog_set_website (about, "http://www.ukui.org/");
 
 	g_signal_connect (G_OBJECT(about), "response",
 			  G_CALLBACK(gtk_widget_destroy), NULL);
@@ -589,7 +589,7 @@ gpm_inhibit_applet_init (GpmInhibitApplet *applet)
 				  applet, NULL);
 
 	/* prepare */
-	mate_panel_applet_set_flags (MATE_PANEL_APPLET (applet), MATE_PANEL_APPLET_EXPAND_MINOR);
+	ukui_panel_applet_set_flags (UKUI_PANEL_APPLET (applet), UKUI_PANEL_APPLET_EXPAND_MINOR);
 
 	/* show */
 	gtk_widget_show_all (GTK_WIDGET(applet));
@@ -625,10 +625,10 @@ gpm_inhibit_applet_init (GpmInhibitApplet *applet)
  * @_applet: GpmInhibitApplet instance created by the applet factory
  * @iid: Applet id
  *
- * the function called by libmate-panel-applet factory after creation
+ * the function called by libukui-panel-applet factory after creation
  **/
 static gboolean
-gpm_applet_cb (MatePanelApplet *_applet, const gchar *iid, gpointer data)
+gpm_applet_cb (UkuiPanelApplet *_applet, const gchar *iid, gpointer data)
 {
 	GpmInhibitApplet *applet = GPM_INHIBIT_APPLET(_applet);
 	GtkActionGroup *action_group;
@@ -654,7 +654,7 @@ gpm_applet_cb (MatePanelApplet *_applet, const gchar *iid, gpointer data)
 				      G_N_ELEMENTS (menu_actions),
 				      applet);
 	ui_path = g_build_filename (INHIBIT_MENU_UI_DIR, "inhibit-applet-menu.xml", NULL);
-	mate_panel_applet_setup_menu_from_file (MATE_PANEL_APPLET (applet), ui_path, action_group);
+	ukui_panel_applet_setup_menu_from_file (UKUI_PANEL_APPLET (applet), ui_path, action_group);
 	g_free (ui_path);
 	g_object_unref (action_group);
 
@@ -665,10 +665,10 @@ gpm_applet_cb (MatePanelApplet *_applet, const gchar *iid, gpointer data)
 /**
  * this generates a main with a applet factory
  **/
-MATE_PANEL_APPLET_OUT_PROCESS_FACTORY
+UKUI_PANEL_APPLET_OUT_PROCESS_FACTORY
  (/* the factory iid */
  GPM_INHIBIT_APPLET_FACTORY_ID,
- /* generates brighness applets instead of regular mate applets  */
+ /* generates brighness applets instead of regular ukui applets  */
  GPM_TYPE_INHIBIT_APPLET,
  /* the applet name */
  "InhibitApplet",

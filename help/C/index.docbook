@@ -3,15 +3,15 @@
     "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
   <!ENTITY legal SYSTEM "legal.xml">
   <!ENTITY GFDL  SYSTEM "fdl-appendix.xml">
-  <!ENTITY app "MATE Power Manager">
+  <!ENTITY app "UKUI Power Manager">
   <!ENTITY application "<application>&app;</application>">
   <!ENTITY appversion "1.10.0">
   <!ENTITY manrevision "1.10.0">
 ]>
 <!--
       (Do not remove this comment block.)
-  Template Maintained by the MATE Documentation Project:
-	  http://www.mate-desktop.org/development/
+  Template Maintained by the UKUI Documentation Project:
+	  http://www.ukui-desktop.org/development/
   Template version: 2.0 beta
   Template last modified Feb 12, 2002
 -->
@@ -25,13 +25,13 @@
     <title>&application; Manual</title>
     <abstract role="description">
       <para>
-        &application; is a session daemon for the MATE Desktop that
+        &application; is a session daemon for the UKUI Desktop that
         manages the power settings for your laptop or desktop computer.
       </para>
     </abstract>
     <copyright>
       <year>2015</year>
-      <holder>MATE Documentation Team</holder>
+      <holder>UKUI Documentation Team</holder>
     </copyright>
     <copyright>
       <year>2006-2009</year>
@@ -51,7 +51,7 @@
      not specified, the publisher/author is the same for all versions of the
      document.  -->
     <publisher role="maintainer">
-      <publishername>MATE Documentation Team</publishername>
+      <publishername>UKUI Documentation Team</publishername>
     </publisher>
     <publisher role="maintainer">
       <publishername>Richard Hughes</publishername>
@@ -64,12 +64,12 @@
 
     <authorgroup>
       <author role="maintainer"> 
-	<surname>MATE Documentation Team</surname>
+	<surname>UKUI Documentation Team</surname>
 	<affiliation>
-	  <!-- <orgname>MATE Documentation
+	  <!-- <orgname>UKUI Documentation
 	  Project</orgname> -->
 	  <!-- The email address of the author is optional and is commented out by default.
-	  <address> <email>doc-writer2@mate.org</email> </address>
+	  <address> <email>doc-writer2@ukui.org</email> </address>
 	  --> 
 	</affiliation>
       </author>
@@ -110,7 +110,7 @@
       <para>
         To report a bug or make a suggestion regarding the &app; application or
         this manual, follow the directions in the
-        <ulink url="https://github.com/mate-desktop/mate-power-manager/"
+        <ulink url="https://github.com/ukui-desktop/ukui-power-manager/"
 	  type="http">&application; Contact Page</ulink>.
       </para>
 <!-- Translators may also add here feedback address for translations -->
@@ -121,7 +121,7 @@
     <primary>&application;</primary>
   </indexterm>
   <indexterm zone="index">
-    <primary>mate-power-manager</primary>
+    <primary>ukui-power-manager</primary>
   </indexterm>
 
 <!-- ============= Document Body ============================= -->
@@ -134,12 +134,12 @@
   <indexterm>
     <primary>&application;</primary>
     <secondary>Manual</secondary>
-    <tertiary>mate-power-manager</tertiary>
+    <tertiary>ukui-power-manager</tertiary>
   </indexterm>
 
   <para>
   The &app; session daemon is a power management daemon
-  for the <systemitem>MATE desktop</systemitem>
+  for the <systemitem>UKUI desktop</systemitem>
   </para>
 
 </section>
@@ -147,7 +147,7 @@
 <section id="using">
   <title>Usage</title>
   <para>
-    <application>&app;</application> is usually started in MATE startup, but
+    <application>&app;</application> is usually started in UKUI startup, but
     you can manually start <application>&app;</application> by doing:
   </para>
   <variablelist>
@@ -155,7 +155,7 @@
       <term>Command line</term>
       <listitem>
     	<para>
-    	  Type <command>mate-power-manager --verbose --no-daemon</command>,
+    	  Type <command>ukui-power-manager --verbose --no-daemon</command>,
           then press <keycap>Return</keycap>:
         </para>
       </listitem>
@@ -184,7 +184,7 @@
     <note>
       <para>
         You can disable this notification by changing the dconf key
-        <command>org.mate.power-manager notify-discharging</command>.
+        <command>org.ukui-power-manager notify-discharging</command>.
       </para>
     </note>
   </section>
@@ -204,7 +204,7 @@
     <note>
       <para>
         You can disable this notification by changing the dconf key
-        <command>org.mate.power-manager notify-fully-charged</command>.
+        <command>org.ukui-power-manager notify-fully-charged</command>.
       </para>
     </note>
     <note>
@@ -236,7 +236,7 @@
     <note>
       <para>
         You can disable this notification by changing the dconf key
-        <command>org.mate.power-manager notify-low-power</command>.
+        <command>org.ukui-power-manager notify-low-power</command>.
       </para>
     </note>
   </section>
@@ -280,7 +280,7 @@
     <note>
       <para>
         You can disable this notification by changing the dconf key
-        <command>org.mate.power-manager notify-sleep-failed</command>.
+        <command>org.ukui-power-manager notify-sleep-failed</command>.
       </para>
     </note>
   </section>
@@ -452,11 +452,11 @@
   <section id="preferences-idletimes">
     <title>Session and system idle times</title>
     <para>
-      <command>mate-screensaver</command> is a session daemon that monitors user
+      <command>ukui-screensaver</command> is a session daemon that monitors user
       input, and if the mouse has not been moved, or the keyboard been pressed then
       it starts a timeout.
       When the value of this timeout reaches the value set in
-      <command>mate-screensaver-preferences</command>, then the login is marked
+      <command>ukui-screensaver-preferences</command>, then the login is marked
       as 'session idle'.
       This is when &application; performs all the session idle actions such as
       enabling low-power mode and lowering the laptop panel brightness.
@@ -464,7 +464,7 @@
 
     <figure>
       <title>
-      Changing the session idle timeout in <command>mate-screensaver-preferences</command>
+      Changing the session idle timeout in <command>ukui-screensaver-preferences</command>
       </title>
       <screenshot>
         <mediaobject>
@@ -477,17 +477,17 @@
     <para>
       As soon as the session is marked at idle, &application; starts its own
       'system' timer.
-      When the timeout set in <command>mate-power-preferences</command> is reached,
+      When the timeout set in <command>ukui-power-preferences</command> is reached,
       and the CPU load is idle, then the idle action is
       performed, which is usually to turn off the screen, or to suspend or hibernate.
     </para>
     <para>
-      To make this clearer, the sliders in <command>mate-power-preferences</command>
+      To make this clearer, the sliders in <command>ukui-power-preferences</command>
       are set to start at the value of the session-timeout + 1 minute, as we cannot
       logically trigger before the session is marked as idle.
       If you adjust the value of the 'session idle' timeout in
-      <command>mate-screensaver-preferences</command> then the start of the sliders
-      in <command>mate-power-preferences</command> will change accordingly.
+      <command>ukui-screensaver-preferences</command> then the start of the sliders
+      in <command>ukui-power-preferences</command> will change accordingly.
     </para>
   </section>
 </section>
@@ -500,7 +500,7 @@
     <note>
       <para>
         You can change the idle laptop panel brightness by changing the dconf key
-        <command>org.mate.power-manager idle-brightness</command>.
+        <command>org.ukui-power-manager idle-brightness</command>.
       </para>
     </note>
   </section>
@@ -510,7 +510,7 @@
     <para>
       By default, &application; supports a simple locking scheme.
       This means that the screen will lock if set to "Lock screen" in
-      mate-screensaver when the lid is closed, or the system performs a suspend or
+      ukui-screensaver when the lid is closed, or the system performs a suspend or
       hibernate action.
     </para>
     <para>
@@ -522,36 +522,36 @@
     <itemizedlist>
       <listitem>
         <para>
-          <command>org.mate.power-manager lock-use-screensaver</command>
+          <command>org.ukui-power-manager lock-use-screensaver</command>
         </para>
       </listitem>
     </itemizedlist>
     <para>
-      Then the policy keys can be set to force a mate-screensaver lock and unlock
+      Then the policy keys can be set to force a ukui-screensaver lock and unlock
       when the action is performed:
     </para>
 
     <itemizedlist>
       <listitem>
         <para>
-          <command>org.mate.power-manager lock-blank-screen</command>
+          <command>org.ukui-power-manager lock-blank-screen</command>
         </para>
       </listitem>
       <listitem>
         <para>
-          <command>org.mate.power-manager lock-suspend</command>
+          <command>org.ukui-power-manager lock-suspend</command>
         </para>
       </listitem>
       <listitem>
         <para>
-          <command>org.mate.power-manager lock-hibernate</command>
+          <command>org.ukui-power-manager lock-hibernate</command>
         </para>
       </listitem>
     </itemizedlist>
 
     <note>
       <para>
-        The lock policy for mate-screensaver is ignored until the simple mode
+        The lock policy for ukui-screensaver is ignored until the simple mode
         is re-enabled.
       </para>
     </note>
@@ -559,7 +559,7 @@
 </section>
 
 <section id="applets-general">
-  <title>MATE Power Applets</title>
+  <title>UKUI Power Applets</title>
 
   <section id="applets-brightness">
     <title>Brightness Applet</title>
@@ -611,7 +611,7 @@
     </figure>
     <note>
       <para>
-        Don't use this applet if you just use MATE software, instead
+        Don't use this applet if you just use UKUI software, instead
         file a bug to make the application use the Inhibit() and
         UnInhibit() methods as this should 'just work'.
       </para>
@@ -684,8 +684,8 @@
     <para>
       You have to change the DPMS suspend mode &application; uses.
       Open <command>dconf-editor</command>, and then change the keys 
-      <literal>org.mate.power-manager dpms-method-ac</literal> and
-      <literal>org.mate.power-manager dpms-method-battery</literal>
+      <literal>org.ukui-power-manager dpms-method-ac</literal> and
+      <literal>org.ukui-power-manager dpms-method-battery</literal>
       to one of the modes that work, e.g. standby, suspend or off.
     </para>
   </section>
@@ -699,10 +699,10 @@
       You might be able to use the percentage charge for g-p-m to use as the
       policy data.
       Open <command>dconf-editor</command>, and then change the key 
-      <command>org.mate.power-manager use-time-for-policy</command> to false.
+      <command>org.ukui-power-manager use-time-for-policy</command> to false.
       You can do this easily by doing:
       <command>
-        gsettings get org.mate.power-manager use-time-for-policy false
+        gsettings get org.ukui-power-manager use-time-for-policy false
       </command>
     </para>
     <para>
@@ -718,7 +718,7 @@
     <para>
       If your application is doing a long operation, you might want to
       disable the ability to suspend for a little while.
-      You should use mate-session if you really don't want the user to be
+      You should use ukui-session if you really don't want the user to be
       able to suspend, or for the computer to save power by hibernating
       or suspending.
     </para>
@@ -765,14 +765,14 @@
   <para>
     &app; was written by Mate Development.
     To find more information about &app;, please visit the
-    <ulink url="https://github.com/mate-desktop/mate-power-manager" type="http">
+    <ulink url="https://github.com/ukui-desktop/ukui-power-manager" type="http">
     &application; web page</ulink>.
     Origin power-manager was written by Richard Hughes <email>richard@hughsie.com</email>.
   </para>
   <para>
     To report a bug or make a suggestion regarding this application or
     this manual, follow the directions at the
-    <ulink url="https://github.com/mate-desktop/mate-power-manager" type="http">
+    <ulink url="https://github.com/ukui-desktop/ukui-power-manager" type="http">
     &application; Bug Page</ulink>.
   </para>
   <para>This program is distributed under the terms of the GNU

@@ -4,7 +4,7 @@
 srcdir=`dirname $0`
 test -z "$srcdir" && srcdir=.
 
-PKG_NAME="mate-power-manager"
+PKG_NAME="ukui-power-manager"
 
 (test -f $srcdir/configure.ac) || {
     echo -n "**Error**: Directory "\`$srcdir\'" does not look like the"
@@ -12,8 +12,8 @@ PKG_NAME="mate-power-manager"
     exit 1
 }
 
-which mate-autogen || {
-    echo "You need to install mate-common"
+which ukui-autogen || {
+    echo "You need to install ukui-common"
     exit 1
 }
 
@@ -23,7 +23,7 @@ which yelp-build || {
 }
 
 REQUIRED_AUTOMAKE_VERSION=1.9
-MATE_DATADIR="$mate_datadir"
+UKUI_DATADIR="$ukui_datadir"
 
-. mate-autogen
+. ukui-autogen
 

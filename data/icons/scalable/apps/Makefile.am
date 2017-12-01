@@ -5,10 +5,10 @@ context = apps
 iconsdir = $(themedir)/$(size)/$(context)
 
 icons_DATA = 			  	\
-	mate-brightness-applet.svg	\
-	mate-inhibit-applet.svg	\
-	mate-power-manager.svg		\
-	mate-power-statistics.svg
+	ukui-brightness-applet.svg	\
+	ukui-inhibit-applet.svg	\
+	ukui-power-manager.svg		\
+	ukui-power-statistics.svg
 
 noinst_DATA = 
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <node name="/">
-  <interface name="org.mate.PowerManager">
+  <interface name="org.ukui.PowerManager">
   </interface>
 </node>
 

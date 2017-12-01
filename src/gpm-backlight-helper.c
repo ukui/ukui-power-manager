@@ -175,13 +175,13 @@ main (gint argc, gchar *argv[])
 
 	/* setup translations */
 	setlocale (LC_ALL, "");
-	bindtextdomain (GETTEXT_PACKAGE, MATELOCALEDIR);
+	bindtextdomain (GETTEXT_PACKAGE, UKUILOCALEDIR);
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 	textdomain (GETTEXT_PACKAGE);
 
 	context = g_option_context_new (NULL);
 	/* TRANSLATORS: tool that is used when copying profiles system-wide */
-	g_option_context_set_summary (context, _("MATE Power Manager Backlight Helper"));
+	g_option_context_set_summary (context, _("UKUI Power Manager Backlight Helper"));
 	g_option_context_add_main_entries (context, options, NULL);
 	g_option_context_parse (context, &argc, &argv, NULL);
 	g_option_context_free (context);

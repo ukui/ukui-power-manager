@@ -41,7 +41,7 @@
 #include "gpm-manager.h"
 #include "gpm-session.h"
 
-#include "org.mate.PowerManager.h"
+#include "org.ukui.PowerManager.h"
 
 #include "egg-debug.h"
 
@@ -50,7 +50,7 @@
  * @connection: What we want to register to
  * @object: The GObject we want to register
  *
- * Register org.mate.PowerManager on the session bus.
+ * Register org.ukui.PowerManager on the session bus.
  * This function MUST be called before DBUS service will work.
  *
  * Return value: success
@@ -180,17 +180,17 @@ main (int argc, char *argv[])
 	};
 
 	setlocale (LC_ALL, "");
-	bindtextdomain (GETTEXT_PACKAGE, MATELOCALEDIR);
+	bindtextdomain (GETTEXT_PACKAGE, UKUILOCALEDIR);
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 	textdomain (GETTEXT_PACKAGE);
 
 	dbus_g_thread_init ();
 
-	context = g_option_context_new (N_("MATE Power Manager"));
+	context = g_option_context_new (N_("UKUI Power Manager"));
 	/* TRANSLATORS: program name, a simple app to view pending updates */
 	g_option_context_add_main_entries (context, options, GETTEXT_PACKAGE);
 	g_option_context_set_translation_domain(context, GETTEXT_PACKAGE);
-	g_option_context_set_summary (context, _("MATE Power Manager"));
+	g_option_context_set_summary (context, _("UKUI Power Manager"));
 	g_option_context_parse (context, &argc, &argv, NULL);
 
 	if (version) {
@@ -203,7 +203,7 @@ main (int argc, char *argv[])
 	gtk_init (&argc, &argv);
 	egg_debug_init (verbose);
 
-	egg_debug ("MATE %s %s", GPM_NAME, VERSION);
+	egg_debug ("UKUI %s %s", GPM_NAME, VERSION);
 
 	/* check dbus connections, exit if not valid */
 	system_connection = dbus_g_bus_get (DBUS_BUS_SYSTEM, &error);
@@ -223,7 +223,7 @@ main (int argc, char *argv[])
 		egg_error ("This program cannot start until you start the "
 			   "dbus session service.\n\n"
 			   "This is usually started automatically in X "
-			   "or mate startup when you start a new session.");
+			   "or ukui startup when you start a new session.");
 	}
 
 	/* add application specific icons to search path */
@@ -237,7 +237,7 @@ main (int argc, char *argv[])
 	g_signal_connect (session, "stop", G_CALLBACK (gpm_main_stop_cb), loop);
 	g_signal_connect (session, "query-end-session", G_CALLBACK (gpm_main_query_end_session_cb), loop);
 	g_signal_connect (session, "end-session", G_CALLBACK (gpm_main_end_session_cb), loop);
-	gpm_session_register_client (session, "mate-power-manager", getenv ("DESKTOP_AUTOSTART_ID"));
+	gpm_session_register_client (session, "ukui-power-manager", getenv ("DESKTOP_AUTOSTART_ID"));
 
 	/* create a new gui object */
 	manager = gpm_manager_new ();

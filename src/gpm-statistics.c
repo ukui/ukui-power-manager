@@ -1592,7 +1592,7 @@ main (int argc, char *argv[])
 
 	setlocale (LC_ALL, "");
 
-	bindtextdomain (GETTEXT_PACKAGE, MATELOCALEDIR);
+	bindtextdomain (GETTEXT_PACKAGE, UKUILOCALEDIR);
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 	textdomain (GETTEXT_PACKAGE);
 
@@ -1608,7 +1608,7 @@ main (int argc, char *argv[])
 	egg_debug_init (verbose);
 	gtk_init (&argc, &argv);
 
-	app = gtk_application_new ("org.mate.PowerManager.Statistics", 0);
+	app = gtk_application_new ("org.ukui.PowerManager.Statistics", 0);
 
 	g_signal_connect (app, "activate",
 			  G_CALLBACK (gpm_stats_window_activated_cb), NULL);

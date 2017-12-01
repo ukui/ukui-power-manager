@@ -1,6 +1,6 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*-
  *
- * MATE Power Manager Brightness Applet
+ * UKUI Power Manager Brightness Applet
  * Copyright (C) 2006 Benjamin Canou <bookeldor@gmail.com>
  * Copyright (C) 2007 Richard Hughes <richard@hughsie.com>
  *
@@ -28,7 +28,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <mate-panel-applet.h>
+#include <ukui-panel-applet.h>
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
 #include <gdk/gdkkeysyms.h>
@@ -46,7 +46,7 @@
 #define GPM_BRIGHTNESS_APPLET_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), GPM_TYPE_BRIGHTNESS_APPLET, GpmBrightnessAppletClass))
 
 typedef struct{
-	MatePanelApplet parent;
+	UkuiPanelApplet parent;
 	/* applet state */
 	gboolean call_worked; /* g-p-m refusing action */
 	gboolean popped; /* the popup is shown */
@@ -65,15 +65,15 @@ typedef struct{
 } GpmBrightnessApplet;
 
 typedef struct{
-	MatePanelAppletClass	parent_class;
+	UkuiPanelAppletClass	parent_class;
 } GpmBrightnessAppletClass;
 
 GType                gpm_brightness_applet_get_type  (void);
 
 
-#define	GPM_DBUS_SERVICE		"org.mate.PowerManager"
-#define	GPM_DBUS_PATH_BACKLIGHT		"/org/mate/PowerManager/Backlight"
-#define	GPM_DBUS_INTERFACE_BACKLIGHT	"org.mate.PowerManager.Backlight"
+#define	GPM_DBUS_SERVICE		"org.ukui.PowerManager"
+#define	GPM_DBUS_PATH_BACKLIGHT		"/org/ukui/PowerManager/Backlight"
+#define	GPM_DBUS_INTERFACE_BACKLIGHT	"org.ukui.PowerManager.Backlight"
 
 static void      gpm_brightness_applet_class_init (GpmBrightnessAppletClass *klass);
 static void      gpm_brightness_applet_init       (GpmBrightnessApplet *applet);
@@ -84,7 +84,7 @@ static void      gpm_applet_get_icon              (GpmBrightnessApplet *applet);
 static void      gpm_applet_check_size            (GpmBrightnessApplet *applet);
 static gboolean  gpm_applet_draw_cb               (GpmBrightnessApplet *applet);
 static void      gpm_applet_change_background_cb  (GpmBrightnessApplet *applet,
-						   MatePanelAppletBackgroundType arg1,
+						   UkuiPanelAppletBackgroundType arg1,
 						   cairo_pattern_t *arg2, gpointer data);
 static void      gpm_applet_theme_change_cb (GtkIconTheme *icon_theme, gpointer data);
 static void      gpm_applet_stop_scroll_events_cb (GtkWidget *widget, GdkEvent  *event);
@@ -99,18 +99,18 @@ static gboolean  gpm_applet_slide_cb              (GtkWidget *w, GpmBrightnessAp
 static void      gpm_applet_create_popup          (GpmBrightnessApplet *applet);
 static gboolean  gpm_applet_popup_cb              (GpmBrightnessApplet *applet, GdkEventButton *event);
 static void      gpm_applet_dialog_about_cb       (GtkAction *action, gpointer data);
-static gboolean  gpm_applet_cb                    (MatePanelApplet *_applet, const gchar *iid, gpointer data);
+static gboolean  gpm_applet_cb                    (UkuiPanelApplet *_applet, const gchar *iid, gpointer data);
 static void      gpm_applet_destroy_cb            (GtkWidget *widget);
 
 #define GPM_BRIGHTNESS_APPLET_ID		"BrightnessApplet"
 #define GPM_BRIGHTNESS_APPLET_FACTORY_ID	"BrightnessAppletFactory"
-#define GPM_BRIGHTNESS_APPLET_ICON		"mate-brightness-applet"
+#define GPM_BRIGHTNESS_APPLET_ICON		"ukui-brightness-applet"
 #define GPM_BRIGHTNESS_APPLET_ICON_DISABLED	"gpm-brightness-lcd-disabled"
 #define GPM_BRIGHTNESS_APPLET_ICON_INVALID	"gpm-brightness-lcd-invalid"
 #define GPM_BRIGHTNESS_APPLET_NAME		_("Power Manager Brightness Applet")
 #define GPM_BRIGHTNESS_APPLET_DESC		_("Adjusts laptop panel brightness.")
-#define MATE_PANEL_APPLET_VERTICAL(p)					\
-	 (((p) == MATE_PANEL_APPLET_ORIENT_LEFT) || ((p) == MATE_PANEL_APPLET_ORIENT_RIGHT))
+#define UKUI_PANEL_APPLET_VERTICAL(p)					\
+	 (((p) == UKUI_PANEL_APPLET_ORIENT_LEFT) || ((p) == UKUI_PANEL_APPLET_ORIENT_RIGHT))
 
 /**
  * gpm_applet_get_brightness:
@@ -234,7 +234,7 @@ gpm_applet_check_size (GpmBrightnessApplet *applet)
 	/* we don't use the size function here, but the yet allocated size because the
 	   size value is false (kind of rounded) */
 	gtk_widget_get_allocation (GTK_WIDGET (applet), &allocation);
-	if (MATE_PANEL_APPLET_VERTICAL(mate_panel_applet_get_orient (MATE_PANEL_APPLET (applet)))) {
+	if (UKUI_PANEL_APPLET_VERTICAL(ukui_panel_applet_get_orient (UKUI_PANEL_APPLET (applet)))) {
 		if (applet->size != allocation.width) {
 			applet->size = allocation.width;
 			gpm_applet_get_icon (applet);
@@ -288,7 +288,7 @@ gpm_applet_draw_cb (GpmBrightnessApplet *applet)
 	cr = gdk_cairo_create (gtk_widget_get_window (GTK_WIDGET(applet)));
 
 	/* draw pixmap background */
-	bg_type = mate_panel_applet_get_background (MATE_PANEL_APPLET (applet), &color, &pattern);
+	bg_type = ukui_panel_applet_get_background (UKUI_PANEL_APPLET (applet), &color, &pattern);
 	if (bg_type == PANEL_PIXMAP_BACKGROUND && !applet->popped) {
 		/* fill with given background pixmap */
 		cairo_set_source (cr, pattern);
@@ -328,7 +328,7 @@ gpm_applet_draw_cb (GpmBrightnessApplet *applet)
  **/
 static void
 gpm_applet_change_background_cb (GpmBrightnessApplet *applet,
-				 MatePanelAppletBackgroundType arg1,
+				 UkuiPanelAppletBackgroundType arg1,
 				 cairo_pattern_t *arg2, gpointer data)
 {
 	gtk_widget_queue_draw (GTK_WIDGET (applet));
@@ -364,7 +364,7 @@ gpm_applet_update_tooltip (GpmBrightnessApplet *applet)
 	gchar *buf = NULL;
 	if (applet->popped == FALSE) {
 		if (applet->proxy == NULL) {
-			buf = g_strdup (_("Cannot connect to mate-power-manager"));
+			buf = g_strdup (_("Cannot connect to ukui-power-manager"));
 		} else if (applet->call_worked == FALSE) {
 			buf = g_strdup (_("Cannot get laptop panel brightness"));
 		} else {
@@ -583,12 +583,12 @@ static void
 gpm_applet_create_popup (GpmBrightnessApplet *applet)
 {
 	static GtkWidget *box, *frame;
-	gint orientation = mate_panel_applet_get_orient (MATE_PANEL_APPLET (MATE_PANEL_APPLET (applet)));
+	gint orientation = ukui_panel_applet_get_orient (UKUI_PANEL_APPLET (UKUI_PANEL_APPLET (applet)));
 
 	gpm_applet_destroy_popup_cb (applet);
 
 	/* slider */
-	if (MATE_PANEL_APPLET_VERTICAL(orientation)) {
+	if (UKUI_PANEL_APPLET_VERTICAL(orientation)) {
 		applet->slider = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
 		gtk_widget_set_size_request (applet->slider, 100, -1);
 	} else {
@@ -613,7 +613,7 @@ gpm_applet_create_popup (GpmBrightnessApplet *applet)
 	g_signal_connect (G_OBJECT(applet->btn_plus), "pressed", G_CALLBACK(gpm_applet_plus_cb), applet);
 
 	/* box */
-	if (MATE_PANEL_APPLET_VERTICAL(orientation)) {
+	if (UKUI_PANEL_APPLET_VERTICAL(orientation)) {
 		box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 1);
 	} else {
 		box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 1);
@@ -643,7 +643,7 @@ gpm_applet_create_popup (GpmBrightnessApplet *applet)
 	GtkWidget *toplevel = gtk_widget_get_toplevel (frame);
 	GtkStyleContext *context;
 	context = gtk_widget_get_style_context (GTK_WIDGET(toplevel));
-	gtk_style_context_add_class(context,"mate-panel-applet-slider");
+	gtk_style_context_add_class(context,"ukui-panel-applet-slider");
 	/*Make transparency possible in gtk3 theme3 */
  	GdkScreen *screen = gtk_widget_get_screen(GTK_WIDGET(toplevel));
 	GdkVisual *visual = gdk_screen_get_rgba_visual(screen);
@@ -699,29 +699,29 @@ gpm_applet_popup_cb (GpmBrightnessApplet *applet, GdkEventButton *event)
 	gtk_widget_show_all (applet->popup);
 
 	/* retrieve geometry parameters and move window appropriately */
-	orientation = mate_panel_applet_get_orient (MATE_PANEL_APPLET (MATE_PANEL_APPLET (applet)));
+	orientation = ukui_panel_applet_get_orient (UKUI_PANEL_APPLET (UKUI_PANEL_APPLET (applet)));
 	gdk_window_get_origin (gtk_widget_get_window (GTK_WIDGET(applet)), &x, &y);
 
 	gtk_widget_get_allocation (GTK_WIDGET (applet), &allocation);
 	gtk_widget_get_allocation (GTK_WIDGET (applet->popup), &popup_allocation);
 	switch (orientation) {
-	case MATE_PANEL_APPLET_ORIENT_DOWN:
+	case UKUI_PANEL_APPLET_ORIENT_DOWN:
 		x += allocation.x + allocation.width/2;
 		y += allocation.y + allocation.height;
 		x -= popup_allocation.width/2;
 		break;
-	case MATE_PANEL_APPLET_ORIENT_UP:
+	case UKUI_PANEL_APPLET_ORIENT_UP:
 		x += allocation.x + allocation.width/2;
 		y += allocation.y;
 		x -= popup_allocation.width/2;
 		y -= popup_allocation.height;
 		break;
-	case MATE_PANEL_APPLET_ORIENT_RIGHT:
+	case UKUI_PANEL_APPLET_ORIENT_RIGHT:
 		y += allocation.y + allocation.height/2;
 		x += allocation.x + allocation.width;
 		y -= popup_allocation.height/2;
 		break;
-	case MATE_PANEL_APPLET_ORIENT_LEFT:
+	case UKUI_PANEL_APPLET_ORIENT_LEFT:
 		y += allocation.y + allocation.height/2;
 		x += allocation.x;
 		x -= popup_allocation.width;
@@ -797,7 +797,7 @@ gpm_applet_dialog_about_cb (GtkAction *action, gpointer data)
 	};
 
 	char copyright[] = \
-		"Copyright \xc2\xa9 2012-2017 MATE developers\n"
+		"Copyright \xc2\xa9 2012-2017 UKUI developers\n"
 		"Copyright \xc2\xa9 2006 Benjamin Canou";
 
 	const char *documenters [] = {
@@ -834,7 +834,7 @@ gpm_applet_dialog_about_cb (GtkAction *action, gpointer data)
 	gtk_about_dialog_set_translator_credits (about, translator_credits);
 	gtk_about_dialog_set_logo (about, logo);
 	gtk_about_dialog_set_license (about, license_trans);
-	gtk_about_dialog_set_website (about, "http://www.mate-desktop.org/");
+	gtk_about_dialog_set_website (about, "http://www.ukui.org/");
 
 	g_signal_connect (G_OBJECT(about), "response",
 			  G_CALLBACK(gtk_widget_destroy), NULL);
@@ -1010,7 +1010,7 @@ gpm_brightness_applet_init (GpmBrightnessApplet *applet)
 	gpm_applet_update_popup_level (applet);
 
 	/* prepare */
-	mate_panel_applet_set_flags (MATE_PANEL_APPLET (applet), MATE_PANEL_APPLET_EXPAND_MINOR);
+	ukui_panel_applet_set_flags (UKUI_PANEL_APPLET (applet), UKUI_PANEL_APPLET_EXPAND_MINOR);
 	gtk_widget_set_events (GTK_WIDGET (applet), GDK_SCROLL_MASK);
 
 	/* show */
@@ -1055,10 +1055,10 @@ gpm_brightness_applet_init (GpmBrightnessApplet *applet)
  * @_applet: GpmBrightnessApplet instance created by the applet factory
  * @iid: Applet id
  *
- * the function called by libmate-panel-applet factory after creation
+ * the function called by libukui-panel-applet factory after creation
  **/
 static gboolean
-gpm_applet_cb (MatePanelApplet *_applet, const gchar *iid, gpointer data)
+gpm_applet_cb (UkuiPanelApplet *_applet, const gchar *iid, gpointer data)
 {
 	GpmBrightnessApplet *applet = GPM_BRIGHTNESS_APPLET(_applet);
 	GtkActionGroup *action_group;
@@ -1084,7 +1084,7 @@ gpm_applet_cb (MatePanelApplet *_applet, const gchar *iid, gpointer data)
 				      G_N_ELEMENTS (menu_actions),
 				      applet);
 	ui_path = g_build_filename (BRIGHTNESS_MENU_UI_DIR, "brightness-applet-menu.xml", NULL);
-	mate_panel_applet_setup_menu_from_file (MATE_PANEL_APPLET (applet), ui_path, action_group);
+	ukui_panel_applet_setup_menu_from_file (UKUI_PANEL_APPLET (applet), ui_path, action_group);
 	g_free (ui_path);
 	g_object_unref (action_group);
 
@@ -1095,10 +1095,10 @@ gpm_applet_cb (MatePanelApplet *_applet, const gchar *iid, gpointer data)
 /**
  * this generates a main with a applet factory
  **/
-MATE_PANEL_APPLET_OUT_PROCESS_FACTORY
+UKUI_PANEL_APPLET_OUT_PROCESS_FACTORY
  (/* the factory iid */
  GPM_BRIGHTNESS_APPLET_FACTORY_ID,
- /* generates brighness applets instead of regular mate applets  */
+ /* generates brighness applets instead of regular ukui applets  */
  GPM_TYPE_BRIGHTNESS_APPLET,
  /* the applet name */
  "BrightnessApplet",

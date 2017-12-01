@@ -349,12 +349,12 @@ gpm_idle_set_timeout_sleep (GpmIdle *idle, guint timeout)
  * gpm_idle_session_idle_changed_cb:
  * @is_idle: If the session is idle
  *
- * The SessionIdleChanged callback from mate-session.
+ * The SessionIdleChanged callback from ukui-session.
  **/
 static void
 gpm_idle_session_idle_changed_cb (GpmSession *session, gboolean is_idle, GpmIdle *idle)
 {
-	egg_debug ("Received mate session idle changed: %i", is_idle);
+	egg_debug ("Received ukui session idle changed: %i", is_idle);
 	idle->priv->x_idle = is_idle;
 	gpm_idle_evaluate (idle);
 }
@@ -365,7 +365,7 @@ gpm_idle_session_idle_changed_cb (GpmSession *session, gboolean is_idle, GpmIdle
 static void
 gpm_idle_session_inhibited_changed_cb (GpmSession *session, gboolean is_idle_inhibited, gboolean is_suspend_inhibited, GpmIdle *idle)
 {
-	egg_debug ("Received mate session inhibited changed: idle=(%i), suspend=(%i)", is_idle_inhibited, is_suspend_inhibited);
+	egg_debug ("Received ukui session inhibited changed: idle=(%i), suspend=(%i)", is_idle_inhibited, is_suspend_inhibited);
 	gpm_idle_evaluate (idle);
 }
 

@@ -1,6 +1,6 @@
 @YELP_HELP_RULES@
 
-HELP_ID = mate-power-manager
+HELP_ID = ukui-power-manager
 HELP_FILES = index.docbook legal.xml
 HELP_MEDIA = \
 	figures/applet-brightness.png \

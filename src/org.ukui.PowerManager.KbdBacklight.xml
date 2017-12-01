@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <node name="/">
-  <interface name="org.mate.PowerManager.KbdBacklight">
+  <interface name="org.ukui.PowerManager.KbdBacklight">
     <method name="GetBrightness">
       <arg type="u" name="percentage_brightness" direction="out"/>
     </method>

@@ -148,7 +148,7 @@ gpm_tray_icon_show_info_cb (GtkMenuItem *item, gpointer data)
 	const gchar *object_path;
 
 	object_path = g_object_get_data (G_OBJECT (item), "object-path");
-	path = g_strdup_printf ("%s/mate-power-statistics --device %s", BINDIR, object_path);
+	path = g_strdup_printf ("%s/ukui-power-statistics --device %s", BINDIR, object_path);
 	if (!g_spawn_command_line_async (path, NULL))
 		egg_warning ("Couldn't execute command: %s", path);
 	g_free (path);
@@ -161,7 +161,7 @@ gpm_tray_icon_show_info_cb (GtkMenuItem *item, gpointer data)
 static void
 gpm_tray_icon_show_preferences_cb (GtkMenuItem *item, gpointer data)
 {
-	const gchar *command = "mate-power-preferences";
+	const gchar *command = "ukui-power-preferences";
 
 	if (g_spawn_command_line_async (command, NULL) == FALSE)
 		egg_warning ("Couldn't execute command: %s", command);
@@ -186,15 +186,15 @@ gpm_tray_icon_show_about_cb (GtkMenuItem *item, gpointer data)
 				"program-name", _("Power Manager"),
 				"version", VERSION,
 				"comments", _("Power management daemon"),
-				"copyright", _("Copyright \xC2\xA9 2011-2017 MATE developers"),
+				"copyright", _("Copyright \xC2\xA9 2011-2017 UKUI developers"),
 				"authors", authors,
 				/* Translators should localize the following string
 				* which will be displayed at the bottom of the about
 				* box to give credit to the translator(s).
 				*/
 				"translator-credits", _("translator-credits"),
-				"logo-icon-name", "mate-power-manager",
-				"website", "http://www.mate-desktop.org",
+				"logo-icon-name", "ukui-power-manager",
+				"website", "http://www.ukui.org",
 				NULL);
 }
 
@@ -365,7 +365,7 @@ gpm_tray_icon_create_menu (GpmTrayIcon *icon)
 	GtkStyleContext *context;
 	context = gtk_widget_get_style_context (GTK_WIDGET(toplevel));
 	gtk_style_context_add_class(context,"gnome-panel-menu-bar");
-	gtk_style_context_add_class(context,"mate-panel-menu-bar");
+	gtk_style_context_add_class(context,"ukui-panel-menu-bar");
 
 	/* about */
 	item = gtk_image_menu_item_new_from_stock (GTK_STOCK_ABOUT, NULL);

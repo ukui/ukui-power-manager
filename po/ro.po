@@ -6,12 +6,12 @@
 # Daniel <danny3@tutanota.com>, 2015-2016
 msgid ""
 msgstr ""
-"Project-Id-Version: MATE Desktop Environment\n"
+"Project-Id-Version: UKUI Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-10-07 14:00+0300\n"
 "PO-Revision-Date: 2017-10-07 11:02+0000\n"
 "Last-Translator: monsta <monsta@inbox.ru>\n"
-"Language-Team: Romanian (http://www.transifex.com/mate/MATE/language/ro/)\n"
+"Language-Team: Romanian (http://www.transifex.com/mate/UKUI/language/ro/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -28,8 +28,8 @@ msgstr "Ajustează luminozitatea ecranului laptopului."
 
 #: ../applets/brightness/brightness-applet.c:367
 #: ../applets/inhibit/inhibit-applet.c:329
-msgid "Cannot connect to mate-power-manager"
-msgstr "Nu este posibilă conectarea la mate-power-manager"
+msgid "Cannot connect to ukui-power-manager"
+msgstr "Nu este posibilă conectarea la ukui-power-manager"
 
 #: ../applets/brightness/brightness-applet.c:369
 msgid "Cannot get laptop panel brightness"
@@ -82,19 +82,19 @@ msgstr "_Despre"
 msgid "_Help"
 msgstr "_Ajutor"
 
-#: ../applets/brightness/org.mate.BrightnessApplet.mate-panel-applet.in.in.h:1
+#: ../applets/brightness/org.ukui.BrightnessApplet.ukui-panel-applet.in.in.h:1
 msgid "Brightness Applet Factory"
 msgstr "Șablon miniaplicație de luminozitate"
 
-#: ../applets/brightness/org.mate.BrightnessApplet.mate-panel-applet.in.in.h:2
+#: ../applets/brightness/org.ukui.BrightnessApplet.ukui-panel-applet.in.in.h:2
 msgid "Factory for Brightness Applet"
 msgstr "Șablon pentru miniaplicația de luminozitate"
 
-#: ../applets/brightness/org.mate.BrightnessApplet.mate-panel-applet.in.in.h:3
+#: ../applets/brightness/org.ukui.BrightnessApplet.ukui-panel-applet.in.in.h:3
 msgid "Brightness Applet"
 msgstr "Miniaplicație luminozitate"
 
-#: ../applets/brightness/org.mate.BrightnessApplet.mate-panel-applet.in.in.h:4
+#: ../applets/brightness/org.ukui.BrightnessApplet.ukui-panel-applet.in.in.h:4
 msgid "Adjusts Laptop panel brightness"
 msgstr "Ajustează luminozitatea ecranului laptopului"
 
@@ -118,121 +118,121 @@ msgstr "Suspendarea automată a sistemului este activată"
 msgid "Manual inhibit"
 msgstr "Împiedicare manuală"
 
-#: ../applets/inhibit/org.mate.InhibitApplet.mate-panel-applet.in.in.h:1
+#: ../applets/inhibit/org.ukui.InhibitApplet.ukui-panel-applet.in.in.h:1
 msgid "Inhibit Applet Factory"
 msgstr "Șablon miniaplicație de împiedicare"
 
-#: ../applets/inhibit/org.mate.InhibitApplet.mate-panel-applet.in.in.h:2
+#: ../applets/inhibit/org.ukui.InhibitApplet.ukui-panel-applet.in.in.h:2
 msgid "Factory for Inhibit Applet"
 msgstr "Șablon pentru miniaplicația de împiedicare"
 
-#: ../applets/inhibit/org.mate.InhibitApplet.mate-panel-applet.in.in.h:3
+#: ../applets/inhibit/org.ukui.InhibitApplet.ukui-panel-applet.in.in.h:3
 msgid "Inhibit Applet"
 msgstr "Miniaplicație de împiedicare"
 
-#: ../applets/inhibit/org.mate.InhibitApplet.mate-panel-applet.in.in.h:4
+#: ../applets/inhibit/org.ukui.InhibitApplet.ukui-panel-applet.in.in.h:4
 msgid "Allows user to inhibit automatic power saving"
 msgstr "Permite utilizatorului să împiedice economisirea automată a consumului"
 
-#: ../data/mate-power-manager.desktop.in.in.h:1 ../src/gpm-tray-icon.c:186
+#: ../data/ukui-power-manager.desktop.in.in.h:1 ../src/gpm-tray-icon.c:186
 msgid "Power Manager"
 msgstr "Administrare consum"
 
-#: ../data/mate-power-manager.desktop.in.in.h:2 ../src/gpm-tray-icon.c:188
+#: ../data/ukui-power-manager.desktop.in.in.h:2 ../src/gpm-tray-icon.c:188
 msgid "Power management daemon"
 msgstr "Serviciu de administrare consum"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:1
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:1
 msgid "Whether to hibernate, suspend or do nothing when inactive"
 msgstr "Dacă să fie hibernat, suspendat sau să nu se facă nimic în caz de inactivitate"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:2
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:2
 msgid ""
 "The type of sleeping that should be performed when the computer is inactive."
 msgstr "Tipul de suspendare care trebuie efectuată atunci când calculatorul este inactiv."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:3
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:3
 msgid "Battery critical low action"
 msgstr "Acțiune pentru acumulator aproape complet descărcat"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:4
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:4
 msgid "The action to take when the battery is critically low."
 msgstr "Acțiunea care trebuie luată când acumulatorul este la un nivel critic de scăzut."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:5
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:5
 msgid ""
 "If the battery event should occur when the lid is shut and the power "
 "disconnected"
 msgstr "Dacă să fie declanșat event acumulator când capacul este închis și cablul de alimentare deconectat."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:6
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:6
 msgid ""
 "If the battery lid close event should occur (for example 'Suspend when lid "
 "closed on battery') when the lid is previously shut and the AC power "
 "disconnected at a later time."
 msgstr "Dacă să fie declanșat evenimentul de capac închis în timpul funcționării pe acumulator (ex „Suspendă când e închis capacul în timpul funcționării pe acumulator”) când capacul este închis și ulterior cablul de alimentare este deconectat."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:7
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:7
 msgid "UPS critical low action"
 msgstr "Acțiune nivel critic UPS"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:8
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:8
 msgid "The action to take when the UPS is critically low."
 msgstr "Acțiunea care trebuie luată când sursa de alimentare neîntreruptibilă este la un nivel critic de scăzut."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:9
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:9
 msgid "UPS low power action"
 msgstr "Acțiune nivel scăzut UPS"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:10
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:10
 msgid "The action to take when the UPS is low."
 msgstr "Acțiunea care să fie luată când nivelul sursei de energie neîntreruptibilă este scăzut"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:11
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:11
 msgid "Allow backlight brightness adjustment"
 msgstr "Permite ajustarea luminozității luminii de fundal"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:12
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:12
 msgid ""
 "If the screen brightness should be changed when switching between AC and "
 "battery power."
 msgstr "Dacă luminozitatea ecranului trebuie să fie schimbată când se trece de la alimentare de la rețea la alimentare din acumulator."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:13
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:13
 msgid "Reduce the backlight brightness when on battery power"
 msgstr "Redu luminozitatea de fundal a ecranului atunci când se alimentează din acumulator"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:14
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:14
 msgid ""
 "If the screen should be reduced in brightness when the computer is on "
 "battery power."
 msgstr "Dacă ar trebui redusă luminozitatea ecranului atunci când calculatorul este alimentat din acumulator."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:15
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:15
 msgid "Reduce the keyboard backlight when on battery power"
 msgstr "Redu luminozitatea de fundal a tastaturii atunci când se alimentează din acumulator"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:16
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:16
 msgid ""
 "If the keyboard backlight brightness should be reduced when the computer is "
 "on battery power"
 msgstr "Dacă să fie redusă luminozitatea de fundal a tastaturii când calculatorul se alimentează din acumulator"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:17
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:17
 msgid "Keyboard backlight brightness when on AC power."
 msgstr "Luminozitatea de fundal a tastaturii atunci când se alimentează din rețea."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:18
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:18
 msgid ""
 "Percent brightness to set keyboard backlight at when on AC power. Legal "
 "values are between 0 and 100."
 msgstr "Percent brightness to set keyboard backlight at when on AC power. Legal values are between 0 and 100."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:19
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:19
 msgid "Percent to reduce keyboard backlight by when on battery power."
 msgstr "Procentul cu care se reduce luminozitatea de fundal a tastaturii îcând se alimentează din acumulator."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:21
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:21
 #, no-c-format
 msgid ""
 "The percentage to reduce the keyboard backlight by when on battery power. "
@@ -240,11 +240,11 @@ msgid ""
 "power. Legal values are between 0 and 100."
 msgstr "Procentul cu care să fie redusă lumina de fundal a tastaturii la alimentarea din acumulator. De exemplu, dacă este definit la „60„, lumina de fundal va fi redusă cu 40% la alimentarea din acumulator. Valorile acceptate sunt între 0 și 100."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:22
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:22
 msgid "Percent to reduce keyboard backlight by when idle."
 msgstr "Procentul cu care se reduce luminozitatea de fundal a tastaturii în starea de inactivitate"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:24
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:24
 #, no-c-format
 msgid ""
 "The percentage to reduce the keyboard backlight by when idle. For example, "
@@ -252,502 +252,502 @@ msgid ""
 " between 0 and 100."
 msgstr "Procentul cu care să fie redusă lumina de fundal a tastaturii la inactivitate. De exemplu, dacă este definit la „60„, lumina de fundal va fi redusă cu 40% la inactivitate. Valorile acceptate sunt între 0 și 100."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:25
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:25
 msgid "The brightness of the screen when idle"
 msgstr "Luminozitatea ecranului când calculatorul este inactiv"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:26
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:26
 msgid ""
 "This is the laptop panel screen brightness used when the session is idle. "
 "Only valid when use-time-for-policy is true."
 msgstr "Aceasta este luminozitatea ecranului folosită atunci când sesiunea este inactivă. Validă doar atunci când use_time_for policy este „true”."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:27
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:27
 msgid "Dim the screen after a period of inactivity when on battery power"
 msgstr "Redu luminozitatea ecranului după o perioadă de inactivitate când se alimentează din acumulator"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:28
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:28
 msgid ""
 "If the screen should be dimmed to save power when the computer is idle when "
 "on battery power."
 msgstr "Dacă ecranul să se întunece pentru a salva energie în cazul în care calculatorul este nefolosit și alimentat din acumulator."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:29
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:29
 msgid "The default amount of time to dim the screen after idle"
 msgstr "Timpul implicit după care se reduce intensitatea ecranului în mod inactiv"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:30
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:30
 msgid "The default amount of time to dim the screen after idle."
 msgstr "Timpul implicit după care se reduce intensitatea ecranului în mod inactiv."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:31
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:31
 msgid "LCD dimming amount when on battery"
 msgstr "Factorul scădere a luminozității ecranului când se alimentează din acumulator"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:32
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:32
 msgid ""
 "The amount to dim the brightness of the display when on battery power. "
 "Possible values are between 0 and 100."
 msgstr "Factorul de reducere a luminozității ecranului când sistemul folosește acumulatorul. Valorile posibile se situează între 0 și 100."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:33
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:33
 msgid "Dim the screen after a period of inactivity when on AC power"
 msgstr "Redu luminozitatea ecranului după o perioadă de inactivitate când se alimentează de la rețea"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:34
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:34
 msgid ""
 "If the screen should be dimmed to save power when the computer is idle when "
 "on AC power."
 msgstr "Dacă ecranul să se întunece pentru a salva energie în cazul în care calculatorul este nefolosit și alimentat la rețea."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:35
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:35
 msgid "Method used to blank screen on AC"
 msgstr "Metodă folosită la golirea ecranului când este nefolosit și alimentat din rețea"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:36
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:36
 msgid "The DPMS method used to blank the screen when on AC power."
 msgstr "Metoda DPMS folosită pentru golirea ecranului când alimentarea se face de la priză"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:37
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:37
 msgid "Method used to blank screen on battery"
 msgstr "Metodă folosită la golirea ecranului când este nefolosit și alimentat din baterie"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:38
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:38
 msgid "The DPMS method used to blank the screen when on battery power."
 msgstr "Metodă DPMS folosită pentru golirea ecranului când se folosește acumulatorul ca sursă de energie."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:39
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:39
 msgid "LCD brightness when on AC"
 msgstr "Luminozitatea LCD când se alimentează de la rețea"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:40
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:40
 msgid ""
 "The brightness of the display when on AC power. Possible values are between "
 "0.0 and 100.0."
 msgstr "Luminozitatea ecranului când se alimentează din rețea. Valorile posibile sunt între 0.0 și 100.0."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:41
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:41
 msgid "Suspend button action"
 msgstr "Acțiune buton supendare"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:42
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:42
 msgid "The action to take when the system suspend button is pressed."
 msgstr "Acțiunea care să fie luată când  este apăsat butonul de suspendare."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:43
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:43
 msgid "Hibernate button action"
 msgstr "Acțiune pentru butonul de hibernare"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:44
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:44
 msgid "The action to take when the system hibernate button is pressed."
 msgstr "Acțiunea care să fie luată când  este apăsat butonul de hibernare"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:45
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:45
 msgid "Power button action"
 msgstr "Acțiune buton pornire"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:46
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:46
 msgid "The action to take when the system power button is pressed."
 msgstr "Acțiunea care să fie luată când  este apăsat butonul de pornire."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:47
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:47
 msgid "Laptop lid close action on battery"
 msgstr "Acțiune la închiderea capacului laptopului, când se folosește acumulatorul ca sursă de energie"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:48
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:48
 msgid ""
 "The action to take when the laptop lid is closed and the laptop is on "
 "battery power."
 msgstr "Acțiune de luat când capacul laptopului este închis și acesta folosește acumulatorul ca sursă de energie."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:49
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:49
 msgid "Laptop lid close action when on AC"
 msgstr "Acțiune la închiderea capacului laptopului, când se alimentează de la rețea"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:50
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:50
 msgid ""
 "The action to take when the laptop lid is closed and the laptop is on AC "
 "power."
 msgstr "Acțiunea care să fie luată când  capacul laptopului este închis și acesta se alimentează de la priză."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:51
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:51
 msgid "Whether to use time-based notifications"
 msgstr "Dacă trebuie folosite notificări bazate pe timp."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:52
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:52
 msgid ""
 "If time based notifications should be used. If set to false, then the "
 "percentage change is used instead, which may fix a broken ACPI BIOS."
 msgstr "Dacă să fie folosite notificări bazate pe timp. Dacă nu, atunci va fi folosit procentul schimbării, care ar putea repara un sistem BIOS cu probleme ACPI."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:53
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:53
 msgid "Check CPU load before sleeping"
 msgstr "Verifică încărcarea procesorului înainte de suspendare"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:54
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:54
 msgid "If the CPU load should be checked before doing the idle action."
 msgstr "Dacă să fie verificată încărcarea procesorului înainte de efectuarea acțiunii pentru inactivitate."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:55
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:55
 msgid "Whether NetworkManager should be connected and disconnected on sleep."
 msgstr "Dacă administratorul de rețea să fie conectat sau deconectat în tinpul suspendării"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:56
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:56
 msgid ""
 "Whether NetworkManager should disconnect before suspending or hibernating "
 "and connect on resume."
 msgstr "Dacă administratorul de rețea se deconectează înainte de suspendare sau hibernare și se conectează la revenire."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:57
-msgid "Use mate-screensaver lock setting"
-msgstr "Folosește configurările de blocare din mate-screensaver"
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:57
+msgid "Use ukui-screensaver lock setting"
+msgstr "Folosește configurările de blocare din ukui-screensaver"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:58
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:58
 msgid ""
-"Whether to use the screen lock setting of mate-screensaver to decide if the "
+"Whether to use the screen lock setting of ukui-screensaver to decide if the "
 "screen is locked after a hibernate, suspend or blank screen."
-msgstr "Dacă să fie folosită configurarea de blocare a ecranului a mate-screensaver pentru a decide dacă ecranul este blocat după hibernare, suspendare sau golire."
+msgstr "Dacă să fie folosită configurarea de blocare a ecranului a ukui-screensaver pentru a decide dacă ecranul este blocat după hibernare, suspendare sau golire."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:59
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:59
 msgid "Lock screen when blanked"
 msgstr "Blochează ecranul la golire"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:60
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:60
 msgid ""
 "Whether the screen is locked when the screen is turned off. Only used if "
 "lock-use-screensaver is false."
 msgstr "Dacă ecranul să fie blocat atunci când este închis. Se folosește numai când lock_use_screensaver_settings este „false”."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:61
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:61
 msgid "Lock screen on suspend"
 msgstr "Blochează ecranul la suspendare"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:62
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:62
 msgid ""
 "Whether the screen is locked when the computer wakes up from a suspend. Only"
 " used if lock-use-screensaver is false."
 msgstr "Dacă ecranul este blocat când calculatorul revine din suspendare. Folosit numai dacă lock_use_screensaver_settings este fals."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:63
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:63
 msgid "Lock screen on hibernate"
 msgstr "Blochează ecranul la hibernare"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:64
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:64
 msgid ""
 "Whether the screen is locked when the computer wakes up from a hibernate. "
 "Only used if lock-use-screensaver is false."
 msgstr "Dacă ecranul este blocat când calculatorul revine din hibernare. Folosit numai dacă lock_use_screensaver_settings este fals."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:65
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:65
 msgid "Lock GNOME keyring on sleep"
 msgstr "Blochează inelul de chei GNOME la suspendare"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:66
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:66
 msgid ""
 "Whether the GNOME keyring is locked before the computer enters suspend. This"
 " means the keyring will have to be unlocked on resume."
 msgstr "Dacă inelul de chei GNOME este blocat înainte de suspendarea calculatorului. Aceasta înseamnă că inelul va trebui deblocat, la revenire."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:67
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:67
 msgid ""
 "Whether the GNOME keyring is locked before the computer enters hibernate. "
 "This means the keyring will have to be unlocked on resume."
 msgstr "Dacă inelul de chei GNOME este blocat înainte de hibernarea calculatorului. Aceasta înseamnă că inelul va trebui deblocat, la revenire."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:68
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:68
 msgid "If we should show the low capacity warning for a broken battery"
 msgstr "Dacă să fie afișat avertismentul de capacitate scăzută pentru un acumulator defect"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:69
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:69
 msgid "If we should show the low capacity warning for a broken battery."
 msgstr "Dacă să fie afișat avertismentul de capacitate scăzută pentru un acumulator defect."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:70
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:70
 msgid "Notify when AC adapter is disconnected"
 msgstr "Notifică când alimentarea s-a deconectat de la rețea"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:71
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:71
 msgid "If the user should be notified when the AC adapter is disconnected."
 msgstr "Dacă utilizatorul să fie anunțat când este deconectat de la rețeau de energie electrică."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:72
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:72
 msgid "Notify when fully charged"
 msgstr "Notifică când e încărcat complet"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:73
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:73
 msgid ""
 "If a notification message should be displayed when the battery is fully "
 "charged."
 msgstr "Dacă să fie afișat un mesaj de notificare în cazul în care acumulatorul este pe deplin încărcat."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:74
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:74
 msgid "Notify on a sleep failure"
 msgstr "Notifică la suspendare eșuată"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:75
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:75
 msgid ""
 "If a notification message should be displayed after suspend or hibernate "
 "failed."
 msgstr "Dacă un mesaj de notificare va fi afișat după suspendarea sau hibernarea eșuată."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:76
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:76
 msgid "The URI to show to the user on sleep failure"
 msgstr "URI-ul de afișat utilizatorului la eșecul intrării în starea de veghe"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:77
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:77
 msgid ""
 "When sleep fails we can show the user a button to help fix the situation. "
 "Leave this blank if the button should not be shown."
 msgstr "Când intrarea în starea de veghe eșuează se poate afișa utilizatorului un buton pentru a ajuta la rezolvarea situației. Nu bifați dacă nu vreți să fie afișat butonul."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:78
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:78
 msgid "Notify on a low power"
 msgstr "Notifică când acumulatorul este scăzut"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:79
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:79
 msgid ""
 "If a notification message should be displayed when the battery is getting "
 "low."
 msgstr "Dacă să fie afișat un mesaj de informare să când nivelul acumulatorului scade."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:80
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:80
 msgid "Whether we should show the history data points"
 msgstr "Dacă să fie afișate puncte date în istoric"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:81
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:81
 msgid ""
 "Whether we should show the history data points in the statistics window."
 msgstr "Dacă să fie afișate puncte date istoric în fereastra de statistici."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:82
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:82
 msgid "Whether we should smooth the history data"
 msgstr "Dacă datele din istoric să fie netezite"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:83
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:83
 msgid "Whether we should smooth the history data in the graph."
 msgstr "Dacă datele din istoric să fie netezite în grafic."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:84
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:84
 msgid "The default graph type to show for history"
 msgstr "Tipul implicit de grafic care să fie afișat în istoric"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:85
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:85
 msgid "The default graph type to show in the history window."
 msgstr "Tipul implicit de grafic care să fie afișat în fereastra istoric."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:86
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:86
 msgid "The maximum time displayed for history"
 msgstr "Durata de timp maximă afișată pentru istoric"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:87
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:87
 msgid ""
 "The maximum duration of time displayed on the x-axis of the history graph."
 msgstr "Durata maximă de timp afișată pe axa x a istoricului."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:88
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:88
 msgid "Whether we should show the stats data points"
 msgstr "Dacă să fie afișate puncte date statistici"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:89
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:89
 msgid "Whether we should show the stats data points in the statistics window."
 msgstr "Dacă să fie afișate puncte date în fereastra de statistici."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:90
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:90
 msgid "Whether we should smooth the stats data"
 msgstr "Dacă datele din statistici să fie netezite"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:91
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:91
 msgid "Whether we should smooth the stats data in the graph."
 msgstr "Dacă să fie netazite datele statisticilor din grafic."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:92
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:92
 msgid "The default graph type to show for stats"
 msgstr "Tipul implicit de grafic pentru afișarea statisticilor"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:93
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:93
 msgid "The default graph type to show in the stats window."
 msgstr "Tipul implicit de grafic afișat în fereastra de statistici."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:94
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:94
 msgid "The index of the page number to show by default"
 msgstr "Indexul numărului paginii afișate implicit"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:95
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:95
 msgid ""
 "The index of the page number to show by default which is used to return "
 "focus to the correct page."
 msgstr "Indexul numărului paginii afișate implicit care este folosit pentru a întoarce focalizarea la pagina corectă."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:96
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:96
 msgid "The ID of the last device selected"
 msgstr "The ID-ul ultimului dispozitiv selectat"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:97
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:97
 msgid ""
 "The identifier of the last device which is used to return focus to the "
 "correct device."
 msgstr "Identificatorul ultimului dispozitiv care este folosit pentru a întoarce focalizarea la dispozitivul corect."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:98
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:98
 msgid "Percentage considered low"
 msgstr "Procentaj considerat scăzut"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:99
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:99
 msgid ""
 "The percentage of the battery when it is considered low. Only valid when "
 "use-time-for-policy is false."
 msgstr "Procentul la care nivelul acumulatorului este considerat scăzut. Valid doar când politica use-time-for- este falsă."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:100
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:100
 msgid "Percentage considered critical"
 msgstr "Procentaj considerat critic"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:101
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:101
 msgid ""
 "The percentage of the battery when it is considered critical. Only valid "
 "when use-time-for-policy is false."
 msgstr "Procentul la care nivelul acumulatorului este considerat critic de scăzut. Valid doar când politica use-time-for- este falsă."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:102
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:102
 msgid "Percentage action is taken"
 msgstr "Procentaj la care să acționeze"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:103
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:103
 msgid ""
 "The percentage of the battery when the critical action is performed. Only "
 "valid when use-time-for-policy is false."
 msgstr "Procentul nivelului acumulatorului la care se exectă acțiunea pentru nivel critic. Valid doar când politica use-time-for- este falsă."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:104
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:104
 msgid "The time remaining when low"
 msgstr "Timpul rămas când energia este scăzută"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:105
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:105
 msgid ""
 "The time remaining in seconds of the battery when it is considered low. Only"
 " valid when use-time-for-policy is true."
 msgstr "Timpul rămas în secunde pentru ca acumulatorul să fie considerat la un nivel scăzut. Valid doar când politica use-time-for- este adevărată."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:106
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:106
 msgid "The time remaining when critical"
 msgstr "Timpul rămas când energia este critică"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:107
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:107
 msgid ""
 "The time remaining in seconds of the battery when it is considered critical."
 " Only valid when use-time-for-policy is true."
 msgstr "Timpul rămas în secunde pentru ca acumulatorul să fie considerat la un nivel critic de scăzut. Valid doar când politica use-time-for- este adevărată."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:108
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:108
 msgid "The time remaining when action is taken"
 msgstr "Timpul rămas când acțiunea este efectuată"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:109
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:109
 msgid ""
 "The time remaining in seconds of the battery when critical action is taken. "
 "Only valid when use-time-for-policy is true."
 msgstr "Timpul rămas în secunde al acumulatorului când se exectă acțiunea pentru nivel critic. Valid doar când politica use-time-for- este adevărată."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:110
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:110
 msgid "Sleep timeout computer when on battery"
 msgstr "Timp după care se suspendă calculatorul când este folosit acumulatorul ca sursă de energie"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:111
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:111
 msgid ""
 "The amount of time in seconds the computer on battery power needs to be "
 "inactive before it goes to sleep."
 msgstr "Numărul de secunde pentru care calculatorul trebuie să fie inactiv înainte de a fi suspendat când se folosește acumulatorul ca sursă de energie."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:112
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:112
 msgid "Sleep timeout computer when on AC"
 msgstr "Timp după care se adoarme calculatorul auntci când se alimentează de la rețea"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:113
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:113
 msgid ""
 "The amount of time in seconds the computer on AC power needs to be inactive "
 "before it goes to sleep."
 msgstr "Numărul de secunde pentru care calculatorul trebuie să fie inactiv înainte de a adormi, când se alimentează de la rețea."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:114
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:114
 msgid "Sleep timeout computer when on UPS"
 msgstr "Timp limită până la suspendarea calculatorului când se alimentează de la sursa de alimentare neîntreruptibilă"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:115
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:115
 msgid ""
 "The amount of time in seconds the computer on UPS power needs to be inactive"
 " before it goes to sleep."
 msgstr "Secunde de inactivitate când alimentarea se face de la sursă de alimentare neîntreruptibilă înainte de a intra în starea de suspendare."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:116
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:116
 msgid "Sleep timeout display when on AC"
 msgstr "Timp după care ecranul devine inactiv când se alimentează de la rețea"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:117
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:117
 msgid ""
 "The amount of time in seconds before the display goes to sleep when the "
 "computer is on AC power."
 msgstr "Numărul de secunde ce trebuie să treacă după care ecranul să adoarmă, când se alimentează de la rețea."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:118
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:118
 msgid "Sleep timeout display when on battery"
 msgstr "Timp după care ecranul devine inactiv când se folosește acumulatorul ca sursă de energie"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:119
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:119
 msgid ""
 "The amount of time in seconds the computer on battery power needs to be "
 "inactive before the display goes to sleep."
 msgstr "Numărul de secunde de inactivitate când se folosește acumulatorul ca sursă de energie înainte de ca monitorul să intre în starea de veghe."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:120
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:120
 msgid "Sleep timeout display when on UPS"
 msgstr "Timp limită până la intrarea în starea de veghe a monitorului când se alimentează de la sursa de alimentare neîntreruptibilă"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:121
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:121
 msgid ""
 "The amount of time in seconds the computer on UPS power needs to be inactive"
 " before the display goes to sleep."
 msgstr "Secunde de inactivitate când alimentarea se face de la UPS înainte de a trece monitorul în starea de veghe."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:122
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:122
 msgid "If sounds should be used"
 msgstr "Dacă sunetele trebuie folosite"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:123
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:123
 msgid ""
 "If sounds should be used when the power is critically low, or inhibit "
 "requests have stopped the policy action."
 msgstr "Dacă sunetele ar trebui să fie folosite când curentul este foarte mic, sau cereri de împiedicare au oprit acțiunea politicii."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:124
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:124
 msgid ""
 "If preferences and statistics items should be shown in the context menu"
 msgstr "Dacă preferințele și statisticile ar trebui să fie afișate în meniul contextual"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:125
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:125
 msgid "When to show the notification icon"
 msgstr "Când se afișează pictograma de notificare"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:126
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:126
 msgid "Display options for the notification icon."
 msgstr "Afișează opțiuni pentru pictograma de notificare."
 
-#: ../data/mate-power-preferences.desktop.in.in.h:1
+#: ../data/ukui-power-preferences.desktop.in.in.h:1
 msgid "Power Management"
 msgstr "Administrare consum"
 
-#: ../data/mate-power-preferences.desktop.in.in.h:2
+#: ../data/ukui-power-preferences.desktop.in.in.h:2
 msgid "Configure power management"
 msgstr "Configurare administrare consum"
 
 #. TRANSLATORS: shown on the titlebar
 #. TRANSLATORS: the program name
-#: ../data/mate-power-statistics.desktop.in.in.h:1
+#: ../data/ukui-power-statistics.desktop.in.in.h:1
 #: ../data/gpm-statistics.ui.h:1 ../src/gpm-statistics.c:1090
 #: ../src/gpm-statistics.c:1603
 msgid "Power Statistics"
 msgstr "Statistici consum"
 
-#: ../data/mate-power-statistics.desktop.in.in.h:2
+#: ../data/ukui-power-statistics.desktop.in.in.h:2
 msgid "Observe power management"
 msgstr "Examinează administrarea consumului"
 
@@ -928,8 +928,8 @@ msgstr "Obține numărul de nivele de luminozitate suportate"
 
 #. TRANSLATORS: tool that is used when copying profiles system-wide
 #: ../src/gpm-backlight-helper.c:184
-msgid "MATE Power Manager Backlight Helper"
-msgstr "Ajutor lumină de fundal pentru Administratorul consum MATE"
+msgid "UKUI Power Manager Backlight Helper"
+msgstr "Ajutor lumină de fundal pentru Administratorul consum UKUI"
 
 #. TRANSLATORS: user did not specify valid options
 #: ../src/gpm-backlight-helper.c:192
@@ -1085,8 +1085,8 @@ msgid "Exit after the manager has loaded (for debugging)"
 msgstr "Iese după ce administratorul a fost încărcat (pentru depanare)"
 
 #: ../src/gpm-main.c:189 ../src/gpm-main.c:193
-msgid "MATE Power Manager"
-msgstr "Administrator consum MATE"
+msgid "UKUI Power Manager"
+msgstr "Administrator consum UKUI"
 
 #. TRANSLATORS: this is the sound description
 #: ../src/gpm-manager.c:223 ../src/gpm-manager.c:295
@@ -1168,12 +1168,12 @@ msgstr "Eșuarea a fost raportată ca:"
 msgid "Visit help page"
 msgstr "Vizitați pagina de ajutor"
 
-#. TRANSLATORS: this is the mate-screensaver throttle
+#. TRANSLATORS: this is the ukui-screensaver throttle
 #: ../src/gpm-manager.c:859
 msgid "Display DPMS activated"
 msgstr "DPMS ecran activat"
 
-#. TRANSLATORS: this is the mate-screensaver throttle
+#. TRANSLATORS: this is the ukui-screensaver throttle
 #: ../src/gpm-manager.c:878
 msgid "On battery power"
 msgstr "Alimentat din acumulator"
@@ -1506,8 +1506,8 @@ msgid ""
 msgstr "UPS-ul este sub nivelul critic și acest calculator se va închide."
 
 #: ../src/gpm-prefs.c:81
-msgid "MATE Power Preferences"
-msgstr "Preferințe consum MATE"
+msgid "UKUI Power Preferences"
+msgstr "Preferințe consum UKUI"
 
 #: ../src/gpm-prefs-core.c:241
 msgid "Shutdown"
@@ -1950,7 +1950,7 @@ msgid "Processor"
 msgstr "Procesor"
 
 #: ../src/gpm-tray-icon.c:189
-msgid "Copyright © 2011-2017 MATE developers"
+msgid "Copyright © 2011-2017 UKUI developers"
 msgstr ""
 
 #. Translators should localize the following string

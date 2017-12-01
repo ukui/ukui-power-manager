@@ -539,7 +539,7 @@
 
 ========== ka.po ==========
 # translation of ka.po to Georgian
-# Georgian translation for Mate Power Manager.
+# Georgian translation for Ukui Power Manager.
 # This file is distributed under the same license as the gnome-power-manager package.
 #
 # David Managadze <dmanagadze@googlemail.com>, 2006, 2007.
@@ -930,9 +930,9 @@
 
 
 ========== tr.po ==========
-# Turkish translation of Mate Power Manager.
-# Copyright (C) 2007 THE Mate Power Manager'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the Mate Power Manager package.
+# Turkish translation of Ukui Power Manager.
+# Copyright (C) 2007 THE Ukui Power Manager'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Ukui Power Manager package.
 #
 # Volkan Güney <guneyvolkan@gmail.com>, 2007.
 # Baris Cicek <baris@teamforce.name.tr>, 2008, 2009.

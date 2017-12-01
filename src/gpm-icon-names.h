@@ -26,12 +26,12 @@
 
 G_BEGIN_DECLS
 
-#define GPM_ICON_APP_ICON			"mate-power-manager"
+#define GPM_ICON_APP_ICON			"ukui-power-manager"
 #define GPM_ICON_AC_ADAPTER			"gpm-ac-adapter"
 #define GPM_ICON_BATTERY_CHARGED		"gpm-primary-charged"
 #define GPM_ICON_SUSPEND			"gpm-suspend"
 #define GPM_ICON_HIBERNATE			"gpm-hibernate"
-#define GPM_ICON_STATISTICS			"mate-power-statistics"
+#define GPM_ICON_STATISTICS			"ukui-power-statistics"
 #define GPM_ICON_BRIGHTNESS_LCD			"gpm-brightness-lcd"
 #define GPM_ICON_BRIGHTNESS_KBD			"gpm-brightness-kbd"
 #define GPM_ICON_INHIBIT			"gpm-inhibit"

@@ -28,7 +28,7 @@ DISTCLEANFILES =					\
 	intltool-extract				\
 	intltool-merge					\
 	intltool-update					\
-	mate-power-manager-*.tar.gz
+	ukui-power-manager-*.tar.gz
 
 DISTCHECK_CONFIGURE_FLAGS =   \
 	--disable-schemas-install \

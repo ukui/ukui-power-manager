@@ -1,11 +1,11 @@
-# Russian translation for mate-power-manager
+# Russian translation for ukui-power-manager
 # Copyright (c) (c) 2006 Canonical Ltd, and Rosetta Contributors 2006
 # Copyright Pavel Shylenok <uriel@tut.by, 2006
-# This file is distributed under the same license as the mate-power-manager package.
+# This file is distributed under the same license as the ukui-power-manager package.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: mate-power-manager\n"
+"Project-Id-Version: ukui-power-manager\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2006-05-08 15:38+0100\n"
 "PO-Revision-Date: 2006-05-19 13:21+0000\n"
@@ -16,45 +16,45 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
-#: C/mate-power-manager.xml:186(None)
+#: C/ukui-power-manager.xml:186(None)
 msgid ""
 "@@image: 'figures/gpm-unplugged.png'; md5=3316d42004158373832fb87cfc7468b8"
 msgstr ""
 "@@image: 'figures/gpm-unplugged.png'; md5=3316d42004158373832fb87cfc7468b8"
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
-#: C/mate-power-manager.xml:195(None)
+#: C/ukui-power-manager.xml:195(None)
 msgid ""
 "@@image: 'figures/gpm-charged.png'; md5=39b67e2d88ef5c83885e782142b52b1a"
 msgstr ""
 "@@image: 'figures/gpm-charged.png'; md5=39b67e2d88ef5c83885e782142b52b1a"
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
-#: C/mate-power-manager.xml:204(None)
+#: C/ukui-power-manager.xml:204(None)
 msgid ""
 "@@image: 'figures/gpm-critical.png'; md5=b11c5e90e0249fc293e2a244dbf336b0"
 msgstr ""
 "@@image: 'figures/gpm-critical.png'; md5=b11c5e90e0249fc293e2a244dbf336b0"
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
-#: C/mate-power-manager.xml:213(None)
+#: C/ukui-power-manager.xml:213(None)
 msgid "@@image: 'figures/gpm-low.png'; md5=7c40681137f85625cc697d9bf05ec3c3"
 msgstr "@@image: 'figures/gpm-low.png'; md5=7c40681137f85625cc697d9bf05ec3c3"
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
-#: C/mate-power-manager.xml:223(None)
+#: C/ukui-power-manager.xml:223(None)
 msgid "@@image: 'figures/startup'; md5=THIS FILE DOESN'T EXIST"
 msgstr "@@image: 'figures/startup'; md5=THIS FILE DOESN'T EXIST"
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
-#: C/mate-power-manager.xml:255(None)
+#: C/ukui-power-manager.xml:255(None)
 msgid ""
 "@@image: 'figures/gpm-prefs-ac.png'; md5=ce951a6e0cd1c43f56d3e647be48e850"
 msgstr ""
 "@@image: 'figures/gpm-prefs-ac.png'; md5=ce951a6e0cd1c43f56d3e647be48e850"
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
-#: C/mate-power-manager.xml:264(None)
+#: C/ukui-power-manager.xml:264(None)
 msgid ""
 "@@image: 'figures/gpm-prefs-battery.png'; "
 "md5=3509199dfb914e262962c873e4ae7216"
@@ -63,7 +63,7 @@ msgstr ""
 "md5=3509199dfb914e262962c873e4ae7216"
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
-#: C/mate-power-manager.xml:273(None)
+#: C/ukui-power-manager.xml:273(None)
 msgid ""
 "@@image: 'figures/gpm-prefs-options.png'; "
 "md5=e59341cac36f0897c00484c7b9ed9f04"
@@ -71,25 +71,25 @@ msgstr ""
 "@@image: 'figures/gpm-prefs-options.png'; "
 "md5=e59341cac36f0897c00484c7b9ed9f04"
 
-#: C/mate-power-manager.xml:25(title)
-msgid "<application>MATE Power Manager</application> Manual V2.14.0"
+#: C/ukui-power-manager.xml:25(title)
+msgid "<application>UKUI Power Manager</application> Manual V2.14.0"
 msgstr ""
-"Руководство по приложению <application>Управление питанием MATE "
+"Руководство по приложению <application>Управление питанием UKUI "
 "</application> V2.14.0"
 
-#: C/mate-power-manager.xml:27(year)
+#: C/ukui-power-manager.xml:27(year)
 msgid "2006"
 msgstr "2006"
 
-#: C/mate-power-manager.xml:28(holder)
+#: C/ukui-power-manager.xml:28(holder)
 msgid "Richard Hughes (richard@hughsie.com)"
 msgstr "Richard Hughes (richard@hughsie.com)"
 
-#: C/mate-power-manager.xml:44(publishername) C/mate-power-manager.xml:94(para)
+#: C/ukui-power-manager.xml:44(publishername) C/ukui-power-manager.xml:94(para)
 msgid "Richard Hughes"
 msgstr "Richard Hughes"
 
-#: C/mate-power-manager.xml:2(para)
+#: C/ukui-power-manager.xml:2(para)
 msgid ""
 "Permission is granted to copy, distribute and/or modify this document under "
 "the terms of the GNU Free Documentation License (GFDL), Version 1.1 or any "
@@ -106,32 +106,32 @@ msgstr ""
 "url=\"help:fdl\">этому адресу</ulink> или в файле COPYING-DOCS, "
 "распространяемого вместе с данным руководством."
 
-#: C/mate-power-manager.xml:12(para)
+#: C/ukui-power-manager.xml:12(para)
 msgid ""
-"This manual is part of a collection of MATE manuals distributed under the "
+"This manual is part of a collection of UKUI manuals distributed under the "
 "GFDL. If you want to distribute this manual separately from the collection, "
 "you can do so by adding a copy of the license to the manual, as described in "
 "section 6 of the license."
 msgstr ""
-"This manual is part of a collection of MATE manuals distributed under the "
+"This manual is part of a collection of UKUI manuals distributed under the "
 "GFDL. If you want to distribute this manual separately from the collection, "
 "you can do so by adding a copy of the license to the manual, as described in "
 "section 6 of the license."
 
-#: C/mate-power-manager.xml:19(para)
+#: C/ukui-power-manager.xml:19(para)
 msgid ""
 "Many of the names used by companies to distinguish their products and "
-"services are claimed as trademarks. Where those names appear in any MATE "
-"documentation, and the members of the MATE Documentation Project are made "
+"services are claimed as trademarks. Where those names appear in any UKUI "
+"documentation, and the members of the UKUI Documentation Project are made "
 "aware of those trademarks, then the names are in capital letters or initial "
 "capital letters."
 msgstr ""
 "Многие имена, используемые компаниями для отличия своих продуктов и услуг, "
 "заявлены как торговые марки. Если эти имена появляются в документации на "
-"MATE и членам MATE Documentation Project было сообщено об этих торговый "
+"UKUI и членам UKUI Documentation Project было сообщено об этих торговый "
 "марках, то они вносятся БОЛЬШИМИ заглавными буквами."
 
-#: C/mate-power-manager.xml:35(para)
+#: C/ukui-power-manager.xml:35(para)
 msgid ""
 "DOCUMENT IS PROVIDED ON AN \"AS IS\" BASIS, WITHOUT WARRANTY OF ANY KIND, "
 "EITHER EXPRESSED OR IMPLIED, INCLUDING, WITHOUT LIMITATION, WARRANTIES THAT "
@@ -151,7 +151,7 @@ msgstr ""
 "предназначена для торговли, может служить для конкретных целей или не "
 "содержит нарушений."
 
-#: C/mate-power-manager.xml:55(para)
+#: C/ukui-power-manager.xml:55(para)
 msgid ""
 "UNDER NO CIRCUMSTANCES AND UNDER NO LEGAL THEORY, WHETHER IN TORT (INCLUDING "
 "NEGLIGENCE), CONTRACT, OR OTHERWISE, SHALL THE AUTHOR, INITIAL WRITER, ANY "
@@ -174,7 +174,7 @@ msgstr ""
 "СВЯЗАННЫХ С ИСПОЛЬЗОВАНИЕМ ДАННОГО ДОКУМЕНТА ИЛИ ЕГО ИЗМЕНЕННЫХ ВЕРСИЙ, ДАЖЕ "
 "В ТОМ СЛУЧАЕ, КОГДА СТОРОНЫ БЫЛИ УВЕДОМЛЕНЫ О ВОЗМОЖНОСТИ ПРИЧИНЕНИЯ УЩЕРБА."
 
-#: C/mate-power-manager.xml:28(para)
+#: C/ukui-power-manager.xml:28(para)
 msgid ""
 "DOCUMENT AND MODIFIED VERSIONS OF THE DOCUMENT ARE PROVIDED UNDER THE TERMS "
 "OF THE GNU FREE DOCUMENTATION LICENSE WITH THE FURTHER UNDERSTANDING THAT: "
@@ -184,76 +184,76 @@ msgstr ""
 "ЛИЦЕНЗИИ ГНУ ДЛЯ ДОКУМЕНТАЦИИ (GNU FREE DOCUMENTATION LICENSE). ДАЛЕЕ "
 "ПОДРАЗУМЕВАЕТСЯ, ЧТО: <placeholder-1/>"
 
-#: C/mate-power-manager.xml:54(firstname)
+#: C/ukui-power-manager.xml:54(firstname)
 msgid "Richard"
 msgstr "Richard"
 
-#: C/mate-power-manager.xml:55(surname)
+#: C/ukui-power-manager.xml:55(surname)
 msgid "Hughes"
 msgstr "Hughes"
 
-#: C/mate-power-manager.xml:56(email)
+#: C/ukui-power-manager.xml:56(email)
 msgid "richard@hughsie.com"
 msgstr "richard@hughsie.com"
 
-#: C/mate-power-manager.xml:88(revnumber)
+#: C/ukui-power-manager.xml:88(revnumber)
 msgid "2.0"
 msgstr "2.0"
 
-#: C/mate-power-manager.xml:89(date)
+#: C/ukui-power-manager.xml:89(date)
 msgid "2006-02-19"
 msgstr "2006-02-19"
 
-#: C/mate-power-manager.xml:91(para)
+#: C/ukui-power-manager.xml:91(para)
 msgid "Richard Hughes <email>richard@hughsie.com</email>"
 msgstr "Richard Hughes <email>richard@hughsie.com</email>"
 
-#: C/mate-power-manager.xml:100(title)
+#: C/ukui-power-manager.xml:100(title)
 msgid "Feedback"
 msgstr "Обратная связь"
 
-#: C/mate-power-manager.xml:101(para)
+#: C/ukui-power-manager.xml:101(para)
 msgid ""
-"To report a bug or make a suggestion regarding the MATE Power Manager "
+"To report a bug or make a suggestion regarding the UKUI Power Manager "
 "application or this manual, follow the directions in the <ulink "
-"url=\"http://www.mate.org/projects/mate-power-manager/\" "
-"type=\"http\">MATE Power Manager Contact Page</ulink>."
+"url=\"http://www.ukui.org/projects/ukui-power-manager/\" "
+"type=\"http\">UKUI Power Manager Contact Page</ulink>."
 msgstr ""
 "Для сообщения об ошибке или внесения предложений касательно приложения "
-"Сетевой менеджер MATE или данного руководства, следуйте указаниям на <ulink "
-"url=\"http://www.mate.org/projects/mate-power-manager/\" "
+"Сетевой менеджер UKUI или данного руководства, следуйте указаниям на <ulink "
+"url=\"http://www.ukui.org/projects/ukui-power-manager/\" "
 "type=\"http\">странице контактов</ulink>. приложения Управление питанием "
-"MATE ."
+"UKUI ."
 
-#: C/mate-power-manager.xml:110(primary) C/mate-power-manager.xml:124(primary) C/mate-power-manager.xml:0(application)
-msgid "MATE Power Manager"
-msgstr "Управление питанием MATE"
+#: C/ukui-power-manager.xml:110(primary) C/ukui-power-manager.xml:124(primary) C/ukui-power-manager.xml:0(application)
+msgid "UKUI Power Manager"
+msgstr "Управление питанием UKUI"
 
-#: C/mate-power-manager.xml:113(primary) C/mate-power-manager.xml:126(tertiary)
-msgid "mate-power-manager"
-msgstr "mate-power-manager"
+#: C/ukui-power-manager.xml:113(primary) C/ukui-power-manager.xml:126(tertiary)
+msgid "ukui-power-manager"
+msgstr "ukui-power-manager"
 
-#: C/mate-power-manager.xml:119(title)
+#: C/ukui-power-manager.xml:119(title)
 msgid "Introduction"
 msgstr "Введение"
 
-#: C/mate-power-manager.xml:125(secondary)
+#: C/ukui-power-manager.xml:125(secondary)
 msgid "Manual"
 msgstr "Руководство"
 
-#: C/mate-power-manager.xml:129(para)
+#: C/ukui-power-manager.xml:129(para)
 msgid ""
-"The MATE Power Manager session daemon is a power management daemon for the "
-"<systemitem>MATE desktop</systemitem>"
+"The UKUI Power Manager session daemon is a power management daemon for the "
+"<systemitem>UKUI desktop</systemitem>"
 msgstr ""
-"Демон Управление питанием MATE это демон управления электропитанием для "
-"<systemitem>рабочего стола MATE</systemitem>"
+"Демон Управление питанием UKUI это демон управления электропитанием для "
+"<systemitem>рабочего стола UKUI</systemitem>"
 
-#: C/mate-power-manager.xml:135(title)
+#: C/ukui-power-manager.xml:135(title)
 msgid "Differences between suspend and hibernate"
 msgstr "Различия между отключением и выключением с сохранением состояния"
 
-#: C/mate-power-manager.xml:136(para)
+#: C/ukui-power-manager.xml:136(para)
 msgid ""
 "The Suspend state is a power saving feature which is the lowest level of "
 "power consumption that preserves program data in the computers memory. When "
@@ -277,7 +277,7 @@ msgstr ""
 "требуется несколько секунд для перехода в режим Отключение и затем для "
 "возобновления работы компьютера."
 
-#: C/mate-power-manager.xml:149(para)
+#: C/ukui-power-manager.xml:149(para)
 msgid ""
 "The Hibernation state saves the complete state of the computer to hard disk "
 "and turns off the power, so that the computer appears to be off. It will not "
@@ -294,214 +294,214 @@ msgstr ""
 "разрядится батарея на ноутбуке - работа и данные не будут утеряны. Для "
 "возобновления работы компьютера может потребоваться до минуты времени."
 
-#: C/mate-power-manager.xml:164(title)
-msgid "Using <application>MATE Power Manager</application>"
+#: C/ukui-power-manager.xml:164(title)
+msgid "Using <application>UKUI Power Manager</application>"
 msgstr ""
-"Использование приложения <application>Управление питанием MATE</application>"
+"Использование приложения <application>Управление питанием UKUI</application>"
 
-#: C/mate-power-manager.xml:166(para)
+#: C/ukui-power-manager.xml:166(para)
 msgid ""
-"You can start <application>MATE Power Manager</application> by doing:"
+"You can start <application>UKUI Power Manager</application> by doing:"
 msgstr ""
-"Запустить приложение <application>Управление питанием MATE</application> "
+"Запустить приложение <application>Управление питанием UKUI</application> "
 "можно следующим образом:"
 
-#: C/mate-power-manager.xml:170(term)
+#: C/ukui-power-manager.xml:170(term)
 msgid "Command line"
 msgstr "Командная строка"
 
-#: C/mate-power-manager.xml:172(para)
+#: C/ukui-power-manager.xml:172(para)
 msgid ""
-"Type <command>mate-power-manager --verbose --no-daemon</command>, then "
+"Type <command>ukui-power-manager --verbose --no-daemon</command>, then "
 "press <keycap>Return</keycap>:"
 msgstr ""
-"Наберите <command>mate-power-manager --verbose --no-daemon</command>, затем "
+"Наберите <command>ukui-power-manager --verbose --no-daemon</command>, затем "
 "нажмите <keycap>Ввод</keycap>:"
 
-#: C/mate-power-manager.xml:178(para)
+#: C/ukui-power-manager.xml:178(para)
 msgid ""
-"When you start <application>MATE Power Manager</application>, the following "
+"When you start <application>UKUI Power Manager</application>, the following "
 "notifications may be displayed."
 msgstr ""
 "Во время запуска приложения <application>Управление питанием "
-"MATE</application> могут быть отображены следующие уведомления"
+"UKUI</application> могут быть отображены следующие уведомления"
 
-#: C/mate-power-manager.xml:183(title)
-msgid "MATE Power Manager Notification when AC adapter is removed"
+#: C/ukui-power-manager.xml:183(title)
+msgid "UKUI Power Manager Notification when AC adapter is removed"
 msgstr ""
-"Управление питанием MATE Уведомление при отключении переходника питания от "
+"Управление питанием UKUI Уведомление при отключении переходника питания от "
 "сети"
 
-#: C/mate-power-manager.xml:192(title)
+#: C/ukui-power-manager.xml:192(title)
 msgid ""
-"MATE Power Manager Notification when laptop primary button is fully charged"
+"UKUI Power Manager Notification when laptop primary button is fully charged"
 msgstr ""
-"Управление питанием MATE Уведомление, когда главная батарея ноутбука "
+"Управление питанием UKUI Уведомление, когда главная батарея ноутбука "
 "полностью заряжена"
 
-#: C/mate-power-manager.xml:201(title)
+#: C/ukui-power-manager.xml:201(title)
 msgid ""
-"MATE Power Manager Notification when the system power is critically low"
+"UKUI Power Manager Notification when the system power is critically low"
 msgstr ""
-"Управление питанием MATE  Уведомление, когда главная батарея ноутбука "
+"Управление питанием UKUI  Уведомление, когда главная батарея ноутбука "
 "полностью разряжена"
 
-#: C/mate-power-manager.xml:210(title)
-msgid "MATE Power Manager Notification when battery power is low"
+#: C/ukui-power-manager.xml:210(title)
+msgid "UKUI Power Manager Notification when battery power is low"
 msgstr ""
-"Управление питанием MATE  Уведомление, когда главная батарея ноутбука "
+"Управление питанием UKUI  Уведомление, когда главная батарея ноутбука "
 "разряжена"
 
-#: C/mate-power-manager.xml:219(title)
-msgid "<application>MATE Power Manager</application> on Startup"
-msgstr "<application>Управление питанием MATE </application> при загрузке"
+#: C/ukui-power-manager.xml:219(title)
+msgid "<application>UKUI Power Manager</application> on Startup"
+msgstr "<application>Управление питанием UKUI </application> при загрузке"
 
-#: C/mate-power-manager.xml:226(phrase)
+#: C/ukui-power-manager.xml:226(phrase)
 msgid "<placeholder-1/> on startup"
 msgstr "<placeholder-1/> при загрузке"
 
-#: C/mate-power-manager.xml:235(title)
+#: C/ukui-power-manager.xml:235(title)
 msgid "Preferences"
 msgstr "Настройки"
 
-#: C/mate-power-manager.xml:237(para)
+#: C/ukui-power-manager.xml:237(para)
 msgid "The preferences window allows you to control:"
 msgstr "Окно настроек позволяет управлять"
 
-#: C/mate-power-manager.xml:240(para)
+#: C/ukui-power-manager.xml:240(para)
 msgid "The LCD brightness when on AC and battery power"
 msgstr "Яркость LCD при питании от сети и батареи"
 
-#: C/mate-power-manager.xml:241(para)
+#: C/ukui-power-manager.xml:241(para)
 msgid "The idle time for the screen power-down and suspend action"
 msgstr "Время бездействия до отключения экрана и перехода в режим отключения"
 
-#: C/mate-power-manager.xml:242(para)
+#: C/ukui-power-manager.xml:242(para)
 msgid "The actions to perform when the laptop lid is closed"
 msgstr "При закрытии ноутбука выполнять действия"
 
-#: C/mate-power-manager.xml:243(para)
+#: C/ukui-power-manager.xml:243(para)
 msgid "The notification area icon policy"
 msgstr "Политика значка области уведомлений"
 
-#: C/mate-power-manager.xml:246(para)
+#: C/ukui-power-manager.xml:246(para)
 msgid ""
-"Some sliders or option boxes may be disabled if the mateconf policy keys are "
+"Some sliders or option boxes may be disabled if the ukuiconf policy keys are "
 "not writable. This allows admins to lock-down the actions that a user can "
 "select."
 msgstr ""
-"Отдельные настройки могут быть недоступны, если ключи в mateconf не "
+"Отдельные настройки могут быть недоступны, если ключи в ukuiconf не "
 "перезаписываемые. Это позволяет администраторам ограничивать действия, "
 "производимые пользователем"
 
-#: C/mate-power-manager.xml:252(title)
-msgid "MATE Power Manager AC Power Tab"
-msgstr "Закладка Сеть приложения Управление питением MATE"
+#: C/ukui-power-manager.xml:252(title)
+msgid "UKUI Power Manager AC Power Tab"
+msgstr "Закладка Сеть приложения Управление питением UKUI"
 
-#: C/mate-power-manager.xml:261(title)
-msgid "MATE Power Manager Battery Power Tab"
-msgstr "Закладка Батарея приложения Управление питением MATE"
+#: C/ukui-power-manager.xml:261(title)
+msgid "UKUI Power Manager Battery Power Tab"
+msgstr "Закладка Батарея приложения Управление питением UKUI"
 
-#: C/mate-power-manager.xml:270(title)
-msgid "MATE Power Manager Options Tab"
-msgstr "Закладка Настройки приложения Управление питением MATE"
+#: C/ukui-power-manager.xml:270(title)
+msgid "UKUI Power Manager Options Tab"
+msgstr "Закладка Настройки приложения Управление питением UKUI"
 
-#: C/mate-power-manager.xml:281(title)
+#: C/ukui-power-manager.xml:281(title)
 msgid "Advanced Preferences"
 msgstr "Расширенные настройки"
 
-#: C/mate-power-manager.xml:283(para)
+#: C/ukui-power-manager.xml:283(para)
 msgid ""
-"There are many settings in mateconf that are not expressed to the user. These "
-"allow MATE Power Manager to present a simple imterface to the user, but "
+"There are many settings in ukuiconf that are not expressed to the user. These "
+"allow UKUI Power Manager to present a simple imterface to the user, but "
 "also be flexible for power users."
 msgstr ""
-"В mateconf содержится много настроек, не представленных пользователю. Это "
-"позволяет приложению Управление питанием MATE предоставлять пользователю "
+"В ukuiconf содержится много настроек, не представленных пользователю. Это "
+"позволяет приложению Управление питанием UKUI предоставлять пользователю "
 "простой интерфейс, который также обладает гибкостью для опытных "
 "пользователей."
 
-#: C/mate-power-manager.xml:290(title)
+#: C/ukui-power-manager.xml:290(title)
 msgid "Screen Locking"
 msgstr "Блокирование экрана"
 
-#: C/mate-power-manager.xml:292(para)
+#: C/ukui-power-manager.xml:292(para)
 msgid ""
-"By default, mate-power-manager supports a simple locking scheme. This means "
-"that the screen will lock if set to \"Lock screen\" in mate-screensaver "
+"By default, ukui-power-manager supports a simple locking scheme. This means "
+"that the screen will lock if set to \"Lock screen\" in ukui-screensaver "
 "when the lid is closed, or the system performs a suspend or hibernate action."
 msgstr ""
-"По умолчанию mate-power-manager поддерживает простую схему блокирования. "
+"По умолчанию ukui-power-manager поддерживает простую схему блокирования. "
 "Это означает, что экран заблокируется если выбрана опция \"Блокировать "
-"экран\" при закрытии ноутбука в mate-screensaver или система выполняет "
+"экран\" при закрытии ноутбука в ukui-screensaver или система выполняет "
 "переход в состояние отключения или выключения с сохранением состояния"
 
-#: C/mate-power-manager.xml:298(para)
+#: C/ukui-power-manager.xml:298(para)
 msgid ""
 "There is a complex locking scheme available for power-users that allows "
 "locking policy to change for the lid, suspend and hibernate actions. To "
-"enable this complex mode, you will have to disable the mateconf key:"
+"enable this complex mode, you will have to disable the ukuiconf key:"
 msgstr ""
 "Для опытных пользователей доступна сложная схема блокирования, которая "
 "позволяет политике блокировки меняться при закрытии ноутбука, отключении или "
 "выключении с сохранением состояния. Для включения сложного режима необходимо "
-"изменить значение ключа на disable в mateconf"
+"изменить значение ключа на disable в ukuiconf"
 
-#: C/mate-power-manager.xml:305(command)
-msgid "/apps/mate-power-manager/lock_use_screensaver_settings"
-msgstr "/apps/mate-power-manager/lock_use_screensaver_settings"
+#: C/ukui-power-manager.xml:305(command)
+msgid "/apps/ukui-power-manager/lock_use_screensaver_settings"
+msgstr "/apps/ukui-power-manager/lock_use_screensaver_settings"
 
-#: C/mate-power-manager.xml:308(para)
+#: C/ukui-power-manager.xml:308(para)
 msgid ""
-"Then the policy keys can be set to force a mate-screensaver lock and unlock "
+"Then the policy keys can be set to force a ukui-screensaver lock and unlock "
 "when the action is performed:"
 msgstr ""
-"После этого, ключи политик могут быть изменены для разрешения mate-"
+"После этого, ключи политик могут быть изменены для разрешения ukui."
 "screensaver производить блокировку и разблокировку при совершени "
 "определенных действий."
 
-#: C/mate-power-manager.xml:314(command)
-msgid "/apps/mate-power-manager/lock_on_blank_screen"
-msgstr "/apps/mate-power-manager/lock_on_blank_screen"
+#: C/ukui-power-manager.xml:314(command)
+msgid "/apps/ukui-power-manager/lock_on_blank_screen"
+msgstr "/apps/ukui-power-manager/lock_on_blank_screen"
 
-#: C/mate-power-manager.xml:315(command)
-msgid "/apps/mate-power-manager/lock_on_suspend"
-msgstr "/apps/mate-power-manager/lock_on_suspend"
+#: C/ukui-power-manager.xml:315(command)
+msgid "/apps/ukui-power-manager/lock_on_suspend"
+msgstr "/apps/ukui-power-manager/lock_on_suspend"
 
-#: C/mate-power-manager.xml:316(command)
-msgid "/apps/mate-power-manager/lock_on_hibernate"
-msgstr "/apps/mate-power-manager/lock_on_hibernate"
+#: C/ukui-power-manager.xml:316(command)
+msgid "/apps/ukui-power-manager/lock_on_hibernate"
+msgstr "/apps/ukui-power-manager/lock_on_hibernate"
 
-#: C/mate-power-manager.xml:319(para)
+#: C/ukui-power-manager.xml:319(para)
 msgid ""
-"<emphasis>NOTE:</emphasis> The lock policy for mate-screensaver is ignored "
+"<emphasis>NOTE:</emphasis> The lock policy for ukui-screensaver is ignored "
 "until the simple mode is re-enabled."
 msgstr ""
 "<emphasis>Примечание:</emphasis> Политика блокирования хранителя экрана "
-"mate будет игнорироваться до тех пор, пока упрощенный режим не будет "
+"ukui.будет игнорироваться до тех пор, пока упрощенный режим не будет "
 "реактивирован."
 
-#: C/mate-power-manager.xml:331(title)
+#: C/ukui-power-manager.xml:331(title)
 msgid "Known Bugs and Limitations"
 msgstr "Известные проблемы и Ограничения"
 
-#: C/mate-power-manager.xml:332(para)
+#: C/ukui-power-manager.xml:332(para)
 msgid ""
-"This section lists known bugs and limitations using MATE Power Manager."
+"This section lists known bugs and limitations using UKUI Power Manager."
 msgstr ""
 "В этой секции приводится список известных проблем и ограничений при "
-"использовании Сетевого менеджера MATE"
+"использовании Сетевого менеджера UKUI"
 
-#: C/mate-power-manager.xml:336(title)
+#: C/ukui-power-manager.xml:336(title)
 msgid "Power consumption when suspended"
 msgstr "Потребление энергии в режиме отключения"
 
-#: C/mate-power-manager.xml:337(para)
+#: C/ukui-power-manager.xml:337(para)
 msgid ""
 "Your computer still uses a small amount of charge even while suspended. If "
 "\"Suspend\" is chosen as the policy option for the battery critical low, and "
 "the power completely runs out when sleeping, your work may be lost. See bug "
-"<ulink url=\"http://bugzilla.mate.org/show_bug.cgi?id=330267\" "
+"<ulink url=\"http://bugzilla.ukui.org/show_bug.cgi?id=330267\" "
 "type=\"http\">#330267</ulink> or more details."
 msgstr ""
 "Ваш компьютер, даже находясь в режиме отключения, все равно потребляет "
@@ -509,55 +509,55 @@ msgstr ""
 "качестве политики действия при практически полностью разряженной батарее, "
 "когда батарея окончательно разрядится, работа может быть потеряна. За "
 "подробностями обращайтесь к описанию проблемы <ulink "
-"url=\"http://bugzilla.mate.org/show_bug.cgi?id=330267\" "
+"url=\"http://bugzilla.ukui.org/show_bug.cgi?id=330267\" "
 "type=\"http\">#330267</ulink>."
 
-#: C/mate-power-manager.xml:348(title)
-msgid "About MATE Power Manager"
-msgstr "О приложении Управление питанием MATE"
+#: C/ukui-power-manager.xml:348(title)
+msgid "About UKUI Power Manager"
+msgstr "О приложении Управление питанием UKUI"
 
-#: C/mate-power-manager.xml:349(para)
+#: C/ukui-power-manager.xml:349(para)
 msgid ""
-"MATE Power Manager was written by Richard Hughes "
-"(<email>richard@hughsie.com</email>). To find more information about MATE "
+"UKUI Power Manager was written by Richard Hughes "
+"(<email>richard@hughsie.com</email>). To find more information about UKUI "
 "Power Manager, please visit the <ulink "
-"url=\"http://www.mate.org/projects/mate-power-manager\" type=\"http\"> "
-"MATE Power Manager web page</ulink>."
+"url=\"http://www.ukui.org/projects/ukui-power-manager\" type=\"http\"> "
+"UKUI Power Manager web page</ulink>."
 msgstr ""
-"Приложение Управление питанием MATE было написано Ричардом Хаггисом "
+"Приложение Управление питанием UKUI было написано Ричардом Хаггисом "
 "(<email>richard@hughsie.com</email>). Для получения более подробной "
-"информации о приложении Сетевой менеджер MATE , обращайтесь к <ulink "
-"url=\"http://www.mate.org/projects/mate-power-manager\" type=\"http\"> "
-"интернет странице</ulink> приложения Управление питанием MATE."
+"информации о приложении Сетевой менеджер UKUI , обращайтесь к <ulink "
+"url=\"http://www.ukui.org/projects/ukui-power-manager\" type=\"http\"> "
+"интернет странице</ulink> приложения Управление питанием UKUI."
 
-#: C/mate-power-manager.xml:355(para)
+#: C/ukui-power-manager.xml:355(para)
 msgid ""
 "To report a bug or make a suggestion regarding this application or this "
 "manual, follow the directions at the <ulink "
-"url=\"http://www.mate.org/projects/mate-power-manager/bugs.html\" "
-"type=\"http\"> MATE Power Manager Bug Page</ulink>."
+"url=\"http://www.ukui.org/projects/ukui-power-manager/bugs.html\" "
+"type=\"http\"> UKUI Power Manager Bug Page</ulink>."
 msgstr ""
 "Для сообщения об ошибке или внемении предложений касательно данного "
 "приложения или руководства следуйте указаниям на <ulink "
-"url=\"http://www.mate.org/projects/mate-power-manager/bugs.html\" "
-"type=\"http\"> странице проблем</ulink> приложения Управление питанием MATE."
+"url=\"http://www.ukui.org/projects/ukui-power-manager/bugs.html\" "
+"type=\"http\"> странице проблем</ulink> приложения Управление питанием UKUI."
 
-#: C/mate-power-manager.xml:362(para)
+#: C/ukui-power-manager.xml:362(para)
 msgid ""
 "This program is distributed under the terms of the GNU General Public "
 "license as published by the Free Software Foundation; either version 2 of "
 "the License, or (at your option) any later version. A copy of this license "
-"can be found at this <ulink url=\"mate-power-manager:gpl\" "
+"can be found at this <ulink url=\"ukui-power-manager:gpl\" "
 "type=\"help\">link</ulink>, or in the file COPYING included with the source "
 "code of this program."
 msgstr ""
 "Данная программа распространяется на условиях GNU лицензии в том виде, в "
 "каком она опубликована Сообществом Свободного Программного Обеспечения "
 "(версии 2 либо (по вашему мнению) более поздней). Копия лицензии может быть "
-"найдена по этому <ulink url=\"mate-power-manager:gpl\" type=\"help\">адресу "
+"найдена по этому <ulink url=\"ukui-power-manager:gpl\" type=\"help\">адресу "
 "</ulink> или в файле COPYING, распространяемого с исходным кодом данной "
 "программы."
 
-#: C/mate-power-manager.xml:0(None)
+#: C/ukui-power-manager.xml:0(None)
 msgid "translator-credits"
 msgstr "Pavel Shylenok <uriel@tut.by>"

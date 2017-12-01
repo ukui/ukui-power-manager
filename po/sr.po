@@ -7,12 +7,12 @@
 # Мирослав Николић <miroslavnikolic@rocketmail.com>, 2014-2015
 msgid ""
 msgstr ""
-"Project-Id-Version: MATE Desktop Environment\n"
+"Project-Id-Version: UKUI Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-10-07 14:00+0300\n"
 "PO-Revision-Date: 2017-10-07 11:02+0000\n"
 "Last-Translator: monsta <monsta@inbox.ru>\n"
-"Language-Team: Serbian (http://www.transifex.com/mate/MATE/language/sr/)\n"
+"Language-Team: Serbian (http://www.transifex.com/mate/UKUI/language/sr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -29,7 +29,7 @@ msgstr "Штелује осветљеност екрана преносног у
 
 #: ../applets/brightness/brightness-applet.c:367
 #: ../applets/inhibit/inhibit-applet.c:329
-msgid "Cannot connect to mate-power-manager"
+msgid "Cannot connect to ukui-power-manager"
 msgstr "Не могу да се повежем са Мејтовим управником напајања"
 
 #: ../applets/brightness/brightness-applet.c:369
@@ -83,19 +83,19 @@ msgstr "_О програму"
 msgid "_Help"
 msgstr "_Помоћ"
 
-#: ../applets/brightness/org.mate.BrightnessApplet.mate-panel-applet.in.in.h:1
+#: ../applets/brightness/org.ukui.BrightnessApplet.ukui-panel-applet.in.in.h:1
 msgid "Brightness Applet Factory"
 msgstr "Штеловање осветљености екрана"
 
-#: ../applets/brightness/org.mate.BrightnessApplet.mate-panel-applet.in.in.h:2
+#: ../applets/brightness/org.ukui.BrightnessApplet.ukui-panel-applet.in.in.h:2
 msgid "Factory for Brightness Applet"
 msgstr "Програмче за штеловање осветљености екрана"
 
-#: ../applets/brightness/org.mate.BrightnessApplet.mate-panel-applet.in.in.h:3
+#: ../applets/brightness/org.ukui.BrightnessApplet.ukui-panel-applet.in.in.h:3
 msgid "Brightness Applet"
 msgstr "Програмче за осветљеност"
 
-#: ../applets/brightness/org.mate.BrightnessApplet.mate-panel-applet.in.in.h:4
+#: ../applets/brightness/org.ukui.BrightnessApplet.ukui-panel-applet.in.in.h:4
 msgid "Adjusts Laptop panel brightness"
 msgstr "Дотерајте осветљеност екрана преносног рачунара"
 
@@ -119,121 +119,121 @@ msgstr "Успављивање је омогућено"
 msgid "Manual inhibit"
 msgstr "Ручно онемогућавање"
 
-#: ../applets/inhibit/org.mate.InhibitApplet.mate-panel-applet.in.in.h:1
+#: ../applets/inhibit/org.ukui.InhibitApplet.ukui-panel-applet.in.in.h:1
 msgid "Inhibit Applet Factory"
 msgstr "Програмче за онемогућавање уштеде"
 
-#: ../applets/inhibit/org.mate.InhibitApplet.mate-panel-applet.in.in.h:2
+#: ../applets/inhibit/org.ukui.InhibitApplet.ukui-panel-applet.in.in.h:2
 msgid "Factory for Inhibit Applet"
 msgstr "Програмче за онемогућавање уштеде енергије"
 
-#: ../applets/inhibit/org.mate.InhibitApplet.mate-panel-applet.in.in.h:3
+#: ../applets/inhibit/org.ukui.InhibitApplet.ukui-panel-applet.in.in.h:3
 msgid "Inhibit Applet"
 msgstr "Програмче за онемогућавање уштеде"
 
-#: ../applets/inhibit/org.mate.InhibitApplet.mate-panel-applet.in.in.h:4
+#: ../applets/inhibit/org.ukui.InhibitApplet.ukui-panel-applet.in.in.h:4
 msgid "Allows user to inhibit automatic power saving"
 msgstr "Дозвољава корисницима да онемогуће уштеду потрошње енергије."
 
-#: ../data/mate-power-manager.desktop.in.in.h:1 ../src/gpm-tray-icon.c:186
+#: ../data/ukui-power-manager.desktop.in.in.h:1 ../src/gpm-tray-icon.c:186
 msgid "Power Manager"
 msgstr "Управник напајања"
 
-#: ../data/mate-power-manager.desktop.in.in.h:2 ../src/gpm-tray-icon.c:188
+#: ../data/ukui-power-manager.desktop.in.in.h:2 ../src/gpm-tray-icon.c:188
 msgid "Power management daemon"
 msgstr "Услужник управљања напајањем"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:1
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:1
 msgid "Whether to hibernate, suspend or do nothing when inactive"
 msgstr "Да ли да замрзне, обустави или да не ради ништа приликом неактивности"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:2
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:2
 msgid ""
 "The type of sleeping that should be performed when the computer is inactive."
 msgstr "Врста успављивања која треба да се обави када рачунар не ради ништа."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:3
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:3
 msgid "Battery critical low action"
 msgstr "Радња када је батерија скоро празна"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:4
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:4
 msgid "The action to take when the battery is critically low."
 msgstr "Радња која ће се обавити када батерија буде била скоро празна."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:5
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:5
 msgid ""
 "If the battery event should occur when the lid is shut and the power "
 "disconnected"
 msgstr "Да ли треба да дође до догађаја батерије када се поклопац спусти и када се искључи напајање"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:6
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:6
 msgid ""
 "If the battery lid close event should occur (for example 'Suspend when lid "
 "closed on battery') when the lid is previously shut and the AC power "
 "disconnected at a later time."
 msgstr "Да ли треба да дође до догађаја затварања поклопца (нпр. „Обустави при затварању поклопца када ради на батерији“) када је поклопац претходно био затворен а мрежно напајање искључено у каснијем времену."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:7
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:7
 msgid "UPS critical low action"
 msgstr "Радња ниског резервног напајања"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:8
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:8
 msgid "The action to take when the UPS is critically low."
 msgstr "Радња која ће се обавити када резервно напајање буде било скоро празно."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:9
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:9
 msgid "UPS low power action"
 msgstr "Радња празног резервног напајања"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:10
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:10
 msgid "The action to take when the UPS is low."
 msgstr "Радња која ће се обавити када резервно напајање буде било празно."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:11
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:11
 msgid "Allow backlight brightness adjustment"
 msgstr "Омогућава подешавање осветљености екрана"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:12
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:12
 msgid ""
 "If the screen brightness should be changed when switching between AC and "
 "battery power."
 msgstr "Да ли осветљење екрана треба да се промени када се прелази са батеријског на напајање из електричне мреже и обрнуто."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:13
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:13
 msgid "Reduce the backlight brightness when on battery power"
 msgstr "Смањује позадинско осветљење при батеријском напајању"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:14
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:14
 msgid ""
 "If the screen should be reduced in brightness when the computer is on "
 "battery power."
 msgstr "Да ли треба да се смањи осветљеност екрана када се рачунар напаја из батерије."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:15
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:15
 msgid "Reduce the keyboard backlight when on battery power"
 msgstr "Смањује позадинско светло тастатуре када ради на батерији"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:16
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:16
 msgid ""
 "If the keyboard backlight brightness should be reduced when the computer is "
 "on battery power"
 msgstr "Да ли јачина позадинског светла тастатуре треба бити смањена када се рачунар напаја из батерије"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:17
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:17
 msgid "Keyboard backlight brightness when on AC power."
 msgstr "Јачина позадинског светла тастатуре када се напаја из мреже."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:18
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:18
 msgid ""
 "Percent brightness to set keyboard backlight at when on AC power. Legal "
 "values are between 0 and 100."
 msgstr "Проценат јачине за постављање позадинског светла тастатуре када се напаја из мреже. Дозвољене вредности су између 0 и 100."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:19
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:19
 msgid "Percent to reduce keyboard backlight by when on battery power."
 msgstr "Проценат за смањење позадинског светла тастатуре када ради на батерији."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:21
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:21
 #, no-c-format
 msgid ""
 "The percentage to reduce the keyboard backlight by when on battery power. "
@@ -241,11 +241,11 @@ msgid ""
 "power. Legal values are between 0 and 100."
 msgstr "Проценат за смањење позадинског светла тастатуре када ради на батерији. На пример, ако је постављено на 60, позадинско светло биће умањено за 40% приликом напајања из батерије. Дозвољене вредности су између 0 и 100."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:22
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:22
 msgid "Percent to reduce keyboard backlight by when idle."
 msgstr "Проценат за смањење позадинског светла тастатуре када мирује."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:24
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:24
 #, no-c-format
 msgid ""
 "The percentage to reduce the keyboard backlight by when idle. For example, "
@@ -253,502 +253,502 @@ msgid ""
 " between 0 and 100."
 msgstr "Проценат за смањење позадинског светла тастатуре када мирује. На пример, ако је постављено на 60, позадинско светло биће умањено за 40% приликом мировања. Дозвољене вредности су између 0 и 100."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:25
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:25
 msgid "The brightness of the screen when idle"
 msgstr "Осветљеност екрана приликом неактивности"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:26
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:26
 msgid ""
 "This is the laptop panel screen brightness used when the session is idle. "
 "Only valid when use-time-for-policy is true."
 msgstr "Одређује осветљеност екрана преносног рачунара приликом мировања сесије. Користи се само када је постављено „use-time-for-policy“."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:27
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:27
 msgid "Dim the screen after a period of inactivity when on battery power"
 msgstr "Замагљује екран након времена неактивности при напајању из батерије"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:28
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:28
 msgid ""
 "If the screen should be dimmed to save power when the computer is idle when "
 "on battery power."
 msgstr "Да ли екран треба да буде замагљен зарад уштеде енергије када се рачунар не користи а напаја се из батерија."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:29
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:29
 msgid "The default amount of time to dim the screen after idle"
 msgstr "Основни износ времена за замагљивање екрана након мировања"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:30
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:30
 msgid "The default amount of time to dim the screen after idle."
 msgstr "Након колико времена ће се замаглити екрана ако рачунар мирује."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:31
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:31
 msgid "LCD dimming amount when on battery"
 msgstr "Замагљење екрана са течним кристалима када ради на батерији"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:32
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:32
 msgid ""
 "The amount to dim the brightness of the display when on battery power. "
 "Possible values are between 0 and 100."
 msgstr "Колико ће екран бити замагљен када се рачунар напаја из батерије. Могуће вредности су између 0 и 100."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:33
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:33
 msgid "Dim the screen after a period of inactivity when on AC power"
 msgstr "Замагљује екран након времена неактивности при напајању из електричне мреже"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:34
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:34
 msgid ""
 "If the screen should be dimmed to save power when the computer is idle when "
 "on AC power."
 msgstr "Да ли екран треба да буде замагљен зарад уштеде енергије када се рачунар не користи а напаја се из електричне мреже."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:35
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:35
 msgid "Method used to blank screen on AC"
 msgstr "Начин затамњења екрана када се напаја из електричне мреже"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:36
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:36
 msgid "The DPMS method used to blank the screen when on AC power."
 msgstr "ДПМС начин који се користи за затамњење екрана када се напаја из ел. мреже."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:37
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:37
 msgid "Method used to blank screen on battery"
 msgstr "Начин затамњења екрана када се напаја из батерије"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:38
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:38
 msgid "The DPMS method used to blank the screen when on battery power."
 msgstr "ДПМС начин који се користи за затамњење екрана када се напаја из батерије."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:39
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:39
 msgid "LCD brightness when on AC"
 msgstr "Осветљеност екрана са течним кристалима при напајању из електричне мреже"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:40
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:40
 msgid ""
 "The brightness of the display when on AC power. Possible values are between "
 "0.0 and 100.0."
 msgstr "Колико ће екран бити осветљен када се рачунар напаја из батерије. Могуће вредности су између 0 и 100."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:41
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:41
 msgid "Suspend button action"
 msgstr "Радња дугмета за обустављање"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:42
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:42
 msgid "The action to take when the system suspend button is pressed."
 msgstr "Радња која ће бити предузета када се притисне дугме за обустављање система."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:43
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:43
 msgid "Hibernate button action"
 msgstr "Радња дугмета за замрзавање"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:44
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:44
 msgid "The action to take when the system hibernate button is pressed."
 msgstr "Радња која ће бити предузета када се притисне дугме за замрзавање система."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:45
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:45
 msgid "Power button action"
 msgstr "Радња дугмета за напајање"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:46
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:46
 msgid "The action to take when the system power button is pressed."
 msgstr "Радња која ће бити предузета када се притисне дугме за напајање система."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:47
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:47
 msgid "Laptop lid close action on battery"
 msgstr "Радња затварања поклопца преносног рачунара на батерији"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:48
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:48
 msgid ""
 "The action to take when the laptop lid is closed and the laptop is on "
 "battery power."
 msgstr "Радња која ће бити предузета када се затвори поклопац преносног рачунара када се напаја из батерије."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:49
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:49
 msgid "Laptop lid close action when on AC"
 msgstr "Радња затварања поклопца преносног рачунара на мрежном напајању"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:50
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:50
 msgid ""
 "The action to take when the laptop lid is closed and the laptop is on AC "
 "power."
 msgstr "Радња која ће бити предузета када се затвори поклопац преносног рачунара када се напаја из електричне мреже."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:51
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:51
 msgid "Whether to use time-based notifications"
 msgstr "Обавештења на основу протеклог времена"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:52
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:52
 msgid ""
 "If time based notifications should be used. If set to false, then the "
 "percentage change is used instead, which may fix a broken ACPI BIOS."
 msgstr "Да ли треба да се користе обавештења на основу протеклог времена. Ако није постављено, тада се прати процентуално стање, што може да поправи оштећени АЦПИ БИОС."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:53
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:53
 msgid "Check CPU load before sleeping"
 msgstr "Проверава оптерећење процесора пре успављивања"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:54
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:54
 msgid "If the CPU load should be checked before doing the idle action."
 msgstr "Да ли треба да се провери оптерећење процесора обављања радње мировања."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:55
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:55
 msgid "Whether NetworkManager should be connected and disconnected on sleep."
 msgstr "Да ли Управник мреже треба да се повеже и прекине везу приликом успављивања."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:56
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:56
 msgid ""
 "Whether NetworkManager should disconnect before suspending or hibernating "
 "and connect on resume."
 msgstr "Да ли Управник мреже треба да прекине везу пре обустављања или замрзавања и успостави везу након повратка."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:57
-msgid "Use mate-screensaver lock setting"
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:57
+msgid "Use ukui-screensaver lock setting"
 msgstr "Користи подешавања закључавања мејтовог чувара екрана"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:58
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:58
 msgid ""
-"Whether to use the screen lock setting of mate-screensaver to decide if the "
+"Whether to use the screen lock setting of ukui-screensaver to decide if the "
 "screen is locked after a hibernate, suspend or blank screen."
 msgstr "Да ли ће да користи подешавање закључавања екрана мејтовог чувара екрана како би одлучио да ли је екран закључан након замрзавања, обустављања или затамњења екрана."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:59
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:59
 msgid "Lock screen when blanked"
 msgstr "Закључава екран приликом затамњивања"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:60
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:60
 msgid ""
 "Whether the screen is locked when the screen is turned off. Only used if "
 "lock-use-screensaver is false."
 msgstr "Да ли ће се екран закључати приликом његовог искључивања. Користи се само ако „lock-use-screensaver“ није постављено."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:61
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:61
 msgid "Lock screen on suspend"
 msgstr "Закључава екран приликом обустављања"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:62
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:62
 msgid ""
 "Whether the screen is locked when the computer wakes up from a suspend. Only"
 " used if lock-use-screensaver is false."
 msgstr "Да ли ће се екран закључати када се рачун пробуди из обустављања. Користи се само ако „lock-use-screensaver“ није постављено."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:63
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:63
 msgid "Lock screen on hibernate"
 msgstr "Закључава екран приликом замрзавања"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:64
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:64
 msgid ""
 "Whether the screen is locked when the computer wakes up from a hibernate. "
 "Only used if lock-use-screensaver is false."
 msgstr "Да ли ће се екран закључати када се рачун пробуди из замрзавања. Користи се само ако „lock-use-screensaver“ није постављено."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:65
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:65
 msgid "Lock GNOME keyring on sleep"
 msgstr "Закључава Гномов привезак кључева приликом спавања"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:66
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:66
 msgid ""
 "Whether the GNOME keyring is locked before the computer enters suspend. This"
 " means the keyring will have to be unlocked on resume."
 msgstr "Да ли се Гномов привезак кључева закључава пре него што рачунар обустави рад. Ово значи да привезак кључева мора бити откључан након наставка рада."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:67
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:67
 msgid ""
 "Whether the GNOME keyring is locked before the computer enters hibernate. "
 "This means the keyring will have to be unlocked on resume."
 msgstr "Да ли се Гномов привезак кључева закључава пре него што рачунар замрзне рад. Ово значи да привезак кључева мора бити откључан након наставка рада."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:68
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:68
 msgid "If we should show the low capacity warning for a broken battery"
 msgstr "Да ли да прикаже упозорење о испражњеној батерији и када јој се стање не може очитати"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:69
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:69
 msgid "If we should show the low capacity warning for a broken battery."
 msgstr "Да ли треба да прикаже упозорење о испражњеној батерији и када јој се стање не може очитати."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:70
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:70
 msgid "Notify when AC adapter is disconnected"
 msgstr "Обавештава када се искључи напајање из ел. мреже"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:71
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:71
 msgid "If the user should be notified when the AC adapter is disconnected."
 msgstr "Да ли треба да обавести корисника када се искључи напајање из ел. мреже."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:72
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:72
 msgid "Notify when fully charged"
 msgstr "Обавештава када је батерија напуњена до краја"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:73
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:73
 msgid ""
 "If a notification message should be displayed when the battery is fully "
 "charged."
 msgstr "Да ли треба да прикаже поруку обавештења када је батерија напуњена до краја."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:74
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:74
 msgid "Notify on a sleep failure"
 msgstr "Обавештава о неуспелом успављивању"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:75
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:75
 msgid ""
 "If a notification message should be displayed after suspend or hibernate "
 "failed."
 msgstr "Да ли треба да обевести корисника приликом неуспешног обустављања или замрзавања."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:76
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:76
 msgid "The URI to show to the user on sleep failure"
 msgstr "Путања која се приказује кориснику по неуспелом успављивању"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:77
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:77
 msgid ""
 "When sleep fails we can show the user a button to help fix the situation. "
 "Leave this blank if the button should not be shown."
 msgstr "Када рачунар не успе да се успава, може приказати дугме за исправљање овог проблема. Оставите ово празно уколико не желите да се се прикаже дугме."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:78
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:78
 msgid "Notify on a low power"
 msgstr "Обавештава ако је батерија празна"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:79
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:79
 msgid ""
 "If a notification message should be displayed when the battery is getting "
 "low."
 msgstr "Да ли треба да обавести корисника када је батерија скоро празна."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:80
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:80
 msgid "Whether we should show the history data points"
 msgstr "Да ли да приказује тачке са подацима у историјату"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:81
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:81
 msgid ""
 "Whether we should show the history data points in the statistics window."
 msgstr "Да ли да приказује тачке са подацима у историјату унутар прозора са статистиком."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:82
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:82
 msgid "Whether we should smooth the history data"
 msgstr "Да ли да углади податке о историјату"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:83
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:83
 msgid "Whether we should smooth the history data in the graph."
 msgstr "Да ли да приказује углађене податке о историјату унутар графика."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:84
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:84
 msgid "The default graph type to show for history"
 msgstr "Основна врста графика који се приказује у историјату"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:85
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:85
 msgid "The default graph type to show in the history window."
 msgstr "Основна врста графика који се приказује у прозору за историјат."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:86
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:86
 msgid "The maximum time displayed for history"
 msgstr "Највећи временски период за историјат"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:87
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:87
 msgid ""
 "The maximum duration of time displayed on the x-axis of the history graph."
 msgstr "Највећи временски период који се приказује на апсциси графика историјата."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:88
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:88
 msgid "Whether we should show the stats data points"
 msgstr "Да ли да приказује тачке са подацима у статистици"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:89
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:89
 msgid "Whether we should show the stats data points in the statistics window."
 msgstr "Да ли треба да приказује тачке са подацима у статистици унутар прозора са статистиком."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:90
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:90
 msgid "Whether we should smooth the stats data"
 msgstr "Да ли да углади податаке о статистици"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:91
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:91
 msgid "Whether we should smooth the stats data in the graph."
 msgstr "Да ли да приказује углађене податке о статистици унутар графика."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:92
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:92
 msgid "The default graph type to show for stats"
 msgstr "Основна врста графика који се приказује у статистикама"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:93
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:93
 msgid "The default graph type to show in the stats window."
 msgstr "Основна врста графика који се приказује у прозору за статистику."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:94
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:94
 msgid "The index of the page number to show by default"
 msgstr "Индекс броја странице за приказ по основи"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:95
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:95
 msgid ""
 "The index of the page number to show by default which is used to return "
 "focus to the correct page."
 msgstr "Индекс броја странице који бива приказан по основи који је коришћен за враћање фокуса на одговарајућу страницу."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:96
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:96
 msgid "The ID of the last device selected"
 msgstr "ИБ последњег изабраног уређаја"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:97
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:97
 msgid ""
 "The identifier of the last device which is used to return focus to the "
 "correct device."
 msgstr "Одредник последњег уређаја који је коришћен за враћање фокуса на одговарајући уређај."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:98
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:98
 msgid "Percentage considered low"
 msgstr "Проценат који се сматра ниским"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:99
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:99
 msgid ""
 "The percentage of the battery when it is considered low. Only valid when "
 "use-time-for-policy is false."
 msgstr "Проценат напуњености батерије када се сматра ниским. Користи се само ако није изабран кључ „use-time-for-policy“."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:100
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:100
 msgid "Percentage considered critical"
 msgstr "Проценат који се сматра критичним"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:101
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:101
 msgid ""
 "The percentage of the battery when it is considered critical. Only valid "
 "when use-time-for-policy is false."
 msgstr "Проценат напуњености батерије када се сматра критичним. Користи се само ако није изабран кључ „use-time-for-policy“."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:102
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:102
 msgid "Percentage action is taken"
 msgstr "Радња за проценат напуњености се спроводи"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:103
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:103
 msgid ""
 "The percentage of the battery when the critical action is performed. Only "
 "valid when use-time-for-policy is false."
 msgstr "Проценат напуњености батерије када се спроводи радња критичног стања. Користи се само ако није изабран кључ „use-time-for-policy“."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:104
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:104
 msgid "The time remaining when low"
 msgstr "Преостало време када је батерија скоро празна"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:105
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:105
 msgid ""
 "The time remaining in seconds of the battery when it is considered low. Only"
 " valid when use-time-for-policy is true."
 msgstr "Преостало време у секундама напуњености батерије када се сматра ниским. Користи се само ако није изабран кључ „use-time-for-policy“."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:106
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:106
 msgid "The time remaining when critical"
 msgstr "Преостало време када је батерија критично празна"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:107
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:107
 msgid ""
 "The time remaining in seconds of the battery when it is considered critical."
 " Only valid when use-time-for-policy is true."
 msgstr "Преостало време у секундама напуњености батерије када се сматра критичним. Користи се само ако није изабран кључ „use-time-for-policy“."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:108
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:108
 msgid "The time remaining when action is taken"
 msgstr "Преостало време када се предузима радња"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:109
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:109
 msgid ""
 "The time remaining in seconds of the battery when critical action is taken. "
 "Only valid when use-time-for-policy is true."
 msgstr "Преостало време у секундама напуњености батерије када се спроводи радња критичности. Користи се само ако није изабран кључ „use-time-for-policy“."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:110
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:110
 msgid "Sleep timeout computer when on battery"
 msgstr "Време за успављивање рачунара при напајању из батерије"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:111
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:111
 msgid ""
 "The amount of time in seconds the computer on battery power needs to be "
 "inactive before it goes to sleep."
 msgstr "Време неактивности у секундама пре покушаја успављивања рачунара при напајању из батерије."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:112
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:112
 msgid "Sleep timeout computer when on AC"
 msgstr "Време за успављивање рачунара при напајању из електричне мреже"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:113
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:113
 msgid ""
 "The amount of time in seconds the computer on AC power needs to be inactive "
 "before it goes to sleep."
 msgstr "Време неактивности у секундама пре успављивања рачунара при напајању из електричне мреже."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:114
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:114
 msgid "Sleep timeout computer when on UPS"
 msgstr "Време за успављивање рачунара када је на резервном напајању"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:115
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:115
 msgid ""
 "The amount of time in seconds the computer on UPS power needs to be inactive"
 " before it goes to sleep."
 msgstr "Време неактивности у секундама пре покушаја успављивања рачунара када се користи резервно напајање."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:116
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:116
 msgid "Sleep timeout display when on AC"
 msgstr "Време за успављивање екрана при напајању из електричне мреже"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:117
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:117
 msgid ""
 "The amount of time in seconds before the display goes to sleep when the "
 "computer is on AC power."
 msgstr "Време неактивности у секундама пре успављивања екрана при напајању из електирчне мреже."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:118
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:118
 msgid "Sleep timeout display when on battery"
 msgstr "Време за успављивање екрана при напајању из батерије"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:119
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:119
 msgid ""
 "The amount of time in seconds the computer on battery power needs to be "
 "inactive before the display goes to sleep."
 msgstr "Време неактивности у секундама пре покушаја успављивања екрана при напајању из батерије."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:120
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:120
 msgid "Sleep timeout display when on UPS"
 msgstr "Време за успављивање екрана када је на резервном напајању"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:121
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:121
 msgid ""
 "The amount of time in seconds the computer on UPS power needs to be inactive"
 " before the display goes to sleep."
 msgstr "Време неактивности у секундама пре покушаја успављивања екрана када се користи резервно напајање."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:122
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:122
 msgid "If sounds should be used"
 msgstr "Да ли користи звучно обавештавање"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:123
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:123
 msgid ""
 "If sounds should be used when the power is critically low, or inhibit "
 "requests have stopped the policy action."
 msgstr "Да ли треба да користи звучно обавештавање када је батерија скоро празна, или када су захтеви за спречавање зауставили предвиђену радњу."
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:124
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:124
 msgid ""
 "If preferences and statistics items should be shown in the context menu"
 msgstr "Одређује да ли треба приказати поставке и статистику у приручном изборнику"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:125
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:125
 msgid "When to show the notification icon"
 msgstr "Када да прикаже иконицу обавештења"
 
-#: ../data/org.mate.power-manager.gschema.xml.in.h:126
+#: ../data/org.ukui-power-manager.gschema.xml.in.h:126
 msgid "Display options for the notification icon."
 msgstr "Могућности приказивања иконице обавештења."
 
-#: ../data/mate-power-preferences.desktop.in.in.h:1
+#: ../data/ukui-power-preferences.desktop.in.in.h:1
 msgid "Power Management"
 msgstr "Управљање напајањем"
 
-#: ../data/mate-power-preferences.desktop.in.in.h:2
+#: ../data/ukui-power-preferences.desktop.in.in.h:2
 msgid "Configure power management"
 msgstr "Подесите управљање напајањем"
 
 #. TRANSLATORS: shown on the titlebar
 #. TRANSLATORS: the program name
-#: ../data/mate-power-statistics.desktop.in.in.h:1
+#: ../data/ukui-power-statistics.desktop.in.in.h:1
 #: ../data/gpm-statistics.ui.h:1 ../src/gpm-statistics.c:1090
 #: ../src/gpm-statistics.c:1603
 msgid "Power Statistics"
 msgstr "Статистика напајања"
 
-#: ../data/mate-power-statistics.desktop.in.in.h:2
+#: ../data/ukui-power-statistics.desktop.in.in.h:2
 msgid "Observe power management"
 msgstr "Посматрајте потрошњу електричне енергије"
 
@@ -929,7 +929,7 @@ msgstr "Добавља подржане вредности осветљења"
 
 #. TRANSLATORS: tool that is used when copying profiles system-wide
 #: ../src/gpm-backlight-helper.c:184
-msgid "MATE Power Manager Backlight Helper"
+msgid "UKUI Power Manager Backlight Helper"
 msgstr "Помоћник позадинског осветљења Мејтовог управника потрошњом"
 
 #. TRANSLATORS: user did not specify valid options
@@ -1086,7 +1086,7 @@ msgid "Exit after the manager has loaded (for debugging)"
 msgstr "Излази након учитавања управника (ради прочишћавања)"
 
 #: ../src/gpm-main.c:189 ../src/gpm-main.c:193
-msgid "MATE Power Manager"
+msgid "UKUI Power Manager"
 msgstr "Мејтов Управник напајањем"
 
 #. TRANSLATORS: this is the sound description
@@ -1169,12 +1169,12 @@ msgstr "Неуспех је пријављен као:"
 msgid "Visit help page"
 msgstr "Посетите страницу помоћи"
 
-#. TRANSLATORS: this is the mate-screensaver throttle
+#. TRANSLATORS: this is the ukui-screensaver throttle
 #: ../src/gpm-manager.c:859
 msgid "Display DPMS activated"
 msgstr "Покренут је ДМПС екрана"
 
-#. TRANSLATORS: this is the mate-screensaver throttle
+#. TRANSLATORS: this is the ukui-screensaver throttle
 #: ../src/gpm-manager.c:878
 msgid "On battery power"
 msgstr "Напајање на батерији"
@@ -1507,7 +1507,7 @@ msgid ""
 msgstr "Стање резервног напајања је испод критичног нивоа и рачунар ће бити угашен."
 
 #: ../src/gpm-prefs.c:81
-msgid "MATE Power Preferences"
+msgid "UKUI Power Preferences"
 msgstr "Поставке Мејтовог напајања"
 
 #: ../src/gpm-prefs-core.c:241
@@ -1951,7 +1951,7 @@ msgid "Processor"
 msgstr "Процесор"
 
 #: ../src/gpm-tray-icon.c:189
-msgid "Copyright © 2011-2017 MATE developers"
+msgid "Copyright © 2011-2017 UKUI developers"
 msgstr ""
 
 #. Translators should localize the following string

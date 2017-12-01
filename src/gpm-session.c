@@ -92,9 +92,9 @@ gpm_session_logout (GpmSession *session)
 {
 	g_return_val_if_fail (GPM_IS_SESSION (session), FALSE);
 
-	/* no mate-session */
+	/* no ukui-session */
 	if (session->priv->proxy == NULL) {
-		egg_warning ("no mate-session");
+		egg_warning ("no ukui-session");
 		return FALSE;
 	}
 
@@ -159,9 +159,9 @@ gpm_session_is_idle (GpmSession *session)
 	GError *error = NULL;
 	GValue *value;
 
-	/* no mate-session */
+	/* no ukui-session */
 	if (session->priv->proxy_prop == NULL) {
-		egg_warning ("no mate-session");
+		egg_warning ("no ukui-session");
 		goto out;
 	}
 
@@ -195,9 +195,9 @@ gpm_session_is_idle_inhibited (GpmSession *session)
 	gboolean is_inhibited = FALSE;
 	GError *error = NULL;
 
-	/* no mate-session */
+	/* no ukui-session */
 	if (session->priv->proxy == NULL) {
-		egg_warning ("no mate-session");
+		egg_warning ("no ukui-session");
 		goto out;
 	}
 
@@ -226,9 +226,9 @@ gpm_session_is_suspend_inhibited (GpmSession *session)
 	gboolean is_inhibited = FALSE;
 	GError *error = NULL;
 
-	/* no mate-session */
+	/* no ukui-session */
 	if (session->priv->proxy == NULL) {
-		egg_warning ("no mate-session");
+		egg_warning ("no ukui-session");
 		goto out;
 	}
 
@@ -289,9 +289,9 @@ gpm_session_end_session_response (GpmSession *session, gboolean is_okay, const g
 	g_return_val_if_fail (GPM_IS_SESSION (session), FALSE);
 	g_return_val_if_fail (session->priv->proxy_client_private != NULL, FALSE);
 
-	/* no mate-session */
+	/* no ukui-session */
 	if (session->priv->proxy_client_private == NULL) {
-		egg_warning ("no mate-session proxy");
+		egg_warning ("no ukui-session proxy");
 		goto out;
 	}
 
@@ -323,9 +323,9 @@ gpm_session_register_client (GpmSession *session, const gchar *app_id, const gch
 
 	g_return_val_if_fail (GPM_IS_SESSION (session), FALSE);
 
-	/* no mate-session */
+	/* no ukui-session */
 	if (session->priv->proxy == NULL) {
-		egg_warning ("no mate-session");
+		egg_warning ("no ukui-session");
 		goto out;
 	}
 

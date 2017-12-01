@@ -1,6 +1,6 @@
 polkit_policydir = $(datadir)/polkit-1/actions
 polkit_policy_DATA =					\
-	org.mate.power.policy
+	org.ukui.power.policy
 
 # You will need a recent intltool or the patch from this bug
 # http://bugzilla.gnome.org/show_bug.cgi?id=462312
@@ -9,8 +9,8 @@ polkit_policy_DATA =					\
 .in2.in:
 	sed "s|[@]sbindir@|${sbindir}|" $< > $@
 
-EXTRA_DIST = org.mate.power.policy.in2
-DISTCLEANFILES = org.mate.power.policy org.mate.power.policy.in
+EXTRA_DIST = org.ukui.power.policy.in2
+DISTCLEANFILES = org.ukui.power.policy org.ukui.power.policy.in
 
 clean-local :
 	rm -f *~

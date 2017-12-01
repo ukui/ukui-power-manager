@@ -1,14 +1,14 @@
-# Traducció del mate-power-manager de l'equip de Softcatalà.
+# Traducció del ukui-power-manager de l'equip de Softcatalà.
 # Copyright © 2007-2009 Free Software Foundation, Inc.
 # Joan Duran <jodufi@gmail.com>, 2007-2009.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: mate-power-manager\n"
+"Project-Id-Version: ukui-power-manager\n"
 "POT-Creation-Date: 2009-02-13 22:59+0000\n"
 "PO-Revision-Date: 2009-02-14 10:07+0100\n"
 "Last-Translator: Joan Duran <jodufi@gmail.com>\n"
-"Language-Team: Catalan <tradmate@softcatala.org>\n"
+"Language-Team: Catalan <tradukui.softcatala.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -16,7 +16,7 @@ msgstr ""
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
-#: C/mate-power-manager.xml:162(None)
+#: C/ukui-power-manager.xml:162(None)
 msgid ""
 "@@image: 'figures/gpm-unplugged.png'; md5=e9e38fa48737547a19b20af6a15d9e95"
 msgstr ""
@@ -24,7 +24,7 @@ msgstr ""
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
-#: C/mate-power-manager.xml:182(None)
+#: C/ukui-power-manager.xml:182(None)
 msgid ""
 "@@image: 'figures/gpm-charged.png'; md5=cc83716555d07b13a3659683f96c531c"
 msgstr ""
@@ -32,13 +32,13 @@ msgstr ""
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
-#: C/mate-power-manager.xml:214(None)
+#: C/ukui-power-manager.xml:214(None)
 msgid "@@image: 'figures/gpm-low.png'; md5=6cd86acf26f251d78060dd2ecb6b6506"
 msgstr "@@image: 'figures/gpm-low.png'; md5=6cd86acf26f251d78060dd2ecb6b6506"
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
-#: C/mate-power-manager.xml:239(None)
+#: C/ukui-power-manager.xml:239(None)
 msgid ""
 "@@image: 'figures/gpm-critical.png'; md5=77b0848ed3bd0510b65f89e0d07a2fed"
 msgstr ""
@@ -46,7 +46,7 @@ msgstr ""
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
-#: C/mate-power-manager.xml:258(None)
+#: C/ukui-power-manager.xml:258(None)
 msgid ""
 "@@image: 'figures/gpm-suspend-problem.png'; "
 "md5=4e4c1fafda61c5ace02f957717ea7ce6"
@@ -56,7 +56,7 @@ msgstr ""
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
-#: C/mate-power-manager.xml:290(None)
+#: C/ukui-power-manager.xml:290(None)
 msgid ""
 "@@image: 'figures/gpm-stats-graph.png'; md5=c7cfa37ad6e96041a1c312d85236e7f6"
 msgstr ""
@@ -64,7 +64,7 @@ msgstr ""
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
-#: C/mate-power-manager.xml:396(None)
+#: C/ukui-power-manager.xml:396(None)
 msgid ""
 "@@image: 'figures/gpm-prefs-ac.png'; md5=dc4409a63218146e52d3e670b26785bd"
 msgstr ""
@@ -72,7 +72,7 @@ msgstr ""
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
-#: C/mate-power-manager.xml:410(None)
+#: C/ukui-power-manager.xml:410(None)
 msgid ""
 "@@image: 'figures/gpm-prefs-battery.png'; "
 "md5=89fe431e4f38073f7d58f38425ad1ee7"
@@ -82,7 +82,7 @@ msgstr ""
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
-#: C/mate-power-manager.xml:428(None)
+#: C/ukui-power-manager.xml:428(None)
 msgid ""
 "@@image: 'figures/gpm-prefs-general.png'; "
 "md5=52b7d145bd085d8af6f3194ac632c547"
@@ -92,13 +92,13 @@ msgstr ""
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
-#: C/mate-power-manager.xml:455(None)
+#: C/ukui-power-manager.xml:455(None)
 msgid "@@image: 'figures/gs-prefs.png'; md5=e9ce36b6ef557681ca4e8e90b71a7f46"
 msgstr "@@image: 'figures/gs-prefs.png'; md5=e9ce36b6ef557681ca4e8e90b71a7f46"
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
-#: C/mate-power-manager.xml:562(None)
+#: C/ukui-power-manager.xml:562(None)
 msgid ""
 "@@image: 'figures/applet-brightness.png'; "
 "md5=8ce34f6733215fb86009471f19850dcc"
@@ -108,7 +108,7 @@ msgstr ""
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
-#: C/mate-power-manager.xml:590(None)
+#: C/ukui-power-manager.xml:590(None)
 msgid ""
 "@@image: 'figures/applet-inhibit.png'; md5=7381a44dae4f17bfd47abaa54c0ca2a4"
 msgstr ""
@@ -116,7 +116,7 @@ msgstr ""
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
-#: C/mate-power-manager.xml:624(None)
+#: C/ukui-power-manager.xml:624(None)
 msgid ""
 "@@image: 'figures/gpm-cell-capacity.png'; "
 "md5=7635c3b846f39faf7b16a921a6ebb55c"
@@ -124,34 +124,34 @@ msgstr ""
 "@@image: 'figures/gpm-cell-capacity.png'; "
 "md5=7635c3b846f39faf7b16a921a6ebb55c"
 
-#: C/mate-power-manager.xml:25(title)
-msgid "<application>MATE Power Manager</application> Manual"
-msgstr "Manual del <application>gestor d'energia del MATE</application>"
+#: C/ukui-power-manager.xml:25(title)
+msgid "<application>UKUI Power Manager</application> Manual"
+msgstr "Manual del <application>gestor d'energia del UKUI</application>"
 
-#: C/mate-power-manager.xml:27(para)
+#: C/ukui-power-manager.xml:27(para)
 msgid ""
-"<application>MATE Power Manager</application> is a session daemon for the "
-"MATE Desktop that manages the power settings for your laptop or desktop "
+"<application>UKUI Power Manager</application> is a session daemon for the "
+"UKUI Desktop that manages the power settings for your laptop or desktop "
 "computer."
 msgstr ""
-"El <application>gestor d'energia del MATE</application> és un dimoni de "
-"sessió per a l'escriptori MATE que gestiona els paràmetres d'energia de "
+"El <application>gestor d'energia del UKUI</application> és un dimoni de "
+"sessió per a l'escriptori UKUI que gestiona els paràmetres d'energia de "
 "l'ordinador portàtil o de sobretaula."
 
-#: C/mate-power-manager.xml:33(year)
+#: C/ukui-power-manager.xml:33(year)
 msgid "2006"
 msgstr "2006"
 
-#: C/mate-power-manager.xml:34(holder)
+#: C/ukui-power-manager.xml:34(holder)
 msgid "Richard Hughes (richard@hughsie.com)"
 msgstr "Richard Hughes (richard@hughsie.com)"
 
-#: C/mate-power-manager.xml:50(publishername)
-#: C/mate-power-manager.xml:86(para)
+#: C/ukui-power-manager.xml:50(publishername)
+#: C/ukui-power-manager.xml:86(para)
 msgid "Richard Hughes"
 msgstr "Richard Hughes"
 
-#: C/mate-power-manager.xml:2(para)
+#: C/ukui-power-manager.xml:2(para)
 msgid ""
 "Permission is granted to copy, distribute and/or modify this document under "
 "the terms of the GNU Free Documentation License (GFDL), Version 1.1 or any "
@@ -168,33 +168,33 @@ msgstr ""
 "\" url=\"help:fdl\">enllaç</ulink> o en el fitxer COPYING-DOCS distribuït "
 "amb aquest manual."
 
-#: C/mate-power-manager.xml:12(para)
+#: C/ukui-power-manager.xml:12(para)
 msgid ""
-"This manual is part of a collection of MATE manuals distributed under the "
+"This manual is part of a collection of UKUI manuals distributed under the "
 "GFDL. If you want to distribute this manual separately from the collection, "
 "you can do so by adding a copy of the license to the manual, as described in "
 "section 6 of the license."
 msgstr ""
-"Aquest manual forma part d'una col·lecció de manuals del MATE distribuïts "
+"Aquest manual forma part d'una col·lecció de manuals del UKUI distribuïts "
 "sota la GFDL. Si voleu distribuir aquest manual independentment de la "
 "col·lecció, podeu fer-ho afegint una còpia de la llicència al manual, tal "
 "com es descriu a la secció 6 de la llicència."
 
-#: C/mate-power-manager.xml:19(para)
+#: C/ukui-power-manager.xml:19(para)
 msgid ""
 "Many of the names used by companies to distinguish their products and "
-"services are claimed as trademarks. Where those names appear in any MATE "
-"documentation, and the members of the MATE Documentation Project are made "
+"services are claimed as trademarks. Where those names appear in any UKUI "
+"documentation, and the members of the UKUI Documentation Project are made "
 "aware of those trademarks, then the names are in capital letters or initial "
 "capital letters."
 msgstr ""
 "Molts dels noms que les empreses utilitzen per a distingir els seus "
 "productes i serveis es consideren marques comercials. Quan aquests noms "
-"apareguin en qualsevol documentació del MATE, si els membres del Projecte "
-"de documentació del MATE han estat avisats pel que fa a les marques, els "
+"apareguin en qualsevol documentació del UKUI, si els membres del Projecte "
+"de documentació del UKUI han estat avisats pel que fa a les marques, els "
 "noms apareixeran en majúscules o amb les inicials en majúscules."
 
-#: C/mate-power-manager.xml:35(para)
+#: C/ukui-power-manager.xml:35(para)
 msgid ""
 "DOCUMENT IS PROVIDED ON AN \"AS IS\" BASIS, WITHOUT WARRANTY OF ANY KIND, "
 "EITHER EXPRESSED OR IMPLIED, INCLUDING, WITHOUT LIMITATION, WARRANTIES THAT "
@@ -221,7 +221,7 @@ msgstr ""
 "O VERSIÓ MODIFICADA DEL DOCUMENT EXCEPTE SOTA AQUESTA RENÚNCIA DE GARANTIA; "
 "I "
 
-#: C/mate-power-manager.xml:55(para)
+#: C/ukui-power-manager.xml:55(para)
 msgid ""
 "UNDER NO CIRCUMSTANCES AND UNDER NO LEGAL THEORY, WHETHER IN TORT (INCLUDING "
 "NEGLIGENCE), CONTRACT, OR OTHERWISE, SHALL THE AUTHOR, INITIAL WRITER, ANY "
@@ -245,7 +245,7 @@ msgstr ""
 "AMB L'ÚS DEL DOCUMENT I LES VERSIONS MODIFICADES DEL DOCUMENT, FINS I TOT SI "
 "S'HA INFORMAT AQUESTA PART DE LA POSSIBILITAT D'AQUESTS DANYS."
 
-#: C/mate-power-manager.xml:28(para)
+#: C/ukui-power-manager.xml:28(para)
 msgid ""
 "DOCUMENT AND MODIFIED VERSIONS OF THE DOCUMENT ARE PROVIDED UNDER THE TERMS "
 "OF THE GNU FREE DOCUMENTATION LICENSE WITH THE FURTHER UNDERSTANDING THAT: "
@@ -255,147 +255,147 @@ msgstr ""
 "TERMES DE LA LLICÈNCIA DE DOCUMENTACIÓ LLIURE DE GNU, TENINT EN COMPTE QUE: "
 "<placeholder-1/>"
 
-#: C/mate-power-manager.xml:60(firstname)
+#: C/ukui-power-manager.xml:60(firstname)
 msgid "Richard"
 msgstr "Richard"
 
-#: C/mate-power-manager.xml:61(surname)
+#: C/ukui-power-manager.xml:61(surname)
 msgid "Hughes"
 msgstr "Hughes"
 
-#: C/mate-power-manager.xml:62(email)
+#: C/ukui-power-manager.xml:62(email)
 msgid "richard@hughsie.com"
 msgstr "richard@hughsie.com"
 
-#: C/mate-power-manager.xml:80(revnumber)
+#: C/ukui-power-manager.xml:80(revnumber)
 msgid "2.0"
 msgstr "2.0"
 
-#: C/mate-power-manager.xml:81(date)
+#: C/ukui-power-manager.xml:81(date)
 msgid "2006-08-30"
 msgstr "2006-08-30"
 
-#: C/mate-power-manager.xml:83(para)
+#: C/ukui-power-manager.xml:83(para)
 msgid "Richard Hughes <email>richard@hughsie.com</email>"
 msgstr "Richard Hughes <email>richard@hughsie.com</email>"
 
-#: C/mate-power-manager.xml:92(title)
+#: C/ukui-power-manager.xml:92(title)
 msgid "Feedback"
 msgstr "Comentaris"
 
-#: C/mate-power-manager.xml:93(para)
+#: C/ukui-power-manager.xml:93(para)
 msgid ""
-"To report a bug or make a suggestion regarding the MATE Power Manager "
+"To report a bug or make a suggestion regarding the UKUI Power Manager "
 "application or this manual, follow the directions in the <ulink url=\"http://"
-"www.mate.org/projects/mate-power-manager/\" type=\"http"
-"\"><application>MATE Power Manager</application> Contact Page</ulink>."
+"www.ukui.org/projects/ukui-power-manager/\" type=\"http"
+"\"><application>UKUI Power Manager</application> Contact Page</ulink>."
 msgstr ""
 "Per a informar d'un error o fer algun suggeriment sobre el "
-"<application>gestor d'energia del MATE</application> o aquest manual, "
-"seguiu les indicacions a la <ulink url=\"http://www.mate.org/projects/mate-"
+"<application>gestor d'energia del UKUI</application> o aquest manual, "
+"seguiu les indicacions a la <ulink url=\"http://www.ukui.org/projects/ukui."
 "power-manager/\" type=\"http\">pàgina de contacte del <application>Gestor "
-"d'energia del MATE</application></ulink>."
+"d'energia del UKUI</application></ulink>."
 
-#: C/mate-power-manager.xml:0(application)
-msgid "MATE Power Manager"
-msgstr "Gestor d'energia del MATE"
+#: C/ukui-power-manager.xml:0(application)
+msgid "UKUI Power Manager"
+msgstr "Gestor d'energia del UKUI"
 
-#: C/mate-power-manager.xml:107(primary)
-#: C/mate-power-manager.xml:120(tertiary)
-msgid "mate-power-manager"
-msgstr "mate-power-manager"
+#: C/ukui-power-manager.xml:107(primary)
+#: C/ukui-power-manager.xml:120(tertiary)
+msgid "ukui-power-manager"
+msgstr "ukui-power-manager"
 
-#: C/mate-power-manager.xml:113(title)
+#: C/ukui-power-manager.xml:113(title)
 msgid "Introduction"
 msgstr "Introducció"
 
-#: C/mate-power-manager.xml:119(secondary)
+#: C/ukui-power-manager.xml:119(secondary)
 msgid "Manual"
 msgstr "Manual"
 
-#: C/mate-power-manager.xml:123(para)
+#: C/ukui-power-manager.xml:123(para)
 msgid ""
-"The MATE Power Manager session daemon is a power management daemon for the "
-"<systemitem>MATE desktop</systemitem>"
+"The UKUI Power Manager session daemon is a power management daemon for the "
+"<systemitem>UKUI desktop</systemitem>"
 msgstr ""
-"El dimoni de sessió del gestor d'energia del MATE és un dimoni de gestió "
-"d'energia per a l'<systemitem>escriptori MATE</systemitem>"
+"El dimoni de sessió del gestor d'energia del UKUI és un dimoni de gestió "
+"d'energia per a l'<systemitem>escriptori UKUI</systemitem>"
 
-#: C/mate-power-manager.xml:131(title)
+#: C/ukui-power-manager.xml:131(title)
 msgid "Usage"
 msgstr "Utilització"
 
-#: C/mate-power-manager.xml:132(para)
+#: C/ukui-power-manager.xml:132(para)
 msgid ""
-"<application>MATE Power Manager</application> is usually started in MATE "
-"startup, but you can manually start <application>MATE Power Manager</"
+"<application>UKUI Power Manager</application> is usually started in UKUI "
+"startup, but you can manually start <application>UKUI Power Manager</"
 "application> by doing:"
 msgstr ""
-"Normalment el <application>gestor d'energia del MATE</application> "
-"s'executa en iniciar el MATE, però podeu iniciar-lo manualment fent:"
+"Normalment el <application>gestor d'energia del UKUI</application> "
+"s'executa en iniciar el UKUI, però podeu iniciar-lo manualment fent:"
 
-#: C/mate-power-manager.xml:138(term)
+#: C/ukui-power-manager.xml:138(term)
 msgid "Command line"
 msgstr "Línia d'ordres"
 
-#: C/mate-power-manager.xml:140(para)
+#: C/ukui-power-manager.xml:140(para)
 msgid ""
-"Type <command>mate-power-manager --verbose --no-daemon</command>, then "
+"Type <command>ukui-power-manager --verbose --no-daemon</command>, then "
 "press <keycap>Return</keycap>:"
 msgstr ""
-"Escriviu <command>mate-power-manager --verbose --no-daemon</command> i "
+"Escriviu <command>ukui-power-manager --verbose --no-daemon</command> i "
 "premeu <keycap>Retorn</keycap>"
 
-#: C/mate-power-manager.xml:150(title)
+#: C/ukui-power-manager.xml:150(title)
 msgid "Notification Messages"
 msgstr "Missatges de notificació"
 
-#: C/mate-power-manager.xml:151(para)
+#: C/ukui-power-manager.xml:151(para)
 msgid ""
-"When <application>MATE Power Manager</application> has started, the "
+"When <application>UKUI Power Manager</application> has started, the "
 "following notifications may be displayed."
 msgstr ""
-"Quan s'iniciï el <application>gestor d'energia del MATE</application>, pot "
+"Quan s'iniciï el <application>gestor d'energia del UKUI</application>, pot "
 "ser que es mostrin les notificacions següents:"
 
-#: C/mate-power-manager.xml:156(title)
+#: C/ukui-power-manager.xml:156(title)
 msgid "AC Adapter Unplugged"
 msgstr "Desconnectat de la xarxa elèctrica"
 
-#: C/mate-power-manager.xml:158(title)
-msgid "MATE Power Manager Notification when AC adapter is removed"
+#: C/ukui-power-manager.xml:158(title)
+msgid "UKUI Power Manager Notification when AC adapter is removed"
 msgstr ""
-"Notificació del gestor d'energia del MATE quan es desconnecti l'ordinador "
+"Notificació del gestor d'energia del UKUI quan es desconnecti l'ordinador "
 "de la xarxa elèctrica"
 
-#: C/mate-power-manager.xml:168(para)
+#: C/ukui-power-manager.xml:168(para)
 msgid ""
-"You can disable this notification by changing the MateConf key <command>/apps/"
-"mate-power-manager/notify/discharging</command>."
+"You can disable this notification by changing the UkuiConf key <command>/apps/"
+"ukui-power-manager/notify/discharging</command>."
 msgstr ""
-"Podeu desactivar aquesta notificació si canvieu la clau del MateConf <command>/"
-"apps/mate-power-manager/notify/discharging</command>."
+"Podeu desactivar aquesta notificació si canvieu la clau del UkuiConf <command>/"
+"apps/ukui-power-manager/notify/discharging</command>."
 
-#: C/mate-power-manager.xml:176(title)
+#: C/ukui-power-manager.xml:176(title)
 msgid "Fully Charged"
 msgstr "Totalment carregada"
 
-#: C/mate-power-manager.xml:178(title)
+#: C/ukui-power-manager.xml:178(title)
 msgid ""
-"MATE Power Manager Notification when laptop primary battery is fully charged"
+"UKUI Power Manager Notification when laptop primary battery is fully charged"
 msgstr ""
-"Notificació del gestor d'energia del MATE quan la bateria del portàtil "
+"Notificació del gestor d'energia del UKUI quan la bateria del portàtil "
 "estigui totalment carregada"
 
-#: C/mate-power-manager.xml:188(para)
+#: C/ukui-power-manager.xml:188(para)
 msgid ""
-"You can disable this notification by changing the MateConf key <command>/apps/"
-"mate-power-manager/notify/fully_charged</command>."
+"You can disable this notification by changing the UkuiConf key <command>/apps/"
+"ukui-power-manager/notify/fully_charged</command>."
 msgstr ""
-"Podeu desactivar aquesta notificació canviant la clau del MateConf <command>/"
-"apps/mate-power-manager/notify/fully_charged</command>."
+"Podeu desactivar aquesta notificació canviant la clau del UkuiConf <command>/"
+"apps/ukui-power-manager/notify/fully_charged</command>."
 
-#: C/mate-power-manager.xml:194(para)
+#: C/ukui-power-manager.xml:194(para)
 msgid ""
 "You will only get a repeat notification if your battery percentage charge "
 "drops below 95% and then is again fully charged. This prevents some machines "
@@ -407,11 +407,11 @@ msgstr ""
 "En alguns equips, això impedeix mostrar notificacions repetides no "
 "desitjades si la bateria no informa correctament de l'estat de càrrega."
 
-#: C/mate-power-manager.xml:204(title)
+#: C/ukui-power-manager.xml:204(title)
 msgid "Power Low"
 msgstr "Bateria baixa"
 
-#: C/mate-power-manager.xml:205(para)
+#: C/ukui-power-manager.xml:205(para)
 msgid ""
 "When the battery is low, you will receive the following notification. You "
 "should consider switching to AC power really soon."
@@ -419,25 +419,25 @@ msgstr ""
 "Quan la càrrega de la bateria sigui baixa rebreu la notificació següent. "
 "Hauríeu de connectar-vos a la xarxa elèctrica el més aviat possible."
 
-#: C/mate-power-manager.xml:210(title)
-msgid "MATE Power Manager Notification when battery power is low"
+#: C/ukui-power-manager.xml:210(title)
+msgid "UKUI Power Manager Notification when battery power is low"
 msgstr ""
-"Notificació del gestor d'energia del MATE quan l'energia de la bateria "
+"Notificació del gestor d'energia del UKUI quan l'energia de la bateria "
 "sigui baixa"
 
-#: C/mate-power-manager.xml:220(para)
+#: C/ukui-power-manager.xml:220(para)
 msgid ""
-"You can disable this notification by changing the MateConf key <command>/apps/"
-"mate-power-manager/notify/low_power</command>."
+"You can disable this notification by changing the UkuiConf key <command>/apps/"
+"ukui-power-manager/notify/low_power</command>."
 msgstr ""
-"Podeu desactivar aquesta notificació si canvieu la clau del MateConf <command>/"
-"apps/mate-power-manager/notify/low_power</command>."
+"Podeu desactivar aquesta notificació si canvieu la clau del UkuiConf <command>/"
+"apps/ukui-power-manager/notify/low_power</command>."
 
-#: C/mate-power-manager.xml:228(title)
+#: C/ukui-power-manager.xml:228(title)
 msgid "Power Critical"
 msgstr "Bateria crítica"
 
-#: C/mate-power-manager.xml:229(para)
+#: C/ukui-power-manager.xml:229(para)
 msgid ""
 "When the computer has run out of power, it will show this notification "
 "explaining what action is required. You can change the critical low action "
@@ -447,18 +447,18 @@ msgstr ""
 "explicant quina acció cal dur a terme. Podeu canviar l'acció a realitzar a "
 "través de l'eina de preferències."
 
-#: C/mate-power-manager.xml:235(title)
+#: C/ukui-power-manager.xml:235(title)
 msgid ""
-"MATE Power Manager Notification when the system power is critically low"
+"UKUI Power Manager Notification when the system power is critically low"
 msgstr ""
-"Notificació del gestor d'energia del MATE quan l'energia del sistema sigui "
+"Notificació del gestor d'energia del UKUI quan l'energia del sistema sigui "
 "críticament baixa"
 
-#: C/mate-power-manager.xml:247(title)
+#: C/ukui-power-manager.xml:247(title)
 msgid "Suspend Failure"
 msgstr "No s'ha pogut aturar temporalment"
 
-#: C/mate-power-manager.xml:248(para)
+#: C/ukui-power-manager.xml:248(para)
 msgid ""
 "When a suspend failure occurs you may get this following warning. The most "
 "common reason for this notification is that the current user does not have "
@@ -468,25 +468,25 @@ msgstr ""
 "causa més comuna d'aquesta notificació és que l'usuari actual no té permís "
 "per a aturar temporalment o hibernar l'ordinador."
 
-#: C/mate-power-manager.xml:254(title)
-msgid "MATE Power Manager Notification when suspend failure occurs"
+#: C/ukui-power-manager.xml:254(title)
+msgid "UKUI Power Manager Notification when suspend failure occurs"
 msgstr ""
-"Notificació del gestor d'energia del MATE quan no es pugui aturar "
+"Notificació del gestor d'energia del UKUI quan no es pugui aturar "
 "temporalment"
 
-#: C/mate-power-manager.xml:264(para)
+#: C/ukui-power-manager.xml:264(para)
 msgid ""
-"You can disable this notification by changing the MateConf key <command>/apps/"
-"mate-power-manager/notify/sleep_failed</command>."
+"You can disable this notification by changing the UkuiConf key <command>/apps/"
+"ukui-power-manager/notify/sleep_failed</command>."
 msgstr ""
-"Podeu desactivar aquesta notificació si canvieu la clau del MateConf <command>/"
-"apps/mate-power-manager/notify/sleep_failed</command>."
+"Podeu desactivar aquesta notificació si canvieu la clau del UkuiConf <command>/"
+"apps/ukui-power-manager/notify/sleep_failed</command>."
 
-#: C/mate-power-manager.xml:273(title)
+#: C/ukui-power-manager.xml:273(title)
 msgid "Statistics"
 msgstr "Estadístiques"
 
-#: C/mate-power-manager.xml:274(para)
+#: C/ukui-power-manager.xml:274(para)
 msgid ""
 "The statistics program allows you to visualize the power consumption of your "
 "laptop hardware."
@@ -494,25 +494,25 @@ msgstr ""
 "El programa d'estadístiques us permet visualitzar el consum d'energia de "
 "l'ordinador portàtil."
 
-#: C/mate-power-manager.xml:279(para)
+#: C/ukui-power-manager.xml:279(para)
 msgid ""
 "This has been removed from the information window of previous versions of "
-"MATE Power Manager as the data interface is now using DBUS rather than "
+"UKUI Power Manager as the data interface is now using DBUS rather than "
 "internal IPC. This allows other applications to query and display the data "
 "if required."
 msgstr ""
 "Això s'ha eliminat de la finestra d'informació que hi havia a les versions "
-"anterior del gestor d'energia del MATE, perquè ara la interfície utilitza "
+"anterior del gestor d'energia del UKUI, perquè ara la interfície utilitza "
 "el DBUS en lloc de la comunicació interna de processos (IPC). Això permet a "
 "altres aplicacions consultar i mostrar dades si és necessari."
 
-#: C/mate-power-manager.xml:286(title)
+#: C/ukui-power-manager.xml:286(title)
 msgid "Power History going from battery power to AC"
 msgstr ""
 "Historial d'energia en commutar de la utilització de la bateria a la "
 "connexió a la xarxa elèctrica"
 
-#: C/mate-power-manager.xml:296(para)
+#: C/ukui-power-manager.xml:296(para)
 msgid ""
 "You may not see some options or graphs if your computer does not have the "
 "required hardware. You may also see other hardware not shown here (for "
@@ -520,14 +520,14 @@ msgid ""
 msgstr ""
 "Pot ser que no es mostrin algunes opcions o gràfiques si l'ordinador no té "
 "el maquinari necessari. També pot ser que es visualitzi maquinari no mostrat "
-"aquí (per exemple dispositius SAI), però aquest serà tractat de la mateixa "
+"aquí (per exemple dispositius SAI), però aquest serà tractat de la ukui.xa "
 "manera que la resta de dispositius."
 
-#: C/mate-power-manager.xml:305(title)
+#: C/ukui-power-manager.xml:305(title)
 msgid "Charge History"
 msgstr "Historial de càrrega"
 
-#: C/mate-power-manager.xml:306(para)
+#: C/ukui-power-manager.xml:306(para)
 msgid ""
 "This graph shows the percentage charge available for the composite primary "
 "battery, so if you have a main laptop battery and an auxiliary battery then "
@@ -538,11 +538,11 @@ msgstr ""
 "principal i una bateria auxiliar llavors només es mostrarà el valor mitjà. "
 "No es mostra cap llegenda en aquesta gràfica."
 
-#: C/mate-power-manager.xml:315(title)
+#: C/ukui-power-manager.xml:315(title)
 msgid "Power History"
 msgstr "Historial d'energia"
 
-#: C/mate-power-manager.xml:316(para)
+#: C/ukui-power-manager.xml:316(para)
 msgid ""
 "This graph shows the power history charge used by the composite primary "
 "battery. This line represents the amount of power that is either being used "
@@ -560,7 +560,7 @@ msgstr ""
 "sistema està inactiu o quan la pantalla està fosca. Quan es produeixin "
 "esdeveniments es mostrarà una llegenda en aquesta gràfica."
 
-#: C/mate-power-manager.xml:329(para)
+#: C/ukui-power-manager.xml:329(para)
 msgid ""
 "You do will not receive rate data from your computer if it is not charging "
 "or discharging, or if the computer is suspended. This is due to hardware "
@@ -572,11 +572,11 @@ msgstr ""
 "informació només s'envia des del xip de gestió de la bateria, en lloc de fer-"
 "ho des del xip de gestió d'energia a la placa base."
 
-#: C/mate-power-manager.xml:340(title)
+#: C/ukui-power-manager.xml:340(title)
 msgid "Estimated Time History"
 msgstr "Historial del temps estimat"
 
-#: C/mate-power-manager.xml:341(para)
+#: C/ukui-power-manager.xml:341(para)
 msgid ""
 "This graph shows the estimated charge history for the composite primary "
 "battery. This line represents the amount of time required until charged, or "
@@ -591,61 +591,61 @@ msgstr ""
 "disminueixi i hauria de baixar quan la freqüència augmenti. Quan es "
 "produeixin esdeveniments es mostrarà una llegenda en aquesta gràfica."
 
-#: C/mate-power-manager.xml:354(title)
+#: C/ukui-power-manager.xml:354(title)
 msgid "Preferences"
 msgstr "Preferències"
 
-#: C/mate-power-manager.xml:356(para)
+#: C/ukui-power-manager.xml:356(para)
 msgid "The preferences window allows you to control:"
 msgstr "La finestra de preferències us permet controlar:"
 
-#: C/mate-power-manager.xml:360(para)
+#: C/ukui-power-manager.xml:360(para)
 msgid "The LCD brightness when on AC and battery power"
 msgstr ""
 "La brillantor de la pantalla LCD quan s'està connectat a la xarxa elèctrica "
 "o bé s'utilitza la bateria"
 
-#: C/mate-power-manager.xml:365(para)
+#: C/ukui-power-manager.xml:365(para)
 msgid "The idle time for the screen power-down and suspend action"
 msgstr ""
 "El temps d'inactivitat per a les accions d'apagar la pantalla i aturar "
 "temporalment"
 
-#: C/mate-power-manager.xml:370(para)
+#: C/ukui-power-manager.xml:370(para)
 msgid "The actions to perform when the laptop lid is closed"
 msgstr "Les accions a realitzar quan la tapa del portàtil es tanqui"
 
-#: C/mate-power-manager.xml:375(para)
+#: C/ukui-power-manager.xml:375(para)
 msgid "The notification area icon policy"
 msgstr "La política de la icona de l'àrea de notificació"
 
-#: C/mate-power-manager.xml:382(para)
+#: C/ukui-power-manager.xml:382(para)
 msgid ""
-"Some sliders or option boxes may be disabled if the MateConf policy keys are "
+"Some sliders or option boxes may be disabled if the UkuiConf policy keys are "
 "not writable. This allows administrators to lock-down the actions that a "
 "user can select."
 msgstr ""
 "Alguns lliscadors o caixes d'opcions poden estar desactivats si les claus "
-"del MateConf tenen una política de no escriptura. Això permet als "
+"del UkuiConf tenen una política de no escriptura. Això permet als "
 "administradors blocar les accions que l'usuari pot seleccionar."
 
-#: C/mate-power-manager.xml:390(title)
+#: C/ukui-power-manager.xml:390(title)
 msgid "AC Preferences"
 msgstr "Preferències de la xarxa elèctrica"
 
-#: C/mate-power-manager.xml:392(title)
-msgid "MATE Power Manager AC tab"
-msgstr "Pestanya de la xarxa elèctrica del gestor d'energia del MATE"
+#: C/ukui-power-manager.xml:392(title)
+msgid "UKUI Power Manager AC tab"
+msgstr "Pestanya de la xarxa elèctrica del gestor d'energia del UKUI"
 
-#: C/mate-power-manager.xml:404(title)
+#: C/ukui-power-manager.xml:404(title)
 msgid "Battery Preferences"
 msgstr "Preferències de la bateria"
 
-#: C/mate-power-manager.xml:406(title)
-msgid "MATE Power Manager battery tab"
-msgstr "Pestanya de la bateria del gestor d'energia del MATE"
+#: C/ukui-power-manager.xml:406(title)
+msgid "UKUI Power Manager battery tab"
+msgstr "Pestanya de la bateria del gestor d'energia del UKUI"
 
-#: C/mate-power-manager.xml:415(para)
+#: C/ukui-power-manager.xml:415(para)
 msgid ""
 "This allows a powerful computer to reduce the power usage when idle, or when "
 "the full capabilities are not required."
@@ -653,162 +653,162 @@ msgstr ""
 "Això permet a un ordinador potent reduir el consum d'energia quan està "
 "inactiu o quan cal utilitzar-ne tota la capacitat."
 
-#: C/mate-power-manager.xml:422(title)
+#: C/ukui-power-manager.xml:422(title)
 msgid "General Preferences"
 msgstr "Preferències generals"
 
-#: C/mate-power-manager.xml:424(title)
-msgid "MATE Power Manager general tab"
-msgstr "Pestanya general del gestor d'energia del MATE"
+#: C/ukui-power-manager.xml:424(title)
+msgid "UKUI Power Manager general tab"
+msgstr "Pestanya general del gestor d'energia del UKUI"
 
-#: C/mate-power-manager.xml:436(title)
+#: C/ukui-power-manager.xml:436(title)
 msgid "Session and system idle times"
 msgstr "Temps d'inactivitat de sessió i del sistema"
 
-#: C/mate-power-manager.xml:437(para)
+#: C/ukui-power-manager.xml:437(para)
 msgid ""
-"<command>mate-screensaver</command> is a session daemon that monitors user "
+"<command>ukui-screensaver</command> is a session daemon that monitors user "
 "input, and if the mouse has not been moved, or the keyboard been pressed "
 "then it starts a timeout. When the value of this timeout reaches the value "
-"set in <command>mate-screensaver-preferences</command>, then the login is "
-"marked as 'session idle'. This is when <application>MATE Power Manager</"
+"set in <command>ukui-screensaver-preferences</command>, then the login is "
+"marked as 'session idle'. This is when <application>UKUI Power Manager</"
 "application> performs all the session idle actions such as enabling low-"
 "power mode and lowering the laptop panel brightness."
 msgstr ""
-"El <command>mate-screensaver</command> és un dimoni de sessió que "
+"El <command>ukui-screensaver</command> és un dimoni de sessió que "
 "monitoritza l'entrada de dades de l'usuari, i si el ratolí no s'ha mogut o "
 "no s'ha premut cap tecla, comença un temps d'espera. Quan el valor d'aquest "
-"temps d'espera arriba a un valor establert en el <command>mate-screensaver-"
+"temps d'espera arriba a un valor establert en el <command>ukui-screensaver-"
 "preferences</command>, la sessió es marca com a inactiva. Llavors el "
-"<application>gestor d'energia del MATE</application> realitzarà totes les "
+"<application>gestor d'energia del UKUI</application> realitzarà totes les "
 "accions de sessió inactiva com ara activar el mode de baix consum o "
 "disminuir la brillantor de la pantalla del portàtil."
 
-#: C/mate-power-manager.xml:449(title)
+#: C/ukui-power-manager.xml:449(title)
 msgid ""
-"Changing the session idle timeout in <command>mate-screensaver-preferences</"
+"Changing the session idle timeout in <command>ukui-screensaver-preferences</"
 "command>"
 msgstr ""
 "Canvi del temps d'espera per a considerar la sessió com a inactiva en el "
-"<command>mate-screensaver-preferences</command>"
+"<command>ukui-screensaver-preferences</command>"
 
-#: C/mate-power-manager.xml:460(para)
+#: C/ukui-power-manager.xml:460(para)
 msgid ""
-"As soon as the session is marked at idle, <application>MATE Power Manager</"
+"As soon as the session is marked at idle, <application>UKUI Power Manager</"
 "application> starts its own 'system' timer. When the timeout set in "
-"<command>mate-power-preferences</command> is reached, and the CPU load is "
+"<command>ukui-power-preferences</command> is reached, and the CPU load is "
 "idle, then the idle action is performed, which is usually to turn off the "
 "screen, or to suspend or hibernate."
 msgstr ""
 "Quan la sessió es marqui com a inactiva, el <application>gestor d'energia "
-"del MATE</application> comença el seu propi temporitzador. Quan s'arribi al "
-"temps d'espera establert en el <command>mate-power-preferences</command>, i "
+"del UKUI</application> comença el seu propi temporitzador. Quan s'arribi al "
+"temps d'espera establert en el <command>ukui-power-preferences</command>, i "
 "la càrrega de la CPU estigui inactiva, llavors es realitzarà l'acció "
 "d'inactivitat, que normalment és apagar la pantalla, aturar temporalment o "
 "hibernar."
 
-#: C/mate-power-manager.xml:467(para)
+#: C/ukui-power-manager.xml:467(para)
 msgid ""
-"To make this clearer, the sliders in <command>mate-power-preferences</"
+"To make this clearer, the sliders in <command>ukui-power-preferences</"
 "command> are set to start at the value of the session-timeout + 1 minute, as "
 "we cannot logically trigger before the session is marked as idle. If you "
-"adjust the value of the 'session idle' timeout in <command>mate-screensaver-"
-"preferences</command> then the start of the sliders in <command>mate-power-"
+"adjust the value of the 'session idle' timeout in <command>ukui-screensaver-"
+"preferences</command> then the start of the sliders in <command>ukui-power-"
 "preferences</command> will change accordingly."
 msgstr ""
-"Per fer-ho més clar, els lliscadors en el <command>mate-power-preferences</"
+"Per fer-ho més clar, els lliscadors en el <command>ukui-power-preferences</"
 "command> estan configurats per a iniciar-se un minut després del valor "
 "establert per a canviar a sessió inactiva, atès que l'activador lògic no pot "
 "actuar abans de marcar la sessió com a inactiva. Si ajusteu el valor de "
-"«sessió inactiva» en el <command>mate-screensaver-preferences</command> "
-"llavors l'inici dels lliscadors en el <command>mate-power-preferences</"
+"«sessió inactiva» en el <command>ukui-screensaver-preferences</command> "
+"llavors l'inici dels lliscadors en el <command>ukui-power-preferences</"
 "command> canviarà de forma corresponent."
 
-#: C/mate-power-manager.xml:479(title)
+#: C/ukui-power-manager.xml:479(title)
 msgid "Advanced Preferences"
 msgstr "Preferències avançades"
 
-#: C/mate-power-manager.xml:482(title)
+#: C/ukui-power-manager.xml:482(title)
 msgid "Screen Dim Brightness"
 msgstr "Atenuació de la brillantor de la pantalla"
 
-#: C/mate-power-manager.xml:484(para)
+#: C/ukui-power-manager.xml:484(para)
 msgid ""
-"You can change the idle laptop panel brightness by changing the MateConf key "
-"<command>/apps/mate-power-manager/backlight/idle_brightness</command>."
+"You can change the idle laptop panel brightness by changing the UkuiConf key "
+"<command>/apps/ukui-power-manager/backlight/idle_brightness</command>."
 msgstr ""
 "Podeu canviar la inactivitat de la brillantor de la pantalla del portàtil si "
-"canvieu la clau del MateConf <command>/apps/mate-power-manager/backlight/"
+"canvieu la clau del UkuiConf <command>/apps/ukui-power-manager/backlight/"
 "idle_brightness</command>."
 
-#: C/mate-power-manager.xml:492(title)
+#: C/ukui-power-manager.xml:492(title)
 msgid "Screen Locking"
 msgstr "Bloqueig de la pantalla"
 
-#: C/mate-power-manager.xml:493(para)
+#: C/ukui-power-manager.xml:493(para)
 msgid ""
-"By default, <application>MATE Power Manager</application> supports a simple "
+"By default, <application>UKUI Power Manager</application> supports a simple "
 "locking scheme. This means that the screen will lock if set to \"Lock screen"
-"\" in mate-screensaver when the lid is closed, or the system performs a "
+"\" in ukui-screensaver when the lid is closed, or the system performs a "
 "suspend or hibernate action."
 msgstr ""
-"Per defecte, el <application>gestor d'energia del MATE</application> admet "
+"Per defecte, el <application>gestor d'energia del UKUI</application> admet "
 "un esquema de bloqueig senzill. Això significa que la pantalla es bloquejarà "
-"si s'estableix «Bloca la pantalla» en el mate-screensaver quan la tapa es "
+"si s'estableix «Bloca la pantalla» en el ukui-screensaver quan la tapa es "
 "tanqui, o el sistema realitzi una aturada temporal o hiberni."
 
-#: C/mate-power-manager.xml:499(para)
+#: C/ukui-power-manager.xml:499(para)
 msgid ""
 "There is a complex locking scheme available for power users that allows "
 "locking policy to change for the lid, suspend and hibernate actions. To "
-"enable this complex mode, you will have to disable the MateConf key:"
+"enable this complex mode, you will have to disable the UkuiConf key:"
 msgstr ""
 "Hi ha un sistema de bloqueig complex per als usuaris avançats que permet "
 "canviar la política de bloqueig per a les accions de la tapa (aturar "
 "temporalment o hibernar). Per a activar aquest mode complex heu de "
-"desactivar la següent clau del MateConf:"
+"desactivar la següent clau del UkuiConf:"
 
-#: C/mate-power-manager.xml:508(command)
-msgid "/apps/mate-power-manager/lock/use_screensaver_settings"
-msgstr "/apps/mate-power-manager/lock/use_screensaver_settings"
+#: C/ukui-power-manager.xml:508(command)
+msgid "/apps/ukui-power-manager/lock/use_screensaver_settings"
+msgstr "/apps/ukui-power-manager/lock/use_screensaver_settings"
 
-#: C/mate-power-manager.xml:512(para)
+#: C/ukui-power-manager.xml:512(para)
 msgid ""
-"Then the policy keys can be set to force a mate-screensaver lock and unlock "
+"Then the policy keys can be set to force a ukui-screensaver lock and unlock "
 "when the action is performed:"
 msgstr ""
 "Després es pot establir la política de claus per forçar el bloqueig i "
-"desbloqueig del mate-screensaver quan es realitzi una acció:"
+"desbloqueig del ukui-screensaver quan es realitzi una acció:"
 
-#: C/mate-power-manager.xml:520(command)
-msgid "/apps/mate-power-manager/lock/blank_screen"
-msgstr "/apps/mate-power-manager/lock/blank_screen"
+#: C/ukui-power-manager.xml:520(command)
+msgid "/apps/ukui-power-manager/lock/blank_screen"
+msgstr "/apps/ukui-power-manager/lock/blank_screen"
 
-#: C/mate-power-manager.xml:525(command)
-msgid "/apps/mate-power-manager/lock/suspend"
-msgstr "/apps/mate-power-manager/lock/suspend"
+#: C/ukui-power-manager.xml:525(command)
+msgid "/apps/ukui-power-manager/lock/suspend"
+msgstr "/apps/ukui-power-manager/lock/suspend"
 
-#: C/mate-power-manager.xml:530(command)
-msgid "/apps/mate-power-manager/lock/hibernate"
-msgstr "/apps/mate-power-manager/lock/hibernate"
+#: C/ukui-power-manager.xml:530(command)
+msgid "/apps/ukui-power-manager/lock/hibernate"
+msgstr "/apps/ukui-power-manager/lock/hibernate"
 
-#: C/mate-power-manager.xml:536(para)
+#: C/ukui-power-manager.xml:536(para)
 msgid ""
-"The lock policy for mate-screensaver is ignored until the simple mode is re-"
+"The lock policy for ukui-screensaver is ignored until the simple mode is re-"
 "enabled."
 msgstr ""
-"La política de bloqueig per al mate-screensaver s'ignorarà fins que el mode "
+"La política de bloqueig per al ukui-screensaver s'ignorarà fins que el mode "
 "senzill es torni a activar."
 
-#: C/mate-power-manager.xml:545(title)
-msgid "MATE Power Applets"
-msgstr "Miniaplicacions del gestor d'energia del MATE"
+#: C/ukui-power-manager.xml:545(title)
+msgid "UKUI Power Applets"
+msgstr "Miniaplicacions del gestor d'energia del UKUI"
 
-#: C/mate-power-manager.xml:548(title)
+#: C/ukui-power-manager.xml:548(title)
 msgid "Brightness Applet"
 msgstr "Miniaplicació de la brillantor"
 
-#: C/mate-power-manager.xml:549(para)
+#: C/ukui-power-manager.xml:549(para)
 msgid ""
 "The brightness applet allows the user to change the brightness temporarily "
 "without changing the default policy. This may be useful if you have got a "
@@ -820,19 +820,19 @@ msgstr ""
 "teniu un portàtil sense botons de brillantor, atès que ara podreu canviar la "
 "brillantor fàcilment."
 
-#: C/mate-power-manager.xml:556(title)
+#: C/ukui-power-manager.xml:556(title)
 msgid "Brightness applet drop-down."
 msgstr "Controlador desplegable de la brillantor."
 
-#: C/mate-power-manager.xml:568(para)
+#: C/ukui-power-manager.xml:568(para)
 msgid "You will not get the slider if your hardware is not supported."
 msgstr "No tindreu el lliscador si el maquinari no és compatible."
 
-#: C/mate-power-manager.xml:575(title)
+#: C/ukui-power-manager.xml:575(title)
 msgid "Inhibit Applet"
 msgstr "Miniaplicació d'inhabilitació"
 
-#: C/mate-power-manager.xml:576(para)
+#: C/ukui-power-manager.xml:576(para)
 msgid ""
 "The inhibit applet allows the user to prevent the computer auto-sleeping "
 "when inactive. This may be required with old or proprietary programs such as "
@@ -845,35 +845,35 @@ msgstr ""
 "Matlab. Feu clic a la icona per a inhibir el mode de repòs, i feu clic un "
 "altre cop per al funcionament normal."
 
-#: C/mate-power-manager.xml:584(title)
+#: C/ukui-power-manager.xml:584(title)
 msgid "Inhibit applet in inhibited state."
 msgstr "Miniaplicació d'inhabilitació en estat inhibit."
 
-#: C/mate-power-manager.xml:596(para)
+#: C/ukui-power-manager.xml:596(para)
 msgid ""
-"Don't use this applet if you just use MATE software, instead file a bug to "
+"Don't use this applet if you just use UKUI software, instead file a bug to "
 "make the application use the Inhibit() and UnInhibit() methods as this "
 "should 'just work'."
 msgstr ""
-"No utilitzeu aquesta miniaplicació si només utilitzeu programari del MATE. "
+"No utilitzeu aquesta miniaplicació si només utilitzeu programari del UKUI. "
 "En lloc d'això, envieu un informe d'error per a fer que l'aplicació utilitzi "
 "els mètodes Inhibit() i UnInhibit(), amb la qual cosa hauria de funcionar "
 "directament."
 
-#: C/mate-power-manager.xml:606(title)
+#: C/ukui-power-manager.xml:606(title)
 msgid "Frequently Asked Questions"
 msgstr "Preguntes més freqüents"
 
-#: C/mate-power-manager.xml:607(para)
+#: C/ukui-power-manager.xml:607(para)
 msgid "These are questions the mailing list gets asked frequently."
 msgstr ""
 "Aquestes són les preguntes rebudes més freqüentment a la llista de correu."
 
-#: C/mate-power-manager.xml:611(title)
+#: C/ukui-power-manager.xml:611(title)
 msgid "What is battery capacity?"
 msgstr "Què és la capacitat de la bateria?"
 
-#: C/mate-power-manager.xml:612(para)
+#: C/ukui-power-manager.xml:612(para)
 msgid ""
 "Capacity is how much charge your battery can store compared to its "
 "manufacturer's guidelines."
@@ -881,7 +881,7 @@ msgstr ""
 "La capacitat és quanta càrrega pot emmagatzemar la bateria en comparació amb "
 "les indicacions del fabricant."
 
-#: C/mate-power-manager.xml:617(title)
+#: C/ukui-power-manager.xml:617(title)
 msgid ""
 "This graph shows the capacity of a typical lithium ion battery over a few "
 "hundred charge-discharge cycles."
@@ -889,11 +889,11 @@ msgstr ""
 "Aquesta gràfica mostra la capacitat d'una bateria d'ió liti típica durant "
 "uns quants centenars de cicles de càrrega i descàrrega."
 
-#: C/mate-power-manager.xml:632(title)
+#: C/ukui-power-manager.xml:632(title)
 msgid "What's the difference between suspend and hibernate?"
 msgstr "Quina és la diferència entre aturar temporalment i hibernar?"
 
-#: C/mate-power-manager.xml:633(para)
+#: C/ukui-power-manager.xml:633(para)
 msgid ""
 "The Suspend state is a power saving feature which is the lowest level of "
 "power consumption that preserves program data in the computer's memory. When "
@@ -911,7 +911,7 @@ msgstr ""
 "alguns segons per a aturar temporalment i tornar a l'activitat normal de "
 "l'ordinador."
 
-#: C/mate-power-manager.xml:643(para)
+#: C/ukui-power-manager.xml:643(para)
 msgid ""
 "You still use a small amount of battery power while suspended, so is not "
 "recommended for the low power action. If you remove AC power on a desktop, "
@@ -923,7 +923,7 @@ msgstr ""
 "ordinador de sobretaula o us quedeu sense bateria en un portàtil, llavors "
 "perdreu el treball realitzat."
 
-#: C/mate-power-manager.xml:650(para)
+#: C/ukui-power-manager.xml:650(para)
 msgid ""
 "The Hibernation state saves the complete state of the computer to hard disk "
 "and turns off the power, so that the computer appears to be off. It will not "
@@ -941,7 +941,7 @@ msgstr ""
 "realitzat. Es pot tardar un minut o més a hibernar i tornar a l'activitat "
 "normal de l'ordinador."
 
-#: C/mate-power-manager.xml:663(title)
+#: C/ukui-power-manager.xml:663(title)
 msgid ""
 "My monitor is broken and treats DPMS standby and off states as 'no-signal' "
 "which leaves the monitor powered on."
@@ -950,22 +950,22 @@ msgstr ""
 "del DPMS com a «sense senyal», cosa que fa que la pantalla sempre estigui "
 "encesa."
 
-#: C/mate-power-manager.xml:667(para)
+#: C/ukui-power-manager.xml:667(para)
 msgid ""
-"You have to change the DPMS suspend mode <application>MATE Power Manager</"
-"application> uses. Open <command>mateconf-editor</command>, and then change the "
-"keys <literal>/apps/mate-power-manager/backlight/dpms_method_ac</literal> "
-"and <literal>/apps/mate-power-manager/backlight/dpms_method_battery</"
+"You have to change the DPMS suspend mode <application>UKUI Power Manager</"
+"application> uses. Open <command>ukuiconf-editor</command>, and then change the "
+"keys <literal>/apps/ukui-power-manager/backlight/dpms_method_ac</literal> "
+"and <literal>/apps/ukui-power-manager/backlight/dpms_method_battery</"
 "literal> to one of the modes that work, e.g. standby, suspend or off."
 msgstr ""
 "Heu de canviar el mode d'espera DPMS que utilitza el <application>gestor "
-"d'energia del MATE</application>. Obriu el <command>mateconf-editor</command> "
-"i canvieu les claus <literal>/apps/mate-power-manager/backlight/"
-"dpms_method_ac</literal> i <literal>/apps/mate-power-manager/backlight/"
+"d'energia del UKUI</application>. Obriu el <command>ukuiconf-editor</command> "
+"i canvieu les claus <literal>/apps/ukui-power-manager/backlight/"
+"dpms_method_ac</literal> i <literal>/apps/ukui-power-manager/backlight/"
 "dpms_method_battery</literal> a un mode que funcioni, per exemple «standby», "
 "«suspend» o «off»."
 
-#: C/mate-power-manager.xml:677(title)
+#: C/ukui-power-manager.xml:677(title)
 msgid ""
 "I've set the computer inactive timeout to one minute and it still takes "
 "longer than that to suspend."
@@ -973,75 +973,75 @@ msgstr ""
 "He establert el temps d'inactivitat de l'ordinador a un minut i tarda més "
 "temps a fer l'aturada temporal."
 
-#: C/mate-power-manager.xml:681(para)
+#: C/ukui-power-manager.xml:681(para)
 msgid ""
-"mate-screensaver is a session daemon that monitors user input, and if the "
+"ukui-screensaver is a session daemon that monitors user input, and if the "
 "mouse has not been moved, or the keyboard been pressed then it starts a "
-"timeout. When the value of this timeout reaches the value set in mate-"
+"timeout. When the value of this timeout reaches the value set in ukui-"
 "screensaver-preferences, then the login is marked as 'session idle'. This is "
-"when <application>MATE Power Manager</application> performs all the session "
+"when <application>UKUI Power Manager</application> performs all the session "
 "idle actions such as enabling low-power mode and lowering the laptop panel "
 "brightness."
 msgstr ""
-"El mate-screensaver és un dimoni de sessió que monitoritza les entrades de "
+"El ukui-screensaver és un dimoni de sessió que monitoritza les entrades de "
 "l'usuari, i si el ratolí no s'ha mogut, o no s'ha premut cap tecla, comença "
 "un temps d'espera. Quan el valor d'aquest temps d'espera arriba a un valor "
-"establert en el mate-screensaver-preferences, la sessió es marca com a "
-"inactiva. Llavors el <application>gestor d'energia del MATE</application> "
+"establert en el ukui-screensaver-preferences, la sessió es marca com a "
+"inactiva. Llavors el <application>gestor d'energia del UKUI</application> "
 "realitza totes les accions de sessió inactiva, com activar el mode de baix "
 "consum o disminuir la brillantor de la pantalla del portàtil."
 
-#: C/mate-power-manager.xml:691(para)
+#: C/ukui-power-manager.xml:691(para)
 msgid ""
-"As soon as the session is marked at idle, <application>MATE Power Manager</"
-"application> starts its own 'system' timer. When the timeout set in mate-"
+"As soon as the session is marked at idle, <application>UKUI Power Manager</"
+"application> starts its own 'system' timer. When the timeout set in ukui-"
 "power-preferences is reached, and the CPU load is idle, then the idle action "
 "is performed, which is usually to turn off the screen, or to suspend or "
 "hibernate."
 msgstr ""
 "Quan la sessió es marqui com a inactiva, el <application>gestor d'energia "
-"del MATE</application> comença el seu propi temporitzador. Quan s'arribi al "
-"temps d'espera establert en el mate-power-preferences, i la càrrega de la "
+"del UKUI</application> comença el seu propi temporitzador. Quan s'arribi al "
+"temps d'espera establert en el ukui-power-preferences, i la càrrega de la "
 "CPU estigui inactiva, llavors es realitzarà l'acció d'inactivitat, que "
 "normalment és apagar la pantalla, aturar temporalment o hibernar."
 
-#: C/mate-power-manager.xml:698(para)
+#: C/ukui-power-manager.xml:698(para)
 msgid ""
-"In <application>MATE Power Manager</application> 2.14 the timeouts were not "
-"obviously linked to mate-screensaver, but the timeouts are linked in "
-"reality. This is because the mate-screensaver declares the session \"idle\" "
-"and then <application>MATE Power Manager</application> starts. Therefore "
-"the real time to suspend is actually the MATE Screensaver timeout PLUS the "
-"<application>MATE Power Manager</application> time."
+"In <application>UKUI Power Manager</application> 2.14 the timeouts were not "
+"obviously linked to ukui-screensaver, but the timeouts are linked in "
+"reality. This is because the ukui-screensaver declares the session \"idle\" "
+"and then <application>UKUI Power Manager</application> starts. Therefore "
+"the real time to suspend is actually the UKUI Screensaver timeout PLUS the "
+"<application>UKUI Power Manager</application> time."
 msgstr ""
-"En la versió 2.14 del <application>gestor d'energia del MATE</application> "
-"els temps d'espera no estan lligats de manera òbvia al mate-screensaver, "
-"però hi estan de totes maneres. Això és perquè el mate-screensaver declara "
-"la sessió inactiva i després el <application>gestor d'energia del MATE</"
+"En la versió 2.14 del <application>gestor d'energia del UKUI</application> "
+"els temps d'espera no estan lligats de manera òbvia al ukui-screensaver, "
+"però hi estan de totes maneres. Això és perquè el ukui-screensaver declara "
+"la sessió inactiva i després el <application>gestor d'energia del UKUI</"
 "application> s'inicia. De manera que en realitat el temps real per a "
-"l'aturada temporal és el temps d'espera de l'Estalvi de pantalla del MATE "
-"més els temps del <application>gestor d'energia del MATE</application>."
+"l'aturada temporal és el temps d'espera de l'Estalvi de pantalla del UKUI "
+"més els temps del <application>gestor d'energia del UKUI</application>."
 
-#: C/mate-power-manager.xml:706(para)
+#: C/ukui-power-manager.xml:706(para)
 msgid ""
-"In <application>MATE Power Manager</application> 2.16 and newer, the "
-"sliders in <command>mate-power-preferences</command> are set to start at "
+"In <application>UKUI Power Manager</application> 2.16 and newer, the "
+"sliders in <command>ukui-power-preferences</command> are set to start at "
 "the value of the session-timeout + 1 minute, as we cannot logically trigger "
 "before the session is marked as idle. If you adjust the value of the "
-"'session idle' timeout in <command>mate-screensaver-preferences</command> "
-"then the start of the sliders in <command>mate-power-preferences</command> "
+"'session idle' timeout in <command>ukui-screensaver-preferences</command> "
+"then the start of the sliders in <command>ukui-power-preferences</command> "
 "will change accordingly. This makes it more obvious for new users."
 msgstr ""
-"En la versió 2.16 del <application>gestor d'energia del MATE</application> "
-"i posteriors, els lliscadors en el <command>mate-power-preferences</"
+"En la versió 2.16 del <application>gestor d'energia del UKUI</application> "
+"i posteriors, els lliscadors en el <command>ukui-power-preferences</"
 "command> estan configurats per a iniciar-se un minut després del valor "
 "establert per a canviar a sessió inactiva, atès que l'activador lògic no pot "
 "actuar abans de marcar la sessió com a inactiva. Si ajusteu el valor de "
-"«sessió inactiva» en el <command>mate-screensaver-preferences</command> "
-"llavors l'inici dels lliscadors en el <command>mate-power-preferences</"
+"«sessió inactiva» en el <command>ukui-screensaver-preferences</command> "
+"llavors l'inici dels lliscadors en el <command>ukui-power-preferences</"
 "command> canviarà de forma corresponent."
 
-#: C/mate-power-manager.xml:719(title)
+#: C/ukui-power-manager.xml:719(title)
 msgid ""
 "My time to discharge is always incorrect due to a faulty battery, what can I "
 "do?"
@@ -1049,23 +1049,23 @@ msgstr ""
 "El temps de descàrrega és incorrecte degut a un error a la bateria, què puc "
 "fer?"
 
-#: C/mate-power-manager.xml:723(para)
+#: C/ukui-power-manager.xml:723(para)
 msgid ""
 "You might be able to use the percentage charge for g-p-m to use as the "
-"policy data. Open <command>mateconf-editor</command>, and then change the key "
-"<command>/apps/mate-power-manager/general/use_time_for_policy</command> to "
-"false. You can do this easily by doing: <command> mateconftool-2 --set --type "
-"bool /apps/mate-power-manager/general/use_time_for_policy false </command>"
+"policy data. Open <command>ukuiconf-editor</command>, and then change the key "
+"<command>/apps/ukui-power-manager/general/use_time_for_policy</command> to "
+"false. You can do this easily by doing: <command> ukuiconftool-2 --set --type "
+"bool /apps/ukui-power-manager/general/use_time_for_policy false </command>"
 msgstr ""
 "És possible que pugueu utilitzar el percentatge de càrrega de manera que el "
-"<application>gestor d'energia del MATE</application> l'empri com a dades de "
-"la política. Obriu el <command>mateconf-editor</command> i canvieu la clau "
-"<command>/apps/mate-power-manager/general/use_time_for_policy</command> a "
-"«false». Podeu fer això fàcilment executant: <command>mateconftool-2 --set --"
-"type bool /apps/mate-power-manager/general/use_time_for_policy false</"
+"<application>gestor d'energia del UKUI</application> l'empri com a dades de "
+"la política. Obriu el <command>ukuiconf-editor</command> i canvieu la clau "
+"<command>/apps/ukui-power-manager/general/use_time_for_policy</command> a "
+"«false». Podeu fer això fàcilment executant: <command>ukuiconftool-2 --set --"
+"type bool /apps/ukui-power-manager/general/use_time_for_policy false</"
 "command>"
 
-#: C/mate-power-manager.xml:734(para)
+#: C/ukui-power-manager.xml:734(para)
 msgid ""
 "This should get the policy actions working for you, but of course the time "
 "remaining will still be incorrect."
@@ -1073,14 +1073,14 @@ msgstr ""
 "Això hauria de fer que les accions de les polítiques funcionessin, però el "
 "temps restant continuarà sent incorrecte."
 
-#: C/mate-power-manager.xml:741(title)
+#: C/ukui-power-manager.xml:741(title)
 msgid ""
 "Why does not my IBM laptop have the brightness sliders in Power Preferences?"
 msgstr ""
 "Perquè el meu portàtil IBM té els lliscadors de brillantor a les "
 "preferències de l'energia?"
 
-#: C/mate-power-manager.xml:745(para)
+#: C/ukui-power-manager.xml:745(para)
 msgid ""
 "You need to add to <command>/etc/modprobe.conf</command> the following text: "
 "<command>options ibm_acpi experimental=1</command>"
@@ -1088,19 +1088,19 @@ msgstr ""
 "Heu d'afegir el text següent al fitxer <command>/etc/modprobe.conf</"
 "command>: <command>options ibm_acpi experimental=1</command>"
 
-#: C/mate-power-manager.xml:749(para)
+#: C/ukui-power-manager.xml:749(para)
 msgid "This will enable the experimental features and make the LCD work."
 msgstr ""
 "Això activarà les característiques experimentals i farà que el monitor LCD "
 "funcioni."
 
-#: C/mate-power-manager.xml:753(para)
+#: C/ukui-power-manager.xml:753(para)
 msgid "You will have to use sudo or a root account to edit this file."
 msgstr ""
 "Haureu d'utilitzar l'ordre sudo o un compte de superusuari per a editar "
 "aquest fitxer."
 
-#: C/mate-power-manager.xml:760(title)
+#: C/ukui-power-manager.xml:760(title)
 msgid ""
 "Why does my lid state get confused after suspending or hibernating? (and) My "
 "laptop suspended when I didn't expect it to when I removed the power cord!"
@@ -1109,7 +1109,7 @@ msgstr ""
 "d'hibernar? (i) El meu portàtil s'ha aturat temporalment quan no ho esperava "
 "després de desconnectar el cable d'alimentació."
 
-#: C/mate-power-manager.xml:765(para)
+#: C/ukui-power-manager.xml:765(para)
 msgid ""
 "When you suspend and then resume, ACPI does not seem to send the \"lid open"
 "\" event like it should, which I presume is because userspace is not in a "
@@ -1121,17 +1121,17 @@ msgstr ""
 "d'usuari no pot gestionar l'esdeveniment del nucli quan es comencen a "
 "reactivar els processos de l'espai d'usuari."
 
-#: C/mate-power-manager.xml:771(para)
+#: C/ukui-power-manager.xml:771(para)
 msgid ""
 "What we have to do it manually refresh the lid device using HAL when we "
 "resume, so that the new \"lid open\" value is propagated to "
-"<application>MATE Power Manager</application>."
+"<application>UKUI Power Manager</application>."
 msgstr ""
 "Haureu de refrescar la tapa del dispositiu manualment utilitzant el HAL quan "
 "es reprengui, de manera que el nou valor «tapa oberta» arribi al "
-"<application>gestor d'energia del MATE</application>."
+"<application>gestor d'energia del UKUI</application>."
 
-#: C/mate-power-manager.xml:776(para)
+#: C/ukui-power-manager.xml:776(para)
 msgid ""
 "You need to update to a newer version of HAL, or use your updated "
 "distribution bug-fix packages."
@@ -1139,46 +1139,46 @@ msgstr ""
 "Haureu d'actualitzar el HAL a una versió més recent, o bé utilitzar els "
 "paquets de correcció d'errors actualitzats de la vostra distribució."
 
-#: C/mate-power-manager.xml:783(title)
-msgid "Does <application>MATE Power Manager</application> support APM?"
+#: C/ukui-power-manager.xml:783(title)
+msgid "Does <application>UKUI Power Manager</application> support APM?"
 msgstr ""
-"Funciona el <application>gestor d'energia del MATE</application> amb l'APM?"
+"Funciona el <application>gestor d'energia del UKUI</application> amb l'APM?"
 
-#: C/mate-power-manager.xml:784(para)
+#: C/ukui-power-manager.xml:784(para)
 msgid ""
 "It supports whatever backends HAL supports! At the moment this includes:"
 msgstr ""
 "Funciona amb tot allò que funcioni amb el HAL. En aquest moment inclou:"
 
-#: C/mate-power-manager.xml:790(para)
+#: C/ukui-power-manager.xml:790(para)
 msgid "APM (Pre-2000 Intel computers)"
 msgstr "APM (Ordinadors Intel anteriors a l'any 2000)"
 
-#: C/mate-power-manager.xml:793(para)
+#: C/ukui-power-manager.xml:793(para)
 msgid "ACPI (most modern Intel compatible computers)"
 msgstr "ACPI (la majoria dels ordinadors moderns compatibles amb Intel)"
 
-#: C/mate-power-manager.xml:796(para)
+#: C/ukui-power-manager.xml:796(para)
 msgid "PMU (Powerbook, and iBook PPC computers)"
 msgstr "PMU (ordinadors Powerbook i iBook PPC)"
 
-#: C/mate-power-manager.xml:802(title)
+#: C/ukui-power-manager.xml:802(title)
 msgid ""
-"Why does <application>MATE Power Manager</application> not let me suspend "
+"Why does <application>UKUI Power Manager</application> not let me suspend "
 "or hibernate?"
 msgstr ""
-"Com és que el <application>gestor d'energia del MATE</application> no em "
+"Com és que el <application>gestor d'energia del UKUI</application> no em "
 "deixa aturar temporalment o hibernar?"
 
-#: C/mate-power-manager.xml:803(para)
+#: C/ukui-power-manager.xml:803(para)
 msgid ""
 "Before showing items such as \"Suspend\" and \"Hibernate\" in the menu g-p-m "
 "checks two things:"
 msgstr ""
 "Abans de mostrar elements com «Atura temporalment» o «Hiberna» en el menú del "
-"<application>gestor d'energia del MATE</application>, comproveu dues coses:"
+"<application>gestor d'energia del UKUI</application>, comproveu dues coses:"
 
-#: C/mate-power-manager.xml:810(para)
+#: C/ukui-power-manager.xml:810(para)
 msgid ""
 "If HAL can detect a sleep handler in the kernel. You can test this doing "
 "<command>lshal | grep can_suspend</command>. HAL works this out from looking "
@@ -1190,30 +1190,30 @@ msgstr ""
 "calcula monitoritzant el <command>/sys/power/state</command> i comprovant la "
 "presència de «suspend2»."
 
-#: C/mate-power-manager.xml:818(para)
+#: C/ukui-power-manager.xml:818(para)
 msgid ""
 "If your administrator (or you!) has disabled the ability to do a certain "
-"action. You can test this using <command>mateconftool-2 -R /apps/mate-power-"
+"action. You can test this using <command>ukuiconftool-2 -R /apps/ukui-power-"
 "manager | grep can</command> and change the values to be something more "
 "suitable."
 msgstr ""
 "Si l'administrador (o vós) heu desactivat la capacitat de fer alguna acció. "
-"Podeu provar-ho executant <command>mateconftool-2 -R /apps/mate-power-manager "
+"Podeu provar-ho executant <command>ukuiconftool-2 -R /apps/ukui-power-manager "
 "| grep can</command> i canviant els valors a quelcom més adequat."
 
-#: C/mate-power-manager.xml:826(para)
+#: C/ukui-power-manager.xml:826(para)
 msgid ""
 "For instance, my PowerBook reports from HAL that it can suspend and "
 "hibernate, but because I know my hibernate does not work, I can disable it "
-"in <command>mateconf-editor</command> removing the option from <command>mate-"
+"in <command>ukuiconf-editor</command> removing the option from <command>ukui."
 "power-preferences</command> and the drop-down menu."
 msgstr ""
 "Per exemple, un PowerBook informa, segons el HAL, que es pot aturar "
 "temporalment i hibernar, però com que la funció d'hibernar no funciona, es "
-"pot desactivar en el <command>mateconf-editor</command> eliminant l'opció del "
-"<command>mate-power-preferences</command> i del menú desplegable."
+"pot desactivar en el <command>ukuiconf-editor</command> eliminant l'opció del "
+"<command>ukui-power-preferences</command> i del menú desplegable."
 
-#: C/mate-power-manager.xml:832(para)
+#: C/ukui-power-manager.xml:832(para)
 msgid ""
 "If HAL does not list the options you want, then maybe you need to check your "
 "BIOS to check that it's running in the correct mode, and also that you have "
@@ -1223,53 +1223,53 @@ msgstr ""
 "BIOS i assegurar-vos que s'executa en un mode correcte, així com comprovar "
 "que heu compilat el nucli amb les opcions correctes."
 
-#: C/mate-power-manager.xml:837(para)
+#: C/ukui-power-manager.xml:837(para)
 msgid ""
-"If there are no mateconf keys returned by the second check above, you need to "
-"reinstall your mateconf schema as per matebug:341256: (as root):"
+"If there are no ukuiconf keys returned by the second check above, you need to "
+"reinstall your ukuiconf schema as per ukuibug:341256: (as root):"
 msgstr ""
-"Si la segona comprovació anterior no retorna claus del MateConf, haureu de "
-"reinstal·lar l'esquema del MateConf degut al matebug:341256: (com a "
+"Si la segona comprovació anterior no retorna claus del UkuiConf, haureu de "
+"reinstal·lar l'esquema del UkuiConf degut al ukuibug:341256: (com a "
 "superusuari):"
 
-#: C/mate-power-manager.xml:842(programlisting)
+#: C/ukui-power-manager.xml:842(programlisting)
 #, no-wrap
 msgid ""
 "\n"
-"export MATECONF_CONFIG_SOURCE=`mateconftool-2 --get-default-source`\n"
-"mateconftool-2 --makefile-install-rule data/mate-power-manager.schemas\n"
-"killall -HUP mateconfd-2\n"
+"export UKUICONF_CONFIG_SOURCE=`ukuiconftool-2 --get-default-source`\n"
+"ukuiconftool-2 --makefile-install-rule data/ukui-power-manager.schemas\n"
+"killall -HUP ukuiconfd-2\n"
 msgstr ""
 "\n"
-"export MATECONF_CONFIG_SOURCE=`mateconftool-2 --get-default-source`\n"
-"mateconftool-2 --makefile-install-rule data/mate-power-manager.schemas\n"
-"killall -HUP mateconfd-2\n"
+"export UKUICONF_CONFIG_SOURCE=`ukuiconftool-2 --get-default-source`\n"
+"ukuiconftool-2 --makefile-install-rule data/ukui-power-manager.schemas\n"
+"killall -HUP ukuiconfd-2\n"
 
-#: C/mate-power-manager.xml:850(title)
+#: C/ukui-power-manager.xml:850(title)
 msgid ""
 "Why does my screen dim or screensaver start even when I'm clicking the mouse?"
 msgstr ""
 "Com és que la meva pantalla s'enfosqueix o s'inicia l'estalvi de pantalla "
 "encara que quan faci clic amb el ratolí?"
 
-#: C/mate-power-manager.xml:854(para)
+#: C/ukui-power-manager.xml:854(para)
 msgid ""
 "If you click the mouse, or scroll the scroll-wheel without moving the "
-"pointer, then mate-screensaver will detect the session as being idle. This "
-"is a limitation of X.org, but is worked around in newer versions of mate-"
+"pointer, then ukui-screensaver will detect the session as being idle. This "
+"is a limitation of X.org, but is worked around in newer versions of ukui."
 "screensaver."
 msgstr ""
-"Si feu clic amb el ratolí, o moveu la roda sense moure el punter, el mate-"
+"Si feu clic amb el ratolí, o moveu la roda sense moure el punter, el ukui."
 "screensaver detectarà que la sessió està inactiva. Això és una limitació de "
-"l'X.org, però s'està corregint en les noves versions del mate-screensaver."
+"l'X.org, però s'està corregint en les noves versions del ukui-screensaver."
 
-#: C/mate-power-manager.xml:863(title)
+#: C/ukui-power-manager.xml:863(title)
 msgid "How do I make my application stop the computer auto-suspending?"
 msgstr ""
 "Com puc fer que les meves aplicacions evitin que l'ordinador s'aturi "
 "automàticament?"
 
-#: C/mate-power-manager.xml:866(para)
+#: C/ukui-power-manager.xml:866(para)
 msgid ""
 "If your application is doing a long operation, you might want to disable the "
 "ability to suspend for a little while. You should use this method if you "
@@ -1281,34 +1281,34 @@ msgstr ""
 "mètode si no voleu que l'usuari pugui aturar temporalment, o que l'ordinador "
 "entri en mode d'aturat temporalment o d'hibernació durant:"
 
-#: C/mate-power-manager.xml:875(para)
+#: C/ukui-power-manager.xml:875(para)
 msgid "Copying files in Caja"
 msgstr "La còpia de fitxers al Caja"
 
-#: C/mate-power-manager.xml:878(para)
+#: C/ukui-power-manager.xml:878(para)
 msgid "Doing a long kernel compile or Matlab simulation"
 msgstr "La compilació del nucli o una simulació en el Matlab"
 
 # FIXME
-#: C/mate-power-manager.xml:881(para)
+#: C/ukui-power-manager.xml:881(para)
 msgid "During a SELinux relabel"
 msgstr "Un canvi d'etiqueta del SELinux"
 
-#: C/mate-power-manager.xml:884(para)
+#: C/ukui-power-manager.xml:884(para)
 msgid "Many others..."
 msgstr "Moltes altres..."
 
-#: C/mate-power-manager.xml:887(para)
+#: C/ukui-power-manager.xml:887(para)
 msgid ""
 "Then you can use the Inhibit() and UnInhibit() DBUS methods built into the "
-"newest versions of <application>MATE Power Manager</application>. Here is a "
+"newest versions of <application>UKUI Power Manager</application>. Here is a "
 "simple demonstration in python:"
 msgstr ""
 "Llavors podeu utilitzar els mètodes DBUS Inhibit() i UnInhibit() inclosos en "
-"les noves versions del <application>gestor d'energia del MATE</"
+"les noves versions del <application>gestor d'energia del UKUI</"
 "application>. Aquí teniu una demostració senzilla en Python:"
 
-#: C/mate-power-manager.xml:892(programlisting)
+#: C/ukui-power-manager.xml:892(programlisting)
 #, no-wrap
 msgid ""
 "\n"
@@ -1333,53 +1333,53 @@ msgstr ""
 "time.sleep(100)\n"
 "dev.UnInhibit(cookie)\n"
 
-#: C/mate-power-manager.xml:903(para)
+#: C/ukui-power-manager.xml:903(para)
 msgid ""
-"There is an <ulink url=\"http://svn.mate.org/viewcvs/mate-power-manager/"
+"There is an <ulink url=\"http://svn.ukui.org/viewcvs/ukui-power-manager/"
 "trunk/test/gpm-inhibit-test.c?view=markup\">example</ulink> which shows "
 "developers how to add Inhibit and UnInhibit DBUS methods into existing "
 "programs."
 msgstr ""
-"Hi ha un <ulink url=\"http://svn.mate.org/viewcvs/mate-power-manager/trunk/"
+"Hi ha un <ulink url=\"http://svn.ukui.org/viewcvs/ukui-power-manager/trunk/"
 "test/gpm-inhibit-test.c?view=markup\">exemple</ulink> que mostra als "
 "desenvolupadors com afegir els mètodes DBUS Inhibit i UnInhibit en programes "
 "existents."
 
-#: C/mate-power-manager.xml:911(title)
+#: C/ukui-power-manager.xml:911(title)
 msgid ""
-"Are <application>MATE Power Manager</application> and MATE Screensaver "
+"Are <application>UKUI Power Manager</application> and UKUI Screensaver "
 "inhibit methods the same?"
 msgstr ""
-"Els mètodes d'inhibició del <application>gestor d'energia del MATE</"
-"application> i de l'estalvi de pantalla del MATE són els mateixos?"
+"Els mètodes d'inhibició del <application>gestor d'energia del UKUI</"
+"application> i de l'estalvi de pantalla del UKUI són els ukui.xos?"
 
-#: C/mate-power-manager.xml:914(para)
+#: C/ukui-power-manager.xml:914(para)
 msgid ""
-"If you call the inhibit methods on mate-screensaver, then mate-screensaver "
+"If you call the inhibit methods on ukui-screensaver, then ukui-screensaver "
 "will not mark your session as idle. This means that the screen will not dim, "
 "the screensaver will not start and the computer will not suspend "
 "automatically."
 msgstr ""
-"Si executeu els mètodes d'inhibició per al mate-screensaver, aquest no "
+"Si executeu els mètodes d'inhibició per al ukui-screensaver, aquest no "
 "marcarà la sessió com a inactiva. Això significa que la pantalla no "
 "s'enfosquirà automàticament, l'estalvi de pantalla no s'iniciarà i "
 "l'ordinador no s'aturarà temporalment."
 
-#: C/mate-power-manager.xml:920(para)
+#: C/ukui-power-manager.xml:920(para)
 msgid ""
-"While playing a movie full-screen, totem should use the mate-screensaver "
+"While playing a movie full-screen, totem should use the ukui-screensaver "
 "inhibit methods. The idea is that totem does not have to worry at all about "
 "power management. The only thing it wants to assert is that even though "
 "there are no key presses or mouse movements, the session is still being used."
 msgstr ""
 "Mentre reproduïu una pel·lícula a pantalla completa, el Totem utilitza els "
-"mètodes d'inhibició del mate-screensaver. La idea és que el Totem no s'ha "
+"mètodes d'inhibició del ukui-screensaver. La idea és que el Totem no s'ha "
 "de preocupar pel gestor d'energia. Només s'ha d'assegurar que tot i que no "
 "es premi cap tecla i no es mogui el ratolí, la sessió continuï activa."
 
-#: C/mate-power-manager.xml:928(para)
+#: C/ukui-power-manager.xml:928(para)
 msgid ""
-"The only applications that should use the <application>MATE Power Manager</"
+"The only applications that should use the <application>UKUI Power Manager</"
 "application> inhibit method are things that want to assert that the session "
 "can be marked as idle, but important things are still happening, so it "
 "should not power down. For example, when copying 4.5GB of files in Caja, "
@@ -1388,7 +1388,7 @@ msgid ""
 "hibernate."
 msgstr ""
 "Les úniques aplicacions que haurien d'utilitzar el mètode d'inhibició del "
-"<application>gestor d'energia del MATE</application> són aquelles que volen "
+"<application>gestor d'energia del UKUI</application> són aquelles que volen "
 "assegurar-se que la sessió es pot marcar com a inactiva, però segueixen "
 "succeint coses importants, i no s'hauria d'apagar l'ordinador. Per exemple, "
 "quan s'estiguin copiant 4.5GB de fitxers en el Caja, voldreu que es "
@@ -1396,15 +1396,15 @@ msgstr ""
 "no voldreu que l'ordinador pensi que està inactiu i s'aturi, s'aturi "
 "temporalment o hiberni."
 
-#: C/mate-power-manager.xml:940(title)
+#: C/ukui-power-manager.xml:940(title)
 msgid ""
-"<application>MATE Power Manager</application> does not spin down my hard-"
+"<application>UKUI Power Manager</application> does not spin down my hard-"
 "drive!"
 msgstr ""
-"El <application>gestor d'energia del MATE</application> no redueix les "
+"El <application>gestor d'energia del UKUI</application> no redueix les "
 "revolucions del meu disc dur."
 
-#: C/mate-power-manager.xml:941(para)
+#: C/ukui-power-manager.xml:941(para)
 msgid ""
 "After numerous debates, the consensus was that is was not a good idea to add "
 "this functionality to HAL. It was decided user-configurable power management "
@@ -1416,14 +1416,14 @@ msgstr ""
 "configurable per l'usuari no es necessitava realment quan els discs durs "
 "moderns posseeixen una gestió de l'energia intel·ligent."
 
-#: C/mate-power-manager.xml:947(para)
+#: C/ukui-power-manager.xml:947(para)
 msgid ""
 "Here the power consumption data for a typical notebook hard disk (IDE/SATA):"
 msgstr ""
 "A continuació es mostren les dades del consum d'energia per a un típic disc "
 "dur (IDE/SATA) de portàtil:"
 
-#: C/mate-power-manager.xml:952(programlisting)
+#: C/ukui-power-manager.xml:952(programlisting)
 #, no-wrap
 msgid ""
 "\n"
@@ -1446,11 +1446,11 @@ msgstr ""
 "En espera (mitjana)\t\t\t0.2W\t0.25W\n"
 "Baix consum\t\t\t\t0.1W\tNC\n"
 
-#: C/mate-power-manager.xml:962(para)
+#: C/ukui-power-manager.xml:962(para)
 msgid "The conclusions you can take from this are:"
 msgstr "Les conclusions que se'n poden treure són:"
 
-#: C/mate-power-manager.xml:967(para)
+#: C/ukui-power-manager.xml:967(para)
 msgid ""
 "A disk on low power idle mode needs less than 1 Watt. For a normal battery "
 "with 50Wh you could run the hard disk for over 50 hours."
@@ -1458,7 +1458,7 @@ msgstr ""
 "Un disc en mode inactiu de baix consum necessita menys d'un Watt. Una "
 "bateria normal amb 50Wh podria utilitzar el disc dur més de 50 hores."
 
-#: C/mate-power-manager.xml:974(para)
+#: C/ukui-power-manager.xml:974(para)
 msgid ""
 "If you do not read/write from/to the hard disk the disk regulates power, but "
 "never shuts down the device. The reason is easy: you lost more power with "
@@ -1470,7 +1470,7 @@ msgstr ""
 "inicialització que deixant el disc dur entre «inactiu» i «inactiu de baix "
 "consum» (varia en funció del model/fabricant)."
 
-#: C/mate-power-manager.xml:983(para)
+#: C/ukui-power-manager.xml:983(para)
 msgid ""
 "The other reason to leave this to the internal power management of the disk "
 "is: the time needed to reactivate the device. You lose more performance than "
@@ -1481,7 +1481,7 @@ msgstr ""
 "necessita per a tornar a activar el dispositiu. Perdeu més rendiment que no "
 "pas energia entre els estats «inactiu» i «inactiu de baix consum»."
 
-#: C/mate-power-manager.xml:991(para)
+#: C/ukui-power-manager.xml:991(para)
 msgid ""
 "If you use a journaling file system you normally need to flush periodically. "
 "This could run in a race between shut down device and restart device by "
@@ -1492,7 +1492,7 @@ msgstr ""
 "apagar i reiniciar el dispositiu pel sistema degut a la sincronització. "
 "També implica més consum d'energia que si no toqueu res."
 
-#: C/mate-power-manager.xml:1000(para)
+#: C/ukui-power-manager.xml:1000(para)
 msgid ""
 "You can't set power management for external USB hard disks, because you "
 "can't send the needed commands over the USB link to the disk."
@@ -1500,7 +1500,7 @@ msgstr ""
 "No podeu establir la gestió d'energia per a un disc dur USB extern, perquè "
 "no podeu enviar les ordres necessàries al disc a través d'un enllaç USB."
 
-#: C/mate-power-manager.xml:1009(title)
+#: C/ukui-power-manager.xml:1009(title)
 msgid ""
 "I'm running ACPI. Why do events (such as removing the AC adapter) take so "
 "long to register?"
@@ -1508,17 +1508,17 @@ msgstr ""
 "Estic executant l'ACPI. Com és que els esdeveniments (com desconnectar la "
 "xarxa elèctrica) tarden tant en registrar-se?"
 
-#: C/mate-power-manager.xml:1013(para)
+#: C/ukui-power-manager.xml:1013(para)
 msgid "One of two things might be the problem."
 msgstr "El problema pot ser una d'aquestes dues raons."
 
-#: C/mate-power-manager.xml:1018(para)
+#: C/ukui-power-manager.xml:1018(para)
 msgid "HAL might not be running the addon that captures the ACPI event."
 msgstr ""
 "Pot ser que el HAL pot no estigui executant el complement que captura "
 "l'esdeveniment de l'ACPI."
 
-#: C/mate-power-manager.xml:1023(para)
+#: C/ukui-power-manager.xml:1023(para)
 msgid ""
 "You BIOS could be faulty, and might need a work-around. Please send a bug "
 "report."
@@ -1526,7 +1526,7 @@ msgstr ""
 "Pot ser que la BIOS no funcioni correctamant i calgui corregir-la. En aquest "
 "cas hauríeu d'enviar un informe d'error."
 
-#: C/mate-power-manager.xml:1029(para)
+#: C/ukui-power-manager.xml:1029(para)
 msgid ""
 "For the first case, try to find the HAL processes that are running: "
 "<command>ps -eaf | grep hal</command>"
@@ -1534,7 +1534,7 @@ msgstr ""
 "En el primer cas, proveu de trobar els processos del HAL que s'estan "
 "executant: <command>ps -eaf | grep hal</command>"
 
-#: C/mate-power-manager.xml:1033(para)
+#: C/ukui-power-manager.xml:1033(para)
 msgid ""
 "And check for the process <command>hald-addon-acpi</command>. If it is not "
 "being run, then please make sure that HAL is being run with the <command>--"
@@ -1548,15 +1548,15 @@ msgstr ""
 "<command>haldaemon</command>. Una alternativa a això és utilitzar l'«acpid», "
 "en lloc del fitxer «proc» del nucli."
 
-#: C/mate-power-manager.xml:1043(title)
+#: C/ukui-power-manager.xml:1043(title)
 msgid ""
-"How do I query or do actions on <application>MATE Power Manager</"
+"How do I query or do actions on <application>UKUI Power Manager</"
 "application> from my shell script?"
 msgstr ""
 "Com puc consultar o realitzar accions en el <application>gestor d'energia "
-"del MATE</application> a través d'un script de l'intèrpret d'ordres?"
+"del UKUI</application> a través d'un script de l'intèrpret d'ordres?"
 
-#: C/mate-power-manager.xml:1046(para)
+#: C/ukui-power-manager.xml:1046(para)
 msgid ""
 "You can use the dbus-send program. For example, you can set the DPMS mode by "
 "running the following:"
@@ -1564,7 +1564,7 @@ msgstr ""
 "Podeu utilitzar el programa dbus-send. Per exemple, podeu establir el mode "
 "DPMS executant el següent:"
 
-#: C/mate-power-manager.xml:1050(programlisting)
+#: C/ukui-power-manager.xml:1050(programlisting)
 #, no-wrap
 msgid ""
 "\n"
@@ -1587,11 +1587,11 @@ msgstr ""
 "\t  org.freedesktop.PowerManagement.SetDpmsMode \\\n"
 "\t  string:suspend\n"
 
-#: C/mate-power-manager.xml:1060(para)
+#: C/ukui-power-manager.xml:1060(para)
 msgid "You can put the system into hibernation using the following:"
 msgstr "Podeu posar el sistema en hibernació utilitzant el següent:"
 
-#: C/mate-power-manager.xml:1063(programlisting)
+#: C/ukui-power-manager.xml:1063(programlisting)
 #, no-wrap
 msgid ""
 "\n"
@@ -1612,27 +1612,27 @@ msgstr ""
 "\t  /org/freedesktop/PowerManagement \\\n"
 "\t  org.freedesktop.PowerManagement.Hibernate\n"
 
-#: C/mate-power-manager.xml:1072(para)
+#: C/ukui-power-manager.xml:1072(para)
 msgid "See the developers guide file in CVS for the full list."
 msgstr ""
 "Consulteu la guia per a desenvolupadors en el CVS per a obtenir una llista "
 "completa."
 
-#: C/mate-power-manager.xml:1078(title)
+#: C/ukui-power-manager.xml:1078(title)
 msgid "Nothing happens when I click suspend or hibernate!"
 msgstr "No succeeix res quan faig clic a aturar temporalment o hibernar."
 
-#: C/mate-power-manager.xml:1079(para)
+#: C/ukui-power-manager.xml:1079(para)
 msgid ""
 "HAL might not *yet* support your distro, or you might have found a bug in "
-"<application>MATE Power Manager</application>. Refer to the reporting bugs "
+"<application>UKUI Power Manager</application>. Refer to the reporting bugs "
 "section."
 msgstr ""
 "Pot ser que el HAL *encara* no funcioni amb la vostra distribució, o potser "
-"heu trobat un error en el <application>gestor d'energia del MATE</"
+"heu trobat un error en el <application>gestor d'energia del UKUI</"
 "application>. Consulteu la secció d'errors."
 
-#: C/mate-power-manager.xml:1087(title)
+#: C/ukui-power-manager.xml:1087(title)
 msgid ""
 "Why does not my video adaptor come back after a suspend? It just displays "
 "black!"
@@ -1640,7 +1640,7 @@ msgstr ""
 "Per què no es recupera el meu adaptador de vídeo després d'aturar "
 "temporalment? La pantalla queda de color negre."
 
-#: C/mate-power-manager.xml:1091(para)
+#: C/ukui-power-manager.xml:1091(para)
 msgid ""
 "You may need to add a s3 command to your kernel boot string so that the "
 "kernel can re-initialize your video card. See <ulink url=\"http://www.kernel."
@@ -1655,7 +1655,7 @@ msgstr ""
 "detalls, o per saber si s'ha detectat que el sistema necessita commutadors "
 "extres."
 
-#: C/mate-power-manager.xml:1099(para)
+#: C/ukui-power-manager.xml:1099(para)
 msgid ""
 "Using the new pm-utils should make all this stuff just work in the future "
 "using HAL fdi matching against machine DMI and video card vendor and product "
@@ -1665,54 +1665,54 @@ msgstr ""
 "s'utilitza la concordança fdi del HAL respecte al dispositiu DMI i els "
 "identificadors de fabricant i producte de les targetes de vídeo."
 
-#: C/mate-power-manager.xml:1109(title)
+#: C/ukui-power-manager.xml:1109(title)
 msgid "About"
 msgstr "Quant a"
 
-#: C/mate-power-manager.xml:1110(para)
+#: C/ukui-power-manager.xml:1110(para)
 msgid ""
-"MATE Power Manager was written by Richard Hughes <email>richard@hughsie."
-"com</email>. To find more information about MATE Power Manager, please "
-"visit the <ulink url=\"http://www.mate.org/projects/mate-power-manager\" "
-"type=\"http\"><application>MATE Power Manager</application> web page</"
+"UKUI Power Manager was written by Richard Hughes <email>richard@hughsie."
+"com</email>. To find more information about UKUI Power Manager, please "
+"visit the <ulink url=\"http://www.ukui.org/projects/ukui-power-manager\" "
+"type=\"http\"><application>UKUI Power Manager</application> web page</"
 "ulink>."
 msgstr ""
 "Richard Hughes <email>richard@hughsie.com</email> ha escrit el gestor "
-"d'energia del MATE. Per a trobar més informació sobre el gestor d'energia "
-"del MATE, visiteu la <ulink url=\"http://www.mate.org/projects/mate-power-"
+"d'energia del UKUI. Per a trobar més informació sobre el gestor d'energia "
+"del UKUI, visiteu la <ulink url=\"http://www.ukui.org/projects/ukui-power-"
 "manager\" type=\"http\">pàgina web del <application>gestor d'energia del "
-"MATE</application></ulink>."
+"UKUI</application></ulink>."
 
-#: C/mate-power-manager.xml:1116(para)
+#: C/ukui-power-manager.xml:1116(para)
 msgid ""
 "To report a bug or make a suggestion regarding this application or this "
-"manual, follow the directions at the <ulink url=\"http://www.mate.org/"
-"projects/mate-power-manager/bugs.html\" type=\"http\"><application>MATE "
+"manual, follow the directions at the <ulink url=\"http://www.ukui.org/"
+"projects/ukui-power-manager/bugs.html\" type=\"http\"><application>UKUI "
 "Power Manager</application> Bug Page</ulink>."
 msgstr ""
 "Per a informar d'un error o fer algun suggeriment sobre aquesta aplicació o "
-"aquest manual, seguiu les indicacions a la <ulink url=\"http://www.mate.org/"
-"projects/mate-power-manager/bugs.html\" type=\"http\">pàgina d'errors del "
-"<application>gestor d'energia del MATE</application></ulink>."
+"aquest manual, seguiu les indicacions a la <ulink url=\"http://www.ukui.org/"
+"projects/ukui-power-manager/bugs.html\" type=\"http\">pàgina d'errors del "
+"<application>gestor d'energia del UKUI</application></ulink>."
 
-#: C/mate-power-manager.xml:1122(para)
+#: C/ukui-power-manager.xml:1122(para)
 msgid ""
 "This program is distributed under the terms of the GNU General Public "
 "license as published by the Free Software Foundation; either version 2 of "
 "the License, or (at your option) any later version. A copy of this license "
-"can be found at this <ulink url=\"mate-power-manager:gpl\" type=\"help"
+"can be found at this <ulink url=\"ukui-power-manager:gpl\" type=\"help"
 "\">link</ulink>, or in the file COPYING included with the source code of "
 "this program."
 msgstr ""
 "Aquest programa es distribueix sota els termes de la Llicència pública "
 "general de GNU tal com publica la Free Software Foundation; tant en la "
 "versió 2 de la llicència, o (a la vostra opció) una versió posterior. Es pot "
-"trobar una copia d'aquesta llicència en aquest <ulink url=\"mate-power-"
+"trobar una copia d'aquesta llicència en aquest <ulink url=\"ukui-power-"
 "manager:gpl\" type=\"help\">enllaç</ulink>, o en el fitxer COPYING inclòs "
 "amb el codi font d'aquest programa."
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2.
-#: C/mate-power-manager.xml:0(None)
+#: C/ukui-power-manager.xml:0(None)
 msgid "translator-credits"
 msgstr "Joan Duran <jodufi@gmail.com>, 2007-2009"
 
@@ -1831,8 +1831,8 @@ msgstr "Joan Duran <jodufi@gmail.com>, 2007-2009"
 #~ "well as the processor speed automatically increases. This can however "
 #~ "result in a significant performance reduction for system daemons and some "
 #~ "background session services. To rectify this, use another policy (e.g. "
-#~ "Always maximum speed) or set the following MateConf key: <command>/apps/"
-#~ "mate-power-manager/cpufreq/consider_nice</command>."
+#~ "Always maximum speed) or set the following UkuiConf key: <command>/apps/"
+#~ "ukui-power-manager/cpufreq/consider_nice</command>."
 #~ msgstr ""
 #~ "Algunes polítiques (ondemand i conservative) només incrementaran la "
 #~ "freqüència del processador des del mínim quan un procés tingui un valor "
@@ -1842,5 +1842,5 @@ msgstr "Joan Duran <jodufi@gmail.com>, 2007-2009"
 #~ "significar una reducció del rendiment per a dimonis del sistema i alguns "
 #~ "serveis de sessió en segon pla. Per a rectificar això, utilitzeu una "
 #~ "altra política (ex. sempre velocitat màxima) o establiu la següent clau "
-#~ "del MateConf: <command>/apps/mate-power-manager/cpufreq/consider_nice</"
+#~ "del UkuiConf: <command>/apps/ukui-power-manager/cpufreq/consider_nice</"
 #~ "command>."

@@ -34,9 +34,9 @@ static void     gpm_screensaver_finalize   (GObject		*object);
 
 #define GPM_SCREENSAVER_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), GPM_TYPE_SCREENSAVER, GpmScreensaverPrivate))
 
-#define GS_LISTENER_SERVICE	"org.mate.ScreenSaver"
+#define GS_LISTENER_SERVICE	"org.ukui.ScreenSaver"
 #define GS_LISTENER_PATH	"/"
-#define GS_LISTENER_INTERFACE	"org.mate.ScreenSaver"
+#define GS_LISTENER_INTERFACE	"org.ukui.ScreenSaver"
 
 struct GpmScreensaverPrivate
 {
@@ -65,7 +65,7 @@ gpm_screensaver_lock (GpmScreensaver *screensaver)
 		return FALSE;
 	}
 
-	egg_debug ("doing mate-screensaver lock");
+	egg_debug ("doing ukui-screensaver lock");
 	dbus_g_proxy_call_no_reply (screensaver->priv->proxy,
 				    "Lock", G_TYPE_INVALID);
 
@@ -81,7 +81,7 @@ gpm_screensaver_lock (GpmScreensaver *screensaver)
 		/* Sleep for 1/10s */
 		g_usleep (1000 * 100);
 		if (sleepcount++ > 50) {
-			egg_debug ("timeout waiting for mate-screensaver");
+			egg_debug ("timeout waiting for ukui-screensaver");
 			break;
 		}
 	}
@@ -170,7 +170,7 @@ gpm_screensaver_remove_throttle (GpmScreensaver *screensaver, guint cookie)
 /**
  * gpm_screensaver_check_running:
  * @screensaver: This class instance
- * Return value: TRUE if mate-screensaver is running
+ * Return value: TRUE if ukui-screensaver is running
  **/
 gboolean
 gpm_screensaver_check_running (GpmScreensaver *screensaver)
@@ -203,7 +203,7 @@ gpm_screensaver_check_running (GpmScreensaver *screensaver)
  * gpm_screensaver_poke:
  * @screensaver: This class instance
  *
- * Pokes MATE Screensaver simulating hardware events. This displays the unlock
+ * Pokes UKUI Screensaver simulating hardware events. This displays the unlock
  * dialogue when we resume, so the user doesn't have to move the mouse or press
  * any key before the window comes up.
  **/

@@ -1,6 +1,6 @@
 /* -*- Mode: C; indent-tabs-mode: nil; c-basic-offset: 8; tab-width: 8 -*-
  *
- * On-screen-display (OSD) window for mate-settings-daemon's plugins
+ * On-screen-display (OSD) window for ukui-settings-daemon's plugins
  *
  * Copyright (C) 2006 William Jon McCann <mccann@jhu.edu>
  * Copyright (C) 2009 Novell, Inc

@@ -250,9 +250,9 @@ gpm_phone_service_appeared_cb (GDBusConnection *connection,
 		egg_debug ("get proxy");
 		g_clear_error (&error);
 		phone->priv->proxy = dbus_g_proxy_new_for_name_owner (phone->priv->connection,
-							 MATE_PHONE_MANAGER_DBUS_SERVICE,
-							 MATE_PHONE_MANAGER_DBUS_PATH,
-							 MATE_PHONE_MANAGER_DBUS_INTERFACE,
+							 UKUI_PHONE_MANAGER_DBUS_SERVICE,
+							 UKUI_PHONE_MANAGER_DBUS_PATH,
+							 UKUI_PHONE_MANAGER_DBUS_INTERFACE,
 							 &error);
 		if (error != NULL) {
 			egg_warning ("Cannot connect, maybe the daemon is not running: %s", error->message);
@@ -323,7 +323,7 @@ gpm_phone_init (GpmPhone *phone)
 	phone->priv->onac = FALSE;
 
 	phone->priv->watch_id = g_bus_watch_name (G_BUS_TYPE_SESSION,
-						  MATE_PHONE_MANAGER_DBUS_SERVICE,
+						  UKUI_PHONE_MANAGER_DBUS_SERVICE,
 						  G_BUS_NAME_WATCHER_FLAGS_NONE,
 						  (GBusNameAppearedCallback) gpm_phone_service_appeared_cb,
 						  (GBusNameVanishedCallback) gpm_phone_service_vanished_cb,

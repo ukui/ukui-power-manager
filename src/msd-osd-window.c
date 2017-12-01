@@ -1,6 +1,6 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
  *
- * On-screen-display (OSD) window for mate-settings-daemon's plugins
+ * On-screen-display (OSD) window for ukui-settings-daemon's plugins
  *
  * Copyright (C) 2006-2007 William Jon McCann <mccann@jhu.edu> 
  * Copyright (C) 2009 Novell, Inc
@@ -302,7 +302,7 @@ msd_osd_window_style_updated (GtkWidget *widget)
 
         GTK_WIDGET_CLASS (msd_osd_window_parent_class)->style_updated (widget);
 
-        /* We set our border width to 12 (per the MATE standard), plus the
+        /* We set our border width to 12 (per the UKUI standard), plus the
          * padding of the frame that we draw in our expose handler.  This will
          * make our child be 12 pixels away from the frame.
          */

@@ -571,7 +571,7 @@ gpm_kbd_backlight_button_pressed_cb (GpmButton *button,
  * @mode: The idle mode, e.g. GPM_IDLE_MODE_BLANK
  * @backlight: This class instance
  *
- * This callback is called when mate-screensaver detects that the idle state
+ * This callback is called when ukui-screensaver detects that the idle state
  * has changed. GPM_IDLE_MODE_BLANK is when the session has become inactive,
  * and GPM_IDLE_MODE_SLEEP is where the session has become inactive, AND the
  * session timeout has elapsed for the idle action.

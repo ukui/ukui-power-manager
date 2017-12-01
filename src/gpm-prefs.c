@@ -78,9 +78,9 @@ main (int argc, char **argv)
 		{ NULL}
 	};
 
-	context = g_option_context_new (N_("MATE Power Preferences"));
+	context = g_option_context_new (N_("UKUI Power Preferences"));
 
-	bindtextdomain (GETTEXT_PACKAGE, MATELOCALEDIR);
+	bindtextdomain (GETTEXT_PACKAGE, UKUILOCALEDIR);
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 	textdomain (GETTEXT_PACKAGE);
 
@@ -92,7 +92,7 @@ main (int argc, char **argv)
 	egg_debug_init (verbose);
 
 	gdk_init (&argc, &argv);
-	app = gtk_application_new("org.mate.PowerManager.Preferences", 0);
+	app = gtk_application_new("org.ukui.PowerManager.Preferences", 0);
 
 	prefs = gpm_prefs_new ();
 

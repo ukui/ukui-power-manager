@@ -6,7 +6,7 @@ applets/brightness/brightness-applet.c
 applets/inhibit/inhibit-applet.c
 [type: gettext/ini]applets/inhibit/org.ukui.InhibitApplet.ukui-panel-applet.in.in
 data/ukui-power-manager.desktop.in.in
-[type: gettext/gsettings]data/org.ukui-power-manager.gschema.xml.in
+[type: gettext/gsettings]data/org.ukui.power-manager.gschema.xml.in
 data/ukui-power-preferences.desktop.in.in
 data/ukui-power-statistics.desktop.in.in
 [type: gettext/glade]data/gpm-feedback-widget.ui

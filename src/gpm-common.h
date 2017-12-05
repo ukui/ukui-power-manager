@@ -43,7 +43,7 @@ G_BEGIN_DECLS
 #define GPM_DESCRIPTION 		_("Power Manager for the UKUI desktop")
 
 /* schema location */
-#define GPM_SETTINGS_SCHEMA				"org.ukui-power-manager"
+#define GPM_SETTINGS_SCHEMA				"org.ukui.power-manager"
 
 /* actions */
 #define GPM_SETTINGS_ACTION_CRITICAL_UPS		"action-critical-ups"

@@ -184,7 +184,7 @@
     <note>
       <para>
         You can disable this notification by changing the dconf key
-        <command>org.ukui-power-manager notify-discharging</command>.
+        <command>org.ukui.power-manager notify-discharging</command>.
       </para>
     </note>
   </section>
@@ -204,7 +204,7 @@
     <note>
       <para>
         You can disable this notification by changing the dconf key
-        <command>org.ukui-power-manager notify-fully-charged</command>.
+        <command>org.ukui.power-manager notify-fully-charged</command>.
       </para>
     </note>
     <note>
@@ -236,7 +236,7 @@
     <note>
       <para>
         You can disable this notification by changing the dconf key
-        <command>org.ukui-power-manager notify-low-power</command>.
+        <command>org.ukui.power-manager notify-low-power</command>.
       </para>
     </note>
   </section>
@@ -280,7 +280,7 @@
     <note>
       <para>
         You can disable this notification by changing the dconf key
-        <command>org.ukui-power-manager notify-sleep-failed</command>.
+        <command>org.ukui.power-manager notify-sleep-failed</command>.
       </para>
     </note>
   </section>
@@ -500,7 +500,7 @@
     <note>
       <para>
         You can change the idle laptop panel brightness by changing the dconf key
-        <command>org.ukui-power-manager idle-brightness</command>.
+        <command>org.ukui.power-manager idle-brightness</command>.
       </para>
     </note>
   </section>
@@ -522,7 +522,7 @@
     <itemizedlist>
       <listitem>
         <para>
-          <command>org.ukui-power-manager lock-use-screensaver</command>
+          <command>org.ukui.power-manager lock-use-screensaver</command>
         </para>
       </listitem>
     </itemizedlist>
@@ -534,17 +534,17 @@
     <itemizedlist>
       <listitem>
         <para>
-          <command>org.ukui-power-manager lock-blank-screen</command>
+          <command>org.ukui.power-manager lock-blank-screen</command>
         </para>
       </listitem>
       <listitem>
         <para>
-          <command>org.ukui-power-manager lock-suspend</command>
+          <command>org.ukui.power-manager lock-suspend</command>
         </para>
       </listitem>
       <listitem>
         <para>
-          <command>org.ukui-power-manager lock-hibernate</command>
+          <command>org.ukui.power-manager lock-hibernate</command>
         </para>
       </listitem>
     </itemizedlist>
@@ -684,8 +684,8 @@
     <para>
       You have to change the DPMS suspend mode &application; uses.
       Open <command>dconf-editor</command>, and then change the keys 
-      <literal>org.ukui-power-manager dpms-method-ac</literal> and
-      <literal>org.ukui-power-manager dpms-method-battery</literal>
+      <literal>org.ukui.power-manager dpms-method-ac</literal> and
+      <literal>org.ukui.power-manager dpms-method-battery</literal>
       to one of the modes that work, e.g. standby, suspend or off.
     </para>
   </section>
@@ -699,10 +699,10 @@
       You might be able to use the percentage charge for g-p-m to use as the
       policy data.
       Open <command>dconf-editor</command>, and then change the key 
-      <command>org.ukui-power-manager use-time-for-policy</command> to false.
+      <command>org.ukui.power-manager use-time-for-policy</command> to false.
       You can do this easily by doing:
       <command>
-        gsettings get org.ukui-power-manager use-time-for-policy false
+        gsettings get org.ukui.power-manager use-time-for-policy false
       </command>
     </para>
     <para>

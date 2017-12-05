@@ -237,7 +237,7 @@ data/Makefile
 data/ukui-power-manager.desktop.in
 data/ukui-power-preferences.desktop.in
 data/ukui-power-statistics.desktop.in
-data/org.ukui-power-manager.gschema.xml
+data/org.ukui.power-manager.gschema.xml
 data/icons/Makefile
 data/icons/16x16/Makefile
 data/icons/16x16/actions/Makefile

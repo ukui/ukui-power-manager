@@ -21,7 +21,7 @@ $(service_DATA): $(service_in_files) Makefile
 
 @GSETTINGS_RULES@
 @INTLTOOL_XML_NOMERGE_RULE@
-gsettings_schemas_in_files = org.ukui-power-manager.gschema.xml.in
+gsettings_schemas_in_files = org.ukui.power-manager.gschema.xml.in
 gsettings_SCHEMAS = $(gsettings_schemas_in_files:.xml.in=.xml)
 
 pkgdata_DATA =						\

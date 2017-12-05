@@ -142,97 +142,97 @@ msgstr "पावर व्यवस्थापन"
 msgid "Power management daemon"
 msgstr "पावर व्यवस्थापन डीमन"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:1
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:1
 msgid "Whether to hibernate, suspend or do nothing when inactive"
 msgstr "निष्क्रीय असल्यास हायबरनेट, स्तब्ध किंवा काहीच करायचे नाही"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:2
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:2
 msgid ""
 "The type of sleeping that should be performed when the computer is inactive."
 msgstr "संगणक निष्क्रीय असल्यावर जी निष्क्रीयता केली पाहिजे त्याचे प्रकार. "
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:3
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:3
 msgid "Battery critical low action"
 msgstr "बॅटरी गंभीररित्या संबंधीत कृती"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:4
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:4
 msgid "The action to take when the battery is critically low."
 msgstr "बॅटरी पावर गंभीररित्या कमी झाल्यास करावयाची कृती"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:5
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:5
 msgid ""
 "If the battery event should occur when the lid is shut and the power "
 "disconnected"
 msgstr "झाकन बंद केल्यास व पावर जोडणी काढूण टाकल्यास बॅटरी घटना प्रारंभ वायला पाहिजे का"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:6
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:6
 msgid ""
 "If the battery lid close event should occur (for example 'Suspend when lid "
 "closed on battery') when the lid is previously shut and the AC power "
 "disconnected at a later time."
 msgstr "लीड पूर्वीपासून बंद असल्यास व AC पावरच वापर पुढल्यावेळी मोडल्यास लीड बंद करायची घटना निर्मान करायची का (उदाहरणार्थ 'बॅटरीचे लीड बंद केल्यास स्तब्ध करा')."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:7
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:7
 msgid "UPS critical low action"
 msgstr "UPS गंभीररित्या किमान असल्यावरची कृती"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:8
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:8
 msgid "The action to take when the UPS is critically low."
 msgstr "UPS विद्युत शक्ती गंभीररीत्या कमी झाल्यास हे करायचे "
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:9
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:9
 msgid "UPS low power action"
 msgstr "UPS गंभीररित्या किमान असल्यावरची कृती"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:10
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:10
 msgid "The action to take when the UPS is low."
 msgstr "UPS विद्युत शक्ती कमी झाल्यास हे करायचे "
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:11
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:11
 msgid "Allow backlight brightness adjustment"
 msgstr "पार्श्वभूमी तेजपणा सुस्थितीस सहमती द्या"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:12
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:12
 msgid ""
 "If the screen brightness should be changed when switching between AC and "
 "battery power."
 msgstr "AC व बॅटरी पावरचा वापरकरतेवेळी सक्रीनचे तेजपणा बदलवायचे."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:13
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:13
 msgid "Reduce the backlight brightness when on battery power"
 msgstr "बॅटरी वापरतेवेळी पार्श्वभूमीतील तेजपणा कमी करा"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:14
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:14
 msgid ""
 "If the screen should be reduced in brightness when the computer is on "
 "battery power."
 msgstr "बॅटरी पावर वापरतेवेळी पडद्याचे तेजपणा मंद केले पाहिजे का."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:15
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:15
 msgid "Reduce the keyboard backlight when on battery power"
 msgstr ""
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:16
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:16
 msgid ""
 "If the keyboard backlight brightness should be reduced when the computer is "
 "on battery power"
 msgstr ""
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:17
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:17
 msgid "Keyboard backlight brightness when on AC power."
 msgstr ""
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:18
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:18
 msgid ""
 "Percent brightness to set keyboard backlight at when on AC power. Legal "
 "values are between 0 and 100."
 msgstr ""
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:19
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:19
 msgid "Percent to reduce keyboard backlight by when on battery power."
 msgstr ""
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:21
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:21
 #, no-c-format
 msgid ""
 "The percentage to reduce the keyboard backlight by when on battery power. "
@@ -240,11 +240,11 @@ msgid ""
 "power. Legal values are between 0 and 100."
 msgstr ""
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:22
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:22
 msgid "Percent to reduce keyboard backlight by when idle."
 msgstr ""
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:24
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:24
 #, no-c-format
 msgid ""
 "The percentage to reduce the keyboard backlight by when idle. For example, "
@@ -252,482 +252,482 @@ msgid ""
 " between 0 and 100."
 msgstr ""
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:25
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:25
 msgid "The brightness of the screen when idle"
 msgstr "रिकामे असतेवेळी पडद्याचे तेजपणा"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:26
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:26
 msgid ""
 "This is the laptop panel screen brightness used when the session is idle. "
 "Only valid when use-time-for-policy is true."
 msgstr "सत्र रिकामे असल्यास या लॅपटॉप पटलवरील पडदा तेजपणा वापरले जाते. तेव्हाच वैध असते जेव्हा use_time_for_policy खरे राहते."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:27
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:27
 msgid "Dim the screen after a period of inactivity when on battery power"
 msgstr "बॅटरी पावर वापरतेवेळी निष्क्रीय काळानंतर पडदा मंद करा"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:28
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:28
 msgid ""
 "If the screen should be dimmed to save power when the computer is idle when "
 "on battery power."
 msgstr "बॅटरी पावर वापरतेवेळी संगणक रिकामे असल्यास पावर संचयीत करण्याकरीता पडदा मंद केले पाहिजे का."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:29
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:29
 msgid "The default amount of time to dim the screen after idle"
 msgstr "रिकामे राहील्यावर पडदा मंद करायची मुलभूत वेळ"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:30
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:30
 msgid "The default amount of time to dim the screen after idle."
 msgstr "रिकामे राहील्यावर पडदा मंद करायची मुलभूत वेळ."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:31
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:31
 msgid "LCD dimming amount when on battery"
 msgstr "बॅटरी कार्यरत असतेवेळी LCD मंदपणा"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:32
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:32
 msgid ""
 "The amount to dim the brightness of the display when on battery power. "
 "Possible values are between 0 and 100."
 msgstr "बॅटरी पावर वापरतेवेळी पडद्याचा मंदपणा किती प्रमाणाने कमी करायचे. संभाव्य मुल्य 0 व 100 या अंतर्गत आहे."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:33
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:33
 msgid "Dim the screen after a period of inactivity when on AC power"
 msgstr "AC पावर वापरतेवेळी निष्क्रीय काळानंतर पडदा मंद करा"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:34
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:34
 msgid ""
 "If the screen should be dimmed to save power when the computer is idle when "
 "on AC power."
 msgstr "संगणक अकार्यक्षम व AC पावर वापरतेवेळी पावर वापर कमी करण्याकरीता पडदा मंदा करायचे का."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:35
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:35
 msgid "Method used to blank screen on AC"
 msgstr "AC वापरतेवेळी पडदा रिकामे करायची पध्दत"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:36
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:36
 msgid "The DPMS method used to blank the screen when on AC power."
 msgstr "AC पावरचा वापर करतेवेळी पडदा रिकामे करण्यासाठी वापरण्याजोगी DPMS पद्धत."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:37
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:37
 msgid "Method used to blank screen on battery"
 msgstr "बॅटरी वापरतेवेळी पडदा रिकामे करायची पध्दत"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:38
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:38
 msgid "The DPMS method used to blank the screen when on battery power."
 msgstr "बॅटरी पावरचा वापर करतेवेळी पडदा रिकामे करण्यासाठी वापरण्याजोगी DPMS पद्धत."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:39
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:39
 msgid "LCD brightness when on AC"
 msgstr "AC कार्यरत असतेवेळी LCD तेजपणा"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:40
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:40
 msgid ""
 "The brightness of the display when on AC power. Possible values are between "
 "0.0 and 100.0."
 msgstr "AC पावर वापरतेवेळी पडद्याचे तेजपणा. संभाव्य मुल्य 0 व 100 या अंतर्गत आहे."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:41
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:41
 msgid "Suspend button action"
 msgstr "स्तब्ध बटण कृती"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:42
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:42
 msgid "The action to take when the system suspend button is pressed."
 msgstr "प्रणाली स्थगित करायची कळ दाबल्यावर करायची कृती."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:43
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:43
 msgid "Hibernate button action"
 msgstr "हायबरनेट बटण कृती"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:44
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:44
 msgid "The action to take when the system hibernate button is pressed."
 msgstr "प्रणाली निष्क्रिय करायची कळ दाबल्यावर करायची कृती."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:45
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:45
 msgid "Power button action"
 msgstr "Power बटणची कृती"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:46
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:46
 msgid "The action to take when the system power button is pressed."
 msgstr "प्रणाली सुरु/बंद करायची कळ दाबल्यावर करायची कृती."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:47
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:47
 msgid "Laptop lid close action on battery"
 msgstr "बॅटरीवरील लॅपटॉप बंद करतेवेळीची कृती"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:48
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:48
 msgid ""
 "The action to take when the laptop lid is closed and the laptop is on "
 "battery power."
 msgstr "लॅपटॉप बंद केल्यावर व लॅपटॉप बॅटरी वर चालवितेवेळी प्रतिसादात्मक घेण्याजोगी कृती."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:49
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:49
 msgid "Laptop lid close action when on AC"
 msgstr "AC वापरतेवेळी लॅपटॉप बंद करतेवेळीची कृती"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:50
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:50
 msgid ""
 "The action to take when the laptop lid is closed and the laptop is on AC "
 "power."
 msgstr "लॅपटॉप बंद केल्यावर व लॅपटॉप AC पावर वर चालवितेवेळी प्रतिसादात्मक घेण्याजोगी कृती."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:51
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:51
 msgid "Whether to use time-based notifications"
 msgstr "वेळ-आधारीत सूचना वापरायचे का"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:52
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:52
 msgid ""
 "If time based notifications should be used. If set to false, then the "
 "percentage change is used instead, which may fix a broken ACPI BIOS."
 msgstr "वेळेवर आधारीत सूचना वापरायचे का. खोटे निश्चित केल्यास, टक्केवारी बदल वापरले जाते, ज्यामुळे दोषीत ACPI BIOS ठिक करू शकते."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:53
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:53
 msgid "Check CPU load before sleeping"
 msgstr "CPU ओझे निष्क्रीय होण्यापूर्वी तपासा"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:54
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:54
 msgid "If the CPU load should be checked before doing the idle action."
 msgstr "योग्य कृती करण्यापूर्वी CPU ओझे तपासायचे का."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:55
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:55
 msgid "Whether NetworkManager should be connected and disconnected on sleep."
 msgstr "संगणक झोपेमध्ये जाण्यापूर्वी NetworkManager जुळवणी रद्द केले पाहिजे व त्यानंतर लगेच पुन्हस्थापीतही केले पाहिजे का."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:56
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:56
 msgid ""
 "Whether NetworkManager should disconnect before suspending or hibernating "
 "and connect on resume."
 msgstr "NetworkManager स्तब्ध किंवा हायबरनेट पूर्वी जुळवणी रद्द केले पाहिजे व त्यानंतर लगेच पुन्हस्थापीतही केले पाहिजे का."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:57
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:57
 msgid "Use ukui-screensaver lock setting"
 msgstr "ukui-screensaver कुलूपबंद संयोजना वापरा"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:58
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:58
 msgid ""
 "Whether to use the screen lock setting of ukui-screensaver to decide if the "
 "screen is locked after a hibernate, suspend or blank screen."
 msgstr "हायबरनेट, स्तब्ध किंवा पडदा रिकामी केल्यास ukui-screensaver चे पडदा कुलूपबंध संयोजना वापरायचे का."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:59
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:59
 msgid "Lock screen when blanked"
 msgstr "पडद्यावर काहीच दिसत नसल्यास कुलूपबंद करा"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:60
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:60
 msgid ""
 "Whether the screen is locked when the screen is turned off. Only used if "
 "lock-use-screensaver is false."
 msgstr "पडदा पूर्णपणे बंद केल्यावर पडदा कुलूपबंद करायचे का. lock_use_screensaver खोटे असल्यावरच वापरले जाते."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:61
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:61
 msgid "Lock screen on suspend"
 msgstr "स्तब्धवापरतेवेळी पडदा कुलूपबंद करा"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:62
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:62
 msgid ""
 "Whether the screen is locked when the computer wakes up from a suspend. Only"
 " used if lock-use-screensaver is false."
 msgstr "स्तब्धता पासून सक्रीय होताच पडदा कुलूपबंद करायचे का. lock_use_screensaver खोटे असल्यावरच वापरले जाते."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:63
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:63
 msgid "Lock screen on hibernate"
 msgstr "हायबरनेट असतेवेळी पडदा कुलूपबंद करा"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:64
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:64
 msgid ""
 "Whether the screen is locked when the computer wakes up from a hibernate. "
 "Only used if lock-use-screensaver is false."
 msgstr "हायबरनेट पासून सक्रीय होताच पडदा कुलूपबंद करायचे का. lock_use_screensaver खोटे असल्यावरच वापरले जाते."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:65
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:65
 msgid "Lock GNOME keyring on sleep"
 msgstr ""
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:66
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:66
 msgid ""
 "Whether the GNOME keyring is locked before the computer enters suspend. This"
 " means the keyring will have to be unlocked on resume."
 msgstr ""
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:67
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:67
 msgid ""
 "Whether the GNOME keyring is locked before the computer enters hibernate. "
 "This means the keyring will have to be unlocked on resume."
 msgstr ""
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:68
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:68
 msgid "If we should show the low capacity warning for a broken battery"
 msgstr "दोषीत बॅटरी करीता किमान क्षमता सावधानता दर्शवायचे का"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:69
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:69
 msgid "If we should show the low capacity warning for a broken battery."
 msgstr "दोषीत बॅटरी करीता किमान क्षमता सावधानता दर्शवायचे का."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:70
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:70
 msgid "Notify when AC adapter is disconnected"
 msgstr "AC अडॅप्टर जुळवणी मोडल्यास सूचीत करा"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:71
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:71
 msgid "If the user should be notified when the AC adapter is disconnected."
 msgstr "AC अडॅप्टर जोडणी मोडल्यावरही वापरकर्त्यास सूचीत केले पाहिजे का."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:72
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:72
 msgid "Notify when fully charged"
 msgstr "पूर्णतया चार्ज झाल्यास सूचीत करा"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:73
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:73
 msgid ""
 "If a notification message should be displayed when the battery is fully "
 "charged."
 msgstr "बॅटरी पूर्णतया चार्ज असल्यावर सूचना संदेश दर्शविले पाहिजे का."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:74
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:74
 msgid "Notify on a sleep failure"
 msgstr "निष्क्रीय अपयशी असल्यास सूचीत करा"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:75
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:75
 msgid ""
 "If a notification message should be displayed after suspend or hibernate "
 "failed."
 msgstr "स्तब्ध किंवा हायबरनेट अपयशी झाल्यास सूचना संदेश दर्शविले पाहिजे का."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:76
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:76
 msgid "The URI to show to the user on sleep failure"
 msgstr "sleep अपयशी ठरल्यास वापरकर्त्याला दाखवण्याजोगी URI"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:77
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:77
 msgid ""
 "When sleep fails we can show the user a button to help fix the situation. "
 "Leave this blank if the button should not be shown."
 msgstr "sleep अपयशी ठरल्यास स्थितीचे निवारण करीता वापरकर्त्याला बटन दाखवले जाऊ शकते. बटन दाखवायचे नसल्यास यांस रिकामे सोडा."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:78
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:78
 msgid "Notify on a low power"
 msgstr "कमी पावर वापरणीवेळी सूचीत करा"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:79
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:79
 msgid ""
 "If a notification message should be displayed when the battery is getting "
 "low."
 msgstr "बॅटरी स्थर कमी होत असल्यावेळी सूचना संदेश दर्शविले पाहिजे का."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:80
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:80
 msgid "Whether we should show the history data points"
 msgstr "ऐतिहासिक माहिती दाखवायची का"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:81
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:81
 msgid ""
 "Whether we should show the history data points in the statistics window."
 msgstr "आकडेवारी चौकटीत ऐतिहासिक माहिती दाखवायची का"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:82
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:82
 msgid "Whether we should smooth the history data"
 msgstr "ऐतिहासिक माहिती गुळगुळीत करायची का"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:83
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:83
 msgid "Whether we should smooth the history data in the graph."
 msgstr "ग्राफ मधिल ऐतिहासिक माहिती गुळगुळीत करायची का."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:84
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:84
 msgid "The default graph type to show for history"
 msgstr "भूतकाळासाठी दर्शविण्याजोगी मुलभूत ग्राफ प्रकार"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:85
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:85
 msgid "The default graph type to show in the history window."
 msgstr "ऐतिहासिक पटलात दर्शविण्याजोगी मुलभूत ग्राफ प्रकार."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:86
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:86
 msgid "The maximum time displayed for history"
 msgstr "भूतकाळासाठी दर्शवलेली कमाल वेळेची कालावधी"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:87
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:87
 msgid ""
 "The maximum duration of time displayed on the x-axis of the history graph."
 msgstr "ऐतिहासिक ग्राफच्या x-axis वर दर्शवलेली कमाल वेळेची कालावधी."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:88
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:88
 msgid "Whether we should show the stats data points"
 msgstr "आकडेवारीची मुल्ये दाखवायची का"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:89
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:89
 msgid "Whether we should show the stats data points in the statistics window."
 msgstr "आकडेवारी चौकटीत आकडेवारीची मुल्ये दाखवायची का"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:90
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:90
 msgid "Whether we should smooth the stats data"
 msgstr "आकडेवारीची माहिती गुळगुळीत करायची का"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:91
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:91
 msgid "Whether we should smooth the stats data in the graph."
 msgstr "ग्राफ मधिल आकडेवारीची माहिती गुळगुळीत करायची का."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:92
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:92
 msgid "The default graph type to show for stats"
 msgstr "आकडेवारीसाठी दर्शविण्याजोगी मुलभूत ग्राफ प्रकार"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:93
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:93
 msgid "The default graph type to show in the stats window."
 msgstr "आकडेवारी चौकट मध्ये दर्शविण्याजोगी मुलभूत ग्राफ प्रकार."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:94
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:94
 msgid "The index of the page number to show by default"
 msgstr "पान क्रमांकाची सूची मुलभूतप्रकारे दाखवायची का"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:95
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:95
 msgid ""
 "The index of the page number to show by default which is used to return "
 "focus to the correct page."
 msgstr "पान क्रमांकाची मुलभूतप्रकारे दाखवायची सूची जी बरोबर पानाला जाण्यासाठी वापरली जाईल."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:96
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:96
 msgid "The ID of the last device selected"
 msgstr "शेवटच्या निवडलेल्या साधनाचा ID"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:97
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:97
 msgid ""
 "The identifier of the last device which is used to return focus to the "
 "correct device."
 msgstr "शेवटच्या साधनाचा अभिज्ञापक जो बरोबर साधनाला जाण्यासाठी वापरला जाईल."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:98
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:98
 msgid "Percentage considered low"
 msgstr "किमान स्थर दर्शविणारी टक्केवारी"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:99
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:99
 msgid ""
 "The percentage of the battery when it is considered low. Only valid when "
 "use-time-for-policy is false."
 msgstr "बॅटरीची कार्यक्षमता किमान आढळल्यास त्याची टक्केवारी. तेव्हा वैध असते जेव्हा use_time_for_policy खोटे असते."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:100
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:100
 msgid "Percentage considered critical"
 msgstr "गंभीररित्या दर्शविणारी टक्केवारी"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:101
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:101
 msgid ""
 "The percentage of the battery when it is considered critical. Only valid "
 "when use-time-for-policy is false."
 msgstr "बॅटरी गंभीररित्या आढळल्यास त्याची टक्केवारी. तेव्हा वैध असते जेव्हा use_time_for_policy खोटे असते."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:102
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:102
 msgid "Percentage action is taken"
 msgstr "टक्केवारी प्रतिसादात्मक कृती केली जाते"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:103
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:103
 msgid ""
 "The percentage of the battery when the critical action is performed. Only "
 "valid when use-time-for-policy is false."
 msgstr "बॅटरी गंभीररित्या कार्य केल्यास त्याची टक्केवारी. तेव्हा वैध असते जेव्हा use_time_for_policy खोटे असते."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:104
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:104
 msgid "The time remaining when low"
 msgstr "किमान असल्यावर उर्वरीत वेळ"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:105
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:105
 msgid ""
 "The time remaining in seconds of the battery when it is considered low. Only"
 " valid when use-time-for-policy is true."
 msgstr "बॅटरी कार्यक्षमता किमान आढळल्यास सेकंदामधिल उर्वरीत वेळ. तेव्हा वैध असते जेव्हा use_time_for_policy खरे असते."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:106
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:106
 msgid "The time remaining when critical"
 msgstr "गंभीररित्या असल्यास उपलब्ध उर्वरीत वेळ"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:107
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:107
 msgid ""
 "The time remaining in seconds of the battery when it is considered critical."
 " Only valid when use-time-for-policy is true."
 msgstr "बॅटरी गंभीररित्या कार्य केल्यास सेकंदामधिल उर्वरीत वेळ. तेव्हा वैध असते जेव्हा use_time_for_policy खरे असते."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:108
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:108
 msgid "The time remaining when action is taken"
 msgstr "प्रतिसादात्मक कृती कार्यरत केल्यावर उपलब्ध उर्वरीत वेळ"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:109
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:109
 msgid ""
 "The time remaining in seconds of the battery when critical action is taken. "
 "Only valid when use-time-for-policy is true."
 msgstr "बॅटरी गंभीररित्या कार्य केल्यास सेकंदामधिल उर्वरीत वेळ. तेव्हा वैध असते जेव्हा use_time_for_policy खरे असते."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:110
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:110
 msgid "Sleep timeout computer when on battery"
 msgstr "बॅटरी पावरचा वापरकरतेवेळी संगणकाला sleep timeout करा"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:111
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:111
 msgid ""
 "The amount of time in seconds the computer on battery power needs to be "
 "inactive before it goes to sleep."
 msgstr "संगणक AC पावर वापरतेवेळी दृश्य निष्क्रीय होण्यापूर्वी सेकंदामध्ये दर्शवलेली वेळ."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:112
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:112
 msgid "Sleep timeout computer when on AC"
 msgstr "AC पावरचा वापरकरतेवेळी संगणकाला sleep timeout करा"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:113
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:113
 msgid ""
 "The amount of time in seconds the computer on AC power needs to be inactive "
 "before it goes to sleep."
 msgstr "संगणक AC पावर वापरतेवेळी संगणक निष्क्रीय होण्यापूर्वी सेकंदात दर्शवलेली वेळ."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:114
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:114
 msgid "Sleep timeout computer when on UPS"
 msgstr "UPS पावरचा वापरकरतेवेळी संगणकाला sleep timeout करा"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:115
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:115
 msgid ""
 "The amount of time in seconds the computer on UPS power needs to be inactive"
 " before it goes to sleep."
 msgstr "संगणक UPS पावर वापरतेवेळी संगणक निष्क्रीय होण्यापूर्वी सेकंदात दर्शवलेली वेळ."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:116
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:116
 msgid "Sleep timeout display when on AC"
 msgstr "AC पावरचा वापरकरतेवेळी दृष्य sleep timeout करा"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:117
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:117
 msgid ""
 "The amount of time in seconds before the display goes to sleep when the "
 "computer is on AC power."
 msgstr "संगणक AC पावर वापरतेवेळी दृश्य निष्क्रीय होण्यापूर्वी सेकंदात दर्शवलेली वेळ."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:118
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:118
 msgid "Sleep timeout display when on battery"
 msgstr "AC वापरतेवेळी संगणाकावरील निष्क्रीयता कालबाह्य दृश्य"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:119
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:119
 msgid ""
 "The amount of time in seconds the computer on battery power needs to be "
 "inactive before the display goes to sleep."
 msgstr "संगणक बॅटरी पावर वापरतेवेळी दृश्य निष्क्रीय होण्यापूर्वी सेकंदात दर्शवलेली वेळ."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:120
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:120
 msgid "Sleep timeout display when on UPS"
 msgstr "UPS पावरचा वापरकरतेवेळी दृष्य sleep timeout करा"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:121
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:121
 msgid ""
 "The amount of time in seconds the computer on UPS power needs to be inactive"
 " before the display goes to sleep."
 msgstr "संगणक UPS पावर वापरतेवेळी संगणक निष्क्रीय व दृष्य निष्क्रीय होण्यापूर्वी सेकंदात दर्शवलेली वेळ."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:122
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:122
 msgid "If sounds should be used"
 msgstr "आवाज वापराचे का"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:123
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:123
 msgid ""
 "If sounds should be used when the power is critically low, or inhibit "
 "requests have stopped the policy action."
 msgstr "पावर गंभीररित्या कमी असल्यास, किंवा विनंती थांबविल्यामुळे करार कृती स्तब्द जाल्यास."
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:124
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:124
 msgid ""
 "If preferences and statistics items should be shown in the context menu"
 msgstr "संदर्भ मेनू मध्ये प्राधान्ये आणि आकडेवारी दाखायची का "
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:125
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:125
 msgid "When to show the notification icon"
 msgstr "सूचना चिन्ह कधी दर्शवायचे"
 
-#: ../data/org.ukui-power-manager.gschema.xml.in.h:126
+#: ../data/org.ukui.power-manager.gschema.xml.in.h:126
 msgid "Display options for the notification icon."
 msgstr "सूचना चिन्हासाठी पर्याय दाखवा."
 

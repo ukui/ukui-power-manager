@@ -26,6 +26,6 @@ To build, UKUI Power Manager requires
 
 To work properly, ukui-power-manager requires udevd and upowerd to be running.
 
-UKUI Power Manager is a fork of UKUI Power Manager.
+UKUI Power Manager is a fork of MATE Power Manager.
 
 For more information, please see http://www.ukui.org/

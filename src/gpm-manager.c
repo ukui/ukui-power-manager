@@ -2,6 +2,7 @@
  *
  * Copyright (C) 2005 William Jon McCann <mccann@jhu.edu>
  * Copyright (C) 2005-2008 Richard Hughes <richard@hughsie.com>
+ * Copyright (C) 2013-2017 Xiang Li <lixiang@kylinos.cn>
  *
  * Licensed under the GNU General Public License Version 2
  *
@@ -97,6 +98,7 @@ struct GpmManagerPrivate
 	GtkStatusIcon		*status_icon;
 	NotifyNotification	*notification_general;
 	NotifyNotification	*notification_warning_low;
+        NotifyNotification      *notification_below_critical;
 	NotifyNotification	*notification_discharging;
 	NotifyNotification	*notification_fully_charged;
 	gint32                   systemd_inhibit;
@@ -446,7 +448,8 @@ gpm_manager_notify_close (GpmManager *manager, NotifyNotification *notification)
 
 	/* try to close */
 	ret = notify_notification_close (notification, &error);
-	if (!ret) {
+//	if (!ret) {
+        if (!ret && error) {//kobe
 		egg_warning ("failed to close notification: %s", error->message);
 		g_error_free (error);
 		goto out;
@@ -463,7 +466,8 @@ gpm_manager_notification_closed_cb (NotifyNotification *notification, NotifyNoti
 {
 	egg_debug ("caught notification closed signal %p", notification);
 	/* the object is already unreffed in _close_signal_handler */
-	*notification_class = NULL;
+        //kobe
+        //notification_class = NULL;  之所以注释掉是因为会导致同一类的notification出现多个
 }
 
 /**
@@ -631,16 +635,32 @@ gpm_manager_action_suspend (GpmManager *manager, const gchar *reason)
 	GError *error = NULL;
 
 	/* check to see if we are inhibited */
-	if (gpm_manager_is_inhibit_valid (manager, FALSE, "suspend") == FALSE)
-		return FALSE;
+        if (gpm_manager_is_inhibit_valid (manager, FALSE, "suspend") == FALSE)
+                return FALSE;
+
+        //kobe
+        GString *error_message = NULL;
+        error_message = g_string_new("");
 
 	egg_debug ("suspending, reason: %s", reason);
 	ret = gpm_control_suspend (manager->priv->control, &error);
 	if (!ret) {
-		gpm_manager_sleep_failure (manager, TRUE, error->message);
-		g_error_free (error);
+            //kobe
+            if(error) {
+                g_string_append (error_message, error->message);
+                g_error_free (error);
+            }
+            else {
+                g_string_append (error_message, _("Suspend failed for some reason (maybe dbus error)"));
+            }
+            gpm_manager_sleep_failure (manager, TRUE, error_message->str);
+            //gpm_manager_sleep_failure (manager, TRUE, error->message);
+            //g_error_free (error);
 	}
 	gpm_button_reset_time (manager->priv->button);
+        //kobe
+        g_string_free(error_message,TRUE);
+
 	return TRUE;
 }
 
@@ -657,13 +677,28 @@ gpm_manager_action_hibernate (GpmManager *manager, const gchar *reason)
 	if (gpm_manager_is_inhibit_valid (manager, FALSE, "hibernate") == FALSE)
 		return FALSE;
 
+        //kobe
+        GString *error_message = NULL;
+        error_message = g_string_new("");
+
 	egg_debug ("hibernating, reason: %s", reason);
 	ret = gpm_control_hibernate (manager->priv->control, &error);
 	if (!ret) {
-		gpm_manager_sleep_failure (manager, TRUE, error->message);
-		g_error_free (error);
+            if(error) {
+                g_string_append (error_message, error->message);
+                g_error_free (error);
+            }
+            else {
+                g_string_append (error_message, _("Hibernate failed for some reason (maybe dbus error)"));
+            }
+            gpm_manager_sleep_failure (manager, FALSE, error_message->str);
+                //gpm_manager_sleep_failure (manager, TRUE, error->message);
+                //g_error_free (error);
 	}
 	gpm_button_reset_time (manager->priv->button);
+        //kobe
+        g_string_free(error_message,TRUE);
+
 	return TRUE;
 }
 
@@ -741,28 +776,38 @@ gpm_manager_idle_do_sleep (GpmManager *manager)
 		egg_debug ("suspending, reason: System idle");
 		ret = gpm_control_suspend (manager->priv->control, &error);
 		if (!ret) {
-			egg_warning ("cannot suspend (error: %s), so trying hibernate", error->message);
-			g_error_free (error);
-			error = NULL;
-			ret = gpm_control_hibernate (manager->priv->control, &error);
-			if (!ret) {
-				egg_warning ("cannot suspend or hibernate: %s", error->message);
-				g_error_free (error);
-			}
+                    if (error) {//kobe
+                        egg_warning ("cannot suspend (error: %s), so trying hibernate", error->message);
+                        g_error_free (error);
+                        error = NULL;
+                    }
+                    ret = gpm_control_hibernate (manager->priv->control, &error);
+                    if (!ret) {
+                        if(error) {//kobe
+                            egg_warning ("cannot suspend or hibernate: %s", error->message);
+                            g_error_free (error);
+                            error = NULL;
+                        }
+                    }
 		}
 
 	} else if (policy == GPM_ACTION_POLICY_HIBERNATE) {
 		egg_debug ("hibernating, reason: System idle");
 		ret = gpm_control_hibernate (manager->priv->control, &error);
 		if (!ret) {
-			egg_warning ("cannot hibernate (error: %s), so trying suspend", error->message);
-			g_error_free (error);
-			error = NULL;
-			ret = gpm_control_suspend (manager->priv->control, &error);
-			if (!ret) {
-				egg_warning ("cannot suspend or hibernate: %s", error->message);
-				g_error_free (error);
-			}
+                    if(error) {//kobe
+                        egg_warning ("cannot hibernate (error: %s), so trying suspend", error->message);
+                        g_error_free (error);
+                        error = NULL;
+                    }
+                    ret = gpm_control_suspend (manager->priv->control, &error);
+                    if (!ret) {
+                        if(error) {//kobe
+                            egg_warning ("cannot suspend or hibernate: %s", error->message);
+                            g_error_free (error);
+                            error = NULL;
+                        }
+                    }
 		}
 	}
 }
@@ -981,6 +1026,7 @@ gpm_manager_client_changed_cb (UpClient *client, GpmManager *manager)
 		egg_debug ("clearing notify due ac being present");
 		gpm_manager_notify_close (manager, manager->priv->notification_warning_low);
 		gpm_manager_notify_close (manager, manager->priv->notification_discharging);
+                gpm_manager_notify_close (manager, manager->priv->notification_below_critical);//kobe
 	}
 
 	/* if we are playing a critical charge sound loop, stop it */
@@ -1168,6 +1214,7 @@ gpm_manager_engine_fully_charged_cb (GpmEngine *engine, UpDevice *device, GpmMan
 		/* hide the discharging notification */
 		gpm_manager_notify_close (manager, manager->priv->notification_warning_low);
 		gpm_manager_notify_close (manager, manager->priv->notification_discharging);
+                gpm_manager_notify_close (manager, manager->priv->notification_below_critical);//kobe
 
 		/* TRANSLATORS: show the charged notification */
 		title = ngettext ("Battery Charged", "Batteries Charged", plural);
@@ -1557,6 +1604,151 @@ out:
 	g_free (message);
 }
 
+//kobe
+/**
+ * gpm_manager_engine_charge_critical_notify_cb:
+ */
+static void
+gpm_manager_engine_charge_critical_notify_cb (GpmEngine *engine, UpDevice *device, GpmManager *manager)
+{
+        const gchar *title = NULL;
+        gchar *message = NULL;
+        gchar *icon = NULL;
+        UpDeviceKind kind;
+        gdouble percentage;
+        gint64 time_to_empty;
+        GpmActionPolicy policy;
+        UpDeviceState state;
+        gboolean ret;
+
+        /* get device properties */
+        g_object_get (device,
+                      "kind", &kind,
+                      "state", &state,
+                      "percentage", &percentage,
+                      "time-to-empty", &time_to_empty,
+                      NULL);
+
+        /* check to see if the batteries have not noticed we are on AC */
+        if (kind == UP_DEVICE_KIND_BATTERY) {
+                if (state == UP_DEVICE_STATE_CHARGING && !manager->priv->on_battery) {
+                        egg_warning ("ignoring critically low message as we are not on battery power");
+                        goto out;
+                }
+        }
+
+        if (kind == UP_DEVICE_KIND_BATTERY) {
+                /* if the user has no other batteries, drop the "Laptop" wording */
+                ret = gpm_manager_engine_just_laptop_battery (manager);
+                if (ret) {
+                        /* TRANSLATORS: laptop battery critically low, and only have one kind of battery */
+                        title = _("Battery critically low");
+                } else {
+                        /* TRANSLATORS: laptop battery critically low, and we have more than one type of battery */
+                        title = _("Laptop battery critically low");
+                }
+
+                /* TRANSLATORS: give the user a ultimatum */
+                message = g_strdup_printf (_("Battery power is too low, please plug in the power to ensure the normal use"));
+
+        } else if (kind == UP_DEVICE_KIND_UPS) {
+                gchar *remaining_text;
+
+                /* TRANSLATORS: the UPS is very low */
+                title = _("UPS critically low");
+                remaining_text = gpm_get_timestring (time_to_empty);
+
+                /* TRANSLATORS: give the user a ultimatum */
+                message = g_strdup_printf (_("Approximately <b>%s</b> of remaining UPS power (%.0f%%). "
+                                             "Restore AC power to your computer to avoid losing data."),
+                                           remaining_text, percentage);
+                g_free (remaining_text);
+        } else if (kind == UP_DEVICE_KIND_MOUSE) {
+                /* TRANSLATORS: the mouse battery is very low */
+                title = _("Mouse battery low");
+
+                /* TRANSLATORS: the device is just going to stop working */
+                message = g_strdup_printf (_("Wireless mouse is very low in power (%.0f%%). "
+                                             "This device will soon stop functioning if not charged."),
+                                           percentage);
+        } else if (kind == UP_DEVICE_KIND_KEYBOARD) {
+                /* TRANSLATORS: the keyboard battery is very low */
+                title = _("Keyboard battery low");
+
+                /* TRANSLATORS: the device is just going to stop working */
+                message = g_strdup_printf (_("Wireless keyboard is very low in power (%.0f%%). "
+                                             "This device will soon stop functioning if not charged."),
+                                           percentage);
+        } else if (kind == UP_DEVICE_KIND_PDA) {
+                /* TRANSLATORS: the PDA battery is very low */
+                title = _("PDA battery low");
+
+                /* TRANSLATORS: the device is just going to stop working */
+                message = g_strdup_printf (_("PDA is very low in power (%.0f%%). "
+                                             "This device will soon stop functioning if not charged."),
+                                           percentage);
+
+        } else if (kind == UP_DEVICE_KIND_PHONE) {
+
+                /* TRANSLATORS: the cell battery is very low */
+                title = _("Cell phone battery low");
+
+                /* TRANSLATORS: the device is just going to stop working */
+                message = g_strdup_printf (_("Cell phone is very low in power (%.0f%%). "
+                                             "This device will soon stop functioning if not charged."),
+                                           percentage);
+
+        } else if (kind == UP_DEVICE_KIND_MEDIA_PLAYER) {
+
+                /* TRANSLATORS: the cell battery is very low */
+                title = _("Cell phone battery low");
+
+                /* TRANSLATORS: the device is just going to stop working */
+                message = g_strdup_printf (_("Media player is very low in power (%.0f%%). "
+                                             "This device will soon stop functioning if not charged."),
+                                           percentage);
+        } else if (kind == UP_DEVICE_KIND_TABLET) {
+            /* TRANSLATORS: the cell battery is very low */
+            title = _("Tablet battery low");
+
+            /* TRANSLATORS: the device is just going to stop working */
+            message = g_strdup_printf (_("Tablet is very low in power (%.0f%%). "
+                                         "This device will soon stop functioning if not charged."),
+                                       percentage);
+        } else if (kind == UP_DEVICE_KIND_COMPUTER) {
+
+            /* TRANSLATORS: the cell battery is very low */
+            title = _("Attached computer battery low");
+
+            /* TRANSLATORS: the device is just going to stop working */
+            message = g_strdup_printf (_("Attached computer is very low in power (%.0f%%). "
+                                         "The device will soon shutdown if not charged."),
+                                       percentage);
+        }
+
+        /* get correct icon */
+        icon = gpm_upower_get_device_icon (device);
+        gpm_manager_notify (manager, &manager->priv->notification_below_critical, title, message, GPM_MANAGER_NOTIFY_TIMEOUT_LONG, icon, NOTIFY_URGENCY_CRITICAL);
+
+        switch (kind) {
+
+        case UP_DEVICE_KIND_BATTERY:
+        case UP_DEVICE_KIND_UPS:
+            egg_debug ("critical charge level reached, starting sound loop");
+            gpm_manager_play_loop_start (manager,
+                                         GPM_MANAGER_SOUND_BATTERY_LOW,
+                                         TRUE,
+                                         GPM_MANAGER_CRITICAL_ALERT_TIMEOUT);
+            break;
+
+        default:
+            gpm_manager_play (manager, GPM_MANAGER_SOUND_BATTERY_LOW, TRUE);
+        }
+        out:
+        g_free (icon);
+        g_free (message);
+}
+
 /**
  * gpm_manager_engine_charge_action_cb:
  */
@@ -1600,8 +1792,9 @@ gpm_manager_engine_charge_action_cb (GpmEngine *engine, UpDevice *device, GpmMan
 
 		} else if (policy == GPM_ACTION_POLICY_SUSPEND) {
 			/* TRANSLATORS: computer will suspend */
+                        //kobe
 			message = g_strdup (_("The battery is below the critical level and "
-					      "this computer is about to suspend.<br>"
+                                              "this computer is about to suspend."
 					      "<b>NOTE:</b> A small amount of power is required "
 					      "to keep your computer in a suspended state."));
 
@@ -1617,7 +1810,8 @@ gpm_manager_engine_charge_action_cb (GpmEngine *engine, UpDevice *device, GpmMan
 		}
 
 		/* wait 20 seconds for user-panic */
-		timer_id = g_timeout_add_seconds (20, (GSourceFunc) manager_critical_action_do, manager);
+//		timer_id = g_timeout_add_seconds (20, (GSourceFunc) manager_critical_action_do, manager);
+                timer_id = g_timeout_add_seconds (5, (GSourceFunc) manager_critical_action_do, manager);//kobe
 		g_source_set_name_by_id (timer_id, "[GpmManager] battery critical-action");
 
 	} else if (kind == UP_DEVICE_KIND_UPS) {
@@ -1646,7 +1840,8 @@ gpm_manager_engine_charge_action_cb (GpmEngine *engine, UpDevice *device, GpmMan
 		}
 
 		/* wait 20 seconds for user-panic */
-		timer_id = g_timeout_add_seconds (20, (GSourceFunc) manager_critical_action_do, manager);
+//		timer_id = g_timeout_add_seconds (20, (GSourceFunc) manager_critical_action_do, manager);
+                timer_id = g_timeout_add_seconds (5, (GSourceFunc) manager_critical_action_do, manager);//kobe
 		g_source_set_name_by_id (timer_id, "[GpmManager] ups critical-action");
 
 	}
@@ -1659,9 +1854,13 @@ gpm_manager_engine_charge_action_cb (GpmEngine *engine, UpDevice *device, GpmMan
 
 	/* get correct icon */
 	icon = gpm_upower_get_device_icon (device);
-	gpm_manager_notify (manager, &manager->priv->notification_warning_low,
-			    title, message, GPM_MANAGER_NOTIFY_TIMEOUT_NEVER,
-			    icon, NOTIFY_URGENCY_CRITICAL);
+        //kobe
+//	gpm_manager_notify (manager, &manager->priv->notification_warning_low,
+//			    title, message, GPM_MANAGER_NOTIFY_TIMEOUT_NEVER,
+//			    icon, NOTIFY_URGENCY_CRITICAL);
+        gpm_manager_notify (manager, &manager->priv->notification_warning_low,
+                            title, message, GPM_MANAGER_NOTIFY_TIMEOUT_LONG,
+                            icon, NOTIFY_URGENCY_CRITICAL);
 	gpm_manager_play (manager, GPM_MANAGER_SOUND_BATTERY_LOW, TRUE);
 out:
 	g_free (icon);
@@ -1706,6 +1905,10 @@ gpm_manager_reset_just_resumed_cb (gpointer user_data)
 		gpm_manager_notify_close (manager, manager->priv->notification_warning_low);
 	if (manager->priv->notification_discharging != NULL)
 		gpm_manager_notify_close (manager, manager->priv->notification_discharging);
+        //kobe
+        if (manager->priv->notification_below_critical != NULL)
+                gpm_manager_notify_close (manager, manager->priv->notification_below_critical);
+
 	if (manager->priv->notification_fully_charged != NULL)
 		gpm_manager_notify_close (manager, manager->priv->notification_fully_charged);
 
@@ -1847,6 +2050,7 @@ gpm_manager_init (GpmManager *manager)
 	manager->priv->notification_general = NULL;
 	manager->priv->notification_warning_low = NULL;
 	manager->priv->notification_discharging = NULL;
+        manager->priv->notification_below_critical = NULL;//kobe
 	manager->priv->notification_fully_charged = NULL;
 	manager->priv->settings = g_settings_new (GPM_SETTINGS_SCHEMA);
 	g_signal_connect (manager->priv->settings, "changed",
@@ -1854,7 +2058,7 @@ gpm_manager_init (GpmManager *manager)
 	manager->priv->client = up_client_new ();
 #if UP_CHECK_VERSION(0, 99, 0)
 	g_signal_connect (manager->priv->client, "notify::lid-is-closed",
-			  G_CALLBACK (gpm_manager_client_changed_cb), manager);
+                          G_CALLBACK (), manager);
 	g_signal_connect (manager->priv->client, "notify::on-battery",
 			  G_CALLBACK (gpm_manager_client_changed_cb), manager);
 #else
@@ -1939,6 +2143,9 @@ gpm_manager_init (GpmManager *manager)
 			  G_CALLBACK (gpm_manager_engine_charge_critical_cb), manager);
 	g_signal_connect (manager->priv->engine, "charge-action",
 			  G_CALLBACK (gpm_manager_engine_charge_action_cb), manager);
+        //kobe
+        g_signal_connect (manager->priv->engine, "charge-critical-notify",
+                          G_CALLBACK (gpm_manager_engine_charge_critical_notify_cb), manager);
 
 	g_signal_connect (gtk_settings_get_default (),
 	                  "notify::gtk-icon-theme-name",
@@ -1974,6 +2181,11 @@ gpm_manager_finalize (GObject *object)
 		gpm_manager_notify_close (manager, manager->priv->notification_warning_low);
 	if (manager->priv->notification_discharging != NULL)
 		gpm_manager_notify_close (manager, manager->priv->notification_discharging);
+
+        //kobe
+        if (manager->priv->notification_below_critical != NULL)
+                gpm_manager_notify_close (manager, manager->priv->notification_below_critical);
+
 	if (manager->priv->notification_fully_charged != NULL)
 		gpm_manager_notify_close (manager, manager->priv->notification_fully_charged);
 

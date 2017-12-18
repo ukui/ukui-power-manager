@@ -1,6 +1,7 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*-
  *
  * Copyright (C) 2007-2008 Richard Hughes <richard@hughsie.com>
+ * Copyright (C) 2013-2017 Xiang Li <lixiang@kylinos.cn>
  *
  * Licensed under the GNU General Public License Version 2
  *
@@ -34,6 +35,11 @@
 #include "gpm-engine.h"
 #include "gpm-icon-names.h"
 #include "gpm-phone.h"
+
+// kobe
+#include <stdio.h>
+static gboolean GPM_ENGINE_FIRST_START = TRUE;
+static gboolean EMIT_NOTIFY = TRUE;
 
 static void     gpm_engine_finalize   (GObject	  *object);
 
@@ -73,6 +79,7 @@ enum {
 	DISCHARGING,
 	LOW_CAPACITY,
 	DEVICES_CHANGED,
+        CHARGE_CRITICAL_NOTIFY,//kobe
 	LAST_SIGNAL
 };
 
@@ -430,11 +437,20 @@ gpm_engine_get_icon (GpmEngine *engine)
 
 	/* we try PRESENT: BATTERY, UPS */
 	icon = gpm_engine_get_icon_priv (engine, UP_DEVICE_KIND_BATTERY, GPM_ENGINE_WARNING_NONE, FALSE);
-	if (icon != NULL)
-		return icon;
+        if (icon != NULL) {
+            //kobe
+            if (engine->priv->icon_policy == GPM_ICON_POLICY_PRESENT) {//如果用户设置为仅使用电池时显示其图标，则需要进行以下处理
+                UpDeviceState state;
+                g_object_get (engine->priv->battery_composite, "state", &state, NULL);
+                if (state != UP_DEVICE_STATE_DISCHARGING) {
+                    return NULL;
+                }
+            }
+            return icon;
+        }
 	icon = gpm_engine_get_icon_priv (engine, UP_DEVICE_KIND_UPS, GPM_ENGINE_WARNING_NONE, FALSE);
-	if (icon != NULL)
-		return icon;
+        if (icon != NULL)
+            return icon;
 
 	/* policy */
 	if (engine->priv->icon_policy == GPM_ICON_POLICY_PRESENT) {
@@ -925,6 +941,20 @@ gpm_engine_device_removed_cb (UpClient *client, UpDevice *device, GpmEngine *eng
 }
 #endif
 
+//kobe
+gboolean emit_notify_timeout_cb (gpointer data)
+{
+        EMIT_NOTIFY = TRUE;
+        return FALSE;
+}
+
+//kobe
+static void
+gpm_engine_device_monitor_cb (UpClient *client, UpDevice *device, GpmEngine *engine)
+{
+        gpm_engine_recalculate_state (engine);
+}
+
 /**
  * gpm_engine_device_changed_cb:
  **/
@@ -945,6 +975,9 @@ gpm_engine_device_changed_cb (UpClient *client, UpDevice *device, GpmEngine *eng
 	GpmEngineWarning warning_old;
 	GpmEngineWarning warning;
 #endif
+
+        //kobe
+        gpointer data = NULL;
 
 	/* get device properties */
 	g_object_get (device,
@@ -982,7 +1015,48 @@ gpm_engine_device_changed_cb (UpClient *client, UpDevice *device, GpmEngine *eng
 	/* check the warning state has not changed */
 	warning_old = GPOINTER_TO_INT(g_object_get_data (G_OBJECT(device), "engine-warning-old"));
 	warning = gpm_engine_get_warning (engine, device);
-	if (warning != warning_old) {
+
+        //kobe
+        if (GPM_ENGINE_FIRST_START){
+            GPM_ENGINE_FIRST_START = FALSE;
+            if (warning == GPM_ENGINE_WARNING_LOW) {
+                egg_debug ("** EMIT: charge-low");
+                g_signal_emit (engine, signals [CHARGE_LOW], 0, device);
+            } else if (warning == GPM_ENGINE_WARNING_CRITICAL) {
+                egg_debug ("** EMIT: charge-critical");
+                g_signal_emit (engine, signals [CHARGE_CRITICAL], 0, device);
+            } else if (warning == GPM_ENGINE_WARNING_ACTION) {
+                egg_debug ("** EMIT: charge-action");
+                g_signal_emit (engine, signals [CHARGE_ACTION], 0, device);
+            }
+            //save new state
+            g_object_set_data (G_OBJECT(device), "engine-warning-old", GUINT_TO_POINTER(warning));
+        }
+        else {
+            if (warning != warning_old) {
+                if (warning == GPM_ENGINE_WARNING_LOW) {
+                    egg_debug ("** EMIT: charge-low");
+                    g_signal_emit (engine, signals [CHARGE_LOW], 0, device);
+                } else if (warning == GPM_ENGINE_WARNING_CRITICAL) {
+                    egg_debug ("** EMIT: charge-critical");
+                    g_signal_emit (engine, signals [CHARGE_CRITICAL], 0, device);
+                } else if (warning == GPM_ENGINE_WARNING_ACTION) {
+                    egg_debug ("** EMIT: charge-action");
+                    g_signal_emit (engine, signals [CHARGE_ACTION], 0, device);
+                }
+                //save new state
+                g_object_set_data (G_OBJECT(device), "engine-warning-old", GUINT_TO_POINTER(warning));
+            }
+            else {
+                if (warning == GPM_ENGINE_WARNING_ACTION && EMIT_NOTIFY) {
+                    EMIT_NOTIFY = FALSE;
+                    g_timeout_add_seconds (30, (GSourceFunc)emit_notify_timeout_cb, data);
+                    egg_debug ("** EMIT: charge-action-notify");
+                    g_signal_emit (engine, signals [CHARGE_CRITICAL_NOTIFY], 0, device);
+                }
+            }
+        }
+        /*if (warning != warning_old) {
 		if (warning == GPM_ENGINE_WARNING_LOW) {
 			egg_debug ("** EMIT: charge-low");
 			g_signal_emit (engine, signals [CHARGE_LOW], 0, device);
@@ -993,9 +1067,9 @@ gpm_engine_device_changed_cb (UpClient *client, UpDevice *device, GpmEngine *eng
 			egg_debug ("** EMIT: charge-action");
 			g_signal_emit (engine, signals [CHARGE_ACTION], 0, device);
 		}
-		/* save new state */
+                //save new state
 		g_object_set_data (G_OBJECT(device), "engine-warning-old", GUINT_TO_POINTER(warning));
-	}
+        }*/
 
 	gpm_engine_recalculate_state (engine);
 }
@@ -1302,6 +1376,14 @@ gpm_engine_class_init (GpmEngineClass *klass)
 			      G_STRUCT_OFFSET (GpmEngineClass, devices_changed),
 			      NULL, NULL, g_cclosure_marshal_VOID__VOID,
 			      G_TYPE_NONE, 0);
+
+        signals [CHARGE_CRITICAL_NOTIFY] =
+                g_signal_new ("charge-critical-notify",
+                              G_TYPE_FROM_CLASS (object_class),
+                              G_SIGNAL_RUN_LAST,
+                              G_STRUCT_OFFSET (GpmEngineClass, charge_critical_notify),
+                              NULL, NULL, g_cclosure_marshal_VOID__POINTER,
+                              G_TYPE_NONE, 1, G_TYPE_POINTER);
 }
 
 /**

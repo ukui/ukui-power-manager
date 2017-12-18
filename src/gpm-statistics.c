@@ -1,6 +1,7 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*-
  *
  * Copyright (C) 2008 Richard Hughes <richard@hughsie.com>
+ * Copyright (C) 2013-2017 Xiang Li <lixiang@kylinos.cn>
  *
  * Licensed under the GNU General Public License Version 2
  *
@@ -29,6 +30,11 @@
 #include <gtk/gtk.h>
 #include <dbus/dbus-glib.h>
 #include <libupower-glib/upower.h>
+
+//kobe
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 #include "egg-debug.h"
 #include "egg-color.h"
@@ -328,6 +334,31 @@ gpm_stats_get_printable_device_path (UpDevice *device)
 		device_path = g_filename_display_basename (object_path);
 
 	return device_path;
+}
+
+//kobe
+void set_ac_online_value(gchar *filename, gboolean online)
+{
+    if (g_file_test (filename, G_FILE_TEST_EXISTS)) {
+        gchar *contents = NULL;
+        if (FALSE == g_file_get_contents (filename, &contents, NULL, NULL)) {
+            gpm_stats_add_info_data (_("Online"), gpm_stats_bool_to_string (online));
+        }
+        else {
+            g_strdelimit (contents, "\n", '\0');
+            if (g_strcmp0 (contents, "1") == 0)
+                gpm_stats_add_info_data (_("Online"), gpm_stats_bool_to_string (TRUE));
+            else
+                gpm_stats_add_info_data (_("Online"), gpm_stats_bool_to_string (FALSE));
+        }
+        if (contents != NULL) {
+            g_free (contents);
+            contents = NULL;
+        }
+    }
+    else {
+        gpm_stats_add_info_data (_("Online"), gpm_stats_bool_to_string (online));
+    }
 }
 
 /**

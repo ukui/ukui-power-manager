@@ -1,6 +1,7 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*-
  *
  * Copyright (C) 2005-2007 Richard Hughes <richard@hughsie.com>
+ * Copyright (C) 2013-2017 Xiang Li <lixiang@kylinos.cn>
  *
  * Licensed under the GNU General Public License Version 2
  *
@@ -134,6 +135,13 @@ G_BEGIN_DECLS
 /* ukui-screensaver */
 #define GS_SETTINGS_SCHEMA				"org.ukui-screensaver"
 #define GS_SETTINGS_PREF_LOCK_ENABLED			"lock-enabled"
+
+//kobe
+#if __aarch64__
+#define ARCH64                                  TRUE
+#else
+#define ARCH64                                  FALSE
+#endif
 
 typedef enum {
 	GPM_ICON_POLICY_ALWAYS,

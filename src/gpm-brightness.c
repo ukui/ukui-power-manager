@@ -1,6 +1,7 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 8 -*-
  *
  * Copyright (C) 2008-2010 Richard Hughes <richard@hughsie.com>
+ * Copyright (C) 2013-2017 Xiang Li <lixiang@kylinos.cn>
  *
  * Licensed under the GNU General Public License Version 2
  *
@@ -716,6 +717,7 @@ gpm_brightness_up (GpmBrightness *brightness, gboolean *hw_changed)
 		goto out;
 	}
 out:
+        ret = TRUE;//kobe: show the brightness dialog always
 	return ret;
 }
 
@@ -753,12 +755,20 @@ gpm_brightness_down (GpmBrightness *brightness, gboolean *hw_changed)
 			brightness->priv->extension_levels = gpm_brightness_helper_get_value ("get-max-brightness");
 		brightness->priv->extension_current = gpm_brightness_helper_get_value ("get-brightness");
 
+                //kobe
+                /*最低亮度设定为步长*/
+                gint min_brightness = gpm_brightness_get_step (brightness->priv->extension_levels);
+
 		/* decrease by the step, limiting to zero */
-		if (brightness->priv->extension_current > 0) {
+                if (brightness->priv->extension_current > min_brightness0) {//kobe
+//		if (brightness->priv->extension_current > 0) {
 			step = gpm_brightness_get_step (brightness->priv->extension_levels);
 			brightness->priv->extension_current -= step;
-			if (brightness->priv->extension_current < 0)
-				brightness->priv->extension_current = 0;
+//			if (brightness->priv->extension_current < 0)
+//				brightness->priv->extension_current = 0;
+                        //kobe
+                        if (brightness->priv->extension_current < min_brightness)
+                            brightness->priv->extension_current = min_brightness;
 			ret = gpm_brightness_helper_set_value ("set-brightness", brightness->priv->extension_current);
 		}
 		if (hw_changed != NULL)
@@ -767,6 +777,7 @@ gpm_brightness_down (GpmBrightness *brightness, gboolean *hw_changed)
 		goto out;
 	}
 out:
+        ret = TRUE;//kobe: show the brightness dialog always
 	return ret;
 }
 

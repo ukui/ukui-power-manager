@@ -2,6 +2,7 @@
  *
  * Copyright (C) 2005 William Jon McCann <mccann@jhu.edu>
  * Copyright (C) 2005-2009 Richard Hughes <richard@hughsie.com>
+ * Copyright (C) 2013-2017 Xiang Li <lixiang@kylinos.cn>
  *
  * Licensed under the GNU General Public License Version 2
  *
@@ -48,6 +49,10 @@
 #include "gpm-icon-names.h"
 #include "gpm-tray-icon.h"
 
+//kobe
+static gboolean has_cursor = FALSE;
+static gboolean button_pressed = FALSE;
+
 static void     gpm_tray_icon_finalize   (GObject	   *object);
 
 #define GPM_TRAY_ICON_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), GPM_TYPE_TRAY_ICON, GpmTrayIconPrivate))
@@ -58,6 +63,8 @@ struct GpmTrayIconPrivate
 	GpmEngine		*engine;
 	GtkStatusIcon		*status_icon;
 	gboolean		 show_actions;
+        GtkWidget               *main_window;//kobe
+        GSettings               *panel_settings;//kobe
 };
 
 G_DEFINE_TYPE (GpmTrayIcon, gpm_tray_icon, G_TYPE_OBJECT)
@@ -154,6 +161,23 @@ gpm_tray_icon_show_info_cb (GtkMenuItem *item, gpointer data)
 	g_free (path);
 }
 
+//kobe
+static gboolean
+gpm_tray_icon_show_info_cb_ukui(GtkWidget *w, GdkEventButton *e, GpmTrayIcon *icon)
+{
+    gchar *path;
+    const gchar *object_path;
+    gtk_widget_hide (icon->priv->main_window);
+
+    object_path = g_object_get_data (G_OBJECT (w), "object-path");
+    path = g_strdup_printf ("%s/ukui-power-statistics --device %s", BINDIR, object_path);
+    if (!g_spawn_command_line_async (path, NULL))
+        egg_warning ("Couldn't execute command: %s", path);
+    g_free (path);
+
+    return FALSE;
+}
+
 /**
  * gpm_tray_icon_show_preferences_cb:
  * @action: A valid GtkAction
@@ -161,7 +185,9 @@ gpm_tray_icon_show_info_cb (GtkMenuItem *item, gpointer data)
 static void
 gpm_tray_icon_show_preferences_cb (GtkMenuItem *item, gpointer data)
 {
-	const gchar *command = "ukui-power-preferences";
+        //kobe
+        //const gchar *command = "ukui-power-preferences";
+        const gchar *command = "kylin-control-center -p &";
 
 	if (g_spawn_command_line_async (command, NULL) == FALSE)
 		egg_warning ("Couldn't execute command: %s", command);
@@ -272,6 +298,117 @@ gpm_tray_icon_add_device (GpmTrayIcon *icon, GtkMenu *menu, const GPtrArray *arr
 		g_free (model);
 	}
 	return added;
+}
+
+//kobe
+static guint
+gpm_tray_icon_add_device_ukui (GpmTrayIcon *icon, GtkWidget *vbox, const GPtrArray *array, UpDeviceKind kind)
+{
+    guint i;
+    guint added = 0;
+    gchar *icon_name;
+    gchar *text;
+    GtkWidget *item;
+    GtkWidget *image;
+    const gchar *object_path;
+    const gchar *desc;
+    UpDevice *device;
+    UpDeviceKind kind_tmp;
+    UpDeviceState state;
+    gdouble percentage;
+
+    /* find type */
+    for (i=0;i<array->len;i++) {
+        device = g_ptr_array_index (array, i);
+        /* get device properties */
+        g_object_get (device,
+                      "kind", &kind_tmp,
+                      "state", &state,
+                      "percentage", &percentage,
+                      NULL);
+
+        if (kind != kind_tmp)
+            continue;
+
+        object_path = up_device_get_object_path (device);
+        egg_debug ("adding device %s", object_path);
+        //g_printf("####adding device %s\n", object_path);///org/freedesktop/UPower/devices/battery_BAT1
+        added++;
+
+        GtkWidget *event_box = gtk_event_box_new ();
+        gtk_event_box_set_visible_window (GTK_EVENT_BOX (event_box), FALSE);
+        GtkWidget *hbox = gtk_hbox_new (FALSE, 5);
+        gtk_container_add (GTK_CONTAINER(event_box), hbox);
+
+        gboolean is_charging = FALSE;
+        /* generate the image */
+        icon_name = gpm_upower_get_device_icon (device);
+        if (strstr(icon_name, "charging"))
+            is_charging = TRUE;
+        image = gtk_image_new_from_icon_name (icon_name, GTK_ICON_SIZE_DND);
+
+        /* generate the label */
+        desc = gpm_device_kind_to_localised_text (kind, 1);
+        if (is_charging)
+            text = g_strdup_printf (_("%.1f%% available power\n(The power is connected and is charging)"), percentage);
+        else
+            text = g_strdup_printf (_("%.1f%% available power"), percentage);
+
+        item = gtk_label_new (text);
+
+        gtk_box_pack_start (GTK_BOX(hbox), image, FALSE, FALSE, 0);
+        gtk_box_pack_start (GTK_BOX(hbox), item, FALSE, FALSE, 0);
+        gtk_box_pack_start (GTK_BOX(vbox), event_box, FALSE, FALSE, 0);
+
+        g_object_set_data (event_box, "object-path", (gpointer) object_path);
+        g_signal_connect (event_box, "button-press-event", G_CALLBACK (gpm_tray_icon_show_info_cb_ukui), icon);
+
+        g_free (icon_name);
+        g_free (text);
+    }
+    return added;
+}
+
+//kobe
+static
+void on_menu_pos (GtkMenu *menu, gint *x, gint *y, gboolean *push_in, GtkStatusIcon *icon)
+{
+    GdkRectangle rect;
+    GdkRectangle monitor_rect;
+    GtkOrientation orientation;
+    GdkScreen *screen;
+    int monitor_num;
+    int menu_x = 0;
+    int menu_y = 0;
+    GtkRequisition menu_req;
+    const static int panel_height = 40;
+
+    screen = gtk_status_icon_get_screen (GTK_STATUS_ICON (icon));
+    if (gtk_status_icon_get_geometry (icon, &screen, &rect, &orientation) == FALSE)
+        goto out;
+
+    monitor_num = gdk_screen_get_monitor_at_point (screen, rect.x, rect.y);
+    gdk_screen_get_monitor_geometry (screen, monitor_num, &monitor_rect);
+
+    gtk_widget_size_request (menu, &menu_req);
+
+    if (orientation == GTK_ORIENTATION_VERTICAL) {
+    } else {
+        if (rect.y + rect.height + menu_req.height <= monitor_rect.y + monitor_rect.height)
+            menu_y = monitor_rect.y + panel_height;
+        else
+            menu_y = monitor_rect.y + monitor_rect.height - panel_height - menu_req.height;
+
+        if (rect.x + menu_req.width <= monitor_rect.x + monitor_rect.width)
+            menu_x = rect.x;
+        else
+            menu_x = monitor_rect.x + monitor_rect.width - menu_req.width;
+    }
+
+out:
+    *x = menu_x;
+    *y = menu_y;
+    *push_in = TRUE;
 }
 
 /**
@@ -425,9 +562,207 @@ static void
 gpm_tray_icon_popup_menu_cb (GtkStatusIcon *status_icon, guint button, guint32 timestamp, GpmTrayIcon *icon)
 {
 	egg_debug ("icon right clicked");
-	gpm_tray_icon_popup_menu (icon, timestamp);
+        //gpm_tray_icon_popup_menu (icon, timestamp);
+        //kobe
+        if (icon->priv->main_window == NULL || GTK_IS_WINDOW(icon->priv->main_window) == FALSE)
+            return;
+        if (gtk_widget_get_visible (icon->priv->main_window))
+            gtk_widget_hide (icon->priv->main_window);
 }
 
+//kobe
+static void
+gpm_tray_icon_add_vbox_content (GpmTrayIcon *icon, GtkWidget *vbox)
+{
+    //GtkWidget *item;
+    //GtkWidget *image;
+    guint dev_cnt = 0;
+    GPtrArray *array;
+
+    /* add all device types to the drop down menu */
+    array = gpm_engine_get_devices (icon->priv->engine);
+    dev_cnt += gpm_tray_icon_add_device_ukui (icon, vbox, array, UP_DEVICE_KIND_BATTERY);
+#if UP_CHECK_VERSION(0,9,5)
+    dev_cnt += gpm_tray_icon_add_device_ukui (icon, vbox, array, UP_DEVICE_KIND_COMPUTER);
+#endif
+    g_ptr_array_unref (array);
+
+    /* skip for things like live-cd's and GDM */
+    if (!icon->priv->show_actions)
+        return;
+
+    /* only do the seporator if we have at least one device */
+    if (dev_cnt != 0) {
+//        item = gtk_separator_menu_item_new ();
+//        gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+    } else {
+        gtk_container_set_border_width (GTK_CONTAINER (vbox), 0);
+    }
+}
+
+//kobe
+static gboolean
+draw_pref_button (GtkWidget *widget,  GdkEventExpose *e, gpointer user_data)
+{
+    cairo_t *cr = gdk_cairo_create(widget->window);
+
+    GtkAllocation alloc;
+    gtk_widget_get_allocation(widget, &alloc);
+
+    static double r_bg = 1.0, g_bg = 1.0, b_bg = 1.0, a_bg = 1.0;
+
+    if (has_cursor == FALSE) {
+        // normal
+        r_bg = g_bg = b_bg = 0.9;
+    } else if (button_pressed == FALSE) {
+        // hover
+        r_bg = g_bg = b_bg = 0.9;
+    } else {
+        // press
+        r_bg = g_bg = b_bg = 0.87;
+    }
+
+    cairo_set_source_rgb(cr, 0.7, 0.7, 0.7);
+    cairo_set_line_width(cr, 1.0);
+    cairo_move_to(cr, alloc.x + 0.5, alloc.y + 0.5);
+    cairo_line_to(cr, alloc.x + alloc.width, alloc.y + 0.5);
+    cairo_stroke(cr);
+
+    cairo_set_source_rgba(cr, r_bg, g_bg, b_bg, a_bg);
+    cairo_rectangle(cr, alloc.x + 0.5, alloc.y + 1.5, alloc.width - 0.5, alloc.height - 1.5);
+    cairo_fill(cr);
+
+    PangoFontDescription *font_desc = pango_font_description_new();
+    pango_font_description_set_size(font_desc, 11 * PANGO_SCALE);
+    pango_font_description_set_family(font_desc, "Ubuntu");
+
+    PangoLayout *layout = pango_cairo_create_layout(cr);
+    pango_layout_set_font_description(layout, font_desc);
+    pango_layout_set_text(layout, _("Power Preferences"), -1);
+
+    int width, height;
+    static const int padding = 3;
+    pango_layout_get_pixel_size(layout, &width, &height);
+    if (alloc.height < height + 2 * padding)
+        gtk_widget_set_size_request(widget, -1, height + 2 * padding);
+    if (alloc.width < width + 2 * padding)
+        gtk_widget_set_size_request(widget, width + 2 * padding, -1);
+
+    cairo_move_to(cr, alloc.x + (alloc.width - width) / 2, alloc.y + (alloc.height - height) / 2);
+    cairo_set_source_rgb(cr, 0.3, 0.3, 0.3);
+    pango_cairo_show_layout(cr, layout);
+
+    g_object_unref (layout);
+    pango_font_description_free (font_desc);
+    cairo_destroy(cr);
+
+    return TRUE;
+}
+
+//kobe
+static gboolean
+on_button_press(GtkWidget *button, GdkEventButton *event, gpointer user_data)
+{
+    if (event->button == 1) {
+        button_pressed = TRUE;
+        gtk_widget_queue_draw(button);
+    }
+
+    return FALSE;
+}
+
+//kobe
+static gboolean
+on_button_release(GtkWidget *button, GdkEventButton *event, gpointer user_data)
+{
+    if (event->button == 1) {
+        button_pressed = FALSE;
+        gtk_widget_queue_draw(button);
+    }
+
+    return FALSE;
+}
+
+//kobe
+static gboolean
+on_mouse_enter(GtkWidget *w, GdkEventCrossing *event, gpointer user_data)
+{
+    has_cursor = TRUE;
+    gtk_widget_queue_draw(w);
+
+    return FALSE;
+}
+
+//kobe
+static gboolean
+on_mouse_leave(GtkWidget *w, GdkEventCrossing *event, gpointer user_data)
+{
+    has_cursor = FALSE;
+    gtk_widget_queue_draw(w);
+
+    return FALSE;
+}
+
+//kobe
+GdkColor get_border_color (GtkWidget *w, GpmTrayIcon *icon, char *color_name)
+{
+    GdkColor color;
+
+    GtkSettings *gs = gtk_settings_get_for_screen (gtk_status_icon_get_screen (icon->priv->status_icon));
+    GValue color_scheme_value = G_VALUE_INIT;
+    g_value_init (&color_scheme_value, G_TYPE_STRING);
+    g_object_get_property (gs, "gtk-color-scheme", &color_scheme_value);
+    const gchar *color_scheme = g_value_get_string (&color_scheme_value);
+    gchar color_spec[16] = { 0 };
+    //char *needle = strstr(color_scheme, "kylinmenu_color");
+    char *needle = strstr(color_scheme, color_name);
+    if (needle) {
+        while (1) {
+            if (color_spec[0] != '#') {
+                color_spec[0] = *needle;
+                needle++;
+                continue;
+            }
+
+            if ((*needle >= 0x30 && *needle <= 0x39) ||
+                (*needle >= 0x41 && *needle <= 0x46) ||
+                (*needle >= 0x61 && *needle <= 0x66)) {
+                color_spec[strlen(color_spec)] = *needle;
+                needle++;
+            } else {
+                break;
+            }
+        }
+        gdk_color_parse (color_spec, &color);
+    } else {
+        gdk_color_parse ("#3B9DC5", &color);
+    }
+
+    //gtk_widget_modify_bg (w, GTK_STATE_NORMAL, &color);
+    return color;
+}
+
+//kobe
+static gboolean
+draw_border(GtkWidget *w, GdkEventExpose *e, gpointer user_data)
+{
+    GpmTrayIcon *icon = (GpmTrayIcon *)user_data;
+    cairo_t *cr = gdk_cairo_create (w->window);
+
+    GtkAllocation alloc;
+    gtk_widget_get_allocation (w, &alloc);
+
+    GdkColor color;
+    color = get_border_color(w, icon, "taskbar_applet_border_color");//kylinside_color
+    // outer border
+    cairo_set_source_rgb (cr, color.red / 65535.0, color.green / 65535.0, color.blue / 65535.0);
+    cairo_set_line_width (cr, 1.0);
+    cairo_rectangle (cr, 0.5, 0.5, alloc.width - 1, alloc.height - 1);
+    cairo_stroke (cr);
+    cairo_destroy (cr);
+
+    return FALSE;
+}
 
 /**
  * gpm_tray_icon_activate_cb:
@@ -439,7 +774,63 @@ static void
 gpm_tray_icon_activate_cb (GtkStatusIcon *status_icon, GpmTrayIcon *icon)
 {
 	egg_debug ("icon left clicked");
-	gpm_tray_icon_popup_menu (icon, gtk_get_current_event_time());
+        //gpm_tray_icon_popup_menu (icon, gtk_get_current_event_time());
+
+        //kobe
+        GdkColor color;
+        if (icon->priv->main_window) {
+            if (gtk_widget_get_visible (icon->priv->main_window)) {
+                gtk_widget_destroy (icon->priv->main_window);
+                icon->priv->main_window = NULL;
+                return;
+            } else {
+                gtk_widget_destroy (icon->priv->main_window);
+                icon->priv->main_window = NULL;
+            }
+        }
+
+        GtkWidget *pref_button = gtk_button_new ();
+        gtk_widget_set_size_request (pref_button, 150, 32);
+        g_signal_connect (pref_button, "expose-event", G_CALLBACK (draw_pref_button), NULL);
+        g_signal_connect (pref_button, "button-press-event", G_CALLBACK(on_button_press), NULL);
+        g_signal_connect (pref_button, "button-release-event", G_CALLBACK(on_button_release), NULL);
+        g_signal_connect (pref_button, "enter-notify-event", G_CALLBACK(on_mouse_enter), NULL);
+        g_signal_connect (pref_button, "leave-notify-event", G_CALLBACK(on_mouse_leave), NULL);
+
+        GtkWidget *vbox = gtk_vbox_new (FALSE, 6);
+        gtk_container_set_border_width (GTK_CONTAINER (vbox), 10);
+        gpm_tray_icon_add_vbox_content (icon, vbox);
+
+        GtkWidget *vbox2 = gtk_vbox_new (FALSE, 0);
+        gtk_box_pack_start (GTK_BOX(vbox2), vbox, FALSE, FALSE, 0);
+        gtk_box_pack_start (GTK_BOX(vbox2), pref_button, TRUE, TRUE, 0);
+
+        GtkWidget *event_box = gtk_event_box_new ();
+        gtk_container_add (GTK_CONTAINER (event_box), vbox2);
+        gdk_color_parse ("#fefefe", &color);
+        gtk_widget_modify_bg (event_box, GTK_STATE_NORMAL, &color);
+
+        icon->priv->main_window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+        gtk_window_set_screen (GTK_WINDOW(icon->priv->main_window), gtk_status_icon_get_screen (icon->priv->status_icon));
+        gtk_window_set_decorated(GTK_WINDOW(icon->priv->main_window), FALSE);
+        gtk_window_set_skip_pager_hint(GTK_WINDOW(icon->priv->main_window), TRUE);
+        gtk_window_set_skip_taskbar_hint(GTK_WINDOW(icon->priv->main_window), TRUE);
+        gtk_window_set_position(GTK_WINDOW(icon->priv->main_window), GTK_WIN_POS_MOUSE);
+        gtk_window_set_gravity(GTK_WINDOW(icon->priv->main_window), GDK_GRAVITY_SOUTH_EAST);
+
+        gtk_widget_hide_on_delete (icon->priv->main_window);
+        gtk_container_set_border_width (GTK_CONTAINER (icon->priv->main_window), 1);
+        gtk_container_add (GTK_CONTAINER (icon->priv->main_window), event_box);
+        g_signal_connect (icon->priv->main_window, "focus-out-event", G_CALLBACK(gtk_widget_hide), NULL);
+        g_signal_connect_after (icon->priv->main_window, "expose-event", G_CALLBACK(draw_border), icon);
+
+        GdkColor color2 = get_border_color(icon->priv->main_window, icon, "taskbar_applet_border_color");//kylinmenu_color
+        gtk_widget_modify_bg (icon->priv->main_window, GTK_STATE_NORMAL, &color2);
+
+        g_signal_connect (pref_button, "clicked", G_CALLBACK (gpm_tray_icon_show_preferences_cb), NULL);
+        g_signal_connect_swapped (pref_button, "clicked", G_CALLBACK (gtk_widget_hide), icon->priv->main_window);
+
+        gtk_widget_show_all (icon->priv->main_window);
 }
 
 /**
@@ -471,6 +862,9 @@ gpm_tray_icon_init (GpmTrayIcon *icon)
 	icon->priv = GPM_TRAY_ICON_GET_PRIVATE (icon);
 
 	icon->priv->engine = gpm_engine_new ();
+
+        //kobe
+        icon->priv->panel_settings = g_settings_new_with_path ("org.mate.panel.toplevel", "/org/mate/panel/toplevels/bottom/");
 
 	icon->priv->settings = g_settings_new (GPM_SETTINGS_SCHEMA);
 	g_signal_connect (icon->priv->settings, "changed",
@@ -504,6 +898,9 @@ gpm_tray_icon_finalize (GObject *object)
 	g_return_if_fail (GPM_IS_TRAY_ICON (object));
 
 	tray_icon = GPM_TRAY_ICON (object);
+
+        //kobe
+        g_object_unref (tray_icon->priv->panel_settings);
 
 	g_object_unref (tray_icon->priv->status_icon);
 	g_object_unref (tray_icon->priv->engine);

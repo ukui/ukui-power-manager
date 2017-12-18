@@ -1197,6 +1197,16 @@ msgid ""
 " broken."
 msgstr "电池容量过低 (%1.1f%%)，这表示电池可能太旧或已损坏"
 
+#. TRANSLATORS: laptop battery low, and we only have one battery
+#: ../src/gpm-manager.c:1444
+msgid "%.1f%% available power\n(The power is connected and is charging)"
+msgstr "%.1f%% 可用电源\n（电源已连接，正在充电）"
+
+#. TRANSLATORS: laptop battery low, and we only have one battery
+#: ../src/gpm-manager.c:1444
+msgid "%.1f%% available power"
+msgstr "%.1f%% 可用电源"
+
 #. TRANSLATORS: show the charged notification
 #: ../src/gpm-manager.c:1173
 msgid "Battery Charged"
@@ -1463,6 +1473,14 @@ msgid ""
 "suspend.<br><b>NOTE:</b> A small amount of power is required to keep your "
 "computer in a suspended state."
 msgstr "电池的电量将用尽，计算机将开始挂起。<br><b>注意：</b>将您的计算机保持在挂起状态也需要一点电量。"
+
+#. TRANSLATORS: computer will suspend
+#: ../src/gpm-manager.c:1603
+msgid ""
+"The battery is below the critical level and this computer is about to "
+"suspend.<b>NOTE:</b> A small amount of power is required to keep your "
+"computer in a suspended state."
+msgstr "电池的电量将用尽，计算机将开始挂起。<b>注意：</b>将您的计算机保持在挂起状态也需要一点电量。"
 
 #. TRANSLATORS: computer will hibernate
 #: ../src/gpm-manager.c:1610
@@ -2251,3 +2269,11 @@ msgstr "待放电"
 #: ../src/gpm-upower.c:662
 msgid "Unknown state"
 msgstr "未知状态"
+
+#:../src/gpm-manager.c
+msgid "Suspend failed for some reason (maybe dbus error)"
+msgstr "挂起失败,可能是dbus问题,请确认当前系统是否可以挂起"
+
+#:../src/gpm-manager.c
+msgid "Hibernate failed for some reason (maybe dbus error)"
+msgstr "休眠失败,可能是dbus问题,请确认当前系统是否可以休眠"

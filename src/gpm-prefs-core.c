@@ -3,6 +3,7 @@
  * Copyright (C) 2005 Jaap Haitsma <jaap@haitsma.org>
  * Copyright (C) 2005 William Jon McCann <mccann@jhu.edu>
  * Copyright (C) 2005-2009 Richard Hughes <richard@hughsie.com>
+ * Copyright (C) 2013-2017 Xiang Li <lixiang@kylinos.cn>
  *
  * Licensed under the GNU General Public License Version 2
  *
@@ -646,6 +647,10 @@ prefs_setup_general (GpmPrefs *prefs)
 	gpm_prefs_setup_action_combo (prefs, "combobox_general_suspend",
 					  GPM_SETTINGS_BUTTON_SUSPEND,
 					  suspend_button_actions);
+
+        //kobe: if no battery, then make it never show
+        //if(prefs->priv->has_batteries == FALSE)
+        //        g_settings_set_enum (prefs->priv->settings, GPM_SETTINGS_ICON_POLICY, 5);
 
 	if (prefs->priv->has_button_suspend == FALSE) {
 		widget = GTK_WIDGET (gtk_builder_get_object (prefs->priv->builder, "hbox_general_suspend"));

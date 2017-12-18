@@ -1,6 +1,6 @@
 AC_PREREQ(2.63)
 
-AC_INIT([ukui-power-manager], [1.19.0], [http://www.ukui.org/])
+AC_INIT([ukui-power-manager], [1.1.0], [http://www.ukui.org/])
 AC_CONFIG_SRCDIR(src)
 AM_INIT_AUTOMAKE([1.9 no-dist-gzip dist-xz check-news tar-ustar])
 AC_CONFIG_HEADERS([config.h])
@@ -104,7 +104,7 @@ DBUS_REQUIRED=1.0
 DBUS_GLIB_REQUIRED=0.70
 LIBNOTIFY_REQUIRED=0.7.0
 CAIRO_REQUIRED=1.0.0
-LIBPANEL_REQUIRED=1.17.0
+LIBPANEL_REQUIRED=1.0.0
 XRANDR_REQUIRED=1.3.0
 XPROTO_REQUIRED=7.0.15
 CANBERRA_REQUIRED=0.10

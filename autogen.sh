@@ -12,18 +12,18 @@ PKG_NAME="ukui-power-manager"
     exit 1
 }
 
-which ukui-autogen || {
-    echo "You need to install ukui-common"
+which mate-autogen || {
+    echo "You need to install mate-common"
     exit 1
 }
 
 which yelp-build || {
-    echo "You need to install yelp-tools" 
+    echo "You need to install yelp-tools"
     exit 1
 }
 
 REQUIRED_AUTOMAKE_VERSION=1.9
 UKUI_DATADIR="$ukui_datadir"
 
-. ukui-autogen
+. mate-autogen
 

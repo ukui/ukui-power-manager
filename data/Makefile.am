@@ -25,8 +25,8 @@ gsettings_schemas_in_files = org.ukui.power-manager.gschema.xml.in
 gsettings_SCHEMAS = $(gsettings_schemas_in_files:.xml.in=.xml)
 
 #kobe
-confdir = $(sysconfdir)/polkit-1/localauthority/50-local.d
-conf_DATA = com.ubuntu.enable-hibernate.pkla
+#confdir = $(sysconfdir)/polkit-1/localauthority/50-local.d
+#conf_DATA = com.ubuntu.enable-hibernate.pkla
 
 pkgdata_DATA =						\
 	gpm-statistics.ui				\
@@ -45,9 +45,9 @@ EXTRA_DIST =						\
 	$(autostart_in_files)				\
 	$(desktop_in_files)				\
 	$(gsettings_schemas_in_files)	\
-	$(conf_DATA)	\
 	$(pkgdata_DATA)			\
 	$(man_MANS)
+#	$(conf_DATA)
 
 clean-local :
 	rm -f *~

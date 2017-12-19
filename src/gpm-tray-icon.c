@@ -337,7 +337,7 @@ gpm_tray_icon_add_device_ukui (GpmTrayIcon *icon, GtkWidget *vbox, const GPtrArr
 
         GtkWidget *event_box = gtk_event_box_new ();
         gtk_event_box_set_visible_window (GTK_EVENT_BOX (event_box), FALSE);
-        GtkWidget *hbox = gtk_hbox_new (FALSE, 5);
+        GtkWidget *hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 5);
         gtk_container_add (GTK_CONTAINER(event_box), hbox);
 
         gboolean is_charging = FALSE;
@@ -348,7 +348,7 @@ gpm_tray_icon_add_device_ukui (GpmTrayIcon *icon, GtkWidget *vbox, const GPtrArr
         image = gtk_image_new_from_icon_name (icon_name, GTK_ICON_SIZE_DND);
 
         /* generate the label */
-        desc = gpm_device_kind_to_localised_text (kind, 1);
+        desc = gpm_device_kind_to_localised_string (kind, 1);
         if (is_charging)
             text = g_strdup_printf (_("%.1f%% available power\n(The power is connected and is charging)"), percentage);
         else
@@ -562,12 +562,13 @@ static void
 gpm_tray_icon_popup_menu_cb (GtkStatusIcon *status_icon, guint button, guint32 timestamp, GpmTrayIcon *icon)
 {
 	egg_debug ("icon right clicked");
-        //gpm_tray_icon_popup_menu (icon, timestamp);
+
+        gpm_tray_icon_popup_menu (icon, timestamp);
         //kobe
-        if (icon->priv->main_window == NULL || GTK_IS_WINDOW(icon->priv->main_window) == FALSE)
+        /*if (icon->priv->main_window == NULL || GTK_IS_WINDOW(icon->priv->main_window) == FALSE)
             return;
         if (gtk_widget_get_visible (icon->priv->main_window))
-            gtk_widget_hide (icon->priv->main_window);
+            gtk_widget_hide (icon->priv->main_window);*/
 }
 
 //kobe
@@ -601,10 +602,10 @@ gpm_tray_icon_add_vbox_content (GpmTrayIcon *icon, GtkWidget *vbox)
 }
 
 //kobe
-static gboolean
-draw_pref_button (GtkWidget *widget,  GdkEventExpose *e, gpointer user_data)
+//static gboolean draw_pref_button (GtkWidget *widget,  GdkEventExpose *e, gpointer user_data)
+void draw_pref_button (GtkWidget *widget, cairo_t *cr, cairo_surface_t *img)
 {
-    cairo_t *cr = gdk_cairo_create(widget->window);
+    //cairo_t *cr = gdk_cairo_create(widget->window);
 
     GtkAllocation alloc;
     gtk_widget_get_allocation(widget, &alloc);
@@ -656,7 +657,7 @@ draw_pref_button (GtkWidget *widget,  GdkEventExpose *e, gpointer user_data)
     pango_font_description_free (font_desc);
     cairo_destroy(cr);
 
-    return TRUE;
+    //return TRUE;
 }
 
 //kobe
@@ -743,11 +744,11 @@ GdkColor get_border_color (GtkWidget *w, GpmTrayIcon *icon, char *color_name)
 }
 
 //kobe
-static gboolean
-draw_border(GtkWidget *w, GdkEventExpose *e, gpointer user_data)
+//static gboolean draw_border(GtkWidget *w, GdkEventExpose *e, gpointer user_data)
+void draw_border (GtkWidget *w, cairo_t *cr, cairo_surface_t *user_data)
 {
     GpmTrayIcon *icon = (GpmTrayIcon *)user_data;
-    cairo_t *cr = gdk_cairo_create (w->window);
+    //cairo_t *cr = gdk_cairo_create (w->window);
 
     GtkAllocation alloc;
     gtk_widget_get_allocation (w, &alloc);
@@ -761,7 +762,7 @@ draw_border(GtkWidget *w, GdkEventExpose *e, gpointer user_data)
     cairo_stroke (cr);
     cairo_destroy (cr);
 
-    return FALSE;
+    //return FALSE;
 }
 
 /**
@@ -774,10 +775,10 @@ static void
 gpm_tray_icon_activate_cb (GtkStatusIcon *status_icon, GpmTrayIcon *icon)
 {
 	egg_debug ("icon left clicked");
-        //gpm_tray_icon_popup_menu (icon, gtk_get_current_event_time());
+        gpm_tray_icon_popup_menu (icon, gtk_get_current_event_time());
 
         //kobe
-        GdkColor color;
+        /*GdkColor color;
         if (icon->priv->main_window) {
             if (gtk_widget_get_visible (icon->priv->main_window)) {
                 gtk_widget_destroy (icon->priv->main_window);
@@ -791,7 +792,8 @@ gpm_tray_icon_activate_cb (GtkStatusIcon *status_icon, GpmTrayIcon *icon)
 
         GtkWidget *pref_button = gtk_button_new ();
         gtk_widget_set_size_request (pref_button, 150, 32);
-        g_signal_connect (pref_button, "expose-event", G_CALLBACK (draw_pref_button), NULL);
+        g_signal_connect (G_OBJECT(pref_button),"draw", G_CALLBACK (draw_pref_button), NULL);
+        //g_signal_connect (pref_button, "expose-event", G_CALLBACK (draw_pref_button), NULL);
         g_signal_connect (pref_button, "button-press-event", G_CALLBACK(on_button_press), NULL);
         g_signal_connect (pref_button, "button-release-event", G_CALLBACK(on_button_release), NULL);
         g_signal_connect (pref_button, "enter-notify-event", G_CALLBACK(on_mouse_enter), NULL);
@@ -822,7 +824,8 @@ gpm_tray_icon_activate_cb (GtkStatusIcon *status_icon, GpmTrayIcon *icon)
         gtk_container_set_border_width (GTK_CONTAINER (icon->priv->main_window), 1);
         gtk_container_add (GTK_CONTAINER (icon->priv->main_window), event_box);
         g_signal_connect (icon->priv->main_window, "focus-out-event", G_CALLBACK(gtk_widget_hide), NULL);
-        g_signal_connect_after (icon->priv->main_window, "expose-event", G_CALLBACK(draw_border), icon);
+        //g_signal_connect_after (icon->priv->main_window, "expose-event", G_CALLBACK(draw_border), icon);
+        g_signal_connect_after (icon->priv->main_window, "draw", G_CALLBACK(draw_border), icon);
 
         GdkColor color2 = get_border_color(icon->priv->main_window, icon, "taskbar_applet_border_color");//kylinmenu_color
         gtk_widget_modify_bg (icon->priv->main_window, GTK_STATE_NORMAL, &color2);
@@ -830,7 +833,7 @@ gpm_tray_icon_activate_cb (GtkStatusIcon *status_icon, GpmTrayIcon *icon)
         g_signal_connect (pref_button, "clicked", G_CALLBACK (gpm_tray_icon_show_preferences_cb), NULL);
         g_signal_connect_swapped (pref_button, "clicked", G_CALLBACK (gtk_widget_hide), icon->priv->main_window);
 
-        gtk_widget_show_all (icon->priv->main_window);
+        gtk_widget_show_all (icon->priv->main_window);*/
 }
 
 /**

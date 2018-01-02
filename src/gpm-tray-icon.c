@@ -867,7 +867,7 @@ gpm_tray_icon_init (GpmTrayIcon *icon)
 	icon->priv->engine = gpm_engine_new ();
 
         //kobe
-        icon->priv->panel_settings = g_settings_new_with_path ("org.mate.panel.toplevel", "/org/mate/panel/toplevels/bottom/");
+        icon->priv->panel_settings = g_settings_new_with_path ("org.ukui.panel.toplevel", "/org/ukui/panel/toplevels/bottom/");
 
 	icon->priv->settings = g_settings_new (GPM_SETTINGS_SCHEMA);
 	g_signal_connect (icon->priv->settings, "changed",

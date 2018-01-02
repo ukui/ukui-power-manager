@@ -35,9 +35,9 @@ G_BEGIN_DECLS
 #define	GPM_DBUS_INTERFACE		"org.ukui.PowerManager"
 #define	GPM_DBUS_INTERFACE_BACKLIGHT	"org.ukui.PowerManager.Backlight"
 #define	GPM_DBUS_INTERFACE_KBD_BACKLIGHT	"org.ukui.PowerManager.KbdBacklight"
-#define	GPM_DBUS_PATH			"/org.ukui/PowerManager"
-#define	GPM_DBUS_PATH_BACKLIGHT		"/org.ukui/PowerManager/Backlight"
-#define GPM_DBUS_PATH_KBD_BACKLIGHT    "/org.ukui/PowerManager/KbdBacklight"
+#define	GPM_DBUS_PATH			"/org/ukui/PowerManager"
+#define	GPM_DBUS_PATH_BACKLIGHT		"/org/ukui/PowerManager/Backlight"
+#define GPM_DBUS_PATH_KBD_BACKLIGHT    "/org/ukui/PowerManager/KbdBacklight"
 
 /* common descriptions of this program */
 #define GPM_NAME 			_("Power Manager")

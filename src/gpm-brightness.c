@@ -760,7 +760,7 @@ gpm_brightness_down (GpmBrightness *brightness, gboolean *hw_changed)
                 gint min_brightness = gpm_brightness_get_step (brightness->priv->extension_levels);
 
 		/* decrease by the step, limiting to zero */
-                if (brightness->priv->extension_current > min_brightness0) {//kobe
+                if (brightness->priv->extension_current > min_brightness) {//kobe
 //		if (brightness->priv->extension_current > 0) {
 			step = gpm_brightness_get_step (brightness->priv->extension_levels);
 			brightness->priv->extension_current -= step;

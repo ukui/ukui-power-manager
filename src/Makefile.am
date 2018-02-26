@@ -70,8 +70,6 @@ libgpmshared_a_SOURCES =				\
 	egg-idletime.c					\
 	egg-discrete.h					\
 	egg-discrete.c					\
-	egg-console-kit.h				\
-	egg-console-kit.c				\
 	gpm-common.h					\
 	gpm-common.c					\
 	gpm-brightness.h				\
@@ -208,8 +206,6 @@ ukui_power_self_test_SOURCES =				\
 	egg-discrete.c					\
 	egg-array-float.h				\
 	egg-array-float.c				\
-	egg-console-kit.h				\
-	egg-console-kit.c				\
 	gpm-control.h					\
 	gpm-control.c					\
 	gpm-networkmanager.h				\

@@ -52,7 +52,7 @@
 #include "gpm-idle.h"
 #include "gpm-marshal.h"
 #include "gpm-icon-names.h"
-#include "egg-console-kit.h"
+//#include "egg-console-kit.h"
 
 #define GPM_BACKLIGHT_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), GPM_TYPE_BACKLIGHT, GpmBacklightPrivate))
 
@@ -66,7 +66,7 @@ struct GpmBacklightPrivate
 	GpmControl		*control;
 	GpmDpms			*dpms;
 	GpmIdle			*idle;
-	EggConsoleKit		*console;
+        //EggConsoleKit		*console;
 	gboolean		 can_dim;
 	gboolean		 system_is_idle;
 	GTimer			*idle_timer;
@@ -592,7 +592,7 @@ idle_changed_cb (GpmIdle *idle, GpmIdleMode mode, GpmBacklight *backlight)
 		return;
 
 	/* don't dim or undim the screen unless ConsoleKit/systemd say we are on the active console */
-	if (!LOGIND_RUNNING() && !egg_console_kit_is_active (backlight->priv->console)) {
+        if (!LOGIND_RUNNING()) {//if (!LOGIND_RUNNING() && !egg_console_kit_is_active (backlight->priv->console)) {
 		egg_debug ("ignoring as not on active console");
 		return;
 	}
@@ -714,7 +714,7 @@ gpm_backlight_finalize (GObject *object)
 	g_object_unref (backlight->priv->button);
 	g_object_unref (backlight->priv->idle);
 	g_object_unref (backlight->priv->brightness);
-	g_object_unref (backlight->priv->console);
+        //g_object_unref (backlight->priv->console);
 
 	g_return_if_fail (backlight->priv != NULL);
 	G_OBJECT_CLASS (gpm_backlight_parent_class)->finalize (object);
@@ -814,7 +814,7 @@ gpm_backlight_init (GpmBacklight *backlight)
 			  G_CALLBACK (control_resume_cb), backlight);
 
 	/* Don't do dimming on inactive console */
-	backlight->priv->console = egg_console_kit_new ();
+        //backlight->priv->console = egg_console_kit_new ();
 
 	/* sync at startup */
 	gpm_backlight_brightness_evaluate_and_set (backlight, FALSE, TRUE);

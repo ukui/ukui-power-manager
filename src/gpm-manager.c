@@ -45,7 +45,7 @@
 #include <libnotify/notify.h>
 
 #include "egg-debug.h"
-#include "egg-console-kit.h"
+//#include "egg-console-kit.h"
 
 #include "gpm-button.h"
 #include "gpm-control.h"
@@ -86,7 +86,7 @@ struct GpmManagerPrivate
 	GpmEngine		*engine;
 	GpmBacklight		*backlight;
 	GpmKbdBacklight		*kbd_backlight;
-	EggConsoleKit		*console;
+        //EggConsoleKit		*console;
 	guint32			 screensaver_ac_throttle_id;
 	guint32			 screensaver_dpms_throttle_id;
 	guint32			 screensaver_lid_throttle_id;
@@ -827,7 +827,7 @@ static void
 gpm_manager_idle_changed_cb (GpmIdle *idle, GpmIdleMode mode, GpmManager *manager)
 {
 	/* ConsoleKit/systemd say we are not on active console */
-	if (!LOGIND_RUNNING() && !egg_console_kit_is_active (manager->priv->console)) {
+        if (!LOGIND_RUNNING()) {//if (!LOGIND_RUNNING() && !egg_console_kit_is_active (manager->priv->console)) {
 		egg_debug ("ignoring as not on active console");
 		return;
 	}
@@ -956,7 +956,7 @@ gpm_manager_button_pressed_cb (GpmButton *button, const gchar *type, GpmManager 
 	egg_debug ("Button press event type=%s", type);
 
 	/* ConsoleKit/systemd say we are not on active console */
-	if (!LOGIND_RUNNING() && !egg_console_kit_is_active (manager->priv->console)) {
+        if (!LOGIND_RUNNING()) {//if (!LOGIND_RUNNING() && !egg_console_kit_is_active (manager->priv->console)) {
 		egg_debug ("ignoring as not on active console");
 		return;
 	}
@@ -1039,7 +1039,7 @@ gpm_manager_client_changed_cb (UpClient *client, GpmManager *manager)
 	manager->priv->on_battery = on_battery;
 
 	/* ConsoleKit/systemd say we are not on active console */
-	if (!LOGIND_RUNNING() && !egg_console_kit_is_active (manager->priv->console)) {
+        if (!LOGIND_RUNNING()) {//if (!LOGIND_RUNNING() && !egg_console_kit_is_active (manager->priv->console)) {
 		egg_debug ("ignoring as not on active console");
 		return;
 	}
@@ -2045,7 +2045,7 @@ gpm_manager_init (GpmManager *manager)
 	manager->priv->just_resumed = FALSE;
 
 	/* don't apply policy when not active, so listen to ConsoleKit */
-	manager->priv->console = egg_console_kit_new ();
+        //manager->priv->console = egg_console_kit_new ();
 
 	manager->priv->notification_general = NULL;
 	manager->priv->notification_warning_low = NULL;
@@ -2208,7 +2208,7 @@ gpm_manager_finalize (GObject *object)
 	g_object_unref (manager->priv->button);
 	g_object_unref (manager->priv->backlight);
 	g_object_unref (manager->priv->kbd_backlight);
-	g_object_unref (manager->priv->console);
+        //g_object_unref (manager->priv->console);
 	g_object_unref (manager->priv->client);
 	g_object_unref (manager->priv->status_icon);
 

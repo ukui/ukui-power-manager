@@ -44,7 +44,7 @@
 #endif /* WITH_KEYRING */
 
 #include "egg-debug.h"
-#include "egg-console-kit.h"
+//#include "egg-console-kit.h"
 
 #include "gpm-screensaver.h"
 #include "gpm-common.h"
@@ -138,14 +138,15 @@ gboolean
 gpm_control_shutdown (GpmControl *control, GError **error)
 {
 	gboolean ret;
-	EggConsoleKit *console;
+        //EggConsoleKit *console;
 
 	if (LOGIND_RUNNING()) {
 		ret = gpm_control_systemd_shutdown ();
 	} else {
-		console = egg_console_kit_new ();
+                ret = FALSE;
+                /*console = egg_console_kit_new ();
 		ret = egg_console_kit_stop (console, error);
-		g_object_unref (console);
+                g_object_unref (console);*/
 	}
 	return ret;
 }
@@ -208,7 +209,7 @@ gpm_control_suspend (GpmControl *control, GError **error)
 	gboolean ret = FALSE;
 	gboolean do_lock;
 	gboolean nm_sleep;
-	EggConsoleKit *console;
+        //EggConsoleKit *console;
 	GpmScreensaver *screensaver;
 	guint32 throttle_cookie = 0;
 #ifdef WITH_KEYRING
@@ -222,7 +223,7 @@ gpm_control_suspend (GpmControl *control, GError **error)
 
 	screensaver = gpm_screensaver_new ();
 
-	if (!LOGIND_RUNNING()) {
+        /*if (!LOGIND_RUNNING()) {
 		console = egg_console_kit_new ();
 		egg_console_kit_can_suspend (console, &allowed, NULL);
 		g_object_unref (console);
@@ -232,7 +233,7 @@ gpm_control_suspend (GpmControl *control, GError **error)
 			g_set_error_literal (error, GPM_CONTROL_ERROR, GPM_CONTROL_ERROR_GENERAL, "Cannot suspend");
 			goto out;
 		}
-	}
+        }*/
 
 #ifdef WITH_KEYRING
 	/* we should perhaps lock keyrings when sleeping #375681 */
@@ -293,9 +294,9 @@ gpm_control_suspend (GpmControl *control, GError **error)
 		g_object_unref(proxy);
 	}
 	else {
-		console = egg_console_kit_new ();
+                /*console = egg_console_kit_new ();
 		ret = egg_console_kit_suspend (console, error);
-		g_object_unref (console);
+                g_object_unref (console);*/
 	}
 
 	egg_debug ("emitting resume");
@@ -326,7 +327,7 @@ gpm_control_hibernate (GpmControl *control, GError **error)
 	gboolean ret = FALSE;
 	gboolean do_lock;
 	gboolean nm_sleep;
-	EggConsoleKit *console;
+        //EggConsoleKit *console;
 	GpmScreensaver *screensaver;
 	guint32 throttle_cookie = 0;
 #ifdef WITH_KEYRING
@@ -340,7 +341,7 @@ gpm_control_hibernate (GpmControl *control, GError **error)
 
 	screensaver = gpm_screensaver_new ();
 
-	if (!LOGIND_RUNNING()) {
+        /*if (!LOGIND_RUNNING()) {
 		console = egg_console_kit_new ();
 		egg_console_kit_can_hibernate (console, &allowed, NULL);
 		g_object_unref (console);
@@ -350,7 +351,7 @@ gpm_control_hibernate (GpmControl *control, GError **error)
 			g_set_error_literal (error, GPM_CONTROL_ERROR, GPM_CONTROL_ERROR_GENERAL, "Cannot hibernate");
 			goto out;
 		}
-	}
+        }*/
 
 #ifdef WITH_KEYRING
 	/* we should perhaps lock keyrings when sleeping #375681 */
@@ -410,9 +411,9 @@ gpm_control_hibernate (GpmControl *control, GError **error)
 		}
 	}
 	else {
-		console = egg_console_kit_new ();
+                /*console = egg_console_kit_new ();
 		ret = egg_console_kit_hibernate (console, error);
-		g_object_unref (console);
+                g_object_unref (console);*/
 	}
 
 	egg_debug ("emitting resume");

@@ -34,7 +34,7 @@
 #include <libupower-glib/upower.h>
 
 #include "egg-debug.h"
-#include "egg-console-kit.h"
+//#include "egg-console-kit.h"
 
 #include "gpm-tray-icon.h"
 #include "gpm-common.h"
@@ -59,7 +59,7 @@ struct GpmPrefsPrivate
 	gboolean		 can_suspend;
 	gboolean		 can_hibernate;
 	GSettings		*settings;
-	EggConsoleKit		*console;
+        //EggConsoleKit		*console;
 };
 
 enum {
@@ -686,7 +686,7 @@ gpm_prefs_init (GpmPrefs *prefs)
 	prefs->priv = GPM_PREFS_GET_PRIVATE (prefs);
 
 	prefs->priv->client = up_client_new ();
-	prefs->priv->console = egg_console_kit_new ();
+        //prefs->priv->console = egg_console_kit_new ();
 	prefs->priv->settings = g_settings_new (GPM_SETTINGS_SCHEMA);
 
 	prefs->priv->can_shutdown = FALSE;
@@ -761,9 +761,9 @@ gpm_prefs_init (GpmPrefs *prefs)
 	}
 	else {
 		/* Get values from ConsoleKit */
-		egg_console_kit_can_stop (prefs->priv->console, &prefs->priv->can_shutdown, NULL);
+                /*egg_console_kit_can_stop (prefs->priv->console, &prefs->priv->can_shutdown, NULL);
 		egg_console_kit_can_suspend (prefs->priv->console, &prefs->priv->can_suspend, NULL);
-		egg_console_kit_can_hibernate (prefs->priv->console, &prefs->priv->can_hibernate, NULL);
+                egg_console_kit_can_hibernate (prefs->priv->console, &prefs->priv->can_hibernate, NULL);*/
 	}
 
 	if (LOGIND_RUNNING()) {
@@ -884,7 +884,7 @@ gpm_prefs_finalize (GObject *object)
 
 	g_object_unref (prefs->priv->settings);
 	g_object_unref (prefs->priv->client);
-	g_object_unref (prefs->priv->console);
+        //g_object_unref (prefs->priv->console);
 	g_object_unref (prefs->priv->builder);
 
 	G_OBJECT_CLASS (gpm_prefs_parent_class)->finalize (object);

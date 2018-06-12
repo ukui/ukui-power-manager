@@ -1,0 +1,14 @@
+# man pages are created with docbook-to-man and the rendering flaw about hyphens and minus signs is
+# a documented issue (see https://bugs.debian.org/208967)
+ukui-power-manager-common: hyphen-used-as-minus-sign usr/share/man/man1/ukui-power-backlight-helper.1.gz:28
+ukui-power-manager-common: hyphen-used-as-minus-sign usr/share/man/man1/ukui-power-backlight-helper.1.gz:31
+ukui-power-manager-common: hyphen-used-as-minus-sign usr/share/man/man1/ukui-power-backlight-helper.1.gz:34
+ukui-power-manager-common: hyphen-used-as-minus-sign usr/share/man/man1/ukui-power-backlight-helper.1.gz:37
+ukui-power-manager-common: hyphen-used-as-minus-sign usr/share/man/man1/ukui-power-manager.1.gz:28
+ukui-power-manager-common: hyphen-used-as-minus-sign usr/share/man/man1/ukui-power-manager.1.gz:31
+ukui-power-manager-common: hyphen-used-as-minus-sign usr/share/man/man1/ukui-power-manager.1.gz:34
+ukui-power-manager-common: hyphen-used-as-minus-sign usr/share/man/man1/ukui-power-manager.1.gz:37
+ukui-power-manager-common: hyphen-used-as-minus-sign usr/share/man/man1/ukui-power-preferences.1.gz:26
+ukui-power-manager-common: hyphen-used-as-minus-sign usr/share/man/man1/ukui-power-preferences.1.gz:29
+ukui-power-manager-common: hyphen-used-as-minus-sign usr/share/man/man1/ukui-power-statistics.1.gz:28
+ukui-power-manager-common: hyphen-used-as-minus-sign usr/share/man/man1/ukui-power-statistics.1.gz:31

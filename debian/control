@@ -11,7 +11,6 @@ Build-Depends: debhelper (>= 11),
                libdbus-glib-1-dev,
                libgcrypt20-dev,
                libglib2.0-dev,
-               libgnome-keyring-dev,
                libgtk-3-dev,
                libukui-panel-applet-dev,
                libnotify-dev,
@@ -28,6 +27,8 @@ Build-Depends: debhelper (>= 11),
                yelp-tools,
 Standards-Version: 4.1.4
 Homepage: http://www.ukui.org/
+Vcs-Git: https://github.com/ukui/ukui-power-manager.git
+Vcs-Browser: https://github.com/ukui/ukui-power-manager
 
 Package: ukui-power-manager
 Architecture: any

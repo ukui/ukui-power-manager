@@ -185,9 +185,8 @@ gpm_tray_icon_show_info_cb_ukui(GtkWidget *w, GdkEventButton *e, GpmTrayIcon *ic
 static void
 gpm_tray_icon_show_preferences_cb (GtkMenuItem *item, gpointer data)
 {
-        //kobe
-        //const gchar *command = "ukui-power-preferences";
-        const gchar *command = "kylin-control-center -p &";
+
+    const gchar *command = "ukui-control-center -p &";
 
 	if (g_spawn_command_line_async (command, NULL) == FALSE)
 		egg_warning ("Couldn't execute command: %s", command);

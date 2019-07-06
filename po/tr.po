@@ -9,6 +9,7 @@
 # Mehmet, 2015
 # Umut Barış GÖKMEN <umtbrsgkmn@gmail.com>, 2015
 # Yasin Uysal <yasinuysal22@outlook.com>, 2016
+# Cihan Alkan <cihanalk@gmail.com>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: UKUI Desktop Environment\n"
@@ -405,7 +406,7 @@ msgstr "NetworkManager askıya alma veya uyku kipi öncesi bağlantıyı kesip u
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:57
 msgid "Use ukui-screensaver lock setting"
-msgstr "mate-screensave kilitleme ayarını kullan"
+msgstr "ukui-screensaver kilitleme ayarını kullan"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:58
 msgid ""

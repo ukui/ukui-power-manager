@@ -1,21 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Vaibhav S Dalvi <vaibhav.dlv@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: UKUI Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-07 14:00+0300\n"
+"POT-Creation-Date: 2019-12-14 13:54+0800\n"
 "PO-Revision-Date: 2017-10-07 11:02+0000\n"
 "Last-Translator: monsta <monsta@inbox.ru>\n"
 "Language-Team: Marathi (http://www.transifex.com/mate/UKUI/language/mr/)\n"
+"Language: mr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: mr\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../applets/brightness/brightness-applet.c:110
@@ -52,7 +52,11 @@ msgid ""
 "modify it under the terms of the GNU General Public License\n"
 "as published by the Free Software Foundation; either version 2\n"
 "of the License, or (at your option) any later version."
-msgstr "Power Manager is free software; you can redistribute it and/or\nmodify it under the terms of the GNU General Public License\nas published by the Free Software Foundation; either version 2\nof the License, or (at your option) any later version."
+msgstr ""
+"Power Manager is free software; you can redistribute it and/or\n"
+"modify it under the terms of the GNU General Public License\n"
+"as published by the Free Software Foundation; either version 2\n"
+"of the License, or (at your option) any later version."
 
 #: ../applets/brightness/brightness-applet.c:812
 #: ../applets/inhibit/inhibit-applet.c:408
@@ -61,7 +65,11 @@ msgid ""
 "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
 "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
 "GNU General Public License for more details."
-msgstr "Power Manager is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details."
+msgstr ""
+"Power Manager is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details."
 
 #: ../applets/brightness/brightness-applet.c:816
 #: ../applets/inhibit/inhibit-applet.c:412
@@ -70,7 +78,11 @@ msgid ""
 "along with this program; if not, write to the Free Software\n"
 "Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA\n"
 "02110-1301, USA."
-msgstr "You should have received a copy of the GNU General Public License\nalong with this program; if not, write to the Free Software\nFoundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA\n02110-1301, USA."
+msgstr ""
+"You should have received a copy of the GNU General Public License\n"
+"along with this program; if not, write to the Free Software\n"
+"Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA\n"
+"02110-1301, USA."
 
 #: ../applets/brightness/brightness-applet.c:1068
 #: ../applets/inhibit/inhibit-applet.c:638
@@ -134,11 +146,11 @@ msgstr "ऍप्लेट थांबवा"
 msgid "Allows user to inhibit automatic power saving"
 msgstr "वापरकर्त्यास स्वंचलीत पावर संयचीत करण्यापासून थांबविण्याची परवानगी देतो"
 
-#: ../data/ukui-power-manager.desktop.in.in.h:1 ../src/gpm-tray-icon.c:186
+#: ../data/ukui-power-manager.desktop.in.in.h:1 ../src/gpm-tray-icon.c:211
 msgid "Power Manager"
 msgstr "पावर व्यवस्थापन"
 
-#: ../data/ukui-power-manager.desktop.in.in.h:2 ../src/gpm-tray-icon.c:188
+#: ../data/ukui-power-manager.desktop.in.in.h:2 ../src/gpm-tray-icon.c:213
 msgid "Power management daemon"
 msgstr "पावर व्यवस्थापन डीमन"
 
@@ -170,7 +182,9 @@ msgid ""
 "If the battery lid close event should occur (for example 'Suspend when lid "
 "closed on battery') when the lid is previously shut and the AC power "
 "disconnected at a later time."
-msgstr "लीड पूर्वीपासून बंद असल्यास व AC पावरच वापर पुढल्यावेळी मोडल्यास लीड बंद करायची घटना निर्मान करायची का (उदाहरणार्थ 'बॅटरीचे लीड बंद केल्यास स्तब्ध करा')."
+msgstr ""
+"लीड पूर्वीपासून बंद असल्यास व AC पावरच वापर पुढल्यावेळी मोडल्यास लीड बंद करायची घटना "
+"निर्मान करायची का (उदाहरणार्थ 'बॅटरीचे लीड बंद केल्यास स्तब्ध करा')."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:7
 msgid "UPS critical low action"
@@ -248,8 +262,8 @@ msgstr ""
 #, no-c-format
 msgid ""
 "The percentage to reduce the keyboard backlight by when idle. For example, "
-"if set to '60', the backlight will be cut by 40% when idle. Legal values are"
-" between 0 and 100."
+"if set to '60', the backlight will be cut by 40% when idle. Legal values are "
+"between 0 and 100."
 msgstr ""
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:25
@@ -260,7 +274,9 @@ msgstr "रिकामे असतेवेळी पडद्याचे त
 msgid ""
 "This is the laptop panel screen brightness used when the session is idle. "
 "Only valid when use-time-for-policy is true."
-msgstr "सत्र रिकामे असल्यास या लॅपटॉप पटलवरील पडदा तेजपणा वापरले जाते. तेव्हाच वैध असते जेव्हा use_time_for_policy खरे राहते."
+msgstr ""
+"सत्र रिकामे असल्यास या लॅपटॉप पटलवरील पडदा तेजपणा वापरले जाते. तेव्हाच वैध असते जेव्हा "
+"use_time_for_policy खरे राहते."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:27
 msgid "Dim the screen after a period of inactivity when on battery power"
@@ -270,7 +286,9 @@ msgstr "बॅटरी पावर वापरतेवेळी निष्
 msgid ""
 "If the screen should be dimmed to save power when the computer is idle when "
 "on battery power."
-msgstr "बॅटरी पावर वापरतेवेळी संगणक रिकामे असल्यास पावर संचयीत करण्याकरीता पडदा मंद केले पाहिजे का."
+msgstr ""
+"बॅटरी पावर वापरतेवेळी संगणक रिकामे असल्यास पावर संचयीत करण्याकरीता पडदा मंद केले पाहिजे "
+"का."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:29
 msgid "The default amount of time to dim the screen after idle"
@@ -288,7 +306,9 @@ msgstr "बॅटरी कार्यरत असतेवेळी LCD म�
 msgid ""
 "The amount to dim the brightness of the display when on battery power. "
 "Possible values are between 0 and 100."
-msgstr "बॅटरी पावर वापरतेवेळी पडद्याचा मंदपणा किती प्रमाणाने कमी करायचे. संभाव्य मुल्य 0 व 100 या अंतर्गत आहे."
+msgstr ""
+"बॅटरी पावर वापरतेवेळी पडद्याचा मंदपणा किती प्रमाणाने कमी करायचे. संभाव्य मुल्य 0 व 100 "
+"या अंतर्गत आहे."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:33
 msgid "Dim the screen after a period of inactivity when on AC power"
@@ -298,7 +318,8 @@ msgstr "AC पावर वापरतेवेळी निष्क्री�
 msgid ""
 "If the screen should be dimmed to save power when the computer is idle when "
 "on AC power."
-msgstr "संगणक अकार्यक्षम व AC पावर वापरतेवेळी पावर वापर कमी करण्याकरीता पडदा मंदा करायचे का."
+msgstr ""
+"संगणक अकार्यक्षम व AC पावर वापरतेवेळी पावर वापर कमी करण्याकरीता पडदा मंदा करायचे का."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:35
 msgid "Method used to blank screen on AC"
@@ -378,7 +399,9 @@ msgstr "वेळ-आधारीत सूचना वापरायचे �
 msgid ""
 "If time based notifications should be used. If set to false, then the "
 "percentage change is used instead, which may fix a broken ACPI BIOS."
-msgstr "वेळेवर आधारीत सूचना वापरायचे का. खोटे निश्चित केल्यास, टक्केवारी बदल वापरले जाते, ज्यामुळे दोषीत ACPI BIOS ठिक करू शकते."
+msgstr ""
+"वेळेवर आधारीत सूचना वापरायचे का. खोटे निश्चित केल्यास, टक्केवारी बदल वापरले जाते, ज्यामुळे "
+"दोषीत ACPI BIOS ठिक करू शकते."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:53
 msgid "Check CPU load before sleeping"
@@ -390,13 +413,17 @@ msgstr "योग्य कृती करण्यापूर्वी CPU �
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:55
 msgid "Whether NetworkManager should be connected and disconnected on sleep."
-msgstr "संगणक झोपेमध्ये जाण्यापूर्वी NetworkManager जुळवणी रद्द केले पाहिजे व त्यानंतर लगेच पुन्हस्थापीतही केले पाहिजे का."
+msgstr ""
+"संगणक झोपेमध्ये जाण्यापूर्वी NetworkManager जुळवणी रद्द केले पाहिजे व त्यानंतर लगेच "
+"पुन्हस्थापीतही केले पाहिजे का."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:56
 msgid ""
 "Whether NetworkManager should disconnect before suspending or hibernating "
 "and connect on resume."
-msgstr "NetworkManager स्तब्ध किंवा हायबरनेट पूर्वी जुळवणी रद्द केले पाहिजे व त्यानंतर लगेच पुन्हस्थापीतही केले पाहिजे का."
+msgstr ""
+"NetworkManager स्तब्ध किंवा हायबरनेट पूर्वी जुळवणी रद्द केले पाहिजे व त्यानंतर लगेच "
+"पुन्हस्थापीतही केले पाहिजे का."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:57
 msgid "Use ukui-screensaver lock setting"
@@ -406,7 +433,9 @@ msgstr "ukui-screensaver कुलूपबंद संयोजना वा�
 msgid ""
 "Whether to use the screen lock setting of ukui-screensaver to decide if the "
 "screen is locked after a hibernate, suspend or blank screen."
-msgstr "हायबरनेट, स्तब्ध किंवा पडदा रिकामी केल्यास ukui-screensaver चे पडदा कुलूपबंध संयोजना वापरायचे का."
+msgstr ""
+"हायबरनेट, स्तब्ध किंवा पडदा रिकामी केल्यास ukui-screensaver चे पडदा कुलूपबंध संयोजना "
+"वापरायचे का."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:59
 msgid "Lock screen when blanked"
@@ -416,7 +445,9 @@ msgstr "पडद्यावर काहीच दिसत नसल्या
 msgid ""
 "Whether the screen is locked when the screen is turned off. Only used if "
 "lock-use-screensaver is false."
-msgstr "पडदा पूर्णपणे बंद केल्यावर पडदा कुलूपबंद करायचे का. lock_use_screensaver खोटे असल्यावरच वापरले जाते."
+msgstr ""
+"पडदा पूर्णपणे बंद केल्यावर पडदा कुलूपबंद करायचे का. lock_use_screensaver खोटे असल्यावरच "
+"वापरले जाते."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:61
 msgid "Lock screen on suspend"
@@ -424,9 +455,11 @@ msgstr "स्तब्धवापरतेवेळी पडदा कुल�
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:62
 msgid ""
-"Whether the screen is locked when the computer wakes up from a suspend. Only"
-" used if lock-use-screensaver is false."
-msgstr "स्तब्धता पासून सक्रीय होताच पडदा कुलूपबंद करायचे का. lock_use_screensaver खोटे असल्यावरच वापरले जाते."
+"Whether the screen is locked when the computer wakes up from a suspend. Only "
+"used if lock-use-screensaver is false."
+msgstr ""
+"स्तब्धता पासून सक्रीय होताच पडदा कुलूपबंद करायचे का. lock_use_screensaver खोटे "
+"असल्यावरच वापरले जाते."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:63
 msgid "Lock screen on hibernate"
@@ -436,7 +469,9 @@ msgstr "हायबरनेट असतेवेळी पडदा कुल
 msgid ""
 "Whether the screen is locked when the computer wakes up from a hibernate. "
 "Only used if lock-use-screensaver is false."
-msgstr "हायबरनेट पासून सक्रीय होताच पडदा कुलूपबंद करायचे का. lock_use_screensaver खोटे असल्यावरच वापरले जाते."
+msgstr ""
+"हायबरनेट पासून सक्रीय होताच पडदा कुलूपबंद करायचे का. lock_use_screensaver खोटे "
+"असल्यावरच वापरले जाते."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:65
 msgid "Lock GNOME keyring on sleep"
@@ -444,8 +479,8 @@ msgstr ""
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:66
 msgid ""
-"Whether the GNOME keyring is locked before the computer enters suspend. This"
-" means the keyring will have to be unlocked on resume."
+"Whether the GNOME keyring is locked before the computer enters suspend. This "
+"means the keyring will have to be unlocked on resume."
 msgstr ""
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:67
@@ -498,7 +533,9 @@ msgstr "sleep अपयशी ठरल्यास वापरकर्त्�
 msgid ""
 "When sleep fails we can show the user a button to help fix the situation. "
 "Leave this blank if the button should not be shown."
-msgstr "sleep अपयशी ठरल्यास स्थितीचे निवारण करीता वापरकर्त्याला बटन दाखवले जाऊ शकते. बटन दाखवायचे नसल्यास यांस रिकामे सोडा."
+msgstr ""
+"sleep अपयशी ठरल्यास स्थितीचे निवारण करीता वापरकर्त्याला बटन दाखवले जाऊ शकते. बटन "
+"दाखवायचे नसल्यास यांस रिकामे सोडा."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:78
 msgid "Notify on a low power"
@@ -576,7 +613,8 @@ msgstr "पान क्रमांकाची सूची मुलभूत
 msgid ""
 "The index of the page number to show by default which is used to return "
 "focus to the correct page."
-msgstr "पान क्रमांकाची मुलभूतप्रकारे दाखवायची सूची जी बरोबर पानाला जाण्यासाठी वापरली जाईल."
+msgstr ""
+"पान क्रमांकाची मुलभूतप्रकारे दाखवायची सूची जी बरोबर पानाला जाण्यासाठी वापरली जाईल."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:96
 msgid "The ID of the last device selected"
@@ -594,9 +632,11 @@ msgstr "किमान स्थर दर्शविणारी टक्क
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:99
 msgid ""
-"The percentage of the battery when it is considered low. Only valid when "
-"use-time-for-policy is false."
-msgstr "बॅटरीची कार्यक्षमता किमान आढळल्यास त्याची टक्केवारी. तेव्हा वैध असते जेव्हा use_time_for_policy खोटे असते."
+"The percentage of the battery when it is considered low. Only valid when use-"
+"time-for-policy is false."
+msgstr ""
+"बॅटरीची कार्यक्षमता किमान आढळल्यास त्याची टक्केवारी. तेव्हा वैध असते जेव्हा "
+"use_time_for_policy खोटे असते."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:100
 msgid "Percentage considered critical"
@@ -606,7 +646,9 @@ msgstr "गंभीररित्या दर्शविणारी टक�
 msgid ""
 "The percentage of the battery when it is considered critical. Only valid "
 "when use-time-for-policy is false."
-msgstr "बॅटरी गंभीररित्या आढळल्यास त्याची टक्केवारी. तेव्हा वैध असते जेव्हा use_time_for_policy खोटे असते."
+msgstr ""
+"बॅटरी गंभीररित्या आढळल्यास त्याची टक्केवारी. तेव्हा वैध असते जेव्हा use_time_for_policy "
+"खोटे असते."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:102
 msgid "Percentage action is taken"
@@ -616,7 +658,9 @@ msgstr "टक्केवारी प्रतिसादात्मक क�
 msgid ""
 "The percentage of the battery when the critical action is performed. Only "
 "valid when use-time-for-policy is false."
-msgstr "बॅटरी गंभीररित्या कार्य केल्यास त्याची टक्केवारी. तेव्हा वैध असते जेव्हा use_time_for_policy खोटे असते."
+msgstr ""
+"बॅटरी गंभीररित्या कार्य केल्यास त्याची टक्केवारी. तेव्हा वैध असते जेव्हा "
+"use_time_for_policy खोटे असते."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:104
 msgid "The time remaining when low"
@@ -624,9 +668,11 @@ msgstr "किमान असल्यावर उर्वरीत वेळ
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:105
 msgid ""
-"The time remaining in seconds of the battery when it is considered low. Only"
-" valid when use-time-for-policy is true."
-msgstr "बॅटरी कार्यक्षमता किमान आढळल्यास सेकंदामधिल उर्वरीत वेळ. तेव्हा वैध असते जेव्हा use_time_for_policy खरे असते."
+"The time remaining in seconds of the battery when it is considered low. Only "
+"valid when use-time-for-policy is true."
+msgstr ""
+"बॅटरी कार्यक्षमता किमान आढळल्यास सेकंदामधिल उर्वरीत वेळ. तेव्हा वैध असते जेव्हा "
+"use_time_for_policy खरे असते."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:106
 msgid "The time remaining when critical"
@@ -634,9 +680,11 @@ msgstr "गंभीररित्या असल्यास उपलब्�
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:107
 msgid ""
-"The time remaining in seconds of the battery when it is considered critical."
-" Only valid when use-time-for-policy is true."
-msgstr "बॅटरी गंभीररित्या कार्य केल्यास सेकंदामधिल उर्वरीत वेळ. तेव्हा वैध असते जेव्हा use_time_for_policy खरे असते."
+"The time remaining in seconds of the battery when it is considered critical. "
+"Only valid when use-time-for-policy is true."
+msgstr ""
+"बॅटरी गंभीररित्या कार्य केल्यास सेकंदामधिल उर्वरीत वेळ. तेव्हा वैध असते जेव्हा "
+"use_time_for_policy खरे असते."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:108
 msgid "The time remaining when action is taken"
@@ -646,7 +694,9 @@ msgstr "प्रतिसादात्मक कृती कार्यर�
 msgid ""
 "The time remaining in seconds of the battery when critical action is taken. "
 "Only valid when use-time-for-policy is true."
-msgstr "बॅटरी गंभीररित्या कार्य केल्यास सेकंदामधिल उर्वरीत वेळ. तेव्हा वैध असते जेव्हा use_time_for_policy खरे असते."
+msgstr ""
+"बॅटरी गंभीररित्या कार्य केल्यास सेकंदामधिल उर्वरीत वेळ. तेव्हा वैध असते जेव्हा "
+"use_time_for_policy खरे असते."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:110
 msgid "Sleep timeout computer when on battery"
@@ -674,8 +724,8 @@ msgstr "UPS पावरचा वापरकरतेवेळी संगण
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:115
 msgid ""
-"The amount of time in seconds the computer on UPS power needs to be inactive"
-" before it goes to sleep."
+"The amount of time in seconds the computer on UPS power needs to be inactive "
+"before it goes to sleep."
 msgstr "संगणक UPS पावर वापरतेवेळी संगणक निष्क्रीय होण्यापूर्वी सेकंदात दर्शवलेली वेळ."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:116
@@ -704,9 +754,10 @@ msgstr "UPS पावरचा वापरकरतेवेळी दृष्
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:121
 msgid ""
-"The amount of time in seconds the computer on UPS power needs to be inactive"
-" before the display goes to sleep."
-msgstr "संगणक UPS पावर वापरतेवेळी संगणक निष्क्रीय व दृष्य निष्क्रीय होण्यापूर्वी सेकंदात दर्शवलेली वेळ."
+"The amount of time in seconds the computer on UPS power needs to be inactive "
+"before the display goes to sleep."
+msgstr ""
+"संगणक UPS पावर वापरतेवेळी संगणक निष्क्रीय व दृष्य निष्क्रीय होण्यापूर्वी सेकंदात दर्शवलेली वेळ."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:122
 msgid "If sounds should be used"
@@ -719,8 +770,7 @@ msgid ""
 msgstr "पावर गंभीररित्या कमी असल्यास, किंवा विनंती थांबविल्यामुळे करार कृती स्तब्द जाल्यास."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:124
-msgid ""
-"If preferences and statistics items should be shown in the context menu"
+msgid "If preferences and statistics items should be shown in the context menu"
 msgstr "संदर्भ मेनू मध्ये प्राधान्ये आणि आकडेवारी दाखायची का "
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:125
@@ -742,8 +792,8 @@ msgstr "पावर व्यवस्थापन संयोजीत कर
 #. TRANSLATORS: shown on the titlebar
 #. TRANSLATORS: the program name
 #: ../data/ukui-power-statistics.desktop.in.in.h:1
-#: ../data/gpm-statistics.ui.h:1 ../src/gpm-statistics.c:1090
-#: ../src/gpm-statistics.c:1603
+#: ../data/gpm-statistics.ui.h:1 ../src/gpm-statistics.c:1121
+#: ../src/gpm-statistics.c:1634
 msgid "Power Statistics"
 msgstr "पावर आकडेवारी"
 
@@ -755,7 +805,7 @@ msgstr "पावर व्यवस्थापन पहा"
 msgid "Brightness"
 msgstr "तेजपणा"
 
-#: ../data/gpm-statistics.ui.h:2 ../src/gpm-statistics.c:208
+#: ../data/gpm-statistics.ui.h:2 ../src/gpm-statistics.c:214
 msgid "Details"
 msgstr "तपशील"
 
@@ -795,7 +845,7 @@ msgstr "दर सेकंद करीता प्रोसेसर वे�
 msgid "0"
 msgstr "0"
 
-#: ../data/gpm-statistics.ui.h:12 ../src/gpm-statistics.c:194
+#: ../data/gpm-statistics.ui.h:12 ../src/gpm-statistics.c:200
 msgid "Wakeups"
 msgstr "वेकअपस्"
 
@@ -1064,7 +1114,7 @@ msgid "%.1fV"
 msgstr "%.1fV"
 
 #. TRANSLATORS: show verbose debugging
-#: ../src/gpm-main.c:172 ../src/gpm-prefs.c:77 ../src/gpm-statistics.c:1586
+#: ../src/gpm-main.c:172 ../src/gpm-prefs.c:77 ../src/gpm-statistics.c:1617
 msgid "Show extra debugging information"
 msgstr "अगाऊ सदोष निर्धारण माहिती दर्शवा"
 
@@ -1085,100 +1135,108 @@ msgid "UKUI Power Manager"
 msgstr "UKUI पावर व्यवस्थापक"
 
 #. TRANSLATORS: this is the sound description
-#: ../src/gpm-manager.c:223 ../src/gpm-manager.c:295
+#: ../src/gpm-manager.c:225 ../src/gpm-manager.c:297
 msgid "Battery is very low"
 msgstr "बॅटरीचे स्तर खूप कमी आहे"
 
 #. TRANSLATORS: this is the sound description
-#: ../src/gpm-manager.c:275
+#: ../src/gpm-manager.c:277
 msgid "Power plugged in"
 msgstr "पावर जोडले"
 
 #. TRANSLATORS: this is the sound description
-#: ../src/gpm-manager.c:279
+#: ../src/gpm-manager.c:281
 msgid "Power unplugged"
 msgstr "पावर काढले"
 
 #. TRANSLATORS: this is the sound description
-#: ../src/gpm-manager.c:283
+#: ../src/gpm-manager.c:285
 msgid "Lid has opened"
 msgstr "लीड उघडले"
 
 #. TRANSLATORS: this is the sound description
-#: ../src/gpm-manager.c:287
+#: ../src/gpm-manager.c:289
 msgid "Lid has closed"
 msgstr "लीड बंद झाले"
 
 #. TRANSLATORS: this is the sound description
-#: ../src/gpm-manager.c:291
+#: ../src/gpm-manager.c:293
 msgid "Battery is low"
 msgstr "बॅटरीचे स्तर कमी आहे"
 
 #. TRANSLATORS: this is the sound description
-#: ../src/gpm-manager.c:299
+#: ../src/gpm-manager.c:301
 msgid "Battery is full"
 msgstr "बॅटरीचे स्तर पूर्ण आहे"
 
 #. TRANSLATORS: this is the sound description
-#: ../src/gpm-manager.c:303
+#: ../src/gpm-manager.c:305
 msgid "Suspend started"
 msgstr "सस्पेंड सुरु केले"
 
 #. TRANSLATORS: this is the sound description
-#: ../src/gpm-manager.c:307
+#: ../src/gpm-manager.c:309
 msgid "Resumed"
 msgstr "पुन्हा सुरू केले"
 
 #. TRANSLATORS: this is the sound description
-#: ../src/gpm-manager.c:311
+#: ../src/gpm-manager.c:313
 msgid "Suspend failed"
 msgstr "सस्पेंड अपयशी"
 
 #. TRANSLATORS: message text
-#: ../src/gpm-manager.c:587
+#: ../src/gpm-manager.c:591
 msgid "Computer failed to suspend."
 msgstr "संगणक स्थगित झाला नाही"
 
 #. TRANSLATORS: title text
-#: ../src/gpm-manager.c:589
+#: ../src/gpm-manager.c:593
 msgid "Failed to suspend"
 msgstr "स्थगित झाला नाही"
 
 #. TRANSLATORS: message text
-#: ../src/gpm-manager.c:593
+#: ../src/gpm-manager.c:597
 msgid "Computer failed to hibernate."
 msgstr "संगणक हायबरनेट झाला नाही"
 
 #. TRANSLATORS: title text
-#: ../src/gpm-manager.c:595
+#: ../src/gpm-manager.c:599
 msgid "Failed to hibernate"
 msgstr "हायबरनेट झाला नाही"
 
 #. TRANSLATORS: message text
-#: ../src/gpm-manager.c:600
+#: ../src/gpm-manager.c:604
 msgid "Failure was reported as:"
 msgstr "त्रुटी अशी दर्शविली:"
 
 #. TRANSLATORS: button text, visit the suspend help website
-#: ../src/gpm-manager.c:613
+#: ../src/gpm-manager.c:617
 msgid "Visit help page"
 msgstr "मदत पानावर भेट द्या"
 
+#: ../src/gpm-manager.c:654
+msgid "Suspend failed for some reason (maybe dbus error)"
+msgstr ""
+
+#: ../src/gpm-manager.c:692
+msgid "Hibernate failed for some reason (maybe dbus error)"
+msgstr ""
+
 #. TRANSLATORS: this is the ukui-screensaver throttle
-#: ../src/gpm-manager.c:859
+#: ../src/gpm-manager.c:904
 msgid "Display DPMS activated"
 msgstr "सक्रीय DPMS दर्शवा"
 
 #. TRANSLATORS: this is the ukui-screensaver throttle
-#: ../src/gpm-manager.c:878
+#: ../src/gpm-manager.c:923
 msgid "On battery power"
 msgstr "बॅटरी पावर वरील"
 
-#: ../src/gpm-manager.c:896
+#: ../src/gpm-manager.c:941
 msgid "Laptop lid is closed"
 msgstr "लॅपटॉप लीड बंद आहे"
 
-#: ../src/gpm-manager.c:934
+#: ../src/gpm-manager.c:979
 msgid "Power Information"
 msgstr "पावर माहिती"
 
@@ -1186,316 +1244,350 @@ msgstr "पावर माहिती"
 #. * where capacity is the ratio of the last_full capacity with that of
 #. * the design capacity. (#326740)
 #. TRANSLATORS: battery is old or broken
-#: ../src/gpm-manager.c:1121
+#: ../src/gpm-manager.c:1167
 msgid "Battery may be broken"
 msgstr "बॅटरी सदोषीत असू शकते"
 
-#. TRANSLATORS: notify the user that that battery is broken as the capacity is
-#. very low
-#: ../src/gpm-manager.c:1124
+#. TRANSLATORS: notify the user that that battery is broken as the capacity is very low
+#: ../src/gpm-manager.c:1170
 #, c-format
 msgid ""
-"Battery has a very low capacity (%1.1f%%), which means that it may be old or"
-" broken."
+"Battery has a very low capacity (%1.1f%%), which means that it may be old or "
+"broken."
 msgstr "विद्युत घटाची क्षमता खूप कमी (%1.1f%%) आहे, विद्युत घट जुना किंवा खराब झालाय."
 
+#. kobe
 #. TRANSLATORS: show the charged notification
-#: ../src/gpm-manager.c:1173
+#: ../src/gpm-manager.c:1220
 msgid "Battery Charged"
 msgid_plural "Batteries Charged"
 msgstr[0] "विद्युत घट प्रभारित झालाय"
 msgstr[1] "विद्युत घट प्रभारित झालेत"
 
 #. TRANSLATORS: laptop battery is now discharging
-#: ../src/gpm-manager.c:1219
+#: ../src/gpm-manager.c:1266
 msgid "Battery Discharging"
 msgstr "बॅटरी डीसचार्ज होत आहे"
 
 #. TRANSLATORS: tell the user how much time they have got
-#: ../src/gpm-manager.c:1223
+#: ../src/gpm-manager.c:1270
 #, c-format
 msgid "%s of battery power remaining (%.0f%%)"
 msgstr "%s विद्युत घट शक्ती बाकी (%.0f%%)"
 
 #. TRANSLATORS: the device is discharging, but we only have a percentage
-#: ../src/gpm-manager.c:1226 ../src/gpm-manager.c:1238
+#: ../src/gpm-manager.c:1273 ../src/gpm-manager.c:1285
 #, c-format
 msgid "%s discharging (%.0f%%)"
 msgstr "%s डीसचार्ज करीत आहे (%.0f%%)"
 
 #. TRANSLATORS: UPS is now discharging
-#: ../src/gpm-manager.c:1231
+#: ../src/gpm-manager.c:1278
 msgid "UPS Discharging"
 msgstr "UPS डीसचार्ज होत आहे"
 
 #. TRANSLATORS: tell the user how much time they have got
-#: ../src/gpm-manager.c:1235
+#: ../src/gpm-manager.c:1282
 #, c-format
 msgid "%s of UPS backup power remaining (%.0f%%)"
 msgstr "%s UPS बॅकअप शक्ती बाकी (%.0f%%)"
 
 #. TRANSLATORS: laptop battery low, and we only have one battery
-#: ../src/gpm-manager.c:1319
+#: ../src/gpm-manager.c:1366
 msgid "Battery low"
 msgstr "बॅटरी कमी आहे"
 
 #. TRANSLATORS: laptop battery low, and we have more than one kind of battery
-#: ../src/gpm-manager.c:1322
+#: ../src/gpm-manager.c:1369
 msgid "Laptop battery low"
 msgstr "लॅपटॉप बॅटरी कमी"
 
 #. TRANSLATORS: tell the user how much time they have got
-#: ../src/gpm-manager.c:1328
+#: ../src/gpm-manager.c:1375
 #, c-format
 msgid "Approximately <b>%s</b> remaining (%.0f%%)"
 msgstr "अंदाजे <b>%s</b> बाकी (%.0f%%)"
 
 #. TRANSLATORS: UPS is starting to get a little low
-#: ../src/gpm-manager.c:1332
+#: ../src/gpm-manager.c:1379
 msgid "UPS low"
 msgstr "UPS क्षमता कमी"
 
 #. TRANSLATORS: tell the user how much time they have got
-#: ../src/gpm-manager.c:1336
+#: ../src/gpm-manager.c:1383
 #, c-format
 msgid "Approximately <b>%s</b> of remaining UPS backup power (%.0f%%)"
 msgstr "अंदाजे <b>%s</b> बाकी विद्युत शक्ती (%.0f%%)"
 
 #. TRANSLATORS: mouse is getting a little low
 #. TRANSLATORS: the mouse battery is very low
-#: ../src/gpm-manager.c:1340 ../src/gpm-manager.c:1474
+#: ../src/gpm-manager.c:1387 ../src/gpm-manager.c:1521
+#: ../src/gpm-manager.c:1668
 msgid "Mouse battery low"
 msgstr "माउस बॅटरीची क्षमता कमी"
 
 #. TRANSLATORS: tell user more details
-#: ../src/gpm-manager.c:1343
+#: ../src/gpm-manager.c:1390
 #, c-format
 msgid "Wireless mouse is low in power (%.0f%%)"
 msgstr "वायरलेस माउसची विद्युत शक्ती कमी झाली आहे (%.0f%%)"
 
 #. TRANSLATORS: keyboard is getting a little low
 #. TRANSLATORS: the keyboard battery is very low
-#: ../src/gpm-manager.c:1347 ../src/gpm-manager.c:1482
+#: ../src/gpm-manager.c:1394 ../src/gpm-manager.c:1529
+#: ../src/gpm-manager.c:1676
 msgid "Keyboard battery low"
 msgstr "कळफलक बॅटरी क्षमता कमी"
 
 #. TRANSLATORS: tell user more details
-#: ../src/gpm-manager.c:1350
+#: ../src/gpm-manager.c:1397
 #, c-format
 msgid "Wireless keyboard is low in power (%.0f%%)"
 msgstr "वायरलेस कि-बोर्डची विद्युत शक्ती कमी झाली आहे (%.0f%%)"
 
 #. TRANSLATORS: PDA is getting a little low
 #. TRANSLATORS: the PDA battery is very low
-#: ../src/gpm-manager.c:1354 ../src/gpm-manager.c:1491
+#: ../src/gpm-manager.c:1401 ../src/gpm-manager.c:1538
+#: ../src/gpm-manager.c:1684
 msgid "PDA battery low"
 msgstr "PDA बॅटरी क्षमता कमी"
 
 #. TRANSLATORS: tell user more details
-#: ../src/gpm-manager.c:1357
+#: ../src/gpm-manager.c:1404
 #, c-format
 msgid "PDA is low in power (%.0f%%)"
 msgstr "PDA ची विद्युत शक्ती कमी झाली आहे (%.0f%%)"
 
 #. TRANSLATORS: cell phone (mobile) is getting a little low
 #. TRANSLATORS: the cell battery is very low
-#: ../src/gpm-manager.c:1361 ../src/gpm-manager.c:1501
-#: ../src/gpm-manager.c:1511
+#: ../src/gpm-manager.c:1408 ../src/gpm-manager.c:1548
+#: ../src/gpm-manager.c:1558 ../src/gpm-manager.c:1694
+#: ../src/gpm-manager.c:1704
 msgid "Cell phone battery low"
 msgstr "सेल फोन बॅटरीची क्षमता कमी"
 
 #. TRANSLATORS: tell user more details
-#: ../src/gpm-manager.c:1364
+#: ../src/gpm-manager.c:1411
 #, c-format
 msgid "Cell phone is low in power (%.0f%%)"
 msgstr "भ्रमणध्वनीची विद्युत शक्ती कमी झाली आहे (%.0f%%)"
 
 #. TRANSLATORS: media player, e.g. mp3 is getting a little low
-#: ../src/gpm-manager.c:1368
+#: ../src/gpm-manager.c:1415
 msgid "Media player battery low"
 msgstr "मिडिया प्लेयर विद्युत शक्ती कमी"
 
 #. TRANSLATORS: tell user more details
-#: ../src/gpm-manager.c:1371
+#: ../src/gpm-manager.c:1418
 #, c-format
 msgid "Media player is low in power (%.0f%%)"
 msgstr "मिडिया प्लेयरची विद्युत शक्ती कमी झाली आहे (%.0f%%)"
 
 #. TRANSLATORS: graphics tablet, e.g. wacom is getting a little low
 #. TRANSLATORS: the cell battery is very low
-#: ../src/gpm-manager.c:1375 ../src/gpm-manager.c:1520
+#: ../src/gpm-manager.c:1422 ../src/gpm-manager.c:1567
+#: ../src/gpm-manager.c:1712
 msgid "Tablet battery low"
 msgstr " टॅब्लेटची बॅटरी कमी"
 
 #. TRANSLATORS: tell user more details
-#: ../src/gpm-manager.c:1378
+#: ../src/gpm-manager.c:1425
 #, c-format
 msgid "Tablet is low in power (%.0f%%)"
 msgstr " टॅब्लेटची विद्युत शक्ती कमी झाली आहे (%.0f%%)"
 
 #. TRANSLATORS: computer, e.g. ipad is getting a little low
 #. TRANSLATORS: the cell battery is very low
-#: ../src/gpm-manager.c:1382 ../src/gpm-manager.c:1529
+#: ../src/gpm-manager.c:1429 ../src/gpm-manager.c:1576
+#: ../src/gpm-manager.c:1721
 msgid "Attached computer battery low"
 msgstr "संगणकाला जोडलेली बॅटरी कमी"
 
 #. TRANSLATORS: tell user more details
-#: ../src/gpm-manager.c:1385
+#: ../src/gpm-manager.c:1432
 #, c-format
 msgid "Attached computer is low in power (%.0f%%)"
 msgstr "जोडलेल्या संगणकाची विद्युत शक्ती कमी झाली आहे (%.0f%%)"
 
-#. TRANSLATORS: laptop battery critically low, and only have one kind of
-#. battery
-#: ../src/gpm-manager.c:1433
+#. TRANSLATORS: laptop battery critically low, and only have one kind of battery
+#: ../src/gpm-manager.c:1480 ../src/gpm-manager.c:1645
 msgid "Battery critically low"
 msgstr "बॅटरी गंभीररित्या कमी"
 
-#. TRANSLATORS: laptop battery critically low, and we have more than one type
-#. of battery
+#. TRANSLATORS: laptop battery critically low, and we have more than one type of battery
 #. TRANSLATORS: laptop battery is really, really, low
-#: ../src/gpm-manager.c:1436 ../src/gpm-manager.c:1589
+#: ../src/gpm-manager.c:1483 ../src/gpm-manager.c:1648
+#: ../src/gpm-manager.c:1781
 msgid "Laptop battery critically low"
 msgstr "लॅपटॉप बॅटरी गंभीररित्या कमी"
 
-#. TRANSLATORS: tell the use to insert the plug, as we're not going to do
-#. anything
-#: ../src/gpm-manager.c:1445
+#. TRANSLATORS: tell the use to insert the plug, as we're not going to do anything
+#: ../src/gpm-manager.c:1492
 msgid "Plug in your AC adapter to avoid losing data."
 msgstr "माहिती संचयीत करून ठेवण्याकरीता AC अडॅप्टर जोडा."
 
 #. TRANSLATORS: give the user a ultimatum
-#: ../src/gpm-manager.c:1449
+#: ../src/gpm-manager.c:1496
 #, c-format
 msgid "Computer will suspend very soon unless it is plugged in."
 msgstr "संगणक विजेला न लावल्यास लवकरच स्थगित होईल."
 
 #. TRANSLATORS: give the user a ultimatum
-#: ../src/gpm-manager.c:1453
+#: ../src/gpm-manager.c:1500
 #, c-format
 msgid "Computer will hibernate very soon unless it is plugged in."
 msgstr "संगणक विजेला न लावल्यास लवकरच निष्क्रिय होईल."
 
 #. TRANSLATORS: give the user a ultimatum
-#: ../src/gpm-manager.c:1457
+#: ../src/gpm-manager.c:1504
 #, c-format
 msgid "Computer will shutdown very soon unless it is plugged in."
 msgstr "संगणक विजेला न लावल्यास लवकरच बंद होईल."
 
 #. TRANSLATORS: the UPS is very low
 #. TRANSLATORS: UPS is really, really, low
-#: ../src/gpm-manager.c:1464 ../src/gpm-manager.c:1625
+#: ../src/gpm-manager.c:1511 ../src/gpm-manager.c:1658
+#: ../src/gpm-manager.c:1819
 msgid "UPS critically low"
 msgstr "UPS गंभीररित्या कमी"
 
 #. TRANSLATORS: give the user a ultimatum
-#: ../src/gpm-manager.c:1468
+#: ../src/gpm-manager.c:1515 ../src/gpm-manager.c:1662
 #, c-format
 msgid ""
-"Approximately <b>%s</b> of remaining UPS power (%.0f%%). Restore AC power to"
-" your computer to avoid losing data."
-msgstr "अंदाजे <b>%s</b> बाकी UPS विद्युत शक्ती (%.0f%%). संगणकातील माहिती नष्ट होऊ नये यासाठी संगणक विजेला लावा."
+"Approximately <b>%s</b> of remaining UPS power (%.0f%%). Restore AC power to "
+"your computer to avoid losing data."
+msgstr ""
+"अंदाजे <b>%s</b> बाकी UPS विद्युत शक्ती (%.0f%%). संगणकातील माहिती नष्ट होऊ नये "
+"यासाठी संगणक विजेला लावा."
 
 #. TRANSLATORS: the device is just going to stop working
-#: ../src/gpm-manager.c:1477
+#: ../src/gpm-manager.c:1524 ../src/gpm-manager.c:1671
 #, c-format
 msgid ""
 "Wireless mouse is very low in power (%.0f%%). This device will soon stop "
 "functioning if not charged."
-msgstr "वायरलेस माउसची विद्युत शक्ती खूप कमी झाली आहे (%.0f%%). तो लवकरच चार्ज न केल्यास बंद पडेल."
+msgstr ""
+"वायरलेस माउसची विद्युत शक्ती खूप कमी झाली आहे (%.0f%%). तो लवकरच चार्ज न केल्यास बंद "
+"पडेल."
 
 #. TRANSLATORS: the device is just going to stop working
-#: ../src/gpm-manager.c:1485
+#: ../src/gpm-manager.c:1532 ../src/gpm-manager.c:1679
 #, c-format
 msgid ""
 "Wireless keyboard is very low in power (%.0f%%). This device will soon stop "
 "functioning if not charged."
-msgstr "वायरलेस कि-बोर्डची विद्युत शक्ती खूप कमी झाली आहे (%.0f%%). तो लवकरच चार्ज न केल्यास बंद पडेल."
+msgstr ""
+"वायरलेस कि-बोर्डची विद्युत शक्ती खूप कमी झाली आहे (%.0f%%). तो लवकरच चार्ज न केल्यास "
+"बंद पडेल."
 
 #. TRANSLATORS: the device is just going to stop working
-#: ../src/gpm-manager.c:1494
+#: ../src/gpm-manager.c:1541 ../src/gpm-manager.c:1687
 #, c-format
 msgid ""
-"PDA is very low in power (%.0f%%). This device will soon stop functioning if"
-" not charged."
-msgstr "PDAची विद्युत शक्ती खूप कमी झाली आहे (%.0f%%). तो लवकरच चार्ज न केल्यास बंद पडेल."
+"PDA is very low in power (%.0f%%). This device will soon stop functioning if "
+"not charged."
+msgstr ""
+"PDAची विद्युत शक्ती खूप कमी झाली आहे (%.0f%%). तो लवकरच चार्ज न केल्यास बंद पडेल."
 
 #. TRANSLATORS: the device is just going to stop working
-#: ../src/gpm-manager.c:1504
+#: ../src/gpm-manager.c:1551 ../src/gpm-manager.c:1697
 #, c-format
 msgid ""
 "Cell phone is very low in power (%.0f%%). This device will soon stop "
 "functioning if not charged."
-msgstr "भ्रमणध्वनीची विद्युत शक्ती खूप कमी झाली आहे (%.0f%%). तो लवकरच चार्ज न केल्यास बंद पडेल."
+msgstr ""
+"भ्रमणध्वनीची विद्युत शक्ती खूप कमी झाली आहे (%.0f%%). तो लवकरच चार्ज न केल्यास बंद पडेल."
 
 #. TRANSLATORS: the device is just going to stop working
-#: ../src/gpm-manager.c:1514
+#: ../src/gpm-manager.c:1561 ../src/gpm-manager.c:1707
 #, c-format
 msgid ""
 "Media player is very low in power (%.0f%%). This device will soon stop "
 "functioning if not charged."
-msgstr "मिडिया प्लेयरची विद्युत शक्ती खूप कमी झाली आहे (%.0f%%). तो लवकरच चार्ज न केल्यास बंद पडेल."
+msgstr ""
+"मिडिया प्लेयरची विद्युत शक्ती खूप कमी झाली आहे (%.0f%%). तो लवकरच चार्ज न केल्यास बंद "
+"पडेल."
 
 #. TRANSLATORS: the device is just going to stop working
-#: ../src/gpm-manager.c:1523
+#: ../src/gpm-manager.c:1570 ../src/gpm-manager.c:1715
 #, c-format
 msgid ""
-"Tablet is very low in power (%.0f%%). This device will soon stop functioning"
-" if not charged."
-msgstr "टॅब्लेटची विद्युत शक्ती खूप कमी झाली आहे (%.0f%%). तो लवकरच चार्ज न केल्यास बंद पडेल."
+"Tablet is very low in power (%.0f%%). This device will soon stop functioning "
+"if not charged."
+msgstr ""
+"टॅब्लेटची विद्युत शक्ती खूप कमी झाली आहे (%.0f%%). तो लवकरच चार्ज न केल्यास बंद पडेल."
 
 #. TRANSLATORS: the device is just going to stop working
-#: ../src/gpm-manager.c:1532
+#: ../src/gpm-manager.c:1579 ../src/gpm-manager.c:1724
 #, c-format
 msgid ""
 "Attached computer is very low in power (%.0f%%). The device will soon "
 "shutdown if not charged."
-msgstr "जोडलेल्या संगणकाची विद्युत शक्ती खूप कमी झाली आहे (%.0f%%). तो लवकरच चार्ज न केल्यास बंद पडेल."
+msgstr ""
+"जोडलेल्या संगणकाची विद्युत शक्ती खूप कमी झाली आहे (%.0f%%). तो लवकरच चार्ज न केल्यास बंद "
+"पडेल."
+
+#. TRANSLATORS: give the user a ultimatum
+#: ../src/gpm-manager.c:1652
+#, c-format
+msgid ""
+"Battery power is too low, please plug in the power to ensure the normal use"
+msgstr ""
 
 #. TRANSLATORS: computer will shutdown without saving data
-#: ../src/gpm-manager.c:1597
+#: ../src/gpm-manager.c:1789
 msgid ""
-"The battery is below the critical level and this computer will <b>power-"
-"off</b> when the battery becomes completely empty."
-msgstr "बॅटरी गंभीररित्या स्थरावर कार्यरत आहे व हा संगणक बॅटरी पूर्णपणे रिकामी होताच <b>बंद</b>पडेल."
+"The battery is below the critical level and this computer will <b>power-off</"
+"b> when the battery becomes completely empty."
+msgstr ""
+"बॅटरी गंभीररित्या स्थरावर कार्यरत आहे व हा संगणक बॅटरी पूर्णपणे रिकामी होताच <b>बंद</"
+"b>पडेल."
 
 #. TRANSLATORS: computer will suspend
-#: ../src/gpm-manager.c:1603
+#. kobe
+#: ../src/gpm-manager.c:1796
+#, fuzzy
 msgid ""
 "The battery is below the critical level and this computer is about to "
-"suspend.<br><b>NOTE:</b> A small amount of power is required to keep your "
+"suspend.<b>NOTE:</b> A small amount of power is required to keep your "
 "computer in a suspended state."
-msgstr "बॅटरी गंभीररित्या स्थरावर कार्यरत आहे व हा संगणक स्तब्ध होण्याच्या मार्गावर आहे.<br><b>टिप:</b> तुमचे संगणक स्तब्ध स्थितीत ठेवण्याकरीता थोड्या प्रमाणात पावरची आवश्यकता आहे."
+msgstr ""
+"बॅटरी गंभीररित्या स्थरावर कार्यरत आहे व हा संगणक स्तब्ध होण्याच्या मार्गावर आहे."
+"<br><b>टिप:</b> तुमचे संगणक स्तब्ध स्थितीत ठेवण्याकरीता थोड्या प्रमाणात पावरची आवश्यकता "
+"आहे."
 
 #. TRANSLATORS: computer will hibernate
-#: ../src/gpm-manager.c:1610
+#: ../src/gpm-manager.c:1803
 msgid ""
 "The battery is below the critical level and this computer is about to "
 "hibernate."
 msgstr "बॅटरी गंभीररित्या स्थरावर कार्यरत आहे व हा संगणक हायबरनेट होण्याच्या मार्गावर आहे."
 
 #. TRANSLATORS: computer will just shutdown
-#: ../src/gpm-manager.c:1615
+#: ../src/gpm-manager.c:1808
 msgid ""
 "The battery is below the critical level and this computer is about to "
 "shutdown."
 msgstr "बॅटरी गंभीररित्या स्थरावर कार्यरत आहे व हा संगणक बंद होण्याच्या मार्गावर आहे."
 
 #. TRANSLATORS: computer will shutdown without saving data
-#: ../src/gpm-manager.c:1633
+#: ../src/gpm-manager.c:1827
 msgid ""
 "The UPS is below the critical level and this computer will <b>power-off</b> "
 "when the UPS becomes completely empty."
-msgstr "The UPS गंभीररित्या स्थरावर कार्यरत आहे व हा संगणक UPS पूर्णपणे रिकामी होताच <b>बंद</b>पडेल."
+msgstr ""
+"The UPS गंभीररित्या स्थरावर कार्यरत आहे व हा संगणक UPS पूर्णपणे रिकामी होताच <b>बंद</"
+"b>पडेल."
 
 #. TRANSLATORS: computer will hibernate
-#: ../src/gpm-manager.c:1639
+#: ../src/gpm-manager.c:1833
 msgid ""
 "The UPS is below the critical level and this computer is about to hibernate."
 msgstr "UPS गंभीररित्या स्थरावर कार्यरत आहे व हा संगणक हायबरनेट होण्याच्या मार्गावर आहे."
 
 #. TRANSLATORS: computer will just shutdown
-#: ../src/gpm-manager.c:1644
+#: ../src/gpm-manager.c:1838
 msgid ""
 "The UPS is below the critical level and this computer is about to shutdown."
 msgstr "UPS गंभीररित्या स्थरावर कार्यरत आहे व हा संगणक बंद होण्याच्या मार्गावर आहे."
@@ -1504,125 +1596,124 @@ msgstr "UPS गंभीररित्या स्थरावर कार्
 msgid "UKUI Power Preferences"
 msgstr "UKUI पावर प्राधान्यता"
 
-#: ../src/gpm-prefs-core.c:241
+#: ../src/gpm-prefs-core.c:242
 msgid "Shutdown"
 msgstr "बंद करा"
 
-#: ../src/gpm-prefs-core.c:248
+#: ../src/gpm-prefs-core.c:249
 msgid "Suspend"
 msgstr "स्तब्ध"
 
-#: ../src/gpm-prefs-core.c:251
+#: ../src/gpm-prefs-core.c:252
 msgid "Hibernate"
 msgstr "हायबरनेट"
 
-#: ../src/gpm-prefs-core.c:254
+#: ../src/gpm-prefs-core.c:255
 msgid "Blank screen"
 msgstr "रिकामी पडदा"
 
-#: ../src/gpm-prefs-core.c:257
+#: ../src/gpm-prefs-core.c:258
 msgid "Ask me"
 msgstr "मला विचारा"
 
-#: ../src/gpm-prefs-core.c:260
+#: ../src/gpm-prefs-core.c:261
 msgid "Do nothing"
 msgstr "काहीच करू नका"
 
-#: ../src/gpm-prefs-core.c:320
+#: ../src/gpm-prefs-core.c:321
 msgid "Never"
 msgstr "कधिच नाही"
 
 #. TRANSLATORS: the rate of discharge for the device
-#: ../src/gpm-statistics.c:78 ../src/gpm-statistics.c:466
+#: ../src/gpm-statistics.c:84 ../src/gpm-statistics.c:497
 msgid "Rate"
 msgstr "दर"
 
-#: ../src/gpm-statistics.c:79
+#: ../src/gpm-statistics.c:85
 msgid "Charge"
 msgstr "चार्ज"
 
-#: ../src/gpm-statistics.c:80 ../src/gpm-statistics.c:480
+#: ../src/gpm-statistics.c:86 ../src/gpm-statistics.c:511
 msgid "Time to full"
 msgstr "भरण्याकरीता वेळ"
 
-#: ../src/gpm-statistics.c:81 ../src/gpm-statistics.c:485
+#: ../src/gpm-statistics.c:87 ../src/gpm-statistics.c:516
 msgid "Time to empty"
 msgstr "रिकामे करण्याकरीता वेळ"
 
-#: ../src/gpm-statistics.c:88
+#: ../src/gpm-statistics.c:94
 msgid "10 minutes"
 msgstr "10 मिनिटं"
 
-#: ../src/gpm-statistics.c:89
+#: ../src/gpm-statistics.c:95
 msgid "2 hours"
 msgstr "2 तास"
 
-#: ../src/gpm-statistics.c:90
+#: ../src/gpm-statistics.c:96
 msgid "6 hours"
 msgstr "6 तास"
 
-#: ../src/gpm-statistics.c:91
+#: ../src/gpm-statistics.c:97
 msgid "1 day"
 msgstr "1 दिवस"
 
-#: ../src/gpm-statistics.c:92
+#: ../src/gpm-statistics.c:98
 msgid "1 week"
 msgstr "1 सप्ताह"
 
 #. TRANSLATORS: what we've observed about the device
-#: ../src/gpm-statistics.c:101
+#: ../src/gpm-statistics.c:107
 msgid "Charge profile"
 msgstr "चार्ज संक्षिप्त माहिती"
 
-#: ../src/gpm-statistics.c:102
+#: ../src/gpm-statistics.c:108
 msgid "Discharge profile"
 msgstr "डीसचार्ज संक्षिप्त माहिती"
 
-#. TRANSLATORS: how accurately we can predict the time remaining of the
-#. battery
-#: ../src/gpm-statistics.c:104
+#. TRANSLATORS: how accurately we can predict the time remaining of the battery
+#: ../src/gpm-statistics.c:110
 msgid "Charge accuracy"
 msgstr "चार्ज अचूकपणा"
 
-#: ../src/gpm-statistics.c:105
+#: ../src/gpm-statistics.c:111
 msgid "Discharge accuracy"
 msgstr "डीसचार्ज अचूकपणा"
 
-#: ../src/gpm-statistics.c:132
+#: ../src/gpm-statistics.c:138
 msgid "Attribute"
 msgstr "गुणधर्म"
 
-#: ../src/gpm-statistics.c:139
+#: ../src/gpm-statistics.c:145
 msgid "Value"
 msgstr "मूल्य"
 
-#: ../src/gpm-statistics.c:156
+#: ../src/gpm-statistics.c:162
 msgid "Image"
 msgstr "प्रतिमा"
 
-#: ../src/gpm-statistics.c:162
+#: ../src/gpm-statistics.c:168
 msgid "Description"
 msgstr "वर्णन"
 
-#: ../src/gpm-statistics.c:181 ../src/gpm-statistics.c:405
+#: ../src/gpm-statistics.c:187 ../src/gpm-statistics.c:436
 msgid "Type"
 msgstr "प्रकार"
 
-#: ../src/gpm-statistics.c:187
+#: ../src/gpm-statistics.c:193
 msgid "ID"
 msgstr "ID"
 
-#: ../src/gpm-statistics.c:201
+#: ../src/gpm-statistics.c:207
 msgid "Command"
 msgstr "आदेश"
 
 #. TRANSLATORS: this is when the stats time is not known
-#: ../src/gpm-statistics.c:286
+#: ../src/gpm-statistics.c:292
 msgid "Unknown"
 msgstr "अपरिचीत"
 
 #. TRANSLATORS: this is a time value, usually to show on a graph
-#: ../src/gpm-statistics.c:290
+#: ../src/gpm-statistics.c:296
 #, c-format
 msgid "%.0f second"
 msgid_plural "%.0f seconds"
@@ -1630,7 +1721,7 @@ msgstr[0] "%.0f सेकंद"
 msgstr[1] "%.0f सेकंद"
 
 #. TRANSLATORS: this is a time value, usually to show on a graph
-#: ../src/gpm-statistics.c:295
+#: ../src/gpm-statistics.c:301
 #, c-format
 msgid "%.1f minute"
 msgid_plural "%.1f minutes"
@@ -1638,7 +1729,7 @@ msgstr[0] "%.1f मिनिट"
 msgstr[1] "%.1f मिनिटे"
 
 #. TRANSLATORS: this is a time value, usually to show on a graph
-#: ../src/gpm-statistics.c:300
+#: ../src/gpm-statistics.c:306
 #, c-format
 msgid "%.1f hour"
 msgid_plural "%.1f hours"
@@ -1646,47 +1737,54 @@ msgstr[0] "%.1f तास"
 msgstr[1] "%.1f तास"
 
 #. TRANSLATORS: this is a time value, usually to show on a graph
-#: ../src/gpm-statistics.c:304
+#: ../src/gpm-statistics.c:310
 #, c-format
 msgid "%.1f day"
 msgid_plural "%.1f days"
 msgstr[0] "%.1f दिवस"
 msgstr[1] "%.1f दिवस"
 
-#: ../src/gpm-statistics.c:313
+#: ../src/gpm-statistics.c:319
 msgid "Yes"
 msgstr "होय"
 
-#: ../src/gpm-statistics.c:313
+#: ../src/gpm-statistics.c:319
 msgid "No"
 msgstr "नाही"
 
+#. TRANSLATORS: this is when the device is plugged in, typically
+#. * only shown for the ac adaptor device
+#: ../src/gpm-statistics.c:345 ../src/gpm-statistics.c:350
+#: ../src/gpm-statistics.c:352 ../src/gpm-statistics.c:360
+#: ../src/gpm-statistics.c:543
+msgid "Online"
+msgstr "ऑनलाइन"
+
 #. TRANSLATORS: the device ID of the current device, e.g. "battery0"
-#: ../src/gpm-statistics.c:402
+#: ../src/gpm-statistics.c:433
 msgid "Device"
 msgstr "साधन"
 
-#: ../src/gpm-statistics.c:407
+#: ../src/gpm-statistics.c:438
 msgid "Vendor"
 msgstr "विक्रेता"
 
-#: ../src/gpm-statistics.c:409
+#: ../src/gpm-statistics.c:440
 msgid "Model"
 msgstr "प्रारूप"
 
-#: ../src/gpm-statistics.c:411
+#: ../src/gpm-statistics.c:442
 msgid "Serial number"
 msgstr "सिरीयल क्रमांक"
 
 #. TRANSLATORS: a boolean attribute that means if the device is supplying the
-#. * main power for the computer. For instance, an AC adapter or laptop
-#. battery
+#. * main power for the computer. For instance, an AC adapter or laptop battery
 #. * would be TRUE,  but a mobile phone or mouse taking power is FALSE
-#: ../src/gpm-statistics.c:416
+#: ../src/gpm-statistics.c:447
 msgid "Supply"
 msgstr "पुरवठा"
 
-#: ../src/gpm-statistics.c:419
+#: ../src/gpm-statistics.c:450
 #, c-format
 msgid "%d second"
 msgid_plural "%d seconds"
@@ -1695,271 +1793,282 @@ msgstr[1] "%d सेकंद"
 
 #. TRANSLATORS: when the device was last updated with new data. It's
 #. * usually a few seconds when a device is discharging or charging.
-#: ../src/gpm-statistics.c:423
+#: ../src/gpm-statistics.c:454
 msgid "Refreshed"
 msgstr "पुन्हदाखल"
 
 #. TRANSLATORS: Present is whether the device is currently attached
 #. * to the computer, as some devices (e.g. laptop batteries) can
 #. * be removed, but still observed as devices on the system
-#: ../src/gpm-statistics.c:433
+#: ../src/gpm-statistics.c:464
 msgid "Present"
 msgstr "वर्तमान"
 
 #. TRANSLATORS: If the device can be recharged, e.g. lithium
 #. * batteries rather than alkaline ones
-#: ../src/gpm-statistics.c:440
+#: ../src/gpm-statistics.c:471
 msgid "Rechargeable"
 msgstr "पुन्ह चार्जजोगी"
 
 #. TRANSLATORS: The state of the device, e.g. "Changing" or "Fully charged"
-#: ../src/gpm-statistics.c:446
+#: ../src/gpm-statistics.c:477
 msgid "State"
 msgstr "स्तर"
 
-#: ../src/gpm-statistics.c:450
+#: ../src/gpm-statistics.c:481
 msgid "Energy"
 msgstr "एनर्जी"
 
-#: ../src/gpm-statistics.c:453
+#: ../src/gpm-statistics.c:484
 msgid "Energy when empty"
 msgstr "रिकामे असल्यावर एनर्जी"
 
-#: ../src/gpm-statistics.c:456
+#: ../src/gpm-statistics.c:487
 msgid "Energy when full"
 msgstr "पूर्ण असल्यावर एनर्जी"
 
-#: ../src/gpm-statistics.c:459
+#: ../src/gpm-statistics.c:490
 msgid "Energy (design)"
 msgstr "एनर्जी (मांडणी)"
 
-#: ../src/gpm-statistics.c:473
+#: ../src/gpm-statistics.c:504
 msgid "Voltage"
 msgstr "वोल्टेज"
 
 #. TRANSLATORS: the amount of charge the cell contains
-#: ../src/gpm-statistics.c:495
+#: ../src/gpm-statistics.c:526
 msgid "Percentage"
 msgstr "टक्केवारी"
 
 #. TRANSLATORS: the capacity of the device, which is basically a measure
 #. * of how full it can get, relative to the design capacity
-#: ../src/gpm-statistics.c:502
+#: ../src/gpm-statistics.c:533
 msgid "Capacity"
 msgstr "क्षमता"
 
 #. TRANSLATORS: the type of battery, e.g. lithium or nikel metal hydroxide
-#: ../src/gpm-statistics.c:507
+#: ../src/gpm-statistics.c:538
 msgid "Technology"
 msgstr "तंत्रज्ञाण"
 
-#. TRANSLATORS: this is when the device is plugged in, typically
-#. * only shown for the ac adaptor device
-#: ../src/gpm-statistics.c:512
-msgid "Online"
-msgstr "ऑनलाइन"
-
 #. TRANSLATORS: the command line was not provided
-#: ../src/gpm-statistics.c:824
+#: ../src/gpm-statistics.c:855
 msgid "No data"
 msgstr "माहिती नाही"
 
 #. TRANSLATORS: kernel module, usually a device driver
-#: ../src/gpm-statistics.c:831 ../src/gpm-statistics.c:836
+#: ../src/gpm-statistics.c:862 ../src/gpm-statistics.c:867
 msgid "Kernel module"
 msgstr "कर्नल विभाग"
 
 #. TRANSLATORS: kernel housekeeping
-#: ../src/gpm-statistics.c:841
+#: ../src/gpm-statistics.c:872
 msgid "Kernel core"
 msgstr "कर्नल कोर"
 
 #. TRANSLATORS: interrupt between processors
-#: ../src/gpm-statistics.c:846
+#: ../src/gpm-statistics.c:877
 msgid "Interprocessor interrupt"
 msgstr "प्रोसेसर अंतर्गत इनटर्रप्ट"
 
 #. TRANSLATORS: unknown interrupt
-#: ../src/gpm-statistics.c:851
+#: ../src/gpm-statistics.c:882
 msgid "Interrupt"
 msgstr "इनटर्रप्ट"
 
 #. TRANSLATORS: the keyboard and mouse device event
-#: ../src/gpm-statistics.c:898
+#: ../src/gpm-statistics.c:929
 msgid "PS/2 keyboard/mouse/touchpad"
 msgstr "PS/2 कळफलक/माऊस/टचपॅड"
 
 #. TRANSLATORS: ACPI, the Intel power standard on laptops and desktops
-#: ../src/gpm-statistics.c:901
+#: ../src/gpm-statistics.c:932
 msgid "ACPI"
 msgstr "ACPI"
 
 #. TRANSLATORS: serial ATA is a new style of hard disk interface
-#: ../src/gpm-statistics.c:904
+#: ../src/gpm-statistics.c:935
 msgid "Serial ATA"
 msgstr "Serial ATA"
 
 #. TRANSLATORS: this is the old-style ATA interface
-#: ../src/gpm-statistics.c:907
+#: ../src/gpm-statistics.c:938
 msgid "ATA host controller"
 msgstr "ATA host controller"
 
 #. TRANSLATORS: 802.11 wireless adaptor
-#: ../src/gpm-statistics.c:910
+#: ../src/gpm-statistics.c:941
 msgid "Intel wireless adaptor"
 msgstr "Intel wireless adaptor"
 
 #. TRANSLATORS: a timer is something that fires periodically.
 #. * The parameter is a process name, e.g. "firefox-bin".
 #. * This is shown when the timer wakes up.
-#: ../src/gpm-statistics.c:917 ../src/gpm-statistics.c:922
-#: ../src/gpm-statistics.c:927 ../src/gpm-statistics.c:932
-#: ../src/gpm-statistics.c:937
+#: ../src/gpm-statistics.c:948 ../src/gpm-statistics.c:953
+#: ../src/gpm-statistics.c:958 ../src/gpm-statistics.c:963
+#: ../src/gpm-statistics.c:968
 #, c-format
 msgid "Timer %s"
 msgstr "टाइमर %s"
 
-#. TRANSLATORS: the parameter is the name of task that's woken up from
-#. sleeping.
+#. TRANSLATORS: the parameter is the name of task that's woken up from sleeping.
 #. * This is shown when the task wakes up.
-#: ../src/gpm-statistics.c:941
+#: ../src/gpm-statistics.c:972
 #, c-format
 msgid "Sleep %s"
 msgstr "विश्राम %s"
 
 #. TRANSLATORS: this is the name of a new realtime task.
-#: ../src/gpm-statistics.c:944
+#: ../src/gpm-statistics.c:975
 #, c-format
 msgid "New task %s"
 msgstr "नवीन कार्य %s"
 
 #. TRANSLATORS: this is the name of a task that's woken to check state.
 #. * This is shown when the task wakes up.
-#: ../src/gpm-statistics.c:948
+#: ../src/gpm-statistics.c:979
 #, c-format
 msgid "Wait %s"
 msgstr "प्रतिक्षा %s"
 
 #. TRANSLATORS: this is the name of a work queue.
 #. * A work queue is a list of work that has to be done.
-#: ../src/gpm-statistics.c:952 ../src/gpm-statistics.c:956
+#: ../src/gpm-statistics.c:983 ../src/gpm-statistics.c:987
 #, c-format
 msgid "Work queue %s"
 msgstr "कार्य रांग %s"
 
 #. TRANSLATORS: this is when the networking subsystem clears out old entries
-#: ../src/gpm-statistics.c:959
+#: ../src/gpm-statistics.c:990
 #, c-format
 msgid "Network route flush %s"
 msgstr "जाळं मार्ग फ्लश %s"
 
 #. TRANSLATORS: this is the name of an activity on the USB bus
-#: ../src/gpm-statistics.c:962
+#: ../src/gpm-statistics.c:993
 #, c-format
 msgid "USB activity %s"
 msgstr "USB क्रिया %s"
 
 #. TRANSLATORS: we've timed out of an aligned timer, with the name
-#: ../src/gpm-statistics.c:965
+#: ../src/gpm-statistics.c:996
 #, c-format
 msgid "Wakeup %s"
 msgstr "Wakeup %s"
 
 #. TRANSLATORS: interupts on the system required for basic operation
-#: ../src/gpm-statistics.c:968
+#: ../src/gpm-statistics.c:999
 msgid "Local interrupts"
 msgstr "स्थानीय इन्टर्रप्टस्"
 
 #. TRANSLATORS: interrupts when a task gets moved from one core to another
-#: ../src/gpm-statistics.c:971
+#: ../src/gpm-statistics.c:1002
 msgid "Rescheduling interrupts"
 msgstr "इन्टर्रप्टस् पुन्ह वेळापत्रक"
 
 #. TRANSLATORS: shown on the titlebar
-#: ../src/gpm-statistics.c:1080
+#: ../src/gpm-statistics.c:1111
 msgid "Device Information"
 msgstr "साधन माहिती"
 
 #. TRANSLATORS: shown on the titlebar
-#: ../src/gpm-statistics.c:1082
+#: ../src/gpm-statistics.c:1113
 msgid "Device History"
 msgstr "साधन इतिहास"
 
 #. TRANSLATORS: shown on the titlebar
-#: ../src/gpm-statistics.c:1084
+#: ../src/gpm-statistics.c:1115
 msgid "Device Profile"
 msgstr "साधन संक्षिप्त माहिती"
 
 #. TRANSLATORS: shown on the titlebar
-#: ../src/gpm-statistics.c:1086
+#: ../src/gpm-statistics.c:1117
 msgid "Processor Wakeups"
 msgstr "प्रोसेसर वेकअपं"
 
 #. TRANSLATORS: this is the X axis on the graph
-#: ../src/gpm-statistics.c:1351 ../src/gpm-statistics.c:1357
-#: ../src/gpm-statistics.c:1363 ../src/gpm-statistics.c:1369
+#: ../src/gpm-statistics.c:1382 ../src/gpm-statistics.c:1388
+#: ../src/gpm-statistics.c:1394 ../src/gpm-statistics.c:1400
 msgid "Time elapsed"
 msgstr "उलटलेला वेळ"
 
 #. TRANSLATORS: this is the Y axis on the graph
-#: ../src/gpm-statistics.c:1353
+#: ../src/gpm-statistics.c:1384
 msgid "Power"
 msgstr "पावर"
 
 #. TRANSLATORS: this is the Y axis on the graph for the whole battery device
 #. TRANSLATORS: this is the X axis on the graph for the whole battery device
-#: ../src/gpm-statistics.c:1359 ../src/gpm-statistics.c:1403
-#: ../src/gpm-statistics.c:1409 ../src/gpm-statistics.c:1415
-#: ../src/gpm-statistics.c:1421
+#: ../src/gpm-statistics.c:1390 ../src/gpm-statistics.c:1434
+#: ../src/gpm-statistics.c:1440 ../src/gpm-statistics.c:1446
+#: ../src/gpm-statistics.c:1452
 msgid "Cell charge"
 msgstr "सेल चार्ज"
 
 #. TRANSLATORS: this is the Y axis on the graph
-#: ../src/gpm-statistics.c:1365 ../src/gpm-statistics.c:1371
+#: ../src/gpm-statistics.c:1396 ../src/gpm-statistics.c:1402
 msgid "Predicted time"
 msgstr "निर्धारीत वेळ"
 
 #. TRANSLATORS: this is the Y axis on the graph
-#: ../src/gpm-statistics.c:1405 ../src/gpm-statistics.c:1417
+#: ../src/gpm-statistics.c:1436 ../src/gpm-statistics.c:1448
 msgid "Correction factor"
 msgstr "योग्यता प्रमाण"
 
 #. TRANSLATORS: this is the Y axis on the graph
-#: ../src/gpm-statistics.c:1411 ../src/gpm-statistics.c:1423
+#: ../src/gpm-statistics.c:1442 ../src/gpm-statistics.c:1454
 msgid "Prediction accuracy"
 msgstr "भाकित अचूकपणा"
 
 #. TRANSLATORS: show a device by default
-#: ../src/gpm-statistics.c:1589
+#: ../src/gpm-statistics.c:1620
 msgid "Select this device at startup"
 msgstr "सुरुवातीला हे साधन निवडा"
 
 #. TRANSLATORS: the icon for the CPU
-#: ../src/gpm-statistics.c:1838
+#: ../src/gpm-statistics.c:1869
 msgid "Processor"
 msgstr "प्रोसेसर"
 
-#: ../src/gpm-tray-icon.c:189
+#: ../src/gpm-tray-icon.c:214
 msgid "Copyright © 2011-2017 UKUI developers"
 msgstr ""
 
 #. Translators should localize the following string
 #. * which will be displayed at the bottom of the about
 #. * box to give credit to the translator(s).
-#: ../src/gpm-tray-icon.c:195
+#.
+#: ../src/gpm-tray-icon.c:220
 msgid "translator-credits"
 msgstr ""
 
+#: ../src/gpm-tray-icon.c:352
+#, c-format
+msgid ""
+"%.1f%% available power\n"
+"(The power is connected and is charging)"
+msgstr ""
+
+#: ../src/gpm-tray-icon.c:354
+#, c-format
+msgid "%.1f%% available power"
+msgstr ""
+
 #. TRANSLATORS: % is a timestring, e.g. "6 hours 10 minutes"
-#: ../src/gpm-tray-icon.c:297
+#: ../src/gpm-tray-icon.c:433
 #, c-format
 msgid "%s remaining"
 msgstr ""
 
 #. preferences
-#: ../src/gpm-tray-icon.c:351
+#: ../src/gpm-tray-icon.c:487
 msgid "_Preferences"
 msgstr "प्राधान्यता (_P)"
+
+#: ../src/gpm-tray-icon.c:641
+#, fuzzy
+msgid "Power Preferences"
+msgstr "UKUI पावर प्राधान्यता"
 
 #. TRANSLATORS: device not present
 #: ../src/gpm-upower.c:211
@@ -1980,7 +2089,9 @@ msgstr "%s चार्ज होत आहे (%.1f%%)"
 msgid ""
 "Battery is fully charged.\n"
 "Provides %s laptop runtime"
-msgstr "बॅटरी पूर्णतया चार्जड् आहे.\n%s लॅपटॉप रनटाइम पुरवतो"
+msgstr ""
+"बॅटरी पूर्णतया चार्जड् आहे.\n"
+"%s लॅपटॉप रनटाइम पुरवतो"
 
 #. TRANSLATORS: the device is fully charged
 #: ../src/gpm-upower.c:244
@@ -2006,10 +2117,11 @@ msgstr "%s डीसचार्ज करीत आहे (%.1f%%)"
 msgid ""
 "%s %s until charged (%.1f%%)\n"
 "Provides %s battery runtime"
-msgstr "%s %s जोपर्यंत चार्ज नाही (%.1f%%)\n%s बॅटरी रनटाइम"
+msgstr ""
+"%s %s जोपर्यंत चार्ज नाही (%.1f%%)\n"
+"%s बॅटरी रनटाइम"
 
-#. TRANSLATORS: device is charging, and we have a time to full and a
-#. percentage
+#. TRANSLATORS: device is charging, and we have a time to full and a percentage
 #: ../src/gpm-upower.c:282
 #, c-format
 msgid "%s %s until charged (%.1f%%)"
@@ -2101,8 +2213,7 @@ msgstr "चार्ज वेळ:"
 msgid "Discharge time:"
 msgstr "डीसचार्ज वेळ:"
 
-#. TRANSLATORS: Excellent, Good, Fair and Poor are all related to battery
-#. Capacity
+#. TRANSLATORS: Excellent, Good, Fair and Poor are all related to battery Capacity
 #: ../src/gpm-upower.c:419
 msgid "Excellent"
 msgstr "उत्कृष्ट"

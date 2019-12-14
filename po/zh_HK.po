@@ -1,20 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: UKUI Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-07 14:00+0300\n"
+"POT-Creation-Date: 2019-12-14 13:54+0800\n"
 "PO-Revision-Date: 2017-10-07 11:02+0000\n"
 "Last-Translator: monsta <monsta@inbox.ru>\n"
-"Language-Team: Chinese (Hong Kong) (http://www.transifex.com/mate/UKUI/language/zh_HK/)\n"
+"Language-Team: Chinese (Hong Kong) (http://www.transifex.com/mate/UKUI/"
+"language/zh_HK/)\n"
+"Language: zh_HK\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh_HK\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../applets/brightness/brightness-applet.c:110
@@ -51,7 +52,10 @@ msgid ""
 "modify it under the terms of the GNU General Public License\n"
 "as published by the Free Software Foundation; either version 2\n"
 "of the License, or (at your option) any later version."
-msgstr "電源管理程式為自由軟件；你可根據據自由軟件基金會所發表\n的 GNU 通用公共授權條款規定，就本程式再為散布與／或修改；\n無論你根據據的是本授權的第二版或（你自行選擇的）任一日後發行的版本。"
+msgstr ""
+"電源管理程式為自由軟件；你可根據據自由軟件基金會所發表\n"
+"的 GNU 通用公共授權條款規定，就本程式再為散布與／或修改；\n"
+"無論你根據據的是本授權的第二版或（你自行選擇的）任一日後發行的版本。"
 
 #: ../applets/brightness/brightness-applet.c:812
 #: ../applets/inhibit/inhibit-applet.c:408
@@ -60,7 +64,11 @@ msgid ""
 "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
 "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
 "GNU General Public License for more details."
-msgstr "電源管理程式係基於使用目的而加以散布，\n然而不負任何擔保責任；\n亦無對適售性或特定目的適用性所為的默示性擔保。\n詳情請參照 GNU 通用公共授權。"
+msgstr ""
+"電源管理程式係基於使用目的而加以散布，\n"
+"然而不負任何擔保責任；\n"
+"亦無對適售性或特定目的適用性所為的默示性擔保。\n"
+"詳情請參照 GNU 通用公共授權。"
 
 #: ../applets/brightness/brightness-applet.c:816
 #: ../applets/inhibit/inhibit-applet.c:412
@@ -69,7 +77,10 @@ msgid ""
 "along with this program; if not, write to the Free Software\n"
 "Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA\n"
 "02110-1301, USA."
-msgstr "你應已收到附隨於本程式的 GNU 通用公共授權的副本；如無，請寫信至\n自由軟件基金會：\n51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
+msgstr ""
+"你應已收到附隨於本程式的 GNU 通用公共授權的副本；如無，請寫信至\n"
+"自由軟件基金會：\n"
+"51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA"
 
 #: ../applets/brightness/brightness-applet.c:1068
 #: ../applets/inhibit/inhibit-applet.c:638
@@ -133,11 +144,11 @@ msgstr "抑制面板程式"
 msgid "Allows user to inhibit automatic power saving"
 msgstr "允許使用者取消自動省電功能"
 
-#: ../data/ukui-power-manager.desktop.in.in.h:1 ../src/gpm-tray-icon.c:186
+#: ../data/ukui-power-manager.desktop.in.in.h:1 ../src/gpm-tray-icon.c:211
 msgid "Power Manager"
 msgstr "電源管理程式"
 
-#: ../data/ukui-power-manager.desktop.in.in.h:2 ../src/gpm-tray-icon.c:188
+#: ../data/ukui-power-manager.desktop.in.in.h:2 ../src/gpm-tray-icon.c:213
 msgid "Power management daemon"
 msgstr "電源管理伺服程式"
 
@@ -169,7 +180,9 @@ msgid ""
 "If the battery lid close event should occur (for example 'Suspend when lid "
 "closed on battery') when the lid is previously shut and the AC power "
 "disconnected at a later time."
-msgstr "關上上蓋及有使用交流電時，是否執行上蓋關上事件（如「關上上蓋時進入暫停模式」）。"
+msgstr ""
+"關上上蓋及有使用交流電時，是否執行上蓋關上事件（如「關上上蓋時進入暫停模"
+"式」）。"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:7
 msgid "UPS critical low action"
@@ -247,8 +260,8 @@ msgstr ""
 #, no-c-format
 msgid ""
 "The percentage to reduce the keyboard backlight by when idle. For example, "
-"if set to '60', the backlight will be cut by 40% when idle. Legal values are"
-" between 0 and 100."
+"if set to '60', the backlight will be cut by 40% when idle. Legal values are "
+"between 0 and 100."
 msgstr ""
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:25
@@ -377,7 +390,9 @@ msgstr "是否使用以時間為基準的通知"
 msgid ""
 "If time based notifications should be used. If set to false, then the "
 "percentage change is used instead, which may fix a broken ACPI BIOS."
-msgstr "是否使用以時間為基準的通知。如設為‘false’，會以百分更改來取代，這樣可能能解決一些有修正 ACPI BIOS 的問題。"
+msgstr ""
+"是否使用以時間為基準的通知。如設為‘false’，會以百分更改來取代，這樣可能能解決"
+"一些有修正 ACPI BIOS 的問題。"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:53
 msgid "Check CPU load before sleeping"
@@ -405,7 +420,9 @@ msgstr "使用 ukui-screensaver 螢幕鎖定設定"
 msgid ""
 "Whether to use the screen lock setting of ukui-screensaver to decide if the "
 "screen is locked after a hibernate, suspend or blank screen."
-msgstr "是否使用 ukui-screensaver 的螢幕鎖定來決定在休眠、暫停及畫面變黑後將螢幕鎖上。"
+msgstr ""
+"是否使用 ukui-screensaver 的螢幕鎖定來決定在休眠、暫停及畫面變黑後將螢幕鎖"
+"上。"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:59
 msgid "Lock screen when blanked"
@@ -423,8 +440,8 @@ msgstr "暫停時鎖上螢幕"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:62
 msgid ""
-"Whether the screen is locked when the computer wakes up from a suspend. Only"
-" used if lock-use-screensaver is false."
+"Whether the screen is locked when the computer wakes up from a suspend. Only "
+"used if lock-use-screensaver is false."
 msgstr ""
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:63
@@ -443,8 +460,8 @@ msgstr ""
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:66
 msgid ""
-"Whether the GNOME keyring is locked before the computer enters suspend. This"
-" means the keyring will have to be unlocked on resume."
+"Whether the GNOME keyring is locked before the computer enters suspend. This "
+"means the keyring will have to be unlocked on resume."
 msgstr ""
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:67
@@ -497,7 +514,9 @@ msgstr "睡眠失敗時顯示給使用者的 URI"
 msgid ""
 "When sleep fails we can show the user a button to help fix the situation. "
 "Leave this blank if the button should not be shown."
-msgstr "當睡眠失敗時可以顯示按鈕協助使用者修正此狀況。如果不想顯示此按鈕就讓此項留空。"
+msgstr ""
+"當睡眠失敗時可以顯示按鈕協助使用者修正此狀況。如果不想顯示此按鈕就讓此項留"
+"空。"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:78
 msgid "Notify on a low power"
@@ -593,8 +612,8 @@ msgstr "剩餘多少百分比為低電量"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:99
 msgid ""
-"The percentage of the battery when it is considered low. Only valid when "
-"use-time-for-policy is false."
+"The percentage of the battery when it is considered low. Only valid when use-"
+"time-for-policy is false."
 msgstr ""
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:100
@@ -623,8 +642,8 @@ msgstr "剩餘多少時間為低電量"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:105
 msgid ""
-"The time remaining in seconds of the battery when it is considered low. Only"
-" valid when use-time-for-policy is true."
+"The time remaining in seconds of the battery when it is considered low. Only "
+"valid when use-time-for-policy is true."
 msgstr ""
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:106
@@ -633,8 +652,8 @@ msgstr "剩餘多少時間為極低電量"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:107
 msgid ""
-"The time remaining in seconds of the battery when it is considered critical."
-" Only valid when use-time-for-policy is true."
+"The time remaining in seconds of the battery when it is considered critical. "
+"Only valid when use-time-for-policy is true."
 msgstr ""
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:108
@@ -673,8 +692,8 @@ msgstr "在 UPS 下電腦睡眠的逾時時間"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:115
 msgid ""
-"The amount of time in seconds the computer on UPS power needs to be inactive"
-" before it goes to sleep."
+"The amount of time in seconds the computer on UPS power needs to be inactive "
+"before it goes to sleep."
 msgstr "在 UPS 電源下電腦閒置多少時間（秒）後進入睡眠模式。"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:116
@@ -703,8 +722,8 @@ msgstr "在 UPS 下螢幕睡眠的逾時時間"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:121
 msgid ""
-"The amount of time in seconds the computer on UPS power needs to be inactive"
-" before the display goes to sleep."
+"The amount of time in seconds the computer on UPS power needs to be inactive "
+"before the display goes to sleep."
 msgstr "在 UPS 電源下電腦閒置多少時間（秒）後讓螢幕進入睡眠模式。"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:122
@@ -718,8 +737,7 @@ msgid ""
 msgstr "電量極低時，應否發出系統鈴聲，或抑制要求來停止策略動作。"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:124
-msgid ""
-"If preferences and statistics items should be shown in the context menu"
+msgid "If preferences and statistics items should be shown in the context menu"
 msgstr "偏好設定與統計是否顯示在關聯選單中"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:125
@@ -741,8 +759,8 @@ msgstr "設定電源管理程式"
 #. TRANSLATORS: shown on the titlebar
 #. TRANSLATORS: the program name
 #: ../data/ukui-power-statistics.desktop.in.in.h:1
-#: ../data/gpm-statistics.ui.h:1 ../src/gpm-statistics.c:1090
-#: ../src/gpm-statistics.c:1603
+#: ../data/gpm-statistics.ui.h:1 ../src/gpm-statistics.c:1121
+#: ../src/gpm-statistics.c:1634
 msgid "Power Statistics"
 msgstr "電源統計"
 
@@ -754,7 +772,7 @@ msgstr "監控電源管理程式"
 msgid "Brightness"
 msgstr "亮度"
 
-#: ../data/gpm-statistics.ui.h:2 ../src/gpm-statistics.c:208
+#: ../data/gpm-statistics.ui.h:2 ../src/gpm-statistics.c:214
 msgid "Details"
 msgstr "詳細資料"
 
@@ -794,7 +812,7 @@ msgstr "每幾秒喚醒處理器："
 msgid "0"
 msgstr "0"
 
-#: ../data/gpm-statistics.ui.h:12 ../src/gpm-statistics.c:194
+#: ../data/gpm-statistics.ui.h:12 ../src/gpm-statistics.c:200
 msgid "Wakeups"
 msgstr "喚醒"
 
@@ -1059,7 +1077,7 @@ msgid "%.1fV"
 msgstr "%.1fV"
 
 #. TRANSLATORS: show verbose debugging
-#: ../src/gpm-main.c:172 ../src/gpm-prefs.c:77 ../src/gpm-statistics.c:1586
+#: ../src/gpm-main.c:172 ../src/gpm-prefs.c:77 ../src/gpm-statistics.c:1617
 msgid "Show extra debugging information"
 msgstr "顯示額外的除錯資訊"
 
@@ -1080,100 +1098,108 @@ msgid "UKUI Power Manager"
 msgstr "UKUI 電源管理程式"
 
 #. TRANSLATORS: this is the sound description
-#: ../src/gpm-manager.c:223 ../src/gpm-manager.c:295
+#: ../src/gpm-manager.c:225 ../src/gpm-manager.c:297
 msgid "Battery is very low"
 msgstr "電池電量極低"
 
 #. TRANSLATORS: this is the sound description
-#: ../src/gpm-manager.c:275
+#: ../src/gpm-manager.c:277
 msgid "Power plugged in"
 msgstr "電源已接上"
 
 #. TRANSLATORS: this is the sound description
-#: ../src/gpm-manager.c:279
+#: ../src/gpm-manager.c:281
 msgid "Power unplugged"
 msgstr "電源已拔除"
 
 #. TRANSLATORS: this is the sound description
-#: ../src/gpm-manager.c:283
+#: ../src/gpm-manager.c:285
 msgid "Lid has opened"
 msgstr "上蓋已開啟"
 
 #. TRANSLATORS: this is the sound description
-#: ../src/gpm-manager.c:287
+#: ../src/gpm-manager.c:289
 msgid "Lid has closed"
 msgstr "上蓋已關閉"
 
 #. TRANSLATORS: this is the sound description
-#: ../src/gpm-manager.c:291
+#: ../src/gpm-manager.c:293
 msgid "Battery is low"
 msgstr "電池電量較低"
 
 #. TRANSLATORS: this is the sound description
-#: ../src/gpm-manager.c:299
+#: ../src/gpm-manager.c:301
 msgid "Battery is full"
 msgstr "電池電量全滿"
 
 #. TRANSLATORS: this is the sound description
-#: ../src/gpm-manager.c:303
+#: ../src/gpm-manager.c:305
 msgid "Suspend started"
 msgstr "暫停已開始"
 
 #. TRANSLATORS: this is the sound description
-#: ../src/gpm-manager.c:307
+#: ../src/gpm-manager.c:309
 msgid "Resumed"
 msgstr "已回復"
 
 #. TRANSLATORS: this is the sound description
-#: ../src/gpm-manager.c:311
+#: ../src/gpm-manager.c:313
 msgid "Suspend failed"
 msgstr "暫停失敗"
 
 #. TRANSLATORS: message text
-#: ../src/gpm-manager.c:587
+#: ../src/gpm-manager.c:591
 msgid "Computer failed to suspend."
 msgstr "你的電腦無法暫停。"
 
 #. TRANSLATORS: title text
-#: ../src/gpm-manager.c:589
+#: ../src/gpm-manager.c:593
 msgid "Failed to suspend"
 msgstr "無法進入暫停"
 
 #. TRANSLATORS: message text
-#: ../src/gpm-manager.c:593
+#: ../src/gpm-manager.c:597
 msgid "Computer failed to hibernate."
 msgstr "你的電腦無法休眠。"
 
 #. TRANSLATORS: title text
-#: ../src/gpm-manager.c:595
+#: ../src/gpm-manager.c:599
 msgid "Failed to hibernate"
 msgstr "無法進入休眠"
 
 #. TRANSLATORS: message text
-#: ../src/gpm-manager.c:600
+#: ../src/gpm-manager.c:604
 msgid "Failure was reported as:"
 msgstr "發生錯誤的回報為："
 
 #. TRANSLATORS: button text, visit the suspend help website
-#: ../src/gpm-manager.c:613
+#: ../src/gpm-manager.c:617
 msgid "Visit help page"
 msgstr "參訪求助網頁"
 
+#: ../src/gpm-manager.c:654
+msgid "Suspend failed for some reason (maybe dbus error)"
+msgstr ""
+
+#: ../src/gpm-manager.c:692
+msgid "Hibernate failed for some reason (maybe dbus error)"
+msgstr ""
+
 #. TRANSLATORS: this is the ukui-screensaver throttle
-#: ../src/gpm-manager.c:859
+#: ../src/gpm-manager.c:904
 msgid "Display DPMS activated"
 msgstr "顯示器 DPMS 已作用"
 
 #. TRANSLATORS: this is the ukui-screensaver throttle
-#: ../src/gpm-manager.c:878
+#: ../src/gpm-manager.c:923
 msgid "On battery power"
 msgstr "使用電池電力"
 
-#: ../src/gpm-manager.c:896
+#: ../src/gpm-manager.c:941
 msgid "Laptop lid is closed"
 msgstr "手提電腦上蓋已關閉"
 
-#: ../src/gpm-manager.c:934
+#: ../src/gpm-manager.c:979
 msgid "Power Information"
 msgstr "電源資訊"
 
@@ -1181,217 +1207,224 @@ msgstr "電源資訊"
 #. * where capacity is the ratio of the last_full capacity with that of
 #. * the design capacity. (#326740)
 #. TRANSLATORS: battery is old or broken
-#: ../src/gpm-manager.c:1121
+#: ../src/gpm-manager.c:1167
 msgid "Battery may be broken"
 msgstr "電池可能已損壞"
 
-#. TRANSLATORS: notify the user that that battery is broken as the capacity is
-#. very low
-#: ../src/gpm-manager.c:1124
+#. TRANSLATORS: notify the user that that battery is broken as the capacity is very low
+#: ../src/gpm-manager.c:1170
 #, c-format
 msgid ""
-"Battery has a very low capacity (%1.1f%%), which means that it may be old or"
-" broken."
+"Battery has a very low capacity (%1.1f%%), which means that it may be old or "
+"broken."
 msgstr "電池容量極低 (%1.1f%%)，這表示該電池可能太過老舊或已經損壞。"
 
+#. kobe
 #. TRANSLATORS: show the charged notification
-#: ../src/gpm-manager.c:1173
+#: ../src/gpm-manager.c:1220
 msgid "Battery Charged"
 msgid_plural "Batteries Charged"
 msgstr[0] "電池已充電"
 
 #. TRANSLATORS: laptop battery is now discharging
-#: ../src/gpm-manager.c:1219
+#: ../src/gpm-manager.c:1266
 msgid "Battery Discharging"
 msgstr "電池放電中"
 
 #. TRANSLATORS: tell the user how much time they have got
-#: ../src/gpm-manager.c:1223
+#: ../src/gpm-manager.c:1270
 #, c-format
 msgid "%s of battery power remaining (%.0f%%)"
 msgstr "剩下電池電力的 %s (%.0f%%)"
 
 #. TRANSLATORS: the device is discharging, but we only have a percentage
-#: ../src/gpm-manager.c:1226 ../src/gpm-manager.c:1238
+#: ../src/gpm-manager.c:1273 ../src/gpm-manager.c:1285
 #, c-format
 msgid "%s discharging (%.0f%%)"
 msgstr "%s 正在放電 (%.0f%%)"
 
 #. TRANSLATORS: UPS is now discharging
-#: ../src/gpm-manager.c:1231
+#: ../src/gpm-manager.c:1278
 msgid "UPS Discharging"
 msgstr "不斷電系統放電中"
 
 #. TRANSLATORS: tell the user how much time they have got
-#: ../src/gpm-manager.c:1235
+#: ../src/gpm-manager.c:1282
 #, c-format
 msgid "%s of UPS backup power remaining (%.0f%%)"
 msgstr "剩下 UPS 電力的 %s (%.0f%%)"
 
 #. TRANSLATORS: laptop battery low, and we only have one battery
-#: ../src/gpm-manager.c:1319
+#: ../src/gpm-manager.c:1366
 msgid "Battery low"
 msgstr "電池低電量"
 
 #. TRANSLATORS: laptop battery low, and we have more than one kind of battery
-#: ../src/gpm-manager.c:1322
+#: ../src/gpm-manager.c:1369
 msgid "Laptop battery low"
 msgstr "手提電腦電池電力低落"
 
 #. TRANSLATORS: tell the user how much time they have got
-#: ../src/gpm-manager.c:1328
+#: ../src/gpm-manager.c:1375
 #, c-format
 msgid "Approximately <b>%s</b> remaining (%.0f%%)"
 msgstr "大約剩下 <b>%s</b> (%.0f%%)"
 
 #. TRANSLATORS: UPS is starting to get a little low
-#: ../src/gpm-manager.c:1332
+#: ../src/gpm-manager.c:1379
 msgid "UPS low"
 msgstr "不斷電系統(UPS)電力低落"
 
 #. TRANSLATORS: tell the user how much time they have got
-#: ../src/gpm-manager.c:1336
+#: ../src/gpm-manager.c:1383
 #, c-format
 msgid "Approximately <b>%s</b> of remaining UPS backup power (%.0f%%)"
 msgstr "你大約剩下 <b>%s</b> 的不斷電系統備用電源 (%.0f%%)"
 
 #. TRANSLATORS: mouse is getting a little low
 #. TRANSLATORS: the mouse battery is very low
-#: ../src/gpm-manager.c:1340 ../src/gpm-manager.c:1474
+#: ../src/gpm-manager.c:1387 ../src/gpm-manager.c:1521
+#: ../src/gpm-manager.c:1668
 msgid "Mouse battery low"
 msgstr "滑鼠電池電力低落"
 
 #. TRANSLATORS: tell user more details
-#: ../src/gpm-manager.c:1343
+#: ../src/gpm-manager.c:1390
 #, c-format
 msgid "Wireless mouse is low in power (%.0f%%)"
 msgstr "無線滑鼠電力低落 (%.0f%%)"
 
 #. TRANSLATORS: keyboard is getting a little low
 #. TRANSLATORS: the keyboard battery is very low
-#: ../src/gpm-manager.c:1347 ../src/gpm-manager.c:1482
+#: ../src/gpm-manager.c:1394 ../src/gpm-manager.c:1529
+#: ../src/gpm-manager.c:1676
 msgid "Keyboard battery low"
 msgstr "鍵盤電池電力低落"
 
 #. TRANSLATORS: tell user more details
-#: ../src/gpm-manager.c:1350
+#: ../src/gpm-manager.c:1397
 #, c-format
 msgid "Wireless keyboard is low in power (%.0f%%)"
 msgstr "無線鍵盤電力低落 (%.0f%%)"
 
 #. TRANSLATORS: PDA is getting a little low
 #. TRANSLATORS: the PDA battery is very low
-#: ../src/gpm-manager.c:1354 ../src/gpm-manager.c:1491
+#: ../src/gpm-manager.c:1401 ../src/gpm-manager.c:1538
+#: ../src/gpm-manager.c:1684
 msgid "PDA battery low"
 msgstr "PDA 電池電力低落"
 
 #. TRANSLATORS: tell user more details
-#: ../src/gpm-manager.c:1357
+#: ../src/gpm-manager.c:1404
 #, c-format
 msgid "PDA is low in power (%.0f%%)"
 msgstr "PDA 電力低落 (%.0f%%)"
 
 #. TRANSLATORS: cell phone (mobile) is getting a little low
 #. TRANSLATORS: the cell battery is very low
-#: ../src/gpm-manager.c:1361 ../src/gpm-manager.c:1501
-#: ../src/gpm-manager.c:1511
+#: ../src/gpm-manager.c:1408 ../src/gpm-manager.c:1548
+#: ../src/gpm-manager.c:1558 ../src/gpm-manager.c:1694
+#: ../src/gpm-manager.c:1704
 msgid "Cell phone battery low"
 msgstr "手機電池電力低落"
 
 #. TRANSLATORS: tell user more details
-#: ../src/gpm-manager.c:1364
+#: ../src/gpm-manager.c:1411
 #, c-format
 msgid "Cell phone is low in power (%.0f%%)"
 msgstr "手機電力低落 (%.0f%%)"
 
 #. TRANSLATORS: media player, e.g. mp3 is getting a little low
-#: ../src/gpm-manager.c:1368
+#: ../src/gpm-manager.c:1415
 msgid "Media player battery low"
 msgstr "媒體播放器電池低電量"
 
 #. TRANSLATORS: tell user more details
-#: ../src/gpm-manager.c:1371
+#: ../src/gpm-manager.c:1418
 #, c-format
 msgid "Media player is low in power (%.0f%%)"
 msgstr "媒體播放器電力低落 (%.0f%%)"
 
 #. TRANSLATORS: graphics tablet, e.g. wacom is getting a little low
 #. TRANSLATORS: the cell battery is very low
-#: ../src/gpm-manager.c:1375 ../src/gpm-manager.c:1520
+#: ../src/gpm-manager.c:1422 ../src/gpm-manager.c:1567
+#: ../src/gpm-manager.c:1712
 msgid "Tablet battery low"
 msgstr "手寫板電池低電量"
 
 #. TRANSLATORS: tell user more details
-#: ../src/gpm-manager.c:1378
+#: ../src/gpm-manager.c:1425
 #, c-format
 msgid "Tablet is low in power (%.0f%%)"
 msgstr "手寫板電力低落 (%.0f%%)"
 
 #. TRANSLATORS: computer, e.g. ipad is getting a little low
 #. TRANSLATORS: the cell battery is very low
-#: ../src/gpm-manager.c:1382 ../src/gpm-manager.c:1529
+#: ../src/gpm-manager.c:1429 ../src/gpm-manager.c:1576
+#: ../src/gpm-manager.c:1721
 msgid "Attached computer battery low"
 msgstr "連接的電腦電池低電量"
 
 #. TRANSLATORS: tell user more details
-#: ../src/gpm-manager.c:1385
+#: ../src/gpm-manager.c:1432
 #, c-format
 msgid "Attached computer is low in power (%.0f%%)"
 msgstr "連接的電腦電力低落 (%.0f%%)"
 
-#. TRANSLATORS: laptop battery critically low, and only have one kind of
-#. battery
-#: ../src/gpm-manager.c:1433
+#. TRANSLATORS: laptop battery critically low, and only have one kind of battery
+#: ../src/gpm-manager.c:1480 ../src/gpm-manager.c:1645
 msgid "Battery critically low"
 msgstr "電池電量極低"
 
-#. TRANSLATORS: laptop battery critically low, and we have more than one type
-#. of battery
+#. TRANSLATORS: laptop battery critically low, and we have more than one type of battery
 #. TRANSLATORS: laptop battery is really, really, low
-#: ../src/gpm-manager.c:1436 ../src/gpm-manager.c:1589
+#: ../src/gpm-manager.c:1483 ../src/gpm-manager.c:1648
+#: ../src/gpm-manager.c:1781
 msgid "Laptop battery critically low"
 msgstr "手提電腦電池電量極低"
 
-#. TRANSLATORS: tell the use to insert the plug, as we're not going to do
-#. anything
-#: ../src/gpm-manager.c:1445
+#. TRANSLATORS: tell the use to insert the plug, as we're not going to do anything
+#: ../src/gpm-manager.c:1492
 msgid "Plug in your AC adapter to avoid losing data."
 msgstr "請插上你的交流電變壓器以避免遺失資料。"
 
 #. TRANSLATORS: give the user a ultimatum
-#: ../src/gpm-manager.c:1449
+#: ../src/gpm-manager.c:1496
 #, c-format
 msgid "Computer will suspend very soon unless it is plugged in."
 msgstr "電腦即將進入暫停模式，除非你現在插上電源。"
 
 #. TRANSLATORS: give the user a ultimatum
-#: ../src/gpm-manager.c:1453
+#: ../src/gpm-manager.c:1500
 #, c-format
 msgid "Computer will hibernate very soon unless it is plugged in."
 msgstr "電腦即將進入休眠模式，除非你現在插上電源。"
 
 #. TRANSLATORS: give the user a ultimatum
-#: ../src/gpm-manager.c:1457
+#: ../src/gpm-manager.c:1504
 #, c-format
 msgid "Computer will shutdown very soon unless it is plugged in."
 msgstr "電腦即將關機，除非你現在插上電源。"
 
 #. TRANSLATORS: the UPS is very low
 #. TRANSLATORS: UPS is really, really, low
-#: ../src/gpm-manager.c:1464 ../src/gpm-manager.c:1625
+#: ../src/gpm-manager.c:1511 ../src/gpm-manager.c:1658
+#: ../src/gpm-manager.c:1819
 msgid "UPS critically low"
 msgstr "不斷電系統的電量極低"
 
 #. TRANSLATORS: give the user a ultimatum
-#: ../src/gpm-manager.c:1468
+#: ../src/gpm-manager.c:1515 ../src/gpm-manager.c:1662
 #, c-format
 msgid ""
-"Approximately <b>%s</b> of remaining UPS power (%.0f%%). Restore AC power to"
-" your computer to avoid losing data."
-msgstr "你大約剩下 <b>%s</b> 的 UPS 電力 (%.0f%%)。請回復電腦的 AC 電源以避免遺失資料。"
+"Approximately <b>%s</b> of remaining UPS power (%.0f%%). Restore AC power to "
+"your computer to avoid losing data."
+msgstr ""
+"你大約剩下 <b>%s</b> 的 UPS 電力 (%.0f%%)。請回復電腦的 AC 電源以避免遺失資"
+"料。"
 
 #. TRANSLATORS: the device is just going to stop working
-#: ../src/gpm-manager.c:1477
+#: ../src/gpm-manager.c:1524 ../src/gpm-manager.c:1671
 #, c-format
 msgid ""
 "Wireless mouse is very low in power (%.0f%%). This device will soon stop "
@@ -1399,7 +1432,7 @@ msgid ""
 msgstr "無線滑鼠電量極低 (%.0f%%)。如不充電該裝置將會無法使用。"
 
 #. TRANSLATORS: the device is just going to stop working
-#: ../src/gpm-manager.c:1485
+#: ../src/gpm-manager.c:1532 ../src/gpm-manager.c:1679
 #, c-format
 msgid ""
 "Wireless keyboard is very low in power (%.0f%%). This device will soon stop "
@@ -1407,15 +1440,15 @@ msgid ""
 msgstr "無線鍵盤電量極低 (%.0f%%)。如不充電該裝置將會無法使用。"
 
 #. TRANSLATORS: the device is just going to stop working
-#: ../src/gpm-manager.c:1494
+#: ../src/gpm-manager.c:1541 ../src/gpm-manager.c:1687
 #, c-format
 msgid ""
-"PDA is very low in power (%.0f%%). This device will soon stop functioning if"
-" not charged."
+"PDA is very low in power (%.0f%%). This device will soon stop functioning if "
+"not charged."
 msgstr "PDA 電量極低 (%.0f%%)。如不充電該裝置將會無法使用。"
 
 #. TRANSLATORS: the device is just going to stop working
-#: ../src/gpm-manager.c:1504
+#: ../src/gpm-manager.c:1551 ../src/gpm-manager.c:1697
 #, c-format
 msgid ""
 "Cell phone is very low in power (%.0f%%). This device will soon stop "
@@ -1423,7 +1456,7 @@ msgid ""
 msgstr "手機電量極低 (%.0f%%)。如不充電該裝置將會無法使用。"
 
 #. TRANSLATORS: the device is just going to stop working
-#: ../src/gpm-manager.c:1514
+#: ../src/gpm-manager.c:1561 ../src/gpm-manager.c:1707
 #, c-format
 msgid ""
 "Media player is very low in power (%.0f%%). This device will soon stop "
@@ -1431,65 +1464,77 @@ msgid ""
 msgstr "媒體播放器電量極低 (%.0f%%)。如不充電該裝置將會無法使用。"
 
 #. TRANSLATORS: the device is just going to stop working
-#: ../src/gpm-manager.c:1523
+#: ../src/gpm-manager.c:1570 ../src/gpm-manager.c:1715
 #, c-format
 msgid ""
-"Tablet is very low in power (%.0f%%). This device will soon stop functioning"
-" if not charged."
+"Tablet is very low in power (%.0f%%). This device will soon stop functioning "
+"if not charged."
 msgstr "手寫板電量極低 (%.0f%%)。如不充電該裝置將會無法使用。"
 
 #. TRANSLATORS: the device is just going to stop working
-#: ../src/gpm-manager.c:1532
+#: ../src/gpm-manager.c:1579 ../src/gpm-manager.c:1724
 #, c-format
 msgid ""
 "Attached computer is very low in power (%.0f%%). The device will soon "
 "shutdown if not charged."
 msgstr "連接的電腦電量極低 (%.0f%%)。如不充電該裝置將會無法使用。"
 
-#. TRANSLATORS: computer will shutdown without saving data
-#: ../src/gpm-manager.c:1597
+#. TRANSLATORS: give the user a ultimatum
+#: ../src/gpm-manager.c:1652
+#, c-format
 msgid ""
-"The battery is below the critical level and this computer will <b>power-"
-"off</b> when the battery becomes completely empty."
+"Battery power is too low, please plug in the power to ensure the normal use"
+msgstr ""
+
+#. TRANSLATORS: computer will shutdown without saving data
+#: ../src/gpm-manager.c:1789
+msgid ""
+"The battery is below the critical level and this computer will <b>power-off</"
+"b> when the battery becomes completely empty."
 msgstr "電池電量已在極低的程度之下，在電力用完時這台電腦亦會<b>關關</b>。"
 
 #. TRANSLATORS: computer will suspend
-#: ../src/gpm-manager.c:1603
+#. kobe
+#: ../src/gpm-manager.c:1796
+#, fuzzy
 msgid ""
 "The battery is below the critical level and this computer is about to "
-"suspend.<br><b>NOTE:</b> A small amount of power is required to keep your "
+"suspend.<b>NOTE:</b> A small amount of power is required to keep your "
 "computer in a suspended state."
-msgstr "電池電量已在極低的程度之下，這台電腦將會進入暫停模式。<br><b>注意：</b>將電腦進入暫停模式仍需要少量的電力。"
+msgstr ""
+"電池電量已在極低的程度之下，這台電腦將會進入暫停模式。<br><b>注意：</b>將電腦"
+"進入暫停模式仍需要少量的電力。"
 
 #. TRANSLATORS: computer will hibernate
-#: ../src/gpm-manager.c:1610
+#: ../src/gpm-manager.c:1803
 msgid ""
 "The battery is below the critical level and this computer is about to "
 "hibernate."
 msgstr "電池的電量已處於極低狀態，這台電腦即將進入休眠模式。"
 
 #. TRANSLATORS: computer will just shutdown
-#: ../src/gpm-manager.c:1615
+#: ../src/gpm-manager.c:1808
 msgid ""
 "The battery is below the critical level and this computer is about to "
 "shutdown."
 msgstr "電池電量已在極低的程度之下，這台電腦即將關機。"
 
 #. TRANSLATORS: computer will shutdown without saving data
-#: ../src/gpm-manager.c:1633
+#: ../src/gpm-manager.c:1827
 msgid ""
 "The UPS is below the critical level and this computer will <b>power-off</b> "
 "when the UPS becomes completely empty."
-msgstr "不斷電系統的電量已處於極低的程度，在電用完的時候這台電腦亦會立即<b>關閉</b>。"
+msgstr ""
+"不斷電系統的電量已處於極低的程度，在電用完的時候這台電腦亦會立即<b>關閉</b>。"
 
 #. TRANSLATORS: computer will hibernate
-#: ../src/gpm-manager.c:1639
+#: ../src/gpm-manager.c:1833
 msgid ""
 "The UPS is below the critical level and this computer is about to hibernate."
 msgstr "不斷電系統的電量已處於極低的程度，這台電腦即將進入休眠模式。"
 
 #. TRANSLATORS: computer will just shutdown
-#: ../src/gpm-manager.c:1644
+#: ../src/gpm-manager.c:1838
 msgid ""
 "The UPS is below the critical level and this computer is about to shutdown."
 msgstr "不斷電系統的電量已處於極低的程度，這台電腦即將關機。"
@@ -1498,185 +1543,191 @@ msgstr "不斷電系統的電量已處於極低的程度，這台電腦即將關
 msgid "UKUI Power Preferences"
 msgstr "UKUI 電源偏好設定"
 
-#: ../src/gpm-prefs-core.c:241
+#: ../src/gpm-prefs-core.c:242
 msgid "Shutdown"
 msgstr "關機"
 
-#: ../src/gpm-prefs-core.c:248
+#: ../src/gpm-prefs-core.c:249
 msgid "Suspend"
 msgstr "暫停"
 
-#: ../src/gpm-prefs-core.c:251
+#: ../src/gpm-prefs-core.c:252
 msgid "Hibernate"
 msgstr "休眠"
 
-#: ../src/gpm-prefs-core.c:254
+#: ../src/gpm-prefs-core.c:255
 msgid "Blank screen"
 msgstr "空白畫面"
 
-#: ../src/gpm-prefs-core.c:257
+#: ../src/gpm-prefs-core.c:258
 msgid "Ask me"
 msgstr "詢問"
 
-#: ../src/gpm-prefs-core.c:260
+#: ../src/gpm-prefs-core.c:261
 msgid "Do nothing"
 msgstr "不做任何事"
 
-#: ../src/gpm-prefs-core.c:320
+#: ../src/gpm-prefs-core.c:321
 msgid "Never"
 msgstr "永不"
 
 #. TRANSLATORS: the rate of discharge for the device
-#: ../src/gpm-statistics.c:78 ../src/gpm-statistics.c:466
+#: ../src/gpm-statistics.c:84 ../src/gpm-statistics.c:497
 msgid "Rate"
 msgstr "比率"
 
-#: ../src/gpm-statistics.c:79
+#: ../src/gpm-statistics.c:85
 msgid "Charge"
 msgstr "充電"
 
-#: ../src/gpm-statistics.c:80 ../src/gpm-statistics.c:480
+#: ../src/gpm-statistics.c:86 ../src/gpm-statistics.c:511
 msgid "Time to full"
 msgstr "充飽的時間"
 
-#: ../src/gpm-statistics.c:81 ../src/gpm-statistics.c:485
+#: ../src/gpm-statistics.c:87 ../src/gpm-statistics.c:516
 msgid "Time to empty"
 msgstr "用完的時間"
 
-#: ../src/gpm-statistics.c:88
+#: ../src/gpm-statistics.c:94
 msgid "10 minutes"
 msgstr "10 分鐘"
 
-#: ../src/gpm-statistics.c:89
+#: ../src/gpm-statistics.c:95
 msgid "2 hours"
 msgstr "2 小時"
 
-#: ../src/gpm-statistics.c:90
+#: ../src/gpm-statistics.c:96
 msgid "6 hours"
 msgstr "6 小時"
 
-#: ../src/gpm-statistics.c:91
+#: ../src/gpm-statistics.c:97
 msgid "1 day"
 msgstr "1 天"
 
-#: ../src/gpm-statistics.c:92
+#: ../src/gpm-statistics.c:98
 msgid "1 week"
 msgstr "1 週"
 
 #. TRANSLATORS: what we've observed about the device
-#: ../src/gpm-statistics.c:101
+#: ../src/gpm-statistics.c:107
 msgid "Charge profile"
 msgstr "充電設定組合"
 
-#: ../src/gpm-statistics.c:102
+#: ../src/gpm-statistics.c:108
 msgid "Discharge profile"
 msgstr "放電設定組合"
 
-#. TRANSLATORS: how accurately we can predict the time remaining of the
-#. battery
-#: ../src/gpm-statistics.c:104
+#. TRANSLATORS: how accurately we can predict the time remaining of the battery
+#: ../src/gpm-statistics.c:110
 msgid "Charge accuracy"
 msgstr "充電準確度"
 
-#: ../src/gpm-statistics.c:105
+#: ../src/gpm-statistics.c:111
 msgid "Discharge accuracy"
 msgstr "放電準確度"
 
-#: ../src/gpm-statistics.c:132
+#: ../src/gpm-statistics.c:138
 msgid "Attribute"
 msgstr "屬性"
 
-#: ../src/gpm-statistics.c:139
+#: ../src/gpm-statistics.c:145
 msgid "Value"
 msgstr "數值"
 
-#: ../src/gpm-statistics.c:156
+#: ../src/gpm-statistics.c:162
 msgid "Image"
 msgstr "圖片"
 
-#: ../src/gpm-statistics.c:162
+#: ../src/gpm-statistics.c:168
 msgid "Description"
 msgstr "描述"
 
-#: ../src/gpm-statistics.c:181 ../src/gpm-statistics.c:405
+#: ../src/gpm-statistics.c:187 ../src/gpm-statistics.c:436
 msgid "Type"
 msgstr "類型"
 
-#: ../src/gpm-statistics.c:187
+#: ../src/gpm-statistics.c:193
 msgid "ID"
 msgstr "ID"
 
-#: ../src/gpm-statistics.c:201
+#: ../src/gpm-statistics.c:207
 msgid "Command"
 msgstr "指令"
 
 #. TRANSLATORS: this is when the stats time is not known
-#: ../src/gpm-statistics.c:286
+#: ../src/gpm-statistics.c:292
 msgid "Unknown"
 msgstr "不明"
 
 #. TRANSLATORS: this is a time value, usually to show on a graph
-#: ../src/gpm-statistics.c:290
+#: ../src/gpm-statistics.c:296
 #, c-format
 msgid "%.0f second"
 msgid_plural "%.0f seconds"
 msgstr[0] "%.0f 秒"
 
 #. TRANSLATORS: this is a time value, usually to show on a graph
-#: ../src/gpm-statistics.c:295
+#: ../src/gpm-statistics.c:301
 #, c-format
 msgid "%.1f minute"
 msgid_plural "%.1f minutes"
 msgstr[0] "%.1f 分鐘"
 
 #. TRANSLATORS: this is a time value, usually to show on a graph
-#: ../src/gpm-statistics.c:300
+#: ../src/gpm-statistics.c:306
 #, c-format
 msgid "%.1f hour"
 msgid_plural "%.1f hours"
 msgstr[0] "%.1f 小時"
 
 #. TRANSLATORS: this is a time value, usually to show on a graph
-#: ../src/gpm-statistics.c:304
+#: ../src/gpm-statistics.c:310
 #, c-format
 msgid "%.1f day"
 msgid_plural "%.1f days"
 msgstr[0] "%.1f 天"
 
-#: ../src/gpm-statistics.c:313
+#: ../src/gpm-statistics.c:319
 msgid "Yes"
 msgstr "是"
 
-#: ../src/gpm-statistics.c:313
+#: ../src/gpm-statistics.c:319
 msgid "No"
 msgstr "否"
 
+#. TRANSLATORS: this is when the device is plugged in, typically
+#. * only shown for the ac adaptor device
+#: ../src/gpm-statistics.c:345 ../src/gpm-statistics.c:350
+#: ../src/gpm-statistics.c:352 ../src/gpm-statistics.c:360
+#: ../src/gpm-statistics.c:543
+msgid "Online"
+msgstr "上線"
+
 #. TRANSLATORS: the device ID of the current device, e.g. "battery0"
-#: ../src/gpm-statistics.c:402
+#: ../src/gpm-statistics.c:433
 msgid "Device"
 msgstr "裝置"
 
-#: ../src/gpm-statistics.c:407
+#: ../src/gpm-statistics.c:438
 msgid "Vendor"
 msgstr "廠商"
 
-#: ../src/gpm-statistics.c:409
+#: ../src/gpm-statistics.c:440
 msgid "Model"
 msgstr "型號"
 
-#: ../src/gpm-statistics.c:411
+#: ../src/gpm-statistics.c:442
 msgid "Serial number"
 msgstr "序號"
 
 #. TRANSLATORS: a boolean attribute that means if the device is supplying the
-#. * main power for the computer. For instance, an AC adapter or laptop
-#. battery
+#. * main power for the computer. For instance, an AC adapter or laptop battery
 #. * would be TRUE,  but a mobile phone or mouse taking power is FALSE
-#: ../src/gpm-statistics.c:416
+#: ../src/gpm-statistics.c:447
 msgid "Supply"
 msgstr "供給"
 
-#: ../src/gpm-statistics.c:419
+#: ../src/gpm-statistics.c:450
 #, c-format
 msgid "%d second"
 msgid_plural "%d seconds"
@@ -1684,271 +1735,282 @@ msgstr[0] "%d 秒"
 
 #. TRANSLATORS: when the device was last updated with new data. It's
 #. * usually a few seconds when a device is discharging or charging.
-#: ../src/gpm-statistics.c:423
+#: ../src/gpm-statistics.c:454
 msgid "Refreshed"
 msgstr "已重新整理"
 
 #. TRANSLATORS: Present is whether the device is currently attached
 #. * to the computer, as some devices (e.g. laptop batteries) can
 #. * be removed, but still observed as devices on the system
-#: ../src/gpm-statistics.c:433
+#: ../src/gpm-statistics.c:464
 msgid "Present"
 msgstr "目前"
 
 #. TRANSLATORS: If the device can be recharged, e.g. lithium
 #. * batteries rather than alkaline ones
-#: ../src/gpm-statistics.c:440
+#: ../src/gpm-statistics.c:471
 msgid "Rechargeable"
 msgstr "可重複充電"
 
 #. TRANSLATORS: The state of the device, e.g. "Changing" or "Fully charged"
-#: ../src/gpm-statistics.c:446
+#: ../src/gpm-statistics.c:477
 msgid "State"
 msgstr "狀態"
 
-#: ../src/gpm-statistics.c:450
+#: ../src/gpm-statistics.c:481
 msgid "Energy"
 msgstr "能源"
 
-#: ../src/gpm-statistics.c:453
+#: ../src/gpm-statistics.c:484
 msgid "Energy when empty"
 msgstr "電力用盡時的能源"
 
-#: ../src/gpm-statistics.c:456
+#: ../src/gpm-statistics.c:487
 msgid "Energy when full"
 msgstr "電力充飽時的能源"
 
-#: ../src/gpm-statistics.c:459
+#: ../src/gpm-statistics.c:490
 msgid "Energy (design)"
 msgstr "能源 (設計)"
 
-#: ../src/gpm-statistics.c:473
+#: ../src/gpm-statistics.c:504
 msgid "Voltage"
 msgstr "電壓"
 
 #. TRANSLATORS: the amount of charge the cell contains
-#: ../src/gpm-statistics.c:495
+#: ../src/gpm-statistics.c:526
 msgid "Percentage"
 msgstr "百分比"
 
 #. TRANSLATORS: the capacity of the device, which is basically a measure
 #. * of how full it can get, relative to the design capacity
-#: ../src/gpm-statistics.c:502
+#: ../src/gpm-statistics.c:533
 msgid "Capacity"
 msgstr "容量"
 
 #. TRANSLATORS: the type of battery, e.g. lithium or nikel metal hydroxide
-#: ../src/gpm-statistics.c:507
+#: ../src/gpm-statistics.c:538
 msgid "Technology"
 msgstr "科技"
 
-#. TRANSLATORS: this is when the device is plugged in, typically
-#. * only shown for the ac adaptor device
-#: ../src/gpm-statistics.c:512
-msgid "Online"
-msgstr "上線"
-
 #. TRANSLATORS: the command line was not provided
-#: ../src/gpm-statistics.c:824
+#: ../src/gpm-statistics.c:855
 msgid "No data"
 msgstr "沒有資料"
 
 #. TRANSLATORS: kernel module, usually a device driver
-#: ../src/gpm-statistics.c:831 ../src/gpm-statistics.c:836
+#: ../src/gpm-statistics.c:862 ../src/gpm-statistics.c:867
 msgid "Kernel module"
 msgstr "核心模組"
 
 #. TRANSLATORS: kernel housekeeping
-#: ../src/gpm-statistics.c:841
+#: ../src/gpm-statistics.c:872
 msgid "Kernel core"
 msgstr "Kernel 核心"
 
 #. TRANSLATORS: interrupt between processors
-#: ../src/gpm-statistics.c:846
+#: ../src/gpm-statistics.c:877
 msgid "Interprocessor interrupt"
 msgstr "處理器間的中斷"
 
 #. TRANSLATORS: unknown interrupt
-#: ../src/gpm-statistics.c:851
+#: ../src/gpm-statistics.c:882
 msgid "Interrupt"
 msgstr "中斷"
 
 #. TRANSLATORS: the keyboard and mouse device event
-#: ../src/gpm-statistics.c:898
+#: ../src/gpm-statistics.c:929
 msgid "PS/2 keyboard/mouse/touchpad"
 msgstr "PS/2 鍵盤/滑鼠/觸控板"
 
 #. TRANSLATORS: ACPI, the Intel power standard on laptops and desktops
-#: ../src/gpm-statistics.c:901
+#: ../src/gpm-statistics.c:932
 msgid "ACPI"
 msgstr "ACPI"
 
 #. TRANSLATORS: serial ATA is a new style of hard disk interface
-#: ../src/gpm-statistics.c:904
+#: ../src/gpm-statistics.c:935
 msgid "Serial ATA"
 msgstr "SATA"
 
 #. TRANSLATORS: this is the old-style ATA interface
-#: ../src/gpm-statistics.c:907
+#: ../src/gpm-statistics.c:938
 msgid "ATA host controller"
 msgstr "ATA 主端控制器"
 
 #. TRANSLATORS: 802.11 wireless adaptor
-#: ../src/gpm-statistics.c:910
+#: ../src/gpm-statistics.c:941
 msgid "Intel wireless adaptor"
 msgstr "Intel 無線配接器"
 
 #. TRANSLATORS: a timer is something that fires periodically.
 #. * The parameter is a process name, e.g. "firefox-bin".
 #. * This is shown when the timer wakes up.
-#: ../src/gpm-statistics.c:917 ../src/gpm-statistics.c:922
-#: ../src/gpm-statistics.c:927 ../src/gpm-statistics.c:932
-#: ../src/gpm-statistics.c:937
+#: ../src/gpm-statistics.c:948 ../src/gpm-statistics.c:953
+#: ../src/gpm-statistics.c:958 ../src/gpm-statistics.c:963
+#: ../src/gpm-statistics.c:968
 #, c-format
 msgid "Timer %s"
 msgstr "計時器 %s"
 
-#. TRANSLATORS: the parameter is the name of task that's woken up from
-#. sleeping.
+#. TRANSLATORS: the parameter is the name of task that's woken up from sleeping.
 #. * This is shown when the task wakes up.
-#: ../src/gpm-statistics.c:941
+#: ../src/gpm-statistics.c:972
 #, c-format
 msgid "Sleep %s"
 msgstr "睡眠 %s"
 
 #. TRANSLATORS: this is the name of a new realtime task.
-#: ../src/gpm-statistics.c:944
+#: ../src/gpm-statistics.c:975
 #, c-format
 msgid "New task %s"
 msgstr "新工作 %s"
 
 #. TRANSLATORS: this is the name of a task that's woken to check state.
 #. * This is shown when the task wakes up.
-#: ../src/gpm-statistics.c:948
+#: ../src/gpm-statistics.c:979
 #, c-format
 msgid "Wait %s"
 msgstr "等待 %s"
 
 #. TRANSLATORS: this is the name of a work queue.
 #. * A work queue is a list of work that has to be done.
-#: ../src/gpm-statistics.c:952 ../src/gpm-statistics.c:956
+#: ../src/gpm-statistics.c:983 ../src/gpm-statistics.c:987
 #, c-format
 msgid "Work queue %s"
 msgstr "工作佇列 %s"
 
 #. TRANSLATORS: this is when the networking subsystem clears out old entries
-#: ../src/gpm-statistics.c:959
+#: ../src/gpm-statistics.c:990
 #, c-format
 msgid "Network route flush %s"
 msgstr "網絡路由清空 %s"
 
 #. TRANSLATORS: this is the name of an activity on the USB bus
-#: ../src/gpm-statistics.c:962
+#: ../src/gpm-statistics.c:993
 #, c-format
 msgid "USB activity %s"
 msgstr "USB 使用 %s"
 
 #. TRANSLATORS: we've timed out of an aligned timer, with the name
-#: ../src/gpm-statistics.c:965
+#: ../src/gpm-statistics.c:996
 #, c-format
 msgid "Wakeup %s"
 msgstr "喚醒 %s"
 
 #. TRANSLATORS: interupts on the system required for basic operation
-#: ../src/gpm-statistics.c:968
+#: ../src/gpm-statistics.c:999
 msgid "Local interrupts"
 msgstr "本地端中斷"
 
 #. TRANSLATORS: interrupts when a task gets moved from one core to another
-#: ../src/gpm-statistics.c:971
+#: ../src/gpm-statistics.c:1002
 msgid "Rescheduling interrupts"
 msgstr "重新排程中斷"
 
 #. TRANSLATORS: shown on the titlebar
-#: ../src/gpm-statistics.c:1080
+#: ../src/gpm-statistics.c:1111
 msgid "Device Information"
 msgstr "裝置資訊"
 
 #. TRANSLATORS: shown on the titlebar
-#: ../src/gpm-statistics.c:1082
+#: ../src/gpm-statistics.c:1113
 msgid "Device History"
 msgstr "裝置紀錄"
 
 #. TRANSLATORS: shown on the titlebar
-#: ../src/gpm-statistics.c:1084
+#: ../src/gpm-statistics.c:1115
 msgid "Device Profile"
 msgstr "裝置設定組合"
 
 #. TRANSLATORS: shown on the titlebar
-#: ../src/gpm-statistics.c:1086
+#: ../src/gpm-statistics.c:1117
 msgid "Processor Wakeups"
 msgstr "處理器喚醒"
 
 #. TRANSLATORS: this is the X axis on the graph
-#: ../src/gpm-statistics.c:1351 ../src/gpm-statistics.c:1357
-#: ../src/gpm-statistics.c:1363 ../src/gpm-statistics.c:1369
+#: ../src/gpm-statistics.c:1382 ../src/gpm-statistics.c:1388
+#: ../src/gpm-statistics.c:1394 ../src/gpm-statistics.c:1400
 msgid "Time elapsed"
 msgstr "花費時間"
 
 #. TRANSLATORS: this is the Y axis on the graph
-#: ../src/gpm-statistics.c:1353
+#: ../src/gpm-statistics.c:1384
 msgid "Power"
 msgstr "電源"
 
 #. TRANSLATORS: this is the Y axis on the graph for the whole battery device
 #. TRANSLATORS: this is the X axis on the graph for the whole battery device
-#: ../src/gpm-statistics.c:1359 ../src/gpm-statistics.c:1403
-#: ../src/gpm-statistics.c:1409 ../src/gpm-statistics.c:1415
-#: ../src/gpm-statistics.c:1421
+#: ../src/gpm-statistics.c:1390 ../src/gpm-statistics.c:1434
+#: ../src/gpm-statistics.c:1440 ../src/gpm-statistics.c:1446
+#: ../src/gpm-statistics.c:1452
 msgid "Cell charge"
 msgstr "Cell 充電"
 
 #. TRANSLATORS: this is the Y axis on the graph
-#: ../src/gpm-statistics.c:1365 ../src/gpm-statistics.c:1371
+#: ../src/gpm-statistics.c:1396 ../src/gpm-statistics.c:1402
 msgid "Predicted time"
 msgstr "預計時間"
 
 #. TRANSLATORS: this is the Y axis on the graph
-#: ../src/gpm-statistics.c:1405 ../src/gpm-statistics.c:1417
+#: ../src/gpm-statistics.c:1436 ../src/gpm-statistics.c:1448
 msgid "Correction factor"
 msgstr "校正因素"
 
 #. TRANSLATORS: this is the Y axis on the graph
-#: ../src/gpm-statistics.c:1411 ../src/gpm-statistics.c:1423
+#: ../src/gpm-statistics.c:1442 ../src/gpm-statistics.c:1454
 msgid "Prediction accuracy"
 msgstr "預測準確度"
 
 #. TRANSLATORS: show a device by default
-#: ../src/gpm-statistics.c:1589
+#: ../src/gpm-statistics.c:1620
 msgid "Select this device at startup"
 msgstr "啟動時選擇這個裝置"
 
 #. TRANSLATORS: the icon for the CPU
-#: ../src/gpm-statistics.c:1838
+#: ../src/gpm-statistics.c:1869
 msgid "Processor"
 msgstr "處理器"
 
-#: ../src/gpm-tray-icon.c:189
+#: ../src/gpm-tray-icon.c:214
 msgid "Copyright © 2011-2017 UKUI developers"
 msgstr ""
 
 #. Translators should localize the following string
 #. * which will be displayed at the bottom of the about
 #. * box to give credit to the translator(s).
-#: ../src/gpm-tray-icon.c:195
+#.
+#: ../src/gpm-tray-icon.c:220
 msgid "translator-credits"
 msgstr ""
 
+#: ../src/gpm-tray-icon.c:352
+#, c-format
+msgid ""
+"%.1f%% available power\n"
+"(The power is connected and is charging)"
+msgstr ""
+
+#: ../src/gpm-tray-icon.c:354
+#, c-format
+msgid "%.1f%% available power"
+msgstr ""
+
 #. TRANSLATORS: % is a timestring, e.g. "6 hours 10 minutes"
-#: ../src/gpm-tray-icon.c:297
+#: ../src/gpm-tray-icon.c:433
 #, c-format
 msgid "%s remaining"
 msgstr ""
 
 #. preferences
-#: ../src/gpm-tray-icon.c:351
+#: ../src/gpm-tray-icon.c:487
 msgid "_Preferences"
 msgstr "偏好設定(_P)"
+
+#: ../src/gpm-tray-icon.c:641
+#, fuzzy
+msgid "Power Preferences"
+msgstr "UKUI 電源偏好設定"
 
 #. TRANSLATORS: device not present
 #: ../src/gpm-upower.c:211
@@ -1969,7 +2031,9 @@ msgstr "%s 正在充電 (%.1f%%)"
 msgid ""
 "Battery is fully charged.\n"
 "Provides %s laptop runtime"
-msgstr "電池已經完全充滿。\n能提供筆電使用 %s"
+msgstr ""
+"電池已經完全充滿。\n"
+"能提供筆電使用 %s"
 
 #. TRANSLATORS: the device is fully charged
 #: ../src/gpm-upower.c:244
@@ -1995,10 +2059,11 @@ msgstr "%s 正在放電 (%.1f%%)"
 msgid ""
 "%s %s until charged (%.1f%%)\n"
 "Provides %s battery runtime"
-msgstr "%s %s 直到充滿 (%.1f%%)\n提供 %s 電池使用時間"
+msgstr ""
+"%s %s 直到充滿 (%.1f%%)\n"
+"提供 %s 電池使用時間"
 
-#. TRANSLATORS: device is charging, and we have a time to full and a
-#. percentage
+#. TRANSLATORS: device is charging, and we have a time to full and a percentage
 #: ../src/gpm-upower.c:282
 #, c-format
 msgid "%s %s until charged (%.1f%%)"
@@ -2090,8 +2155,7 @@ msgstr "充滿的時間："
 msgid "Discharge time:"
 msgstr "放電時間："
 
-#. TRANSLATORS: Excellent, Good, Fair and Poor are all related to battery
-#. Capacity
+#. TRANSLATORS: Excellent, Good, Fair and Poor are all related to battery Capacity
 #: ../src/gpm-upower.c:419
 msgid "Excellent"
 msgstr "很好"

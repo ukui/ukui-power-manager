@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # dragnadh <dragnadh@gmail.com>, 2016
 # Geoffrey De Belie <computergeoffrey@zoho.com>, 2015
@@ -13,14 +13,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UKUI Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-07 14:00+0300\n"
+"POT-Creation-Date: 2019-12-14 13:54+0800\n"
 "PO-Revision-Date: 2017-10-09 15:48+0000\n"
 "Last-Translator: Pjotr <pjotrvertaalt@gmail.com>\n"
 "Language-Team: Dutch (http://www.transifex.com/mate/UKUI/language/nl/)\n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../applets/brightness/brightness-applet.c:110
@@ -57,7 +57,11 @@ msgid ""
 "modify it under the terms of the GNU General Public License\n"
 "as published by the Free Software Foundation; either version 2\n"
 "of the License, or (at your option) any later version."
-msgstr "UKUI-energiebeheer is vrije programmatuur; u mag het herdistribueren en/of\naanpassen onder de voorwaarden van de GNU General Public License, zoals\ngepubliceerd door de Free Software Foundation; ofwel versie 2 van de\nlicentie, of (naargelang gewenst) een latere versie."
+msgstr ""
+"UKUI-energiebeheer is vrije programmatuur; u mag het herdistribueren en/of\n"
+"aanpassen onder de voorwaarden van de GNU General Public License, zoals\n"
+"gepubliceerd door de Free Software Foundation; ofwel versie 2 van de\n"
+"licentie, of (naargelang gewenst) een latere versie."
 
 #: ../applets/brightness/brightness-applet.c:812
 #: ../applets/inhibit/inhibit-applet.c:408
@@ -66,7 +70,11 @@ msgid ""
 "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
 "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
 "GNU General Public License for more details."
-msgstr "UKUI-energiebeheer wordt uitgegeven in de hoop dat het nuttig zal zijn,\nmaar ZONDER ENIGE GARANTIE; zonder zelfs een impliciete garantie van\nVERKOOPBAARHEID of GESCHIKTHEID VOOR EEN BEPAALD DOEL. Zie de GNU General\nPublic License voor meer informatie."
+msgstr ""
+"UKUI-energiebeheer wordt uitgegeven in de hoop dat het nuttig zal zijn,\n"
+"maar ZONDER ENIGE GARANTIE; zonder zelfs een impliciete garantie van\n"
+"VERKOOPBAARHEID of GESCHIKTHEID VOOR EEN BEPAALD DOEL. Zie de GNU General\n"
+"Public License voor meer informatie."
 
 #: ../applets/brightness/brightness-applet.c:816
 #: ../applets/inhibit/inhibit-applet.c:412
@@ -75,7 +83,12 @@ msgid ""
 "along with this program; if not, write to the Free Software\n"
 "Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA\n"
 "02110-1301, USA."
-msgstr "U zou een exemplaar van de GNU General Public License moeten hebben gekregen\nsamen met dit programma. Indien dit niet het geval is, kunt u\nschrijven naar de Free Software Foundation, Inc., 51 Franklin\nStreet, Fifth Floor, Boston, MA 02110-1301, USA."
+msgstr ""
+"U zou een exemplaar van de GNU General Public License moeten hebben "
+"gekregen\n"
+"samen met dit programma. Indien dit niet het geval is, kunt u\n"
+"schrijven naar de Free Software Foundation, Inc., 51 Franklin\n"
+"Street, Fifth Floor, Boston, MA 02110-1301, USA."
 
 #: ../applets/brightness/brightness-applet.c:1068
 #: ../applets/inhibit/inhibit-applet.c:638
@@ -109,7 +122,8 @@ msgstr "Programmaatje voor verhindering van energiebeheer"
 
 #: ../applets/inhibit/inhibit-applet.c:93
 msgid "Allows user to inhibit automatic power saving."
-msgstr "Stelt gebruiker in staat om automatische energiebesparing te verhinderen."
+msgstr ""
+"Stelt gebruiker in staat om automatische energiebesparing te verhinderen."
 
 #: ../applets/inhibit/inhibit-applet.c:332
 msgid "Automatic sleep inhibited"
@@ -139,22 +153,26 @@ msgstr "Verhinderingsprogrammaatje"
 msgid "Allows user to inhibit automatic power saving"
 msgstr "Staat toe dat gebruikers de automatische energiebesparing verhinderen"
 
-#: ../data/ukui-power-manager.desktop.in.in.h:1 ../src/gpm-tray-icon.c:186
+#: ../data/ukui-power-manager.desktop.in.in.h:1 ../src/gpm-tray-icon.c:211
 msgid "Power Manager"
 msgstr "Energiebeheer"
 
-#: ../data/ukui-power-manager.desktop.in.in.h:2 ../src/gpm-tray-icon.c:188
+#: ../data/ukui-power-manager.desktop.in.in.h:2 ../src/gpm-tray-icon.c:213
 msgid "Power management daemon"
 msgstr "Energiebeheer-achtergronddienst"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:1
 msgid "Whether to hibernate, suspend or do nothing when inactive"
-msgstr "Of bij inactiviteit de laptop in slaapstand dan wel pauzestand wordt gezet, of dat er niets gedaan wordt"
+msgstr ""
+"Of bij inactiviteit de laptop in slaapstand dan wel pauzestand wordt gezet, "
+"of dat er niets gedaan wordt"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:2
 msgid ""
 "The type of sleeping that should be performed when the computer is inactive."
-msgstr "Het type slaapstand dat moet worden uitgevoerd wanneer de computer inactief is."
+msgstr ""
+"Het type slaapstand dat moet worden uitgevoerd wanneer de computer inactief "
+"is."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:3
 msgid "Battery critical low action"
@@ -168,14 +186,20 @@ msgstr "De te ondernemen actie wanneer de acculading kritiek laag is."
 msgid ""
 "If the battery event should occur when the lid is shut and the power "
 "disconnected"
-msgstr "Of de accugebeurtenis plaats moet vinden als het laptopscherm dichtgeklapt wordt en de netstroom niet aangesloten is"
+msgstr ""
+"Of de accugebeurtenis plaats moet vinden als het laptopscherm dichtgeklapt "
+"wordt en de netstroom niet aangesloten is"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:6
 msgid ""
 "If the battery lid close event should occur (for example 'Suspend when lid "
 "closed on battery') when the lid is previously shut and the AC power "
 "disconnected at a later time."
-msgstr "Of de schermsluitgebeurtenis voor de accu moet plaatsvinden (bijvoorbeeld ‘Zet in slaapstand bij sluiten van het laptopscherm tijdens accustroom’) als het laptopscherm eerder dichtgeklapt werd en de netstroom pas later wordt verbroken."
+msgstr ""
+"Of de schermsluitgebeurtenis voor de accu moet plaatsvinden (bijvoorbeeld "
+"‘Zet in slaapstand bij sluiten van het laptopscherm tijdens accustroom’) als "
+"het laptopscherm eerder dichtgeklapt werd en de netstroom pas later wordt "
+"verbroken."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:7
 msgid "UPS critical low action"
@@ -201,27 +225,36 @@ msgstr "Aanpassen van de helderheid van de achtergrondverlichting toestaan"
 msgid ""
 "If the screen brightness should be changed when switching between AC and "
 "battery power."
-msgstr "Of de helderheid van het scherm moet worden gewijzigd wanneer er afgewisseld wordt tussen netstroom en accustroom."
+msgstr ""
+"Of de helderheid van het scherm moet worden gewijzigd wanneer er afgewisseld "
+"wordt tussen netstroom en accustroom."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:13
 msgid "Reduce the backlight brightness when on battery power"
-msgstr "Verminder de helderheid van de achtergrondverlichting wanneer de computer op accustroom werkt"
+msgstr ""
+"Verminder de helderheid van de achtergrondverlichting wanneer de computer op "
+"accustroom werkt"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:14
 msgid ""
 "If the screen should be reduced in brightness when the computer is on "
 "battery power."
-msgstr "Of de schermhelderheid moet worden verminderd wanneer de computer op accustroom draait."
+msgstr ""
+"Of de schermhelderheid moet worden verminderd wanneer de computer op "
+"accustroom draait."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:15
 msgid "Reduce the keyboard backlight when on battery power"
-msgstr "Verminder de toetsenbordverlichting indien de computer op accustroom werkt"
+msgstr ""
+"Verminder de toetsenbordverlichting indien de computer op accustroom werkt"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:16
 msgid ""
 "If the keyboard backlight brightness should be reduced when the computer is "
 "on battery power"
-msgstr "Of de toetsenbordverlichting wordt verminderd wanneer de computer op accustroom draait."
+msgstr ""
+"Of de toetsenbordverlichting wordt verminderd wanneer de computer op "
+"accustroom draait."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:17
 msgid "Keyboard backlight brightness when on AC power."
@@ -231,11 +264,15 @@ msgstr "Toetsenbordverlichting wanneer de computer op netstroom werkt."
 msgid ""
 "Percent brightness to set keyboard backlight at when on AC power. Legal "
 "values are between 0 and 100."
-msgstr "Helderheid voor de toetsenbordverlichting wanneer de computer op netstroom werkt, in procenten. Waarden tussen 0 en 100."
+msgstr ""
+"Helderheid voor de toetsenbordverlichting wanneer de computer op netstroom "
+"werkt, in procenten. Waarden tussen 0 en 100."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:19
 msgid "Percent to reduce keyboard backlight by when on battery power."
-msgstr "Percentage om de toetsenbordverlichting mee te verminderen wanneer de computer op accustroom werkt."
+msgstr ""
+"Percentage om de toetsenbordverlichting mee te verminderen wanneer de "
+"computer op accustroom werkt."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:21
 #, no-c-format
@@ -243,19 +280,29 @@ msgid ""
 "The percentage to reduce the keyboard backlight by when on battery power. "
 "For example, if set to '60', the backlight will be cut by 40% on battery "
 "power. Legal values are between 0 and 100."
-msgstr "Percentage om de toetsenbordverlichting te verminderen wanneer de computer op accustroom werkt. Bijvoorbeeld, als dit op '60' is ingesteld, zal de verlichting 40% verminderd worden wanneer op accustroom. Waarden tussen 0 en 100."
+msgstr ""
+"Percentage om de toetsenbordverlichting te verminderen wanneer de computer "
+"op accustroom werkt. Bijvoorbeeld, als dit op '60' is ingesteld, zal de "
+"verlichting 40% verminderd worden wanneer op accustroom. Waarden tussen 0 en "
+"100."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:22
 msgid "Percent to reduce keyboard backlight by when idle."
-msgstr "Percentage om de toetsenbordverlichting mee te verminderen wanneer de computer niet wordt gebruikt."
+msgstr ""
+"Percentage om de toetsenbordverlichting mee te verminderen wanneer de "
+"computer niet wordt gebruikt."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:24
 #, no-c-format
 msgid ""
 "The percentage to reduce the keyboard backlight by when idle. For example, "
-"if set to '60', the backlight will be cut by 40% when idle. Legal values are"
-" between 0 and 100."
-msgstr "Percentage om de toetsenbordverlichting mee te verminderen wanneer de computer niet wordt gebruikt. Bijvoorbeeld, als dit op '60' is ingesteld, zal de verlichting 40% verminderd worden wanneer de computer niet wordt gebruikt. Waarden tussen 0 en 100."
+"if set to '60', the backlight will be cut by 40% when idle. Legal values are "
+"between 0 and 100."
+msgstr ""
+"Percentage om de toetsenbordverlichting mee te verminderen wanneer de "
+"computer niet wordt gebruikt. Bijvoorbeeld, als dit op '60' is ingesteld, "
+"zal de verlichting 40% verminderd worden wanneer de computer niet wordt "
+"gebruikt. Waarden tussen 0 en 100."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:25
 msgid "The brightness of the screen when idle"
@@ -265,25 +312,35 @@ msgstr "De helderheid van het scherm bij inactiviteit"
 msgid ""
 "This is the laptop panel screen brightness used when the session is idle. "
 "Only valid when use-time-for-policy is true."
-msgstr "Dit is de helderheid van het laptopscherm wanneer de sessie niet actief is. Alleen geldig wanneer use-time-for-policy aanstaat."
+msgstr ""
+"Dit is de helderheid van het laptopscherm wanneer de sessie niet actief is. "
+"Alleen geldig wanneer use-time-for-policy aanstaat."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:27
 msgid "Dim the screen after a period of inactivity when on battery power"
-msgstr "Verminder de helderheid van het scherm na een periode van inactiviteit, wanneer op accustroom"
+msgstr ""
+"Verminder de helderheid van het scherm na een periode van inactiviteit, "
+"wanneer op accustroom"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:28
 msgid ""
 "If the screen should be dimmed to save power when the computer is idle when "
 "on battery power."
-msgstr "Of de helderheid van het scherm moet worden verminderd om energie te besparen wanneer de computer inactief is en op accustroom draait."
+msgstr ""
+"Of de helderheid van het scherm moet worden verminderd om energie te "
+"besparen wanneer de computer inactief is en op accustroom draait."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:29
 msgid "The default amount of time to dim the screen after idle"
-msgstr "De standaardhoeveelheid tijdverloop waarna de helderheid van het scherm wegens inactiviteit wordt verminderd"
+msgstr ""
+"De standaardhoeveelheid tijdverloop waarna de helderheid van het scherm "
+"wegens inactiviteit wordt verminderd"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:30
 msgid "The default amount of time to dim the screen after idle."
-msgstr "De standaardhoeveelheid tijdverloop waarna de helderheid van het scherm wegens inactiviteit wordt verminderd."
+msgstr ""
+"De standaardhoeveelheid tijdverloop waarna de helderheid van het scherm "
+"wegens inactiviteit wordt verminderd."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:31
 msgid "LCD dimming amount when on battery"
@@ -293,33 +350,47 @@ msgstr "LCD-helderheidsreductie bij accustroom"
 msgid ""
 "The amount to dim the brightness of the display when on battery power. "
 "Possible values are between 0 and 100."
-msgstr "De helderheidsreductie van het scherm wanneer de accu gebruikt wordt. Mogelijke waarden liggen tussen 0 en 100."
+msgstr ""
+"De helderheidsreductie van het scherm wanneer de accu gebruikt wordt. "
+"Mogelijke waarden liggen tussen 0 en 100."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:33
 msgid "Dim the screen after a period of inactivity when on AC power"
-msgstr "Verminder de helderheid van het scherm na een periode van inactiviteit, wanneer op netstroom"
+msgstr ""
+"Verminder de helderheid van het scherm na een periode van inactiviteit, "
+"wanneer op netstroom"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:34
 msgid ""
 "If the screen should be dimmed to save power when the computer is idle when "
 "on AC power."
-msgstr "Of de helderheid van het scherm wordt verminderd om energie te besparen wanneer de computer inactief is en op netstroom draait."
+msgstr ""
+"Of de helderheid van het scherm wordt verminderd om energie te besparen "
+"wanneer de computer inactief is en op netstroom draait."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:35
 msgid "Method used to blank screen on AC"
-msgstr "Methode die gebruikt wordt voor het op zwart zetten van het scherm bij netstroom"
+msgstr ""
+"Methode die gebruikt wordt voor het op zwart zetten van het scherm bij "
+"netstroom"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:36
 msgid "The DPMS method used to blank the screen when on AC power."
-msgstr "De DPMS-methode om het scherm uit te schakelen wanneer de computer op netstroom werkt."
+msgstr ""
+"De DPMS-methode om het scherm uit te schakelen wanneer de computer op "
+"netstroom werkt."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:37
 msgid "Method used to blank screen on battery"
-msgstr "Methode die gebruikt wordt voor het op zwart zetten van het scherm bij accustroom"
+msgstr ""
+"Methode die gebruikt wordt voor het op zwart zetten van het scherm bij "
+"accustroom"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:38
 msgid "The DPMS method used to blank the screen when on battery power."
-msgstr "De DPMS-methode om het scherm uit te schakelen wanneer de computer op accustroom werkt."
+msgstr ""
+"De DPMS-methode om het scherm uit te schakelen wanneer de computer op "
+"accustroom werkt."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:39
 msgid "LCD brightness when on AC"
@@ -329,7 +400,9 @@ msgstr "Helderheid van LCD-scherm bij netstroom"
 msgid ""
 "The brightness of the display when on AC power. Possible values are between "
 "0.0 and 100.0."
-msgstr "De helderheid van het scherm wanneer de computer op netstroom werkt. Mogelijke waarden liggen tussen 0,0 en 100,0."
+msgstr ""
+"De helderheid van het scherm wanneer de computer op netstroom werkt. "
+"Mogelijke waarden liggen tussen 0,0 en 100,0."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:41
 msgid "Suspend button action"
@@ -363,7 +436,9 @@ msgstr "Actie bij dichtklappen van laptopscherm wanneer op accustroom"
 msgid ""
 "The action to take when the laptop lid is closed and the laptop is on "
 "battery power."
-msgstr "De te ondernemen actie wanneer het laptopscherm wordt dichtgeklapt en de laptop op accustroom draait."
+msgstr ""
+"De te ondernemen actie wanneer het laptopscherm wordt dichtgeklapt en de "
+"laptop op accustroom draait."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:49
 msgid "Laptop lid close action when on AC"
@@ -373,7 +448,9 @@ msgstr "Actie bij sluiten van laptopscherm wanneer op netstroom"
 msgid ""
 "The action to take when the laptop lid is closed and the laptop is on AC "
 "power."
-msgstr "De te ondernemen actie wanneer het laptopscherm wordt dichtgeklapt en de laptop op netstroom draait."
+msgstr ""
+"De te ondernemen actie wanneer het laptopscherm wordt dichtgeklapt en de "
+"laptop op netstroom draait."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:51
 msgid "Whether to use time-based notifications"
@@ -383,7 +460,11 @@ msgstr "Of er tijdgebaseerde meldingen gebruikt worden"
 msgid ""
 "If time based notifications should be used. If set to false, then the "
 "percentage change is used instead, which may fix a broken ACPI BIOS."
-msgstr "Of er tijdgebaseerde meldingen gebruikt worden. Als dit op ‘false’ wordt gezet, wordt er in plaats daarvan de verandering in percentage gebruikt. Dit kan worden benut bij een incorrect functionerende ACPI (energiebeheer) in het BIOS."
+msgstr ""
+"Of er tijdgebaseerde meldingen gebruikt worden. Als dit op ‘false’ wordt "
+"gezet, wordt er in plaats daarvan de verandering in percentage gebruikt. Dit "
+"kan worden benut bij een incorrect functionerende ACPI (energiebeheer) in "
+"het BIOS."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:53
 msgid "Check CPU load before sleeping"
@@ -391,17 +472,23 @@ msgstr "Controleer CPU-belasting voordat slaapstand wordt geactiveerd"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:54
 msgid "If the CPU load should be checked before doing the idle action."
-msgstr "Of de belasting van de CPU gecontroleerd moet worden voordat de inactiviteitsactie ondernomen wordt."
+msgstr ""
+"Of de belasting van de CPU gecontroleerd moet worden voordat de "
+"inactiviteitsactie ondernomen wordt."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:55
 msgid "Whether NetworkManager should be connected and disconnected on sleep."
-msgstr "Of Netwerkbeheer bij aanvang van slaapstand of pauzestand de verbinding moet verbreken."
+msgstr ""
+"Of Netwerkbeheer bij aanvang van slaapstand of pauzestand de verbinding moet "
+"verbreken."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:56
 msgid ""
 "Whether NetworkManager should disconnect before suspending or hibernating "
 "and connect on resume."
-msgstr "Of Netwerkbeheer de verbinding moet verbreken bij aanvang van pauzestand of slaapstand en de verbinding weer moet herstellen bij het einde daarvan."
+msgstr ""
+"Of Netwerkbeheer de verbinding moet verbreken bij aanvang van pauzestand of "
+"slaapstand en de verbinding weer moet herstellen bij het einde daarvan."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:57
 msgid "Use ukui-screensaver lock setting"
@@ -411,7 +498,10 @@ msgstr "Gebruik instelling voor vergrendeling van de Mate-schermbeveiliging"
 msgid ""
 "Whether to use the screen lock setting of ukui-screensaver to decide if the "
 "screen is locked after a hibernate, suspend or blank screen."
-msgstr "Of de instelling voor vergrendeling van de Mate-schermbeveiliging gebruikt moet worden om het scherm te vergrendelen bij slaapstand, pauzestand of het op zwart zetten van het scherm."
+msgstr ""
+"Of de instelling voor vergrendeling van de Mate-schermbeveiliging gebruikt "
+"moet worden om het scherm te vergrendelen bij slaapstand, pauzestand of het "
+"op zwart zetten van het scherm."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:59
 msgid "Lock screen when blanked"
@@ -421,7 +511,9 @@ msgstr "Scherm vergrendelen bij het op zwart zetten"
 msgid ""
 "Whether the screen is locked when the screen is turned off. Only used if "
 "lock-use-screensaver is false."
-msgstr "Of het scherm wordt vergrendeld wanneer het scherm wordt uitgeschakeld. Wordt alleen gebruikt wanneer lock-use-screensaver uitstaat."
+msgstr ""
+"Of het scherm wordt vergrendeld wanneer het scherm wordt uitgeschakeld. "
+"Wordt alleen gebruikt wanneer lock-use-screensaver uitstaat."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:61
 msgid "Lock screen on suspend"
@@ -429,9 +521,11 @@ msgstr "Scherm vergrendelen bij pauzestand"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:62
 msgid ""
-"Whether the screen is locked when the computer wakes up from a suspend. Only"
-" used if lock-use-screensaver is false."
-msgstr "Of het scherm wordt vergrendeld wanneer de computer ontwaakt uit de pauzestand. Wordt alleen gebruikt wanneer lock-use-screensaver uitstaat."
+"Whether the screen is locked when the computer wakes up from a suspend. Only "
+"used if lock-use-screensaver is false."
+msgstr ""
+"Of het scherm wordt vergrendeld wanneer de computer ontwaakt uit de "
+"pauzestand. Wordt alleen gebruikt wanneer lock-use-screensaver uitstaat."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:63
 msgid "Lock screen on hibernate"
@@ -441,7 +535,9 @@ msgstr "Scherm vergrendelen bij slaapstand"
 msgid ""
 "Whether the screen is locked when the computer wakes up from a hibernate. "
 "Only used if lock-use-screensaver is false."
-msgstr "Of het scherm wordt vergrendeld wanneer de computer ontwaakt uit de slaapstand. Wordt alleen gebruikt wanneer lock-use-screensaver uitstaat."
+msgstr ""
+"Of het scherm wordt vergrendeld wanneer de computer ontwaakt uit de "
+"slaapstand. Wordt alleen gebruikt wanneer lock-use-screensaver uitstaat."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:65
 msgid "Lock GNOME keyring on sleep"
@@ -449,23 +545,32 @@ msgstr "GNOME-sleutelbos vergrendelen tijdens slaapstand"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:66
 msgid ""
-"Whether the GNOME keyring is locked before the computer enters suspend. This"
-" means the keyring will have to be unlocked on resume."
-msgstr "Of de GNOME-sleutelbos wordt vergrendeld voordat de computer de pauzestand in gaat. Dit betekent dat u de sleutelbos moet ontgrendelen bij hervatting."
+"Whether the GNOME keyring is locked before the computer enters suspend. This "
+"means the keyring will have to be unlocked on resume."
+msgstr ""
+"Of de GNOME-sleutelbos wordt vergrendeld voordat de computer de pauzestand "
+"in gaat. Dit betekent dat u de sleutelbos moet ontgrendelen bij hervatting."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:67
 msgid ""
 "Whether the GNOME keyring is locked before the computer enters hibernate. "
 "This means the keyring will have to be unlocked on resume."
-msgstr "Of de GNOME-sleutelbos wordt vergrendeld voordat de computer de slaapstand in gaat. Dit betekent dat u de sleutelbos moet ontgrendelen bij hervatting."
+msgstr ""
+"Of de GNOME-sleutelbos wordt vergrendeld voordat de computer de slaapstand "
+"in gaat. Dit betekent dat u de sleutelbos moet ontgrendelen bij hervatting."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:68
 msgid "If we should show the low capacity warning for a broken battery"
-msgstr "Of er een zinloze waarschuwing voor lage lading zal worden getoond bij een kapotte accu"
+msgstr ""
+"Of er een zinloze waarschuwing voor lage lading zal worden getoond bij een "
+"kapotte accu"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:69
 msgid "If we should show the low capacity warning for a broken battery."
-msgstr "Of de waarschuwing voor lage lading zal worden getoond bij een kapotte accu. Die waarschuwing heeft dan natuurlijk geen zin, dus uitschakelen van die waarschuwing is in dat geval een goed idee."
+msgstr ""
+"Of de waarschuwing voor lage lading zal worden getoond bij een kapotte accu. "
+"Die waarschuwing heeft dan natuurlijk geen zin, dus uitschakelen van die "
+"waarschuwing is in dat geval een goed idee."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:70
 msgid "Notify when AC adapter is disconnected"
@@ -473,7 +578,9 @@ msgstr "Melden wanneer de netstroomstekker verwijderd wordt"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:71
 msgid "If the user should be notified when the AC adapter is disconnected."
-msgstr "Of de gebruiker op de hoogte wordt gebracht wanneer de netstroomstekker verwijderd wordt."
+msgstr ""
+"Of de gebruiker op de hoogte wordt gebracht wanneer de netstroomstekker "
+"verwijderd wordt."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:72
 msgid "Notify when fully charged"
@@ -483,7 +590,9 @@ msgstr "Melden wanneer volledig opgeladen"
 msgid ""
 "If a notification message should be displayed when the battery is fully "
 "charged."
-msgstr "Of de gebruiker op de hoogte wordt gebracht wanneer de accu volledig is opgeladen."
+msgstr ""
+"Of de gebruiker op de hoogte wordt gebracht wanneer de accu volledig is "
+"opgeladen."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:74
 msgid "Notify on a sleep failure"
@@ -493,7 +602,9 @@ msgstr "Melden als slaapstand mislukt"
 msgid ""
 "If a notification message should be displayed after suspend or hibernate "
 "failed."
-msgstr "Of de gebruiker op de hoogte wordt gebracht als pauzestand of slaapstand mislukt."
+msgstr ""
+"Of de gebruiker op de hoogte wordt gebracht als pauzestand of slaapstand "
+"mislukt."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:76
 msgid "The URI to show to the user on sleep failure"
@@ -503,7 +614,10 @@ msgstr "De aan de gebruiker te tonen URI bij een fout tijdens de slaapstand."
 msgid ""
 "When sleep fails we can show the user a button to help fix the situation. "
 "Leave this blank if the button should not be shown."
-msgstr "Als de slaapstand mislukt, kan aan de gebruiker een knop getoond worden om te helpen het probleem op te lossen. Laat dit veld leeg om deze knop uit te schakelen."
+msgstr ""
+"Als de slaapstand mislukt, kan aan de gebruiker een knop getoond worden om "
+"te helpen het probleem op te lossen. Laat dit veld leeg om deze knop uit te "
+"schakelen."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:78
 msgid "Notify on a low power"
@@ -522,7 +636,8 @@ msgstr "Of er verloopgegevens moeten worden getoond"
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:81
 msgid ""
 "Whether we should show the history data points in the statistics window."
-msgstr "Of er verloopgegevens moeten worden weergegeven in het statistiekenvenster."
+msgstr ""
+"Of er verloopgegevens moeten worden weergegeven in het statistiekenvenster."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:82
 msgid "Whether we should smooth the history data"
@@ -555,7 +670,9 @@ msgstr "Of de gegevenspunten van de statistieken moeten worden weergegeven"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:89
 msgid "Whether we should show the stats data points in the statistics window."
-msgstr "Of de gegevenspunten van de statistieken moeten worden weergegeven in het statistiekenvenster."
+msgstr ""
+"Of de gegevenspunten van de statistieken moeten worden weergegeven in het "
+"statistiekenvenster."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:90
 msgid "Whether we should smooth the stats data"
@@ -581,7 +698,9 @@ msgstr "De index van het paginanummer dat standaard wordt weergegeven"
 msgid ""
 "The index of the page number to show by default which is used to return "
 "focus to the correct page."
-msgstr "De index van het paginanummer dat standaard wordt weergegeven, wat gebruikt wordt om de scherpstelling terug te zetten op de juiste pagina."
+msgstr ""
+"De index van het paginanummer dat standaard wordt weergegeven, wat gebruikt "
+"wordt om de scherpstelling terug te zetten op de juiste pagina."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:96
 msgid "The ID of the last device selected"
@@ -591,7 +710,9 @@ msgstr "Het ID  van het laatst geselecteerde apparaat"
 msgid ""
 "The identifier of the last device which is used to return focus to the "
 "correct device."
-msgstr "Het identificatienummer van het laatste apparaat, dat wordt gebruikt om de scherpstelling terug te zetten op het juiste apparaat."
+msgstr ""
+"Het identificatienummer van het laatste apparaat, dat wordt gebruikt om de "
+"scherpstelling terug te zetten op het juiste apparaat."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:98
 msgid "Percentage considered low"
@@ -599,9 +720,11 @@ msgstr "Percentage dat als laag wordt beschouwd"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:99
 msgid ""
-"The percentage of the battery when it is considered low. Only valid when "
-"use-time-for-policy is false."
-msgstr "De resterende accuduur als percentage wanneer het als laag wordt beschouwd. Alleen geldig wanneer use-time-for-policy uitstaat."
+"The percentage of the battery when it is considered low. Only valid when use-"
+"time-for-policy is false."
+msgstr ""
+"De resterende accuduur als percentage wanneer het als laag wordt beschouwd. "
+"Alleen geldig wanneer use-time-for-policy uitstaat."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:100
 msgid "Percentage considered critical"
@@ -611,7 +734,9 @@ msgstr "Percentage dat als kritiek laag wordt beschouwd"
 msgid ""
 "The percentage of the battery when it is considered critical. Only valid "
 "when use-time-for-policy is false."
-msgstr "De resterende accuduur als percentage wanneer het als kritiek laag wordt beschouwd. Alleen geldig wanneer 'use-time-for-policy' uitstaat."
+msgstr ""
+"De resterende accuduur als percentage wanneer het als kritiek laag wordt "
+"beschouwd. Alleen geldig wanneer 'use-time-for-policy' uitstaat."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:102
 msgid "Percentage action is taken"
@@ -621,7 +746,9 @@ msgstr "Percentage-actie wordt uitgevoerd"
 msgid ""
 "The percentage of the battery when the critical action is performed. Only "
 "valid when use-time-for-policy is false."
-msgstr "De resterende accuduur als percentage wanneer de kritiek-laag-actie wordt ondernomen. Alleen geldig wanneer 'use-time-for-policy' uitstaat."
+msgstr ""
+"De resterende accuduur als percentage wanneer de kritiek-laag-actie wordt "
+"ondernomen. Alleen geldig wanneer 'use-time-for-policy' uitstaat."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:104
 msgid "The time remaining when low"
@@ -629,9 +756,11 @@ msgstr "De resterende tijd indien accu laag"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:105
 msgid ""
-"The time remaining in seconds of the battery when it is considered low. Only"
-" valid when use-time-for-policy is true."
-msgstr "De resterende accuduur in seconden wanneer die als laag wordt beschouwd. Alleen geldig wanneer use-time-for-policy aanstaat."
+"The time remaining in seconds of the battery when it is considered low. Only "
+"valid when use-time-for-policy is true."
+msgstr ""
+"De resterende accuduur in seconden wanneer die als laag wordt beschouwd. "
+"Alleen geldig wanneer use-time-for-policy aanstaat."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:106
 msgid "The time remaining when critical"
@@ -639,9 +768,11 @@ msgstr "De resterende tijd wanneer kritiek laag"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:107
 msgid ""
-"The time remaining in seconds of the battery when it is considered critical."
-" Only valid when use-time-for-policy is true."
-msgstr "De resterende accuduur in seconden wanneer die als kritiek laag wordt beschouwd. Alleen geldig wanneer 'use-time-for-policy' aanstaat."
+"The time remaining in seconds of the battery when it is considered critical. "
+"Only valid when use-time-for-policy is true."
+msgstr ""
+"De resterende accuduur in seconden wanneer die als kritiek laag wordt "
+"beschouwd. Alleen geldig wanneer 'use-time-for-policy' aanstaat."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:108
 msgid "The time remaining when action is taken"
@@ -651,7 +782,9 @@ msgstr "De resterende tijd als de actie wordt uitgevoerd"
 msgid ""
 "The time remaining in seconds of the battery when critical action is taken. "
 "Only valid when use-time-for-policy is true."
-msgstr "De resterende accuduur in seconden wanneer de kritiek-laag-actie wordt ondernomen. Alleen geldig wanneer 'use-time-for-policy' aanstaat."
+msgstr ""
+"De resterende accuduur in seconden wanneer de kritiek-laag-actie wordt "
+"ondernomen. Alleen geldig wanneer 'use-time-for-policy' aanstaat."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:110
 msgid "Sleep timeout computer when on battery"
@@ -661,7 +794,9 @@ msgstr "Wachttijd voor de slaapstand wanneer de accu gebruikt wordt"
 msgid ""
 "The amount of time in seconds the computer on battery power needs to be "
 "inactive before it goes to sleep."
-msgstr "Het aantal seconden inactiviteit voordat de computer in slaapstand gaat wanneer de accu gebruikt wordt."
+msgstr ""
+"Het aantal seconden inactiviteit voordat de computer in slaapstand gaat "
+"wanneer de accu gebruikt wordt."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:112
 msgid "Sleep timeout computer when on AC"
@@ -671,7 +806,9 @@ msgstr "Wachttijd voor de slaapstand wanneer netstroom gebruikt wordt"
 msgid ""
 "The amount of time in seconds the computer on AC power needs to be inactive "
 "before it goes to sleep."
-msgstr "Het aantal seconden inactiviteit voordat de computer in slaapstand gaat wanneer netstroom gebruikt wordt."
+msgstr ""
+"Het aantal seconden inactiviteit voordat de computer in slaapstand gaat "
+"wanneer netstroom gebruikt wordt."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:114
 msgid "Sleep timeout computer when on UPS"
@@ -679,9 +816,11 @@ msgstr "Wachttijd voor de slaapstand wanneer de UPS gebruikt wordt"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:115
 msgid ""
-"The amount of time in seconds the computer on UPS power needs to be inactive"
-" before it goes to sleep."
-msgstr "Het aantal seconden inactiviteit voordat de computer in slaapstand gaat wanneer de UPS gebruikt wordt."
+"The amount of time in seconds the computer on UPS power needs to be inactive "
+"before it goes to sleep."
+msgstr ""
+"Het aantal seconden inactiviteit voordat de computer in slaapstand gaat "
+"wanneer de UPS gebruikt wordt."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:116
 msgid "Sleep timeout display when on AC"
@@ -691,7 +830,9 @@ msgstr "Slaapstand-wachttijd voor het scherm wanneer netstroom gebruikt wordt"
 msgid ""
 "The amount of time in seconds before the display goes to sleep when the "
 "computer is on AC power."
-msgstr "Het aantal seconden inactiviteit voordat het scherm uitgaat wanneer netstroom gebruikt wordt."
+msgstr ""
+"Het aantal seconden inactiviteit voordat het scherm uitgaat wanneer "
+"netstroom gebruikt wordt."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:118
 msgid "Sleep timeout display when on battery"
@@ -701,7 +842,9 @@ msgstr "Slaapstand-wachttijd voor het scherm wanneer de accu gebruikt wordt"
 msgid ""
 "The amount of time in seconds the computer on battery power needs to be "
 "inactive before the display goes to sleep."
-msgstr "Het aantal seconden inactiviteit voordat het scherm uitgaat wanneer de accu gebruikt wordt."
+msgstr ""
+"Het aantal seconden inactiviteit voordat het scherm uitgaat wanneer de accu "
+"gebruikt wordt."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:120
 msgid "Sleep timeout display when on UPS"
@@ -709,9 +852,11 @@ msgstr "Slaapstand-wachttijd voor het scherm wanneer de UPS gebruikt wordt"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:121
 msgid ""
-"The amount of time in seconds the computer on UPS power needs to be inactive"
-" before the display goes to sleep."
-msgstr "Het aantal seconden inactiviteit voordat het scherm uitgaat wanneer de UPS gebruikt wordt."
+"The amount of time in seconds the computer on UPS power needs to be inactive "
+"before the display goes to sleep."
+msgstr ""
+"Het aantal seconden inactiviteit voordat het scherm uitgaat wanneer de UPS "
+"gebruikt wordt."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:122
 msgid "If sounds should be used"
@@ -721,11 +866,13 @@ msgstr "Of er geluiden gebruikt moet worden"
 msgid ""
 "If sounds should be used when the power is critically low, or inhibit "
 "requests have stopped the policy action."
-msgstr "Geeft aan of er een geluid moet worden afgespeeld wanneer de acculading kritiek laag is, of wanneer verhinderingsverzoeken de beleidsactie hebben belet."
+msgstr ""
+"Geeft aan of er een geluid moet worden afgespeeld wanneer de acculading "
+"kritiek laag is, of wanneer verhinderingsverzoeken de beleidsactie hebben "
+"belet."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:124
-msgid ""
-"If preferences and statistics items should be shown in the context menu"
+msgid "If preferences and statistics items should be shown in the context menu"
 msgstr "Of het contextmenu onderdelen toont voor voorkeuren en statistieken"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:125
@@ -747,8 +894,8 @@ msgstr "Energiebeheer instellen"
 #. TRANSLATORS: shown on the titlebar
 #. TRANSLATORS: the program name
 #: ../data/ukui-power-statistics.desktop.in.in.h:1
-#: ../data/gpm-statistics.ui.h:1 ../src/gpm-statistics.c:1090
-#: ../src/gpm-statistics.c:1603
+#: ../data/gpm-statistics.ui.h:1 ../src/gpm-statistics.c:1121
+#: ../src/gpm-statistics.c:1634
 msgid "Power Statistics"
 msgstr "Spanningsstatistieken"
 
@@ -760,7 +907,7 @@ msgstr "Energiebeheer observeren"
 msgid "Brightness"
 msgstr "Helderheid"
 
-#: ../data/gpm-statistics.ui.h:2 ../src/gpm-statistics.c:208
+#: ../data/gpm-statistics.ui.h:2 ../src/gpm-statistics.c:214
 msgid "Details"
 msgstr "Details"
 
@@ -800,7 +947,7 @@ msgstr "Aantal ontwaakmomenten voor de processor per seconde:"
 msgid "0"
 msgstr "0"
 
-#: ../data/gpm-statistics.ui.h:12 ../src/gpm-statistics.c:194
+#: ../data/gpm-statistics.ui.h:12 ../src/gpm-statistics.c:200
 msgid "Wakeups"
 msgstr "Ontwaakmomenten"
 
@@ -1069,7 +1216,7 @@ msgid "%.1fV"
 msgstr "%.1fV"
 
 #. TRANSLATORS: show verbose debugging
-#: ../src/gpm-main.c:172 ../src/gpm-prefs.c:77 ../src/gpm-statistics.c:1586
+#: ../src/gpm-main.c:172 ../src/gpm-prefs.c:77 ../src/gpm-statistics.c:1617
 msgid "Show extra debugging information"
 msgstr "Extra foutopsporingsinformatie tonen"
 
@@ -1090,100 +1237,108 @@ msgid "UKUI Power Manager"
 msgstr "Mate Energiebeheer"
 
 #. TRANSLATORS: this is the sound description
-#: ../src/gpm-manager.c:223 ../src/gpm-manager.c:295
+#: ../src/gpm-manager.c:225 ../src/gpm-manager.c:297
 msgid "Battery is very low"
 msgstr "Acculading is erg laag"
 
 #. TRANSLATORS: this is the sound description
-#: ../src/gpm-manager.c:275
+#: ../src/gpm-manager.c:277
 msgid "Power plugged in"
 msgstr "Netstroom aangesloten"
 
 #. TRANSLATORS: this is the sound description
-#: ../src/gpm-manager.c:279
+#: ../src/gpm-manager.c:281
 msgid "Power unplugged"
 msgstr "Netstroom losgekoppeld"
 
 #. TRANSLATORS: this is the sound description
-#: ../src/gpm-manager.c:283
+#: ../src/gpm-manager.c:285
 msgid "Lid has opened"
 msgstr "Scherm is opengeklapt"
 
 #. TRANSLATORS: this is the sound description
-#: ../src/gpm-manager.c:287
+#: ../src/gpm-manager.c:289
 msgid "Lid has closed"
 msgstr "Scherm is dichtgeklapt"
 
 #. TRANSLATORS: this is the sound description
-#: ../src/gpm-manager.c:291
+#: ../src/gpm-manager.c:293
 msgid "Battery is low"
 msgstr "Acculading is laag"
 
 #. TRANSLATORS: this is the sound description
-#: ../src/gpm-manager.c:299
+#: ../src/gpm-manager.c:301
 msgid "Battery is full"
 msgstr "Accu is vol"
 
 #. TRANSLATORS: this is the sound description
-#: ../src/gpm-manager.c:303
+#: ../src/gpm-manager.c:305
 msgid "Suspend started"
 msgstr "Pauzestand gestart"
 
 #. TRANSLATORS: this is the sound description
-#: ../src/gpm-manager.c:307
+#: ../src/gpm-manager.c:309
 msgid "Resumed"
 msgstr "Hervat"
 
 #. TRANSLATORS: this is the sound description
-#: ../src/gpm-manager.c:311
+#: ../src/gpm-manager.c:313
 msgid "Suspend failed"
 msgstr "Pauzestand mislukt"
 
 #. TRANSLATORS: message text
-#: ../src/gpm-manager.c:587
+#: ../src/gpm-manager.c:591
 msgid "Computer failed to suspend."
 msgstr "Kon computer niet in pauzestand zetten."
 
 #. TRANSLATORS: title text
-#: ../src/gpm-manager.c:589
+#: ../src/gpm-manager.c:593
 msgid "Failed to suspend"
 msgstr "Pauzestand mislukt"
 
 #. TRANSLATORS: message text
-#: ../src/gpm-manager.c:593
+#: ../src/gpm-manager.c:597
 msgid "Computer failed to hibernate."
 msgstr "Kon computer niet in slaapstand zetten."
 
 #. TRANSLATORS: title text
-#: ../src/gpm-manager.c:595
+#: ../src/gpm-manager.c:599
 msgid "Failed to hibernate"
 msgstr "Slaapstand mislukt"
 
 #. TRANSLATORS: message text
-#: ../src/gpm-manager.c:600
+#: ../src/gpm-manager.c:604
 msgid "Failure was reported as:"
 msgstr "De foutmelding is als volgt:"
 
 #. TRANSLATORS: button text, visit the suspend help website
-#: ../src/gpm-manager.c:613
+#: ../src/gpm-manager.c:617
 msgid "Visit help page"
 msgstr "Hulppagina bezoeken"
 
+#: ../src/gpm-manager.c:654
+msgid "Suspend failed for some reason (maybe dbus error)"
+msgstr ""
+
+#: ../src/gpm-manager.c:692
+msgid "Hibernate failed for some reason (maybe dbus error)"
+msgstr ""
+
 #. TRANSLATORS: this is the ukui-screensaver throttle
-#: ../src/gpm-manager.c:859
+#: ../src/gpm-manager.c:904
 msgid "Display DPMS activated"
 msgstr "Scherm-DPMS ingeschakeld"
 
 #. TRANSLATORS: this is the ukui-screensaver throttle
-#: ../src/gpm-manager.c:878
+#: ../src/gpm-manager.c:923
 msgid "On battery power"
 msgstr "Op accustroom"
 
-#: ../src/gpm-manager.c:896
+#: ../src/gpm-manager.c:941
 msgid "Laptop lid is closed"
 msgstr "Laptopscherm is dichtgeklapt"
 
-#: ../src/gpm-manager.c:934
+#: ../src/gpm-manager.c:979
 msgid "Power Information"
 msgstr "Energie-informatie"
 
@@ -1191,316 +1346,364 @@ msgstr "Energie-informatie"
 #. * where capacity is the ratio of the last_full capacity with that of
 #. * the design capacity. (#326740)
 #. TRANSLATORS: battery is old or broken
-#: ../src/gpm-manager.c:1121
+#: ../src/gpm-manager.c:1167
 msgid "Battery may be broken"
 msgstr "Accu is mogelijk kapot"
 
-#. TRANSLATORS: notify the user that that battery is broken as the capacity is
-#. very low
-#: ../src/gpm-manager.c:1124
+#. TRANSLATORS: notify the user that that battery is broken as the capacity is very low
+#: ../src/gpm-manager.c:1170
 #, c-format
 msgid ""
-"Battery has a very low capacity (%1.1f%%), which means that it may be old or"
-" broken."
-msgstr "De accu heeft een zeer lage ladingscapaciteit (%1.1f%%). Dit betekent dat deze mogelijk versleten of kapot is."
+"Battery has a very low capacity (%1.1f%%), which means that it may be old or "
+"broken."
+msgstr ""
+"De accu heeft een zeer lage ladingscapaciteit (%1.1f%%). Dit betekent dat "
+"deze mogelijk versleten of kapot is."
 
+#. kobe
 #. TRANSLATORS: show the charged notification
-#: ../src/gpm-manager.c:1173
+#: ../src/gpm-manager.c:1220
 msgid "Battery Charged"
 msgid_plural "Batteries Charged"
 msgstr[0] "Accu opgeladen"
 msgstr[1] "Accu's opgeladen"
 
 #. TRANSLATORS: laptop battery is now discharging
-#: ../src/gpm-manager.c:1219
+#: ../src/gpm-manager.c:1266
 msgid "Battery Discharging"
 msgstr "Accu ontlaadt"
 
 #. TRANSLATORS: tell the user how much time they have got
-#: ../src/gpm-manager.c:1223
+#: ../src/gpm-manager.c:1270
 #, c-format
 msgid "%s of battery power remaining (%.0f%%)"
 msgstr "%s aan resterende accutijd (%.0f%%)"
 
 #. TRANSLATORS: the device is discharging, but we only have a percentage
-#: ../src/gpm-manager.c:1226 ../src/gpm-manager.c:1238
+#: ../src/gpm-manager.c:1273 ../src/gpm-manager.c:1285
 #, c-format
 msgid "%s discharging (%.0f%%)"
 msgstr "%s ontladen (%.0f%%)"
 
 #. TRANSLATORS: UPS is now discharging
-#: ../src/gpm-manager.c:1231
+#: ../src/gpm-manager.c:1278
 msgid "UPS Discharging"
 msgstr "UPS ontlaadt"
 
 #. TRANSLATORS: tell the user how much time they have got
-#: ../src/gpm-manager.c:1235
+#: ../src/gpm-manager.c:1282
 #, c-format
 msgid "%s of UPS backup power remaining (%.0f%%)"
 msgstr "%s aan resterende UPS-stroom (%.0f%%)"
 
 #. TRANSLATORS: laptop battery low, and we only have one battery
-#: ../src/gpm-manager.c:1319
+#: ../src/gpm-manager.c:1366
 msgid "Battery low"
 msgstr "Acculading laag"
 
 #. TRANSLATORS: laptop battery low, and we have more than one kind of battery
-#: ../src/gpm-manager.c:1322
+#: ../src/gpm-manager.c:1369
 msgid "Laptop battery low"
 msgstr "Laptopaccu laag"
 
 #. TRANSLATORS: tell the user how much time they have got
-#: ../src/gpm-manager.c:1328
+#: ../src/gpm-manager.c:1375
 #, c-format
 msgid "Approximately <b>%s</b> remaining (%.0f%%)"
 msgstr "Ongeveer <b>%s</b> resterende accutijd (%.0f%%)"
 
 #. TRANSLATORS: UPS is starting to get a little low
-#: ../src/gpm-manager.c:1332
+#: ../src/gpm-manager.c:1379
 msgid "UPS low"
 msgstr "UPS laag"
 
 #. TRANSLATORS: tell the user how much time they have got
-#: ../src/gpm-manager.c:1336
+#: ../src/gpm-manager.c:1383
 #, c-format
 msgid "Approximately <b>%s</b> of remaining UPS backup power (%.0f%%)"
 msgstr "Ongeveer <b>%s</b> resterende UPS-tijd (%.0f%%)"
 
 #. TRANSLATORS: mouse is getting a little low
 #. TRANSLATORS: the mouse battery is very low
-#: ../src/gpm-manager.c:1340 ../src/gpm-manager.c:1474
+#: ../src/gpm-manager.c:1387 ../src/gpm-manager.c:1521
+#: ../src/gpm-manager.c:1668
 msgid "Mouse battery low"
 msgstr "Muisbatterij laag"
 
 #. TRANSLATORS: tell user more details
-#: ../src/gpm-manager.c:1343
+#: ../src/gpm-manager.c:1390
 #, c-format
 msgid "Wireless mouse is low in power (%.0f%%)"
 msgstr "De draadloze muis heeft bijna geen stroom meer (%.0f%%)"
 
 #. TRANSLATORS: keyboard is getting a little low
 #. TRANSLATORS: the keyboard battery is very low
-#: ../src/gpm-manager.c:1347 ../src/gpm-manager.c:1482
+#: ../src/gpm-manager.c:1394 ../src/gpm-manager.c:1529
+#: ../src/gpm-manager.c:1676
 msgid "Keyboard battery low"
 msgstr "Toetsenbordbatterij laag"
 
 #. TRANSLATORS: tell user more details
-#: ../src/gpm-manager.c:1350
+#: ../src/gpm-manager.c:1397
 #, c-format
 msgid "Wireless keyboard is low in power (%.0f%%)"
 msgstr "Het draadloze toetsenbord heeft bijna geen stroom meer (%.0f%%)"
 
 #. TRANSLATORS: PDA is getting a little low
 #. TRANSLATORS: the PDA battery is very low
-#: ../src/gpm-manager.c:1354 ../src/gpm-manager.c:1491
+#: ../src/gpm-manager.c:1401 ../src/gpm-manager.c:1538
+#: ../src/gpm-manager.c:1684
 msgid "PDA battery low"
 msgstr "PDA-accu laag"
 
 #. TRANSLATORS: tell user more details
-#: ../src/gpm-manager.c:1357
+#: ../src/gpm-manager.c:1404
 #, c-format
 msgid "PDA is low in power (%.0f%%)"
 msgstr "De PDA heeft bijna geen stroom meer (%.0f%%)"
 
 #. TRANSLATORS: cell phone (mobile) is getting a little low
 #. TRANSLATORS: the cell battery is very low
-#: ../src/gpm-manager.c:1361 ../src/gpm-manager.c:1501
-#: ../src/gpm-manager.c:1511
+#: ../src/gpm-manager.c:1408 ../src/gpm-manager.c:1548
+#: ../src/gpm-manager.c:1558 ../src/gpm-manager.c:1694
+#: ../src/gpm-manager.c:1704
 msgid "Cell phone battery low"
 msgstr "Telefoonaccu laag"
 
 #. TRANSLATORS: tell user more details
-#: ../src/gpm-manager.c:1364
+#: ../src/gpm-manager.c:1411
 #, c-format
 msgid "Cell phone is low in power (%.0f%%)"
 msgstr "De mobiele telefoon heeft bijna geen stroom meer (%.0f%%)"
 
 #. TRANSLATORS: media player, e.g. mp3 is getting a little low
-#: ../src/gpm-manager.c:1368
+#: ../src/gpm-manager.c:1415
 msgid "Media player battery low"
 msgstr "Accu in mediaspeler laag"
 
 #. TRANSLATORS: tell user more details
-#: ../src/gpm-manager.c:1371
+#: ../src/gpm-manager.c:1418
 #, c-format
 msgid "Media player is low in power (%.0f%%)"
 msgstr "De mediaspeler heeft bijna geen stroom meer (%.0f%%)"
 
 #. TRANSLATORS: graphics tablet, e.g. wacom is getting a little low
 #. TRANSLATORS: the cell battery is very low
-#: ../src/gpm-manager.c:1375 ../src/gpm-manager.c:1520
+#: ../src/gpm-manager.c:1422 ../src/gpm-manager.c:1567
+#: ../src/gpm-manager.c:1712
 msgid "Tablet battery low"
 msgstr "Tablet-accu laag"
 
 #. TRANSLATORS: tell user more details
-#: ../src/gpm-manager.c:1378
+#: ../src/gpm-manager.c:1425
 #, c-format
 msgid "Tablet is low in power (%.0f%%)"
 msgstr "De tablet heeft bijna geen stroom meer (%.0f%%)"
 
 #. TRANSLATORS: computer, e.g. ipad is getting a little low
 #. TRANSLATORS: the cell battery is very low
-#: ../src/gpm-manager.c:1382 ../src/gpm-manager.c:1529
+#: ../src/gpm-manager.c:1429 ../src/gpm-manager.c:1576
+#: ../src/gpm-manager.c:1721
 msgid "Attached computer battery low"
 msgstr "Accu van aangesloten computer laag"
 
 #. TRANSLATORS: tell user more details
-#: ../src/gpm-manager.c:1385
+#: ../src/gpm-manager.c:1432
 #, c-format
 msgid "Attached computer is low in power (%.0f%%)"
-msgstr "De accu van de aangesloten computer heeft bijna geen stroom meer (%.0f%%)"
+msgstr ""
+"De accu van de aangesloten computer heeft bijna geen stroom meer (%.0f%%)"
 
-#. TRANSLATORS: laptop battery critically low, and only have one kind of
-#. battery
-#: ../src/gpm-manager.c:1433
+#. TRANSLATORS: laptop battery critically low, and only have one kind of battery
+#: ../src/gpm-manager.c:1480 ../src/gpm-manager.c:1645
 msgid "Battery critically low"
 msgstr "Acculading kritiek laag"
 
-#. TRANSLATORS: laptop battery critically low, and we have more than one type
-#. of battery
+#. TRANSLATORS: laptop battery critically low, and we have more than one type of battery
 #. TRANSLATORS: laptop battery is really, really, low
-#: ../src/gpm-manager.c:1436 ../src/gpm-manager.c:1589
+#: ../src/gpm-manager.c:1483 ../src/gpm-manager.c:1648
+#: ../src/gpm-manager.c:1781
 msgid "Laptop battery critically low"
 msgstr "Lading van laptopaccu kritiek laag"
 
-#. TRANSLATORS: tell the use to insert the plug, as we're not going to do
-#. anything
-#: ../src/gpm-manager.c:1445
+#. TRANSLATORS: tell the use to insert the plug, as we're not going to do anything
+#: ../src/gpm-manager.c:1492
 msgid "Plug in your AC adapter to avoid losing data."
 msgstr "Sluit uw apparaat aan op netstroom om gegevensverlies te voorkomen."
 
 #. TRANSLATORS: give the user a ultimatum
-#: ../src/gpm-manager.c:1449
+#: ../src/gpm-manager.c:1496
 #, c-format
 msgid "Computer will suspend very soon unless it is plugged in."
-msgstr "De computer wordt in de pauzestand gezet als deze niet snel aan de netstroom wordt aangesloten."
+msgstr ""
+"De computer wordt in de pauzestand gezet als deze niet snel aan de netstroom "
+"wordt aangesloten."
 
 #. TRANSLATORS: give the user a ultimatum
-#: ../src/gpm-manager.c:1453
+#: ../src/gpm-manager.c:1500
 #, c-format
 msgid "Computer will hibernate very soon unless it is plugged in."
-msgstr "De computer wordt in de slaapstand gezet als deze niet snel aan de netstroom wordt aangesloten."
+msgstr ""
+"De computer wordt in de slaapstand gezet als deze niet snel aan de netstroom "
+"wordt aangesloten."
 
 #. TRANSLATORS: give the user a ultimatum
-#: ../src/gpm-manager.c:1457
+#: ../src/gpm-manager.c:1504
 #, c-format
 msgid "Computer will shutdown very soon unless it is plugged in."
-msgstr "De computer wordt afgesloten als deze niet snel aan de netstroom wordt aangesloten."
+msgstr ""
+"De computer wordt afgesloten als deze niet snel aan de netstroom wordt "
+"aangesloten."
 
 #. TRANSLATORS: the UPS is very low
 #. TRANSLATORS: UPS is really, really, low
-#: ../src/gpm-manager.c:1464 ../src/gpm-manager.c:1625
+#: ../src/gpm-manager.c:1511 ../src/gpm-manager.c:1658
+#: ../src/gpm-manager.c:1819
 msgid "UPS critically low"
 msgstr "UPS-lading kritiek laag"
 
 #. TRANSLATORS: give the user a ultimatum
-#: ../src/gpm-manager.c:1468
+#: ../src/gpm-manager.c:1515 ../src/gpm-manager.c:1662
 #, c-format
 msgid ""
-"Approximately <b>%s</b> of remaining UPS power (%.0f%%). Restore AC power to"
-" your computer to avoid losing data."
-msgstr "Er is ongeveer <b>%s</b> resterende UPS-lading (%.0f%%). Sluit de laptop aan op netstroom om gegevensverlies te voorkomen."
+"Approximately <b>%s</b> of remaining UPS power (%.0f%%). Restore AC power to "
+"your computer to avoid losing data."
+msgstr ""
+"Er is ongeveer <b>%s</b> resterende UPS-lading (%.0f%%). Sluit de laptop aan "
+"op netstroom om gegevensverlies te voorkomen."
 
 #. TRANSLATORS: the device is just going to stop working
-#: ../src/gpm-manager.c:1477
+#: ../src/gpm-manager.c:1524 ../src/gpm-manager.c:1671
 #, c-format
 msgid ""
 "Wireless mouse is very low in power (%.0f%%). This device will soon stop "
 "functioning if not charged."
-msgstr "De draadloze muis heeft heel weinig stroom meer (%.0f%%) en zal ophouden met werken als deze niet snel opgeladen wordt."
+msgstr ""
+"De draadloze muis heeft heel weinig stroom meer (%.0f%%) en zal ophouden met "
+"werken als deze niet snel opgeladen wordt."
 
 #. TRANSLATORS: the device is just going to stop working
-#: ../src/gpm-manager.c:1485
+#: ../src/gpm-manager.c:1532 ../src/gpm-manager.c:1679
 #, c-format
 msgid ""
 "Wireless keyboard is very low in power (%.0f%%). This device will soon stop "
 "functioning if not charged."
-msgstr "Het draadloze toetsenbord heeft heel weinig stroom meer (%.0f%%) en zal ophouden met werken als het niet snel opgeladen wordt."
+msgstr ""
+"Het draadloze toetsenbord heeft heel weinig stroom meer (%.0f%%) en zal "
+"ophouden met werken als het niet snel opgeladen wordt."
 
 #. TRANSLATORS: the device is just going to stop working
-#: ../src/gpm-manager.c:1494
+#: ../src/gpm-manager.c:1541 ../src/gpm-manager.c:1687
 #, c-format
 msgid ""
-"PDA is very low in power (%.0f%%). This device will soon stop functioning if"
-" not charged."
-msgstr "De PDA heeft heel weinig stroom meer (%.0f%%) en zal ophouden met werken als deze niet snel opgeladen wordt."
+"PDA is very low in power (%.0f%%). This device will soon stop functioning if "
+"not charged."
+msgstr ""
+"De PDA heeft heel weinig stroom meer (%.0f%%) en zal ophouden met werken als "
+"deze niet snel opgeladen wordt."
 
 #. TRANSLATORS: the device is just going to stop working
-#: ../src/gpm-manager.c:1504
+#: ../src/gpm-manager.c:1551 ../src/gpm-manager.c:1697
 #, c-format
 msgid ""
 "Cell phone is very low in power (%.0f%%). This device will soon stop "
 "functioning if not charged."
-msgstr "De mobiele telefoon heeft heel weinig stroom meer (%.0f%%) en zal ophouden met werken als deze niet snel opgeladen wordt."
+msgstr ""
+"De mobiele telefoon heeft heel weinig stroom meer (%.0f%%) en zal ophouden "
+"met werken als deze niet snel opgeladen wordt."
 
 #. TRANSLATORS: the device is just going to stop working
-#: ../src/gpm-manager.c:1514
+#: ../src/gpm-manager.c:1561 ../src/gpm-manager.c:1707
 #, c-format
 msgid ""
 "Media player is very low in power (%.0f%%). This device will soon stop "
 "functioning if not charged."
-msgstr "De mediaspeler heeft heel weinig stroom meer (%.0f%%) en zal ophouden met werken als deze niet snel opgeladen wordt."
+msgstr ""
+"De mediaspeler heeft heel weinig stroom meer (%.0f%%) en zal ophouden met "
+"werken als deze niet snel opgeladen wordt."
 
 #. TRANSLATORS: the device is just going to stop working
-#: ../src/gpm-manager.c:1523
+#: ../src/gpm-manager.c:1570 ../src/gpm-manager.c:1715
 #, c-format
 msgid ""
-"Tablet is very low in power (%.0f%%). This device will soon stop functioning"
-" if not charged."
-msgstr "De tablet heeft weinig stroom meer (%.1f%%) en zal stoppen met werken als deze niet opgeladen wordt."
+"Tablet is very low in power (%.0f%%). This device will soon stop functioning "
+"if not charged."
+msgstr ""
+"De tablet heeft weinig stroom meer (%.1f%%) en zal stoppen met werken als "
+"deze niet opgeladen wordt."
 
 #. TRANSLATORS: the device is just going to stop working
-#: ../src/gpm-manager.c:1532
+#: ../src/gpm-manager.c:1579 ../src/gpm-manager.c:1724
 #, c-format
 msgid ""
 "Attached computer is very low in power (%.0f%%). The device will soon "
 "shutdown if not charged."
-msgstr "De aangesloten computer heeft weinig stroom meer (%.0f%%) en zal ophouden met werken als deze niet snel opgeladen wordt."
+msgstr ""
+"De aangesloten computer heeft weinig stroom meer (%.0f%%) en zal ophouden "
+"met werken als deze niet snel opgeladen wordt."
+
+#. TRANSLATORS: give the user a ultimatum
+#: ../src/gpm-manager.c:1652
+#, c-format
+msgid ""
+"Battery power is too low, please plug in the power to ensure the normal use"
+msgstr ""
 
 #. TRANSLATORS: computer will shutdown without saving data
-#: ../src/gpm-manager.c:1597
+#: ../src/gpm-manager.c:1789
 msgid ""
-"The battery is below the critical level and this computer will <b>power-"
-"off</b> when the battery becomes completely empty."
-msgstr "De accu is bijna leeg. Deze computer zal worden <b>afgesloten</b> wanneer de accu geheel leeg is."
+"The battery is below the critical level and this computer will <b>power-off</"
+"b> when the battery becomes completely empty."
+msgstr ""
+"De accu is bijna leeg. Deze computer zal worden <b>afgesloten</b> wanneer de "
+"accu geheel leeg is."
 
 #. TRANSLATORS: computer will suspend
-#: ../src/gpm-manager.c:1603
+#. kobe
+#: ../src/gpm-manager.c:1796
+#, fuzzy
 msgid ""
 "The battery is below the critical level and this computer is about to "
-"suspend.<br><b>NOTE:</b> A small amount of power is required to keep your "
+"suspend.<b>NOTE:</b> A small amount of power is required to keep your "
 "computer in a suspended state."
-msgstr "De accu is bijna leeg. Deze computer zal zo in de pauzestand worden gezet.<br><b>Let op:</b> Er is een kleine hoeveelheid stroom nodig om de computer in de pauzestand te houden."
+msgstr ""
+"De accu is bijna leeg. Deze computer zal zo in de pauzestand worden gezet."
+"<br><b>Let op:</b> Er is een kleine hoeveelheid stroom nodig om de computer "
+"in de pauzestand te houden."
 
 #. TRANSLATORS: computer will hibernate
-#: ../src/gpm-manager.c:1610
+#: ../src/gpm-manager.c:1803
 msgid ""
 "The battery is below the critical level and this computer is about to "
 "hibernate."
-msgstr "De accu is bijna leeg. Deze computer zal zo in de slaapstand worden gezet."
+msgstr ""
+"De accu is bijna leeg. Deze computer zal zo in de slaapstand worden gezet."
 
 #. TRANSLATORS: computer will just shutdown
-#: ../src/gpm-manager.c:1615
+#: ../src/gpm-manager.c:1808
 msgid ""
 "The battery is below the critical level and this computer is about to "
 "shutdown."
 msgstr "De accu is bijna leeg. Deze computer zal zo worden afgesloten."
 
 #. TRANSLATORS: computer will shutdown without saving data
-#: ../src/gpm-manager.c:1633
+#: ../src/gpm-manager.c:1827
 msgid ""
 "The UPS is below the critical level and this computer will <b>power-off</b> "
 "when the UPS becomes completely empty."
-msgstr "De UPS is bijna leeg. Deze computer zal worden <b>afgesloten</b> wanneer de UPS geheel leeg is."
+msgstr ""
+"De UPS is bijna leeg. Deze computer zal worden <b>afgesloten</b> wanneer de "
+"UPS geheel leeg is."
 
 #. TRANSLATORS: computer will hibernate
-#: ../src/gpm-manager.c:1639
+#: ../src/gpm-manager.c:1833
 msgid ""
 "The UPS is below the critical level and this computer is about to hibernate."
-msgstr "De UPS is bijna leeg. Deze computer zal zo in de slaapstand worden gezet."
+msgstr ""
+"De UPS is bijna leeg. Deze computer zal zo in de slaapstand worden gezet."
 
 #. TRANSLATORS: computer will just shutdown
-#: ../src/gpm-manager.c:1644
+#: ../src/gpm-manager.c:1838
 msgid ""
 "The UPS is below the critical level and this computer is about to shutdown."
 msgstr "De UPS is bijna leeg. Deze computer zal zo worden afgesloten."
@@ -1509,125 +1712,124 @@ msgstr "De UPS is bijna leeg. Deze computer zal zo worden afgesloten."
 msgid "UKUI Power Preferences"
 msgstr "Voorkeuren van Mate Energiebeheer"
 
-#: ../src/gpm-prefs-core.c:241
+#: ../src/gpm-prefs-core.c:242
 msgid "Shutdown"
 msgstr "Afsluiten"
 
-#: ../src/gpm-prefs-core.c:248
+#: ../src/gpm-prefs-core.c:249
 msgid "Suspend"
 msgstr "Pauzestand"
 
-#: ../src/gpm-prefs-core.c:251
+#: ../src/gpm-prefs-core.c:252
 msgid "Hibernate"
 msgstr "Slaapstand"
 
-#: ../src/gpm-prefs-core.c:254
+#: ../src/gpm-prefs-core.c:255
 msgid "Blank screen"
 msgstr "Scherm op zwart zetten"
 
-#: ../src/gpm-prefs-core.c:257
+#: ../src/gpm-prefs-core.c:258
 msgid "Ask me"
 msgstr "Vragen"
 
-#: ../src/gpm-prefs-core.c:260
+#: ../src/gpm-prefs-core.c:261
 msgid "Do nothing"
 msgstr "Niets doen"
 
-#: ../src/gpm-prefs-core.c:320
+#: ../src/gpm-prefs-core.c:321
 msgid "Never"
 msgstr "Nooit"
 
 #. TRANSLATORS: the rate of discharge for the device
-#: ../src/gpm-statistics.c:78 ../src/gpm-statistics.c:466
+#: ../src/gpm-statistics.c:84 ../src/gpm-statistics.c:497
 msgid "Rate"
 msgstr "Ontladingstijd"
 
-#: ../src/gpm-statistics.c:79
+#: ../src/gpm-statistics.c:85
 msgid "Charge"
 msgstr "Lading"
 
-#: ../src/gpm-statistics.c:80 ../src/gpm-statistics.c:480
+#: ../src/gpm-statistics.c:86 ../src/gpm-statistics.c:511
 msgid "Time to full"
 msgstr "Tijd tot vol"
 
-#: ../src/gpm-statistics.c:81 ../src/gpm-statistics.c:485
+#: ../src/gpm-statistics.c:87 ../src/gpm-statistics.c:516
 msgid "Time to empty"
 msgstr "Tijd tot leeg"
 
-#: ../src/gpm-statistics.c:88
+#: ../src/gpm-statistics.c:94
 msgid "10 minutes"
 msgstr "10 minuten"
 
-#: ../src/gpm-statistics.c:89
+#: ../src/gpm-statistics.c:95
 msgid "2 hours"
 msgstr "2 uur"
 
-#: ../src/gpm-statistics.c:90
+#: ../src/gpm-statistics.c:96
 msgid "6 hours"
 msgstr "6 uur"
 
-#: ../src/gpm-statistics.c:91
+#: ../src/gpm-statistics.c:97
 msgid "1 day"
 msgstr "1 dag"
 
-#: ../src/gpm-statistics.c:92
+#: ../src/gpm-statistics.c:98
 msgid "1 week"
 msgstr "1 week"
 
 #. TRANSLATORS: what we've observed about the device
-#: ../src/gpm-statistics.c:101
+#: ../src/gpm-statistics.c:107
 msgid "Charge profile"
 msgstr "Ladingsprofiel"
 
-#: ../src/gpm-statistics.c:102
+#: ../src/gpm-statistics.c:108
 msgid "Discharge profile"
 msgstr "Ontladingsprofiel"
 
-#. TRANSLATORS: how accurately we can predict the time remaining of the
-#. battery
-#: ../src/gpm-statistics.c:104
+#. TRANSLATORS: how accurately we can predict the time remaining of the battery
+#: ../src/gpm-statistics.c:110
 msgid "Charge accuracy"
 msgstr "Accuraatheid lading"
 
-#: ../src/gpm-statistics.c:105
+#: ../src/gpm-statistics.c:111
 msgid "Discharge accuracy"
 msgstr "Accuraatheid ontlading"
 
-#: ../src/gpm-statistics.c:132
+#: ../src/gpm-statistics.c:138
 msgid "Attribute"
 msgstr "Attribuut"
 
-#: ../src/gpm-statistics.c:139
+#: ../src/gpm-statistics.c:145
 msgid "Value"
 msgstr "Waarde"
 
-#: ../src/gpm-statistics.c:156
+#: ../src/gpm-statistics.c:162
 msgid "Image"
 msgstr "Afbeelding"
 
-#: ../src/gpm-statistics.c:162
+#: ../src/gpm-statistics.c:168
 msgid "Description"
 msgstr "Omschrijving"
 
-#: ../src/gpm-statistics.c:181 ../src/gpm-statistics.c:405
+#: ../src/gpm-statistics.c:187 ../src/gpm-statistics.c:436
 msgid "Type"
 msgstr "Type"
 
-#: ../src/gpm-statistics.c:187
+#: ../src/gpm-statistics.c:193
 msgid "ID"
 msgstr "ID"
 
-#: ../src/gpm-statistics.c:201
+#: ../src/gpm-statistics.c:207
 msgid "Command"
 msgstr "Opdracht"
 
 #. TRANSLATORS: this is when the stats time is not known
-#: ../src/gpm-statistics.c:286
+#: ../src/gpm-statistics.c:292
 msgid "Unknown"
 msgstr "Onbekend"
 
 #. TRANSLATORS: this is a time value, usually to show on a graph
-#: ../src/gpm-statistics.c:290
+#: ../src/gpm-statistics.c:296
 #, c-format
 msgid "%.0f second"
 msgid_plural "%.0f seconds"
@@ -1635,7 +1837,7 @@ msgstr[0] "%.0f seconde"
 msgstr[1] "%.0f seconden"
 
 #. TRANSLATORS: this is a time value, usually to show on a graph
-#: ../src/gpm-statistics.c:295
+#: ../src/gpm-statistics.c:301
 #, c-format
 msgid "%.1f minute"
 msgid_plural "%.1f minutes"
@@ -1643,7 +1845,7 @@ msgstr[0] "%.1f minuut"
 msgstr[1] "%.1f minuten"
 
 #. TRANSLATORS: this is a time value, usually to show on a graph
-#: ../src/gpm-statistics.c:300
+#: ../src/gpm-statistics.c:306
 #, c-format
 msgid "%.1f hour"
 msgid_plural "%.1f hours"
@@ -1651,47 +1853,54 @@ msgstr[0] "%.1f uur"
 msgstr[1] "%.1f uur"
 
 #. TRANSLATORS: this is a time value, usually to show on a graph
-#: ../src/gpm-statistics.c:304
+#: ../src/gpm-statistics.c:310
 #, c-format
 msgid "%.1f day"
 msgid_plural "%.1f days"
 msgstr[0] "%.1f dag"
 msgstr[1] "%.1f dagen"
 
-#: ../src/gpm-statistics.c:313
+#: ../src/gpm-statistics.c:319
 msgid "Yes"
 msgstr "Ja"
 
-#: ../src/gpm-statistics.c:313
+#: ../src/gpm-statistics.c:319
 msgid "No"
 msgstr "Nee"
 
+#. TRANSLATORS: this is when the device is plugged in, typically
+#. * only shown for the ac adaptor device
+#: ../src/gpm-statistics.c:345 ../src/gpm-statistics.c:350
+#: ../src/gpm-statistics.c:352 ../src/gpm-statistics.c:360
+#: ../src/gpm-statistics.c:543
+msgid "Online"
+msgstr "Netstroomverbinding"
+
 #. TRANSLATORS: the device ID of the current device, e.g. "battery0"
-#: ../src/gpm-statistics.c:402
+#: ../src/gpm-statistics.c:433
 msgid "Device"
 msgstr "Apparaat"
 
-#: ../src/gpm-statistics.c:407
+#: ../src/gpm-statistics.c:438
 msgid "Vendor"
 msgstr "Leverancier"
 
-#: ../src/gpm-statistics.c:409
+#: ../src/gpm-statistics.c:440
 msgid "Model"
 msgstr "Model"
 
-#: ../src/gpm-statistics.c:411
+#: ../src/gpm-statistics.c:442
 msgid "Serial number"
 msgstr "Serienummer"
 
 #. TRANSLATORS: a boolean attribute that means if the device is supplying the
-#. * main power for the computer. For instance, an AC adapter or laptop
-#. battery
+#. * main power for the computer. For instance, an AC adapter or laptop battery
 #. * would be TRUE,  but a mobile phone or mouse taking power is FALSE
-#: ../src/gpm-statistics.c:416
+#: ../src/gpm-statistics.c:447
 msgid "Supply"
 msgstr "Stroomvoorziening"
 
-#: ../src/gpm-statistics.c:419
+#: ../src/gpm-statistics.c:450
 #, c-format
 msgid "%d second"
 msgid_plural "%d seconds"
@@ -1700,271 +1909,282 @@ msgstr[1] "%d seconden"
 
 #. TRANSLATORS: when the device was last updated with new data. It's
 #. * usually a few seconds when a device is discharging or charging.
-#: ../src/gpm-statistics.c:423
+#: ../src/gpm-statistics.c:454
 msgid "Refreshed"
 msgstr "Bijgewerkt"
 
 #. TRANSLATORS: Present is whether the device is currently attached
 #. * to the computer, as some devices (e.g. laptop batteries) can
 #. * be removed, but still observed as devices on the system
-#: ../src/gpm-statistics.c:433
+#: ../src/gpm-statistics.c:464
 msgid "Present"
 msgstr "Aanwezig"
 
 #. TRANSLATORS: If the device can be recharged, e.g. lithium
 #. * batteries rather than alkaline ones
-#: ../src/gpm-statistics.c:440
+#: ../src/gpm-statistics.c:471
 msgid "Rechargeable"
 msgstr "Oplaadbaar"
 
 #. TRANSLATORS: The state of the device, e.g. "Changing" or "Fully charged"
-#: ../src/gpm-statistics.c:446
+#: ../src/gpm-statistics.c:477
 msgid "State"
 msgstr "Status"
 
-#: ../src/gpm-statistics.c:450
+#: ../src/gpm-statistics.c:481
 msgid "Energy"
 msgstr "Energie"
 
-#: ../src/gpm-statistics.c:453
+#: ../src/gpm-statistics.c:484
 msgid "Energy when empty"
 msgstr "Energie wanneer leeg"
 
-#: ../src/gpm-statistics.c:456
+#: ../src/gpm-statistics.c:487
 msgid "Energy when full"
 msgstr "Energie wanneer vol"
 
-#: ../src/gpm-statistics.c:459
+#: ../src/gpm-statistics.c:490
 msgid "Energy (design)"
 msgstr "Energie (fabrieksontwerp)"
 
-#: ../src/gpm-statistics.c:473
+#: ../src/gpm-statistics.c:504
 msgid "Voltage"
 msgstr "Voltage"
 
 #. TRANSLATORS: the amount of charge the cell contains
-#: ../src/gpm-statistics.c:495
+#: ../src/gpm-statistics.c:526
 msgid "Percentage"
 msgstr "Percentage"
 
 #. TRANSLATORS: the capacity of the device, which is basically a measure
 #. * of how full it can get, relative to the design capacity
-#: ../src/gpm-statistics.c:502
+#: ../src/gpm-statistics.c:533
 msgid "Capacity"
 msgstr "Lading"
 
 #. TRANSLATORS: the type of battery, e.g. lithium or nikel metal hydroxide
-#: ../src/gpm-statistics.c:507
+#: ../src/gpm-statistics.c:538
 msgid "Technology"
 msgstr "Technologie"
 
-#. TRANSLATORS: this is when the device is plugged in, typically
-#. * only shown for the ac adaptor device
-#: ../src/gpm-statistics.c:512
-msgid "Online"
-msgstr "Netstroomverbinding"
-
 #. TRANSLATORS: the command line was not provided
-#: ../src/gpm-statistics.c:824
+#: ../src/gpm-statistics.c:855
 msgid "No data"
 msgstr "Geen gegevens"
 
 #. TRANSLATORS: kernel module, usually a device driver
-#: ../src/gpm-statistics.c:831 ../src/gpm-statistics.c:836
+#: ../src/gpm-statistics.c:862 ../src/gpm-statistics.c:867
 msgid "Kernel module"
 msgstr "Systeemkernmodule"
 
 #. TRANSLATORS: kernel housekeeping
-#: ../src/gpm-statistics.c:841
+#: ../src/gpm-statistics.c:872
 msgid "Kernel core"
 msgstr "Kern van systeemkern"
 
 #. TRANSLATORS: interrupt between processors
-#: ../src/gpm-statistics.c:846
+#: ../src/gpm-statistics.c:877
 msgid "Interprocessor interrupt"
 msgstr "Interprocessor-interrupt"
 
 #. TRANSLATORS: unknown interrupt
-#: ../src/gpm-statistics.c:851
+#: ../src/gpm-statistics.c:882
 msgid "Interrupt"
 msgstr "Interrupt"
 
 #. TRANSLATORS: the keyboard and mouse device event
-#: ../src/gpm-statistics.c:898
+#: ../src/gpm-statistics.c:929
 msgid "PS/2 keyboard/mouse/touchpad"
 msgstr "PS/2-toetsenbord/muis/touchpad"
 
 #. TRANSLATORS: ACPI, the Intel power standard on laptops and desktops
-#: ../src/gpm-statistics.c:901
+#: ../src/gpm-statistics.c:932
 msgid "ACPI"
 msgstr "ACPI"
 
 #. TRANSLATORS: serial ATA is a new style of hard disk interface
-#: ../src/gpm-statistics.c:904
+#: ../src/gpm-statistics.c:935
 msgid "Serial ATA"
 msgstr "Seriële ATA"
 
 #. TRANSLATORS: this is the old-style ATA interface
-#: ../src/gpm-statistics.c:907
+#: ../src/gpm-statistics.c:938
 msgid "ATA host controller"
 msgstr "ATA-host-controller"
 
 #. TRANSLATORS: 802.11 wireless adaptor
-#: ../src/gpm-statistics.c:910
+#: ../src/gpm-statistics.c:941
 msgid "Intel wireless adaptor"
 msgstr "Draadloze stekker van Intel"
 
 #. TRANSLATORS: a timer is something that fires periodically.
 #. * The parameter is a process name, e.g. "firefox-bin".
 #. * This is shown when the timer wakes up.
-#: ../src/gpm-statistics.c:917 ../src/gpm-statistics.c:922
-#: ../src/gpm-statistics.c:927 ../src/gpm-statistics.c:932
-#: ../src/gpm-statistics.c:937
+#: ../src/gpm-statistics.c:948 ../src/gpm-statistics.c:953
+#: ../src/gpm-statistics.c:958 ../src/gpm-statistics.c:963
+#: ../src/gpm-statistics.c:968
 #, c-format
 msgid "Timer %s"
 msgstr "%s-aftelklok"
 
-#. TRANSLATORS: the parameter is the name of task that's woken up from
-#. sleeping.
+#. TRANSLATORS: the parameter is the name of task that's woken up from sleeping.
 #. * This is shown when the task wakes up.
-#: ../src/gpm-statistics.c:941
+#: ../src/gpm-statistics.c:972
 #, c-format
 msgid "Sleep %s"
 msgstr "%s-Slaapstand"
 
 #. TRANSLATORS: this is the name of a new realtime task.
-#: ../src/gpm-statistics.c:944
+#: ../src/gpm-statistics.c:975
 #, c-format
 msgid "New task %s"
 msgstr "Nieuwe taak %s"
 
 #. TRANSLATORS: this is the name of a task that's woken to check state.
 #. * This is shown when the task wakes up.
-#: ../src/gpm-statistics.c:948
+#: ../src/gpm-statistics.c:979
 #, c-format
 msgid "Wait %s"
 msgstr "Wacht %s"
 
 #. TRANSLATORS: this is the name of a work queue.
 #. * A work queue is a list of work that has to be done.
-#: ../src/gpm-statistics.c:952 ../src/gpm-statistics.c:956
+#: ../src/gpm-statistics.c:983 ../src/gpm-statistics.c:987
 #, c-format
 msgid "Work queue %s"
 msgstr "Wachtrij %s"
 
 #. TRANSLATORS: this is when the networking subsystem clears out old entries
-#: ../src/gpm-statistics.c:959
+#: ../src/gpm-statistics.c:990
 #, c-format
 msgid "Network route flush %s"
 msgstr "Netwerkroute-flush %s"
 
 #. TRANSLATORS: this is the name of an activity on the USB bus
-#: ../src/gpm-statistics.c:962
+#: ../src/gpm-statistics.c:993
 #, c-format
 msgid "USB activity %s"
 msgstr "USB-activiteit %s"
 
 #. TRANSLATORS: we've timed out of an aligned timer, with the name
-#: ../src/gpm-statistics.c:965
+#: ../src/gpm-statistics.c:996
 #, c-format
 msgid "Wakeup %s"
 msgstr "Ontwaakmoment %s"
 
 #. TRANSLATORS: interupts on the system required for basic operation
-#: ../src/gpm-statistics.c:968
+#: ../src/gpm-statistics.c:999
 msgid "Local interrupts"
 msgstr "Lokale interrupts"
 
 #. TRANSLATORS: interrupts when a task gets moved from one core to another
-#: ../src/gpm-statistics.c:971
+#: ../src/gpm-statistics.c:1002
 msgid "Rescheduling interrupts"
 msgstr "Rescheduling-interrupts"
 
 #. TRANSLATORS: shown on the titlebar
-#: ../src/gpm-statistics.c:1080
+#: ../src/gpm-statistics.c:1111
 msgid "Device Information"
 msgstr "Apparaatinformatie"
 
 #. TRANSLATORS: shown on the titlebar
-#: ../src/gpm-statistics.c:1082
+#: ../src/gpm-statistics.c:1113
 msgid "Device History"
 msgstr "Apparaatgeschiedenis"
 
 #. TRANSLATORS: shown on the titlebar
-#: ../src/gpm-statistics.c:1084
+#: ../src/gpm-statistics.c:1115
 msgid "Device Profile"
 msgstr "Apparaatprofiel"
 
 #. TRANSLATORS: shown on the titlebar
-#: ../src/gpm-statistics.c:1086
+#: ../src/gpm-statistics.c:1117
 msgid "Processor Wakeups"
 msgstr "Ontwaakmomenten voor processor"
 
 #. TRANSLATORS: this is the X axis on the graph
-#: ../src/gpm-statistics.c:1351 ../src/gpm-statistics.c:1357
-#: ../src/gpm-statistics.c:1363 ../src/gpm-statistics.c:1369
+#: ../src/gpm-statistics.c:1382 ../src/gpm-statistics.c:1388
+#: ../src/gpm-statistics.c:1394 ../src/gpm-statistics.c:1400
 msgid "Time elapsed"
 msgstr "Verstreken tijd"
 
 #. TRANSLATORS: this is the Y axis on the graph
-#: ../src/gpm-statistics.c:1353
+#: ../src/gpm-statistics.c:1384
 msgid "Power"
 msgstr "Energie"
 
 #. TRANSLATORS: this is the Y axis on the graph for the whole battery device
 #. TRANSLATORS: this is the X axis on the graph for the whole battery device
-#: ../src/gpm-statistics.c:1359 ../src/gpm-statistics.c:1403
-#: ../src/gpm-statistics.c:1409 ../src/gpm-statistics.c:1415
-#: ../src/gpm-statistics.c:1421
+#: ../src/gpm-statistics.c:1390 ../src/gpm-statistics.c:1434
+#: ../src/gpm-statistics.c:1440 ../src/gpm-statistics.c:1446
+#: ../src/gpm-statistics.c:1452
 msgid "Cell charge"
 msgstr "Acculading"
 
 #. TRANSLATORS: this is the Y axis on the graph
-#: ../src/gpm-statistics.c:1365 ../src/gpm-statistics.c:1371
+#: ../src/gpm-statistics.c:1396 ../src/gpm-statistics.c:1402
 msgid "Predicted time"
 msgstr "Voorspelde tijd"
 
 #. TRANSLATORS: this is the Y axis on the graph
-#: ../src/gpm-statistics.c:1405 ../src/gpm-statistics.c:1417
+#: ../src/gpm-statistics.c:1436 ../src/gpm-statistics.c:1448
 msgid "Correction factor"
 msgstr "Correctiefactor"
 
 #. TRANSLATORS: this is the Y axis on the graph
-#: ../src/gpm-statistics.c:1411 ../src/gpm-statistics.c:1423
+#: ../src/gpm-statistics.c:1442 ../src/gpm-statistics.c:1454
 msgid "Prediction accuracy"
 msgstr "Nauwkeurigheid voorspelling"
 
 #. TRANSLATORS: show a device by default
-#: ../src/gpm-statistics.c:1589
+#: ../src/gpm-statistics.c:1620
 msgid "Select this device at startup"
 msgstr "Kies dit apparaat bij opstarten"
 
 #. TRANSLATORS: the icon for the CPU
-#: ../src/gpm-statistics.c:1838
+#: ../src/gpm-statistics.c:1869
 msgid "Processor"
 msgstr "Processor"
 
-#: ../src/gpm-tray-icon.c:189
+#: ../src/gpm-tray-icon.c:214
 msgid "Copyright © 2011-2017 UKUI developers"
 msgstr "Auteursrecht © 2011-2017 UKUI-ontwikkelaars"
 
 #. Translators should localize the following string
 #. * which will be displayed at the bottom of the about
 #. * box to give credit to the translator(s).
-#: ../src/gpm-tray-icon.c:195
+#.
+#: ../src/gpm-tray-icon.c:220
 msgid "translator-credits"
 msgstr "Vertalers-dankbetuiging"
 
+#: ../src/gpm-tray-icon.c:352
+#, c-format
+msgid ""
+"%.1f%% available power\n"
+"(The power is connected and is charging)"
+msgstr ""
+
+#: ../src/gpm-tray-icon.c:354
+#, c-format
+msgid "%.1f%% available power"
+msgstr ""
+
 #. TRANSLATORS: % is a timestring, e.g. "6 hours 10 minutes"
-#: ../src/gpm-tray-icon.c:297
+#: ../src/gpm-tray-icon.c:433
 #, c-format
 msgid "%s remaining"
 msgstr "%s resterend"
 
 #. preferences
-#: ../src/gpm-tray-icon.c:351
+#: ../src/gpm-tray-icon.c:487
 msgid "_Preferences"
 msgstr "_Voorkeuren"
+
+#: ../src/gpm-tray-icon.c:641
+#, fuzzy
+msgid "Power Preferences"
+msgstr "Voorkeuren van Mate Energiebeheer"
 
 #. TRANSLATORS: device not present
 #: ../src/gpm-upower.c:211
@@ -1985,7 +2205,9 @@ msgstr "%s aan het opladen (%.1f%%)"
 msgid ""
 "Battery is fully charged.\n"
 "Provides %s laptop runtime"
-msgstr "Accu is volledig opgeladen.\nLevert %s aan draaitijd voor de laptop"
+msgstr ""
+"Accu is volledig opgeladen.\n"
+"Levert %s aan draaitijd voor de laptop"
 
 #. TRANSLATORS: the device is fully charged
 #: ../src/gpm-upower.c:244
@@ -2011,10 +2233,11 @@ msgstr "%s ontladen (%.1f%%)"
 msgid ""
 "%s %s until charged (%.1f%%)\n"
 "Provides %s battery runtime"
-msgstr "%s %s tot opgeladen (%.1f%%)\nLevert %s aan draaitijd op accu"
+msgstr ""
+"%s %s tot opgeladen (%.1f%%)\n"
+"Levert %s aan draaitijd op accu"
 
-#. TRANSLATORS: device is charging, and we have a time to full and a
-#. percentage
+#. TRANSLATORS: device is charging, and we have a time to full and a percentage
 #: ../src/gpm-upower.c:282
 #, c-format
 msgid "%s %s until charged (%.1f%%)"
@@ -2106,8 +2329,7 @@ msgstr "Laadtijd:"
 msgid "Discharge time:"
 msgstr "Ontladingstijd:"
 
-#. TRANSLATORS: Excellent, Good, Fair and Poor are all related to battery
-#. Capacity
+#. TRANSLATORS: Excellent, Good, Fair and Poor are all related to battery Capacity
 #: ../src/gpm-upower.c:419
 msgid "Excellent"
 msgstr "Uitstekend"

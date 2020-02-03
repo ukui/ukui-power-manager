@@ -1,0 +1,34 @@
+[encoding: UTF-8]
+# List of source files containing translatable strings.
+# Please keep this file sorted alphabetically.
+applets/brightness/brightness-applet.c
+[type: gettext/ini]applets/brightness/org.ukui.BrightnessApplet.ukui-panel-applet.in.in
+applets/inhibit/inhibit-applet.c
+[type: gettext/ini]applets/inhibit/org.ukui.InhibitApplet.ukui-panel-applet.in.in
+data/ukui-power-manager.desktop.in.in
+[type: gettext/gsettings]data/org.ukui.power-manager.gschema.xml.in
+data/ukui-power-preferences.desktop.in.in
+data/ukui-power-statistics.desktop.in.in
+[type: gettext/glade]data/gpm-feedback-widget.ui
+[type: gettext/glade]data/gpm-statistics.ui
+[type: gettext/glade]data/gpm-prefs.ui
+policy/org.ukui.power.policy.in2
+src/gpm-backlight.c
+src/gpm-backlight-helper.c
+src/gpm-button.c
+src/gpm-control.c
+src/gpm-common.c
+src/gpm-dpms.c
+src/gpm-engine.c
+src/gpm-graph-widget.c
+src/gpm-idle.c
+src/gpm-load.c
+src/gpm-main.c
+src/gpm-manager.c
+src/gpm-networkmanager.c
+src/gpm-prefs.c
+src/gpm-prefs-core.c
+src/gpm-screensaver.c
+src/gpm-statistics.c
+src/gpm-tray-icon.c
+src/gpm-upower.c

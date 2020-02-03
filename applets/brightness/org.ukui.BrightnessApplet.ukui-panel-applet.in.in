@@ -1,0 +1,16 @@
+[Applet Factory]
+Id=BrightnessAppletFactory
+Location=@LIBEXECDIR@/ukui-brightness-applet
+_Name=Brightness Applet Factory
+_Description=Factory for Brightness Applet
+
+[BrightnessApplet]
+_Name=Brightness Applet
+_Description=Adjusts Laptop panel brightness
+Icon=ukui-brightness-applet
+UkuiComponentId=OAFIID:UKUI_BrightnessApplet
+X-UKUI-Bugzilla-Bugzilla=UKUI
+X-UKUI-Bugzilla-Product=ukui-power-manager
+X-UKUI-Bugzilla-Component=applets
+X-UKUI-Bugzilla-Version=@VERSION@
+X-UKUI-Bugzilla-OtherBinaries=ukui-brightness-applet

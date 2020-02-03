@@ -1,0 +1,48 @@
+#!/usr/bin/make -f
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+DPKG_EXPORT_BUILDFLAGS = 1
+include /usr/share/dpkg/buildflags.mk
+QT_INSTALL_DIR:=$(shell pwd)/debian/tmp/
+%:
+	dh $@
+override_dh_install:
+	mkdir -p $(QT_INSTALL_DIR) && \
+	make install INSTALL_ROOT=$(QT_INSTALL_DIR) -C src/ukui-power-manager-qt/ukui-power-statistics-qt/build
+	make install INSTALL_ROOT=$(QT_INSTALL_DIR) -C src/ukui-power-manager-qt/ukui-power-policy/build
+	make install INSTALL_ROOT=$(QT_INSTALL_DIR) -C src/ukui-power-manager-qt/ukui-power-manager-tray/build
+	mkdir -p $(QT_INSTALL_DIR)lib/systemd/system/
+	cp data/ukui-power-policy.service $(QT_INSTALL_DIR)lib/systemd/system/
+	mkdir -p $(QT_INSTALL_DIR)etc/dbus-1/system.d/
+	cp data/ukui.power.policy.conf $(QT_INSTALL_DIR)etc/dbus-1/system.d/
+	cp data/power_policy.sh $(QT_INSTALL_DIR)usr/bin/
+	chmod 755 $(QT_INSTALL_DIR)usr/bin/power_policy.sh
+	dh_install
+
+override_dh_missing:
+	dh_missing --fail-missing
+
+override_dh_installchangelogs:
+	dh_installchangelogs NEWS
+
+override_dh_auto_configure:
+	# upstream is without configure. autogen.sh will create it
+	NOCONFIGURE=1 ./autogen.sh
+	dh_auto_configure -- \
+		--disable-silent-rules \
+		--libexecdir=/usr/lib/ukui-power-manager \
+		--enable-applets \
+		--without-keyring \
+		--enable-deprecated
+
+override_dh_auto_build:
+	dh_auto_build
+	mkdir -p src/ukui-power-manager-qt/ukui-power-statistics-qt/build
+	cd src/ukui-power-manager-qt/ukui-power-statistics-qt/build && qmake ../
+	make -C src/ukui-power-manager-qt/ukui-power-statistics-qt/build
+	mkdir -p src/ukui-power-manager-qt/ukui-power-policy/build
+	cd src/ukui-power-manager-qt/ukui-power-policy/build && qmake ../
+	make -C src/ukui-power-manager-qt/ukui-power-policy/build
+	mkdir -p src/ukui-power-manager-qt/ukui-power-manager-tray/build
+	cd src/ukui-power-manager-qt/ukui-power-manager-tray/build && qmake ../
+	make -C src/ukui-power-manager-qt/ukui-power-manager-tray/build

@@ -1,0 +1,221 @@
+
+QWidget {
+    background-color:white;
+}
+
+QWidget:focus {
+    outline:none;
+}
+
+/*tablewidget 样式*/
+QTableView,QTableWidget {
+    border:1px solid #E0DDDC;   /*边框为1像素，灰色*/
+    padding-bottom:40px;
+    font:12px;
+    color:#555555;
+}
+
+/*这里是表格表头样式*/
+QHeaderView::section {
+    border:0px solid #E0DDDC;   /*先把边框宽度设为0，即隐藏所有表头边框*/
+    font:12px;
+    }
+
+QTabWidget::pane { /* The tab widget frame */
+      border-top: 1px solid #C2C7CB;
+  }
+
+/* Style the tab using the tab sub-control. Note that
+  it reads QTabBar _not_ QTabWidget */
+QTabBar {
+  font:14px;
+}
+
+QTabBar::tab {
+    border:none;
+    border-bottom:1px;
+    border-color:#C2C7CB;
+    padding:3px;
+    padding-right: 40px;
+    font:14px;
+    color:#666666;
+    height:32px;
+}
+
+QTabBar::tab:selected { /* The tab widget frame */
+      font: bold;
+      border-bottom:1px;
+      border-bottom-color:#333333;
+  }
+
+QTabBar::tab-bar:selected { /* The tab widget frame */
+      border-bottom:1px;
+      border-bottom-color:#242424;
+  }
+  /*QTabBar::tab:selected {
+  background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                              stop: 0 #fafafa, stop: 0.4 #f4f4f4,
+                              stop: 0.5 #e7e7e7, stop: 1.0 #fafafa);  }*/
+
+
+
+/* mainFrame won't have this border-image since we have
+   explicitly set it to 'none' using a more specific selector. */
+
+
+QLabel {
+    border: none;
+    border-image: none;
+    padding: 0;
+    background: none;
+}
+
+QLabel#labelhelp {
+    border-image:url(:/resource/icon/__con.png);
+}
+QLabel#labelhelp:hover {
+    border-image:url(:/resource/icon/__hover.png);
+}
+QLabel#labelhelp:pressed {
+    border-image:url(:/resource/icon/__click.png);
+}
+QLabel#labelclose {
+    border-image:url(:/resource/icon/1px_delete_con.png);
+}
+QLabel#labelclose:hover {
+    border-image:url(:/resource/icon/1px_delete_hover.png);
+}
+QLabel#labelclose:pressed {
+    border-image:url(:/resource/icon/1px_delete_click.png);
+}
+QFrame {
+    border: 0px;
+
+}
+
+/* Nice WindowsXP-style password character for password line edits. */
+
+
+/* Customize tooltips. */
+QToolTip {
+    background-color: rgb(200,200,255);
+    border-color: darkslategray;
+    border-width: 1px;
+    border-style: solid;
+    padding: 3px;
+    font: bold;
+    border-radius: 3px;
+    opacity: 200;
+}
+
+
+/* Customize arrows. */
+
+
+
+/* Customize push buttons and comboboxes. Our read-only combobox
+   is very similar to a push button, so they share the same border image. */
+
+
+
+
+/* Customize check boxes. */
+QCheckBox {
+border-radius: 3px;
+
+}
+
+
+/***
+QCheckBox:checked{
+    color:white;
+    background-color:#2669B5;
+}
+QCheckBox:unchecked {
+    color:black;
+}***/
+
+QCheckBox::indicator:unchecked {
+    border-image:url(:/resource/icon/unchecked.png);
+}
+QCheckBox::indicator:checked {
+    border-image:url(:/resource/icon/checked.png);
+}
+QCheckBox::indicator:unchecked:pressed {
+    border-image:url(:/resource/icon/undetermine.png);
+}
+
+
+QScrollBar {
+            background:#969191;
+            width:8px;
+            }
+QScrollBar::handle{
+                  background:#3E3A3A;
+                  border-radius:3px;
+                  height:30px;
+                  }
+
+QScrollBar::up-arrow,QScrollBar::down-arrow {
+      width:none;
+      height:none;
+      background: none;
+}
+
+QScrollBar::left-arrow,QScrollBar::right-arrow {
+      width:none;
+      height:none;
+      background: none;
+}
+QComboBox {
+    border-top-right-radius: 2px; /* same radius as the QComboBox */
+    border-bottom-right-radius: 2px;
+    height: 30px;
+    combobox-popup: 0;
+    background-color:#EDEDED;
+    selection-color:#EDEDED;
+    selection-background-color:#EDEDED;
+}
+
+QComboBox::item {
+selection-color:#EDEDED;
+selection-background-color:#EDEDED;
+}
+QComboBox::drop-down {
+image:url(:/resource/icon/down.png);
+subcontrol-position: right centor;
+border-top-right-radius:3px;
+border-bottom-right-radius:3px;
+}
+
+
+#m_listWidget {
+    margin-left: 6px;
+    margin-right: 68px;
+    height:36px;
+    width:160px;
+}
+
+#m_listWidget::item:selected {
+    color: white;
+    background-color: #2669B5;
+}
+
+
+#m_sumGraphicType, #m_graphicType, #m_timeLabel{
+    background-color:#EDEDED;
+    border-top-left-radius: 3px; /* same radius as the QComboBox */
+    border-bottom-left-radius: 3px;
+    padding-left: 8px;
+    width:60px;
+}
+
+#TitleContent {
+    font:14px;
+    color:#333333;
+}
+
+QChart {
+text-color:#111111;
+}
+

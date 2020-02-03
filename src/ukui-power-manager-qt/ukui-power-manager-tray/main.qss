@@ -1,0 +1,75 @@
+/*菜单*/
+QMenu {
+    background-color: rgba(8,10,12,90%);
+    border: 1px solid #626c6e;
+    border-radius: 2px;
+    padding: 4px 2px 4px 2px;
+}
+
+QMenu::item {
+    font-size: 14px;
+    color: #ffffff;
+    height: 34px;
+    width: 244px;
+}
+
+QMenu::item:selected{
+    background-color: rgba(190,216,239,20%);
+}
+
+
+
+QLabel {
+height:15px;
+font-size:14px;
+font-family:Noto Sans CJK SC;
+font-weight:400;
+color:rgba(255,255,255,0.91);
+border-radius:2px;
+
+}
+
+QLabel#power_title {
+width:93px;
+height:23px;
+font-size:20px;
+font-family:Noto Sans CJK SC;
+font-weight:400;
+color:rgba(255,255,255,0.97);
+line-height:24px;
+
+}
+
+QLabel#remaintext
+{
+width:83px;
+height:15px;
+font-size:14px;
+font-family:Noto Sans CJK SC;
+font-weight:400;
+color:rgba(255,255,255,0.35);
+}
+
+QPushButton:focus{
+padding: -1;
+}
+
+
+QWidget{border:0px;}
+
+QWidget:focus {
+outline: none;
+}
+
+
+
+
+QMainWindow#MainWindow{
+
+background:rgba(14,19,22,0.75);
+border:1px solid rgba(255, 255, 255, 0.05);
+border-radius:3px 3px 0px 0px;
+
+}
+
+

@@ -1,0 +1,11 @@
+<schemalist>
+  <schema gettext-domain="ukui-power-manager" id="org.ukui.power-manager" path="/org/ukui/power-manager/">
+
+    <key name="tlp-mode" type="i">
+      <default>3</default>
+      <summary>tlp-mode save locally</summary>
+    </key>
+
+  </schema>
+</schemalist>
+

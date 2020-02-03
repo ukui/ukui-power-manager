@@ -83,17 +83,7 @@ private:
 protected:
     bool event(QEvent *event);
 private Q_SLOTS:
-    void on_savebtn_pressed();
 
-    void on_savebtn_released();
-
-    void on_healthbtn_pressed();
-
-    void on_healthbtn_released();
-
-    void on_brightbtn_pressed();
-
-    void on_brightbtn_released();
 
 private:
 

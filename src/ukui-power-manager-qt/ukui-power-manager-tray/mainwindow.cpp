@@ -25,10 +25,11 @@
 #include "ui_mainwindow.h"
 #include <QDBusInterface>
 #include "device_form.h"
+#include <QLabel>
 
 #define POWER_SCHEMA "org.ukui.power-manager"
 #define POWER_SCHEMA_KEY "power-manager"
-#define DEBUG
+//#define DEBUG
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -38,7 +39,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     initData();
 //    setting = new QGSettings(POWER_SCHEMA);
-//    connect(setting,SIGNAL(changed()))
 //    connect(setting,SIGNAL(changed(const QString &)),this,SLOT(iconThemeChanged()));
 
     trayIcon = new QSystemTrayIcon(this);
@@ -186,12 +186,12 @@ void MainWindow::action_battery_notify(DEV dev)
 
 void MainWindow::onIconChanged(QString str)
 {
-    //    qDebug()<<str;
+        qDebug()<<str<<"trayicon is set";
 
-    str = ":/22x22/status/"+str+".png";
-    trayIcon->setIcon(QIcon(str));
-//    QIcon icon = QIcon::fromTheme(str);
-//    trayIcon->setIcon(icon);
+//    str = ":/22x22/status/"+str+".png";
+//    trayIcon->setIcon(QIcon(str));
+    QIcon icon = QIcon::fromTheme(str);
+    trayIcon->setIcon(icon);
 }
 
 void MainWindow::set_preference_func()
@@ -265,86 +265,35 @@ void MainWindow::initData()
     releaseQss = "QLabel{background-color:#283138;}";
 }
 
-#if 0
-void MainWindow::initUi()
-{
-    setWindowFlags(Qt::FramelessWindowHint|Qt::Popup);
-//    this->setWindowFlags(Qt::CustomizeWindowHint | Qt::FramelessWindowHint | Qt::SplashScreen);
-    setAttribute(Qt::WA_StyledBackground,true);
-
-//    setWindowFlags(Qt::FramelessWindowHint|Qt::Popup);
-    resize(315,220);
-    setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-//    actWidget = new PowerInteract(this);
-//    setCentralWidget(actWidget);
-//    this->setContentsMargins(0,10,10,0);
-    setWindowOpacity(0.95);
-
-    scroll_area = new QScrollArea(ui->centralWidget);
-    scroll_area->move(1, 16);
-    scroll_area->resize(230, 148-16-61);
-    scroll_area->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    scroll_area->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    scroll_area->show();
-    pow_widget = new QWidget(scroll_area);
-
-
-    ui->brightlb->setStyleSheet("QLabel{background-color:#283138;}");
-    ui->savelb->setStyleSheet("QLabel{background-color:#283138;}");
-    ui->healthlb->setStyleSheet("QLabel{background-color:#283138;}");
-
-
-    ui->power_title->setText(tr("PowerManagement"));
-
-    scroll_area->setStyleSheet("QScrollArea{border:none;}");
-    scroll_area->viewport()->setStyleSheet("background-color:transparent;");
-
-    ui->brightbtn->setStyleSheet("QPushButton{border:none;}");
-    ui->brighttext->setStyleSheet("QLabel{font-size:13px;color:#ffffff;}");
-//    ui->brighttext->setStyleSheet("QLabel{font-size:12px;font-weight:100;color:#ffffff;}");
-
-    ui->savebtn->setStyleSheet("QPushButton{border:none;}");
-//    ui->savetext->setStyleSheet("QLabel{font-size:13px;color:#ffffff;}");
-    ui->savetext->setText(tr("PowerSaveMode"));
-    ui->saveicon->setStyleSheet("QLabel{background-image:url(:/22x22/apps/save.png);}");
-    ui->healthicon->setStyleSheet("QLabel{background-image:url(:/22x22/apps/health.png);}");
-    ui->brighticon->setStyleSheet("QLabel{background-image:url(:/22x22/apps/bright.png);}");
-
-    ui->healthbtn->setStyleSheet("QPushButton{border:none;}");
-//    ui->healthtext->setStyleSheet("QLabel{background-image:url(:/res/x/setup.png);}");
-    ui->healthtext->setText(tr("BatterySave"));
-    ui->brighttext->setText(tr("Brightness"));
-    get_power_list();
-//    ui->brightlb->setParent(ui->brightbtn);
-//    ui->healthlb->setParent(ui->healthbtn);
-//    ui->savelb->setParent(ui->savebtn);
-}
-#endif
 void MainWindow::initUi2()
 {
     setWindowFlags(Qt::FramelessWindowHint|Qt::Popup);
 //    this->setWindowFlags(Qt::CustomizeWindowHint | Qt::FramelessWindowHint | Qt::SplashScreen);
-    setAttribute(Qt::WA_StyledBackground,true);
+//    setAttribute(Qt::WA_StyledBackground,true);
 //    setWindowFlags(Qt::FramelessWindowHint|Qt::Popup);
     resize(360,320);
     setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     setWindowOpacity(0.95);
 
-
-
-
-
-    ui->powertitle->setText(tr("PowerManagement"));
-
-
+    QLabel *title = new QLabel(tr("PowerManagement"));
+//    ui->powertitle->setText(tr("PowerManagement"));
+//    QScrollArea *scroll_area = new QScrollArea;
+//    scroll_area->setWidget(ui->centralWidget);
+    QSpacerItem *spacer = new QSpacerItem(10,10,QSizePolicy::Fixed,QSizePolicy::Expanding);
+//     ui->verticalLayout_2->addWidget(title);
+//        ui->verticalLayout_2->addSpacerItem(spacer);
+    QListWidgetItem *title_item = new QListWidgetItem(ui->listWidget);
+    ui->listWidget->setSpacing(3);
+//    ui->listWidget->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+//    ui->listWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->listWidget->setItemWidget(title_item,title);
     get_power_list();
 
 }
 
 int MainWindow::get_engine_dev_number()
 {
-//    QString text;
-//    qreal percentage;
+
     int len = ed->devices.size();
     int number = 0;
     for(int i = 0; i < len; i++)
@@ -360,47 +309,8 @@ int MainWindow::get_engine_dev_number()
 }
 void MainWindow::get_power_list()
 {
-#if 0
-    // chushihua
-    if(pow_widget != NULL)
-        delete pow_widget;
-    pow_widget = new QWidget(scroll_area);
-//    pow_widget->resize(230, 151-16-5-61-2);
-    pow_widget->resize(315, 151-16-5-61-2);
-    scroll_area->setWidget(pow_widget);
-
     int j = 0;
-//    int size = 2;
-    int size = get_engine_dev_number();
-    if(size==0)
-        size = 1;
-
-//    int ht = 5 + 16 + 67 + size*61;
-    int ht = 22 + 23 + 5 + size*61 +5 + 60 + 6;
-    resize(315,ht);
-
-//    scroll_area->resize(230, ht - 61 - 21);
-    scroll_area->resize(315, size*61);
-    pow_widget->resize(315, size*61);
-
-    scroll_area->move(1, 50);
-    pow_widget->move(1, 50);
-    ui->brightlb->move(ui->brightlb->pos().x(),ht - 66);
-    ui->healthlb->move(ui->healthlb->pos().x(),ht - 66);
-    ui->savelb->move(ui->savelb->pos().x(),ht - 66);
-    ui->brightbtn->move(ui->brightbtn->pos().x(),ht - 66);
-    ui->healthbtn->move(ui->healthbtn->pos().x(),ht - 66);
-    ui->savebtn->move(ui->savebtn->pos().x(),ht - 66);
-    ui->saveicon->move(ui->saveicon->pos().x(),ht - 41 - 22);
-    ui->savetext->move(ui->savetext->pos().x(),ht - 10 - 14);
-    ui->healthicon->move(ui->healthtext->pos().x(),ht - 45 - 22);
-    ui->healthtext->move(ui->healthtext->pos().x(),ht - 10 - 15);
-    ui->brighticon->move(ui->brighticon->pos().x(),ht - 41 - 22);
-    ui->brighttext->move(ui->brighttext->pos().x(),ht - 10 - 14);
-#endif
-
-
-#ifndef DEBUG
+    int size;
     size = ed->devices.size();
     for(int i = 0; i < size; i++)
     {
@@ -409,7 +319,7 @@ void MainWindow::get_power_list()
         if(dv->m_dev.kind == UP_DEVICE_KIND_LINE_POWER)
             continue;
         QString icon_name = ed->engine_get_device_icon(dv);
-        qDebug()<<"sdfdfsd-----"<<icon_name;
+        qDebug()<<"this is kind icon-----"<<icon_name;
         QString percentage = QString::number(dv->m_dev.Percentage, 'f',0)+"%";
         bool is_charging = false;
         QString text;
@@ -425,52 +335,31 @@ void MainWindow::get_power_list()
         else
             text = QString("%1% available power").arg(percentage);
 
-        QString state_text = ed->engine_get_state_text(dv->m_dev.State);
 
-        QString predict = ed->engine_get_device_predict(dv);
-
-        DeviceWidget *dw= new DeviceWidget(pow_widget);
-        connect(dv,&DEVICE::device_property_changed,[=]{
-            dw->icon_name = ed->engine_get_device_icon(dv);
-            dw->percentage = QString::number(dv->m_dev.Percentage, 'f',0)+"%";
-            dw->state_text = ed->engine_get_state_text(dv->m_dev.State);
-            dw->predict = ed->engine_get_device_predict(dv);
-            dw->widget_property_change();
-        });
-        dw->setIcon(icon_name);
-        dw->setPercent(percentage);
-        dw->setState(state_text);
-        dw->setRemain(predict);
-        dw->move(0, 3 + j * 61);
-        dw->show();
-        j++;
+        DeviceForm *df = new DeviceForm(this);
+        df->set_device(dv);
+        QListWidgetItem *list_item = new QListWidgetItem(ui->listWidget);
+        list_item->setSizeHint(QSize(325,52));
+        ui->listWidget->setItemWidget(list_item,df);
     }
-#else
-    int j = 0;
-    for(int i = 0; i < 2; i++)
-    {
-        QString icon_name = "gpm-battery-080-charging.png";
-        QString percentage = QString::number(92.0, 'f',0)+"%";
-        QString state_text = "charging";
-        QString predict = "1 hour 5 minutes";
 
-        DeviceForm *df= new DeviceForm(this);
-        df->setIcon(icon_name);
-        df->setPercent(percentage);
-        df->setState(state_text);
-        df->setRemain(predict);
-        df->show();
-        ui->vLayout->addWidget(df);
+//    for(int i = 0; i < 7; i++)
+//    {
+//        QString icon_name = "gpm-battery-080-charging.png";
+//        QString percentage = QString::number(92.0, 'f',0)+"%";
+//        QString state_text = "charging";
+//        QString predict = "1 hour 5 minutes";
 
-//        DeviceWidget *dw= new DeviceWidget(this);
-//        dw->setIcon(icon_name);
-//        dw->setPercent(percentage);
-//        dw->setState(state_text);
-//        dw->setRemain(predict);
-//        dw->show();
-//        ui->vLayout->addWidget(dw);
-    }
-#endif
+//        DeviceForm *df= new DeviceForm(this);
+//        df->setIcon(icon_name);
+//        df->setPercent(percentage);
+//        df->slider_changed(int(40));
+//        df->setState(state_text);
+//        df->setRemain(predict);
+//        QListWidgetItem *list_item = new QListWidgetItem(ui->listWidget);
+//        list_item->setSizeHint(QSize(325,52));
+//        ui->listWidget->setItemWidget(list_item,df);
+//    }
 
 }
 void MainWindow::iconThemeChanged()
@@ -495,37 +384,4 @@ MainWindow::~MainWindow()
 }
 
 
-void MainWindow::on_savebtn_pressed()
-{
-    saving = !saving;
 
-}
-
-void MainWindow::on_savebtn_released()
-{
-//    ui->savelb->setStyleSheet(releaseQss);
-}
-
-void MainWindow::on_healthbtn_pressed()
-{
-    healthing = ! healthing;
-}
-
-void MainWindow::on_healthbtn_released()
-{
-//    ui->healthlb->setStyleSheet(releaseQss);
-
-}
-
-void MainWindow::on_brightbtn_pressed()
-{
-    static bool bright = true;
-
-
-}
-
-void MainWindow::on_brightbtn_released()
-{
-//    ui->brightlb->setStyleSheet(releaseQss);
-//    system()
-}

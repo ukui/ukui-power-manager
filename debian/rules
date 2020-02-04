@@ -10,12 +10,6 @@ override_dh_install:
 	mkdir -p $(QT_INSTALL_DIR) && \
 	make install INSTALL_ROOT=$(QT_INSTALL_DIR) -C ukui-power-statistics/build
 	make install INSTALL_ROOT=$(QT_INSTALL_DIR) -C ukui-power-manager-tray/build
-	mkdir -p $(QT_INSTALL_DIR)lib/systemd/system/
-	cp data/ukui-power-policy.service $(QT_INSTALL_DIR)lib/systemd/system/
-	mkdir -p $(QT_INSTALL_DIR)etc/dbus-1/system.d/
-	cp data/ukui.power.policy.conf $(QT_INSTALL_DIR)etc/dbus-1/system.d/
-	cp data/power_policy.sh $(QT_INSTALL_DIR)usr/bin/
-	chmod 755 $(QT_INSTALL_DIR)usr/bin/power_policy.sh
 	dh_install
 
 override_dh_missing:

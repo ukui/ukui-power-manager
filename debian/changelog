@@ -1,9 +1,10 @@
-ukui-power-manager (1.1.4) unstable; urgency=medium
+ukui-power-manager (2.0.0) unstable; urgency=medium
 
-  * display line_power and battery in qt way.
-  * add power-poliy.
+  * New upstream release.
+    - Display line_power and battery in qt way.
+    - Add power-poliy.
 
- -- jiangh <jianghong@kylinos.cn>  Sat, 23 Nov 2019 11:04:11 +0800
+ -- handsome_feng <jianfengli@ubuntukylin.com>  Mon, 03 Feb 2020 16:12:24 +0800
 
 ukui-power-manager (1.1.1-1) unstable; urgency=medium
 

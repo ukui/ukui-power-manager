@@ -59,11 +59,11 @@ MainWindow::MainWindow(QWidget *parent) :
     show_percentage = new QAction(menu);
     set_bright = new QAction(menu);
     set_preference->setIcon(QIcon(":/22x22/apps/setting.svg"));
-    set_preference->setText("SetPowerSleep");
+    set_preference->setText(tr("SetPower"));
     show_percentage->setIcon(QIcon(":/22x22/apps/tick.png"));
-    show_percentage->setText("ShowPercentage");
+    show_percentage->setText(tr("ShowPercentage"));
     set_bright->setIcon(QIcon(":/22x22/apps/setting.svg"));
-    set_bright->setText("SetBrightness");
+    set_bright->setText(tr("SetBrightness"));
 
     connect(set_preference,&QAction::triggered,this,&MainWindow::set_preference_func);
     connect(show_percentage,&QAction::triggered,this,&MainWindow::show_percentage_func);
@@ -73,13 +73,13 @@ MainWindow::MainWindow(QWidget *parent) :
 
     trayIcon->setContextMenu(menu);
     ed->power_device_recalculate_icon();
-    trayIcon->show();
+//    trayIcon->show();
 
 }
 
 void MainWindow::onSumChanged(QString str)
 {
-    trayIcon->setToolTip(str);
+//    trayIcon->setToolTip(str);
     qDebug()<<str;
 }
 
@@ -190,20 +190,28 @@ void MainWindow::onIconChanged(QString str)
 
 //    str = ":/22x22/status/"+str+".png";
 //    trayIcon->setIcon(QIcon(str));
-    QIcon icon = QIcon::fromTheme(str);
-    trayIcon->setIcon(icon);
+        if(!str.isNull())
+        {
+            QIcon icon = QIcon::fromTheme(str);
+            trayIcon->setIcon(icon);
+            trayIcon->show();
+        }
+        else {
+//            trayIcon->setVisible(false);
+            trayIcon->hide();
+        }
 }
 
 void MainWindow::set_preference_func()
 {
-    QProcess *cmd = new QProcess(this);
-    cmd->start("yelp");
+//    QProcess *cmd = new QProcess(this);
+//    cmd->start("yelp");
 }
 
 void MainWindow::show_percentage_func()
 {
-    QProcess *cmd = new QProcess(this);
-    cmd->start("yelp");
+//    QProcess *cmd = new QProcess(this);
+//    cmd->start("yelp");
 }
 
 void MainWindow::onActivatedIcon(QSystemTrayIcon::ActivationReason reason)

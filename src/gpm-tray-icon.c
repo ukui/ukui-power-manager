@@ -134,7 +134,7 @@ gpm_tray_icon_set_icon (GpmTrayIcon *icon, const gchar *icon_name)
 		                                    icon_name);
 
 		/* make sure that we are visible */
-		gpm_tray_icon_show (icon, TRUE);
+		gpm_tray_icon_show (icon, FALSE);
 	} else {
 		/* remove icon */
 		egg_debug ("no icon will be displayed");

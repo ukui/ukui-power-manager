@@ -380,7 +380,7 @@ QString EngineDevice::power_device_get_icon()
     /* policy */
     if (icon_policy == GPM_ICON_POLICY_CRITICAL) {
         printf ("no devices critical, so no icon will be displayed.");
-        return NULL;
+        return QString();
     }
 
     /* we try GPM_ENGINE_WARNING_LOW: BATTERY, UPS, MOUSE, KEYBOARD */
@@ -403,7 +403,7 @@ QString EngineDevice::power_device_get_icon()
     /* policy */
     if (icon_policy == GPM_ICON_POLICY_LOW) {
         printf ("no devices low, so no icon will be displayed.");
-        return NULL;
+        return QString();
     }
 
     /* we try (DIS)CHARGING: BATTERY, UPS */
@@ -424,9 +424,9 @@ QString EngineDevice::power_device_get_icon()
     }
 
     /* we try PRESENT: BATTERY, UPS */
-    icon = power_device_get_icon_exact (UP_DEVICE_KIND_BATTERY, UP_DEVICE_LEVEL_NONE, false);
+    icon = power_device_get_icon_exact (UP_DEVICE_KIND_BATTERY, UP_DEVICE_LEVEL_NONE, true);
     if (!icon.isNull()) {
-        return icon;
+            return icon;
     }
     icon = power_device_get_icon_exact (UP_DEVICE_KIND_UPS, UP_DEVICE_LEVEL_NONE, false);
     if (!icon.isNull()) {
@@ -467,7 +467,8 @@ QString EngineDevice::power_device_get_icon_exact (UpDeviceKind device_kind, UpD
                 continue;
             }
             if (use_state) {
-                if (state == UP_DEVICE_STATE_CHARGING || state == UP_DEVICE_STATE_DISCHARGING) {
+//                if (state == UP_DEVICE_STATE_CHARGING || state == UP_DEVICE_STATE_DISCHARGING) {
+                if ( state == UP_DEVICE_STATE_DISCHARGING) {
                     return engine_get_device_icon (device);
                 }
 
@@ -476,7 +477,7 @@ QString EngineDevice::power_device_get_icon_exact (UpDeviceKind device_kind, UpD
             return engine_get_device_icon (device);
         }
     }
-    return NULL;
+    return QString();
 }
 
 /**

@@ -191,75 +191,86 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="97"/>
+        <location filename="mainwindow.cpp" line="62"/>
+        <source>SetPower</source>
+        <translation>设置电源和睡眠</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="64"/>
+        <source>ShowPercentage</source>
+        <translation>显示百分比</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="66"/>
+        <source>SetBrightness</source>
+        <translation>调整亮度</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="98"/>
         <source>discharge notify notification</source>
         <translation>正在放电</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="98"/>
+        <location filename="mainwindow.cpp" line="99"/>
         <source>battery is discharging!</source>
         <translation>电池正在放电</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="117"/>
+        <location filename="mainwindow.cpp" line="118"/>
         <source>fullly charged notification</source>
         <translation>电池充满</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="118"/>
+        <location filename="mainwindow.cpp" line="119"/>
         <source>battery is fullly charged!</source>
         <translation>电池已经充满</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="137"/>
+        <location filename="mainwindow.cpp" line="138"/>
         <source>low battery notification</source>
         <translation>电量低</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="138"/>
+        <location filename="mainwindow.cpp" line="139"/>
         <source>battery is low,please plug in!</source>
         <translation>电量低，请充电</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="157"/>
+        <location filename="mainwindow.cpp" line="158"/>
         <source>critical battery notification</source>
         <translation>电量很低</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="158"/>
+        <location filename="mainwindow.cpp" line="159"/>
         <source>battery is critical low,please plug in!</source>
         <translation>电量很低，请充电</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="178"/>
+        <location filename="mainwindow.cpp" line="179"/>
         <source>very low battery notification</source>
         <translation>电量非常低</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="179"/>
+        <location filename="mainwindow.cpp" line="180"/>
         <source>battery is very low,please plug in!</source>
         <translation>电量即将耗尽！</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="296"/>
-        <location filename="mainwindow.cpp" line="336"/>
+        <location filename="mainwindow.cpp" line="278"/>
         <source>PowerManagement</source>
         <translation>电源管理</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="307"/>
         <source>PowerSaveMode</source>
-        <translation>省电模式</translation>
+        <translation type="vanished">省电模式</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="314"/>
         <source>BatterySave</source>
-        <translation>电池养护</translation>
+        <translation type="vanished">电池养护</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="315"/>
         <source>Brightness</source>
-        <translation>亮度</translation>
+        <translation type="vanished">亮度</translation>
     </message>
 </context>
 <context>

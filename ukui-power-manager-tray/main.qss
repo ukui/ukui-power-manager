@@ -62,8 +62,6 @@ outline: none;
 }
 
 
-
-
 QMainWindow#MainWindow{
 
 background:rgba(14,19,22,0.75);
@@ -72,4 +70,32 @@ border-radius:3px 3px 0px 0px;
 
 }
 
+/*QListWidget {
+    margin-left: 8px;
+    margin-top: 8px;
+    margin-right: 8px;
+    margin-bottom: 30px;
+}*/
 
+QListWidget
+{
+    background:rgba(14,19,22,0.75);
+    border:0px;
+    padding:0px 0px 0px 0px;
+
+}
+/**列表项*/
+QListWidget::item
+{
+    padding-left:0px;
+    border:0px;
+}
+
+QScrollBar
+{
+    width:1px;
+    background:rgba(14,19,22,0.75);
+    margin:0px,0px,0px,0px;
+    padding-top:0px;   /*上预留位置*/
+    padding-bottom:0px;    /*下预留位置*/
+}

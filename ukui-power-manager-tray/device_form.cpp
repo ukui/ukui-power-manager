@@ -11,7 +11,8 @@ DeviceForm::DeviceForm(QWidget *parent) :
 {
     ui->setupUi(this);
     setAttribute(Qt::WA_StyledBackground,true);
-
+    ed = EngineDevice::getInstance();
+//    connect(ed,SLOT(signal_device_change(DEVICE*)),this,SLOT(slot_device_change(DEVICE*)));
 }
 
 DeviceForm::~DeviceForm()
@@ -56,6 +57,8 @@ void DeviceForm::widget_property_change()
 {
     setIcon(icon_name);
     setPercent(percentage);
+    slider_changed(percent_number);
+
     setState(state_text);
     setRemain(predict);
 }
@@ -109,37 +112,66 @@ void DeviceForm::paintEvent(QPaintEvent *event)
              str3 = str3.setNum(scale3,'f',6);
              str4 = str4.setNum(scale4,'f',6);
              qDebug() << str3 << str4;
-             strStyle = QString("qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, \
-                                stop:0 rgba(255, 0, 0, 255), stop:%1 rgba(255, 0, 0, 255), \
-                                stop:%2 rgba(255, 255, 0, 255), stop:%3 rgba(255, 255, 0, 255) \
-                                stop:%4 rgba(0, 0, 255, 255), stop:1 rgba(0, 0, 255, 255))")
-                 .arg(str1)
-                 .arg(str2)
-                 .arg(str3)
-                 .arg(str4);
+//             strStyle = QString("qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, \
+//                                stop:0 rgba(255, 0, 0, 255), stop:%1 rgba(255, 0, 0, 255), \
+//                                stop:%2 rgba(255, 255, 0, 255), stop:%3 rgba(255, 255, 0, 255) \
+//                                stop:%4 rgba(0, 0, 255, 255), stop:1 rgba(0, 0, 255, 255))")
+//                 .arg(str1)
+//                 .arg(str2)
+//                 .arg(str3)
+//                 .arg(str4);
+             strStyle = QString("rgba(61,107,229,1)");
+
          }
          else
          {
-             strStyle = QString("qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 0, 0, 255), stop:%1 rgba(255, 0, 0, 255), stop:%2 rgba(255, 255, 0, 255), stop:1 rgba(255, 255, 0, 255))")
-                 .arg(str1)
-                 .arg(str2);
+//             strStyle = QString("qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 0, 0, 255), stop:%1 rgba(255, 0, 0, 255), stop:%2 rgba(255, 255, 0, 255), stop:1 rgba(255, 255, 0, 255))")
+//                 .arg(str1)
+//                 .arg(str2);
+             strStyle = QString("rgba(248,163,76,1)");
+
          }
      }
      else
      {
-         strStyle = "rgba(255, 0, 0, 255)";
+         strStyle = "rgba(240, 65, 52, 1)";
      }
      return strStyle;
  }
 
+void DeviceForm::set_device(DEVICE *dev)
+{
 
+    if(dev == nullptr)
+        return;
+    m_device = dev;
+    path = dev->m_dev.path;
+    slot_device_change(dev);
+    connect(ed,SIGNAL(signal_device_change(DEVICE*)),this,SLOT(slot_device_change(DEVICE*)));
+
+//    connect(m_device,SIGNAL(device_property_changed(QDBusMessage,QString)),this,SLOT(device_change_slot()));
+}
+
+void DeviceForm::slot_device_change(DEVICE* device)
+{
+    if(device == nullptr)
+        return;
+    if(device->m_dev.path != path)
+        return;
+    icon_name = ed->engine_get_device_icon(device);
+    percentage = QString::number(device->m_dev.Percentage, 'f',0)+"%";
+    percent_number = int (device->m_dev.Percentage);
+    state_text = ed->engine_get_state_text(device->m_dev.State);
+    predict = ed->engine_get_device_predict(device);
+    widget_property_change();
+}
  void DeviceForm::slider_changed(int value)
  {
      ui->progressBar->setValue(value);
      ui->progressBar->setStyleSheet(QString(""
          "	QProgressBar {"
-         "	border: 2px solid grey;"
-         "	border-radius: 5px;"
+         "	border: 1px;"
+         "	border-radius: 2px;"
          ""
          "}"
 

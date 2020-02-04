@@ -56,7 +56,8 @@ int main(int argc, char *argv[])
     file.open(QFile::ReadOnly);
     qApp->setStyleSheet(file.readAll());
     file.close();
-    QIcon::setThemeName("ukui-icon-theme-default");
+//    QIcon::setThemeName("ukui-icon-theme-default");
+    QIcon::setThemeName("ukui-icon-theme");
     MainWindow w;
     w.hide();
 

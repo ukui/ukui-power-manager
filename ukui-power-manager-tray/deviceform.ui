@@ -48,8 +48,8 @@
   <widget class="QLabel" name="percentage">
    <property name="geometry">
     <rect>
-     <x>135</x>
-     <y>5</y>
+     <x>180</x>
+     <y>4</y>
      <width>141</width>
      <height>20</height>
     </rect>
@@ -77,7 +77,7 @@
   <widget class="QLabel" name="remaindata">
    <property name="geometry">
     <rect>
-     <x>133</x>
+     <x>180</x>
      <y>32</y>
      <width>141</width>
      <height>20</height>
@@ -95,8 +95,8 @@
     <rect>
      <x>40</x>
      <y>25</y>
-     <width>241</width>
-     <height>6</height>
+     <width>281</width>
+     <height>4</height>
     </rect>
    </property>
    <property name="value">

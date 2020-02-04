@@ -20,15 +20,7 @@ Copyright: 2004-2005, William Jon McCann <mccann@jhu.edu>
            2013-2017, Xiang Li <lixiang@kylinos.cn>
 License: GPL-2+
 
-Files: applets/brightness/egg-debug.c
-       applets/brightness/egg-debug.h
-       applets/brightness/gpm-common.c
-       applets/brightness/gpm-common.h
-       applets/inhibit/egg-debug.c
-       applets/inhibit/egg-debug.h
-       applets/inhibit/gpm-common.c
-       applets/inhibit/gpm-common.h
-       src/egg-array-float.c
+Files: src/egg-array-float.c
        src/egg-array-float.h
        src/egg-color.c
        src/egg-color.h
@@ -89,14 +81,7 @@ Copyright:  2006, William Jon McCann <mccann@jhu.edu>
             2009, Novell, Inc
 License: LGPL-2+
 
-Files: applets/Makefile.am
-       applets/brightness/Makefile.am
-       applets/brightness/*.xml
-       applets/brightness/*.in
-       applets/inhibit/Makefile.am
-       applets/inhibit/*.xml
-       applets/inhibit/*.in
-       data/icons/22x22/actions/Makefile.am
+Files: data/icons/22x22/actions/Makefile.am
        data/icons/22x22/actions/*.png
        data/icons/22x22/apps/Makefile.am
        data/icons/22x22/apps/*.png
@@ -152,7 +137,6 @@ Files: applets/Makefile.am
        src/gpm-marshal.list
        src/*.xml
        AUTHORS
-       COPYING
        ChangeLog
        Makefile.am
        NEWS
@@ -238,7 +222,7 @@ Copyright: 2011-2014, Stefano Karapetsas <stefano@karapetsas.com>
 License: GPL-2+
 
 Files: ukui-power-manager-tray/*
-	ukui-power-statistics-qt/*
+	   ukui-power-statistics/*
 Copyright: 2020, Tianjin KYLIN Information Technology Co., Ltd.
 License: GPL-2+
 

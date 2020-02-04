@@ -6,6 +6,7 @@ Uploaders: Aron Xu <aron@debian.org>,
            handsome_feng <jianfengli@ubuntukylin.com>,
 Build-Depends: debhelper-compat (= 12),
                dpkg-dev (>= 1.16.1.1),
+               qtbase5-dev,
                intltool,
                libcanberra-gtk3-dev,
                libdbus-glib-1-dev,
@@ -24,11 +25,11 @@ Build-Depends: debhelper-compat (= 12),
                pkg-config,
                xmlto,
                yelp-tools,
-	       qt5-default,
                libqt5charts5-dev,
-	       libqt5x11extras5-dev,
-	       libgsettings-qt-dev,
-Standards-Version: 4.1.5
+               libqt5x11extras5-dev,
+               libgsettings-qt-dev,
+Standards-Version: 4.5.0
+Rules-Requires-Root: no
 Homepage: http://www.ukui.org/
 Vcs-Git: https://github.com/ukui/ukui-power-manager.git
 Vcs-Browser: https://github.com/ukui/ukui-power-manager

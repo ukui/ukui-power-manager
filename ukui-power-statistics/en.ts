@@ -18,7 +18,7 @@
     </message>
     <message>
         <location filename="titlewidget.cpp" line="56"/>
-        <source>Power Statistics-device infomation</source>
+        <source>Power Statistics-device information</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

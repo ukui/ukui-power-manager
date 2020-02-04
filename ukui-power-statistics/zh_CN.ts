@@ -22,7 +22,7 @@
     </message>
     <message>
         <location filename="titlewidget.cpp" line="56"/>
-        <source>Power Statistics-device infomation</source>
+        <source>Power Statistics-device information</source>
         <translation>电源统计-设备信息</translation>
     </message>
 </context>

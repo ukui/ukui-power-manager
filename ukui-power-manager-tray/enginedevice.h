@@ -69,7 +69,7 @@ Q_SIGNALS:
     void engine_signal_charge_critical(DEV dv);
     void engine_signal_charge_action(DEV dv);
     void engine_signal_summary_change(QString summary);
-    void signal_device_change(DEVICE *device);
+
 public Q_SLOTS:
     void power_device_change_callback(QDBusMessage msg, QString path);
 

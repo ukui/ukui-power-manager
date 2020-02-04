@@ -8,10 +8,6 @@ SUBDIRS = 						\
 	help						\
 	policy
 
-if HAVE_APPLETS
-SUBDIRS += applets
-endif
-
 EXTRA_DIST =						\
 	autogen.sh					\
 	intltool-extract.in				\
@@ -32,7 +28,6 @@ DISTCLEANFILES =					\
 
 DISTCHECK_CONFIGURE_FLAGS =   \
 	--disable-schemas-install \
-	--disable-applets         \
 	--disable-tests
 
 # Build ChangeLog from GIT  history

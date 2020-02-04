@@ -237,9 +237,8 @@ Copyright: 2011-2014, Stefano Karapetsas <stefano@karapetsas.com>
            2014, Mike Gabriel <sunweaver@debian.org>
 License: GPL-2+
 
-Files: src/ukui-power-manager-qt/ukui-power-manager-tray/*
-	   src/ukui-power-manager-qt/ukui-power-policy/*
-	   src/ukui-power-manager-qt/ukui-power-statistics-qt/*
+Files: ukui-power-manager-tray/*
+	ukui-power-statistics-qt/*
 Copyright: 2020, Tianjin KYLIN Information Technology Co., Ltd.
 License: GPL-2+
 

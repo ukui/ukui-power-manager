@@ -1,6 +1,6 @@
 AC_PREREQ(2.63)
 
-AC_INIT([ukui-power-manager], [1.1.0], [http://www.ukui.org/])
+AC_INIT([ukui-power-manager], [2.0.0], [http://www.ukui.org/])
 AC_CONFIG_SRCDIR(src)
 AM_INIT_AUTOMAKE([1.9 no-dist-gzip dist-xz check-news tar-ustar])
 AC_CONFIG_HEADERS([config.h])
@@ -182,25 +182,6 @@ if test "$with_keyring" = "yes"; then
 fi
 
 dnl ---------------------------------------------------------------------------
-dnl - Build applets
-dnl ---------------------------------------------------------------------------
-AC_ARG_ENABLE(applets,
-              AS_HELP_STRING([--disable-applets],
-                             [Build the extra power applets]),
-              enable_applets=$enableval,enable_applets=yes)
-
-AC_MSG_CHECKING([whether to build applet support])
-have_applets=no
-if test x$enable_applets = xyes ; then
-    have_applets=yes
-
-    PKG_CHECK_MODULES(PANEL, [libukuipanelapplet-4.0 >= $LIBPANEL_REQUIRED])
-    AC_DEFINE(HAVE_APPLETS, 1, [Define if we are building applets])
-fi
-AC_MSG_RESULT([$have_applets])
-AM_CONDITIONAL([HAVE_APPLETS], [test $have_applets = yes])
-
-dnl ---------------------------------------------------------------------------
 dnl - Are we specifying a different dbus root ?
 dnl ---------------------------------------------------------------------------
 AC_ARG_WITH(dbus-services,
@@ -227,9 +208,6 @@ dnl ---------------------------------------------------------------------------
 AC_CONFIG_FILES([
 Makefile
 src/Makefile
-applets/Makefile
-applets/brightness/Makefile
-applets/inhibit/Makefile
 help/Makefile
 po/Makefile.in
 policy/Makefile
@@ -277,7 +255,6 @@ echo "
         compiler:                  ${CC}
         cflags:                    ${CFLAGS}
         gnome-keyring support:     ${with_keyring}
-        Building extra applets:    ${enable_applets}
         Self test support:         ${have_tests}
         dbus-1 services dir:       $DBUS_SERVICES_DIR
 "

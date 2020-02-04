@@ -248,25 +248,22 @@ void EngineDevice::power_device_change_callback(QDBusMessage msg,QString path)
     /* if battery change to display devices */
     /* judge state */
 
-    qDebug()<<"change callback-------"<<path;
+    qDebug()<<"change callback-------";
     DEVICE *item = nullptr;
-    Q_FOREACH (auto item_tmp, devices)
+    Q_FOREACH (item, devices)
     {
-        if(item_tmp->m_dev.path == path)
+        if(item->m_dev.path == path)
         {
-            item = item_tmp;
             break;
         }
+        return;
     }
 
-    if(item == nullptr)
-        return;
     DEV tmp_dev = item->m_dev;
     const QDBusArgument &arg = msg.arguments().at(1).value<QDBusArgument>();
     QMap<QString,QVariant> map;
     arg >> map;
     putAttributes(map,item->m_dev);
-    Q_EMIT signal_device_change(item);
 //    getProperty(path,tmp_dev);
     if(item->m_dev.State != tmp_dev.State)
     {

@@ -8,9 +8,8 @@ QT_INSTALL_DIR:=$(shell pwd)/debian/tmp/
 	dh $@
 override_dh_install:
 	mkdir -p $(QT_INSTALL_DIR) && \
-	make install INSTALL_ROOT=$(QT_INSTALL_DIR) -C src/ukui-power-manager-qt/ukui-power-statistics-qt/build
-	make install INSTALL_ROOT=$(QT_INSTALL_DIR) -C src/ukui-power-manager-qt/ukui-power-policy/build
-	make install INSTALL_ROOT=$(QT_INSTALL_DIR) -C src/ukui-power-manager-qt/ukui-power-manager-tray/build
+	make install INSTALL_ROOT=$(QT_INSTALL_DIR) -C ukui-power-statistics/build
+	make install INSTALL_ROOT=$(QT_INSTALL_DIR) -C ukui-power-manager-tray/build
 	mkdir -p $(QT_INSTALL_DIR)lib/systemd/system/
 	cp data/ukui-power-policy.service $(QT_INSTALL_DIR)lib/systemd/system/
 	mkdir -p $(QT_INSTALL_DIR)etc/dbus-1/system.d/
@@ -31,18 +30,14 @@ override_dh_auto_configure:
 	dh_auto_configure -- \
 		--disable-silent-rules \
 		--libexecdir=/usr/lib/ukui-power-manager \
-		--enable-applets \
 		--without-keyring \
 		--enable-deprecated
 
 override_dh_auto_build:
 	dh_auto_build
-	mkdir -p src/ukui-power-manager-qt/ukui-power-statistics-qt/build
-	cd src/ukui-power-manager-qt/ukui-power-statistics-qt/build && qmake ../
-	make -C src/ukui-power-manager-qt/ukui-power-statistics-qt/build
-	mkdir -p src/ukui-power-manager-qt/ukui-power-policy/build
-	cd src/ukui-power-manager-qt/ukui-power-policy/build && qmake ../
-	make -C src/ukui-power-manager-qt/ukui-power-policy/build
-	mkdir -p src/ukui-power-manager-qt/ukui-power-manager-tray/build
-	cd src/ukui-power-manager-qt/ukui-power-manager-tray/build && qmake ../
-	make -C src/ukui-power-manager-qt/ukui-power-manager-tray/build
+	mkdir -p ukui-power-statistics/build
+	cd ukui-power-statistics/build && qmake ../
+	make -C ukui-power-statistics/build
+	mkdir -p ukui-power-manager-tray/build
+	cd ukui-power-manager-tray/build && qmake ../
+	make -C ukui-power-manager-tray/build

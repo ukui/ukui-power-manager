@@ -72,7 +72,7 @@ void TitleWidget::initControl()
     mylayout->setSpacing(30);
 
     m_pTitleContent->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
-    m_pTitleContent->setText(tr("Power Statistics-device infomation"));
+    m_pTitleContent->setText(tr("Power Statistics-device information"));
     this->setFixedHeight(TITLE_HEIGHT);
     this->setWindowFlags(Qt::FramelessWindowHint);
 }

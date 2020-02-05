@@ -36,8 +36,10 @@ pkgdata_DATA =						\
 
 man_MANS =				\
 	ukui-power-manager.1		\
+	ukui-power-manager-tray.1	\
 	ukui-power-backlight-helper.1	\
 	ukui-power-statistics.1		\
+	ukui-power-statistics-qt.1	\
 	ukui-power-preferences.1
 
 EXTRA_DIST =						\

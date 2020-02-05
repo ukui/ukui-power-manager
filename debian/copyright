@@ -153,12 +153,6 @@ Files: src/gpm-kbd-backlight.c
 Copyright: 2010, Alex Launi <alex launi canonical com>
 License: GPL-2+
 
-Files: applets/brightness/brightness-applet.c
-       applets/inhibit/inhibit-applet.c
-Copyright: 2006, Benjamin Canou <bookeldor@gmail.com>
-           2006-2009, Richard Hughes <richard@hughsie.com>
-License: GPL-2+
-
 Files: src/gpm-prefs-core.c
        src/gpm-prefs.c
 Copyright: 2005, Jaap Haitsma <jaap@haitsma.org>

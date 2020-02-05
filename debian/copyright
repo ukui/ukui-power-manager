@@ -8,7 +8,6 @@ Files: src/egg-discrete.c
        src/gpm-common.h
        src/gpm-engine.c
        src/gpm-engine.h
-       src/gpm-statistics.c
 Copyright: 2005-2010, Richard Hughes <richard@hughsie.com>
            2013-2017, Xiang Li <lixiang@kylinos.cn>
 License: GPL-2+
@@ -41,16 +40,12 @@ Files: src/egg-array-float.c
        src/gpm-button.h
        src/gpm-common.c
        src/gpm-control.c
-       src/gpm-graph-widget.c
-       src/gpm-graph-widget.h
        src/gpm-load.c
        src/gpm-load.h
        src/gpm-networkmanager.c
        src/gpm-networkmanager.h
        src/gpm-phone.c
        src/gpm-phone.h
-       src/gpm-point-obj.c
-       src/gpm-point-obj.h
        src/gpm-prefs-core.h
        src/gpm-screensaver.c
        src/gpm-screensaver.h
@@ -213,6 +208,7 @@ License: GFDL-1.1+
 Files: debian/*
 Copyright: 2011-2014, Stefano Karapetsas <stefano@karapetsas.com>
            2014, Mike Gabriel <sunweaver@debian.org>
+           2020, handsome_feng <jianfengli@Ubuntukylin.com>
 License: GPL-2+
 
 Files: ukui-power-manager-tray/*

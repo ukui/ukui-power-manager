@@ -48,7 +48,7 @@ void DeviceForm::mouseReleaseEvent(QMouseEvent *event)
 {
     Q_UNUSED(event);
 
-    QString cmd = "ukui-power-statistics-qt &";
+    QString cmd = "ukui-power-statistics &";
     system(cmd.toStdString().c_str());
 
 }

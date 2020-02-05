@@ -44,7 +44,6 @@ AM_CPPFLAGS += $(NULL)
 bin_PROGRAMS =						\
 	ukui-power-manager				\
 	ukui-power-preferences				\
-	ukui-power-statistics				\
 	$(NULL)
 
 sbin_PROGRAMS =						\
@@ -89,27 +88,6 @@ ukui_power_backlight_helper_LDADD =			\
 	-lm
 
 ukui_power_backlight_helper_CFLAGS =			\
-	$(WARNINGFLAGS)					\
-	$(NULL)
-
-ukui_power_statistics_SOURCES =			\
-	gpm-statistics.c				\
-	gpm-point-obj.c					\
-	gpm-point-obj.h					\
-	gpm-graph-widget.h				\
-	gpm-graph-widget.c				\
-	$(NULL)
-
-ukui_power_statistics_LDADD =				\
-	libgpmshared.a					\
-	$(GLIB_LIBS)					\
-	$(X11_LIBS)					\
-	$(UPOWER_LIBS)					\
-	$(CAIRO_LIBS)					\
-	$(DBUS_LIBS)					\
-	-lm
-
-ukui_power_statistics_CFLAGS =				\
 	$(WARNINGFLAGS)					\
 	$(NULL)
 

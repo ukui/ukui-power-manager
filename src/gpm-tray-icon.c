@@ -155,7 +155,7 @@ gpm_tray_icon_show_info_cb (GtkMenuItem *item, gpointer data)
 	const gchar *object_path;
 
 	object_path = g_object_get_data (G_OBJECT (item), "object-path");
-	path = g_strdup_printf ("%s/ukui-power-statistics-qt --device %s", BINDIR, object_path);
+	path = g_strdup_printf ("%s/ukui-power-statistics --device %s", BINDIR, object_path);
 	if (!g_spawn_command_line_async (path, NULL))
 		egg_warning ("Couldn't execute command: %s", path);
 	g_free (path);
@@ -170,7 +170,7 @@ gpm_tray_icon_show_info_cb_ukui(GtkWidget *w, GdkEventButton *e, GpmTrayIcon *ic
     gtk_widget_hide (icon->priv->main_window);
 
     object_path = g_object_get_data (G_OBJECT (w), "object-path");
-    path = g_strdup_printf ("%s/ukui-power-statistics-qt --device %s", BINDIR, object_path);
+    path = g_strdup_printf ("%s/ukui-power-statistics --device %s", BINDIR, object_path);
     if (!g_spawn_command_line_async (path, NULL))
         egg_warning ("Couldn't execute command: %s", path);
     g_free (path);

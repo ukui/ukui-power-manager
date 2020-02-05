@@ -9,7 +9,7 @@ QT       += core gui dbus charts
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = ukui-power-statistics-qt
+TARGET = ukui-power-statistics
 TEMPLATE = app
 
 target.path = /usr/bin
@@ -50,11 +50,11 @@ HEADERS += \
     device.h
 
 SUBDIRS += \
-    ukui-power-statistics-qt.pro
+    ukui-power-statistics.pro
 
 DISTFILES += \
     zh_CN.qm \
-    ukui-power-statistics-qt.pro.user \
+    ukui-power-statistics.pro.user \
     zh_CN.ts
 
 RESOURCES += \

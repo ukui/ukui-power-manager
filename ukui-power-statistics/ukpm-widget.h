@@ -200,6 +200,8 @@ public Q_SLOTS:
     void upHistoryType(int index);
     void upStatsType(int index);
     void devPropertiesChanged(QString object_path);
+    void ukpm_set_choice_sum();
+    void ukpm_set_choice_history();
 
 public:
     uint timeSpan, resolution;
@@ -237,7 +239,6 @@ public:
     QString batterySvr,acSvr;
     bool iconflag;
     QGSettings *settings;
-    QTimer timer;
     TitleWidget *title;
     QColor plotcolor;
     QComboBox *histype;
@@ -251,8 +252,7 @@ public:
     QStandardItemModel* model;
     QTableView *tableView;
     int index_old;
-    void ukpm_set_choice_sum();
-    void ukpm_set_choice_history();
+
 };
 
 #endif // UKPM_WIDGET_H

@@ -73,7 +73,7 @@ EngineDevice::EngineDevice(QObject *parent) : QObject(parent)
     QDBusConnection::systemBus().connect(DBUS_SERVICE,DBUS_OBJECT,DBUS_SERVICE,
                                          QString("device-removed"),this,SLOT(power_device_remove(QDBusMessage)));
     settings = new QGSettings(GPM_SETTINGS_SCHEMA);
-    engine_policy_settings_cb();
+//    engine_policy_settings_cb();
 
     connect(settings,SIGNAL(changed(const QString&)),this,SLOT(engine_policy_settings_cb()));
 }

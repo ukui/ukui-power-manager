@@ -420,11 +420,11 @@ ukpm_update_info_page_details (DEV* device)
     /* TRANSLATORS: the device ID of the current device, e.g. "battery0" */
     addListRow(tr("Type"),dev.Type);
 
-    if (dev.Vendor != NULL && dev.Vendor[0] != '\0')
+    if (!dev.Vendor.isEmpty())
         addListRow (tr("Vendor"), dev.Vendor);
-    if (dev.Model != NULL && dev.Model != '\0')
+    if (!dev.Model.isEmpty())
         addListRow (tr("Model"), dev.Model);
-    if (dev.serial != NULL && dev.serial[0] != '\0')
+    if (!dev.serial.isEmpty())
         addListRow (tr("Serial number"), dev.serial);
 
     addListRow (tr("Supply"), dev.PowerSupply);
@@ -535,7 +535,7 @@ void UkpmWidget::ukpm_update_info_data (DEV* device)
 
     page = tab_widget->currentIndex();
     index_old = page;
-//    qDebug()<<"ukpm_update_info_data: page="<<page;
+    qDebug()<<"ukpm_update_info_data: page="<<page;
     ukpm_update_info_data_page (device, page);
     return;
 }
@@ -1391,7 +1391,7 @@ void UkpmWidget::onItemChanged(QListWidgetItem* cur,QListWidgetItem* pre)
     auto iterator = dev_item.find(cur);
     if(iterator != dev_item.end())
         current_device = dev_item.value(cur)->m_dev;
-//    qDebug()<<"onItemChanged";
+    qDebug()<<"onItemChanged";
     ukpm_update_info_data(current_device);
 }
 
@@ -1505,8 +1505,8 @@ void UkpmWidget::onPageChanged(int index)
         settings->setInt(GPM_SETTINGS_INFO_PAGE_NUMBER,index);
         index_old = index;
     }
-//    qDebug()<<"tab page number is:"<< index;
-//    ukpm_update_info_data_page(current_device,index);
+    qDebug()<<"tab page number is:"<< index<<"current_device is:"<< current_device->path;
+    ukpm_update_info_data_page(current_device,index);
 }
 
 void UkpmWidget::drawHisSpineline(bool flag)

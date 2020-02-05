@@ -96,6 +96,7 @@ void EngineDevice::engine_policy_settings_cb()
     else if(icon_policy_str == "never")
         icon_policy = GPM_ICON_POLICY_NEVER;
 
+    power_device_recalculate_icon();
     qDebug()<<icon_policy;
 }
 

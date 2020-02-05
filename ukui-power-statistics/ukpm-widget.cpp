@@ -1154,6 +1154,7 @@ void UkpmWidget::setDetailTab()
     tableView->setGridStyle(Qt::DotLine);
     //排序功能
     tableView->setSortingEnabled(true);
+    tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     model = new QStandardItemModel();
 
     tableView->setModel(model);

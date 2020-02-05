@@ -4,12 +4,13 @@ SUBDIRS = icons
 @INTLTOOL_DESKTOP_RULE@
 desktopdir = $(datadir)/applications
 desktop_in_files = ukui-power-preferences.desktop.in \
-		   ukui-power-statistics.desktop.in
+                   ukui-power-statistics.desktop.in
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 
 @INTLTOOL_DESKTOP_RULE@
 autostartdir = $(sysconfdir)/xdg/autostart
-autostart_in_files = ukui-power-manager.desktop.in
+autostart_in_files = ukui-power-manager.desktop.in \
+					 ukui-power-manager-tray.desktop.in
 autostart_DATA = $(autostart_in_files:.desktop.in=.desktop)
 
 servicedir       = $(DBUS_SERVICES_DIR)
@@ -55,6 +56,7 @@ clean-local :
 
 DISTCLEANFILES =					\
 	ukui-power-manager.desktop			\
+	ukui-power-manager-tray.desktop		\
 	ukui-power-preferences.desktop			\
 	ukui-power-statistics.desktop			\
 	org.ukui.PowerManager.service			\

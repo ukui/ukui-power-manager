@@ -1,0 +1,15 @@
+[Desktop Entry]
+_Name=Power Manager Tray
+_Comment=Power management tray
+Icon=ukui-power-manager-tray
+Exec=ukui-power-manager-tray
+Terminal=false
+Type=Application
+Categories=
+OnlyShowIn=UKUI;
+X-UKUI-Bugzilla-Bugzilla=UKUI
+X-UKUI-Bugzilla-Product=ukui-power-manager-tray
+X-UKUI-Bugzilla-Component=ukui-power-manager-tray
+X-UKUI-Bugzilla-Version=@VERSION@
+X-UKUI-AutoRestart=true
+

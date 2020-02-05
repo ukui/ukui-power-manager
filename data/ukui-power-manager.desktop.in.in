@@ -11,5 +11,5 @@ X-UKUI-Bugzilla-Bugzilla=UKUI
 X-UKUI-Bugzilla-Product=ukui-power-manager
 X-UKUI-Bugzilla-Component=ukui-power-manager
 X-UKUI-Bugzilla-Version=@VERSION@
-#X-UKUI-AutoRestart=true
+X-UKUI-AutoRestart=true
 

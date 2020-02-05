@@ -2,9 +2,20 @@ ukui-power-manager (2.0.0-1) unstable; urgency=medium
 
   * New upstream release.
     - Display line_power and battery in qt way.
-    - Add power-poliy.
+  * d/control:
+    - Bump standards-version to 4.5.0.
+    - Bump compat level to 12.
+    - Set Rules-Requires-Root to no.
+    - Refresh the build-depends.
 
  -- handsome_feng <jianfengli@ubuntukylin.com>  Mon, 03 Feb 2020 16:12:24 +0800
+
+kui-power-manager (1.1.2-1) unstable; urgency=medium
+
+  * Fix the error that can't open preferences dialog. (LP: #1764669)
+  * Drop the depends on libgnome-keyring. (LP: #1767165)
+
+ -- handsome_feng <jianfengli@ubuntukylin.com>  Mon, 24 Dec 2018 11:47:10 +0800
 
 ukui-power-manager (1.1.1-1) unstable; urgency=medium
 

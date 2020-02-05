@@ -213,6 +213,7 @@ po/Makefile.in
 policy/Makefile
 data/Makefile
 data/ukui-power-manager.desktop.in
+data/ukui-power-manager-tray.desktop.in
 data/ukui-power-preferences.desktop.in
 data/ukui-power-statistics.desktop.in
 data/org.ukui.power-manager.gschema.xml

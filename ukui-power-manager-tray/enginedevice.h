@@ -73,7 +73,7 @@ Q_SIGNALS:
 public Q_SLOTS:
     void power_device_change_callback(QDBusMessage msg, QString path);
 
-    void engine_policy_settings_cb();
+    void engine_policy_settings_cb(const QString &str);
 public:
     QGSettings *settings;
     QList<DEVICE*> devices;

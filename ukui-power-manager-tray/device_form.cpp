@@ -24,7 +24,7 @@ void DeviceForm::setIcon(QString name)
 {
     QIcon icon = QIcon::fromTheme(name);
     qDebug()<<icon.name()<<"-----------this is device icon---------------------";
-    QPixmap pixmap = icon.pixmap(QSize(22,22));
+    QPixmap pixmap = icon.pixmap(QSize(32,32));
     ui->icon->setPixmap(pixmap);
 }
 
@@ -74,18 +74,19 @@ void DeviceForm::paintEvent(QPaintEvent *event)
 
  void DeviceForm::enterEvent(QEvent *event)
  {
-     setStyleSheet(
-                 "background:rgba(61,107,229,1);"
-                 "border-radius:2px;"
-     );
+     Q_UNUSED(event);
+//     setStyleSheet(
+//                 "background:rgba(61,107,229,1);"
+//                 "border-radius:2px;"
+//     );
  }
 
  void DeviceForm::leaveEvent(QEvent *event)
  {
-
-     setStyleSheet(
-                 "background:rgba(14,19,22,0.75);"
-     );
+     Q_UNUSED(event);
+//     setStyleSheet(
+//                 "background:rgba(14,19,22,0.75);"
+//     );
  }
 
 
@@ -170,12 +171,11 @@ void DeviceForm::slot_device_change(DEVICE* device)
      ui->progressBar->setValue(value);
      ui->progressBar->setStyleSheet(QString(""
          "	QProgressBar {"
-         "	border: 1px;"
          "	border-radius: 2px;"
          ""
          "}"
-
          "QProgressBar::chunk {"
+             "border-radius:2px 0px 0px 2px;"
              "	background-color: "
              "%1;"
          "}").arg(calculate_value(value,ui->progressBar->maximum())));

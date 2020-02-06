@@ -75,11 +75,13 @@ EngineDevice::EngineDevice(QObject *parent) : QObject(parent)
     settings = new QGSettings(GPM_SETTINGS_SCHEMA);
 //    engine_policy_settings_cb();
 
-    connect(settings,SIGNAL(changed(const QString&)),this,SLOT(engine_policy_settings_cb()));
+    connect(settings,SIGNAL(changed(const QString&)),this,SLOT(engine_policy_settings_cb(const QString&)));
 }
 
-void EngineDevice::engine_policy_settings_cb()
+void EngineDevice::engine_policy_settings_cb(const QString& str)
 {
+    if(str != "iconPolicy")
+        return;
     qDebug()<<"policy setting changed";
     QVariant var =settings->get(GPM_SETTINGS_KEY_POLICY);
     QString icon_policy_str = var.value<QString>();

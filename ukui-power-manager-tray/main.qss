@@ -30,9 +30,28 @@ border-radius:2px;
 }
 
 QLabel#power_title {
-width:93px;
-height:23px;
+height:20px;
 font-size:20px;
+font-family:Noto Sans CJK SC;
+font-weight:400;
+color:rgba(255,255,255,0.97);
+line-height:24px;
+
+
+}
+
+QLabel#state
+{
+height:14px;
+font-size:14px;
+font-family:Noto Sans CJK SC;
+font-weight:400;
+color:rgba(255,255,255,0.91);
+}
+
+QLabel#percentage
+{
+font-size:11px;
 font-family:Noto Sans CJK SC;
 font-weight:400;
 color:rgba(255,255,255,0.97);
@@ -42,12 +61,31 @@ line-height:24px;
 
 QLabel#remaintext
 {
-width:83px;
-height:15px;
-font-size:14px;
+height:12px;
+font-size:12px;
 font-family:Noto Sans CJK SC;
 font-weight:400;
 color:rgba(255,255,255,0.35);
+}
+
+QLabel#remaindata
+{
+height:11px;
+font-size:11px;
+font-family:Noto Sans CJK SC;
+font-weight:400;
+color:rgba(255,255,255,0.91);
+}
+
+QProgressBar {
+width:284px;
+height:4px;
+background:rgba(255,255,255,0.1);
+border-radius:2px;
+}
+
+QProgressBar::chunk {
+border-radius:2px 0px 0px 2px;
 }
 
 QPushButton:focus{
@@ -82,6 +120,7 @@ QListWidget
     background:rgba(14,19,22,0.75);
     border:0px;
     padding:0px 0px 0px 0px;
+    margin-bottom: 20px;
 
 }
 /**列表项*/
@@ -89,7 +128,15 @@ QListWidget::item
 {
     padding-left:0px;
     border:0px;
+
 }
+
+QListWidget::item:hover
+{
+background:rgba(61,107,229,1);
+border-radius:2px;
+}
+
 
 QScrollBar
 {

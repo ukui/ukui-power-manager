@@ -50,7 +50,6 @@ MainWindow::MainWindow(QWidget *parent) :
 //    connect(ed,SIGNAL(engine_signal_charge_action(DEV)),this,SLOT(action_battery_notify(DEV)));
 //    connect(ed,SIGNAL(engine_signal_discharge(DEV)),this,SLOT(discharge_notify(DEV)));
 //    connect(ed,SIGNAL(engine_signal_fullycharge(DEV)),this,SLOT(full_charge_notify(DEV)));
-    ed->engine_policy_settings_cb();
 
     setObjectName("MainWindow");
     initUi2();
@@ -73,7 +72,8 @@ MainWindow::MainWindow(QWidget *parent) :
     menu->addAction(set_preference);
 
     trayIcon->setContextMenu(menu);
-    ed->power_device_recalculate_icon();
+    ed->engine_policy_settings_cb("iconPolicy");
+
 //    trayIcon->show();
 
 }
@@ -284,18 +284,20 @@ void MainWindow::initUi2()
     setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     setWindowOpacity(0.95);
 
-    QLabel *title = new QLabel(tr("PowerManagement"));
-//    ui->powertitle->setText(tr("PowerManagement"));
+//    QLabel *title = new QLabel(tr("PowerManagement"));
+//    title->setObjectName("power_title");
+    ui->power_title->setText(tr("PowerManagement"));
 //    QScrollArea *scroll_area = new QScrollArea;
 //    scroll_area->setWidget(ui->centralWidget);
-    QSpacerItem *spacer = new QSpacerItem(10,10,QSizePolicy::Fixed,QSizePolicy::Expanding);
-//     ui->verticalLayout_2->addWidget(title);
-//        ui->verticalLayout_2->addSpacerItem(spacer);
-    QListWidgetItem *title_item = new QListWidgetItem(ui->listWidget);
-    ui->listWidget->setSpacing(3);
+//    QSpacerItem *spacer = new QSpacerItem(10,10,QSizePolicy::Fixed,QSizePolicy::Expanding);
+//    ui->verticalLayout_2->addWidget(title);
+//    ui->verticalLayout_2->addSpacerItem(spacer);
+//    QListWidgetItem *title_item = new QListWidgetItem(ui->listWidget);
+//    ui->listWidget->setSpacing(30);
 //    ui->listWidget->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 //    ui->listWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    ui->listWidget->setItemWidget(title_item,title);
+//    ui->listWidget->setItemWidget(title_item,title);
+//    title_item->setSizeHint(QSize(325,20));
     get_power_list();
 
 }
@@ -318,7 +320,6 @@ int MainWindow::get_engine_dev_number()
 }
 void MainWindow::get_power_list()
 {
-    int j = 0;
     int size;
     size = ed->devices.size();
     for(int i = 0; i < size; i++)
@@ -352,13 +353,12 @@ void MainWindow::get_power_list()
         ui->listWidget->setItemWidget(list_item,df);
     }
 
-//    for(int i = 0; i < 7; i++)
+//    for(int i = 0; i < 2; i++)
 //    {
 //        QString icon_name = "gpm-battery-080-charging.png";
 //        QString percentage = QString::number(92.0, 'f',0)+"%";
 //        QString state_text = "charging";
 //        QString predict = "1 hour 5 minutes";
-
 //        DeviceForm *df= new DeviceForm(this);
 //        df->setIcon(icon_name);
 //        df->setPercent(percentage);

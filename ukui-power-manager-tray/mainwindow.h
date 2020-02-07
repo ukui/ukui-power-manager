@@ -48,11 +48,16 @@ public:
     void get_power_list();
     void initData();
     int get_engine_dev_number();
+    QPixmap set_percent_pixmap(QString str);
+    QIcon get_percent_icon(QIcon icon);
+    bool want_percent;
 public Q_SLOTS:
     void iconThemeChanged();
     void onActivatedIcon(QSystemTrayIcon::ActivationReason reason);
     void set_preference_func();
     void show_percentage_func();
+    void set_brightness_func();
+
     void onIconChanged(QString str);
     void onSumChanged(QString str);
     void low_battery_notify(DEV dev);

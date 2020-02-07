@@ -1,9 +1,8 @@
 /*菜单*/
 QMenu {
-    background-color: rgba(8,10,12,90%);
-    border: 1px solid #626c6e;
-    border-radius: 2px;
-    padding: 4px 2px 4px 2px;
+    background:rgba(14,19,22,0.90);
+    margin:4px 1px;
+    border-radius: 4px;
 }
 
 QMenu::item {
@@ -11,6 +10,7 @@ QMenu::item {
     color: #ffffff;
     height: 34px;
     width: 244px;
+    padding:6px 30px;
 }
 
 QMenu::item:selected{
@@ -84,9 +84,7 @@ background:rgba(255,255,255,0.1);
 border-radius:2px;
 }
 
-QProgressBar::chunk {
-border-radius:2px 0px 0px 2px;
-}
+
 
 QPushButton:focus{
 padding: -1;
@@ -102,7 +100,7 @@ outline: none;
 
 QMainWindow#MainWindow{
 
-background:rgba(14,19,22,0.75);
+background:rgba(14,19,22,0.90);
 border:1px solid rgba(255, 255, 255, 0.05);
 border-radius:3px 3px 0px 0px;
 
@@ -117,7 +115,7 @@ border-radius:3px 3px 0px 0px;
 
 QListWidget
 {
-    background:rgba(14,19,22,0.75);
+    background:rgba(14,19,22,0.90);
     border:0px;
     padding:0px 0px 0px 0px;
     margin-bottom: 20px;
@@ -141,7 +139,7 @@ border-radius:2px;
 QScrollBar
 {
     width:1px;
-    background:rgba(14,19,22,0.75);
+    background:rgba(14,19,22,0.90);
     margin:0px,0px,0px,0px;
     padding-top:0px;   /*上预留位置*/
     padding-bottom:0px;    /*下预留位置*/

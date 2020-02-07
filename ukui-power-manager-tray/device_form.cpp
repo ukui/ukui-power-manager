@@ -175,7 +175,7 @@ void DeviceForm::slot_device_change(DEVICE* device)
          ""
          "}"
          "QProgressBar::chunk {"
-             "border-radius:2px 0px 0px 2px;"
+             "border-radius:2px;"
              "	background-color: "
              "%1;"
          "}").arg(calculate_value(value,ui->progressBar->maximum())));

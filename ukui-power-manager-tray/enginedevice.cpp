@@ -363,90 +363,104 @@ QString EngineDevice::power_device_get_icon()
     }
 
     /* we try CRITICAL: BATTERY, UPS, MOUSE, KEYBOARD */
-    icon = power_device_get_icon_exact (UP_DEVICE_KIND_BATTERY, UP_DEVICE_LEVEL_CRITICAL, false);
-    if (!icon.isNull()) {
-        return icon;
-    }
-    icon = power_device_get_icon_exact (UP_DEVICE_KIND_UPS, UP_DEVICE_LEVEL_CRITICAL, false);
-    if (!icon.isNull()) {
-        return icon;
-    }
-    icon = power_device_get_icon_exact (UP_DEVICE_KIND_MOUSE, UP_DEVICE_LEVEL_CRITICAL, false);
-    if (!icon.isNull()) {
-        return icon;
-    }
-    icon = power_device_get_icon_exact (UP_DEVICE_KIND_KEYBOARD, UP_DEVICE_LEVEL_CRITICAL, false);
-    if (!icon.isNull()) {
-        return icon;
+    if (icon_policy == GPM_ICON_POLICY_CRITICAL || icon_policy == GPM_ICON_POLICY_ALWAYS)
+    {
+        icon = power_device_get_icon_exact (UP_DEVICE_KIND_BATTERY, UP_DEVICE_LEVEL_CRITICAL, false);
+        if (!icon.isNull()) {
+            return icon;
+        }
+        icon = power_device_get_icon_exact (UP_DEVICE_KIND_UPS, UP_DEVICE_LEVEL_CRITICAL, false);
+        if (!icon.isNull()) {
+            return icon;
+        }
+        icon = power_device_get_icon_exact (UP_DEVICE_KIND_MOUSE, UP_DEVICE_LEVEL_CRITICAL, false);
+        if (!icon.isNull()) {
+            return icon;
+        }
+        icon = power_device_get_icon_exact (UP_DEVICE_KIND_KEYBOARD, UP_DEVICE_LEVEL_CRITICAL, false);
+        if (!icon.isNull()) {
+            return icon;
+        }
+        if(icon_policy == GPM_ICON_POLICY_CRITICAL)
+        {
+            qDebug()<< ("no devices critical, so no icon will be displayed.");
+            return QString();
+        }
     }
 
-    /* policy */
-    if (icon_policy == GPM_ICON_POLICY_CRITICAL) {
-        printf ("no devices critical, so no icon will be displayed.");
-        return QString();
-    }
 
     /* we try GPM_ENGINE_WARNING_LOW: BATTERY, UPS, MOUSE, KEYBOARD */
-    icon = power_device_get_icon_exact (UP_DEVICE_KIND_BATTERY, UP_DEVICE_LEVEL_LOW, false);
-    if (!icon.isNull()) {
-        return icon;
-    }
-    icon = power_device_get_icon_exact (UP_DEVICE_KIND_UPS, UP_DEVICE_LEVEL_LOW, false);
-    if (!icon.isNull()) {
-        return icon;
-    }
-    icon = power_device_get_icon_exact (UP_DEVICE_KIND_MOUSE, UP_DEVICE_LEVEL_LOW, false);
-    if (!icon.isNull()) {
-        return icon;
-    }
-    icon = power_device_get_icon_exact (UP_DEVICE_KIND_KEYBOARD, UP_DEVICE_LEVEL_LOW, false);
-    if (!icon.isNull()) {
-        return icon;
-    }
-    /* policy */
-    if (icon_policy == GPM_ICON_POLICY_LOW) {
-        printf ("no devices low, so no icon will be displayed.");
-        return QString();
+    if (icon_policy == GPM_ICON_POLICY_LOW || icon_policy == GPM_ICON_POLICY_ALWAYS)
+    {
+        icon = power_device_get_icon_exact (UP_DEVICE_KIND_BATTERY, UP_DEVICE_LEVEL_LOW, false);
+        if (!icon.isNull()) {
+            return icon;
+        }
+        icon = power_device_get_icon_exact (UP_DEVICE_KIND_UPS, UP_DEVICE_LEVEL_LOW, false);
+        if (!icon.isNull()) {
+            return icon;
+        }
+        icon = power_device_get_icon_exact (UP_DEVICE_KIND_MOUSE, UP_DEVICE_LEVEL_LOW, false);
+        if (!icon.isNull()) {
+            return icon;
+        }
+        icon = power_device_get_icon_exact (UP_DEVICE_KIND_KEYBOARD, UP_DEVICE_LEVEL_LOW, false);
+        if (!icon.isNull()) {
+            return icon;
+        }
+        if(icon_policy == GPM_ICON_POLICY_LOW)
+        {
+            qDebug()<< ("no devices low, so no icon will be displayed.");
+            return QString();
+        }
     }
 
     /* we try (DIS)CHARGING: BATTERY, UPS */
-    icon = power_device_get_icon_exact (UP_DEVICE_KIND_BATTERY, UP_DEVICE_LEVEL_NONE, true);
-    if (!icon.isNull()) {
-        return icon;
-    }
+    if (icon_policy == GPM_ICON_POLICY_CHARGE || icon_policy == GPM_ICON_POLICY_ALWAYS)
+    {
+        icon = power_device_get_icon_exact (UP_DEVICE_KIND_BATTERY, UP_DEVICE_LEVEL_NONE, true);
+        if (!icon.isNull()) {
+            return icon;
+        }
 
-    icon = power_device_get_icon_exact (UP_DEVICE_KIND_UPS, UP_DEVICE_LEVEL_NONE, true);
-    if (!icon.isNull()) {
-        return icon;
-    }
-
-    /* policy */
-    if (icon_policy == GPM_ICON_POLICY_CHARGE) {
-        printf ("no devices (dis)charging, so no icon will be displayed.");
-        return QString();
+        icon = power_device_get_icon_exact (UP_DEVICE_KIND_UPS, UP_DEVICE_LEVEL_NONE, true);
+        if (!icon.isNull()) {
+            return icon;
+        }
+        if(icon_policy == GPM_ICON_POLICY_CHARGE)
+        {
+            qDebug()<< ("no devices (dis)charging, so no icon will be displayed.");
+            return QString();
+        }
     }
 
     /* we try PRESENT: BATTERY, UPS */
-    icon = power_device_get_icon_exact (UP_DEVICE_KIND_BATTERY, UP_DEVICE_LEVEL_NONE, true);
-    if (!icon.isNull()) {
+    if (icon_policy == GPM_ICON_POLICY_PRESENT || icon_policy == GPM_ICON_POLICY_ALWAYS)
+    {
+        icon = power_device_get_icon_exact (UP_DEVICE_KIND_BATTERY, UP_DEVICE_LEVEL_NONE, true);
+        if (!icon.isNull()) {
             return icon;
+        }
+        icon = power_device_get_icon_exact (UP_DEVICE_KIND_UPS, UP_DEVICE_LEVEL_NONE, false);
+        if (!icon.isNull()) {
+            return icon;
+        }
+        if(icon_policy == GPM_ICON_POLICY_PRESENT)
+        {
+            qDebug()<< ("no devices present, so no icon will be displayed.");
+            return QString();
+        }
     }
-    icon = power_device_get_icon_exact (UP_DEVICE_KIND_UPS, UP_DEVICE_LEVEL_NONE, false);
+
+    //always
+    icon = power_device_get_icon_exact (UP_DEVICE_KIND_BATTERY, UP_DEVICE_LEVEL_NONE, false);
     if (!icon.isNull()) {
         return icon;
     }
-
-    /* policy */
-    if (icon_policy == GPM_ICON_POLICY_PRESENT) {
-        printf ("no devices present, so no icon will be displayed.");
-        return QString();
-    }
-
     /* we fallback to the ac_adapter icon */
-    printf ("Using fallback");
+    qDebug()<< ("Using fallback");
     return QString("gpm-ac-adapter");
 }
-
 /**
  * power_device_get_icon_exact:
  *
@@ -465,6 +479,7 @@ QString EngineDevice::power_device_get_icon_exact (UpDeviceKind device_kind, UpD
         if ((device->m_dev.kind == device_kind) && (device->m_dev.IsPresent)) {
             if (warning != UP_DEVICE_LEVEL_NONE) {
                 if (warning_temp == warning) {
+                    composite_device = device;
                     return engine_get_device_icon (device);
                 }
                 continue;
@@ -472,11 +487,13 @@ QString EngineDevice::power_device_get_icon_exact (UpDeviceKind device_kind, UpD
             if (use_state) {
 //                if (state == UP_DEVICE_STATE_CHARGING || state == UP_DEVICE_STATE_DISCHARGING) {
                 if ( state == UP_DEVICE_STATE_DISCHARGING) {
+                    composite_device = device;
                     return engine_get_device_icon (device);
                 }
 
                 continue;
             }
+            composite_device = device;
             return engine_get_device_icon (device);
         }
     }
@@ -962,11 +979,11 @@ QString EngineDevice::engine_get_device_icon (DEVICE *device)
     } else if (kind == UP_DEVICE_KIND_UPS) {
         if (!is_present) {
             /* battery missing */
-            result.sprintf ("gpm-%s-missing", prefix);
-//            result.sprintf ("gpm-%s-missing", prefix.toStdString().c_str());
+//            result.sprintf ("gpm-%s-missing", prefix);
+            result.sprintf ("gpm-%s-missing", prefix.toStdString().c_str());
 
         } else if (state == UP_DEVICE_STATE_FULLY_CHARGED) {
-            result.sprintf ("gpm-%s-100", prefix);
+            result.sprintf ("gpm-%s-100", prefix.toStdString().c_str());
 
         } else if (state == UP_DEVICE_STATE_CHARGING) {
             index_str = engine_get_device_icon_index (percentage);

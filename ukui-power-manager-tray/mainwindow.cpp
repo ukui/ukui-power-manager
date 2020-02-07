@@ -26,6 +26,7 @@
 #include <QDBusInterface>
 #include "device_form.h"
 #include <QLabel>
+#include <QPainter>
 
 #define POWER_SCHEMA "org.ukui.power-manager"
 #define POWER_SCHEMA_KEY "power-manager"
@@ -60,12 +61,13 @@ MainWindow::MainWindow(QWidget *parent) :
     set_bright = new QAction(menu);
     set_preference->setIcon(QIcon(":/22x22/apps/setting.svg"));
     set_preference->setText(tr("SetPower"));
-    show_percentage->setIcon(QIcon(":/22x22/apps/tick.png"));
+    show_percentage->setIcon(QIcon(""));
     show_percentage->setText(tr("ShowPercentage"));
     set_bright->setIcon(QIcon(":/22x22/apps/setting.svg"));
     set_bright->setText(tr("SetBrightness"));
 
     connect(set_preference,&QAction::triggered,this,&MainWindow::set_preference_func);
+    connect(set_bright,&QAction::triggered,this,&MainWindow::set_brightness_func);
     connect(show_percentage,&QAction::triggered,this,&MainWindow::show_percentage_func);
     menu->addAction(show_percentage);
     menu->addAction(set_bright);
@@ -187,8 +189,7 @@ void MainWindow::action_battery_notify(DEV dev)
 
 void MainWindow::onIconChanged(QString str)
 {
-        qDebug()<<str<<"trayicon is set";
-
+      qDebug()<<str<<"trayicon is set";
 //    str = ":/22x22/status/"+str+".png";
 //    trayIcon->setIcon(QIcon(str));
         if(!str.isNull())
@@ -196,23 +197,90 @@ void MainWindow::onIconChanged(QString str)
             QIcon icon = QIcon::fromTheme(str);
             trayIcon->setIcon(icon);
             trayIcon->show();
+
+//            str = ":/22x22/status/"+str+".png";
+//            QPixmap a(str);
+//            a = a.scaled(32,80);
+//            QIcon icon(a);
+//            trayIcon->setIcon(icon);
+//            trayIcon->show();
         }
         else {
-//            trayIcon->setVisible(false);
             trayIcon->hide();
         }
+}
+
+QPixmap MainWindow::set_percent_pixmap(QString text)
+{
+    QFont m_font("Arial");
+    QFontMetrics fmt(m_font);
+    QPixmap result(fmt.width(text), fmt.height());
+
+    QRect rect(0,0,fmt.width(text), fmt.height());
+    result.fill(Qt::transparent);
+    QPainter painter(&result);
+    painter.setFont(m_font);
+    painter.setPen(QColor(255,143,36));
+    //painter.drawText(const QRectF(fmt.width(text), fmt.height()),Qt::AlignLeft, text);
+    painter.drawText((const QRectF)(rect),text);
+
+    return result;
+
+}
+
+QIcon MainWindow::get_percent_icon(QIcon icon)
+{
+  int max_width=0;
+  int max_height = 0;
+//  dev->m_dev->Percentage = QString::number(map.value(QString("Percentage")).toDouble(), 'f', 1)+"%";
+  QString text = QString::number(ed->composite_device->m_dev.Percentage,'f',0) + "%";
+  QPixmap perct = set_percent_pixmap(text);
+  QPixmap icon_map = icon.pixmap(32,32);
+  max_height = icon_map.height();
+  max_width = perct.width()+2 + icon_map.width();
+
+
+  QPixmap result_image_h(max_width,max_height);
+  result_image_h.fill(Qt::transparent);
+
+  QPainter painter_h;
+  painter_h.begin(&result_image_h);
+  int x_number=0;
+
+  painter_h.drawPixmap(x_number,0,icon_map);
+  x_number += icon_map.width();
+  x_number +=2;
+  painter_h.drawPixmap(x_number,0,perct);
+
+  painter_h.end();
+
+  QIcon result_icon = QIcon(result_image_h);
+  return result_icon;
+}
+
+void MainWindow::set_brightness_func()
+{
+//    QProcess *cmd = new QProcess(this);
+//    cmd->start("yelp");
+    system("ukui-control-center -d &");
 }
 
 void MainWindow::set_preference_func()
 {
 //    QProcess *cmd = new QProcess(this);
 //    cmd->start("yelp");
+    system("ukui-control-center -p &");
 }
 
 void MainWindow::show_percentage_func()
 {
-//    QProcess *cmd = new QProcess(this);
-//    cmd->start("yelp");
+    want_percent = !want_percent;
+    if(want_percent)
+        show_percentage->setIcon(QIcon(":/22x22/apps/tick.png"));
+    else {
+        show_percentage->setIcon(QIcon(""));
+    }
+
 }
 
 void MainWindow::onActivatedIcon(QSystemTrayIcon::ActivationReason reason)
@@ -268,6 +336,7 @@ void MainWindow::onActivatedIcon(QSystemTrayIcon::ActivationReason reason)
 
 void MainWindow::initData()
 {
+    want_percent = false;
     saving = false;
     healthing = false;
     pressQss = "QLabel{background-color:#3593b5;}";
@@ -280,13 +349,14 @@ void MainWindow::initUi2()
 //    this->setWindowFlags(Qt::CustomizeWindowHint | Qt::FramelessWindowHint | Qt::SplashScreen);
 //    setAttribute(Qt::WA_StyledBackground,true);
 //    setWindowFlags(Qt::FramelessWindowHint|Qt::Popup);
+//    setWindowOpacity(0.95);
+
     resize(360,320);
     setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-    setWindowOpacity(0.95);
+    ui->power_title->setText(tr("PowerManagement"));
 
 //    QLabel *title = new QLabel(tr("PowerManagement"));
 //    title->setObjectName("power_title");
-    ui->power_title->setText(tr("PowerManagement"));
 //    QScrollArea *scroll_area = new QScrollArea;
 //    scroll_area->setWidget(ui->centralWidget);
 //    QSpacerItem *spacer = new QSpacerItem(10,10,QSizePolicy::Fixed,QSizePolicy::Expanding);
@@ -299,7 +369,6 @@ void MainWindow::initUi2()
 //    ui->listWidget->setItemWidget(title_item,title);
 //    title_item->setSizeHint(QSize(325,20));
     get_power_list();
-
 }
 
 int MainWindow::get_engine_dev_number()

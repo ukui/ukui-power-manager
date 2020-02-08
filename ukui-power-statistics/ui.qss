@@ -156,17 +156,18 @@ QScrollBar::handle{
                   height:30px;
                   }
 
-QScrollBar::up-arrow,QScrollBar::down-arrow {
+QScrollBar::add-line:vertical {
       width:none;
       height:none;
-      background: none;
+      background:#969191;
 }
 
-QScrollBar::left-arrow,QScrollBar::right-arrow {
+QScrollBar::sub-line:vertical {
       width:none;
       height:none;
-      background: none;
+      background:#969191;
 }
+
 QComboBox {
     border-top-right-radius: 2px; /* same radius as the QComboBox */
     border-bottom-right-radius: 2px;

@@ -97,6 +97,9 @@ QWidget:focus {
 outline: none;
 }
 
+QWidget#DeviceForm {
+margin-bottom:30px;
+}
 
 QMainWindow#MainWindow{
 
@@ -129,11 +132,11 @@ QListWidget::item
 
 }
 
-QListWidget::item:hover
+/*QListWidget::item:hover
 {
 background:rgba(61,107,229,1);
 border-radius:2px;
-}
+}*/
 
 
 QScrollBar

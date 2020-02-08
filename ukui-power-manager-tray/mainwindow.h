@@ -30,6 +30,8 @@
 #include <QDBusMessage>
 #include "customtype.h"
 #include <QDBusConnection>
+#include <QMap>
+#include <QListWidgetItem>
 
 namespace Ui {
 class MainWindow;
@@ -65,6 +67,8 @@ public Q_SLOTS:
     void action_battery_notify(DEV dev);
     void discharge_notify(DEV dev);
     void full_charge_notify(DEV dev);
+    void add_one_device(DEVICE *device);
+    void remove_one_device(DEVICE *device);
 private:
 //    QGSettings *setting;
 //    PowerDispWidget *dispWidget;
@@ -85,12 +89,12 @@ private:
     QString pressQss;
     bool saving;
     bool healthing;
+    QMap<DEVICE*,QListWidgetItem*> device_item_map;
+
 protected:
     bool event(QEvent *event);
 private Q_SLOTS:
 
-
-private:
 
 };
 

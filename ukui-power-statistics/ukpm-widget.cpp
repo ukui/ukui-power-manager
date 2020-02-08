@@ -1398,10 +1398,10 @@ void UkpmWidget::onItemChanged(QListWidgetItem* cur,QListWidgetItem* pre)
 void UkpmWidget::getSlots()
 {
 
-    QDBusConnection::systemBus().connect(DBUS_SERVICE,DBUS_OBJECT,DBUS_SERVICE,
-                                         QString("device-added"),this,SLOT(deviceAdded(QDBusMessage)));
-    QDBusConnection::systemBus().connect(DBUS_SERVICE,DBUS_OBJECT,DBUS_SERVICE,
-                                         QString("device-removed"),this,SLOT(deviceRemoved(QDBusMessage)));
+//    QDBusConnection::systemBus().connect(DBUS_SERVICE,DBUS_OBJECT,DBUS_SERVICE,
+//                                         QString("device-added"),this,SLOT(deviceAdded(QDBusMessage)));
+//    QDBusConnection::systemBus().connect(DBUS_SERVICE,DBUS_OBJECT,DBUS_SERVICE,
+//                                         QString("device-removed"),this,SLOT(deviceRemoved(QDBusMessage)));
 
     connect(listWidget,SIGNAL(currentItemChanged(QListWidgetItem*,QListWidgetItem*)),this,SLOT(onItemChanged(QListWidgetItem*,QListWidgetItem*)));
     connect(tab_widget,SIGNAL(currentChanged(int)),this,SLOT(onPageChanged(int)));

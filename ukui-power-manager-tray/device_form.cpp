@@ -4,6 +4,7 @@
 #include <QDebug>
 #include <QStyleOption>
 #include <QPainter>
+#include <QMouseEvent>
 
 DeviceForm::DeviceForm(QWidget *parent) :
     QWidget(parent),
@@ -22,6 +23,10 @@ DeviceForm::~DeviceForm()
 
 void DeviceForm::setIcon(QString name)
 {
+    if(name.contains("charging"))
+    {
+
+    }
     QIcon icon = QIcon::fromTheme(name);
     qDebug()<<icon.name()<<"-----------this is device icon---------------------";
     QPixmap pixmap = icon.pixmap(QSize(32,32));
@@ -44,12 +49,13 @@ void DeviceForm::setRemain(QString remain)
     ui->remaindata->setText(remain);
 }
 
-void DeviceForm::mouseReleaseEvent(QMouseEvent *event)
+void DeviceForm::mousePressEvent(QMouseEvent *event)
 {
-    Q_UNUSED(event);
-
-    QString cmd = "ukui-power-statistics &";
-    system(cmd.toStdString().c_str());
+    if(event->buttons() == Qt::LeftButton)
+    {
+        QString cmd = "ukui-power-statistics &";
+        system(cmd.toStdString().c_str());
+    }
 
 }
 
@@ -75,18 +81,18 @@ void DeviceForm::paintEvent(QPaintEvent *event)
  void DeviceForm::enterEvent(QEvent *event)
  {
      Q_UNUSED(event);
-//     setStyleSheet(
-//                 "background:rgba(61,107,229,1);"
-//                 "border-radius:2px;"
-//     );
+     setStyleSheet(
+                 "background:rgba(61,107,229,1);"
+                 "border-radius:2px;"
+     );
  }
 
  void DeviceForm::leaveEvent(QEvent *event)
  {
      Q_UNUSED(event);
-//     setStyleSheet(
-//                 "background:rgba(14,19,22,0.75);"
-//     );
+     setStyleSheet(
+                 "background:rgba(14,19,22,0.90);"
+     );
  }
 
 
@@ -162,7 +168,7 @@ void DeviceForm::slot_device_change(DEVICE* device)
     icon_name = ed->engine_get_device_icon(device);
     percentage = QString::number(device->m_dev.Percentage, 'f',0)+"%";
     percent_number = int (device->m_dev.Percentage);
-    state_text = ed->engine_get_state_text(device->m_dev.State);
+    state_text = ed->engine_kind_to_localised_text(device->m_dev.kind,0);
     predict = ed->engine_get_device_predict(device);
     widget_property_change();
 }

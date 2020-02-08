@@ -143,6 +143,7 @@ void EngineDevice::power_device_add(QDBusMessage msg)
         /*connect notify signals*/
         connect(dev,SIGNAL(device_property_changed(QDBusMessage,QString)),this,SLOT(power_device_change_callback(QDBusMessage,QString)));
         /*recaculate state*/
+        Q_EMIT one_device_add(dev);
 
     }
 }
@@ -155,8 +156,9 @@ void EngineDevice::power_device_remove(QDBusMessage msg)
         //list.removed
         {
             devices.removeOne(item);
-            delete item;
-            item = NULL;
+            Q_EMIT one_device_remove(item);
+//            delete item;
+//            item = NULL;
             break;
         }
 
@@ -1045,7 +1047,7 @@ QString EngineDevice::engine_get_device_icon (DEVICE *device)
         printf ("nothing matched, falling back to default icon");
         result =  ("dialog-warning");
     }
-    qDebug()<<result;
+    qDebug()<<"engine_get_device_icon:"<<result;
     return result;
 }
 

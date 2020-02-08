@@ -41,7 +41,7 @@ protected:
     void leaveEvent(QEvent *event);
     void enterEvent(QEvent *event);
     void paintEvent(QPaintEvent *event);
-    void mouseReleaseEvent(QMouseEvent *event);
+    void mousePressEvent(QMouseEvent *event);
 private:
     Ui::DeviceForm *ui;
 };

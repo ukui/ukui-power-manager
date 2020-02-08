@@ -52,6 +52,9 @@ MainWindow::MainWindow(QWidget *parent) :
 //    connect(ed,SIGNAL(engine_signal_discharge(DEV)),this,SLOT(discharge_notify(DEV)));
 //    connect(ed,SIGNAL(engine_signal_fullycharge(DEV)),this,SLOT(full_charge_notify(DEV)));
 
+    connect(ed,SIGNAL(one_device_add(DEVICE*)),this,SLOT(add_one_device(DEVICE *)));
+    connect(ed,SIGNAL(one_device_remove(DEVICE*)),this,SLOT(remove_one_device(DEVICE*)));
+
     setObjectName("MainWindow");
     initUi2();
     disp_control = true;
@@ -418,7 +421,7 @@ void MainWindow::get_power_list()
         DeviceForm *df = new DeviceForm(this);
         df->set_device(dv);
         QListWidgetItem *list_item = new QListWidgetItem(ui->listWidget);
-        list_item->setSizeHint(QSize(325,52));
+        list_item->setSizeHint(QSize(325,82));
         ui->listWidget->setItemWidget(list_item,df);
     }
 
@@ -435,11 +438,42 @@ void MainWindow::get_power_list()
 //        df->setState(state_text);
 //        df->setRemain(predict);
 //        QListWidgetItem *list_item = new QListWidgetItem(ui->listWidget);
-//        list_item->setSizeHint(QSize(325,52));
+//        list_item->setSizeHint(QSize(325,82));
 //        ui->listWidget->setItemWidget(list_item,df);
 //    }
 
 }
+
+void MainWindow::add_one_device(DEVICE *device)
+{
+    DeviceForm *df = new DeviceForm(this);
+    df->set_device(device);
+    QListWidgetItem *list_item = new QListWidgetItem(ui->listWidget);
+    list_item->setSizeHint(QSize(325,82));
+    ui->listWidget->setItemWidget(list_item,df);
+    device_item_map.insert(device,list_item);
+
+}
+
+void MainWindow::remove_one_device(DEVICE *device)
+{
+
+    if(device_item_map.contains(device))
+    {
+        QListWidgetItem *del_item = device_item_map.value(device);
+        QWidget *widget = ui->listWidget->itemWidget(del_item);
+        DeviceForm *df = qobject_cast<DeviceForm*>(widget);
+
+        ui->listWidget->removeItemWidget(del_item);
+        if(df != NULL)
+            df->deleteLater();
+        //erase map
+        device_item_map.remove(device);
+        delete del_item;
+
+    }
+}
+
 void MainWindow::iconThemeChanged()
 {
     qDebug()<<"icon theme changed";

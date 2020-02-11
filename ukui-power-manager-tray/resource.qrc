@@ -70,5 +70,6 @@
         <file>22x22/apps/setting.svg</file>
         <file>22x22/apps/tick.png</file>
         <file>22x22/apps/tick.svg</file>
+        <file>22x22/charging.gif</file>
     </qresource>
 </RCC>

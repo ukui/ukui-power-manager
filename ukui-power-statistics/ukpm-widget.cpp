@@ -257,7 +257,6 @@ void UkpmWidget::getDevices()
             {
                 item = new QListWidgetItem(QIcon(":/images/"+icon+".png"),label);
                 listItem.insert(deviceNames.at(i),item);
-//                listWidget->insertItem(i,item);
                 listWidget->addItem(item);
             }
             else
@@ -285,11 +284,7 @@ void UkpmWidget::getDevices()
             dev->m_dev->PowerSupply = boolToString(map.value(QString("PowerSupply")).toBool());
             dev->m_dev->Percentage = QString::number(map.value(QString("Percentage")).toDouble(), 'f', 1)+"%";
             dev->m_dev->Online = boolToString(map.value(QString("Online")).toBool());
-//            struct timeval tv;
-//            uint tim;
-//            gettimeofday(&tv,NULL);
-//            tim = tv.tv_sec - map.value(QString("UpdateTime")).toLongLong();
-//            dev->m_dev.Refresh = getSufix(tim,'s');
+
 
             int flag = map.value(QString("State")).toLongLong();
             switch (flag) {
@@ -323,19 +318,7 @@ void UkpmWidget::getDevices()
             dev_item.insert(item,dev);
         }
     }
-//    if(!batterySvr.isEmpty())
-//    {
-//        memcpy(&btrDetailData,&devices.at(0),sizeof(DEV));
-//    	setupBtrUI();
-//    }
-//    if(!acSvr.isEmpty())
-//    {
-//        memcpy(&dcDetailData,&devices.at(1),sizeof(DEV));
-//    	setupDcUI();
-//    }
 
-//    setupBtrUI();
-//    setupDcUI();
 
 }
 

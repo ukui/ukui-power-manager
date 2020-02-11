@@ -11,6 +11,7 @@ DeviceForm::DeviceForm(QWidget *parent) :
     ui(new Ui::DeviceForm)
 {
     ui->setupUi(this);
+    mov = new QMovie(":/22x22/charging.gif");
     setAttribute(Qt::WA_StyledBackground,true);
     ed = EngineDevice::getInstance();
 //    connect(ed,SLOT(signal_device_change(DEVICE*)),this,SLOT(slot_device_change(DEVICE*)));
@@ -18,6 +19,7 @@ DeviceForm::DeviceForm(QWidget *parent) :
 
 DeviceForm::~DeviceForm()
 {
+    delete mov;
     delete ui;
 }
 
@@ -25,8 +27,11 @@ void DeviceForm::setIcon(QString name)
 {
     if(name.contains("charging"))
     {
-
+        ui->icon->setMovie(mov);
+        mov->start();
+        return;
     }
+    mov->stop();
     QIcon icon = QIcon::fromTheme(name);
     qDebug()<<icon.name()<<"-----------this is device icon---------------------";
     QPixmap pixmap = icon.pixmap(QSize(32,32));
@@ -99,42 +104,19 @@ void DeviceForm::paintEvent(QPaintEvent *event)
  QString DeviceForm::calculate_value(int nValue,int nTotal)
  {
      QString strStyle = "";
-     int value1 = nTotal * 0.3 + 0.5;
+     int value1 = nTotal * 0.2;
      if (nValue > value1)
      {
-         QString str1;
-         QString str2;
-         float scale1 = (float)value1 / (float)nValue;
-         float scale2 = scale1 + 0.000004;
-         str1 = str1.setNum(scale1,'f',6);
-         str2 = str2.setNum(scale2,'f',6);
 
          if (nValue > (value1 * 2))
          {
-             QString str3;
-             QString str4;
 
-             float scale3 = 2.0 * scale1;
-             float scale4 = scale3 + 0.000004;
-             str3 = str3.setNum(scale3,'f',6);
-             str4 = str4.setNum(scale4,'f',6);
-             qDebug() << str3 << str4;
-//             strStyle = QString("qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, \
-//                                stop:0 rgba(255, 0, 0, 255), stop:%1 rgba(255, 0, 0, 255), \
-//                                stop:%2 rgba(255, 255, 0, 255), stop:%3 rgba(255, 255, 0, 255) \
-//                                stop:%4 rgba(0, 0, 255, 255), stop:1 rgba(0, 0, 255, 255))")
-//                 .arg(str1)
-//                 .arg(str2)
-//                 .arg(str3)
-//                 .arg(str4);
              strStyle = QString("rgba(61,107,229,1)");
 
          }
          else
          {
-//             strStyle = QString("qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 0, 0, 255), stop:%1 rgba(255, 0, 0, 255), stop:%2 rgba(255, 255, 0, 255), stop:1 rgba(255, 255, 0, 255))")
-//                 .arg(str1)
-//                 .arg(str2);
+
              strStyle = QString("rgba(248,163,76,1)");
 
          }

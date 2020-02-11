@@ -4,6 +4,7 @@
 #include <QWidget>
 #include "device.h"
 #include "enginedevice.h"
+#include <QMovie>
 
 namespace Ui {
 class DeviceForm;
@@ -23,6 +24,7 @@ public Q_SLOTS:
     void slider_changed(int value);
     void slot_device_change(DEVICE *device);
 public:
+    QMovie *mov;
     QString icon_name;
     QString state_text;
     QString percentage;

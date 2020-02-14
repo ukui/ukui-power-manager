@@ -19,6 +19,9 @@
 #include <QTranslator>
 #include <eggunique.h>
 #include "ukpm-widget.h"
+#include <QCommandLineOption>
+#include <QCommandLineParser>
+
 
 int main(int argc, char *argv[])
 {
@@ -29,27 +32,24 @@ int main(int argc, char *argv[])
         return 0;
     }
     QApplication a(argc, argv);
-//    if(argc < 3)
-//    {
-//	qDebug()<<"this program is called by ukui-power-manager with 3 arguments totally";
-//        qDebug()<<"device supported now, line_power and battery";
-//        qDebug()<<"for example: ./run --device battery";
-//        return 0;
-//    }
-//    QString dev = argv[2];
-//    if(!(dev.contains("battery")) && !(dev.contains("line_power")))
-//    {
-//        qDebug()<<"device supported now, line_power and battery";
-//        qDebug()<<"for example: ./run --device battery";
-//        return 0;
-//    }
+
+    QCommandLineParser parser;
+    QCommandLineOption op("device","device","device","");
+    parser.addOption(op);
+    parser.parse(a.arguments());
+    QString device = parser.value(op);
     QString locale = QLocale::system().name();
     QTranslator translator;
     QString qmfile = QString(":/locale/%1.qm").arg(locale);
     translator.load(qmfile);
     a.installTranslator(&translator);
-    a.setWindowIcon(QIcon(":/pro.png"));
+    a.setWindowIcon(QIcon(":/images/ukui-power-statistics.png"));
     UkpmWidget *w = new UkpmWidget;
+    if(!device.isEmpty())
+    {
+        w->set_selected_device(device);
+    }
+
     w->show();
     return a.exec();
 }

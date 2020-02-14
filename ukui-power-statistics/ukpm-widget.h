@@ -181,6 +181,7 @@ public:
     void getProperty(QString path, DEV &dev);
     void setupUI();
     void setDetailTab();
+    bool set_selected_device(QString name);
 
 public Q_SLOTS:
     void onActivatedIcon(QSystemTrayIcon::ActivationReason reason);
@@ -203,6 +204,7 @@ public Q_SLOTS:
     void ukpm_set_choice_sum();
     void ukpm_set_choice_history();
 
+    void onitemSelectionChanged();
 public:
     uint timeSpan, resolution;
     QListWidget *listWidget;
@@ -235,7 +237,6 @@ public:
     QMap<QDBusObjectPath,QListWidgetItem*> listItem;
 //    QMap<DEVICE*,QListWidgetItem*> dev_item;
     QMap<QListWidgetItem*,DEVICE*> dev_item;
-    QMap<QDBusObjectPath,QTabWidget*> widgetItem;
     QString batterySvr,acSvr;
     bool iconflag;
     QGSettings *settings;
@@ -252,7 +253,6 @@ public:
     QStandardItemModel* model;
     QTableView *tableView;
     int index_old;
-
 };
 
 #endif // UKPM_WIDGET_H

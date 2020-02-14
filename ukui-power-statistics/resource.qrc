@@ -8,6 +8,7 @@
         <file>exit.png</file>
         <file>line-power.png</file>
         <file>help.png</file>
+        <file>ukui-power-statistics.png</file>
     </qresource>
     <qresource prefix="/resource">
         <file>ui.qss</file>

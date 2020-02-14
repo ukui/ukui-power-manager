@@ -71,6 +71,27 @@ UkpmWidget::~UkpmWidget()
     }
 }
 
+bool UkpmWidget::set_selected_device(QString name)
+{
+    if(devices.size() == 0)
+    {
+        return false;
+    }
+    QDBusObjectPath objpath(name);
+    if(listItem.contains(objpath))
+    {
+        QListWidgetItem *item = listItem.value(objpath);
+        if(dev_item.contains(item))
+        {
+            qDebug()<<"set_selected_devie_inin";
+            current_device = dev_item.value(item)->m_dev;
+            listWidget->setItemSelected(item,true);
+            listWidget->setCurrentItem(item);
+        }
+    }
+    return  true;
+}
+
 QString
 UkpmWidget::device_kind_to_localised_text (UpDeviceKind kind, uint number)
 {
@@ -1138,6 +1159,7 @@ void UkpmWidget::setDetailTab()
     //排序功能
     tableView->setSortingEnabled(true);
     tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    tableView->setSelectionMode(QAbstractItemView::NoSelection);
     model = new QStandardItemModel();
 
     tableView->setModel(model);
@@ -1378,6 +1400,16 @@ void UkpmWidget::onItemChanged(QListWidgetItem* cur,QListWidgetItem* pre)
     ukpm_update_info_data(current_device);
 }
 
+void UkpmWidget::onitemSelectionChanged()
+{
+    QListWidgetItem *cur = listWidget->currentItem();
+    auto iterator = dev_item.find(cur);
+    if(iterator != dev_item.end())
+        current_device = dev_item.value(cur)->m_dev;
+    qDebug()<<"onitemSelectionChanged";
+    ukpm_update_info_data(current_device);
+}
+
 void UkpmWidget::getSlots()
 {
 
@@ -1386,7 +1418,8 @@ void UkpmWidget::getSlots()
 //    QDBusConnection::systemBus().connect(DBUS_SERVICE,DBUS_OBJECT,DBUS_SERVICE,
 //                                         QString("device-removed"),this,SLOT(deviceRemoved(QDBusMessage)));
 
-    connect(listWidget,SIGNAL(currentItemChanged(QListWidgetItem*,QListWidgetItem*)),this,SLOT(onItemChanged(QListWidgetItem*,QListWidgetItem*)));
+//        connect(listWidget,SIGNAL(currentItemChanged(QListWidgetItem*,QListWidgetItem*)),this,SLOT(onItemChanged(QListWidgetItem*,QListWidgetItem*)));
+    connect(listWidget,SIGNAL(itemSelectionChanged()),this,SLOT(onitemSelectionChanged()));
     connect(tab_widget,SIGNAL(currentChanged(int)),this,SLOT(onPageChanged(int)));
     connect(typeCombox,SIGNAL(currentIndexChanged(int)),this,SLOT(upHistoryType(int)));
     connect(spanCombox,SIGNAL(currentIndexChanged(int)),this,SLOT(upHistoryType(int)));
@@ -1702,38 +1735,29 @@ void UkpmWidget::deviceRemoved(QDBusMessage  msg)
             break;
         }
     }
-//    QMap<QDBusObjectPath,QTabWidget*>::iterator iterWidget = widgetItem.find(objectPath);
-//    if(iterWidget!= widgetItem.end())
-//    {
-//        stackedWidget->removeWidget(iterWidget.value());
-//        widgetItem.erase(iterWidget);
-//        delete iterWidget.value();
-//    }
+
 }
 
 
 void UkpmWidget::setupUI()
 {
     QDesktopWidget *deskdop = QApplication::desktop();
-//    resize(deskdop->width()/2,deskdop->height()/2);
     resize(900,580);
     move((deskdop->width() - this->width())/2, (deskdop->height() - this->height())/2);
 //    setWindowFlags(windowFlags()&~Qt::WindowMaximizeButtonHint);
-//    setWindowTitle(tr("Power Statistics"));
-    setWindowFlags(Qt::FramelessWindowHint);
 //    setWindowFlags(Qt::FramelessWindowHint|Qt::WindowMinimizeButtonHint);
+//    setFocusPolicy(Qt::NoFocus);
+    setWindowFlags(Qt::FramelessWindowHint);
     QSplitter *mainsplitter = new QSplitter(Qt::Horizontal,this);//splittering into two parts
     listWidget = new QListWidget(mainsplitter);
     listWidget->setObjectName("m_listWidget");
-    listWidget->setSpacing(10);
+//    listWidget->setSpacing(10);
     tab_widget =  new QTabWidget(mainsplitter);
 
     QList<int> list_src;
     list_src.append(180);
     list_src.append(680);
     mainsplitter->setSizes(list_src);
-//    mainsplitter->setStretchFactor(1,4);
-//    mainsplitter->setFrameStyle();
     QVBoxLayout *vlayout = new QVBoxLayout;
     vlayout->setContentsMargins(5,0,40,0);
     QFrame *header = new QFrame(this);
@@ -1751,15 +1775,17 @@ void UkpmWidget::setupUI()
     setSumTab();
     getDevices();
 
-    if(devices.size()>0)
-    {
-        current_device = devices.at(0)->m_dev;
+    current_device = NULL;
+//    if(devices.size()>0)
+//    {
+//        current_device = devices.at(0)->m_dev;
 
-        listWidget->setItemSelected(listWidget->item(0),true);
-        ukpm_update_info_data (current_device);
-    }
-    else {
-        current_device = NULL;
-    }
+//        listWidget->setItemSelected(listWidget->item(0),true);
+//        ukpm_update_info_data (current_device);
+//    }
+//    else {
+//        current_device = NULL;
+//    }
+
 }
 

@@ -192,16 +192,19 @@ border-bottom-right-radius:3px;
 
 #m_listWidget {
     margin-left: 6px;
-    margin-right: 68px;
+    margin-right: 48px;
+
+}
+
+#m_listWidget::item {
+    margin: 6px 0px;
     height:36px;
-    width:160px;
 }
 
 #m_listWidget::item:selected {
     color: white;
     background-color: #2669B5;
 }
-
 
 #m_sumGraphicType, #m_graphicType, #m_timeLabel{
     background-color:#EDEDED;

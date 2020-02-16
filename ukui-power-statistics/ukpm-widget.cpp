@@ -788,14 +788,31 @@ void UkpmWidget::draw_history_graph(QList<QPointF> list)
         foreach (QString str, labels) {
             axisY->remove(str);
         }
-        axisY->setMin(0.0);
-        axisY->setMax(10.0);
-        axisY->setStartValue(0.0);
+        double miny, maxy;
+        int size = list.size();
+        miny = maxy = list.at(0).y();
+        for(int i = 1; i< size; i++)
+        {
+            double tmp = list.at(i).y();
+            if(miny > tmp)
+                miny = tmp;
+            if(maxy < tmp)
+                maxy = tmp;
+        }
+
+        miny = floor(miny/10.0) * 10.0;
+        maxy = ceil(maxy/10.0) * 10.0;
+
+        axisY->setMin(miny);
+        axisY->setMax(maxy);
+        axisY->setStartValue(miny);
         for(int i = 0; i < 11; i++)
         {
             QString str;
-            str.sprintf("%.1fW",i*1.0);
-            axisY->append(str,i*1.0);
+            str.sprintf("%.1fW",miny+i*(maxy-miny)/10.0);
+
+            axisY->append(str,miny+i*(maxy-miny)/10.0);
+
         }
         axisY->setLabelsPosition(QCategoryAxis::AxisLabelsPositionOnValue);
 
@@ -1277,13 +1294,7 @@ QList<QPointF> UkpmWidget::getStatics(QString stat_type)
     QDBusMessage msg = QDBusMessage::createMethodCall("org.freedesktop.UPower",current_device->path,
             "org.freedesktop.UPower.Device","GetStatistics");
     QList<QPointF> list;
-//    QString sumType;
-//    QList<QPointF> data;
-//    QPointF pit;
-//    int start_x = 0;
-//    float max_y = 0;
-//    sumType = GPM_STATS_CHARGE_DATA_VALUE;
-//    settings->setString(GPM_SETTINGS_INFO_STATS_TYPE,sumType);
+
 
     msg << stat_type;
     QDBusMessage res = QDBusConnection::systemBus().call(msg);

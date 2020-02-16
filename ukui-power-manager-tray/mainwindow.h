@@ -90,9 +90,11 @@ private:
     bool saving;
     bool healthing;
     QMap<DEVICE*,QListWidgetItem*> device_item_map;
-
+    int panel_height;
+    QDBusInterface *serviceInterface;
 protected:
     bool event(QEvent *event);
+    void paintEvent(QPaintEvent *event);
 private Q_SLOTS:
 
 

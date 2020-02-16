@@ -27,9 +27,13 @@
 #include "device_form.h"
 #include <QLabel>
 #include <QPainter>
+#include <QFile>
 
 #define POWER_SCHEMA "org.ukui.power-manager"
 #define POWER_SCHEMA_KEY "power-manager"
+#define PANEL_DBUS_SERVICE "com.ukui.panel.desktop"
+#define PANEL_DBUS_PATH "/"
+#define PANEL_DBUS_INTERFACE "com.ukui.panel.desktop"
 //#define DEBUG
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -79,7 +83,11 @@ MainWindow::MainWindow(QWidget *parent) :
     trayIcon->setContextMenu(menu);
     ed->engine_policy_settings_cb("iconPolicy");
 
-//    trayIcon->show();
+    panel_height = 0;
+    serviceInterface = new QDBusInterface(PANEL_DBUS_SERVICE,
+                                        PANEL_DBUS_PATH,
+                                        PANEL_DBUS_INTERFACE,
+                                        QDBusConnection::sessionBus());
 
 }
 
@@ -201,6 +209,7 @@ void MainWindow::onIconChanged(QString str)
             trayIcon->setIcon(icon);
             trayIcon->show();
 
+//            get_percent_icon(icon);
 //            str = ":/22x22/status/"+str+".png";
 //            QPixmap a(str);
 //            a = a.scaled(32,80);
@@ -215,17 +224,19 @@ void MainWindow::onIconChanged(QString str)
 
 QPixmap MainWindow::set_percent_pixmap(QString text)
 {
+    text = "(" + text + ")";
     QFont m_font("Arial");
     QFontMetrics fmt(m_font);
-    QPixmap result(fmt.width(text), fmt.height());
+//    QPixmap result(fmt.width(text), fmt.height());
+    QPixmap result(fmt.width(text), 32);
 
-    QRect rect(0,0,fmt.width(text), fmt.height());
+    QRect rect(0,0,fmt.width(text), 32);
     result.fill(Qt::transparent);
     QPainter painter(&result);
     painter.setFont(m_font);
-    painter.setPen(QColor(255,143,36));
+    painter.setPen(QColor(255,0,0));
     //painter.drawText(const QRectF(fmt.width(text), fmt.height()),Qt::AlignLeft, text);
-    painter.drawText((const QRectF)(rect),text);
+    painter.drawText(rect,Qt::AlignCenter,text);
 
     return result;
 
@@ -257,6 +268,10 @@ QIcon MainWindow::get_percent_icon(QIcon icon)
 
   painter_h.end();
 
+  QFile file("percent.png");
+  file.open(QIODevice::WriteOnly);
+  result_image_h.save(&file,"PNG");
+  file.close();
   QIcon result_icon = QIcon(result_image_h);
   return result_icon;
 }
@@ -288,9 +303,17 @@ void MainWindow::show_percentage_func()
 
 void MainWindow::onActivatedIcon(QSystemTrayIcon::ActivationReason reason)
 {
-    //fix here later!
-//    get_power_list();
-//    QRect rect;
+    if(serviceInterface->isValid())
+    {
+        QDBusMessage msg = serviceInterface->call("GetPanelSize", ("height"));
+        if(msg.type() == QDBusMessage::ReplyMessage)
+        {
+            panel_height = msg.arguments().at(0).toInt();
+        }
+        qDebug() << "panel_height" << panel_height;
+    }
+    if(panel_height == 0)
+        panel_height = 46;
     switch (reason) {
     case QSystemTrayIcon::Trigger:{
 
@@ -305,9 +328,9 @@ void MainWindow::onActivatedIcon(QSystemTrayIcon::ActivationReason reason)
         //    qDebug()<<"screenRect.x(): "<<screenRect.x()<<"   screenRect.height(): "<<screenRect.height();
         //    qDebug()<<"availableGeometry.y(): "<<availableGeometry.y()<<"   availableGeometry.height(): "<<availableGeometry.height();
             if (screenRect.height() != availableGeometry.height()) {
-                this->move(availableGeometry.x() + availableGeometry.width() - this->width()-102, availableGeometry.height() - this->height());
+                this->move(availableGeometry.x() + availableGeometry.width() - this->width()-102, availableGeometry.height() - this->height() - 5);
             }else {
-                this->move(availableGeometry.x() + availableGeometry.width() - this->width()-102, availableGeometry.height() - this->height() - 46);
+                this->move(availableGeometry.x() + availableGeometry.width() - this->width()-102, availableGeometry.height() - this->height() - panel_height - 5);
             }
         if (!this->isHidden()) {
             this->hide();
@@ -324,9 +347,8 @@ void MainWindow::onActivatedIcon(QSystemTrayIcon::ActivationReason reason)
         break;
     }
     case QSystemTrayIcon::Context: {
-//        if (!this->isHidden()) {
-//            this->hide();
-//        }
+
+        menu->move( menu->pos().x(),menu->pos().y() - 11 );
         menu->show();
         break;
     }
@@ -350,7 +372,7 @@ void MainWindow::initUi2()
 {
     setWindowFlags(Qt::FramelessWindowHint|Qt::Popup);
 //    this->setWindowFlags(Qt::CustomizeWindowHint | Qt::FramelessWindowHint | Qt::SplashScreen);
-//    setAttribute(Qt::WA_StyledBackground,true);
+    setAttribute(Qt::WA_StyledBackground,true);
 //    setWindowFlags(Qt::FramelessWindowHint|Qt::Popup);
 //    setWindowOpacity(0.95);
 
@@ -491,8 +513,18 @@ bool MainWindow::event(QEvent *event)
     return QWidget::event(event);
 }
 
+void MainWindow::paintEvent(QPaintEvent *event)
+{
+    QStyleOption opt;
+    opt.init(this);
+    QPainter p(this);
+    style()->drawPrimitive(QStyle::PE_Widget,&opt,&p,this);
+    QWidget::paintEvent(event);
+}
+
 MainWindow::~MainWindow()
 {
+    delete serviceInterface;
 }
 
 

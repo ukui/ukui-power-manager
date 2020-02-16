@@ -1,111 +1,108 @@
 /*菜单*/
 QMenu {
-    background:rgba(14,19,22,0.90);
-    margin:4px 1px;
-    border-radius: 4px;
+    color: #ffffff;
+    background-color:rgba(19,19,20,1);
+    margin:10px 1px;
+    border:None;
+    border-radius: 6px;
+    width: 250px;
+
 }
 
 QMenu::item {
     font-size: 14px;
-    color: #ffffff;
-    height: 34px;
-    width: 244px;
-    padding:6px 30px;
+    width: 250px;
+    padding:11px 24px;
 }
 
 QMenu::item:selected{
-    background-color: rgba(190,216,239,20%);
+    background-color: rgba(255,255,255,0.15);
 }
 
 
 
 QLabel {
-height:15px;
-font-size:14px;
-font-family:Noto Sans CJK SC;
-font-weight:400;
-color:rgba(255,255,255,0.91);
-border-radius:2px;
+    height:15px;
+    font-size:14px;
+    font-family:Noto Sans CJK SC;
+    font-weight:400;
+    color:rgba(255,255,255,0.91);
+    border-radius:2px;
 
 }
 
 QLabel#power_title {
-height:20px;
-font-size:20px;
-font-family:Noto Sans CJK SC;
-font-weight:400;
-color:rgba(255,255,255,0.97);
-line-height:24px;
-
-
+    height:20px;
+    font-size:20px;
+    font-family:Noto Sans CJK SC;
+    font-weight:400;
+    color:rgba(255,255,255,0.97);
+    line-height:24px;
 }
 
 QLabel#state
 {
-height:14px;
-font-size:14px;
-font-family:Noto Sans CJK SC;
-font-weight:400;
-color:rgba(255,255,255,0.91);
+    height:14px;
+    font-size:14px;
+    font-family:Noto Sans CJK SC;
+    font-weight:400;
+    color:rgba(255,255,255,0.91);
 }
 
 QLabel#percentage
 {
-font-size:11px;
-font-family:Noto Sans CJK SC;
-font-weight:400;
-color:rgba(255,255,255,0.97);
-line-height:24px;
+    font-size:11px;
+    font-family:Noto Sans CJK SC;
+    font-weight:400;
+    color:rgba(255,255,255,0.97);
+    line-height:24px;
 
 }
 
 QLabel#remaintext
 {
-height:12px;
-font-size:12px;
-font-family:Noto Sans CJK SC;
-font-weight:400;
-color:rgba(255,255,255,0.35);
+    height:12px;
+    font-size:12px;
+    font-family:Noto Sans CJK SC;
+    font-weight:400;
+    color:rgba(255,255,255,0.35);
 }
 
 QLabel#remaindata
 {
-height:11px;
-font-size:11px;
-font-family:Noto Sans CJK SC;
-font-weight:400;
-color:rgba(255,255,255,0.91);
+    height:11px;
+    font-size:11px;
+    font-family:Noto Sans CJK SC;
+    font-weight:400;
+    color:rgba(255,255,255,0.91);
 }
 
 QProgressBar {
-width:284px;
-height:4px;
-background:rgba(255,255,255,0.1);
-border-radius:2px;
+    width:284px;
+    height:4px;
+    background:rgba(255,255,255,0.1);
+    border-radius:2px;
 }
-
-
 
 QPushButton:focus{
-padding: -1;
+    padding: -1;
 }
 
-
-QWidget{border:0px;}
+QWidget{
+    border:0px;
+}
 
 QWidget:focus {
-outline: none;
+    outline: none;
 }
 
 QWidget#DeviceForm {
-margin-bottom:30px;
+    margin-bottom:30px;
 }
 
-QMainWindow#MainWindow{
-
-background:rgba(14,19,22,0.90);
-border:1px solid rgba(255, 255, 255, 0.05);
-border-radius:3px 3px 0px 0px;
+QMainWindow {
+    background-color:rgba(19,19,20,1);
+    border-radius:6px;
 
 }
 
@@ -118,7 +115,7 @@ border-radius:3px 3px 0px 0px;
 
 QListWidget
 {
-    background:rgba(14,19,22,0.90);
+    background-color:rgba(19,19,20,1);
     border:0px;
     padding:0px 0px 0px 0px;
     margin-bottom: 20px;
@@ -134,10 +131,9 @@ QListWidget::item
 
 /*QListWidget::item:hover
 {
-background:rgba(61,107,229,1);
-border-radius:2px;
+    background:rgba(61,107,229,1);
+    border-radius:2px;
 }*/
-
 
 QScrollBar
 {
@@ -147,3 +143,4 @@ QScrollBar
     padding-top:0px;   /*上预留位置*/
     padding-bottom:0px;    /*下预留位置*/
 }
+

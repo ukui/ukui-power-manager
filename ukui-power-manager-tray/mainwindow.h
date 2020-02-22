@@ -92,6 +92,7 @@ private:
     QMap<DEVICE*,QListWidgetItem*> device_item_map;
     int panel_height;
     QDBusInterface *serviceInterface;
+    int dev_number;
 protected:
     bool event(QEvent *event);
     void paintEvent(QPaintEvent *event);

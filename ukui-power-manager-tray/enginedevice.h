@@ -24,7 +24,6 @@
 #include <QString>
 #include <QGSettings>
 
-
 #define DBUS_SERVICE "org.freedesktop.UPower"
 #define DBUS_OBJECT "/org/freedesktop/UPower"
 #define DBUS_INTERFACE "org.freedesktop.UPower"
@@ -76,6 +75,8 @@ public Q_SLOTS:
     void power_device_change_callback(QDBusMessage msg, QString path);
 
     void engine_policy_settings_cb(const QString &str);
+    void mypower_device_add(QString msg);
+    void mypower_device_removed(QString msg);
 public:
     QGSettings *settings;
     QList<DEVICE*> devices;

@@ -118,7 +118,6 @@ QListWidget
     background-color:rgba(19,19,20,1);
     border:0px;
     padding:0px 0px 0px 0px;
-    margin-bottom: 20px;
 
 }
 /**列表项*/
@@ -137,10 +136,22 @@ QListWidget::item
 
 QScrollBar
 {
-    width:1px;
-    background:rgba(14,19,22,0.90);
+    width:4px;
+    background-color:rgba(19,19,20,1);
     margin:0px,0px,0px,0px;
     padding-top:0px;   /*上预留位置*/
     padding-bottom:0px;    /*下预留位置*/
 }
 
+QScrollBar::handle
+{
+    width:4px;
+    height:80px;
+    background-color:rgba(61,107,229,1);
+    border-radius:2px;
+}
+
+QScrollBar::sub-line,QScrollBar::add-line
+{
+    height:0px;
+}

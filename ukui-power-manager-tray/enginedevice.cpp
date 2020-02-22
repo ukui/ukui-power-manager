@@ -73,9 +73,13 @@ EngineDevice::EngineDevice(QObject *parent) : QObject(parent)
     QDBusConnection::systemBus().connect(DBUS_SERVICE,DBUS_OBJECT,DBUS_SERVICE,
                                          QString("device-removed"),this,SLOT(power_device_remove(QDBusMessage)));
     settings = new QGSettings(GPM_SETTINGS_SCHEMA);
-//    engine_policy_settings_cb();
-
     connect(settings,SIGNAL(changed(const QString&)),this,SLOT(engine_policy_settings_cb(const QString&)));
+
+//    QDBusConnection::systemBus().connect(MYDBUS_SERVICE,MYDBUS_OBJECT,MYDBUS_SERVICE,
+//                                         QString("deviceadded"),this,SLOT(mypower_device_add(QString)));
+//    QDBusConnection::systemBus().connect(MYDBUS_SERVICE,MYDBUS_OBJECT,MYDBUS_SERVICE,
+//                                         QString("deviceremoved"),this,SLOT(mypower_device_removed(QString)));
+
 }
 
 void EngineDevice::engine_policy_settings_cb(const QString& str)
@@ -100,6 +104,38 @@ void EngineDevice::engine_policy_settings_cb(const QString& str)
 
     power_device_recalculate_icon();
     qDebug()<<icon_policy;
+}
+
+void EngineDevice::mypower_device_add(QString msg)
+{
+    qDebug()<<"mypower_device_add";
+    DEVICE *dev = new DEVICE;
+    dev->m_dev.path = msg;
+    dev->m_dev.kind = UP_DEVICE_KIND_BATTERY;
+    dev->m_dev.warnlevel = (UpDeviceLevel)1;
+    dev->m_dev.Capacity = 88;
+    dev->m_dev.State = (UpDeviceState)1;
+
+    /*add to array*/
+    devices.append(dev);
+    /*connect notify signals*/
+    connect(dev,SIGNAL(device_property_changed(QDBusMessage,QString)),this,SLOT(power_device_change_callback(QDBusMessage,QString)));
+    /*recaculate state*/
+    Q_EMIT one_device_add(dev);
+}
+
+void EngineDevice::mypower_device_removed(QString msg)
+{
+    qDebug()<<"mypower_device_removed";
+    Q_FOREACH (auto item, devices)
+    {
+        if(item->m_dev.path == msg)
+        {
+            devices.removeOne(item);
+            Q_EMIT one_device_remove(item);
+            break;
+        }
+    }
 }
 
 void EngineDevice::power_device_add(QDBusMessage msg)

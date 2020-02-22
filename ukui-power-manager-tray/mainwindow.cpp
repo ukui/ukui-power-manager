@@ -200,31 +200,46 @@ void MainWindow::action_battery_notify(DEV dev)
 
 void MainWindow::onIconChanged(QString str)
 {
-      qDebug()<<str<<"trayicon is set";
-//    str = ":/22x22/status/"+str+".png";
-//    trayIcon->setIcon(QIcon(str));
-        if(!str.isNull())
+    qDebug()<<str<<"trayicon is set";
+
+    /*if(!str.isNull())
+    {
+        QIcon icon = QIcon::fromTheme(str);
+        trayIcon->setIcon(icon);
+        trayIcon->show();
+
+        str = ":/22x22/status/"+str+".png";
+        QPixmap a(str);
+        a = a.scaled(32,80);
+        QIcon icon(a);
+        trayIcon->setIcon(icon);
+        trayIcon->show();
+    }
+    else {
+        trayIcon->hide();
+    }*/
+
+    if(!str.isNull())
+    {
+        QIcon icon = QIcon::fromTheme(str);
+        if(!want_percent)
         {
-            QIcon icon = QIcon::fromTheme(str);
             trayIcon->setIcon(icon);
             trayIcon->show();
-
-//            get_percent_icon(icon);
-//            str = ":/22x22/status/"+str+".png";
-//            QPixmap a(str);
-//            a = a.scaled(32,80);
-//            QIcon icon(a);
-//            trayIcon->setIcon(icon);
-//            trayIcon->show();
         }
         else {
-            trayIcon->hide();
+            QIcon merge_icon = get_percent_icon(icon);
+            trayIcon->setIcon(merge_icon);
+            trayIcon->show();
         }
+    }
+    else {
+        trayIcon->hide();
+    }
 }
 
 QPixmap MainWindow::set_percent_pixmap(QString text)
 {
-    text = "(" + text + ")";
     QFont m_font("Arial");
     QFontMetrics fmt(m_font);
 //    QPixmap result(fmt.width(text), fmt.height());
@@ -234,9 +249,9 @@ QPixmap MainWindow::set_percent_pixmap(QString text)
     result.fill(Qt::transparent);
     QPainter painter(&result);
     painter.setFont(m_font);
-    painter.setPen(QColor(255,0,0));
+    painter.setPen(QColor(255,255,255));
     //painter.drawText(const QRectF(fmt.width(text), fmt.height()),Qt::AlignLeft, text);
-    painter.drawText(rect,Qt::AlignCenter,text);
+    painter.drawText(rect,Qt::AlignVCenter|Qt::AlignLeft,text);
 
     return result;
 
@@ -294,9 +309,13 @@ void MainWindow::show_percentage_func()
 {
     want_percent = !want_percent;
     if(want_percent)
+    {
         show_percentage->setIcon(QIcon(":/22x22/apps/tick.png"));
+        onIconChanged(ed->previous_icon);
+    }
     else {
         show_percentage->setIcon(QIcon(""));
+        onIconChanged(ed->previous_icon);
     }
 
 }
@@ -374,11 +393,13 @@ void MainWindow::initUi2()
 //    this->setWindowFlags(Qt::CustomizeWindowHint | Qt::FramelessWindowHint | Qt::SplashScreen);
     setAttribute(Qt::WA_StyledBackground,true);
 //    setWindowFlags(Qt::FramelessWindowHint|Qt::Popup);
-//    setWindowOpacity(0.95);
 
-    resize(360,320);
+    dev_number = get_engine_dev_number();
+//    dev_number = 3;
+    resize(360,72 + 82*(dev_number>3?3:dev_number));
     setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     ui->power_title->setText(tr("PowerManagement"));
+    ui->listWidget->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
 //    QLabel *title = new QLabel(tr("PowerManagement"));
 //    title->setObjectName("power_title");
@@ -447,7 +468,7 @@ void MainWindow::get_power_list()
         ui->listWidget->setItemWidget(list_item,df);
     }
 
-//    for(int i = 0; i < 2; i++)
+//    for(int i = 0; i < 5; i++)
 //    {
 //        QString icon_name = "gpm-battery-080-charging.png";
 //        QString percentage = QString::number(92.0, 'f',0)+"%";
@@ -474,6 +495,17 @@ void MainWindow::add_one_device(DEVICE *device)
     list_item->setSizeHint(QSize(325,82));
     ui->listWidget->setItemWidget(list_item,df);
     device_item_map.insert(device,list_item);
+    dev_number ++;
+    if(dev_number > 3)
+    {
+        ui->listWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+    }
+    else
+    {
+        resize(360,72 + 82*dev_number);
+        ui->listWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        move(pos().x(),pos().y()-82);
+    }
 
 }
 
@@ -492,7 +524,21 @@ void MainWindow::remove_one_device(DEVICE *device)
         //erase map
         device_item_map.remove(device);
         delete del_item;
-
+        dev_number --;
+//        resize(360,72 + 82*(dev_number>3?3:dev_number));
+        if(dev_number > 3)
+        {
+            ui->listWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        }
+        else
+        {
+            ui->listWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+            if(dev_number < 3)
+            {
+                resize(360,72 + 82*dev_number);
+                move(pos().x(),pos().y()+82);
+            }
+        }
     }
 }
 

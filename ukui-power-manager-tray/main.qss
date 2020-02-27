@@ -1,7 +1,7 @@
 /*菜单*/
 QMenu {
     color: #ffffff;
-    background-color:rgba(19,19,20,1);
+    background-color:rgba(19,19,20,90%);
     margin:10px 1px;
     border:None;
     border-radius: 6px;
@@ -12,7 +12,7 @@ QMenu {
 QMenu::item {
     font-size: 14px;
     width: 250px;
-    padding:11px 24px;
+    padding:11px 0px;
 }
 
 QMenu::item:selected{
@@ -101,7 +101,7 @@ QWidget#DeviceForm {
 }
 
 QMainWindow {
-    background-color:rgba(19,19,20,1);
+    background-color:rgba(19,19,20,90%);
     border-radius:6px;
 
 }
@@ -115,7 +115,7 @@ QMainWindow {
 
 QListWidget
 {
-    background-color:rgba(19,19,20,1);
+    background-color:rgba(19,19,20,90%);
     border:0px;
     padding:0px 0px 0px 0px;
 
@@ -137,7 +137,7 @@ QListWidget::item
 QScrollBar
 {
     width:4px;
-    background-color:rgba(19,19,20,1);
+    background-color:rgba(19,19,20,0.90);
     margin:0px,0px,0px,0px;
     padding-top:0px;   /*上预留位置*/
     padding-bottom:0px;    /*下预留位置*/

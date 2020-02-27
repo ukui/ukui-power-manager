@@ -32,6 +32,8 @@
 #include <QDBusConnection>
 #include <QMap>
 #include <QListWidgetItem>
+#include <QWidgetAction>
+#include <QLabel>
 
 namespace Ui {
 class MainWindow;
@@ -78,9 +80,10 @@ private:
     EngineDevice* ed;
 
     QMenu *menu;
-    QAction *set_preference;
-    QAction *show_percentage;
-    QAction *set_bright;
+    QWidgetAction *set_preference;
+    QWidgetAction *show_percentage;
+    QLabel *percent_label;
+    QWidgetAction *set_bright;
     QScrollArea *scroll_area;
     Ui::MainWindow *ui;
     QWidget *pow_widget;
@@ -95,7 +98,7 @@ private:
     int dev_number;
 protected:
     bool event(QEvent *event);
-    void paintEvent(QPaintEvent *event);
+//    void paintEvent(QPaintEvent *event);
 private Q_SLOTS:
 
 

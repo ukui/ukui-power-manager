@@ -45,7 +45,7 @@ Q_DECLARE_METATYPE(StructUdu)
 
 
 #define GPM_UP_TIME_PRECISION			5*60
-#define GPM_UP_TEXT_MIN_TIME			120
+#define GPM_UP_TEXT_MIN_TIME			0
 
 
 int precision_round_down (float value, int smallest);

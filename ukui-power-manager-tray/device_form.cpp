@@ -114,7 +114,7 @@ void DeviceForm::paintEvent(QPaintEvent *event)
  {
      Q_UNUSED(event);
      setStyleSheet(
-                 "QWidget {background:rgba(14,19,22,0.90);}"
+                 "QWidget {background-color:rgba(19,19,20,90%);}"
                  "QProgressBar {"
                  "width:284px;"
                  "height:4px;"

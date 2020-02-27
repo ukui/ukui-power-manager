@@ -475,7 +475,7 @@ QString EngineDevice::power_device_get_icon()
     /* we try PRESENT: BATTERY, UPS */
     if (icon_policy == GPM_ICON_POLICY_PRESENT || icon_policy == GPM_ICON_POLICY_ALWAYS)
     {
-        icon = power_device_get_icon_exact (UP_DEVICE_KIND_BATTERY, UP_DEVICE_LEVEL_NONE, true);
+        icon = power_device_get_icon_exact (UP_DEVICE_KIND_BATTERY, UP_DEVICE_LEVEL_NONE, false);
         if (!icon.isNull()) {
             return icon;
         }

@@ -87,7 +87,7 @@ void DeviceWidget::paintEvent(QPaintEvent *event)
  {
      Q_UNUSED(event);
      setStyleSheet(
-                 "background:rgba(61,107,229,1);"
+                 "background:rgb(61,107,229);"
                  "border-radius:2px;"
      );
  }
@@ -96,6 +96,6 @@ void DeviceWidget::paintEvent(QPaintEvent *event)
  {
      Q_UNUSED(event);
      setStyleSheet(
-                 "background:rgba(14,19,22,0.75);"
+                 "background:rgb(19,19,20);"
      );
  }

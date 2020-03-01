@@ -1,8 +1,7 @@
-/*菜单*/
 QMenu {
     color: #ffffff;
-    background-color:rgba(19,19,20,90%);
-    margin:10px 1px;
+    background-color:rgb(19,19,20);
+    padding: 6px 0px 6px 0px;
     border:None;
     border-radius: 6px;
     width: 250px;
@@ -103,8 +102,14 @@ QWidget#DeviceForm {
 QMainWindow {
     background-color:rgba(19,19,20,90%);
     border-radius:6px;
+}
+
+QMainWindow#centralWidget {
+    background-color:rgba(19,19,20);
+    border-radius:6px;
 
 }
+
 
 /*QListWidget {
     margin-left: 8px;

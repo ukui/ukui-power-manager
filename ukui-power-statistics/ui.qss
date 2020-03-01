@@ -223,3 +223,6 @@ QChart {
 text-color:#111111;
 }
 
+QSplitter {
+    width:0px;
+}

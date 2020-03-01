@@ -34,7 +34,6 @@
 #define PANEL_DBUS_SERVICE "com.ukui.panel.desktop"
 #define PANEL_DBUS_PATH "/"
 #define PANEL_DBUS_INTERFACE "com.ukui.panel.desktop"
-//#define DEBUG
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -59,90 +58,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ed,SIGNAL(one_device_add(DEVICE*)),this,SLOT(add_one_device(DEVICE *)));
     connect(ed,SIGNAL(one_device_remove(DEVICE*)),this,SLOT(remove_one_device(DEVICE*)));
 
-    setObjectName("MainWindow");
-    initUi2();
-    disp_control = true;
-    menu = new QMenu(this);
-    menu->setWindowOpacity(0.90);
-    set_preference  = new QWidgetAction(menu);
-    show_percentage = new QWidgetAction(menu);
-    set_bright = new QWidgetAction(menu);
-
-//    set_preference->setIcon(QIcon(":/22x22/apps/setting.svg"));
-//    set_preference->setText(tr("SetPower"));
-    QHBoxLayout *hbox_preference = new QHBoxLayout;
-    QLabel *preference_label = new QLabel(this);
-    QLabel *preference_text = new QLabel(this);
-    QWidget *preference_widget = new QWidget(this);
-    preference_label->setFixedSize(QSize(16,16));
-    preference_label->setPixmap(QPixmap(":/22x22/apps/setting.svg"));
-    preference_text->setText(tr("SetPower"));
-    preference_label->setStyleSheet("QLabel{background:transparent;border:0px;}");
-    preference_text->setStyleSheet("QLabel{background:transparent;border:0px;}");
-    hbox_preference->addWidget(preference_label);
-    hbox_preference->addWidget(preference_text);
-    preference_widget->setLayout(hbox_preference);
-    preference_widget->setFocusPolicy(Qt::NoFocus);
-    preference_widget->setFixedSize(QSize(248,36));
-    hbox_preference->setSpacing(10);
-    set_preference->setDefaultWidget(preference_widget);
-    preference_widget->setStyleSheet("QWidget{background:transparent;border:0px;}\
-                                     QWidget:hover{background-color:rgba(255,255,255,0.15);}");
-
-    QHBoxLayout *hbox_percent = new QHBoxLayout;
-    percent_label = new QLabel(this);
-    QLabel *percent_text = new QLabel(this);
-    QWidget *percent_widget = new QWidget(this);
-    percent_label->setFixedSize(QSize(16,16));
-    percent_label->setPixmap(QPixmap(":/22x22/apps/tick.png"));
-    percent_text->setText(tr("ShowPercentage"));
-    percent_label->setStyleSheet("QLabel{background:transparent;border:0px;}");
-    percent_text->setStyleSheet("QLabel{background:transparent;border:0px;}");
-    hbox_percent->addWidget(percent_label);
-    hbox_percent->addWidget(percent_text);
-    percent_widget->setLayout(hbox_percent);
-    percent_widget->setFocusPolicy(Qt::NoFocus);
-    percent_widget->setFixedSize(QSize(248,36));
-
-    hbox_percent->setSpacing(10);
-    show_percentage->setDefaultWidget(percent_widget);
-    percent_widget->setStyleSheet("QWidget{background:transparent;border:0px;}\
-                                  QWidget:hover{background-color:rgba(255,255,255,0.15);}");
-
-//    show_percentage->setIcon(QIcon(""));
-//    show_percentage->setText(tr("ShowPercentage"));
-
-//    set_bright->setIcon(QIcon(":/22x22/apps/setting.svg"));
-//    set_bright->setText(tr("SetBrightness"));
-    QHBoxLayout *hbox_bright= new QHBoxLayout;
-    QLabel *bright_label = new QLabel(this);
-    QLabel *bright_text = new QLabel(this);
-    QWidget *bright_widget = new QWidget(this);
-    bright_label->setFixedSize(QSize(16,16));
-    bright_label->setPixmap(QPixmap(":/22x22/apps/setting.svg"));
-    bright_text->setText(tr("SetBrightness"));
-    bright_label->setStyleSheet("QLabel{background:transparent;border:0px;}");
-    bright_text->setStyleSheet("QLabel{background:transparent;border:0px;}");
-    hbox_bright->addWidget(bright_label);
-    hbox_bright->addWidget(bright_text);
-    bright_widget->setLayout(hbox_bright);
-    bright_widget->setFocusPolicy(Qt::NoFocus);
-    bright_widget->setFixedSize(QSize(248,36));
-    hbox_bright->setSpacing(10);
-    set_bright->setDefaultWidget(bright_widget);
-    bright_widget->setStyleSheet("QWidget{background:transparent;border:0px;}\
-            QWidget:hover{background-color:rgba(255,255,255,0.15);}");
-
-    connect(set_preference,&QAction::triggered,this,&MainWindow::set_preference_func);
-    connect(set_bright,&QAction::triggered,this,&MainWindow::set_brightness_func);
-    connect(show_percentage,&QAction::triggered,this,&MainWindow::show_percentage_func);
-    menu->addAction(show_percentage);
-    menu->addAction(set_bright);
-    menu->addAction(set_preference);
-
-    trayIcon->setContextMenu(menu);
+    initUi();
     ed->engine_policy_settings_cb("iconPolicy");
-
     panel_height = 0;
     serviceInterface = new QDBusInterface(PANEL_DBUS_SERVICE,
                                         PANEL_DBUS_PATH,
@@ -279,6 +196,7 @@ void MainWindow::onIconChanged(QString str)
         trayIcon->hide();
     }*/
 
+    want_percent = false;
     if(!str.isNull())
     {
         QIcon icon = QIcon::fromTheme(str);
@@ -450,20 +368,23 @@ void MainWindow::initData()
     releaseQss = "QLabel{background-color:#283138;}";
 }
 
-void MainWindow::initUi2()
+void MainWindow::initUi()
 {
     setWindowFlags(Qt::FramelessWindowHint|Qt::Popup);
 //    this->setWindowFlags(Qt::CustomizeWindowHint | Qt::FramelessWindowHint | Qt::SplashScreen);
     setAttribute(Qt::WA_StyledBackground,true);
-//    setWindowFlags(Qt::FramelessWindowHint|Qt::Popup);
+    setAttribute(Qt::WA_TranslucentBackground);
     setWindowOpacity(0.90);
     dev_number = get_engine_dev_number();
-//    dev_number = 3;
     resize(360,72 + 82*(dev_number>3?3:dev_number));
     setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     ui->power_title->setText(tr("PowerManagement"));
     ui->listWidget->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
+    setStyleSheet("#centralWidget {"
+                  "background-color:rgba(19,19,20);"
+                  "border-radius:6px;}"
+                  );
 //    QLabel *title = new QLabel(tr("PowerManagement"));
 //    title->setObjectName("power_title");
 //    QScrollArea *scroll_area = new QScrollArea;
@@ -478,6 +399,84 @@ void MainWindow::initUi2()
 //    ui->listWidget->setItemWidget(title_item,title);
 //    title_item->setSizeHint(QSize(325,20));
     get_power_list();
+
+    menu = new QMenu(this);
+    menu->setWindowOpacity(0.90);
+    menu->setAttribute(Qt::WA_TranslucentBackground);
+    menu->setWindowFlag(Qt::FramelessWindowHint);
+    set_preference  = new QWidgetAction(menu);
+    show_percentage = new QWidgetAction(menu);
+    set_bright = new QWidgetAction(menu);
+
+    QHBoxLayout *hbox_preference = new QHBoxLayout;
+    QLabel *preference_label = new QLabel(this);
+    QLabel *preference_text = new QLabel(this);
+    QWidget *preference_widget = new QWidget(this);
+    preference_label->setFixedSize(QSize(16,16));
+    preference_label->setPixmap(QPixmap(":/22x22/apps/setting.svg"));
+    preference_text->setText(tr("SetPower"));
+    preference_label->setStyleSheet("QLabel{background:transparent;border:0px;}");
+    preference_text->setStyleSheet("QLabel{background:transparent;border:0px;}");
+    hbox_preference->addWidget(preference_label);
+    hbox_preference->addWidget(preference_text);
+    preference_widget->setLayout(hbox_preference);
+    preference_widget->setFocusPolicy(Qt::NoFocus);
+    preference_widget->setFixedSize(QSize(250,36));
+    hbox_preference->setSpacing(10);
+    set_preference->setDefaultWidget(preference_widget);
+    preference_widget->setStyleSheet("QWidget{background:transparent;border:0px;}\
+                                     QWidget:hover{background-color:rgba(255,255,255,0.15);}"
+                                     "border-radius:none");
+
+    QHBoxLayout *hbox_percent = new QHBoxLayout;
+    percent_label = new QLabel(this);
+    QLabel *percent_text = new QLabel(this);
+    QWidget *percent_widget = new QWidget(this);
+    percent_label->setFixedSize(QSize(16,16));
+    percent_label->setPixmap(QPixmap(":/22x22/apps/tick.png"));
+    percent_text->setText(tr("ShowPercentage"));
+    percent_label->setStyleSheet("QLabel{background:transparent;border:0px;}");
+    percent_text->setStyleSheet("QLabel{background:transparent;border:0px;}");
+    hbox_percent->addWidget(percent_label);
+    hbox_percent->addWidget(percent_text);
+    percent_widget->setLayout(hbox_percent);
+    percent_widget->setFocusPolicy(Qt::NoFocus);
+    percent_widget->setFixedSize(QSize(250,36));
+
+    hbox_percent->setSpacing(10);
+    show_percentage->setDefaultWidget(percent_widget);
+    percent_widget->setStyleSheet("QWidget{background:transparent;border:0px;}\
+                                  QWidget:hover{background-color:rgba(255,255,255,0.15);}"
+                                 "border-radius:0px");
+
+    QHBoxLayout *hbox_bright= new QHBoxLayout;
+    QLabel *bright_label = new QLabel(this);
+    QLabel *bright_text = new QLabel(this);
+    QWidget *bright_widget = new QWidget(this);
+    bright_label->setFixedSize(QSize(16,16));
+    bright_label->setPixmap(QPixmap(":/22x22/apps/setting.svg"));
+    bright_text->setText(tr("SetBrightness"));
+    bright_label->setStyleSheet("QLabel{background:transparent;border:0px;}");
+    bright_text->setStyleSheet("QLabel{background:transparent;border:0px;}");
+    hbox_bright->addWidget(bright_label);
+    hbox_bright->addWidget(bright_text);
+    bright_widget->setLayout(hbox_bright);
+    bright_widget->setFocusPolicy(Qt::NoFocus);
+    bright_widget->setFixedSize(QSize(250,36));
+    hbox_bright->setSpacing(10);
+    set_bright->setDefaultWidget(bright_widget);
+    bright_widget->setStyleSheet("QWidget{background:transparent;border:0px;}"
+                                 "QWidget:hover{background-color:rgba(255,255,255,0.15);}"
+                                 "border-radius:0px");
+
+    connect(set_preference,&QAction::triggered,this,&MainWindow::set_preference_func);
+    connect(set_bright,&QAction::triggered,this,&MainWindow::set_brightness_func);
+    connect(show_percentage,&QAction::triggered,this,&MainWindow::show_percentage_func);
+    menu->addAction(show_percentage);
+    menu->addAction(set_bright);
+    menu->addAction(set_preference);
+
+    trayIcon->setContextMenu(menu);
 }
 
 int MainWindow::get_engine_dev_number()

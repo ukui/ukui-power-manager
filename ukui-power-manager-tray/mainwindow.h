@@ -21,7 +21,6 @@
 #include <QMainWindow>
 #include <QGSettings>
 #include <QSystemTrayIcon>
-//#include "powerdispwidget.h"
 #include <QMenu>
 #include <QScrollArea>
 #include "device_widget.h"
@@ -47,8 +46,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-//    void initUi();
-    void initUi2();
+    void initUi();
     void get_power_list();
     void initData();
     int get_engine_dev_number();
@@ -73,9 +71,7 @@ public Q_SLOTS:
     void remove_one_device(DEVICE *device);
 private:
 //    QGSettings *setting;
-//    PowerDispWidget *dispWidget;
     QSystemTrayIcon* trayIcon;
-    bool disp_control;
     QList<QDBusObjectPath> deviceNames;
     EngineDevice* ed;
 

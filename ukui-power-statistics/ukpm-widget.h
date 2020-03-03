@@ -172,7 +172,7 @@ public:
     void ukpm_update_info_page_history(DEV *device);
     void getSlots();
     void draw_history_graph(QList<QPointF> list);
-    void draw_stats_graph(QList<QPointF> list);
+    void draw_stats_graph(QString type);
     void addListRow(QString attr, QString value);
     void setInfoUI();
     QList<QPointF> getHistory(QString type, uint timeSpan);
@@ -253,6 +253,8 @@ public:
     QStandardItemModel* model;
     QTableView *tableView;
     int index_old;
+    int calculate_up_number(float value, int div);
+    int calculate_down_number(float value, int div);
 };
 
 #endif // UKPM_WIDGET_H

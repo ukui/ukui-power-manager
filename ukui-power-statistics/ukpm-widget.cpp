@@ -622,10 +622,62 @@ void UkpmWidget::ukpm_update_info_page_history (DEV* device)
     draw_history_graph(list);
 }
 
-void UkpmWidget::draw_stats_graph(QList<QPointF> list)
+int UkpmWidget::calculate_up_number(float value, int div)
+{
+    float res;
+    if(fabs(value) < 0.01)
+        return 0;
+    if(div == 0)
+        return 0;
+    res = (float) value / (float) div;
+    res = ceil(res);
+    res *= div;
+    return (int)res;
+}
+
+int UkpmWidget::calculate_down_number(float value, int div)
+{
+    float res;
+    if(fabs(value) < 0.01)
+        return 0;
+    if(div == 0)
+        return 0;
+    res = (float)value / (float)div;
+    res = floor(res);
+    res *= div;
+    return (int)res;
+}
+
+void UkpmWidget::draw_stats_graph(QString type)
 {
     int start_x = 0;
-    float max_y = 0;
+    float max_y = FLT_MIN;
+    float min_y = FLT_MAX;
+    int starty,stopy;
+
+    QDBusMessage msg = QDBusMessage::createMethodCall("org.freedesktop.UPower",current_device->path,
+            "org.freedesktop.UPower.Device","GetStatistics");
+    QList<QPointF> list;
+
+    msg << type;
+    QDBusMessage res = QDBusConnection::systemBus().call(msg);
+    if(res.type() == QDBusMessage::ReplyMessage)
+    {
+//        printf("GetStatistics:get %d arg from bus!\n",res.arguments().count());
+        QDBusArgument dbusArg = res.arguments().at(0).value<QDBusArgument>();
+        dbusArg >> list;
+    }
+    else {
+        qDebug()<<"error of qdbus reply";
+
+    }
+    if(list.isEmpty())
+    {
+        sumStack->setCurrentIndex(0);
+        return;
+    }
+    sumStack->setCurrentIndex(1);
+
     QPointF pit;
     QList<QPointF> data;
     int index = sumTypeCombox->currentIndex();
@@ -634,14 +686,28 @@ void UkpmWidget::draw_stats_graph(QList<QPointF> list)
         foreach(pit, list)
         {
             data.append(QPointF(start_x++,pit.x()));
-            if(max_y < fabs(pit.x()))
-                max_y = fabs(pit.x());
+            if(max_y < (pit.x()))
+                max_y = (pit.x());
+            if(min_y > (pit.x()))
+                min_y = pit.x();
         }
-        max_y = ceil(max_y);
+
+        if(max_y - min_y < 0.0001)
+        {
+            max_y++;
+            min_y--;
+        }
+        starty = calculate_down_number(min_y,1);
+        stopy = calculate_up_number(max_y,1);
+        if(fabs(stopy) > fabs(starty))
+            starty = -stopy;
+        else
+            stopy = -starty;
+
         sumSeries->replace(data);
         sumSpline->replace(data);
         y->setTitleText(tr("adjust factor"));
-        y->setRange(-max_y,+max_y);
+        y->setRange(starty,stopy);
         y->setLabelFormat("%.1f");
         x->setTitleText(tr("battery power"));
         x->setRange(0,100);
@@ -657,11 +723,25 @@ void UkpmWidget::draw_stats_graph(QList<QPointF> list)
             data.append(QPointF(start_x++,pit.y()));
             if(max_y < (pit.y()))
                 max_y = (pit.y());
+            if(min_y > pit.y())
+                min_y = pit.y();
         }
+        if(max_y - min_y < 0.0001)
+        {
+            max_y++;
+            min_y--;
+        }
+        starty = calculate_down_number(min_y,10);
+        stopy = calculate_up_number(max_y,10);
+        if(stopy >= 90)
+            stopy = 100;
+        if(starty >0 && starty <= 10)
+            starty = 0;
+
         sumSeries->replace(data);
         sumSpline->replace(data);
         y->setTitleText(tr("Predict Accurency"));
-        y->setRange(0,max_y);
+        y->setRange(starty,stopy);
         y->setLabelFormat("%d%");
         x->setTitleText(tr("battery power"));
         x->setRange(0,100);
@@ -670,18 +750,31 @@ void UkpmWidget::draw_stats_graph(QList<QPointF> list)
         y->setTickCount(10);
     }
     else if(index == DISCHARGING)
-    {
+    {        
         foreach(pit, list)
         {
             data.append(QPointF(start_x++,pit.x()));
-            if(max_y < fabs(pit.x()))
-                max_y = fabs(pit.x());
+            if(max_y < (pit.x()))
+                max_y = (pit.x());
+            if(min_y > (pit.x()))
+                min_y = pit.x();
         }
-        max_y = ceil(max_y);
+        if(max_y - min_y < 0.0001)
+        {
+            max_y++;
+            min_y--;
+        }
+        starty = calculate_down_number(min_y,1);
+        stopy = calculate_up_number(max_y,1);
+        if(fabs(stopy) > fabs(starty))
+            starty = -stopy;
+        else
+            stopy = -starty;
+
         sumSeries->replace(data);
         sumSpline->replace(data);
         y->setTitleText(tr("adjust factor"));
-        y->setRange(-max_y,+max_y);
+        y->setRange(starty,stopy);
         y->setLabelFormat("%.1f");
         x->setTitleText(tr("battery power"));
         x->setRange(0,100);
@@ -696,20 +789,34 @@ void UkpmWidget::draw_stats_graph(QList<QPointF> list)
             data.append(QPointF(start_x++,pit.y()));
             if(max_y < (pit.y()))
                 max_y = (pit.y());
+            if(min_y > pit.y())
+                min_y = pit.y();
         }
+        if(max_y - min_y < 0.0001)
+        {
+            max_y++;
+            min_y--;
+        }
+        starty = calculate_down_number(min_y,10);
+        stopy = calculate_up_number(max_y,10);
+        if(stopy >= 90)
+            stopy = 100;
+        if(starty >0 && starty <= 10)
+            starty = 0;
+        qDebug()<<starty << stopy;
         sumSeries->replace(data);
         sumSpline->replace(data);
         y->setTitleText(tr("Predict Accurency"));
-        y->setRange(0,max_y);
+        y->setRange(0,100);
+//        y->setRange(starty,stopy);
         y->setLabelFormat("%d%");
+        y->setTickCount(10);
+
         x->setTitleText(tr("battery power"));
         x->setRange(0,100);
         x->setLabelFormat("%d%");
         x->setTickCount(10);
-        y->setTickCount(10);
     }
-
-    sumStack->setCurrentIndex(1);
 }
 
 void UkpmWidget::ukpm_set_choice_sum()
@@ -1016,29 +1123,25 @@ void UkpmWidget::ukpm_update_info_page_stats (DEV* device)
     if(index == CHARGE)
     {
         type = "charging";
-        settings->setString(GPM_SETTINGS_INFO_STATS_TYPE,GPM_STATS_CHARGE_DATA_VALUE);
     }
     else if(index == CHARGE_ACCURENCY)
     {
         type = "charging";
-        settings->setString(GPM_SETTINGS_INFO_STATS_TYPE,GPM_STATS_CHARGE_ACCURACY_VALUE);
     }
     else if(index == DISCHARGING)
     {
         type = "discharging";
-        settings->setString(GPM_SETTINGS_INFO_STATS_TYPE,GPM_STATS_DISCHARGE_DATA_VALUE);
     }
     else if(index == DISCHARGING_ACCURENCY)
     {
         type = "discharging";
-        settings->setString(GPM_SETTINGS_INFO_STATS_TYPE,GPM_STATS_DISCHARGE_ACCURACY_VALUE);
     }
 
-    QList<QPointF> list = getStatics(type);
-    if (list.size() == 0) {
-        return;
-    }
-    draw_stats_graph (list);
+//    QList<QPointF> list = getStatics(type);
+//    if (list.size() == 0) {
+//        return;
+//    }
+    draw_stats_graph (type);
 //    ukpm_set_choice_sum();
 
 }
@@ -1406,9 +1509,12 @@ void UkpmWidget::onItemChanged(QListWidgetItem* cur,QListWidgetItem* pre)
     Q_UNUSED(pre);
     auto iterator = dev_item.find(cur);
     if(iterator != dev_item.end())
+    {
         current_device = dev_item.value(cur)->m_dev;
+        ukpm_update_info_data(current_device);
+
+    }
     qDebug()<<"onItemChanged";
-    ukpm_update_info_data(current_device);
 }
 
 void UkpmWidget::onitemSelectionChanged()
@@ -1416,9 +1522,12 @@ void UkpmWidget::onitemSelectionChanged()
     QListWidgetItem *cur = listWidget->currentItem();
     auto iterator = dev_item.find(cur);
     if(iterator != dev_item.end())
+    {
         current_device = dev_item.value(cur)->m_dev;
+        ukpm_update_info_data(current_device);
+
+    }
     qDebug()<<"onitemSelectionChanged";
-    ukpm_update_info_data(current_device);
 }
 
 void UkpmWidget::getSlots()

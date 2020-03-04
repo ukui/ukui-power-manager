@@ -57,10 +57,10 @@ public:
     QString calculate_value(int nValue, int nTotal);
     void set_device(DEVICE *dev);
 protected:
-    void leaveEvent(QEvent *event);
-    void enterEvent(QEvent *event);
     void paintEvent(QPaintEvent *event);
-    void mousePressEvent(QMouseEvent *event);
+//    void leaveEvent(QEvent *event);
+//    void enterEvent(QEvent *event);
+//    void mousePressEvent(QMouseEvent *event);
 private:
     Ui::DeviceForm *ui;
 };

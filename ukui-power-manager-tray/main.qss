@@ -5,13 +5,20 @@ QMenu {
     border:None;
     border-radius: 6px;
     width: 250px;
+    height: 128px
 
 }
 
 QMenu::item {
     font-size: 14px;
     width: 250px;
-    padding:11px 0px;
+    height: 36px;
+
+}
+
+QMenu::separator {
+    height: 4px;
+    background-color:rgb(19,19,20);
 }
 
 QMenu::item:selected{

@@ -71,16 +71,15 @@ void DeviceForm::setRemain(QString remain)
     ui->remaindata->setText(remain);
 }
 
-void DeviceForm::mousePressEvent(QMouseEvent *event)
-{
-    if(event->buttons() == Qt::LeftButton)
-    {
-        QString cmd = QString("ukui-power-statistics --device %1 &").arg(path);
-        qDebug()<<cmd;
-        system(cmd.toStdString().c_str());
-    }
-
-}
+//void DeviceForm::mousePressEvent(QMouseEvent *event)
+//{
+//    if(event->buttons() == Qt::LeftButton)
+//    {
+//        QString cmd = QString("ukui-power-statistics --device %1 &").arg(path);
+//        qDebug()<<cmd;
+//        system(cmd.toStdString().c_str());
+//    }
+//}
 
 void DeviceForm::widget_property_change()
 {
@@ -101,29 +100,28 @@ void DeviceForm::paintEvent(QPaintEvent *event)
     QWidget::paintEvent(event);
 }
 
- void DeviceForm::enterEvent(QEvent *event)
- {
-     Q_UNUSED(event);
-     setStyleSheet(
-                 "background:rgba(61,107,229,1);"
-                 "border-radius:2px;"
-     );
- }
+// void DeviceForm::enterEvent(QEvent *event)
+// {
+//     Q_UNUSED(event);
+//     setStyleSheet(
+//                 "background:rgba(61,107,229,1);"
+//                 "border-radius:2px;"
+//     );
+// }
 
- void DeviceForm::leaveEvent(QEvent *event)
- {
-     Q_UNUSED(event);
-     setStyleSheet(
-                 "QWidget {background-color:rgba(19,19,20,90%);}"
-                 "QProgressBar {"
-                 "width:284px;"
-                 "height:4px;"
-                 "background:rgba(255,255,255,0.1);"
-                 "border-radius:2px;}"
+// void DeviceForm::leaveEvent(QEvent *event)
+// {
+//     Q_UNUSED(event);
+//     setStyleSheet(
+//                 "QWidget {background-color:rgba(19,19,20,90%);}"
+//                 "QProgressBar {"
+//                 "width:284px;"
+//                 "height:4px;"
+//                 "background:rgba(255,255,255,0.1);"
+//                 "border-radius:2px;}"
 
-     );
- }
-
+//     );
+// }
 
  QString DeviceForm::calculate_value(int nValue,int nTotal)
  {

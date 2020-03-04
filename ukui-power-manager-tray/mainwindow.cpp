@@ -328,9 +328,9 @@ void MainWindow::onActivatedIcon(QSystemTrayIcon::ActivationReason reason)
         //    qDebug()<<"screenRect.x(): "<<screenRect.x()<<"   screenRect.height(): "<<screenRect.height();
         //    qDebug()<<"availableGeometry.y(): "<<availableGeometry.y()<<"   availableGeometry.height(): "<<availableGeometry.height();
             if (screenRect.height() != availableGeometry.height()) {
-                this->move(availableGeometry.x() + availableGeometry.width() - this->width()-102, availableGeometry.height() - this->height() - 5);
+                this->move(availableGeometry.x() + availableGeometry.width() - this->width()-102, availableGeometry.height() - this->height() - 3);
             }else {
-                this->move(availableGeometry.x() + availableGeometry.width() - this->width()-102, availableGeometry.height() - this->height() - panel_height - 5);
+                this->move(availableGeometry.x() + availableGeometry.width() - this->width()-102, availableGeometry.height() - this->height() - panel_height - 3);
             }
         if (!this->isHidden()) {
             this->hide();
@@ -348,7 +348,7 @@ void MainWindow::onActivatedIcon(QSystemTrayIcon::ActivationReason reason)
     }
     case QSystemTrayIcon::Context: {
 
-        menu->move( menu->pos().x(),menu->pos().y() - 11 );
+        menu->move( menu->pos().x(),menu->pos().y() - 3 );
         menu->show();
         break;
     }
@@ -473,7 +473,9 @@ void MainWindow::initUi()
     connect(set_bright,&QAction::triggered,this,&MainWindow::set_brightness_func);
     connect(show_percentage,&QAction::triggered,this,&MainWindow::show_percentage_func);
     menu->addAction(show_percentage);
+    menu->addSeparator();
     menu->addAction(set_bright);
+    menu->addSeparator();
     menu->addAction(set_preference);
 
     trayIcon->setContextMenu(menu);

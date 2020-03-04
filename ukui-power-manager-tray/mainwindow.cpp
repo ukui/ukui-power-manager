@@ -274,16 +274,15 @@ QIcon MainWindow::get_percent_icon(QIcon icon)
 
 void MainWindow::set_brightness_func()
 {
-//    QProcess *cmd = new QProcess(this);
-//    cmd->start("yelp");
-    system("ukui-control-center -d &");
+    QProcess::startDetached(QString("ukui-control-center -d &"));
+
 }
 
 void MainWindow::set_preference_func()
 {
-//    QProcess *cmd = new QProcess(this);
-//    cmd->start("yelp");
-    system("ukui-control-center -p &");
+
+    QProcess::startDetached(QString("ukui-control-center -p &"));
+
 }
 
 void MainWindow::show_percentage_func()
@@ -301,64 +300,157 @@ void MainWindow::show_percentage_func()
 
 }
 
+//void MainWindow::onActivatedIcon(QSystemTrayIcon::ActivationReason reason)
+//{
+//    if(serviceInterface->isValid())
+//    {
+//        QDBusMessage msg = serviceInterface->call("GetPanelSize", ("height"));
+//        if(msg.type() == QDBusMessage::ReplyMessage)
+//        {
+//            panel_height = msg.arguments().at(0).toInt();
+//        }
+//        qDebug() << "panel_height" << panel_height;
+//    }
+//    if(panel_height == 0)
+//        panel_height = 46;
+//    switch (reason) {
+//    case QSystemTrayIcon::Trigger:{
+
+//            QRect availableGeometry = qApp->primaryScreen()->availableGeometry();
+//            QRect screenGeometry = qApp->primaryScreen()->geometry();
+
+//            QDesktopWidget* pDesktopWidget = QApplication::desktop();
+//        //    int nScreenCount = QApplication::desktop()->screenCount();
+//        //    QRect deskRect = pDesktopWidget->availableGeometry();//可用区域
+//            QRect screenRect = pDesktopWidget->screenGeometry();//屏幕区域
+
+//            if (screenRect.height() != availableGeometry.height()) {
+//                this->move(availableGeometry.x() + availableGeometry.width() - this->width()-102, availableGeometry.height() - this->height() - 3);
+//            }else {
+//                this->move(availableGeometry.x() + availableGeometry.width() - this->width()-102, availableGeometry.height() - this->height() - panel_height - 3);
+//            }
+//        if (!this->isHidden()) {
+//            this->hide();
+//        }
+//        else
+//            this->show();
+
+
+//        break;
+//    }
+//    //鼠标左键双击图标
+//    case QSystemTrayIcon::DoubleClick: {
+//        this->hide();
+//        break;
+//    }
+//    case QSystemTrayIcon::Context: {
+
+//        menu->move( menu->pos().x(),menu->pos().y() - 3 );
+//        menu->show();
+//        break;
+//    }
+//    default:
+//        break;
+//    }
+//}
+
 void MainWindow::onActivatedIcon(QSystemTrayIcon::ActivationReason reason)
 {
-    if(serviceInterface->isValid())
-    {
-        QDBusMessage msg = serviceInterface->call("GetPanelSize", ("height"));
-        if(msg.type() == QDBusMessage::ReplyMessage)
-        {
-            panel_height = msg.arguments().at(0).toInt();
-        }
-        qDebug() << "panel_height" << panel_height;
-    }
-    if(panel_height == 0)
-        panel_height = 46;
-    switch (reason) {
-    case QSystemTrayIcon::Trigger:{
+    QRect rect;
+    int localX ,availableWidth,totalWidth;
+    int localY,availableHeight,totalHeight;
+    rect = trayIcon->geometry();
+    qDebug()<<"rectxy:" << rect.x() << rect.y();
+    //屏幕可用宽高
+    availableWidth = QGuiApplication::screens().at(0)->availableGeometry().width();
+    availableHeight = QGuiApplication::screens().at(0)->availableGeometry().height();
+    //总共宽高
+    totalWidth =  QGuiApplication::screens().at(0)->size().width();
+    totalHeight = QGuiApplication::screens().at(0)->size().height();
 
-            QRect availableGeometry = qApp->primaryScreen()->availableGeometry();
-            QRect screenGeometry = qApp->primaryScreen()->geometry();
+    switch(reason) {
 
-            QDesktopWidget* pDesktopWidget = QApplication::desktop();
-        //    int nScreenCount = QApplication::desktop()->screenCount();
-        //    QRect deskRect = pDesktopWidget->availableGeometry();//可用区域
-            QRect screenRect = pDesktopWidget->screenGeometry();//屏幕区域
-
-        //    qDebug()<<"screenRect.x(): "<<screenRect.x()<<"   screenRect.height(): "<<screenRect.height();
-        //    qDebug()<<"availableGeometry.y(): "<<availableGeometry.y()<<"   availableGeometry.height(): "<<availableGeometry.height();
-            if (screenRect.height() != availableGeometry.height()) {
-                this->move(availableGeometry.x() + availableGeometry.width() - this->width()-102, availableGeometry.height() - this->height() - 3);
-            }else {
-                this->move(availableGeometry.x() + availableGeometry.width() - this->width()-102, availableGeometry.height() - this->height() - panel_height - 3);
+    case QSystemTrayIcon::Trigger: {
+            if (rect.x() > availableWidth/2 && rect.x()< availableWidth  && rect.y() > availableHeight/2) { //下
+                if (availableWidth - rect.x() - 3 < this->width())
+                    this->setGeometry(availableWidth-this->width()-3,availableHeight-this->height()-3,this->width(),this->height());
+                else
+                    this->setGeometry(rect.x(),availableHeight-this->height()-3,this->width(),this->height());
             }
-        if (!this->isHidden()) {
-            this->hide();
-        }
-        else
+            else if (rect.x() > availableWidth/2 && rect.x()< availableWidth && rect.y() < availableHeight/2 ) { //上
+                if (availableWidth - rect.x() - 3 < this->width())
+                    this->setGeometry(availableWidth-this->width()-3,totalHeight-availableHeight+3,this->width(),this->height());
+                else
+                    this->setGeometry(rect.x(),totalHeight-availableHeight+3,this->width(),this->height());
+            }
+            else if (rect.x() < availableWidth/2 && rect.y() > availableHeight/2 && rect.y()< availableHeight) { //左
+                localY = availableHeight - this->height();
+                if (availableHeight - rect.y() -3 > this->height() )
+                    this->setGeometry(totalWidth - availableWidth + 3,rect.y(),this->width(),this->height());
+                else
+                    this->setGeometry(totalWidth-availableWidth+3,localY-3,this->width(),this->height());
+            }
+            else
+                this->setGeometry(0,0,this->width(),this->height());
+
             this->show();
+            break;
+            if (!this->isHidden()) {
+                this->hide();
+            }
+            else
+                this->show();
 
+    }
 
-        break;
-    }
-    //鼠标左键双击图标
-    case QSystemTrayIcon::DoubleClick: {
-        this->hide();
-        break;
-    }
     case QSystemTrayIcon::Context: {
 
-        menu->move( menu->pos().x(),menu->pos().y() - 3 );
+        if (rect.x() > availableWidth/2 && rect.x()< availableWidth  && rect.y() > availableHeight/2) { //下
+            if (availableWidth - rect.x() - 3 < menu->width())
+            {
+                qDebug()<<"xia 1:" << (availableWidth - rect.x() - 3) << (menu->width());
+                menu->setGeometry(availableWidth-menu->width()-3,availableHeight-menu->height()-3,menu->width(),menu->height());
+            }
+            else
+            {
+                qDebug()<<"xia 2:" << (availableWidth - rect.x() - 3) << (menu->width());
+
+                menu->setGeometry(rect.x(),availableHeight-menu->height()-3,menu->width(),menu->height());
+            }
+        }
+        else if (rect.x() > availableWidth/2 && rect.x()< availableWidth && rect.y() < availableHeight/2 ) { //上
+            if (availableWidth - rect.x() - 3 < menu->width())
+            {
+                qDebug()<<"shang 1:" << (availableWidth - rect.x() - 3) << (menu->width());
+
+                menu->setGeometry(availableWidth-menu->width()-3,totalHeight-availableHeight+3,menu->width(),menu->height());
+            }
+            else
+            {
+                qDebug()<<"shang 2:" << (availableWidth - rect.x() - 3) << (menu->width());
+
+                menu->setGeometry(rect.x(),totalHeight-availableHeight+3,menu->width(),menu->height());
+            }
+        }
+        else if (rect.x() < availableWidth/2 && rect.y() > availableHeight/2 && rect.y()< availableHeight) { //左
+            localY = availableHeight - menu->height();
+            if (availableHeight - rect.y() -3 > menu->height() )
+                menu->setGeometry(totalWidth - availableWidth + 3,rect.y(),menu->width(),menu->height());
+            else
+                menu->setGeometry(totalWidth-availableWidth+3,localY-3,menu->width(),menu->height());
+        }
+        else
+            menu->setGeometry(0,0,menu->width(),menu->height());
         menu->show();
         break;
     }
     default:
+        this->hide();
+        menu->hide();
         break;
-    }
 }
 
-
-
+}
 void MainWindow::initData()
 {
     want_percent = false;
@@ -376,14 +468,38 @@ void MainWindow::initUi()
     setAttribute(Qt::WA_TranslucentBackground);
     setWindowOpacity(0.90);
     dev_number = get_engine_dev_number();
+    dev_number = 1;
     resize(360,72 + 82*(dev_number>3?3:dev_number));
     setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-    ui->power_title->setText(tr("PowerManagement"));
     ui->listWidget->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    if(dev_number > 3)
+    {
+        ui->listWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+    }
+    else
+    {
+        ui->listWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    }
+    ui->power_title->setText(tr("PowerManagement"));
+    ui->power_title->setAlignment(Qt::AlignLeft);
 
-    setStyleSheet("#centralWidget {"
+
+    connect(ui->statistic_button,SIGNAL(clicked()),this,SLOT(activate_power_statistic()));
+    QFont font("Noto Sans CJK SC",14,400);
+    ui->statistic_button->setFont(font);
+    ui->statistic_button->setText(tr("PowerStatistics"));//adapt to chinese
+    int w = ui->statistic_button->fontMetrics().width(ui->statistic_button->text());
+    ui->statistic_button->setFixedWidth(54);
+
+    ui->statistic_button->setStyleSheet("QPushButton{border:0px;width:54px;"
+                                        "font-family:Noto Sans CJK SC;"
+                                        "background-color:rgba(255,255,255,0);color:rgba(107,142,235,0.97);font-size:14px;}"
+                                        "QPushButton::hover {background-color:rgba(255,255,255,0);color:rgba(107,142,235,0.97);font-size:14px;}"
+                                        "QPushButton::pressed {background-color:rgba(255,255,255,0);color:rgba(107,142,235,0.97);font-size:12px;}"
+                                        );
+    setStyleSheet(""
                   "background-color:rgba(19,19,20);"
-                  "border-radius:6px;}"
+                  "border-radius:6px;"
                   );
 //    QLabel *title = new QLabel(tr("PowerManagement"));
 //    title->setObjectName("power_title");
@@ -421,12 +537,12 @@ void MainWindow::initUi()
     hbox_preference->addWidget(preference_text);
     preference_widget->setLayout(hbox_preference);
     preference_widget->setFocusPolicy(Qt::NoFocus);
-    preference_widget->setFixedSize(QSize(250,36));
+    preference_widget->setFixedSize(QSize(246,36));
     hbox_preference->setSpacing(10);
     set_preference->setDefaultWidget(preference_widget);
     preference_widget->setStyleSheet("QWidget{background:transparent;border:0px;}\
                                      QWidget:hover{background-color:rgba(255,255,255,0.15);}"
-                                     "border-radius:none");
+                                     "border-radius:4px");
 
     QHBoxLayout *hbox_percent = new QHBoxLayout;
     percent_label = new QLabel(this);
@@ -441,13 +557,13 @@ void MainWindow::initUi()
     hbox_percent->addWidget(percent_text);
     percent_widget->setLayout(hbox_percent);
     percent_widget->setFocusPolicy(Qt::NoFocus);
-    percent_widget->setFixedSize(QSize(250,36));
+    percent_widget->setFixedSize(QSize(246,36));
 
     hbox_percent->setSpacing(10);
     show_percentage->setDefaultWidget(percent_widget);
     percent_widget->setStyleSheet("QWidget{background:transparent;border:0px;}\
                                   QWidget:hover{background-color:rgba(255,255,255,0.15);}"
-                                 "border-radius:0px");
+                                 "border-radius:4px");
 
     QHBoxLayout *hbox_bright= new QHBoxLayout;
     QLabel *bright_label = new QLabel(this);
@@ -462,12 +578,12 @@ void MainWindow::initUi()
     hbox_bright->addWidget(bright_text);
     bright_widget->setLayout(hbox_bright);
     bright_widget->setFocusPolicy(Qt::NoFocus);
-    bright_widget->setFixedSize(QSize(250,36));
+    bright_widget->setFixedSize(QSize(246,36));
     hbox_bright->setSpacing(10);
     set_bright->setDefaultWidget(bright_widget);
     bright_widget->setStyleSheet("QWidget{background:transparent;border:0px;}"
                                  "QWidget:hover{background-color:rgba(255,255,255,0.15);}"
-                                 "border-radius:0px");
+                                 "border-radius:4px");
 
     connect(set_preference,&QAction::triggered,this,&MainWindow::set_preference_func);
     connect(set_bright,&QAction::triggered,this,&MainWindow::set_brightness_func);
@@ -532,7 +648,7 @@ void MainWindow::get_power_list()
         ui->listWidget->setItemWidget(list_item,df);
     }
 
-//    for(int i = 0; i < 5; i++)
+//    for(int i = 0; i < 1; i++)
 //    {
 //        QString icon_name = "gpm-battery-080-charging.png";
 //        QString percentage = QString::number(92.0, 'f',0)+"%";
@@ -604,6 +720,11 @@ void MainWindow::remove_one_device(DEVICE *device)
             }
         }
     }
+}
+
+void MainWindow::activate_power_statistic()
+{
+    QProcess::startDetached(QString("ukui-power-statistics &"));
 }
 
 void MainWindow::iconThemeChanged()

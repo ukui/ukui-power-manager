@@ -69,6 +69,7 @@ public Q_SLOTS:
     void full_charge_notify(DEV dev);
     void add_one_device(DEVICE *device);
     void remove_one_device(DEVICE *device);
+    void activate_power_statistic();
 private:
 //    QGSettings *setting;
     QSystemTrayIcon* trayIcon;

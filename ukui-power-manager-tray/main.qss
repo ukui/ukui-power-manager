@@ -1,7 +1,7 @@
 QMenu {
     color: #ffffff;
     background-color:rgb(19,19,20);
-    padding: 6px 0px 6px 0px;
+    padding: 6px 2px 6px 2px;
     border:None;
     border-radius: 6px;
     width: 250px;
@@ -11,8 +11,9 @@ QMenu {
 
 QMenu::item {
     font-size: 14px;
-    width: 250px;
+    width: 246px;
     height: 36px;
+    border-radius: 4px;
 
 }
 
@@ -83,15 +84,27 @@ QLabel#remaindata
     color:rgba(255,255,255,0.91);
 }
 
+QPushButton#statistic_button
+{
+    text-align:center;
+    width:54px;
+    height:14px;
+    font-size:14px;
+    font-family:Noto Sans CJK SC;
+    font-weight:400;
+    color:rgba(107,142,235,0.97);
+    line-height:34px;
+}
+
+QPushButton:focus{
+    padding: -1;
+}
+
 QProgressBar {
     width:284px;
     height:4px;
     background:rgba(255,255,255,0.1);
     border-radius:2px;
-}
-
-QPushButton:focus{
-    padding: -1;
 }
 
 QWidget{
@@ -149,7 +162,7 @@ QListWidget::item
 QScrollBar
 {
     width:4px;
-    background-color:rgba(19,19,20,0.90);
+    background-color:transparent;
     margin:0px,0px,0px,0px;
     padding-top:0px;   /*上预留位置*/
     padding-bottom:0px;    /*下预留位置*/
@@ -159,7 +172,7 @@ QScrollBar::handle
 {
     width:4px;
     height:80px;
-    background-color:rgba(61,107,229,1);
+    background-color:rgba(61,107,229,0.80);
     border-radius:2px;
 }
 

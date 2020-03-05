@@ -357,7 +357,7 @@ void MainWindow::show_percentage_func()
 void MainWindow::onActivatedIcon(QSystemTrayIcon::ActivationReason reason)
 {
     QRect rect;
-    int localX ,availableWidth,totalWidth;
+    int availableWidth,totalWidth;
     int localY,availableHeight,totalHeight;
     rect = trayIcon->geometry();
     qDebug()<<"rectxy:" << rect.x() << rect.y();
@@ -370,85 +370,81 @@ void MainWindow::onActivatedIcon(QSystemTrayIcon::ActivationReason reason)
 
     switch(reason) {
 
-    case QSystemTrayIcon::Trigger: {
-            if (rect.x() > availableWidth/2 && rect.x()< availableWidth  && rect.y() > availableHeight/2) { //下
-                if (availableWidth - rect.x() - 3 < this->width())
-                    this->setGeometry(availableWidth-this->width()-3,availableHeight-this->height()-3,this->width(),this->height());
+        case QSystemTrayIcon::Trigger: {
+                if (rect.x() > availableWidth/2 && rect.x()< availableWidth  && rect.y() > availableHeight/2) { //下
+                    if (availableWidth - rect.x() - 3 < this->width())
+                        this->setGeometry(availableWidth-this->width()-3,availableHeight-this->height()-3,this->width(),this->height());
+                    else
+                        this->setGeometry(rect.x(),availableHeight-this->height()-3,this->width(),this->height());
+                }
+                else if (rect.x() > availableWidth/2 && rect.x()< availableWidth && rect.y() < availableHeight/2 ) { //上
+                    if (availableWidth - rect.x() - 3 < this->width())
+                        this->setGeometry(availableWidth-this->width()-3,totalHeight-availableHeight+3,this->width(),this->height());
+                    else
+                        this->setGeometry(rect.x(),totalHeight-availableHeight+3,this->width(),this->height());
+                }
+                else if (rect.x() < availableWidth/2 && rect.y() > availableHeight/2 && rect.y()< availableHeight) { //左
+                    localY = availableHeight - this->height();
+                    if (availableHeight - rect.y() -3 > this->height() )
+                        this->setGeometry(totalWidth - availableWidth + 3,rect.y(),this->width(),this->height());
+                    else
+                        this->setGeometry(totalWidth-availableWidth+3,localY-3,this->width(),this->height());
+                }
                 else
-                    this->setGeometry(rect.x(),availableHeight-this->height()-3,this->width(),this->height());
+                    this->setGeometry(0,0,this->width(),this->height());
+
+                if (!this->isHidden()) {
+                    this->hide();
+                }
+                else
+                    this->show();
+                break;
+        }
+
+        case QSystemTrayIcon::Context: {
+
+            if (rect.x() > availableWidth/2 && rect.x()< availableWidth  && rect.y() > availableHeight/2) { //下
+                if (availableWidth - rect.x() - 3 < menu->width())
+                {
+                    qDebug()<<"xia 1:" << (availableWidth - rect.x() - 3) << (menu->width());
+                    menu->setGeometry(availableWidth-menu->width()-3,availableHeight-menu->height()-3,menu->width(),menu->height());
+                }
+                else
+                {
+                    qDebug()<<"xia 2:" << (availableWidth - rect.x() - 3) << (menu->width());
+
+                    menu->setGeometry(rect.x(),availableHeight-menu->height()-3,menu->width(),menu->height());
+                }
             }
             else if (rect.x() > availableWidth/2 && rect.x()< availableWidth && rect.y() < availableHeight/2 ) { //上
-                if (availableWidth - rect.x() - 3 < this->width())
-                    this->setGeometry(availableWidth-this->width()-3,totalHeight-availableHeight+3,this->width(),this->height());
+                if (availableWidth - rect.x() - 3 < menu->width())
+                {
+                    qDebug()<<"shang 1:" << (availableWidth - rect.x() - 3) << (menu->width());
+
+                    menu->setGeometry(availableWidth-menu->width()-3,totalHeight-availableHeight+3,menu->width(),menu->height());
+                }
                 else
-                    this->setGeometry(rect.x(),totalHeight-availableHeight+3,this->width(),this->height());
+                {
+                    qDebug()<<"shang 2:" << (availableWidth - rect.x() - 3) << (menu->width());
+
+                    menu->setGeometry(rect.x(),totalHeight-availableHeight+3,menu->width(),menu->height());
+                }
             }
             else if (rect.x() < availableWidth/2 && rect.y() > availableHeight/2 && rect.y()< availableHeight) { //左
-                localY = availableHeight - this->height();
-                if (availableHeight - rect.y() -3 > this->height() )
-                    this->setGeometry(totalWidth - availableWidth + 3,rect.y(),this->width(),this->height());
+                localY = availableHeight - menu->height();
+                if (availableHeight - rect.y() -3 > menu->height() )
+                    menu->setGeometry(totalWidth - availableWidth + 3,rect.y(),menu->width(),menu->height());
                 else
-                    this->setGeometry(totalWidth-availableWidth+3,localY-3,this->width(),this->height());
+                    menu->setGeometry(totalWidth-availableWidth+3,localY-3,menu->width(),menu->height());
             }
-            else
-                this->setGeometry(0,0,this->width(),this->height());
-
-            this->show();
+            menu->show();
             break;
-            if (!this->isHidden()) {
-                this->hide();
-            }
-            else
-                this->show();
-
+        }
+        default:
+            this->hide();
+            menu->hide();
+            break;
     }
-
-    case QSystemTrayIcon::Context: {
-
-        if (rect.x() > availableWidth/2 && rect.x()< availableWidth  && rect.y() > availableHeight/2) { //下
-            if (availableWidth - rect.x() - 3 < menu->width())
-            {
-                qDebug()<<"xia 1:" << (availableWidth - rect.x() - 3) << (menu->width());
-                menu->setGeometry(availableWidth-menu->width()-3,availableHeight-menu->height()-3,menu->width(),menu->height());
-            }
-            else
-            {
-                qDebug()<<"xia 2:" << (availableWidth - rect.x() - 3) << (menu->width());
-
-                menu->setGeometry(rect.x(),availableHeight-menu->height()-3,menu->width(),menu->height());
-            }
-        }
-        else if (rect.x() > availableWidth/2 && rect.x()< availableWidth && rect.y() < availableHeight/2 ) { //上
-            if (availableWidth - rect.x() - 3 < menu->width())
-            {
-                qDebug()<<"shang 1:" << (availableWidth - rect.x() - 3) << (menu->width());
-
-                menu->setGeometry(availableWidth-menu->width()-3,totalHeight-availableHeight+3,menu->width(),menu->height());
-            }
-            else
-            {
-                qDebug()<<"shang 2:" << (availableWidth - rect.x() - 3) << (menu->width());
-
-                menu->setGeometry(rect.x(),totalHeight-availableHeight+3,menu->width(),menu->height());
-            }
-        }
-        else if (rect.x() < availableWidth/2 && rect.y() > availableHeight/2 && rect.y()< availableHeight) { //左
-            localY = availableHeight - menu->height();
-            if (availableHeight - rect.y() -3 > menu->height() )
-                menu->setGeometry(totalWidth - availableWidth + 3,rect.y(),menu->width(),menu->height());
-            else
-                menu->setGeometry(totalWidth-availableWidth+3,localY-3,menu->width(),menu->height());
-        }
-        else
-            menu->setGeometry(0,0,menu->width(),menu->height());
-        menu->show();
-        break;
-    }
-    default:
-        this->hide();
-        menu->hide();
-        break;
-}
 
 }
 void MainWindow::initData()
@@ -485,10 +481,8 @@ void MainWindow::initUi()
 
 
     connect(ui->statistic_button,SIGNAL(clicked()),this,SLOT(activate_power_statistic()));
-    QFont font("Noto Sans CJK SC",14,400);
-    ui->statistic_button->setFont(font);
+
     ui->statistic_button->setText(tr("PowerStatistics"));//adapt to chinese
-    int w = ui->statistic_button->fontMetrics().width(ui->statistic_button->text());
     ui->statistic_button->setFixedWidth(54);
 
     ui->statistic_button->setStyleSheet("QPushButton{border:0px;width:54px;"
@@ -724,6 +718,7 @@ void MainWindow::remove_one_device(DEVICE *device)
 
 void MainWindow::activate_power_statistic()
 {
+    this->hide();
     QProcess::startDetached(QString("ukui-power-statistics &"));
 }
 

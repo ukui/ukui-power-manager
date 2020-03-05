@@ -1896,16 +1896,14 @@ void UkpmWidget::setupUI()
     getDevices();
 
     current_device = NULL;
-//    if(devices.size()>0)
-//    {
-//        current_device = devices.at(0)->m_dev;
-
-//        listWidget->setItemSelected(listWidget->item(0),true);
-//        ukpm_update_info_data (current_device);
-//    }
-//    else {
-//        current_device = NULL;
-//    }
+    if(devices.size()>0)
+    {
+        current_device = devices.at(0)->m_dev;
+        QListWidgetItem *default_item = listWidget->item(0);
+        listWidget->setItemSelected(default_item,true);
+        listWidget->setCurrentItem(default_item);
+        ukpm_update_info_data (current_device);
+    }
 
 }
 

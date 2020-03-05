@@ -1,18 +1,18 @@
 <RCC>
     <qresource prefix="/">
-        <file>22x22/apps/mate-brightness-applet.png</file>
-        <file>22x22/apps/mate-inhibit-applet.png</file>
-        <file>22x22/apps/mate-power-manager.png</file>
-        <file>22x22/apps/mate-power-statistics.png</file>
         <file>main.qss</file>
         <file>en.qm</file>
         <file>zh_CN.qm</file>
-        <file>22x22/apps/bright.png</file>
-        <file>22x22/apps/health.png</file>
-        <file>22x22/apps/save.png</file>
-        <file>22x22/apps/setting.svg</file>
-        <file>22x22/apps/tick.png</file>
-        <file>22x22/apps/tick.svg</file>
-        <file>22x22/charging.gif</file>
+        <file>apps/bright.png</file>
+        <file>apps/health.png</file>
+        <file>apps/mate-brightness-applet.png</file>
+        <file>apps/mate-inhibit-applet.png</file>
+        <file>apps/mate-power-manager.png</file>
+        <file>apps/mate-power-statistics.png</file>
+        <file>apps/save.png</file>
+        <file>apps/setting.svg</file>
+        <file>apps/tick.png</file>
+        <file>apps/tick.svg</file>
+        <file>charging.gif</file>
     </qresource>
 </RCC>

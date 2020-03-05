@@ -28,31 +28,74 @@ DeviceForm::DeviceForm(QWidget *parent) :
     ui(new Ui::DeviceForm)
 {
     ui->setupUi(this);
-    mov = new QMovie(":/22x22/charging.gif");
+//    mov = new QMovie(":/charging.gif");
     setAttribute(Qt::WA_StyledBackground,true);
     ed = EngineDevice::getInstance();
+    set_timer();
 //    connect(ed,SLOT(signal_device_change(DEVICE*)),this,SLOT(slot_device_change(DEVICE*)));
 }
 
 DeviceForm::~DeviceForm()
 {
-    delete mov;
     delete ui;
+}
+
+void DeviceForm::set_timer()
+{
+    charge_animation = new QTimer(this);
+    connect(charge_animation,&QTimer::timeout,this,&DeviceForm::begin_charge_animation);
+    animation_list.append(QPixmap("/charging/1.png"));
+    animation_list.append(QPixmap("/charging/2.png"));
+    animation_list.append(QPixmap("/charging/3.png"));
+    animation_list.append(QPixmap("/charging/4.png"));
+    animation_list.append(QPixmap("/charging/5.png"));
+    animation_list.append(QPixmap("/charging/6.png"));
+    animation_list.append(QPixmap("/charging/7.png"));
+    animation_list.append(QPixmap("/charging/8.png"));
+    animation_list.append(QPixmap("/charging/9.png"));
+    animation_list.append(QPixmap("/charging/10.png"));
+}
+
+void DeviceForm::set_charge_animation(bool flag)
+{
+    if(flag)
+    {
+        if(!charge_animation->isActive())
+        {
+            charging_index = 0;
+            charge_animation->start(80);
+        }
+    }
+    else
+    {
+        if(charge_animation->isActive())
+        {
+            charge_animation->stop();
+        }
+    }
 }
 
 void DeviceForm::setIcon(QString name)
 {
     if(name.contains("charging"))
     {
-        ui->icon->setMovie(mov);
-        mov->start();
+        set_charge_animation(true);
         return;
     }
-    mov->stop();
+    set_charge_animation(false);
+
     QIcon icon = QIcon::fromTheme(name);
     qDebug()<<icon.name()<<"-----------this is device icon---------------------";
     QPixmap pixmap = icon.pixmap(QSize(32,32));
     ui->icon->setPixmap(pixmap);
+}
+
+void DeviceForm::begin_charge_animation()
+{
+    ui->icon->setPixmap(animation_list.at(charging_index));
+    charging_index ++;
+    if(charging_index > 10)
+        charging_index = 0;
 }
 
 void DeviceForm::setPercent(QString perct)
@@ -60,9 +103,9 @@ void DeviceForm::setPercent(QString perct)
     ui->percentage->setText(perct);
 }
 
-void DeviceForm::setState(QString state)
+void DeviceForm::setKind(QString kind)
 {
-    ui->state->setText(state);
+    ui->kind->setText(kind);
 }
 
 void DeviceForm::setRemain(QString remain)
@@ -87,7 +130,7 @@ void DeviceForm::widget_property_change()
     setPercent(percentage);
     slider_changed(percent_number);
 
-    setState(state_text);
+    setKind(kind);
     setRemain(predict);
 }
 
@@ -172,7 +215,7 @@ void DeviceForm::slot_device_change(DEVICE* device)
     icon_name = ed->engine_get_device_icon(device);
     percentage = QString::number(device->m_dev.Percentage, 'f',0)+"%";
     percent_number = int (device->m_dev.Percentage);
-    state_text = ed->engine_kind_to_localised_text(device->m_dev.kind,0);
+    kind = ed->engine_kind_to_localised_text(device->m_dev.kind,0);
     predict = ed->engine_get_device_predict(device);
     widget_property_change();
 }

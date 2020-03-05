@@ -185,7 +185,7 @@ void MainWindow::onIconChanged(QString str)
         trayIcon->setIcon(icon);
         trayIcon->show();
 
-        str = ":/22x22/status/"+str+".png";
+        str = ":/status/"+str+".png";
         QPixmap a(str);
         a = a.scaled(32,80);
         QIcon icon(a);
@@ -290,7 +290,7 @@ void MainWindow::show_percentage_func()
     want_percent = !want_percent;
     if(want_percent)
     {
-        percent_label->setPixmap(QPixmap(":/22x22/apps/tick.png"));
+        percent_label->setPixmap(QPixmap(":/apps/tick.png"));
         onIconChanged(ed->previous_icon);
     }
     else {
@@ -487,13 +487,13 @@ void MainWindow::initUi()
 
     ui->statistic_button->setStyleSheet("QPushButton{border:0px;width:54px;"
                                         "font-family:Noto Sans CJK SC;"
-                                        "background-color:rgba(255,255,255,0);color:rgba(107,142,235,0.97);font-size:14px;}"
-                                        "QPushButton::hover {background-color:rgba(255,255,255,0);color:rgba(107,142,235,0.97);font-size:14px;}"
-                                        "QPushButton::pressed {background-color:rgba(255,255,255,0);color:rgba(107,142,235,0.97);font-size:12px;}"
+                                        "background-color:rgba(255,255,255,0);color:rgba(107,142,235,1);font-size:14px;}"
+                                        "QPushButton::hover {background-color:rgba(255,255,255,0);color:rgba(151,175,241,1);font-size:14px;}"
+                                        "QPushButton::pressed {background-color:rgba(255,255,255,0);color:rgba(61,107,229,1);font-size:12px;}"
                                         );
-    setStyleSheet(""
+    setStyleSheet("#centralWidget {"
                   "background-color:rgba(19,19,20);"
-                  "border-radius:6px;"
+                  "border-radius:6px;}"
                   );
 //    QLabel *title = new QLabel(tr("PowerManagement"));
 //    title->setObjectName("power_title");
@@ -523,7 +523,7 @@ void MainWindow::initUi()
     QLabel *preference_text = new QLabel(this);
     QWidget *preference_widget = new QWidget(this);
     preference_label->setFixedSize(QSize(16,16));
-    preference_label->setPixmap(QPixmap(":/22x22/apps/setting.svg"));
+    preference_label->setPixmap(QPixmap(":/apps/setting.svg"));
     preference_text->setText(tr("SetPower"));
     preference_label->setStyleSheet("QLabel{background:transparent;border:0px;}");
     preference_text->setStyleSheet("QLabel{background:transparent;border:0px;}");
@@ -534,16 +534,15 @@ void MainWindow::initUi()
     preference_widget->setFixedSize(QSize(246,36));
     hbox_preference->setSpacing(10);
     set_preference->setDefaultWidget(preference_widget);
-    preference_widget->setStyleSheet("QWidget{background:transparent;border:0px;}\
-                                     QWidget:hover{background-color:rgba(255,255,255,0.15);}"
-                                     "border-radius:4px");
+    preference_widget->setStyleSheet("QWidget{background:transparent;border:0px;border-radius:4px}\
+                                     QWidget:hover{background-color:rgba(255,255,255,0.15);}");
 
     QHBoxLayout *hbox_percent = new QHBoxLayout;
     percent_label = new QLabel(this);
     QLabel *percent_text = new QLabel(this);
     QWidget *percent_widget = new QWidget(this);
     percent_label->setFixedSize(QSize(16,16));
-    percent_label->setPixmap(QPixmap(":/22x22/apps/tick.png"));
+    percent_label->setPixmap(QPixmap(":/apps/tick.png"));
     percent_text->setText(tr("ShowPercentage"));
     percent_label->setStyleSheet("QLabel{background:transparent;border:0px;}");
     percent_text->setStyleSheet("QLabel{background:transparent;border:0px;}");
@@ -555,16 +554,15 @@ void MainWindow::initUi()
 
     hbox_percent->setSpacing(10);
     show_percentage->setDefaultWidget(percent_widget);
-    percent_widget->setStyleSheet("QWidget{background:transparent;border:0px;}\
-                                  QWidget:hover{background-color:rgba(255,255,255,0.15);}"
-                                 "border-radius:4px");
+    percent_widget->setStyleSheet("QWidget{background:transparent;border:0px;border-radius:4px}\
+                                  QWidget:hover{background-color:rgba(255,255,255,0.15);}");
 
     QHBoxLayout *hbox_bright= new QHBoxLayout;
     QLabel *bright_label = new QLabel(this);
     QLabel *bright_text = new QLabel(this);
     QWidget *bright_widget = new QWidget(this);
     bright_label->setFixedSize(QSize(16,16));
-    bright_label->setPixmap(QPixmap(":/22x22/apps/setting.svg"));
+    bright_label->setPixmap(QPixmap(":/apps/setting.svg"));
     bright_text->setText(tr("SetBrightness"));
     bright_label->setStyleSheet("QLabel{background:transparent;border:0px;}");
     bright_text->setStyleSheet("QLabel{background:transparent;border:0px;}");
@@ -575,9 +573,8 @@ void MainWindow::initUi()
     bright_widget->setFixedSize(QSize(246,36));
     hbox_bright->setSpacing(10);
     set_bright->setDefaultWidget(bright_widget);
-    bright_widget->setStyleSheet("QWidget{background:transparent;border:0px;}"
-                                 "QWidget:hover{background-color:rgba(255,255,255,0.15);}"
-                                 "border-radius:4px");
+    bright_widget->setStyleSheet("QWidget{background:transparent;border:0px;border-radius:4px}"
+                                 "QWidget:hover{background-color:rgba(255,255,255,0.15);}");
 
     connect(set_preference,&QAction::triggered,this,&MainWindow::set_preference_func);
     connect(set_bright,&QAction::triggered,this,&MainWindow::set_brightness_func);

@@ -23,7 +23,6 @@
 #include <QSystemTrayIcon>
 #include <QMenu>
 #include <QScrollArea>
-#include "device_widget.h"
 #include "enginedevice.h"
 #include <QDBusObjectPath>
 #include <QDBusMessage>
@@ -84,7 +83,6 @@ private:
     QScrollArea *scroll_area;
     Ui::MainWindow *ui;
     QWidget *pow_widget;
-    QList<DeviceWidget *> device_items;
     QString releaseQss;
     QString pressQss;
     bool saving;

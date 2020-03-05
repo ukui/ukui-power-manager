@@ -32,7 +32,6 @@ PKGCONFIG +=  gsettings-qt
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    device_widget.cpp \
     customtype.cpp \
     device.cpp \
     engine-common.cpp \
@@ -41,7 +40,6 @@ SOURCES += \
 
 HEADERS += \
         mainwindow.h \
-    device_widget.h \
     customtype.h \
     device.h \
     engine-common.h \
@@ -50,7 +48,6 @@ HEADERS += \
 
 FORMS += \
         mainwindow.ui \
-    devicewidget.ui \
     deviceform.ui
 
 # Default rules for deployment.

@@ -21,7 +21,7 @@
 #include <QWidget>
 #include "device.h"
 #include "enginedevice.h"
-#include <QMovie>
+#include <QTimer>
 
 namespace Ui {
 class DeviceForm;
@@ -40,10 +40,10 @@ public Q_SLOTS:
 
     void slider_changed(int value);
     void slot_device_change(DEVICE *device);
+    void begin_charge_animation();
 public:
-    QMovie *mov;
     QString icon_name;
-    QString state_text;
+    QString kind;
     QString percentage;
     int percent_number;
     QString predict;
@@ -51,11 +51,13 @@ public:
     EngineDevice *ed;
     QString path;
     void setRemain(QString remain);
-    void setState(QString state);
+    void setKind(QString state);
     void setPercent(QString perct);
     void setIcon(QString name);
     QString calculate_value(int nValue, int nTotal);
     void set_device(DEVICE *dev);
+    void set_timer();
+    void set_charge_animation(bool flag);
 protected:
     void paintEvent(QPaintEvent *event);
 //    void leaveEvent(QEvent *event);
@@ -63,6 +65,9 @@ protected:
 //    void mousePressEvent(QMouseEvent *event);
 private:
     Ui::DeviceForm *ui;
+    QTimer *charge_animation;
+    QList<QPixmap> animation_list;
+    int charging_index;
 };
 
 #endif // DEVICE_FORM_H

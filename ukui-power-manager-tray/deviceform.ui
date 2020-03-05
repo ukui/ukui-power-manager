@@ -32,7 +32,7 @@
     <string>TextLabel</string>
    </property>
   </widget>
-  <widget class="QLabel" name="state">
+  <widget class="QLabel" name="kind">
    <property name="geometry">
     <rect>
      <x>42</x>

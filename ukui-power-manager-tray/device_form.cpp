@@ -44,16 +44,12 @@ void DeviceForm::set_timer()
 {
     charge_animation = new QTimer(this);
     connect(charge_animation,&QTimer::timeout,this,&DeviceForm::begin_charge_animation);
-    animation_list.append(QPixmap("/charging/1.png"));
-    animation_list.append(QPixmap("/charging/2.png"));
-    animation_list.append(QPixmap("/charging/3.png"));
-    animation_list.append(QPixmap("/charging/4.png"));
-    animation_list.append(QPixmap("/charging/5.png"));
-    animation_list.append(QPixmap("/charging/6.png"));
-    animation_list.append(QPixmap("/charging/7.png"));
-    animation_list.append(QPixmap("/charging/8.png"));
-    animation_list.append(QPixmap("/charging/9.png"));
-    animation_list.append(QPixmap("/charging/10.png"));
+
+    for(int i = 0; i<=24; i++)
+    {
+        QString filename = QString(":/charging/%1.png").arg(i);
+        animation_list.append(QPixmap(filename));
+    }
 }
 
 void DeviceForm::set_charge_animation(bool flag)
@@ -63,7 +59,7 @@ void DeviceForm::set_charge_animation(bool flag)
         if(!charge_animation->isActive())
         {
             charging_index = 0;
-            charge_animation->start(80);
+            charge_animation->start(200);
         }
     }
     else
@@ -94,7 +90,7 @@ void DeviceForm::begin_charge_animation()
 {
     ui->icon->setPixmap(animation_list.at(charging_index));
     charging_index ++;
-    if(charging_index > 10)
+    if(charging_index > 24)
         charging_index = 0;
 }
 

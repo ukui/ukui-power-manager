@@ -521,20 +521,27 @@ void UkpmWidget::ukpm_update_info_data (DEV* device)
     has_history = device->hasHistory;
     has_statistics = device->hasStat;
     int index;
-
+    index = tab_widget->indexOf(his_widget);
     if (has_history)
-        tab_widget->addTab(his_widget,tr("history"));
-    else
     {
-        index = tab_widget->indexOf(his_widget);
-        tab_widget->removeTab(index);
+        if(index == -1)
+            tab_widget->addTab(his_widget,tr("history"));
     }
-    if (has_statistics)
-        tab_widget->addTab(stat_widget,tr("statistics"));
     else
     {
-        index = tab_widget->indexOf(stat_widget);
-        tab_widget->removeTab(index);
+        if(-1 != index)
+            tab_widget->removeTab(index);
+    }
+    index = tab_widget->indexOf(stat_widget);
+    if (has_statistics)
+    {
+        if(-1 == index)
+            tab_widget->addTab(stat_widget,tr("statistics"));
+    }
+    else
+    {
+        if(-1 != index)
+            tab_widget->removeTab(index);
     }
 
     page = tab_widget->currentIndex();
@@ -1214,6 +1221,7 @@ void UkpmWidget::setSumTab()
     vLayout->addWidget(sumStack);
     vLayout->addLayout(bottomLayout);
     stat_widget->setLayout(vLayout);
+//    tab_widget->addTab(stat_widget,tr("statistics"));
     stat_widget->hide();
     ukpm_set_choice_sum();
 }
@@ -1286,7 +1294,7 @@ void UkpmWidget::setDetailTab()
     QVBoxLayout *lay = new QVBoxLayout();
     lay->addWidget(tableView);
     detail_widget->setLayout(lay);
-
+//    detail_widget->hide();
 }
 
 void UkpmWidget::setHistoryTab()
@@ -1378,6 +1386,7 @@ void UkpmWidget::setHistoryTab()
     vLayout->addWidget(hisStack);
     vLayout->addLayout(bottomLayout);
     his_widget->setLayout(vLayout);
+//    tab_widget->addTab(his_widget,tr("history"));
     his_widget->hide();
     ukpm_set_choice_history();
 }
@@ -1871,13 +1880,15 @@ void UkpmWidget::setupUI()
     QSplitter *mainsplitter = new QSplitter(Qt::Horizontal,this);//splittering into two parts
     listWidget = new QListWidget(mainsplitter);
     listWidget->setObjectName("m_listWidget");
+    listWidget->setFixedWidth(120);
 //    listWidget->setSpacing(10);
     tab_widget =  new QTabWidget(mainsplitter);
 
-    QList<int> list_src;
-    list_src.append(180);
-    list_src.append(680);
-    mainsplitter->setSizes(list_src);
+//    QList<int> list_src;
+//    list_src.append(180);
+//    list_src.append(680);
+//    mainsplitter->setSizes(list_src);
+    mainsplitter->handle(1)->setDisabled(true);
     QVBoxLayout *vlayout = new QVBoxLayout;
     vlayout->setContentsMargins(5,0,40,0);
     QFrame *header = new QFrame(this);

@@ -8,27 +8,30 @@ QWidget:focus {
 }
 
 /*tablewidget 样式*/
-QTableView,QTableWidget {
+QTableView,QTableWidget
+{
     border:1px solid #E0DDDC;   /*边框为1像素，灰色*/
     padding-bottom:40px;
     font:12px;
-    color:#555555;
 }
 
 /*这里是表格表头样式*/
-QHeaderView::section {
+QHeaderView::section
+{
     border:0px solid #E0DDDC;   /*先把边框宽度设为0，即隐藏所有表头边框*/
+    background-color: white;
     font:12px;
-    }
+}
 
+/*QTabWidget*/
 QTabWidget::pane { /* The tab widget frame */
-      border-top: 1px solid #C2C7CB;
-  }
+    border-top: 1px solid #C2C7CB;
+}
 
 /* Style the tab using the tab sub-control. Note that
   it reads QTabBar _not_ QTabWidget */
 QTabBar {
-  font:14px;
+    font:14px;
 }
 
 QTabBar::tab {
@@ -43,25 +46,20 @@ QTabBar::tab {
 }
 
 QTabBar::tab:selected { /* The tab widget frame */
-      font: bold;
-      border-bottom:1px;
-      border-bottom-color:#333333;
-  }
+    font: bold;
+    border-bottom:1px;
+    border-bottom-color:#333333;
+}
 
 QTabBar::tab-bar:selected { /* The tab widget frame */
-      border-bottom:1px;
-      border-bottom-color:#242424;
-  }
-  /*QTabBar::tab:selected {
-  background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                              stop: 0 #fafafa, stop: 0.4 #f4f4f4,
-                              stop: 0.5 #e7e7e7, stop: 1.0 #fafafa);  }*/
+    border-bottom:1px;
+    border-bottom-color:#242424;
+}
 
-
-
-/* mainFrame won't have this border-image since we have
-   explicitly set it to 'none' using a more specific selector. */
-
+/*QTabBar::tab:selected {
+background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                          stop: 0 #fafafa, stop: 0.4 #f4f4f4,
+                          stop: 0.5 #e7e7e7, stop: 1.0 #fafafa);  }*/
 
 QLabel {
     border: none;
@@ -93,9 +91,6 @@ QFrame {
 
 }
 
-/* Nice WindowsXP-style password character for password line edits. */
-
-
 /* Customize tooltips. */
 QToolTip {
     background-color: rgb(200,200,255);
@@ -108,21 +103,9 @@ QToolTip {
     opacity: 200;
 }
 
-
-/* Customize arrows. */
-
-
-
-/* Customize push buttons and comboboxes. Our read-only combobox
-   is very similar to a push button, so they share the same border image. */
-
-
-
-
 /* Customize check boxes. */
 QCheckBox {
-border-radius: 3px;
-
+    border-radius: 3px;
 }
 
 
@@ -147,25 +130,25 @@ QCheckBox::indicator:unchecked:pressed {
 
 
 QScrollBar {
-            background:#969191;
-            width:8px;
-            }
+    background:#969191;
+    width:8px;
+}
 QScrollBar::handle{
-                  background:#3E3A3A;
-                  border-radius:3px;
-                  height:30px;
-                  }
+    background:#3E3A3A;
+    border-radius:3px;
+    height:30px;
+}
 
 QScrollBar::add-line:vertical {
-      width:none;
-      height:none;
-      background:#969191;
+    width:none;
+    height:none;
+    background:#969191;
 }
 
 QScrollBar::sub-line:vertical {
-      width:none;
-      height:none;
-      background:#969191;
+    width:none;
+    height:none;
+    background:#969191;
 }
 
 QComboBox {
@@ -179,31 +162,38 @@ QComboBox {
 }
 
 QComboBox::item {
-selection-color:#EDEDED;
-selection-background-color:#EDEDED;
+    selection-color:#EDEDED;
+    selection-background-color:#EDEDED;
 }
+
 QComboBox::drop-down {
-image:url(:/resource/icon/down.png);
-subcontrol-position: right centor;
-border-top-right-radius:3px;
-border-bottom-right-radius:3px;
+    image:url(:/resource/icon/down.png);
+    subcontrol-position: right centor;
+    border-top-right-radius:3px;
+    border-bottom-right-radius:3px;
 }
 
 
 #m_listWidget {
     margin-left: 6px;
-    margin-right: 48px;
-
 }
 
 #m_listWidget::item {
     margin: 6px 0px;
     height:36px;
+    width:110px;
+}
+
+#m_listWidget::item:hover {
+    height:36px;
+    border-radius:4px;
 }
 
 #m_listWidget::item:selected {
+    height:36px;
     color: white;
     background-color: #2669B5;
+    border-radius:4px;
 }
 
 #m_sumGraphicType, #m_graphicType, #m_timeLabel{
@@ -220,9 +210,10 @@ border-bottom-right-radius:3px;
 }
 
 QChart {
-text-color:#111111;
+    text-color:#111111;
 }
 
 QSplitter {
-    width:0px;
+    width:46px;
+    background-color:white;
 }

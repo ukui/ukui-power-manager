@@ -276,7 +276,7 @@ void UkpmWidget::getDevices()
 
             if(kindEnum == UP_DEVICE_KIND_LINE_POWER || kindEnum == UP_DEVICE_KIND_BATTERY || kindEnum == UP_DEVICE_KIND_COMPUTER)
             {
-                item = new QListWidgetItem(QIcon(":/images/"+icon+".png"),label);
+                item = new QListWidgetItem(QIcon(":/resource/icon/"+icon+".png"),label);
                 listItem.insert(deviceNames.at(i),item);
                 listWidget->addItem(item);
             }
@@ -740,6 +740,7 @@ void UkpmWidget::draw_stats_graph(QString type)
         }
         starty = calculate_down_number(min_y,10);
         stopy = calculate_up_number(max_y,10);
+        stopy += 10;
         if(stopy >= 90)
             stopy = 100;
         if(starty >0 && starty <= 10)
@@ -1529,13 +1530,29 @@ void UkpmWidget::onItemChanged(QListWidgetItem* cur,QListWidgetItem* pre)
 void UkpmWidget::onitemSelectionChanged()
 {
     QListWidgetItem *cur = listWidget->currentItem();
-    auto iterator = dev_item.find(cur);
-    if(iterator != dev_item.end())
+    int cnt = listWidget->count();
+    for(int i = 0; i < cnt; i++)
     {
-        current_device = dev_item.value(cur)->m_dev;
-        ukpm_update_info_data(current_device);
-
+        QListWidgetItem *tmp = listWidget->item(i);
+        auto iterator = dev_item.find(tmp);
+        if(iterator != dev_item.end())
+        {
+            DEVICE *device = dev_item.value(tmp);
+            QString icon = up_device_kind_to_string(device->m_dev->kind);
+            if(tmp != cur)
+            {
+                icon = ":/resource/icon/" + icon + ".png";
+            }
+            else
+            {
+                icon = ":/resource/icon/" + icon + "w" + ".png";
+                current_device = device->m_dev;
+                ukpm_update_info_data(current_device);
+            }
+            tmp->setIcon(QIcon(icon));
+        }
     }
+
     qDebug()<<"onitemSelectionChanged";
 }
 
@@ -1913,6 +1930,10 @@ void UkpmWidget::setupUI()
         QListWidgetItem *default_item = listWidget->item(0);
         listWidget->setItemSelected(default_item,true);
         listWidget->setCurrentItem(default_item);
+
+        QString icon = up_device_kind_to_string(current_device->kind);
+        icon = ":/resource/icon/" + icon + "w" + ".png";
+        default_item->setIcon(QIcon(icon));
         ukpm_update_info_data (current_device);
     }
 

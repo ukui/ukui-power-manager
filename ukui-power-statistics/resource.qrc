@@ -3,28 +3,23 @@
         <file>zh_CN.qm</file>
         <file>en.qm</file>
     </qresource>
-    <qresource prefix="/images">
-        <file>battery.png</file>
-        <file>exit.png</file>
-        <file>line-power.png</file>
-        <file>help.png</file>
-        <file>ukui-power-statistics.png</file>
-    </qresource>
+    <qresource prefix="/images"/>
     <qresource prefix="/resource">
         <file>ui.qss</file>
         <file>icon/__click.png</file>
         <file>icon/__con.png</file>
         <file>icon/__hover.png</file>
         <file>icon/1px_delete_con.png</file>
-        <file>icon/acb.png</file>
-        <file>icon/acw.png</file>
-        <file>icon/btrb.png</file>
-        <file>icon/btrw.png</file>
+        <file>icon/line-power.png</file>
+        <file>icon/line-powerw.png</file>
+        <file>icon/battery.png</file>
+        <file>icon/batteryw.png</file>
         <file>icon/checked.png</file>
         <file>icon/down.png</file>
         <file>icon/unchecked.png</file>
         <file>icon/undetermine.png</file>
         <file>icon/1px_delete_click.png</file>
         <file>icon/1px_delete_hover.png</file>
+        <file>icon/ukui-power-statistics.png</file>
     </qresource>
 </RCC>

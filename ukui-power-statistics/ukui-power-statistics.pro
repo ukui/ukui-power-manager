@@ -52,10 +52,5 @@ HEADERS += \
 SUBDIRS += \
     ukui-power-statistics.pro
 
-DISTFILES += \
-    zh_CN.qm \
-    ukui-power-statistics.pro.user \
-    zh_CN.ts
-
 RESOURCES += \
     resource.qrc

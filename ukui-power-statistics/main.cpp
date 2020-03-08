@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
     QString qmfile = QString(":/locale/%1.qm").arg(locale);
     translator.load(qmfile);
     a.installTranslator(&translator);
-    a.setWindowIcon(QIcon(":/images/ukui-power-statistics.png"));
+    a.setWindowIcon(QIcon(":/resource/icon/ukui-power-statistics.png"));
     UkpmWidget *w = new UkpmWidget;
     if(!device.isEmpty())
     {

@@ -1894,6 +1894,7 @@ void UkpmWidget::setupUI()
 //    setWindowFlags(Qt::FramelessWindowHint|Qt::WindowMinimizeButtonHint);
 //    setFocusPolicy(Qt::NoFocus);
     setWindowFlags(Qt::FramelessWindowHint);
+    setAttribute(Qt::WA_TranslucentBackground);
     QSplitter *mainsplitter = new QSplitter(Qt::Horizontal,this);//splittering into two parts
     listWidget = new QListWidget(mainsplitter);
     listWidget->setObjectName("m_listWidget");
@@ -1911,9 +1912,14 @@ void UkpmWidget::setupUI()
     QFrame *header = new QFrame(this);
     header->setFixedHeight(TITLE_HEIGHT);
     header->setWindowFlags(Qt::FramelessWindowHint);
+    header->setStyleSheet("QFrame{background-color:white;border-top-right-radius:6px;"
+                          "border-top-left-radius:6px;border-bottom-right-radius:0px;border-bottom-left-radius:0px;}");
+    mainsplitter->setStyleSheet("QSplitter{background-color:white;border-top-right-radius:0px;"
+                          "border-top-left-radius:0px;border-bottom-right-radius:6px;border-bottom-left-radius:6px;}");
     vlayout->addWidget(header);
     vlayout->addWidget(mainsplitter);
-
+    vlayout->setSpacing(0);
+    vlayout->setContentsMargins(0,0,0,0);
     setLayout(vlayout);//main layout of the UI
     title = new TitleWidget(this);
     title->move(0,0);

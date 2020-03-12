@@ -28,7 +28,6 @@ int main(int argc, char *argv[])
     EggUnique uniq("4822-6fcc-4567-8334");
     if(!uniq.tryToRun())
     {
-        qDebug()<<"program is already running";
         return 0;
     }
     QApplication a(argc, argv);

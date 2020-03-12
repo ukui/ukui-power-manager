@@ -40,10 +40,8 @@ void EngineDevice::power_device_get_devices()
     {
         const QDBusArgument &dbusArg = res.arguments().at(0).value<QDBusArgument>();
         dbusArg >> deviceNames;
-        qDebug()<<"get devices size!"<<deviceNames.size();
     }
     else {
-        qDebug()<<"No response!";
     }
     int len = deviceNames.size();
     for(int i = 0; i < len; i++)
@@ -86,7 +84,6 @@ void EngineDevice::engine_policy_settings_cb(const QString& str)
 {
     if(str != "iconPolicy")
         return;
-    qDebug()<<"policy setting changed";
     QVariant var =settings->get(GPM_SETTINGS_KEY_POLICY);
     QString icon_policy_str = var.value<QString>();
     if(icon_policy_str == "always")
@@ -103,12 +100,10 @@ void EngineDevice::engine_policy_settings_cb(const QString& str)
         icon_policy = GPM_ICON_POLICY_NEVER;
 
     power_device_recalculate_icon();
-    qDebug()<<icon_policy;
 }
 
 void EngineDevice::mypower_device_add(QString msg)
 {
-    qDebug()<<"mypower_device_add";
     DEVICE *dev = new DEVICE;
     dev->m_dev.path = msg;
     dev->m_dev.kind = UP_DEVICE_KIND_BATTERY;
@@ -126,7 +121,6 @@ void EngineDevice::mypower_device_add(QString msg)
 
 void EngineDevice::mypower_device_removed(QString msg)
 {
-    qDebug()<<"mypower_device_removed";
     Q_FOREACH (auto item, devices)
     {
         if(item->m_dev.path == msg)
@@ -289,7 +283,6 @@ void EngineDevice::power_device_change_callback(QDBusMessage msg,QString path)
     /* if battery change to display devices */
     /* judge state */
 
-    qDebug()<<"change callback-------"<<path;
     DEVICE *item = nullptr;
     Q_FOREACH (auto item_tmp, devices)
     {
@@ -421,7 +414,6 @@ QString EngineDevice::power_device_get_icon()
         }
         if(icon_policy == GPM_ICON_POLICY_CRITICAL)
         {
-            qDebug()<< ("no devices critical, so no icon will be displayed.");
             return QString();
         }
     }
@@ -448,7 +440,6 @@ QString EngineDevice::power_device_get_icon()
         }
         if(icon_policy == GPM_ICON_POLICY_LOW)
         {
-            qDebug()<< ("no devices low, so no icon will be displayed.");
             return QString();
         }
     }
@@ -467,7 +458,6 @@ QString EngineDevice::power_device_get_icon()
         }
         if(icon_policy == GPM_ICON_POLICY_CHARGE)
         {
-            qDebug()<< ("no devices (dis)charging, so no icon will be displayed.");
             return QString();
         }
     }
@@ -485,7 +475,6 @@ QString EngineDevice::power_device_get_icon()
         }
         if(icon_policy == GPM_ICON_POLICY_PRESENT)
         {
-            qDebug()<< ("no devices present, so no icon will be displayed.");
             return QString();
         }
     }
@@ -496,7 +485,6 @@ QString EngineDevice::power_device_get_icon()
         return icon;
     }
     /* we fallback to the ac_adapter icon */
-    qDebug()<< ("Using fallback");
     return QString("gpm-ac-adapter");
 }
 /**
@@ -1083,7 +1071,6 @@ QString EngineDevice::engine_get_device_icon (DEVICE *device)
         printf ("nothing matched, falling back to default icon");
         result =  ("dialog-warning");
     }
-    qDebug()<<"engine_get_device_icon:"<<result;
     return result;
 }
 

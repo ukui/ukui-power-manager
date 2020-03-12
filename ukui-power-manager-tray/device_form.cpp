@@ -81,7 +81,6 @@ void DeviceForm::setIcon(QString name)
     set_charge_animation(false);
 
     QIcon icon = QIcon::fromTheme(name);
-    qDebug()<<icon.name()<<"-----------this is device icon---------------------";
     QPixmap pixmap = icon.pixmap(QSize(32,32));
     ui->icon->setPixmap(pixmap);
 }

@@ -71,13 +71,11 @@ MainWindow::MainWindow(QWidget *parent) :
 void MainWindow::onSumChanged(QString str)
 {
 //    trayIcon->setToolTip(str);
-    qDebug()<<str;
 }
 
 void MainWindow::discharge_notify(DEV dev)
 {
     Q_UNUSED(dev);
-    qDebug()<<"discharge_notify---------";
     QDBusInterface iface("org.freedesktop.Notifications",
                          "/org/freedesktop/Notifications",
                          "org.freedesktop.Notifications",
@@ -97,7 +95,6 @@ void MainWindow::discharge_notify(DEV dev)
 void MainWindow::full_charge_notify(DEV dev)
 {
     Q_UNUSED(dev);
-    qDebug()<<"full_charge_notify---------";
     QDBusInterface iface("org.freedesktop.Notifications",
                          "/org/freedesktop/Notifications",
                          "org.freedesktop.Notifications",
@@ -117,7 +114,6 @@ void MainWindow::full_charge_notify(DEV dev)
 void MainWindow::low_battery_notify(DEV dev)
 {
     Q_UNUSED(dev);
-    qDebug()<<"low battery notify---------";
     QDBusInterface iface("org.freedesktop.Notifications",
                          "/org/freedesktop/Notifications",
                          "org.freedesktop.Notifications",
@@ -137,7 +133,6 @@ void MainWindow::low_battery_notify(DEV dev)
 void MainWindow::critical_battery_notify(DEV dev)
 {
     Q_UNUSED(dev);
-    qDebug()<<"critical battery notify---------";
     QDBusInterface iface("org.freedesktop.Notifications",
                          "/org/freedesktop/Notifications",
                          "org.freedesktop.Notifications",
@@ -158,7 +153,6 @@ void MainWindow::action_battery_notify(DEV dev)
 {
     Q_UNUSED(dev);
 
-    qDebug()<<"critical battery notify---------";
     QDBusInterface iface("org.freedesktop.Notifications",
                          "/org/freedesktop/Notifications",
                          "org.freedesktop.Notifications",
@@ -177,8 +171,6 @@ void MainWindow::action_battery_notify(DEV dev)
 
 void MainWindow::onIconChanged(QString str)
 {
-    qDebug()<<str<<"trayicon is set";
-
     /*if(!str.isNull())
     {
         QIcon icon = QIcon::fromTheme(str);
@@ -406,27 +398,20 @@ void MainWindow::onActivatedIcon(QSystemTrayIcon::ActivationReason reason)
             if (rect.x() > availableWidth/2 && rect.x()< availableWidth  && rect.y() > availableHeight/2) { //下
                 if (availableWidth - rect.x() - 3 < menu->width())
                 {
-                    qDebug()<<"xia 1:" << (availableWidth - rect.x() - 3) << (menu->width());
                     menu->setGeometry(availableWidth-menu->width()-3,availableHeight-menu->height()-3,menu->width(),menu->height());
                 }
                 else
                 {
-                    qDebug()<<"xia 2:" << (availableWidth - rect.x() - 3) << (menu->width());
-
                     menu->setGeometry(rect.x(),availableHeight-menu->height()-3,menu->width(),menu->height());
                 }
             }
             else if (rect.x() > availableWidth/2 && rect.x()< availableWidth && rect.y() < availableHeight/2 ) { //上
                 if (availableWidth - rect.x() - 3 < menu->width())
                 {
-                    qDebug()<<"shang 1:" << (availableWidth - rect.x() - 3) << (menu->width());
-
                     menu->setGeometry(availableWidth-menu->width()-3,totalHeight-availableHeight+3,menu->width(),menu->height());
                 }
                 else
                 {
-                    qDebug()<<"shang 2:" << (availableWidth - rect.x() - 3) << (menu->width());
-
                     menu->setGeometry(rect.x(),totalHeight-availableHeight+3,menu->width(),menu->height());
                 }
             }
@@ -615,7 +600,6 @@ void MainWindow::get_power_list()
         if(dv->m_dev.kind == UP_DEVICE_KIND_LINE_POWER)
             continue;
         QString icon_name = ed->engine_get_device_icon(dv);
-        qDebug()<<"this is kind icon-----"<<icon_name;
         QString percentage = QString::number(dv->m_dev.Percentage, 'f',0)+"%";
         bool is_charging = false;
         QString text;

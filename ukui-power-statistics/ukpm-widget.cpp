@@ -83,7 +83,6 @@ bool UkpmWidget::set_selected_device(QString name)
         QListWidgetItem *item = listItem.value(objpath);
         if(dev_item.contains(item))
         {
-            qDebug()<<"set_selected_devie_inin";
             current_device = dev_item.value(item)->m_dev;
             listWidget->setItemSelected(item,true);
             listWidget->setCurrentItem(item);
@@ -152,7 +151,6 @@ int UkpmWidget::parseArguments()
 {
     int index = 0;
     QStringList arguments = QApplication::arguments();
-    qDebug()<< "arguments size is:"<<arguments.size();
     if(arguments.size() < 3)
         return index;
     QString dev = arguments.at(2);
@@ -160,7 +158,6 @@ int UkpmWidget::parseArguments()
     for(int i = 0; i< size; i++)
         if(deviceNames.at(i).path() == dev)
             index = i;
-    qDebug()<< dev << " of index=" << index;
     return index;
 }
 
@@ -240,10 +237,8 @@ void UkpmWidget::getDevices()
     {
         const QDBusArgument &dbusArg = res.arguments().at(0).value<QDBusArgument>();
         dbusArg >> deviceNames;
-        qDebug()<<"get devices size!"<<deviceNames.size();
     }
     else {
-        qDebug()<<"No response!";
     }
     int len = deviceNames.size();
     for(int i = 0; i < len; i++)
@@ -286,10 +281,8 @@ void UkpmWidget::getDevices()
             DEVICE *dev = new DEVICE(this);
             dev->m_dev->kind = (UpDeviceKind)kindEnum;
             dev->m_dev->path = deviceNames.at(i).path();
-            qDebug()<<dev->m_dev->path;
             dev->m_dev->hasHistory = map.value(QString("HasHistory")).toBool();
             dev->m_dev->hasStat = map.value(QString("HasStatistics")).toBool();
-//            dev->Type = up_device_kind_to_string ((UpDeviceKind)map.value(QString("Type")).toInt());
             dev->m_dev->Type = up_device_kind_to_string ((UpDeviceKind)map.value(QString("Type")).toInt());
             dev->m_dev->Model = map.value(QString("Model")).toString();
             dev->m_dev->Device = map.value(QString("NativePath")).toString();
@@ -335,7 +328,6 @@ void UkpmWidget::getDevices()
             dev->m_dev->Voltage = QString::number(map.value(QString("Voltage")).toDouble(), 'f', 1) + " V";
 
             devices.push_back(dev);
-//            dev_item.insert(dev,item);
             dev_item.insert(item,dev);
         }
     }
@@ -546,7 +538,6 @@ void UkpmWidget::ukpm_update_info_data (DEV* device)
 
     page = tab_widget->currentIndex();
     index_old = page;
-    qDebug()<<"ukpm_update_info_data: page="<<page;
     ukpm_update_info_data_page (device, page);
     return;
 }
@@ -660,7 +651,8 @@ void UkpmWidget::draw_stats_graph(QString type)
     int start_x = 0;
     float max_y = FLT_MIN;
     float min_y = FLT_MAX;
-    int starty,stopy;
+    int starty = 0;
+    int stopy = 0;
 
     QDBusMessage msg = QDBusMessage::createMethodCall("org.freedesktop.UPower",current_device->path,
             "org.freedesktop.UPower.Device","GetStatistics");
@@ -670,12 +662,10 @@ void UkpmWidget::draw_stats_graph(QString type)
     QDBusMessage res = QDBusConnection::systemBus().call(msg);
     if(res.type() == QDBusMessage::ReplyMessage)
     {
-//        printf("GetStatistics:get %d arg from bus!\n",res.arguments().count());
         QDBusArgument dbusArg = res.arguments().at(0).value<QDBusArgument>();
         dbusArg >> list;
     }
     else {
-        qDebug()<<"error of qdbus reply";
 
     }
     if(list.isEmpty())
@@ -711,6 +701,11 @@ void UkpmWidget::draw_stats_graph(QString type)
         else
             stopy = -starty;
 
+        if(starty == stopy)
+        {
+            starty = -1;
+            stopy = 1;
+        }
         sumSeries->replace(data);
         sumSpline->replace(data);
         y->setTitleText(tr("adjust factor"));
@@ -779,6 +774,11 @@ void UkpmWidget::draw_stats_graph(QString type)
         else
             stopy = -starty;
 
+        if(starty == stopy)
+        {
+            starty = -1;
+            stopy = 1;
+        }
         sumSeries->replace(data);
         sumSpline->replace(data);
         y->setTitleText(tr("adjust factor"));
@@ -811,7 +811,6 @@ void UkpmWidget::draw_stats_graph(QString type)
             stopy = 100;
         if(starty >0 && starty <= 10)
             starty = 0;
-        qDebug()<<starty << stopy;
         sumSeries->replace(data);
         sumSpline->replace(data);
         y->setTitleText(tr("Predict Accurency"));
@@ -1278,7 +1277,6 @@ void UkpmWidget::showSumDataPoint(bool flag)
     QList<QAbstractSeries *> ses = sumChart->series();
     if(flag)
     {
-//        qDebug()<<"showSumDataPoint---true";
         foreach (QAbstractSeries *item, ses) {
             QLineSeries *tmp = (QLineSeries*)item;
             tmp->setPointsVisible(true);
@@ -1746,7 +1744,6 @@ void UkpmWidget::onPageChanged(int index)
         settings->setInt(GPM_SETTINGS_INFO_PAGE_NUMBER,index);
         index_old = index;
     }
-    qDebug()<<"tab page number is:"<< index<<"current_device is:"<< current_device->path;
     ukpm_update_info_data_page(current_device,index);
 }
 
@@ -1879,7 +1876,6 @@ void UkpmWidget::deviceAdded(QDBusMessage  msg)
         DEVICE *dev = new DEVICE(this);
         dev->m_dev->kind = (UpDeviceKind)kindEnum;
         dev->m_dev->path = objectPath.path();
-        qDebug()<<dev->m_dev->path;
         dev->m_dev->hasHistory = map.value(QString("HasHistory")).toBool();
         dev->m_dev->hasStat = map.value(QString("HasStatistics")).toBool();
 

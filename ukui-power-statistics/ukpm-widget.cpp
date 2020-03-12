@@ -831,6 +831,13 @@ void UkpmWidget::ukpm_set_choice_sum()
 {
     bool checked;
 
+    sumChart->addSeries(sumSpline);
+    sumSpline->attachAxis(x);//连接数据集与
+    sumSpline->attachAxis(y);//连接数据集与
+    sumChart->addSeries(sumSeries);
+    sumSeries->attachAxis(x);//连接数据集与
+    sumSeries->attachAxis(y);//连接数据集与
+
     QString stats_type = settings->getString(GPM_SETTINGS_INFO_STATS_TYPE);
     if(stats_type == NULL)
         stats_type = GPM_STATS_CHARGE_DATA_VALUE;
@@ -844,49 +851,57 @@ void UkpmWidget::ukpm_set_choice_sum()
         sumTypeCombox->setCurrentIndex(3);
 
 //    Q_EMIT hisDataBox->clicked(checked);
-    checked = settings->getBool(GPM_SETTINGS_INFO_STATS_GRAPH_SMOOTH);
-    sumCurveBox->setChecked(checked);
+//    checked = settings->getBool(GPM_SETTINGS_INFO_STATS_GRAPH_SMOOTH);
+//    sumCurveBox->setChecked(checked);
 //    Q_EMIT sumCurveBox->clicked(checked);
     checked = settings->getBool(GPM_SETTINGS_INFO_STATS_GRAPH_POINTS);
-    sumDataBox->setChecked(checked);
+//    sumDataBox->setChecked(checked);
 //    Q_EMIT sumDataBox->clicked(checked);
-    if(sumDataBox->isChecked())
+    if(checked)
     {
-        if(sumCurveBox->isChecked())
-        {
-            sumSpline->setPointsVisible(true);
-            sumChart->removeSeries(sumSeries);
-            sumChart->addSeries(sumSpline);
-            sumSpline->attachAxis(x);//连接数据集与
-            sumSpline->attachAxis(y);//连接数据集与
-        }
-        else
-        {
-            sumSeries->setPointsVisible(true);
-            sumChart->removeSeries(sumSpline);
-            sumChart->addSeries(sumSeries);
-            sumSeries->attachAxis(x);//连接数据集与
-            sumSeries->attachAxis(y);//连接数据集与
-        }
+        sum_data_btn->setStyleSheet("QPushButton {color:white; background:#3D6BE5; border-radius:4px}");
+        sum_line_btn->setStyleSheet("QPushButton {color:black; background:#E7E7E7; border-radius:4px}");
+        sumSpline->setVisible(true);
+        sumSeries->setVisible(false);
+//        if(sumCurveBox->isChecked())
+//        {
+//            sumSpline->setPointsVisible(true);
+//            sumChart->removeSeries(sumSeries);
+//            sumChart->addSeries(sumSpline);
+//            sumSpline->attachAxis(x);//连接数据集与
+//            sumSpline->attachAxis(y);//连接数据集与
+//        }
+//        else
+//        {
+//            sumSeries->setPointsVisible(true);
+//            sumChart->removeSeries(sumSpline);
+//            sumChart->addSeries(sumSeries);
+//            sumSeries->attachAxis(x);//连接数据集与
+//            sumSeries->attachAxis(y);//连接数据集与
+//        }
     }
     else
     {
-        if(sumCurveBox->isChecked())
-        {
-            sumSpline->setPointsVisible(false);
-            sumChart->removeSeries(sumSeries);
-            sumChart->addSeries(sumSpline);
-            sumSpline->attachAxis(x);//连接数据集与
-            sumSpline->attachAxis(y);//连接数据集与
-        }
-        else
-        {
-            sumSeries->setPointsVisible(false);
-            sumChart->removeSeries(sumSpline);
-            sumChart->addSeries(sumSeries);
-            sumSeries->attachAxis(x);//连接数据集与
-            sumSeries->attachAxis(y);//连接数据集与
-        }
+        sum_line_btn->setStyleSheet("QPushButton {color:white; background:#3D6BE5; border-radius:4px}");
+        sum_data_btn->setStyleSheet("QPushButton {color:black; background:#E7E7E7; border-radius:4px}");
+        sumSeries->setVisible(true);
+        sumSpline->setVisible(false);
+//        if(sumCurveBox->isChecked())
+//        {
+//            sumSpline->setPointsVisible(false);
+//            sumChart->removeSeries(sumSeries);
+//            sumChart->addSeries(sumSpline);
+//            sumSpline->attachAxis(x);//连接数据集与
+//            sumSpline->attachAxis(y);//连接数据集与
+//        }
+//        else
+//        {
+//            sumSeries->setPointsVisible(false);
+//            sumChart->removeSeries(sumSpline);
+//            sumChart->addSeries(sumSeries);
+//            sumSeries->attachAxis(x);//连接数据集与
+//            sumSeries->attachAxis(y);//连接数据集与
+//        }
     }
 }
 
@@ -1042,6 +1057,12 @@ void UkpmWidget::draw_history_graph(QList<QPointF> list)
 void UkpmWidget::ukpm_set_choice_history()
 {
     bool checked;
+    hisChart->addSeries(hisSpline);
+    hisSpline->attachAxis(xtime);//连接数据集与
+    hisSpline->attachAxis(axisY);//连接数据集与
+    hisChart->addSeries(hisSeries);
+    hisSeries->attachAxis(xtime);//连接数据集与
+    hisSeries->attachAxis(axisY);//连接数据集与
 
     QString history_type = settings->getString(GPM_SETTINGS_INFO_HISTORY_TYPE);
     int history_time = settings->getInt(GPM_SETTINGS_INFO_HISTORY_TIME);
@@ -1064,51 +1085,32 @@ void UkpmWidget::ukpm_set_choice_history()
 
 //    Q_EMIT spanCombox->currentIndexChanged(spanCombox->currentIndex());
 //    Q_EMIT sumTypeCombox->currentIndexChanged(sumTypeCombox->currentIndex());
-    checked = settings->getBool(GPM_SETTINGS_INFO_HISTORY_GRAPH_SMOOTH);
-    hisCurveBox->setChecked(checked);
+//    checked = settings->getBool(GPM_SETTINGS_INFO_HISTORY_GRAPH_SMOOTH);
+//    hisCurveBox->setChecked(checked);
+//    if(checked)
+//        his_line_btn->setStyleSheet("QPushButton {color:white; background:#3D6BE5; border-radius:4px}");
+//    else
+//        his_line_btn->setStyleSheet("QPushButton {color:black; background:#E7E7E7; border-radius:4px}");
+
 //    Q_EMIT hisCurveBox->clicked(checked);
     checked = settings->getBool(GPM_SETTINGS_INFO_HISTORY_GRAPH_POINTS);
-    hisDataBox->setChecked(checked);
-//    Q_EMIT hisDataBox->clicked(checked);
-
-    if(hisDataBox->isChecked())
+//    hisDataBox->setChecked(checked);
+    if(checked)
     {
-        if(hisCurveBox->isChecked())
-        {
-            hisSpline->setPointsVisible(true);
-            hisChart->removeSeries(hisSeries);
-            hisChart->addSeries(hisSpline);
-            hisSpline->attachAxis(xtime);//连接数据集与
-            hisSpline->attachAxis(axisY);//连接数据集与
-        }
-        else
-        {
-            hisSeries->setPointsVisible(true);
-            hisChart->removeSeries(hisSpline);
-            hisChart->addSeries(hisSeries);
-            hisSeries->attachAxis(xtime);//连接数据集与
-            hisSeries->attachAxis(axisY);//连接数据集与
-        }
+        his_data_btn->setStyleSheet("QPushButton {color:white; background:#3D6BE5; border-radius:4px}");
+        his_line_btn->setStyleSheet("QPushButton {color:black; background:#E7E7E7; border-radius:4px}");
+        hisSpline->setVisible(true);
+        hisSeries->setVisible(false);
     }
     else
     {
-        if(hisCurveBox->isChecked())
-        {
-            hisSpline->setPointsVisible(false);
-            hisChart->removeSeries(hisSeries);
-            hisChart->addSeries(hisSpline);
-            hisSpline->attachAxis(xtime);//连接数据集与
-            hisSpline->attachAxis(axisY);//连接数据集与
-        }
-        else
-        {
-            hisSeries->setPointsVisible(false);
-            hisChart->removeSeries(hisSpline);
-            hisChart->addSeries(hisSeries);
-            hisSeries->attachAxis(xtime);//连接数据集与
-            hisSeries->attachAxis(axisY);//连接数据集与
-        }
+        his_data_btn->setStyleSheet("QPushButton {color:black; background:#E7E7E7; border-radius:4px}");
+        his_line_btn->setStyleSheet("QPushButton {color:white; background:#3D6BE5; border-radius:4px}");
+
+        hisSpline->setVisible(false);
+        hisSeries->setVisible(true);
     }
+
 }
 void UkpmWidget::ukpm_update_info_data_page (DEV* device, gint page)
 {
@@ -1165,10 +1167,23 @@ void UkpmWidget::setSumTab()
     QListView * listView = new QListView(sumTypeCombox);
     listView->setStyleSheet("QListView::item:selected {background: #EDEDED }");
     sumTypeCombox->setView(listView);
-    sumCurveBox = new QCheckBox(tr("spline"),stat_widget);
-    sumDataBox = new QCheckBox(tr("show datapoint"),stat_widget);
-    sumCurveBox->setFixedSize(110,24);
-    sumDataBox->setFixedSize(110,24);
+//    sumCurveBox = new QCheckBox(tr("spline"),stat_widget);
+//    sumDataBox = new QCheckBox(tr("show datapoint"),stat_widget);
+//    sumCurveBox->setFixedSize(110,24);
+//    sumDataBox->setFixedSize(110,24);
+    sum_line_btn = new QPushButton(tr("show line"),stat_widget);
+    sum_data_btn = new QPushButton(tr("show data points"),stat_widget);
+    sum_line_btn->setObjectName("sum_line_btn");
+    sum_data_btn->setObjectName("sum_data_btn");
+    sum_line_btn->setFixedSize(100,32);
+    sum_data_btn->setFixedSize(100,32);
+    sum_line_btn->setCheckable(true);
+    sum_data_btn->setCheckable(true);
+    sum_group = new QButtonGroup;
+    sum_group->addButton(sum_line_btn);
+    sum_group->addButton(sum_data_btn);
+    sum_group->setExclusive(true);
+
     QHBoxLayout *bottomLayout = new QHBoxLayout;
     QFormLayout *topFormLayout = new QFormLayout;
 
@@ -1178,12 +1193,18 @@ void UkpmWidget::setSumTab()
     topFormLayout->setSpacing(0);
 
     sumChart = new QChart;
-
+    sumChart->setContentsMargins(0,0,0,0);
     x = new QValueAxis;
     y = new QValueAxis;
 
     sumSeries = new QLineSeries();
-    sumSpline = new QSplineSeries();
+    sumSpline = new QScatterSeries();
+    sumSpline->setMarkerSize(6);
+    sumSpline->setBrush(QBrush(QColor("#3D6BE5")));
+    sumSpline->setBorderColor(QColor("#3D6BE5"));
+    QPen pen(QColor("#2ac4a1"),1);
+    sumSeries->setPen(pen);
+
     sumChart->setAxisX(x);
     sumChart->setAxisY(y);
 
@@ -1202,12 +1223,12 @@ void UkpmWidget::setSumTab()
 
     sumChartView = new QChartView(sumChart);
     sumChartView->setRenderHint(QPainter::Antialiasing);
-    sumChartView->setFixedWidth(594);
+    sumChartView->setContentsMargins(0,0,0,0);
     QVBoxLayout *botchild = new QVBoxLayout;
-    bottomLayout->addWidget(sumCurveBox,1);
-    bottomLayout->addWidget(sumDataBox,1);
+    bottomLayout->addWidget(sum_line_btn,1);
+    bottomLayout->addWidget(sum_data_btn,1);
     bottomLayout->addLayout(botchild,4);
-    bottomLayout->setSpacing(40);
+    bottomLayout->setSpacing(16);
 
     QVBoxLayout *vLayout = new QVBoxLayout;
 
@@ -1221,6 +1242,8 @@ void UkpmWidget::setSumTab()
     vLayout->addLayout(topFormLayout);
     vLayout->addWidget(sumStack);
     vLayout->addLayout(bottomLayout);
+    vLayout->setContentsMargins(0,20,0,32);
+    vLayout->setSpacing(0);
     stat_widget->setLayout(vLayout);
 //    tab_widget->addTab(stat_widget,tr("statistics"));
     stat_widget->hide();
@@ -1232,14 +1255,15 @@ void UkpmWidget::showHisDataPoint(bool flag)
     QList<QAbstractSeries *> ses = hisChart->series();
     if(flag)
     {
+        his_data_btn->setStyleSheet("QPushButton {color:white; background:#3D6BE5; border-radius:4px}");
         foreach (QAbstractSeries *item, ses) {
             QLineSeries *tmp = (QLineSeries*)item;
             tmp->setPointsVisible(true);
         }
-
     }
     else
     {
+        his_data_btn->setStyleSheet("QPushButton {color:black; background:#E7E7E7; border-radius:4px}");
         foreach (QAbstractSeries *item, ses) {
             QLineSeries *tmp = (QLineSeries*)item;
             tmp->setPointsVisible(false);
@@ -1312,10 +1336,10 @@ void UkpmWidget::setHistoryTab()
     typeCombox->setObjectName("m_typeCombox");
     spanCombox = new QComboBox(his_widget);
     spanCombox->addItems(QStringList()<<tr("ten minutes")<<tr("two hours")<<tr("six hours")<<tr("one day")<<tr("one week"));
-    graphicType->setFixedWidth(80);
-    typeCombox->setFixedWidth(200);
-    timeLabel->setFixedWidth(80);
-    spanCombox->setFixedWidth(200);
+//    graphicType->setFixedWidth(80);
+//    typeCombox->setFixedWidth(200);
+//    timeLabel->setFixedWidth(80);
+//    spanCombox->setFixedWidth(200);
 
     QListView * typeView = new QListView(typeCombox);
     typeView->setStyleSheet("QListView::item:selected {background: #EDEDED }");
@@ -1324,10 +1348,23 @@ void UkpmWidget::setHistoryTab()
     spanView->setStyleSheet("QListView::item:selected {background: #EDEDED }");
     spanCombox->setView(spanView);
 
-    hisCurveBox = new QCheckBox(tr("spline"),his_widget);
-    hisDataBox = new QCheckBox(tr("show datapoint"),his_widget);
-    hisCurveBox->setFixedSize(110,24);
-    hisDataBox->setFixedSize(110,24);
+//    hisCurveBox = new QCheckBox(tr("spline"),his_widget);
+//    hisDataBox = new QCheckBox(tr("show datapoint"),his_widget);
+//    hisCurveBox->setFixedSize(110,24);
+//    hisDataBox->setFixedSize(110,24);
+
+    his_line_btn = new QPushButton(tr("show line"),his_widget);
+    his_data_btn = new QPushButton(tr("show data points"),his_widget);
+    his_line_btn->setObjectName("his_line_btn");
+    his_data_btn->setObjectName("his_data_btn");
+    his_line_btn->setFixedSize(100,32);
+    his_data_btn->setFixedSize(100,32);
+    his_line_btn->setCheckable(true);
+    his_data_btn->setCheckable(true);
+    his_group = new QButtonGroup;
+    his_group->addButton(his_line_btn);
+    his_group->addButton(his_data_btn);
+    his_group->setExclusive(true);
     QVBoxLayout *checkpad = new QVBoxLayout;
     QHBoxLayout *topLayout = new QHBoxLayout;
     QHBoxLayout *bottomLayout = new QHBoxLayout;
@@ -1341,18 +1378,25 @@ void UkpmWidget::setHistoryTab()
     topLayout->addLayout(hisType);
     topLayout->addLayout(hisSpan);
     topLayout->setSpacing(40);
+    topLayout->setContentsMargins(0,0,0,0);
 
-    bottomLayout->addWidget(hisCurveBox,1);
-    bottomLayout->addWidget(hisDataBox,1);
+    bottomLayout->addWidget(his_line_btn,1);
+    bottomLayout->addWidget(his_data_btn,1);
     bottomLayout->addLayout(checkpad,2);
-    bottomLayout->setSpacing(40);
+    bottomLayout->setSpacing(16);
 //    bottomLayout->setAlignment(hisCurveBox,Qt::AlignLeft);
 //    bottomLayout->setAlignment(hisDataBox,Qt::AlignLeft);
 
     hisChart = new QChart;
+    hisChart->setContentsMargins(0,0,0,0);
 
     hisSeries = new QLineSeries();
-    hisSpline = new QSplineSeries();
+    hisSpline = new QScatterSeries();
+    hisSpline->setMarkerSize(6);
+    hisSpline->setBrush(QBrush(QColor("#3D6BE5")));
+    hisSpline->setBorderColor(QColor("#3D6BE5"));
+    QPen pen(QColor("#2ac4a1"),1);
+    hisSeries->setPen(pen);
 //    hisChart->addSeries(hisSpline);
 
     xtime = new QCategoryAxis();//轴变量、数据系列变量，都不能声明为局部临时变量
@@ -1375,7 +1419,8 @@ void UkpmWidget::setHistoryTab()
     hisChart->setPlotAreaBackgroundVisible(true);
     hisChartView = new QChartView(hisChart);
     hisChartView->setRenderHint(QPainter::Antialiasing);
-    hisChartView->setFixedWidth(594);
+//    hisChartView->setFixedWidth(594);
+    hisChartView->setContentsMargins(0,0,0,0);
     QVBoxLayout *vLayout = new QVBoxLayout;
     hisStack = new QStackedWidget;
     QLabel *nodata = new QLabel;
@@ -1383,12 +1428,15 @@ void UkpmWidget::setHistoryTab()
     nodata->setAlignment(Qt::AlignCenter);
     hisStack->addWidget(nodata);
     hisStack->addWidget(hisChartView);
+    vLayout->setSpacing(0);
     vLayout->addLayout(topLayout);
     vLayout->addWidget(hisStack);
     vLayout->addLayout(bottomLayout);
+    vLayout->setContentsMargins(0,20,0,32);
     his_widget->setLayout(vLayout);
 //    tab_widget->addTab(his_widget,tr("history"));
     his_widget->hide();
+
     ukpm_set_choice_history();
 }
 
@@ -1413,12 +1461,10 @@ QList<QPointF> UkpmWidget::getStatics(QString stat_type)
     QDBusMessage res = QDBusConnection::systemBus().call(msg);
     if(res.type() == QDBusMessage::ReplyMessage)
     {
-        printf("get %d arg from bus!\n",res.arguments().count());
         QDBusArgument dbusArg = res.arguments().at(0).value<QDBusArgument>();
         dbusArg >> list;
     }
     else {
-        qDebug()<<"error of qdbus reply";
 
     }
     if(list.isEmpty())
@@ -1441,11 +1487,8 @@ QList<QPointF> UkpmWidget::getHistory(QString type, uint timeSpan)
     QDBusArgument argument;
     struct timeval tv;
     gettimeofday(&tv,NULL);
-//    uint max_y = 0;
-//    uint min_y = 0;
-//    bool first_run = true;
+
     resolution = 150;
-//    settings->setString(GPM_SETTINGS_INFO_HISTORY_TYPE,type);
     msg << type << timeSpan << resolution;
     QDBusMessage res = QDBusConnection::systemBus().call(msg);
     if(res.type() == QDBusMessage::ReplyMessage)
@@ -1454,7 +1497,6 @@ QList<QPointF> UkpmWidget::getHistory(QString type, uint timeSpan)
         argument = variant.value<QDBusArgument>();
         argument >> listQDBus;
         size = listQDBus.size();
-//        qDebug()<<"size="<<size<<"span="<<timeSpan;
         for(uint i = 0; i< size; i++)
         {
             if(listQDBus[i].state == 0)
@@ -1465,7 +1507,6 @@ QList<QPointF> UkpmWidget::getHistory(QString type, uint timeSpan)
         }
     }
     else {
-        qDebug()<<"gethistory:error of qdbus reply";
     }
     if(list.isEmpty())
     {
@@ -1524,7 +1565,6 @@ void UkpmWidget::onItemChanged(QListWidgetItem* cur,QListWidgetItem* pre)
         ukpm_update_info_data(current_device);
 
     }
-    qDebug()<<"onItemChanged";
 }
 
 void UkpmWidget::onitemSelectionChanged()
@@ -1553,28 +1593,69 @@ void UkpmWidget::onitemSelectionChanged()
         }
     }
 
-    qDebug()<<"onitemSelectionChanged";
+}
+
+void UkpmWidget::choose_history_graph(int choice)
+{
+    QPushButton *checkedButton = qobject_cast<QPushButton*>(his_group->checkedButton());
+    QString name = checkedButton->objectName();
+    if(name == "his_data_btn")
+    {
+        his_data_btn->setStyleSheet("QPushButton {color:white; background:#3D6BE5; border-radius:4px}");
+        his_line_btn->setStyleSheet("QPushButton {color:black; background:#E7E7E7; border-radius:4px}");
+        hisSpline->setVisible(true);
+        hisSeries->setVisible(false);
+        settings->setBool(GPM_SETTINGS_INFO_HISTORY_GRAPH_POINTS,true);
+    }
+    else
+    {
+        his_data_btn->setStyleSheet("QPushButton {color:black; background:#E7E7E7; border-radius:4px}");
+        his_line_btn->setStyleSheet("QPushButton {color:white; background:#3D6BE5; border-radius:4px}");
+        hisSeries->setVisible(true);
+        hisSpline->setVisible(false);
+        settings->setBool(GPM_SETTINGS_INFO_HISTORY_GRAPH_POINTS,false);
+    }
+}
+
+void UkpmWidget::choose_stat_graph(int choice)
+{
+    QPushButton *checkedButton = qobject_cast<QPushButton*>(sum_group->checkedButton());
+    QString name = checkedButton->objectName();
+    if(name == "sum_data_btn")
+    {
+        sum_data_btn->setStyleSheet("QPushButton {color:white; background:#3D6BE5; border-radius:4px}");
+        sum_line_btn->setStyleSheet("QPushButton {color:black; background:#E7E7E7; border-radius:4px}");
+        sumSpline->setVisible(true);
+        sumSeries->setVisible(false);
+        settings->setBool(GPM_SETTINGS_INFO_STATS_GRAPH_POINTS,true);
+    }
+    else
+    {
+        sum_data_btn->setStyleSheet("QPushButton {color:black; background:#E7E7E7; border-radius:4px}");
+        sum_line_btn->setStyleSheet("QPushButton {color:white; background:#3D6BE5; border-radius:4px}");
+        sumSeries->setVisible(true);
+        sumSpline->setVisible(false);
+        settings->setBool(GPM_SETTINGS_INFO_STATS_GRAPH_POINTS,false);
+    }
 }
 
 void UkpmWidget::getSlots()
 {
 
-//    QDBusConnection::systemBus().connect(DBUS_SERVICE,DBUS_OBJECT,DBUS_SERVICE,
-//                                         QString("device-added"),this,SLOT(deviceAdded(QDBusMessage)));
-//    QDBusConnection::systemBus().connect(DBUS_SERVICE,DBUS_OBJECT,DBUS_SERVICE,
-//                                         QString("device-removed"),this,SLOT(deviceRemoved(QDBusMessage)));
-
-//        connect(listWidget,SIGNAL(currentItemChanged(QListWidgetItem*,QListWidgetItem*)),this,SLOT(onItemChanged(QListWidgetItem*,QListWidgetItem*)));
     connect(listWidget,SIGNAL(itemSelectionChanged()),this,SLOT(onitemSelectionChanged()));
     connect(tab_widget,SIGNAL(currentChanged(int)),this,SLOT(onPageChanged(int)));
     connect(typeCombox,SIGNAL(currentIndexChanged(int)),this,SLOT(upHistoryType(int)));
     connect(spanCombox,SIGNAL(currentIndexChanged(int)),this,SLOT(upHistoryType(int)));
     connect(sumTypeCombox,SIGNAL(currentIndexChanged(int)),this,SLOT(upStatsType(int)));
 
-    connect(sumDataBox,SIGNAL(toggled(bool)),this,SLOT(showSumDataPoint(bool)));
-    connect(hisDataBox,SIGNAL(clicked(bool)),this,SLOT(showHisDataPoint(bool)));
-    connect(hisCurveBox,SIGNAL(toggled(bool)),this,SLOT(drawHisSpineline(bool)));
-    connect(sumCurveBox,SIGNAL(toggled(bool)),this,SLOT(drawSumSpineline(bool)));
+//    connect(his_data_btn,SIGNAL(clicked(bool)),this,SLOT(showHisDataPoint(bool)));
+//    connect(his_line_btn,SIGNAL(clicked(bool)),this,SLOT(drawHisSpineline(bool)));
+    connect(his_group,SIGNAL(buttonClicked(int)),this,SLOT(choose_history_graph(int)));
+    connect(sum_group,SIGNAL(buttonClicked(int)),this,SLOT(choose_stat_graph(int)));
+
+//    connect(sumCurveBox,SIGNAL(toggled(bool)),this,SLOT(drawSumSpineline(bool)));
+//    connect(sumDataBox,SIGNAL(toggled(bool)),this,SLOT(showSumDataPoint(bool)));
+
     connect(title,SIGNAL(signalButtonHelpClicked()),this,SLOT(helpFormat()));
     connect(title,SIGNAL(signalButtonCloseClicked()),this,SLOT(onExitButtonClicked()));
 
@@ -1592,7 +1673,6 @@ void UkpmWidget::getSlots()
 void UkpmWidget::upHistoryType(int index)
 {
     Q_UNUSED(index);
-//    qDebug()<<"upHistoryType";
     int num = spanCombox->currentIndex();
     if(num == TENM)
     {
@@ -1639,7 +1719,6 @@ void UkpmWidget::upHistoryType(int index)
 void UkpmWidget::upStatsType(int index)
 {
     Q_UNUSED(index);
-//    qDebug()<<"upStatsType";
     int num = sumTypeCombox->currentIndex();
     if(num == CHARGE)
     {
@@ -1674,9 +1753,9 @@ void UkpmWidget::onPageChanged(int index)
 void UkpmWidget::drawHisSpineline(bool flag)
 {
     settings->setBool(GPM_SETTINGS_INFO_HISTORY_GRAPH_SMOOTH,flag);
-//    ukpm_update_info_page_history(current_device);
     if(flag)
     {
+        his_line_btn->setStyleSheet("QPushButton {color:white; background:#3D6BE5; border-radius:4px}");
         hisChart->removeSeries(hisSeries);
         hisChart->addSeries(hisSpline);
         hisSpline->attachAxis(xtime);//连接数据集与
@@ -1688,6 +1767,7 @@ void UkpmWidget::drawHisSpineline(bool flag)
     }
     else
     {
+        his_line_btn->setStyleSheet("QPushButton {color:black; background:#E7E7E7; border-radius:4px}");
         hisChart->removeSeries(hisSpline);
         hisChart->addSeries(hisSeries);
         hisSeries->attachAxis(xtime);//连接数据集与
@@ -1702,7 +1782,6 @@ void UkpmWidget::drawHisSpineline(bool flag)
 void UkpmWidget::drawSumSpineline(bool flag)
 {
     settings->setBool(GPM_SETTINGS_INFO_STATS_GRAPH_SMOOTH,flag);
-//    ukpm_update_info_page_stats(current_device);
     if(flag)
     {
         sumChart->removeSeries(sumSeries);
@@ -1754,7 +1833,6 @@ void UkpmWidget::devPropertiesChanged(QString object_path)
     if(object_path == current_device->path)
     {
         int page = tab_widget->currentIndex();
-//        qDebug()<<"devproperty changed and page="<<page;
         ukpm_update_info_data_page (current_device, page);
     }
 }
@@ -1888,7 +1966,7 @@ void UkpmWidget::deviceRemoved(QDBusMessage  msg)
 void UkpmWidget::setupUI()
 {
     QDesktopWidget *deskdop = QApplication::desktop();
-    resize(900,580);
+    setFixedSize(860,580);
     move((deskdop->width() - this->width())/2, (deskdop->height() - this->height())/2);
 //    setWindowFlags(windowFlags()&~Qt::WindowMaximizeButtonHint);
 //    setWindowFlags(Qt::FramelessWindowHint|Qt::WindowMinimizeButtonHint);
@@ -1898,28 +1976,31 @@ void UkpmWidget::setupUI()
     QSplitter *mainsplitter = new QSplitter(Qt::Horizontal,this);//splittering into two parts
     listWidget = new QListWidget(mainsplitter);
     listWidget->setObjectName("m_listWidget");
-    listWidget->setFixedWidth(120);
+    listWidget->setFixedWidth(180);
 //    listWidget->setSpacing(10);
     tab_widget =  new QTabWidget(mainsplitter);
-
+//    tab_widget->setFixedWidth(600);
 //    QList<int> list_src;
 //    list_src.append(180);
-//    list_src.append(680);
+//    list_src.append(600);
 //    mainsplitter->setSizes(list_src);
-    mainsplitter->handle(1)->setDisabled(true);
+//    mainsplitter->handle(1)->setDisabled(true);
     QVBoxLayout *vlayout = new QVBoxLayout;
-    vlayout->setContentsMargins(5,0,40,0);
     QFrame *header = new QFrame(this);
-    header->setFixedHeight(TITLE_HEIGHT);
+    header->setFixedHeight(TITLE_HEIGHT+30);
+    QLabel *header_head = new QLabel(header);
+    header_head->setGeometry(0,0,180,62);
+    header_head->setStyleSheet("background-color:#F7F7F7;");
     header->setWindowFlags(Qt::FramelessWindowHint);
-    header->setStyleSheet("QFrame{background-color:white;border-top-right-radius:6px;"
+    header->setStyleSheet("QFrame{padding-bottom:30px;background-color:white;border-top-right-radius:6px;"
                           "border-top-left-radius:6px;border-bottom-right-radius:0px;border-bottom-left-radius:0px;}");
-    mainsplitter->setStyleSheet("QSplitter{background-color:white;border-top-right-radius:0px;"
+    mainsplitter->setStyleSheet("QSplitter{ background-color:white;border-top-right-radius:0px;"
                           "border-top-left-radius:0px;border-bottom-right-radius:6px;border-bottom-left-radius:6px;}");
     vlayout->addWidget(header);
     vlayout->addWidget(mainsplitter);
     vlayout->setSpacing(0);
     vlayout->setContentsMargins(0,0,0,0);
+//    this->setStyleSheet("QWidget {background:white}");
     setLayout(vlayout);//main layout of the UI
     title = new TitleWidget(this);
     title->move(0,0);

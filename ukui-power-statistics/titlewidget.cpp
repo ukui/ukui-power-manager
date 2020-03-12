@@ -43,7 +43,7 @@ TitleWidget::TitleWidget(QWidget *parent)
 void TitleWidget::initControl()
 {
 //    m_pIcon = new QLabel;
-    m_pTitleContent = new QLabel;
+    m_pTitleContent = new QLabel(this);
     m_pTitleContent->setObjectName("TitleContent");
 
     m_pButtonHelp = new QToolButton;
@@ -63,18 +63,23 @@ void TitleWidget::initControl()
 
     QHBoxLayout* mylayout = new QHBoxLayout(this);
 //    mylayout->addWidget(m_pIcon);
+    mylayout->addSpacing(10);
     mylayout->addWidget(m_pTitleContent);
-
+    m_pTitleContent->setFixedWidth(180);
+    mylayout->addSpacing(580);
     mylayout->addWidget(m_pButtonHelp);
+    mylayout->addSpacing(10);
     mylayout->addWidget(m_pButtonClose);
+    mylayout->addSpacing(10);
 
-    mylayout->setContentsMargins(10, 0, 16, 0);
-    mylayout->setSpacing(30);
+//    mylayout->setContentsMargins(10, 0, 16, 0);
+//    mylayout->setSpacing(30);
 
-    m_pTitleContent->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
+//    m_pTitleContent->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
     m_pTitleContent->setText(tr("Power Statistics-device information"));
     this->setFixedHeight(TITLE_HEIGHT);
     this->setWindowFlags(Qt::FramelessWindowHint);
+    this->setAttribute(Qt::WA_TranslucentBackground);
 }
 
 // 信号槽的绑定;

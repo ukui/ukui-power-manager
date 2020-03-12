@@ -1,6 +1,6 @@
 
 QWidget {
-    background-color:white;
+    background:white;
 }
 
 QWidget:focus {
@@ -25,36 +25,35 @@ QHeaderView::section
 
 /*QTabWidget*/
 QTabWidget::pane { /* The tab widget frame */
-      border-top: 1px solid #C2C7CB;
-      margin-right:88px;
+      border-top: 2px solid #F7F7F7;
+      margin-right:40px;
   }
 
 /* Style the tab using the tab sub-control. Note that
   it reads QTabBar _not_ QTabWidget */
 QTabBar {
     font:14px;
+    font:bold;
 }
 
 QTabBar::tab {
-    border:none;
+    border:2px;
     border-bottom:1px;
     border-color:#C2C7CB;
     padding:3px;
     padding-right: 40px;
-    font:14px;
-    color:#666666;
+    font:14px bold;
+    color:#404040;
     height:32px;
 }
 
 QTabBar::tab:selected { /* The tab widget frame */
-    font: bold;
-    border-bottom:1px;
-    border-bottom-color:#333333;
+    color:#3D6BE5;
 }
 
 QTabBar::tab-bar:selected { /* The tab widget frame */
     border-bottom:1px;
-    border-bottom-color:#242424;
+    border-bottom-color:#3D6BE5;
 }
 
 /*QTabBar::tab:selected {
@@ -175,29 +174,38 @@ QComboBox::drop-down {
     subcontrol-position: right centor;
     border-top-right-radius:3px;
     border-bottom-right-radius:3px;
+    border-bottom-left-radius: 4px;
+    padding-right:15px;
 }
 
 
 #m_listWidget {
-    margin-left: 6px;
+    background-color: #F7F7F7;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-bottom-left-radius: 4px;
 }
 
 #m_listWidget::item {
-    margin: 6px 0px;
+
     height:36px;
-    width:110px;
+    width:160px;
+    margin-bottom:10px;
 }
 
 #m_listWidget::item:hover {
-    height:36px;
+
     border-radius:4px;
+    margin-bottom:10px;
+
 }
 
 #m_listWidget::item:selected {
-    height:36px;
     color: white;
-    background-color: #2669B5;
+    background-color: #3D6BE5;
     border-radius:4px;
+    margin-bottom:10px;
+
 }
 
 #m_sumGraphicType, #m_graphicType, #m_timeLabel{

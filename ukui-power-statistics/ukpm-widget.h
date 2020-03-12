@@ -67,7 +67,8 @@
 #include "customtype.h"
 #include "statistics-common.h"
 #include "device.h"
-
+#include <QButtonGroup>
+#include <QScatterSeries>
 
 #define WORKING_DIRECTORY "."
 #define DBUS_SERVICE "org.freedesktop.UPower"
@@ -203,8 +204,9 @@ public Q_SLOTS:
     void devPropertiesChanged(QString object_path);
     void ukpm_set_choice_sum();
     void ukpm_set_choice_history();
-
     void onitemSelectionChanged();
+    void choose_history_graph(int choice);
+    void choose_stat_graph(int choice);
 public:
     uint timeSpan, resolution;
     QListWidget *listWidget;
@@ -215,7 +217,7 @@ public:
     QChart *hisChart;
     QChartView *hisChartView;
     QLineSeries *hisSeries;
-    QSplineSeries *hisSpline;
+    QScatterSeries *hisSpline;
     QCategoryAxis *axisY;
     QCategoryAxis *xtime;
 
@@ -223,7 +225,7 @@ public:
     QChart *sumChart;
     QChartView *sumChartView;
     QLineSeries *sumSeries;
-    QSplineSeries *sumSpline;
+    QScatterSeries *sumSpline;
     QComboBox *sumTypeCombox;
     QComboBox *spanCombox ;
     QComboBox *typeCombox;
@@ -231,6 +233,11 @@ public:
     QMenu *menu;
     QCheckBox *hisDataBox, *sumDataBox;
     QCheckBox *hisCurveBox, *sumCurveBox;
+
+    QPushButton *his_data_btn, *sum_data_btn;
+    QPushButton *his_line_btn, *sum_line_btn;
+    QButtonGroup *his_group;
+    QButtonGroup *sum_group;
 
     QList<QDBusObjectPath> deviceNames;
     QList<DEVICE*> devices;

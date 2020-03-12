@@ -21,7 +21,7 @@
         <translation type="vanished">关闭</translation>
     </message>
     <message>
-        <location filename="titlewidget.cpp" line="56"/>
+        <location filename="titlewidget.cpp" line="79"/>
         <source>Power Statistics-device information</source>
         <translation>电源统计-设备信息</translation>
     </message>
@@ -29,30 +29,30 @@
 <context>
     <name>UkpmWidget</name>
     <message>
-        <location filename="ukpm-widget.cpp" line="166"/>
-        <location filename="ukpm-widget.cpp" line="280"/>
-        <location filename="ukpm-widget.cpp" line="1575"/>
+        <location filename="ukpm-widget.cpp" line="203"/>
+        <location filename="ukpm-widget.cpp" line="313"/>
+        <location filename="ukpm-widget.cpp" line="1924"/>
         <source>Charging</source>
         <translation>正充电</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="169"/>
-        <location filename="ukpm-widget.cpp" line="283"/>
-        <location filename="ukpm-widget.cpp" line="1578"/>
+        <location filename="ukpm-widget.cpp" line="206"/>
+        <location filename="ukpm-widget.cpp" line="316"/>
+        <location filename="ukpm-widget.cpp" line="1927"/>
         <source>Discharging</source>
         <translation>正放电</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="172"/>
-        <location filename="ukpm-widget.cpp" line="286"/>
-        <location filename="ukpm-widget.cpp" line="1581"/>
+        <location filename="ukpm-widget.cpp" line="209"/>
+        <location filename="ukpm-widget.cpp" line="319"/>
+        <location filename="ukpm-widget.cpp" line="1930"/>
         <source>Empty</source>
         <translation>空</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="175"/>
-        <location filename="ukpm-widget.cpp" line="289"/>
-        <location filename="ukpm-widget.cpp" line="1584"/>
+        <location filename="ukpm-widget.cpp" line="212"/>
+        <location filename="ukpm-widget.cpp" line="322"/>
+        <location filename="ukpm-widget.cpp" line="1933"/>
         <source>Charged</source>
         <translation>已充满</translation>
     </message>
@@ -85,57 +85,57 @@
         <translation type="vanished">小时</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="66"/>
+        <location filename="ukpm-widget.cpp" line="103"/>
         <source>AC adapter</source>
         <translation>交流电源适配器</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="70"/>
+        <location filename="ukpm-widget.cpp" line="107"/>
         <source>Laptop battery</source>
         <translation>笔记本电池</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="74"/>
+        <location filename="ukpm-widget.cpp" line="111"/>
         <source>UPS</source>
         <translation>UPS</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="78"/>
+        <location filename="ukpm-widget.cpp" line="115"/>
         <source>Monitor</source>
         <translation>Monitor</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="82"/>
+        <location filename="ukpm-widget.cpp" line="119"/>
         <source>Mouse</source>
         <translation>Mouse</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="86"/>
+        <location filename="ukpm-widget.cpp" line="123"/>
         <source>Keyboard</source>
         <translation>Keyboard</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="90"/>
+        <location filename="ukpm-widget.cpp" line="127"/>
         <source>PDA</source>
         <translation>PDA</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="94"/>
+        <location filename="ukpm-widget.cpp" line="131"/>
         <source>Cell phone</source>
         <translation>Cell phone</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="98"/>
+        <location filename="ukpm-widget.cpp" line="135"/>
         <source>Media player</source>
         <translation>Media player</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="102"/>
+        <location filename="ukpm-widget.cpp" line="139"/>
         <source>Tablet</source>
         <translation>Tablet</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="106"/>
+        <location filename="ukpm-widget.cpp" line="143"/>
         <source>Computer</source>
         <translation>Computer</translation>
     </message>
@@ -152,12 +152,12 @@
         <translation type="vanished">值</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="399"/>
+        <location filename="ukpm-widget.cpp" line="423"/>
         <source>Device</source>
         <translation>设备</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="401"/>
+        <location filename="ukpm-widget.cpp" line="425"/>
         <source>Type</source>
         <translation>类型</translation>
     </message>
@@ -166,17 +166,17 @@
         <translation type="vanished">电源</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="486"/>
+        <location filename="ukpm-widget.cpp" line="510"/>
         <source>Online</source>
         <translation>在线</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="404"/>
+        <location filename="ukpm-widget.cpp" line="428"/>
         <source>Vendor</source>
         <translation>生产商</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="406"/>
+        <location filename="ukpm-widget.cpp" line="430"/>
         <source>Model</source>
         <translation>型号</translation>
     </message>
@@ -193,12 +193,12 @@
         <translation type="vanished">可充电</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="440"/>
+        <location filename="ukpm-widget.cpp" line="464"/>
         <source>State</source>
         <translation>状态</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="445"/>
+        <location filename="ukpm-widget.cpp" line="469"/>
         <source>Energy</source>
         <translation>能量</translation>
     </message>
@@ -215,7 +215,7 @@
         <translation type="vanished">功率</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="459"/>
+        <location filename="ukpm-widget.cpp" line="483"/>
         <source>Voltage</source>
         <translation>电压</translation>
     </message>
@@ -228,12 +228,12 @@
         <translation type="vanished">放完时间</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="477"/>
+        <location filename="ukpm-widget.cpp" line="501"/>
         <source>Percentage</source>
         <translation>百分比</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="482"/>
+        <location filename="ukpm-widget.cpp" line="506"/>
         <source>Capacity</source>
         <translation>容量</translation>
     </message>
@@ -254,46 +254,42 @@
         <translation type="vanished">统计</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="948"/>
-        <location filename="ukpm-widget.cpp" line="1088"/>
+        <location filename="ukpm-widget.cpp" line="1162"/>
+        <location filename="ukpm-widget.cpp" line="1328"/>
         <source>graphic type:</source>
         <translation>图表类型:</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="951"/>
+        <location filename="ukpm-widget.cpp" line="1165"/>
         <source>charge</source>
         <translation>充电图</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="951"/>
+        <location filename="ukpm-widget.cpp" line="1165"/>
         <source>charge-accurency</source>
         <translation>充电精度</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="951"/>
+        <location filename="ukpm-widget.cpp" line="1165"/>
         <source>discharge</source>
         <translation>放电图</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="951"/>
+        <location filename="ukpm-widget.cpp" line="1165"/>
         <source>discharge-accurency</source>
         <translation>放电精度</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="956"/>
-        <location filename="ukpm-widget.cpp" line="1111"/>
         <source>spline</source>
-        <translation>使用平滑线</translation>
+        <translation type="vanished">使用平滑线</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="957"/>
-        <location filename="ukpm-widget.cpp" line="1112"/>
         <source>show datapoint</source>
-        <translation>显示数据点</translation>
+        <translation type="vanished">显示数据点</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="1004"/>
-        <location filename="ukpm-widget.cpp" line="1166"/>
+        <location filename="ukpm-widget.cpp" line="1237"/>
+        <location filename="ukpm-widget.cpp" line="1427"/>
         <source>no data to show.</source>
         <translation>没有可以显示的数据。</translation>
     </message>
@@ -302,203 +298,215 @@
         <translation type="vanished">历史</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="1090"/>
+        <location filename="ukpm-widget.cpp" line="1330"/>
         <source>time span:</source>
         <translation>时间范围:</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="1095"/>
+        <location filename="ukpm-widget.cpp" line="1335"/>
         <source>rate</source>
         <translation>功率</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="1095"/>
+        <location filename="ukpm-widget.cpp" line="1335"/>
         <source>energy</source>
         <translation>电量</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="1095"/>
+        <location filename="ukpm-widget.cpp" line="1335"/>
         <source>charge-time</source>
         <translation>充电时间</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="1095"/>
+        <location filename="ukpm-widget.cpp" line="1335"/>
         <source>discharge-time</source>
         <translation>放电时间</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="1098"/>
+        <location filename="ukpm-widget.cpp" line="1338"/>
         <source>ten minutes</source>
         <translation>10 分钟</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="1098"/>
+        <location filename="ukpm-widget.cpp" line="1338"/>
         <source>two hours</source>
         <translation>2 小时</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="1098"/>
+        <location filename="ukpm-widget.cpp" line="1338"/>
         <source>six hours</source>
         <translation>6 小时</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="1098"/>
+        <location filename="ukpm-widget.cpp" line="1338"/>
         <source>one day</source>
         <translation>一天</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="1098"/>
+        <location filename="ukpm-widget.cpp" line="1338"/>
         <source>one week</source>
         <translation>一周</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="1144"/>
+        <location filename="ukpm-widget.cpp" line="1404"/>
         <source>elapsed time</source>
         <translation>已过去时间</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="620"/>
-        <location filename="ukpm-widget.cpp" line="660"/>
+        <location filename="ukpm-widget.cpp" line="716"/>
+        <location filename="ukpm-widget.cpp" line="784"/>
         <source>adjust factor</source>
         <translation>修正因素</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="178"/>
-        <location filename="ukpm-widget.cpp" line="292"/>
-        <location filename="ukpm-widget.cpp" line="1587"/>
+        <location filename="ukpm-widget.cpp" line="215"/>
+        <location filename="ukpm-widget.cpp" line="325"/>
+        <location filename="ukpm-widget.cpp" line="1936"/>
         <source>PendingCharge</source>
         <translation>待充电</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="181"/>
-        <location filename="ukpm-widget.cpp" line="295"/>
-        <location filename="ukpm-widget.cpp" line="1590"/>
+        <location filename="ukpm-widget.cpp" line="218"/>
+        <location filename="ukpm-widget.cpp" line="328"/>
+        <location filename="ukpm-widget.cpp" line="1939"/>
         <source>PendingDischarge</source>
         <translation>待放电</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="396"/>
+        <location filename="ukpm-widget.cpp" line="420"/>
         <source>Attribute</source>
         <translation>属性</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="396"/>
+        <location filename="ukpm-widget.cpp" line="420"/>
         <source>Value</source>
         <translation>值</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="408"/>
+        <location filename="ukpm-widget.cpp" line="432"/>
         <source>Serial number</source>
         <translation>序列号</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="410"/>
+        <location filename="ukpm-widget.cpp" line="434"/>
         <source>Supply</source>
         <translation>供应</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="419"/>
+        <location filename="ukpm-widget.cpp" line="443"/>
         <source>Refreshed</source>
         <translation>已刷新</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="427"/>
+        <location filename="ukpm-widget.cpp" line="451"/>
         <source>Present</source>
         <translation>当前电池</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="433"/>
+        <location filename="ukpm-widget.cpp" line="457"/>
         <source>Rechargeable</source>
         <translation>可充电</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="447"/>
+        <location filename="ukpm-widget.cpp" line="471"/>
         <source>Energy when full</source>
         <translation>满时能量</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="448"/>
+        <location filename="ukpm-widget.cpp" line="472"/>
         <source>Energy (design)</source>
         <translation>能量(设计)</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="464"/>
+        <location filename="ukpm-widget.cpp" line="488"/>
         <source>Time to full</source>
         <translation>充满时间</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="468"/>
+        <location filename="ukpm-widget.cpp" line="492"/>
         <source>Time to empty</source>
         <translation>放完时间</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="501"/>
+        <location filename="ukpm-widget.cpp" line="528"/>
         <source>history</source>
         <translation>历史</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="508"/>
+        <location filename="ukpm-widget.cpp" line="539"/>
         <source>statistics</source>
         <translation>统计</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="623"/>
-        <location filename="ukpm-widget.cpp" line="643"/>
-        <location filename="ukpm-widget.cpp" line="663"/>
-        <location filename="ukpm-widget.cpp" line="682"/>
+        <location filename="ukpm-widget.cpp" line="719"/>
+        <location filename="ukpm-widget.cpp" line="754"/>
+        <location filename="ukpm-widget.cpp" line="787"/>
+        <location filename="ukpm-widget.cpp" line="823"/>
         <source>battery power</source>
         <translation>电池电量</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="640"/>
-        <location filename="ukpm-widget.cpp" line="679"/>
+        <location filename="ukpm-widget.cpp" line="751"/>
+        <location filename="ukpm-widget.cpp" line="817"/>
         <source>Predict Accurency</source>
         <translation>预测准确度</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="1062"/>
+        <location filename="ukpm-widget.cpp" line="1174"/>
+        <location filename="ukpm-widget.cpp" line="1356"/>
+        <source>show line</source>
+        <translation>显示曲线</translation>
+    </message>
+    <message>
+        <location filename="ukpm-widget.cpp" line="1175"/>
+        <location filename="ukpm-widget.cpp" line="1357"/>
+        <source>show data points</source>
+        <translation>显示数据点</translation>
+    </message>
+    <message>
+        <location filename="ukpm-widget.cpp" line="1300"/>
         <source>detail</source>
         <translation>详细</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="453"/>
-        <location filename="ukpm-widget.cpp" line="738"/>
+        <location filename="ukpm-widget.cpp" line="477"/>
+        <location filename="ukpm-widget.cpp" line="916"/>
         <source>Rate</source>
         <translation>功率</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="759"/>
+        <location filename="ukpm-widget.cpp" line="954"/>
         <source>Charge</source>
         <translation>电量</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="780"/>
-        <location filename="ukpm-widget.cpp" line="812"/>
+        <location filename="ukpm-widget.cpp" line="975"/>
+        <location filename="ukpm-widget.cpp" line="1007"/>
         <source>Predict Time</source>
         <translation>预计时间</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.h" line="110"/>
+        <location filename="ukpm-widget.h" line="128"/>
         <source>s</source>
         <translation>秒</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.h" line="112"/>
+        <location filename="ukpm-widget.h" line="130"/>
         <source>m</source>
         <translation>分钟</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.h" line="114"/>
+        <location filename="ukpm-widget.h" line="132"/>
         <source>h</source>
         <translation>小时</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.h" line="119"/>
+        <location filename="ukpm-widget.h" line="137"/>
         <source>yes</source>
         <translation>是</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.h" line="119"/>
+        <location filename="ukpm-widget.h" line="137"/>
         <source>no</source>
         <translation>不</translation>
     </message>

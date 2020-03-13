@@ -944,8 +944,8 @@ void UkpmWidget::ukpm_set_choice_sum()
 void UkpmWidget::draw_history_graph(QString type)
 {
     QStringList labels;
-    float max_y = FLT_MIN;
-    float min_y = FLT_MAX;
+    float max_y = 0;
+    float min_y = 0;
     int starty = 0;
     int stopy = 0;
 
@@ -981,12 +981,6 @@ void UkpmWidget::draw_history_graph(QString type)
     }
     else {
     }
-//    if(list.isEmpty())
-//    {
-//        hisStack->setCurrentIndex(0);
-//        return;
-//    }
-//    hisStack->setCurrentIndex(1);
 
     int index = typeCombox->currentIndex();
     //y
@@ -999,6 +993,7 @@ void UkpmWidget::draw_history_graph(QString type)
         int size = list.size();
         if(size > 0)
         {
+            min_y = max_y = list.at(0).y();
             for(int i = 1; i< size; i++)
             {
                 double tmp = list.at(i).y();
@@ -1009,18 +1004,12 @@ void UkpmWidget::draw_history_graph(QString type)
             }
             if(max_y - min_y < 0.0001)
             {
-                max_y++;
-                min_y = 0;
+                max_y ++;
             }
-            //        miny = floor(miny/10.0) * 10.0;
-            //        maxy = ceil(maxy/10.0) * 10.0;
+
             starty = calculate_down_number(min_y,10);
             stopy = calculate_up_number(max_y,10);
-            //        if(fabs(stopy) > fabs(starty))
-            //            starty = -stopy;
-            //        else
-            //            stopy = -starty;
-//            qDebug()<<"size:"<<size;
+
             if(starty == stopy)
             {
                 starty = 0;
@@ -1036,8 +1025,7 @@ void UkpmWidget::draw_history_graph(QString type)
         axisY->setMax(stopy);
         axisY->setStartValue(starty);
         axisY->setTitleText(tr("Rate"));
-//        axisY->setGridLineColor(QColor("#2f3032"));
-//        axisY->setGridLinePen(QPen(QColor("#2f3032"),1));
+
         for(int i = 0; i < 11; i++)
         {
             QString str;
@@ -1082,6 +1070,7 @@ void UkpmWidget::draw_history_graph(QString type)
         int size = list.size();
         if(size > 0)
         {
+            min_y = max_y = list.at(0).y();
             for(int i = 0; i< size; i++)
             {
                 float tmp = list.at(i).y();
@@ -1093,7 +1082,6 @@ void UkpmWidget::draw_history_graph(QString type)
             if(max_y - min_y < 0.0001)
             {
                 max_y++;
-                min_y--;
             }
             starty = calculate_down_number(min_y,600);
             stopy = calculate_up_number(max_y,600);
@@ -1103,8 +1091,6 @@ void UkpmWidget::draw_history_graph(QString type)
             starty = 0;
             stopy = 60*60*6;
         }
-//        min_y = floor(min_y/600.0) * 600;
-//        max_y = ceil(max_y/600.0) * 600;
 
         axisY->setMin(starty);
         axisY->setMax(stopy);
@@ -1128,6 +1114,7 @@ void UkpmWidget::draw_history_graph(QString type)
         int size = list.size();
         if(size > 0)
         {
+            min_y = max_y = list.at(0).y();
             for(int i = 0; i< size; i++)
             {
                 float tmp = list.at(i).y();
@@ -1139,7 +1126,6 @@ void UkpmWidget::draw_history_graph(QString type)
             if(max_y - min_y < 0.0001)
             {
                 max_y++;
-                min_y--;
             }
             starty = calculate_down_number(min_y,600);
             stopy = calculate_up_number(max_y,600);
@@ -1150,16 +1136,7 @@ void UkpmWidget::draw_history_graph(QString type)
             stopy = 60*60*6;
         }
 
-//        if(fabs(stopy) > fabs(starty))
-//            starty = -stopy;
-//        else
-//            stopy = -starty;
 
-//        if(starty == stopy)
-//        {
-//            starty = -1;
-//            stopy = 1;
-//        }
         axisY->setMin(starty);
         axisY->setMax(stopy);
         axisY->setStartValue(starty);
@@ -1167,14 +1144,7 @@ void UkpmWidget::draw_history_graph(QString type)
         {
             axisY->append(getWidgetAxis(starty+i*(stopy-starty)/10),starty+i*(stopy-starty)/10);
         }
-//        axisY->setMin(min_y);
-//        axisY->setMax(max_y);
-//        axisY->setStartValue(min_y);
 
-//        for(int i = 0; i < 11; i++)
-//        {
-//            axisY->append(getWidgetAxis(min_y+i*(max_y-min_y)/10),min_y+i*(max_y-min_y)/10);
-//        }
         axisY->setLabelsPosition(QCategoryAxis::AxisLabelsPositionOnValue);
         hisSeries->replace(list);
         hisSpline->replace(list);

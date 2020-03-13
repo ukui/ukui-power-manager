@@ -54,7 +54,7 @@ UkpmWidget::UkpmWidget(QWidget *parent)
     file.open(QFile::ReadOnly);
     QString styleSheet = QString::fromLatin1(file.readAll());
     qApp->setStyleSheet(styleSheet);
-    plotcolor.setNamedColor("#F1F1F1");
+    plotcolor.setNamedColor("#3B3C3F");
     plotcolor.setAlpha(255);
     settings = new QGSettings(GPM_SETTINGS_SCHEMA);
     setupUI();
@@ -612,12 +612,12 @@ void UkpmWidget::ukpm_update_info_page_history (DEV* device)
         current_device->autorange_y = true;
         type = "time-empty";
     }
-    QList<QPointF> list = getHistory(type,timeSpan);
-    if (list.size() == 0) {
-        return;
-    }
+//    QList<QPointF> list = getHistory(type,timeSpan);
+//    if (list.size() == 0) {
+//        return;
+//    }
 //    ukpm_set_choice_history();
-    draw_history_graph(list);
+    draw_history_graph(type);
 }
 
 int UkpmWidget::calculate_up_number(float value, int div)
@@ -657,6 +657,7 @@ void UkpmWidget::draw_stats_graph(QString type)
     QDBusMessage msg = QDBusMessage::createMethodCall("org.freedesktop.UPower",current_device->path,
             "org.freedesktop.UPower.Device","GetStatistics");
     QList<QPointF> list;
+    list.clear();
 
     msg << type;
     QDBusMessage res = QDBusConnection::systemBus().call(msg);
@@ -668,40 +669,49 @@ void UkpmWidget::draw_stats_graph(QString type)
     else {
 
     }
-    if(list.isEmpty())
-    {
-        sumStack->setCurrentIndex(0);
-        return;
-    }
-    sumStack->setCurrentIndex(1);
+//    if(list.isEmpty())
+//    {
+//        sumStack->setCurrentIndex(0);
+//        return;
+//    }
+//    sumStack->setCurrentIndex(1);
 
     QPointF pit;
     QList<QPointF> data;
+    int list_size = list.size();
     int index = sumTypeCombox->currentIndex();
     if(index == CHARGE)
     {
-        foreach(pit, list)
+        if(list_size > 0)
         {
-            data.append(QPointF(start_x++,pit.x()));
-            if(max_y < (pit.x()))
-                max_y = (pit.x());
-            if(min_y > (pit.x()))
-                min_y = pit.x();
-        }
+            foreach(pit, list)
+            {
+                data.append(QPointF(start_x++,pit.x()));
+                if(max_y < (pit.x()))
+                    max_y = (pit.x());
+                if(min_y > (pit.x()))
+                    min_y = pit.x();
+            }
 
-        if(max_y - min_y < 0.0001)
-        {
-            max_y++;
-            min_y--;
+            if(max_y - min_y < 0.0001)
+            {
+                max_y++;
+                min_y--;
+            }
+            starty = calculate_down_number(min_y,1);
+            stopy = calculate_up_number(max_y,1);
+            if(fabs(stopy) > fabs(starty))
+                starty = -stopy;
+            else
+                stopy = -starty;
+
+            if(starty == stopy)
+            {
+                starty = -1;
+                stopy = 1;
+            }
         }
-        starty = calculate_down_number(min_y,1);
-        stopy = calculate_up_number(max_y,1);
-        if(fabs(stopy) > fabs(starty))
-            starty = -stopy;
         else
-            stopy = -starty;
-
-        if(starty == stopy)
         {
             starty = -1;
             stopy = 1;
@@ -720,26 +730,34 @@ void UkpmWidget::draw_stats_graph(QString type)
     }
     else if(index == CHARGE_ACCURENCY)
     {
-        foreach(pit, list)
+        if(list_size > 0)
         {
-            data.append(QPointF(start_x++,pit.y()));
-            if(max_y < (pit.y()))
-                max_y = (pit.y());
-            if(min_y > pit.y())
-                min_y = pit.y();
+            foreach(pit, list)
+            {
+                data.append(QPointF(start_x++,pit.y()));
+                if(max_y < (pit.y()))
+                    max_y = (pit.y());
+                if(min_y > pit.y())
+                    min_y = pit.y();
+            }
+            if(max_y - min_y < 0.0001)
+            {
+                max_y++;
+                min_y--;
+            }
+            starty = calculate_down_number(min_y,10);
+            stopy = calculate_up_number(max_y,10);
+            stopy += 10;
+            if(stopy >= 90)
+                stopy = 100;
+            if(starty >0 && starty <= 10)
+                starty = 0;
         }
-        if(max_y - min_y < 0.0001)
+        else
         {
-            max_y++;
-            min_y--;
-        }
-        starty = calculate_down_number(min_y,10);
-        stopy = calculate_up_number(max_y,10);
-        stopy += 10;
-        if(stopy >= 90)
-            stopy = 100;
-        if(starty >0 && starty <= 10)
             starty = 0;
+            stopy = 100;
+        }
 
         sumSeries->replace(data);
         sumSpline->replace(data);
@@ -753,28 +771,36 @@ void UkpmWidget::draw_stats_graph(QString type)
         y->setTickCount(10);
     }
     else if(index == DISCHARGING)
-    {        
-        foreach(pit, list)
+    {
+        if(list_size > 0)
         {
-            data.append(QPointF(start_x++,pit.x()));
-            if(max_y < (pit.x()))
-                max_y = (pit.x());
-            if(min_y > (pit.x()))
-                min_y = pit.x();
-        }
-        if(max_y - min_y < 0.0001)
-        {
-            max_y++;
-            min_y--;
-        }
-        starty = calculate_down_number(min_y,1);
-        stopy = calculate_up_number(max_y,1);
-        if(fabs(stopy) > fabs(starty))
-            starty = -stopy;
-        else
-            stopy = -starty;
+            foreach(pit, list)
+            {
+                data.append(QPointF(start_x++,pit.x()));
+                if(max_y < (pit.x()))
+                    max_y = (pit.x());
+                if(min_y > (pit.x()))
+                    min_y = pit.x();
+            }
+            if(max_y - min_y < 0.0001)
+            {
+                max_y++;
+                min_y--;
+            }
+            starty = calculate_down_number(min_y,1);
+            stopy = calculate_up_number(max_y,1);
+            if(fabs(stopy) > fabs(starty))
+                starty = -stopy;
+            else
+                stopy = -starty;
 
-        if(starty == stopy)
+            if(starty == stopy)
+            {
+                starty = -1;
+                stopy = 1;
+            }
+        }
+        else
         {
             starty = -1;
             stopy = 1;
@@ -792,30 +818,38 @@ void UkpmWidget::draw_stats_graph(QString type)
     }
     else if(index == DISCHARGING_ACCURENCY)
     {
-        foreach(pit, list)
+        if(list_size > 0)
         {
-            data.append(QPointF(start_x++,pit.y()));
-            if(max_y < (pit.y()))
-                max_y = (pit.y());
-            if(min_y > pit.y())
-                min_y = pit.y();
+            foreach(pit, list)
+            {
+                data.append(QPointF(start_x++,pit.y()));
+                if(max_y < (pit.y()))
+                    max_y = (pit.y());
+                if(min_y > pit.y())
+                    min_y = pit.y();
+            }
+            if(max_y - min_y < 0.0001)
+            {
+                max_y++;
+                min_y--;
+            }
+            starty = calculate_down_number(min_y,10);
+            stopy = calculate_up_number(max_y,10);
+            if(stopy >= 90)
+                stopy = 100;
+            if(starty >0 && starty <= 10)
+                starty = 0;
         }
-        if(max_y - min_y < 0.0001)
+        else
         {
-            max_y++;
-            min_y--;
-        }
-        starty = calculate_down_number(min_y,10);
-        stopy = calculate_up_number(max_y,10);
-        if(stopy >= 90)
-            stopy = 100;
-        if(starty >0 && starty <= 10)
             starty = 0;
+            stopy = 100;
+        }
         sumSeries->replace(data);
         sumSpline->replace(data);
         y->setTitleText(tr("Predict Accurency"));
-        y->setRange(0,100);
-//        y->setRange(starty,stopy);
+//        y->setRange(0,100);
+        y->setRange(starty,stopy);
         y->setLabelFormat("%d%");
         y->setTickCount(10);
 
@@ -904,43 +938,109 @@ void UkpmWidget::ukpm_set_choice_sum()
     }
 }
 
-void UkpmWidget::draw_history_graph(QList<QPointF> list)
+void UkpmWidget::draw_history_graph(QString type)
 {
     QStringList labels;
-    uint max_y = 0;
-    uint min_y = 0;
+    float max_y = FLT_MIN;
+    float min_y = FLT_MAX;
+    int starty = 0;
+    int stopy = 0;
+
+    QDBusMessage msg = QDBusMessage::createMethodCall("org.freedesktop.UPower",current_device->path,
+            "org.freedesktop.UPower.Device","GetHistory");
+    QList<QPointF> list;
+    list.clear();
+    QList<StructUdu> listQDBus;
+    QVariant variant;
+    uint size;
+    QPointF temp;
+    QDBusArgument argument;
+    struct timeval tv;
+    gettimeofday(&tv,NULL);
+
+    resolution = 150;
+    msg << type << timeSpan << resolution;
+    QDBusMessage res = QDBusConnection::systemBus().call(msg);
+    if(res.type() == QDBusMessage::ReplyMessage)
+    {
+        variant = res.arguments().at(0);
+        argument = variant.value<QDBusArgument>();
+        argument >> listQDBus;
+        size = listQDBus.size();
+        for(uint i = 0; i< size; i++)
+        {
+            if(listQDBus[i].state == 0)
+                continue;
+            temp.setX(tv.tv_sec - listQDBus[i].time);
+            temp.setY(listQDBus[i].value);
+            list.append(temp);
+        }
+    }
+    else {
+    }
+//    if(list.isEmpty())
+//    {
+//        hisStack->setCurrentIndex(0);
+//        return;
+//    }
+//    hisStack->setCurrentIndex(1);
+
     int index = typeCombox->currentIndex();
     //y
     if (index==RATE) {
-        axisY->setTitleText(tr("Rate"));
-         labels = axisY->categoriesLabels();
+        labels = axisY->categoriesLabels();
         foreach (QString str, labels) {
             axisY->remove(str);
         }
-        double miny, maxy;
+
         int size = list.size();
-        miny = maxy = list.at(0).y();
-        for(int i = 1; i< size; i++)
+        if(size > 0)
         {
-            double tmp = list.at(i).y();
-            if(miny > tmp)
-                miny = tmp;
-            if(maxy < tmp)
-                maxy = tmp;
+            for(int i = 1; i< size; i++)
+            {
+                double tmp = list.at(i).y();
+                if(min_y > tmp)
+                    min_y = tmp;
+                if(max_y < tmp)
+                    max_y = tmp;
+            }
+            if(max_y - min_y < 0.0001)
+            {
+                max_y++;
+                min_y = 0;
+            }
+            //        miny = floor(miny/10.0) * 10.0;
+            //        maxy = ceil(maxy/10.0) * 10.0;
+            starty = calculate_down_number(min_y,10);
+            stopy = calculate_up_number(max_y,10);
+            //        if(fabs(stopy) > fabs(starty))
+            //            starty = -stopy;
+            //        else
+            //            stopy = -starty;
+//            qDebug()<<"size:"<<size;
+            if(starty == stopy)
+            {
+                starty = 0;
+                stopy = 10;
+            }
         }
-
-        miny = floor(miny/10.0) * 10.0;
-        maxy = ceil(maxy/10.0) * 10.0;
-
-        axisY->setMin(miny);
-        axisY->setMax(maxy);
-        axisY->setStartValue(miny);
+        else
+        {
+            starty = 0;
+            stopy = 10;
+        }
+        axisY->setMin(starty);
+        axisY->setMax(stopy);
+        axisY->setStartValue(starty);
+        axisY->setTitleText(tr("Rate"));
+//        axisY->setGridLineColor(QColor("#2f3032"));
+//        axisY->setGridLinePen(QPen(QColor("#2f3032"),1));
         for(int i = 0; i < 11; i++)
         {
             QString str;
-            str.sprintf("%.1fW",miny+i*(maxy-miny)/10.0);
+            str.sprintf("%.1fW",starty+i*(stopy-starty)/10.0);
 
-            axisY->append(str,miny+i*(maxy-miny)/10.0);
+            axisY->append(str,starty+i*(stopy-starty)/10.0);
 
         }
         axisY->setLabelsPosition(QCategoryAxis::AxisLabelsPositionOnValue);
@@ -977,25 +1077,38 @@ void UkpmWidget::draw_history_graph(QList<QPointF> list)
             axisY->remove(str);
         }
         int size = list.size();
-        min_y = max_y = list.at(0).y();
-        for(int i = 0; i< size; i++)
+        if(size > 0)
         {
-            uint tmp = list.at(i).y();
-            if(min_y > tmp)
-                min_y = tmp;
-            if(max_y < tmp)
-                max_y = tmp;
+            for(int i = 0; i< size; i++)
+            {
+                float tmp = list.at(i).y();
+                if(min_y > tmp)
+                    min_y = tmp;
+                if(max_y < tmp)
+                    max_y = tmp;
+            }
+            if(max_y - min_y < 0.0001)
+            {
+                max_y++;
+                min_y--;
+            }
+            starty = calculate_down_number(min_y,600);
+            stopy = calculate_up_number(max_y,600);
         }
+        else
+        {
+            starty = 0;
+            stopy = 60*60*6;
+        }
+//        min_y = floor(min_y/600.0) * 600;
+//        max_y = ceil(max_y/600.0) * 600;
 
-        min_y = floor(min_y/600.0) * 600;
-        max_y = ceil(max_y/600.0) * 600;
-
-        axisY->setMin(min_y);
-        axisY->setMax(max_y);
-        axisY->setStartValue(min_y);
+        axisY->setMin(starty);
+        axisY->setMax(stopy);
+        axisY->setStartValue(starty);
         for(int i = 0; i < 11; i++)
         {
-            axisY->append(getWidgetAxis(min_y+i*(max_y-min_y)/10),min_y+i*(max_y-min_y)/10);
+            axisY->append(getWidgetAxis(starty+i*(stopy-starty)/10),starty+i*(stopy-starty)/10);
         }
         axisY->setLabelsPosition(QCategoryAxis::AxisLabelsPositionOnValue);
         hisSeries->replace(list);
@@ -1004,33 +1117,61 @@ void UkpmWidget::draw_history_graph(QList<QPointF> list)
     }else if (index==DISCHARGING_DURATION) {
 
         axisY->setTitleText(tr("Predict Time"));
-         labels = axisY->categoriesLabels();
+        labels = axisY->categoriesLabels();
         foreach (QString str, labels) {
             axisY->remove(str);
         }
 
         int size = list.size();
-        min_y = max_y = list.at(0).y();
-        for(int i = 0; i< size; i++)
+        if(size > 0)
         {
-            uint tmp = list.at(i).y();
-            if(min_y > tmp)
-                min_y = tmp;
-            if(max_y < tmp)
-                max_y = tmp;
+            for(int i = 0; i< size; i++)
+            {
+                float tmp = list.at(i).y();
+                if(min_y > tmp)
+                    min_y = tmp;
+                if(max_y < tmp)
+                    max_y = tmp;
+            }
+            if(max_y - min_y < 0.0001)
+            {
+                max_y++;
+                min_y--;
+            }
+            starty = calculate_down_number(min_y,600);
+            stopy = calculate_up_number(max_y,600);
+        }
+        else
+        {
+            starty = 0;
+            stopy = 60*60*6;
         }
 
-        min_y = floor(min_y/600.0) * 600;
-        max_y = ceil(max_y/600.0) * 600;
+//        if(fabs(stopy) > fabs(starty))
+//            starty = -stopy;
+//        else
+//            stopy = -starty;
 
-        axisY->setMin(min_y);
-        axisY->setMax(max_y);
-        axisY->setStartValue(min_y);
-
+//        if(starty == stopy)
+//        {
+//            starty = -1;
+//            stopy = 1;
+//        }
+        axisY->setMin(starty);
+        axisY->setMax(stopy);
+        axisY->setStartValue(starty);
         for(int i = 0; i < 11; i++)
         {
-            axisY->append(getWidgetAxis(min_y+i*(max_y-min_y)/10),min_y+i*(max_y-min_y)/10);
+            axisY->append(getWidgetAxis(starty+i*(stopy-starty)/10),starty+i*(stopy-starty)/10);
         }
+//        axisY->setMin(min_y);
+//        axisY->setMax(max_y);
+//        axisY->setStartValue(min_y);
+
+//        for(int i = 0; i < 11; i++)
+//        {
+//            axisY->append(getWidgetAxis(min_y+i*(max_y-min_y)/10),min_y+i*(max_y-min_y)/10);
+//        }
         axisY->setLabelsPosition(QCategoryAxis::AxisLabelsPositionOnValue);
         hisSeries->replace(list);
         hisSpline->replace(list);
@@ -1049,7 +1190,7 @@ void UkpmWidget::draw_history_graph(QList<QPointF> list)
     }
     xtime->setLabelsPosition(QCategoryAxis::AxisLabelsPositionOnValue);
 //    settings->setInt(GPM_SETTINGS_INFO_HISTORY_TIME,timeSpan);
-    hisStack->setCurrentIndex(1);
+//    hisStack->setCurrentIndex(1);
 
 }
 
@@ -1214,7 +1355,8 @@ void UkpmWidget::setSumTab()
     font.setBold(true);
     x->setTitleFont(font);
     y->setTitleFont(font);
-
+    x->setGridLinePen(QPen(QColor("#343537"),1));
+    y->setGridLinePen(QPen(QColor("#343537"),1));
     sumChart->legend()->hide();
 
     sumChart->setPlotAreaBackgroundBrush(plotcolor);
@@ -1231,15 +1373,15 @@ void UkpmWidget::setSumTab()
 
     QVBoxLayout *vLayout = new QVBoxLayout;
 
-    sumStack = new QStackedWidget;
-    QLabel *nodata = new QLabel;
-    nodata->setText(tr("no data to show."));
-    nodata->setAlignment(Qt::AlignCenter);
-    sumStack->addWidget(nodata);
-    sumStack->addWidget(sumChartView);
+//    sumStack = new QStackedWidget;
+//    QLabel *nodata = new QLabel;
+//    nodata->setText(tr("no data to show."));
+//    nodata->setAlignment(Qt::AlignCenter);
+//    sumStack->addWidget(nodata);
+//    sumStack->addWidget(sumChartView);
 
     vLayout->addLayout(topFormLayout);
-    vLayout->addWidget(sumStack);
+    vLayout->addWidget(sumChartView);
     vLayout->addLayout(bottomLayout);
     vLayout->setContentsMargins(0,20,0,32);
     vLayout->setSpacing(0);
@@ -1384,15 +1526,16 @@ void UkpmWidget::setHistoryTab()
     bottomLayout->setSpacing(16);
 //    bottomLayout->setAlignment(hisCurveBox,Qt::AlignLeft);
 //    bottomLayout->setAlignment(hisDataBox,Qt::AlignLeft);
-
+    QColor line_color("#3D6BE5");
+    line_color.setAlphaF(0.8);
     hisChart = new QChart;
     hisChart->setContentsMargins(0,0,0,0);
 
     hisSeries = new QLineSeries();
     hisSpline = new QScatterSeries();
     hisSpline->setMarkerSize(6);
-    hisSpline->setBrush(QBrush(QColor("#3D6BE5")));
-    hisSpline->setBorderColor(QColor("#3D6BE5"));
+    hisSpline->setBrush(QBrush(line_color));
+    hisSpline->setBorderColor(line_color);
     QPen pen(QColor("#2ac4a1"),1);
     hisSeries->setPen(pen);
 //    hisChart->addSeries(hisSpline);
@@ -1408,6 +1551,9 @@ void UkpmWidget::setHistoryTab()
     font.setBold(true);
     xtime->setTitleFont(font);
     axisY->setTitleFont(font);
+    xtime->setGridLinePen(QPen(QColor("#343537"),1));
+    axisY->setGridLinePen(QPen(QColor("#343537"),1));
+
     hisChart->setAxisX(xtime);
     hisChart->setAxisY(axisY);
 
@@ -1415,26 +1561,26 @@ void UkpmWidget::setHistoryTab()
 
     hisChart->setPlotAreaBackgroundBrush(plotcolor);
     hisChart->setPlotAreaBackgroundVisible(true);
+//    hisChart->setPlotAreaBackgroundPen(QPen(QColor("#2f3032"),1));
     hisChartView = new QChartView(hisChart);
     hisChartView->setRenderHint(QPainter::Antialiasing);
 //    hisChartView->setFixedWidth(594);
     hisChartView->setContentsMargins(0,0,0,0);
     QVBoxLayout *vLayout = new QVBoxLayout;
-    hisStack = new QStackedWidget;
-    QLabel *nodata = new QLabel;
-    nodata->setText(tr("no data to show."));
-    nodata->setAlignment(Qt::AlignCenter);
-    hisStack->addWidget(nodata);
-    hisStack->addWidget(hisChartView);
+//    hisStack = new QStackedWidget;
+//    QLabel *nodata = new QLabel;
+//    nodata->setText(tr("no data to show."));
+//    nodata->setAlignment(Qt::AlignCenter);
+//    hisStack->addWidget(nodata);
+//    hisStack->addWidget(hisChartView);
     vLayout->setSpacing(0);
     vLayout->addLayout(topLayout);
-    vLayout->addWidget(hisStack);
+    vLayout->addWidget(hisChartView);
     vLayout->addLayout(bottomLayout);
     vLayout->setContentsMargins(0,20,0,32);
     his_widget->setLayout(vLayout);
 //    tab_widget->addTab(his_widget,tr("history"));
     his_widget->hide();
-
     ukpm_set_choice_history();
 }
 
@@ -1465,10 +1611,10 @@ QList<QPointF> UkpmWidget::getStatics(QString stat_type)
     else {
 
     }
-    if(list.isEmpty())
-    {
-        sumStack->setCurrentIndex(0);
-    }
+//    if(list.isEmpty())
+//    {
+//        sumStack->setCurrentIndex(0);
+//    }
 
     return  list;
 }
@@ -1506,10 +1652,10 @@ QList<QPointF> UkpmWidget::getHistory(QString type, uint timeSpan)
     }
     else {
     }
-    if(list.isEmpty())
-    {
-        hisStack->setCurrentIndex(0);
-    }
+//    if(list.isEmpty())
+//    {
+//        hisStack->setCurrentIndex(0);
+//    }
 
     return  list;
 }

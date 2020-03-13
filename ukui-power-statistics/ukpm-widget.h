@@ -107,14 +107,9 @@ public:
     void setSumTab();
     void connectSlots();
     QList<QPointF> setdata(); //设置图表数据的函数接口
-    void getDcDetail();
-    void getBtrDetail();
     void getAll(DEV *dc);
     void calcTime(QString &attr, uint time);
     void getDevices();
-    void setupDcUI();
-    void setupBtrUI();
-    void initUI();
     void addNewUI(QDBusObjectPath &path, UpDeviceKind newKind);
     int parseArguments();
     QString getWidgetAxis(uint value);
@@ -172,7 +167,7 @@ public:
     void ukpm_update_info_data(DEV *device);
     void ukpm_update_info_page_history(DEV *device);
     void getSlots();
-    void draw_history_graph(QList<QPointF> list);
+    void draw_history_graph(QString type);
     void draw_stats_graph(QString type);
     void addListRow(QString attr, QString value);
     void setInfoUI();
@@ -210,7 +205,7 @@ public Q_SLOTS:
 public:
     uint timeSpan, resolution;
     QListWidget *listWidget;
-    QStackedWidget *stackedWidget, *hisStack, *sumStack;
+    QStackedWidget *stackedWidget;// *hisStack, *sumStack;
 
     HISTYPE mHISTYPE;
     SUMTYPE mSUMTYPE;

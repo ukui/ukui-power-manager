@@ -28,7 +28,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 TRANSLATIONS += zh_CN.ts en.ts
 
 #LIBS += -lX11
-PKGCONFIG += gio-2.0 gsettings-qt
+PKGCONFIG += gsettings-qt
 CONFIG += link_pkgconfig
 
 SOURCES += \
@@ -46,9 +46,6 @@ HEADERS += \
     ukpm-widget.h \
     titlewidget.h \
     device.h
-
-SUBDIRS += \
-    ukui-power-statistics.pro
 
 RESOURCES += \
     resource.qrc

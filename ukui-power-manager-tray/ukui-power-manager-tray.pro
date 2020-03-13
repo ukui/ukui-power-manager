@@ -30,6 +30,7 @@ CONFIG += c++11 no_keywords link_pkgconfig
 PKGCONFIG +=  gsettings-qt
 
 SOURCES += \
+    customstyle.cpp \
         main.cpp \
         mainwindow.cpp \
     customtype.cpp \
@@ -39,6 +40,7 @@ SOURCES += \
     device_form.cpp
 
 HEADERS += \
+    customstyle.h \
         mainwindow.h \
     customtype.h \
     device.h \

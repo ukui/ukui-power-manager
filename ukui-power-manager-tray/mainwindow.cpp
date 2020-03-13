@@ -28,6 +28,7 @@
 #include <QLabel>
 #include <QPainter>
 #include <QFile>
+#include <customstyle.h>
 
 #define POWER_SCHEMA "org.ukui.power-manager"
 #define POWER_SCHEMA_KEY "power-manager"
@@ -70,6 +71,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 void MainWindow::onSumChanged(QString str)
 {
+    Q_UNUSED(str);
 //    trayIcon->setToolTip(str);
 }
 
@@ -447,6 +449,12 @@ void MainWindow::initUi()
 //    this->setWindowFlags(Qt::CustomizeWindowHint | Qt::FramelessWindowHint | Qt::SplashScreen);
     setAttribute(Qt::WA_StyledBackground,true);
     setAttribute(Qt::WA_TranslucentBackground);
+    QPainterPath path;
+    auto rect = this->rect();
+    rect.adjust(0,0,0,0);
+    path.addRoundedRect(rect,6,6);
+    setProperty("blurRegion",QRegion(path.toFillPolygon().toPolygon()));
+
     setWindowOpacity(0.90);
     dev_number = get_engine_dev_number();
     dev_number = 1;
@@ -463,7 +471,6 @@ void MainWindow::initUi()
     }
     ui->power_title->setText(tr("PowerManagement"));
     ui->power_title->setAlignment(Qt::AlignLeft);
-
 
     connect(ui->statistic_button,SIGNAL(clicked()),this,SLOT(activate_power_statistic()));
 
@@ -571,6 +578,7 @@ void MainWindow::initUi()
     menu->addAction(set_preference);
 
     trayIcon->setContextMenu(menu);
+    qApp->setStyle(new CustomStyle());
 }
 
 int MainWindow::get_engine_dev_number()

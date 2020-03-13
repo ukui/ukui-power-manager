@@ -18,6 +18,7 @@
 #include "ukpm-widget.h"
 #include "customtype.h"
 #include "sys/time.h"
+#include <float.h>
 
 #define GPM_HISTORY_RATE_TEXT			"Rate"
 #define GPM_HISTORY_CHARGE_TEXT			"Charge"
@@ -574,10 +575,10 @@ void UkpmWidget::ukpm_update_info_page_history (DEV* device)
     if (index==RATE) {
         current_device->type_x = GPM_GRAPH_WIDGET_TYPE_TIME;
         current_device->type_y = GPM_GRAPH_WIDGET_TYPE_PERCENTAGE;
-        current_device->autorange_x = FALSE;
+        current_device->autorange_x = false;
         current_device->start_x = -timeSpan;
         current_device->stop_x = 0;
-        current_device->autorange_y = FALSE;
+        current_device->autorange_y = false;
         current_device->start_y = 0;
         current_device->stop_y = 100;
         type = "rate";
@@ -586,7 +587,7 @@ void UkpmWidget::ukpm_update_info_page_history (DEV* device)
 
         current_device->type_x = GPM_GRAPH_WIDGET_TYPE_TIME;
         current_device->type_y = GPM_GRAPH_WIDGET_TYPE_POWER;
-        current_device->autorange_x = FALSE;
+        current_device->autorange_x = false;
         current_device->start_x = -timeSpan;
         current_device->stop_x = 0;
         current_device->autorange_y = true;
@@ -596,7 +597,7 @@ void UkpmWidget::ukpm_update_info_page_history (DEV* device)
 
         current_device->type_x = GPM_GRAPH_WIDGET_TYPE_TIME;
         current_device->type_y = GPM_GRAPH_WIDGET_TYPE_TIME;
-        current_device->autorange_x = FALSE;
+        current_device->autorange_x = false;
         current_device->start_x = -timeSpan;
         current_device->stop_x = 0;
         current_device->autorange_y = true;
@@ -606,7 +607,7 @@ void UkpmWidget::ukpm_update_info_page_history (DEV* device)
 
         current_device->type_x = GPM_GRAPH_WIDGET_TYPE_TIME;
         current_device->type_y = GPM_GRAPH_WIDGET_TYPE_TIME;
-        current_device->autorange_x = FALSE;
+        current_device->autorange_x = false;
         current_device->start_x = -timeSpan;
         current_device->stop_x = 0;
         current_device->autorange_y = true;
@@ -871,7 +872,8 @@ void UkpmWidget::ukpm_set_choice_sum()
     sumSeries->attachAxis(x);//连接数据集与
     sumSeries->attachAxis(y);//连接数据集与
 
-    QString stats_type = settings->getString(GPM_SETTINGS_INFO_STATS_TYPE);
+//    QString stats_type = settings->getString(GPM_SETTINGS_INFO_STATS_TYPE);
+    QString stats_type = settings->get(GPM_SETTINGS_INFO_STATS_TYPE).toString();
     if(stats_type == NULL)
         stats_type = GPM_STATS_CHARGE_DATA_VALUE;
     if (QString::compare( stats_type, GPM_STATS_CHARGE_DATA_VALUE) == 0)
@@ -887,7 +889,8 @@ void UkpmWidget::ukpm_set_choice_sum()
 //    checked = settings->getBool(GPM_SETTINGS_INFO_STATS_GRAPH_SMOOTH);
 //    sumCurveBox->setChecked(checked);
 //    Q_EMIT sumCurveBox->clicked(checked);
-    checked = settings->getBool(GPM_SETTINGS_INFO_STATS_GRAPH_POINTS);
+//    checked = settings->getBool(GPM_SETTINGS_INFO_STATS_GRAPH_POINTS);
+    checked = settings->get(GPM_SETTINGS_INFO_STATS_GRAPH_POINTS).toBool();
 //    sumDataBox->setChecked(checked);
 //    Q_EMIT sumDataBox->clicked(checked);
     if(checked)
@@ -1204,8 +1207,8 @@ void UkpmWidget::ukpm_set_choice_history()
     hisSeries->attachAxis(xtime);//连接数据集与
     hisSeries->attachAxis(axisY);//连接数据集与
 
-    QString history_type = settings->getString(GPM_SETTINGS_INFO_HISTORY_TYPE);
-    int history_time = settings->getInt(GPM_SETTINGS_INFO_HISTORY_TIME);
+    QString history_type = settings->get(GPM_SETTINGS_INFO_HISTORY_TYPE).toString();
+    int history_time = settings->get(GPM_SETTINGS_INFO_HISTORY_TIME).toInt();
     if (history_type == NULL)
         history_type = GPM_HISTORY_CHARGE_VALUE;
     if (history_time == 0)
@@ -1233,7 +1236,7 @@ void UkpmWidget::ukpm_set_choice_history()
 //        his_line_btn->setStyleSheet("QPushButton {color:black; background:#E7E7E7; border-radius:4px}");
 
 //    Q_EMIT hisCurveBox->clicked(checked);
-    checked = settings->getBool(GPM_SETTINGS_INFO_HISTORY_GRAPH_POINTS);
+    checked = settings->get(GPM_SETTINGS_INFO_HISTORY_GRAPH_POINTS).toBool();
 //    hisDataBox->setChecked(checked);
     if(checked)
     {
@@ -1252,7 +1255,7 @@ void UkpmWidget::ukpm_set_choice_history()
     }
 
 }
-void UkpmWidget::ukpm_update_info_data_page (DEV* device, gint page)
+void UkpmWidget::ukpm_update_info_data_page (DEV* device, int page)
 {
     if (page == 0)
         ukpm_update_info_page_details (device);
@@ -1392,7 +1395,7 @@ void UkpmWidget::setSumTab()
 }
 void UkpmWidget::showHisDataPoint(bool flag)
 {
-    settings->setBool(GPM_SETTINGS_INFO_HISTORY_GRAPH_POINTS,flag);
+    settings->set(GPM_SETTINGS_INFO_HISTORY_GRAPH_POINTS,flag);
     QList<QAbstractSeries *> ses = hisChart->series();
     if(flag)
     {
@@ -1414,7 +1417,7 @@ void UkpmWidget::showHisDataPoint(bool flag)
 
 void UkpmWidget::showSumDataPoint(bool flag)
 {
-    settings->setBool(GPM_SETTINGS_INFO_STATS_GRAPH_POINTS,flag);
+    settings->set(GPM_SETTINGS_INFO_STATS_GRAPH_POINTS,flag);
 
     QList<QAbstractSeries *> ses = sumChart->series();
     if(flag)
@@ -1749,7 +1752,7 @@ void UkpmWidget::choose_history_graph(int choice)
         his_line_btn->setStyleSheet("QPushButton {color:black; background:#E7E7E7; border-radius:4px}");
         hisSpline->setVisible(true);
         hisSeries->setVisible(false);
-        settings->setBool(GPM_SETTINGS_INFO_HISTORY_GRAPH_POINTS,true);
+        settings->set(GPM_SETTINGS_INFO_HISTORY_GRAPH_POINTS,true);
     }
     else
     {
@@ -1757,7 +1760,7 @@ void UkpmWidget::choose_history_graph(int choice)
         his_line_btn->setStyleSheet("QPushButton {color:white; background:#3D6BE5; border-radius:4px}");
         hisSeries->setVisible(true);
         hisSpline->setVisible(false);
-        settings->setBool(GPM_SETTINGS_INFO_HISTORY_GRAPH_POINTS,false);
+        settings->set(GPM_SETTINGS_INFO_HISTORY_GRAPH_POINTS,false);
     }
 }
 
@@ -1771,7 +1774,7 @@ void UkpmWidget::choose_stat_graph(int choice)
         sum_line_btn->setStyleSheet("QPushButton {color:black; background:#E7E7E7; border-radius:4px}");
         sumSpline->setVisible(true);
         sumSeries->setVisible(false);
-        settings->setBool(GPM_SETTINGS_INFO_STATS_GRAPH_POINTS,true);
+        settings->set(GPM_SETTINGS_INFO_STATS_GRAPH_POINTS,true);
     }
     else
     {
@@ -1779,7 +1782,7 @@ void UkpmWidget::choose_stat_graph(int choice)
         sum_line_btn->setStyleSheet("QPushButton {color:white; background:#3D6BE5; border-radius:4px}");
         sumSeries->setVisible(true);
         sumSpline->setVisible(false);
-        settings->setBool(GPM_SETTINGS_INFO_STATS_GRAPH_POINTS,false);
+        settings->set(GPM_SETTINGS_INFO_STATS_GRAPH_POINTS,false);
     }
 }
 
@@ -1838,24 +1841,24 @@ void UkpmWidget::upHistoryType(int index)
     {
         timeSpan = 7*24*60*60;
     }
-    settings->setInt(GPM_SETTINGS_INFO_HISTORY_TIME,timeSpan);
+    settings->set(GPM_SETTINGS_INFO_HISTORY_TIME,timeSpan);
 
     num = typeCombox->currentIndex();
     if (num==RATE) {
 
-        settings->setString(GPM_SETTINGS_INFO_HISTORY_TYPE,GPM_HISTORY_RATE_VALUE);
+        settings->set(GPM_SETTINGS_INFO_HISTORY_TYPE,GPM_HISTORY_RATE_VALUE);
 
     } else if (num==VOLUME) {
 
-        settings->setString(GPM_SETTINGS_INFO_HISTORY_TYPE,GPM_HISTORY_CHARGE_VALUE);
+        settings->set(GPM_SETTINGS_INFO_HISTORY_TYPE,GPM_HISTORY_CHARGE_VALUE);
 
     } else if (num==CHARGE_DURATION) {
 
-        settings->setString(GPM_SETTINGS_INFO_HISTORY_TYPE,GPM_HISTORY_TIME_FULL_VALUE);
+        settings->set(GPM_SETTINGS_INFO_HISTORY_TYPE,GPM_HISTORY_TIME_FULL_VALUE);
 
     }else if (num==DISCHARGING_DURATION) {
 
-        settings->setString(GPM_SETTINGS_INFO_HISTORY_TYPE,GPM_HISTORY_TIME_EMPTY_VALUE);
+        settings->set(GPM_SETTINGS_INFO_HISTORY_TYPE,GPM_HISTORY_TIME_EMPTY_VALUE);
     }
     ukpm_update_info_page_history(current_device);
 }
@@ -1866,19 +1869,19 @@ void UkpmWidget::upStatsType(int index)
     int num = sumTypeCombox->currentIndex();
     if(num == CHARGE)
     {
-        settings->setString(GPM_SETTINGS_INFO_STATS_TYPE,GPM_STATS_CHARGE_DATA_VALUE);
+        settings->set(GPM_SETTINGS_INFO_STATS_TYPE,GPM_STATS_CHARGE_DATA_VALUE);
     }
     else if(num == CHARGE_ACCURENCY)
     {
-        settings->setString(GPM_SETTINGS_INFO_STATS_TYPE,GPM_STATS_CHARGE_ACCURACY_VALUE);
+        settings->set(GPM_SETTINGS_INFO_STATS_TYPE,GPM_STATS_CHARGE_ACCURACY_VALUE);
     }
     else if(num == DISCHARGING)
     {
-        settings->setString(GPM_SETTINGS_INFO_STATS_TYPE,GPM_STATS_DISCHARGE_DATA_VALUE);
+        settings->set(GPM_SETTINGS_INFO_STATS_TYPE,GPM_STATS_DISCHARGE_DATA_VALUE);
     }
     else if(num == DISCHARGING_ACCURENCY)
     {
-        settings->setString(GPM_SETTINGS_INFO_STATS_TYPE,GPM_STATS_DISCHARGE_ACCURACY_VALUE);
+        settings->set(GPM_SETTINGS_INFO_STATS_TYPE,GPM_STATS_DISCHARGE_ACCURACY_VALUE);
     }
     ukpm_update_info_page_stats(current_device);
 }
@@ -1887,7 +1890,7 @@ void UkpmWidget::onPageChanged(int index)
 {
     if(index != index_old)
     {
-        settings->setInt(GPM_SETTINGS_INFO_PAGE_NUMBER,index);
+        settings->set(GPM_SETTINGS_INFO_PAGE_NUMBER,index);
         index_old = index;
     }
     ukpm_update_info_data_page(current_device,index);
@@ -1895,7 +1898,7 @@ void UkpmWidget::onPageChanged(int index)
 
 void UkpmWidget::drawHisSpineline(bool flag)
 {
-    settings->setBool(GPM_SETTINGS_INFO_HISTORY_GRAPH_SMOOTH,flag);
+    settings->set(GPM_SETTINGS_INFO_HISTORY_GRAPH_SMOOTH,flag);
     if(flag)
     {
         his_line_btn->setStyleSheet("QPushButton {color:white; background:#3D6BE5; border-radius:4px}");
@@ -1924,7 +1927,7 @@ void UkpmWidget::drawHisSpineline(bool flag)
 
 void UkpmWidget::drawSumSpineline(bool flag)
 {
-    settings->setBool(GPM_SETTINGS_INFO_STATS_GRAPH_SMOOTH,flag);
+    settings->set(GPM_SETTINGS_INFO_STATS_GRAPH_SMOOTH,flag);
     if(flag)
     {
         sumChart->removeSeries(sumSeries);

@@ -28,13 +28,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 TRANSLATIONS += zh_CN.ts en.ts
 
 #LIBS += -lX11
-PKGCONFIG += gio-2.0
+PKGCONFIG += gio-2.0 gsettings-qt
 CONFIG += link_pkgconfig
 
 SOURCES += \
     customtype.cpp \
     eggunique.cpp \
-    gsettings.cpp \
     main.cpp \
     ukpm-widget.cpp \
     titlewidget.cpp \
@@ -43,7 +42,6 @@ SOURCES += \
 HEADERS += \
     customtype.h \
     eggunique.h \
-    gsettings.h \
     statistics-common.h \
     ukpm-widget.h \
     titlewidget.h \

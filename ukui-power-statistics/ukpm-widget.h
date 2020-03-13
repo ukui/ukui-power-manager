@@ -62,13 +62,15 @@
 #include <QDBusReply>
 #include <QFormLayout>
 #include <QWidgetAction>
-#include "gsettings.h"
 #include <QCategoryAxis>
 #include "customtype.h"
 #include "statistics-common.h"
 #include "device.h"
 #include <QButtonGroup>
 #include <QScatterSeries>
+#include <QStandardItemModel>
+#include <QTableView>
+#include <QGSettings>
 
 #define WORKING_DIRECTORY "."
 #define DBUS_SERVICE "org.freedesktop.UPower"
@@ -76,8 +78,7 @@
 #define DBUS_INTERFACE "org.freedesktop.DBus.Properties"
 #define DBUS_INTERFACE_PARAM "org.freedesktop.UPower.Device"
 
-#include <QStandardItemModel>
-#include <QTableView>
+
 
 enum SUMTYPE
 {

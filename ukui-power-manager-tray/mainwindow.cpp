@@ -474,7 +474,7 @@ void MainWindow::initUi()
 
     connect(ui->statistic_button,SIGNAL(clicked()),this,SLOT(activate_power_statistic()));
 
-    ui->statistic_button->setText(tr("PowerStatistics"));//adapt to chinese
+    ui->statistic_button->setText(tr("Stats"));//adapt to chinese
     ui->statistic_button->setFixedWidth(54);
 
     ui->statistic_button->setStyleSheet("QPushButton{border:0px;width:54px;"

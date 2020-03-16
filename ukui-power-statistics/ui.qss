@@ -157,7 +157,6 @@ QComboBox {
     border-bottom-right-radius: 3px;
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
-    height: 30px;
     combobox-popup: 0;
     background-color:#EDEDED;
     selection-color:#EDEDED;
@@ -217,7 +216,6 @@ QComboBox::drop-down {
     padding-left: 8px;
     margin:0px;
     width:60px;
-    height:30px;
 }
 
 #TitleContent {

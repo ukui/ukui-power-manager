@@ -4,16 +4,16 @@
 <context>
     <name>DeviceForm</name>
     <message>
-        <location filename="deviceform.ui" line="20"/>
+        <location filename="deviceform.ui" line="32"/>
         <source>Form</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="deviceform.ui" line="32"/>
-        <location filename="deviceform.ui" line="45"/>
-        <location filename="deviceform.ui" line="58"/>
-        <location filename="deviceform.ui" line="74"/>
-        <location filename="deviceform.ui" line="87"/>
+        <location filename="deviceform.ui" line="44"/>
+        <location filename="deviceform.ui" line="57"/>
+        <location filename="deviceform.ui" line="70"/>
+        <location filename="deviceform.ui" line="86"/>
+        <location filename="deviceform.ui" line="99"/>
         <source>TextLabel</source>
         <translation type="unfinished"></translation>
     </message>
@@ -46,126 +46,122 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="599"/>
+        <location filename="enginedevice.cpp" line="600"/>
         <source>Unknown time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="605"/>
-        <location filename="enginedevice.cpp" line="626"/>
+        <location filename="enginedevice.cpp" line="606"/>
+        <location filename="enginedevice.cpp" line="627"/>
         <source>minute</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="607"/>
-        <location filename="enginedevice.cpp" line="628"/>
+        <location filename="enginedevice.cpp" line="608"/>
+        <location filename="enginedevice.cpp" line="629"/>
         <source>minutes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="618"/>
-        <location filename="enginedevice.cpp" line="630"/>
+        <location filename="enginedevice.cpp" line="619"/>
+        <location filename="enginedevice.cpp" line="631"/>
         <source>hour</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="620"/>
-        <location filename="enginedevice.cpp" line="632"/>
+        <location filename="enginedevice.cpp" line="621"/>
+        <location filename="enginedevice.cpp" line="633"/>
         <source>hours</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="691"/>
+        <location filename="enginedevice.cpp" line="686"/>
         <source>fully charged</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="701"/>
+        <location filename="enginedevice.cpp" line="703"/>
         <source>discharging(%1%)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="727"/>
-        <source>charging(%1%)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="enginedevice.cpp" line="914"/>
+        <location filename="enginedevice.cpp" line="916"/>
         <source>AC adapter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="918"/>
+        <location filename="enginedevice.cpp" line="920"/>
         <source>Laptop battery</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="922"/>
+        <location filename="enginedevice.cpp" line="924"/>
         <source>UPS</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="926"/>
+        <location filename="enginedevice.cpp" line="928"/>
         <source>Monitor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="930"/>
+        <location filename="enginedevice.cpp" line="932"/>
         <source>Mouse</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="934"/>
+        <location filename="enginedevice.cpp" line="936"/>
         <source>Keyboard</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="938"/>
+        <location filename="enginedevice.cpp" line="940"/>
         <source>PDA</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="946"/>
+        <location filename="enginedevice.cpp" line="948"/>
         <source>Media player</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="950"/>
+        <location filename="enginedevice.cpp" line="952"/>
         <source>Tablet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="954"/>
+        <location filename="enginedevice.cpp" line="956"/>
         <source>Computer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="958"/>
+        <location filename="enginedevice.cpp" line="960"/>
         <source>unrecognised</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="1082"/>
+        <location filename="enginedevice.cpp" line="708"/>
+        <location filename="enginedevice.cpp" line="1084"/>
         <source>charging</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="1085"/>
+        <location filename="enginedevice.cpp" line="1087"/>
         <source>discharging</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="1088"/>
+        <location filename="enginedevice.cpp" line="1090"/>
         <source>empty</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="1091"/>
+        <location filename="enginedevice.cpp" line="1093"/>
         <source>fully</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="1094"/>
+        <location filename="enginedevice.cpp" line="1096"/>
         <source>other</source>
         <translation type="unfinished"></translation>
     </message>
@@ -178,27 +174,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="47"/>
+        <location filename="mainwindow.ui" line="45"/>
         <source>TextLabel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="73"/>
+        <location filename="mainwindow.ui" line="92"/>
         <source>PushButton</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="519"/>
+        <location filename="mainwindow.cpp" line="513"/>
         <source>SetPower</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="538"/>
+        <location filename="mainwindow.cpp" line="532"/>
         <source>ShowPercentage</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="558"/>
+        <location filename="mainwindow.cpp" line="552"/>
         <source>SetBrightness</source>
         <translation type="unfinished"></translation>
     </message>
@@ -253,12 +249,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="472"/>
+        <location filename="mainwindow.cpp" line="479"/>
         <source>PowerManagement</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="477"/>
+        <location filename="mainwindow.cpp" line="484"/>
         <source>Stats</source>
         <oldsource>Statistics</oldsource>
         <translation type="unfinished"></translation>

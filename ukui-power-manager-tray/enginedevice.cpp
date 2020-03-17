@@ -355,6 +355,7 @@ bool EngineDevice::power_device_recalculate_icon()
     /*call a function to obtain icon*/
     QString icon;
     icon = power_device_get_icon();
+//    qDebug() << "power_device_recalculate_icon-----"<<icon;
     if(icon.isNull())
     {
         if(previous_icon.isNull())
@@ -682,14 +683,15 @@ QString EngineDevice::engine_get_device_predict(DEVICE* dv)
     time_to_empty_round = precision_round_down (time_to_empty, GPM_UP_TIME_PRECISION);
 
     if (state == UP_DEVICE_STATE_FULLY_CHARGED) {
+        result = tr("fully charged");
 
-        if (kind == UP_DEVICE_KIND_BATTERY && time_to_empty_round > GPM_UP_TEXT_MIN_TIME) {
-            time_to_empty_str = gpm_get_timestring (time_to_empty_round);
-            result = time_to_empty_str;
+//        if (kind == UP_DEVICE_KIND_BATTERY && time_to_empty_round > GPM_UP_TEXT_MIN_TIME) {
+//            time_to_empty_str = gpm_get_timestring (time_to_empty_round);
+//            result = time_to_empty_str;
 
-        } else {
-            result = tr("fully charged");
-        }
+//        } else {
+//            result = tr("fully charged");
+//        }
 
     } else if (state == UP_DEVICE_STATE_DISCHARGING) {
 
@@ -703,34 +705,34 @@ QString EngineDevice::engine_get_device_predict(DEVICE* dv)
         }
 
     } else if (state == UP_DEVICE_STATE_CHARGING) {
+        result = tr("charging");
+//        if (time_to_full_round > GPM_UP_TEXT_MIN_TIME &&
+//            time_to_empty_round > GPM_UP_TEXT_MIN_TIME) {
 
-        if (time_to_full_round > GPM_UP_TEXT_MIN_TIME &&
-            time_to_empty_round > GPM_UP_TEXT_MIN_TIME) {
+//            /* display both discharge and charge time */
+//            time_to_full_str = gpm_get_timestring (time_to_full_round);
+//            time_to_empty_str = gpm_get_timestring (time_to_empty_round);
 
-            /* display both discharge and charge time */
-            time_to_full_str = gpm_get_timestring (time_to_full_round);
-            time_to_empty_str = gpm_get_timestring (time_to_empty_round);
+//            /* TRANSLATORS: the device is charging, and we have a time to full and empty */
+//            result = time_to_full_str;
+//        } else if (time_to_full_round > GPM_UP_TEXT_MIN_TIME) {
 
-            /* TRANSLATORS: the device is charging, and we have a time to full and empty */
-            result = time_to_full_str;
-        } else if (time_to_full_round > GPM_UP_TEXT_MIN_TIME) {
+//            /* display only charge time */
+//            time_to_full_str = gpm_get_timestring (time_to_full_round);
 
-            /* display only charge time */
-            time_to_full_str = gpm_get_timestring (time_to_full_round);
+//            /* TRANSLATORS: device is charging, and we have a time to full and a percentage */
+//            result = time_to_full_str;
 
-            /* TRANSLATORS: device is charging, and we have a time to full and a percentage */
-            result = time_to_full_str;
+//        } else {
 
-        } else {
+//            /* TRANSLATORS: device is charging, but we only have a percentage */
+//            result = tr("charging(%1%)").arg(percentage);
 
-            /* TRANSLATORS: device is charging, but we only have a percentage */
-            result = tr("charging(%1%)").arg(percentage);
-
-        }
+//        }
 
     }  else {
-        printf ("in an undefined state we are not charging or "
-                 "discharging and the batteries are also not charged");
+//        printf ("in an undefined state we are not charging or "
+//                 "discharging and the batteries are also not charged");
         result = QString("%1(%2%)").arg(kind_desc).arg(percentage);
     }
     return result;
@@ -1068,7 +1070,7 @@ QString EngineDevice::engine_get_device_icon (DEVICE *device)
 
     /* nothing matched */
     if (result.isNull()) {
-        printf ("nothing matched, falling back to default icon");
+//        printf ("nothing matched, falling back to default icon");
         result =  ("dialog-warning");
     }
     return result;

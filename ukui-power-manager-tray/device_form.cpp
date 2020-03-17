@@ -164,7 +164,7 @@ void DeviceForm::paintEvent(QPaintEvent *event)
  QString DeviceForm::calculate_value(int nValue,int nTotal)
  {
      QString strStyle = "";
-     int value1 = nTotal * 0.2;
+     int value1 = nTotal * 0.1;
      if (nValue > value1)
      {
 
@@ -208,6 +208,7 @@ void DeviceForm::slot_device_change(DEVICE* device)
     if(device->m_dev.path != path)
         return;
     icon_name = ed->engine_get_device_icon(device);
+//    qDebug()<<"slot_device_change------"<<icon_name;
     percentage = QString::number(device->m_dev.Percentage, 'f',0)+"%";
     percent_number = int (device->m_dev.Percentage);
     kind = ed->engine_kind_to_localised_text(device->m_dev.kind,0);

@@ -457,10 +457,17 @@ void MainWindow::initUi()
 
     setWindowOpacity(0.90);
     dev_number = get_engine_dev_number();
-    dev_number = 1;
-    resize(360,72 + 82*(dev_number>3?3:dev_number));
-    setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
+//    dev_number = 3;
+    resize(360,72 + 8 + 82*(dev_number>3?3:dev_number));
+
     ui->listWidget->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->listWidget->setSpacing(0);
+    ui->listWidget->setContentsMargins(0,0,4,0);
+    ui->mainVerticalLayout->setContentsMargins(18,22,14,2);
+    ui->mainVerticalLayout->setSpacing(0);
+    ui->horizontalLayout->setContentsMargins(0,0,4,0);
+    ui->horizontalLayout->setSpacing(0);
+    ui->widget->setFixedHeight(26);
     if(dev_number > 3)
     {
         ui->listWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
@@ -476,7 +483,6 @@ void MainWindow::initUi()
 
     ui->statistic_button->setText(tr("Stats"));//adapt to chinese
     ui->statistic_button->setFixedWidth(54);
-
     ui->statistic_button->setStyleSheet("QPushButton{border:0px;width:54px;"
                                         "font-family:Noto Sans CJK SC;"
                                         "background-color:rgba(255,255,255,0);color:rgba(107,142,235,1);font-size:14px;}"
@@ -487,19 +493,7 @@ void MainWindow::initUi()
                   "background-color:rgba(19,19,20);"
                   "border-radius:6px;}"
                   );
-//    QLabel *title = new QLabel(tr("PowerManagement"));
-//    title->setObjectName("power_title");
-//    QScrollArea *scroll_area = new QScrollArea;
-//    scroll_area->setWidget(ui->centralWidget);
-//    QSpacerItem *spacer = new QSpacerItem(10,10,QSizePolicy::Fixed,QSizePolicy::Expanding);
-//    ui->verticalLayout_2->addWidget(title);
-//    ui->verticalLayout_2->addSpacerItem(spacer);
-//    QListWidgetItem *title_item = new QListWidgetItem(ui->listWidget);
-//    ui->listWidget->setSpacing(30);
-//    ui->listWidget->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-//    ui->listWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-//    ui->listWidget->setItemWidget(title_item,title);
-//    title_item->setSizeHint(QSize(325,20));
+
     get_power_list();
 
     menu = new QMenu(this);
@@ -607,13 +601,12 @@ void MainWindow::get_power_list()
         dv = ed->devices.at(i);
         if(dv->m_dev.kind == UP_DEVICE_KIND_LINE_POWER)
             continue;
-        QString icon_name = ed->engine_get_device_icon(dv);
+        /*QString icon_name = ed->engine_get_device_icon(dv);
         QString percentage = QString::number(dv->m_dev.Percentage, 'f',0)+"%";
         bool is_charging = false;
         QString text;
         if(icon_name.contains("charging"))
             is_charging = true;
-        /* generate the label */
         if (is_charging)
         {
             text = QString("%1% available power").arg(percentage);
@@ -621,17 +614,17 @@ void MainWindow::get_power_list()
             text.append("(The power is connected and is charging)");
         }
         else
-            text = QString("%1% available power").arg(percentage);
+            text = QString("%1% available power").arg(percentage);*/
 
 
         DeviceForm *df = new DeviceForm(this);
         df->set_device(dv);
         QListWidgetItem *list_item = new QListWidgetItem(ui->listWidget);
-        list_item->setSizeHint(QSize(325,82));
+        list_item->setSizeHint(QSize(324,82));
         ui->listWidget->setItemWidget(list_item,df);
     }
 
-//    for(int i = 0; i < 1; i++)
+//    for(int i = 0; i < 2; i++)
 //    {
 //        QString icon_name = "gpm-battery-080-charging.png";
 //        QString percentage = QString::number(92.0, 'f',0)+"%";
@@ -641,10 +634,10 @@ void MainWindow::get_power_list()
 //        df->setIcon(icon_name);
 //        df->setPercent(percentage);
 //        df->slider_changed(int(40));
-//        df->setState(state_text);
+//        df->setKind(state_text);
 //        df->setRemain(predict);
 //        QListWidgetItem *list_item = new QListWidgetItem(ui->listWidget);
-//        list_item->setSizeHint(QSize(325,82));
+//        list_item->setSizeHint(QSize(324,82));
 //        ui->listWidget->setItemWidget(list_item,df);
 //    }
 
@@ -655,7 +648,7 @@ void MainWindow::add_one_device(DEVICE *device)
     DeviceForm *df = new DeviceForm(this);
     df->set_device(device);
     QListWidgetItem *list_item = new QListWidgetItem(ui->listWidget);
-    list_item->setSizeHint(QSize(325,82));
+    list_item->setSizeHint(QSize(324,82));
     ui->listWidget->setItemWidget(list_item,df);
     device_item_map.insert(device,list_item);
     dev_number ++;
@@ -665,7 +658,7 @@ void MainWindow::add_one_device(DEVICE *device)
     }
     else
     {
-        resize(360,72 + 82*dev_number);
+        resize(360,72 + 8 + 82*dev_number);
         ui->listWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         move(pos().x(),pos().y()-82);
     }
@@ -688,7 +681,6 @@ void MainWindow::remove_one_device(DEVICE *device)
         device_item_map.remove(device);
         delete del_item;
         dev_number --;
-//        resize(360,72 + 82*(dev_number>3?3:dev_number));
         if(dev_number > 3)
         {
             ui->listWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
@@ -698,7 +690,7 @@ void MainWindow::remove_one_device(DEVICE *device)
             ui->listWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
             if(dev_number < 3)
             {
-                resize(360,72 + 82*dev_number);
+                resize(360,72 + 8 + 82*dev_number);
                 move(pos().x(),pos().y()+82);
             }
         }

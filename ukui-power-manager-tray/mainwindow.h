@@ -52,6 +52,9 @@ public:
     QPixmap set_percent_pixmap(QString str);
     QIcon get_percent_icon(QIcon icon);
     bool want_percent;
+    int getTaskbarHeight(QString str);
+    int getTaskbarPos(QString str);
+    void set_window_position();
 public Q_SLOTS:
     void iconThemeChanged();
     void onActivatedIcon(QSystemTrayIcon::ActivationReason reason);
@@ -88,8 +91,6 @@ private:
     bool saving;
     bool healthing;
     QMap<DEVICE*,QListWidgetItem*> device_item_map;
-    int panel_height;
-    QDBusInterface *serviceInterface;
     int dev_number;
 protected:
     bool event(QEvent *event);

@@ -29,6 +29,7 @@
 #include <QPainter>
 #include <QFile>
 #include <customstyle.h>
+#include <QDBusReply>
 
 #define POWER_SCHEMA "org.ukui.power-manager"
 #define POWER_SCHEMA_KEY "power-manager"
@@ -61,11 +62,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     initUi();
     ed->engine_policy_settings_cb("iconPolicy");
-    panel_height = 0;
-    serviceInterface = new QDBusInterface(PANEL_DBUS_SERVICE,
-                                        PANEL_DBUS_PATH,
-                                        PANEL_DBUS_INTERFACE,
-                                        QDBusConnection::sessionBus());
 
 }
 
@@ -294,99 +290,98 @@ void MainWindow::show_percentage_func()
 
 }
 
-//void MainWindow::onActivatedIcon(QSystemTrayIcon::ActivationReason reason)
-//{
-//    if(serviceInterface->isValid())
-//    {
-//        QDBusMessage msg = serviceInterface->call("GetPanelSize", ("height"));
-//        if(msg.type() == QDBusMessage::ReplyMessage)
-//        {
-//            panel_height = msg.arguments().at(0).toInt();
-//        }
-//        qDebug() << "panel_height" << panel_height;
-//    }
-//    if(panel_height == 0)
-//        panel_height = 46;
-//    switch (reason) {
-//    case QSystemTrayIcon::Trigger:{
-
-//            QRect availableGeometry = qApp->primaryScreen()->availableGeometry();
-//            QRect screenGeometry = qApp->primaryScreen()->geometry();
-
-//            QDesktopWidget* pDesktopWidget = QApplication::desktop();
-//        //    int nScreenCount = QApplication::desktop()->screenCount();
-//        //    QRect deskRect = pDesktopWidget->availableGeometry();//可用区域
-//            QRect screenRect = pDesktopWidget->screenGeometry();//屏幕区域
-
-//            if (screenRect.height() != availableGeometry.height()) {
-//                this->move(availableGeometry.x() + availableGeometry.width() - this->width()-102, availableGeometry.height() - this->height() - 3);
-//            }else {
-//                this->move(availableGeometry.x() + availableGeometry.width() - this->width()-102, availableGeometry.height() - this->height() - panel_height - 3);
-//            }
-//        if (!this->isHidden()) {
-//            this->hide();
-//        }
-//        else
-//            this->show();
-
-
-//        break;
-//    }
-//    //鼠标左键双击图标
-//    case QSystemTrayIcon::DoubleClick: {
-//        this->hide();
-//        break;
-//    }
-//    case QSystemTrayIcon::Context: {
-
-//        menu->move( menu->pos().x(),menu->pos().y() - 3 );
-//        menu->show();
-//        break;
-//    }
-//    default:
-//        break;
-//    }
-//}
-
-void MainWindow::onActivatedIcon(QSystemTrayIcon::ActivationReason reason)
+void MainWindow::set_window_position( )
 {
     QRect rect;
     int availableWidth,totalWidth;
-    int localY,availableHeight,totalHeight;
+    int availableHeight,totalHeight;
     rect = trayIcon->geometry();
-    qDebug()<<"rectxy:" << rect.x() << rect.y();
-    //屏幕可用宽高
-    availableWidth = QGuiApplication::screens().at(0)->availableGeometry().width();
-    availableHeight = QGuiApplication::screens().at(0)->availableGeometry().height();
-    //总共宽高
-    totalWidth =  QGuiApplication::screens().at(0)->size().width();
-    totalHeight = QGuiApplication::screens().at(0)->size().height();
+    QRect availableGeometry = qApp->primaryScreen()->availableGeometry();
+    QRect screenGeometry = qApp->primaryScreen()->geometry();
 
+    availableWidth = availableGeometry.width();
+    availableHeight = availableGeometry.height();
+    totalHeight = screenGeometry.height();
+    totalWidth = screenGeometry.width();
+
+//    qDebug()<<"trayIcon:"<<trayIcon->geometry();
+    if (totalWidth == availableWidth && totalHeight == availableHeight)
+    {
+        QDesktopWidget* desktopWidget = QApplication::desktop();
+        QRect deskMainRect = desktopWidget->availableGeometry(0);//获取可用桌面大小
+        QRect screenMainRect = desktopWidget->screenGeometry(0);//获取设备屏幕大小
+        QRect deskDupRect = desktopWidget->availableGeometry(1);//获取可用桌面大小
+        QRect screenDupRect = desktopWidget->screenGeometry(1);//获取设备屏幕大小
+        int n = getTaskbarPos("position");
+        int m = getTaskbarHeight("height");
+        if(n == 0){
+            //任务栏在下侧
+//            if (availableWidth - rect.x() - 3 < this->width())
+//                this->setGeometry(availableWidth-this->width()-3,availableHeight-this->height()-m-3,this->width(),this->height());
+//            else
+//                this->setGeometry(rect.x(),availableHeight-this->height()-m-3,this->width(),this->height());
+            this->move(availableGeometry.x() + availableGeometry.width() - this->width(), availableGeometry.height() - this->height() - m);
+
+        }else if(n == 1){
+            //任务栏在上侧
+//            if (availableWidth - rect.x() - 3 < this->width())
+//                this->setGeometry(availableWidth-this->width()-3,m+3,this->width(),this->height());
+//            else
+//                this->setGeometry(rect.x(),m+3,this->width(),this->height());
+            this->move(availableGeometry.x() + availableGeometry.width() - this->width(), screenGeometry.height() - availableGeometry.height() + m);
+
+        } else if (n == 2){
+            //任务栏在左侧
+            if (screenGeometry.x() == 0){
+                this->move(screenGeometry.width() - availableGeometry.width() + m, screenMainRect.height() - this->height());//主屏在左侧
+            }else{
+                this->move(screenGeometry.width() - availableGeometry.width() + m,screenDupRect.y() + screenDupRect.height() - this->height());//主屏在右侧
+            }
+        } else if (n == 3){
+            //任务栏在右侧
+            if (screenGeometry.x() == 0){//主屏在左侧
+                this->move(screenMainRect.width() + screenDupRect.width() - this->width() - m, screenDupRect.y() + screenDupRect.height() - this->height());
+            }else{//主屏在右侧
+                this->move(availableGeometry.x() + availableGeometry.width() - this->width() - m, screenMainRect.height() - this->height());
+            }
+        }
+    }
+    else if(totalWidth == availableWidth )//down and up
+    {
+        if (rect.y() > availableHeight/2){
+            if (availableWidth - rect.x() - 3 < this->width())
+                this->setGeometry(availableWidth-this->width()-3,availableHeight-this->height()-3,this->width(),this->height());
+            else
+                this->setGeometry(rect.x(),availableHeight-this->height()-3,this->width(),this->height());
+        }else{
+            if (availableWidth - rect.x() - 3 < this->width())
+                this->setGeometry(availableWidth-this->width()-3,totalHeight-availableHeight+3,this->width(),this->height());
+            else
+                this->setGeometry(rect.x(),totalHeight-availableHeight+3,this->width(),this->height());
+        }
+    }
+    else if (totalHeight == availableHeight)//right and left
+    {
+        if (rect.x() > availableWidth/2){
+            if (availableHeight - rect.y() -3 > this->height() )
+                this->setGeometry(availableWidth - this->width() - 3,rect.y(),this->width(),this->height());
+            else
+                this->setGeometry(availableWidth - this->width() - 3,totalHeight - this->height() -3,this->width(),this->height());
+        } else {
+            if (availableHeight - rect.y() -3 > this->height() )
+                this->setGeometry(totalWidth - availableWidth + 3,rect.y(),this->width(),this->height());
+            else
+                this->setGeometry(totalWidth-availableWidth+3,totalHeight - this->height() -3,this->width(),this->height());
+        }
+    }
+}
+
+
+void MainWindow::onActivatedIcon(QSystemTrayIcon::ActivationReason reason)
+{
     switch(reason) {
-
         case QSystemTrayIcon::Trigger: {
-                if (rect.x() > availableWidth/2 && rect.x()< availableWidth  && rect.y() > availableHeight/2) { //下
-                    if (availableWidth - rect.x() - 3 < this->width())
-                        this->setGeometry(availableWidth-this->width()-3,availableHeight-this->height()-3,this->width(),this->height());
-                    else
-                        this->setGeometry(rect.x(),availableHeight-this->height()-3,this->width(),this->height());
-                }
-                else if (rect.x() > availableWidth/2 && rect.x()< availableWidth && rect.y() < availableHeight/2 ) { //上
-                    if (availableWidth - rect.x() - 3 < this->width())
-                        this->setGeometry(availableWidth-this->width()-3,totalHeight-availableHeight+3,this->width(),this->height());
-                    else
-                        this->setGeometry(rect.x(),totalHeight-availableHeight+3,this->width(),this->height());
-                }
-                else if (rect.x() < availableWidth/2 && rect.y() > availableHeight/2 && rect.y()< availableHeight) { //左
-                    localY = availableHeight - this->height();
-                    if (availableHeight - rect.y() -3 > this->height() )
-                        this->setGeometry(totalWidth - availableWidth + 3,rect.y(),this->width(),this->height());
-                    else
-                        this->setGeometry(totalWidth-availableWidth+3,localY-3,this->width(),this->height());
-                }
-                else
-                    this->setGeometry(0,0,this->width(),this->height());
-
+                set_window_position();
                 if (!this->isHidden()) {
                     this->hide();
                 }
@@ -395,45 +390,12 @@ void MainWindow::onActivatedIcon(QSystemTrayIcon::ActivationReason reason)
                 break;
         }
 
-        case QSystemTrayIcon::Context: {
-
-            if (rect.x() > availableWidth/2 && rect.x()< availableWidth  && rect.y() > availableHeight/2) { //下
-                if (availableWidth - rect.x() - 3 < menu->width())
-                {
-                    menu->setGeometry(availableWidth-menu->width()-3,availableHeight-menu->height()-3,menu->width(),menu->height());
-                }
-                else
-                {
-                    menu->setGeometry(rect.x(),availableHeight-menu->height()-3,menu->width(),menu->height());
-                }
-            }
-            else if (rect.x() > availableWidth/2 && rect.x()< availableWidth && rect.y() < availableHeight/2 ) { //上
-                if (availableWidth - rect.x() - 3 < menu->width())
-                {
-                    menu->setGeometry(availableWidth-menu->width()-3,totalHeight-availableHeight+3,menu->width(),menu->height());
-                }
-                else
-                {
-                    menu->setGeometry(rect.x(),totalHeight-availableHeight+3,menu->width(),menu->height());
-                }
-            }
-            else if (rect.x() < availableWidth/2 && rect.y() > availableHeight/2 && rect.y()< availableHeight) { //左
-                localY = availableHeight - menu->height();
-                if (availableHeight - rect.y() -3 > menu->height() )
-                    menu->setGeometry(totalWidth - availableWidth + 3,rect.y(),menu->width(),menu->height());
-                else
-                    menu->setGeometry(totalWidth-availableWidth+3,localY-3,menu->width(),menu->height());
-            }
-            menu->show();
-            break;
-        }
         default:
             this->hide();
-            menu->hide();
             break;
     }
-
 }
+
 void MainWindow::initData()
 {
     want_percent = false;
@@ -731,8 +693,27 @@ bool MainWindow::event(QEvent *event)
 
 MainWindow::~MainWindow()
 {
-    delete serviceInterface;
 }
 
+int MainWindow::getTaskbarPos(QString str)
+{
+    QDBusInterface interface( "com.ukui.panel.desktop",
+                              "/",
+                              "com.ukui.panel.desktop",
+                              QDBusConnection::sessionBus() );
 
+    QDBusReply<int> reply = interface.call("GetPanelPosition", str);
+    return reply;
+}
+
+int MainWindow::getTaskbarHeight(QString str)
+{
+    QDBusInterface interface( "com.ukui.panel.desktop",
+                              "/",
+                              "com.ukui.panel.desktop",
+                              QDBusConnection::sessionBus() );
+
+    QDBusReply<int> reply = interface.call("GetPanelSize", str);
+    return reply;
+}
 

@@ -546,7 +546,7 @@ bool EngineDevice::engine_recalculate_summary ()
         Q_EMIT engine_signal_summary_change(summary);
         return true;
     }
-    printf ("no change");
+//    printf ("no change");
     return false;
 }
 

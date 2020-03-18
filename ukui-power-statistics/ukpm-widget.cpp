@@ -1263,6 +1263,9 @@ void UkpmWidget::setSumTab()
     y->setTitleFont(font);
     x->setGridLinePen(QPen(QColor("#343537"),1));
     y->setGridLinePen(QPen(QColor("#343537"),1));
+    x->setLineVisible(false);
+    y->setLineVisible(false);
+
     sumChart->legend()->hide();
 
     sumChart->setPlotAreaBackgroundBrush(plotcolor);

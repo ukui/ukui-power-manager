@@ -42,7 +42,6 @@ TitleWidget::TitleWidget(QWidget *parent)
 // 初始化控件;
 void TitleWidget::initControl()
 {
-//    m_pIcon = new QLabel;
     m_pTitleContent = new QLabel(this);
     m_pTitleContent->setObjectName("TitleContent");
 
@@ -62,21 +61,21 @@ void TitleWidget::initControl()
 //    m_close->setPixmap(QPixmap(":/resource/icon/1px_delete_con.png"));
 
     QHBoxLayout* mylayout = new QHBoxLayout(this);
-//    mylayout->addWidget(m_pIcon);
+    mylayout->setContentsMargins(0,0,0,0);
+    mylayout->setSpacing(0);
     mylayout->addSpacing(10);
     mylayout->addWidget(m_pTitleContent);
-    m_pTitleContent->setFixedWidth(180);
-    mylayout->addSpacing(580);
+//    m_pTitleContent->setFixedWidth(180);
+//    mylayout->addSpacing(580);
+    QSpacerItem *spacer = new QSpacerItem(100,TITLE_HEIGHT,QSizePolicy::Expanding,QSizePolicy::Fixed);
+    mylayout->addSpacerItem(spacer);
     mylayout->addWidget(m_pButtonHelp);
     mylayout->addSpacing(10);
     mylayout->addWidget(m_pButtonClose);
     mylayout->addSpacing(10);
 
-//    mylayout->setContentsMargins(10, 0, 16, 0);
-//    mylayout->setSpacing(30);
-
-//    m_pTitleContent->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
     m_pTitleContent->setText(tr("Power Information"));
+    m_pTitleContent->setStyleSheet("QLabel {font-size:14px;color:black}");
     this->setFixedHeight(TITLE_HEIGHT);
     this->setWindowFlags(Qt::FramelessWindowHint);
     this->setAttribute(Qt::WA_TranslucentBackground);
@@ -102,8 +101,10 @@ void TitleWidget::setBackgroundColor(int r, int g, int b, bool isTransparent)
 // 设置标题栏图标;
 void TitleWidget::setTitleIcon(QString filePath, QSize IconSize)
 {
-    QPixmap titleIcon(filePath);
-    m_pIcon->setPixmap(titleIcon.scaled(IconSize));
+    Q_UNUSED(filePath);
+    Q_UNUSED(IconSize);
+//    QPixmap titleIcon(filePath);
+//    m_pIcon->setPixmap(titleIcon.scaled(IconSize));
 }
 
 // 设置标题内容;

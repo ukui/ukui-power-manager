@@ -976,16 +976,15 @@ void UkpmWidget::draw_history_graph(QString type)
         axisY->setMax(stopy);
         axisY->setStartValue(starty);
         axisY->setTitleText(tr("Rate"));
-
+//        axisY->setLabelFormat("%6.1fw");
+        axisY->setLabelsPosition(QCategoryAxis::AxisLabelsPositionOnValue);
         for(int i = 0; i < 11; i++)
         {
             QString str;
-            str.sprintf("%.1fW",starty+i*(stopy-starty)/10.0);
-
+            str.sprintf("%9.1fw",starty+i*(stopy-starty)/10.0);
+//            str_new = QString("%1").arg(str,6,QLatin1Char(' '));SSSSSS
             axisY->append(str,starty+i*(stopy-starty)/10.0);
-
         }
-        axisY->setLabelsPosition(QCategoryAxis::AxisLabelsPositionOnValue);
 
         hisSeries->replace(list);
         hisSpline->replace(list);
@@ -994,7 +993,7 @@ void UkpmWidget::draw_history_graph(QString type)
 
         axisY->setTitleText(tr("Charge"));
 
-         labels = axisY->categoriesLabels();
+        labels = axisY->categoriesLabels();
         foreach (QString str, labels) {
             axisY->remove(str);
         }
@@ -1014,7 +1013,7 @@ void UkpmWidget::draw_history_graph(QString type)
     } else if (index==CHARGE_DURATION) {
 
         axisY->setTitleText(tr("Predict Time"));
-         labels = axisY->categoriesLabels();
+        labels = axisY->categoriesLabels();
         foreach (QString str, labels) {
             axisY->remove(str);
         }
@@ -1238,9 +1237,9 @@ void UkpmWidget::setSumTab()
     sumTypeCombox->setFixedHeight(30);
     topFormLayout->addRow(graphicType,sumTypeCombox);
     topFormLayout->setSpacing(0);
+    topFormLayout->setContentsMargins(0,0,0,0);
 
     sumChart = new QChart;
-    sumChart->setContentsMargins(0,0,0,0);
     x = new QValueAxis;
     y = new QValueAxis;
 
@@ -1272,6 +1271,9 @@ void UkpmWidget::setSumTab()
     sumChartView = new QChartView(sumChart);
     sumChartView->setRenderHint(QPainter::Antialiasing);
     sumChartView->setContentsMargins(0,0,0,0);
+    sumChart->setContentsMargins(0,10,0,0);
+    sumChart->setMargins(QMargins(0,0,0,0));
+
     QVBoxLayout *botchild = new QVBoxLayout;
     bottomLayout->addWidget(sum_line_btn,1);
     bottomLayout->addWidget(sum_data_btn,1);
@@ -1293,7 +1295,6 @@ void UkpmWidget::setSumTab()
     vLayout->setContentsMargins(0,20,0,32);
     vLayout->setSpacing(0);
     stat_widget->setLayout(vLayout);
-//    tab_widget->addTab(stat_widget,tr("statistics"));
     stat_widget->hide();
     ukpm_set_choice_sum();
 }
@@ -1430,7 +1431,6 @@ void UkpmWidget::setHistoryTab()
     QColor line_color("#3D6BE5");
     line_color.setAlphaF(0.8);
     hisChart = new QChart;
-    hisChart->setContentsMargins(0,0,0,0);
 
     hisSeries = new QLineSeries();
     hisSpline = new QScatterSeries();
@@ -1453,7 +1453,8 @@ void UkpmWidget::setHistoryTab()
     axisY->setTitleFont(font);
     xtime->setGridLinePen(QPen(QColor("#343537"),1));
     axisY->setGridLinePen(QPen(QColor("#343537"),1));
-
+    xtime->setLineVisible(false);
+    axisY->setLineVisible(false);
     hisChart->setAxisX(xtime);
     hisChart->setAxisY(axisY);
 
@@ -1464,8 +1465,9 @@ void UkpmWidget::setHistoryTab()
 //    hisChart->setPlotAreaBackgroundPen(QPen(QColor("#2f3032"),1));
     hisChartView = new QChartView(hisChart);
     hisChartView->setRenderHint(QPainter::Antialiasing);
-//    hisChartView->setFixedWidth(594);
     hisChartView->setContentsMargins(0,0,0,0);
+    hisChart->setContentsMargins(0,20,0,0);
+    hisChart->setMargins(QMargins(0,0,0,0));
     QVBoxLayout *vLayout = new QVBoxLayout;
 //    hisStack = new QStackedWidget;
 //    QLabel *nodata = new QLabel;

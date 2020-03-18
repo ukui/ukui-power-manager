@@ -63,7 +63,7 @@ private Q_SLOTS:
     void onButtonHelpClicked();
     void onButtonCloseClicked();
 private:
-    QLabel* m_pIcon;                    // 标题栏图标;
+//    QLabel* m_pIcon;                    // 标题栏图标;
     QLabel* m_pTitleContent;            // 标题栏内容;
     QToolButton* m_pButtonHelp;          // 最大化按钮;
     QToolButton* m_pButtonClose;        // 关闭按钮;

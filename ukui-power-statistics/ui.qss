@@ -15,6 +15,11 @@ QTableView,QTableWidget
     font:12px;
 }
 
+QTableView::item:hover
+{
+    background:white;
+    color:black;
+}
 /*这里是表格表头样式*/
 QHeaderView::section
 {
@@ -130,7 +135,7 @@ QCheckBox::indicator:unchecked:pressed {
 
 
 QScrollBar {
-    background:#969191;
+    background:#f1f1f1;
     width:8px;
 }
 QScrollBar::handle{
@@ -142,43 +147,62 @@ QScrollBar::handle{
 QScrollBar::add-line:vertical {
     width:none;
     height:none;
-    background:#969191;
+    background:transparent;
 }
 
 QScrollBar::sub-line:vertical {
     width:none;
     height:none;
-    background:#969191;
+    background:transparent;
+}
+
+QScrollBar::add-page:vertical {
+    background:transparent;
+}
+
+QScrollBar::sub-page:vertical {
+    background:transparent;
 }
 
 QComboBox {
-
+    font-size:12px;
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
     combobox-popup: 0;
     background-color:#EDEDED;
-    selection-color:#EDEDED;
-    selection-background-color:#EDEDED;
+
 }
 
-QComboBox::item {
-    selection-color:#EDEDED;
-    selection-background-color:#EDEDED;
+QComboBox QAbstractItemView::item
+{
+    height:30px;
+    background-color:white;
+    border-radius: 2px;
+    selection-background-color: lightgray;
+    color:black;
+    font-size:12px;
+}
+
+QComboBox::popup:on
+{
+    border-radius: 2px;
+    margin-bottom:8px;
+    margin-top:8px;
+    margin-right:4px;
+    margin-left:4px;
 }
 
 QComboBox::drop-down {
     image:url(:/resource/icon/down.png);
     subcontrol-position: right centor;
-    border-top-right-radius:3px;
-    border-bottom-right-radius:3px;
-    border-bottom-left-radius: 4px;
     padding-right:15px;
 }
 
 
 #m_listWidget {
+    font-size:14px;
     background-color: #F7F7F7;
     padding-left: 10px;
     padding-right: 10px;
@@ -189,13 +213,8 @@ QComboBox::drop-down {
 
     height:36px;
     width:160px;
-    margin-bottom:10px;
-}
-
-#m_listWidget::item:hover {
-
-    border-radius:4px;
-    margin-bottom:10px;
+    margin-bottom:5px;
+    margin-top:5px;
 
 }
 
@@ -203,11 +222,10 @@ QComboBox::drop-down {
     color: white;
     background-color: #3D6BE5;
     border-radius:4px;
-    margin-bottom:10px;
-
 }
 
 #m_sumGraphicType, #m_graphicType, #m_timeLabel{
+    font-size:12px;
     background-color:#EDEDED;
     border-top-left-radius: 3px; /* same radius as the QComboBox */
     border-bottom-left-radius: 3px;
@@ -218,16 +236,11 @@ QComboBox::drop-down {
     width:60px;
 }
 
-#TitleContent {
-    font:14px;
-    color:#333333;
-}
-
 QChart {
     text-color:#111111;
 }
 
 QSplitter {
-    width:46px;
+    width:40px;
     background-color:white;
 }

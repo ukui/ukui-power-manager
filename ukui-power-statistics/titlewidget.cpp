@@ -57,16 +57,12 @@ void TitleWidget::initControl()
     m_close->setObjectName("labelclose");
     m_help->setFixedSize(QSize(BUTTON_WIDTH, BUTTON_HEIGHT));
     m_close->setFixedSize(QSize(BUTTON_WIDTH, BUTTON_HEIGHT));
-//    m_help->setPixmap(QPixmap(":/resource/icon/__con.png"));
-//    m_close->setPixmap(QPixmap(":/resource/icon/1px_delete_con.png"));
 
     QHBoxLayout* mylayout = new QHBoxLayout(this);
     mylayout->setContentsMargins(0,0,0,0);
     mylayout->setSpacing(0);
     mylayout->addSpacing(10);
     mylayout->addWidget(m_pTitleContent);
-//    m_pTitleContent->setFixedWidth(180);
-//    mylayout->addSpacing(580);
     QSpacerItem *spacer = new QSpacerItem(100,TITLE_HEIGHT,QSizePolicy::Expanding,QSizePolicy::Fixed);
     mylayout->addSpacerItem(spacer);
     mylayout->addWidget(m_pButtonHelp);
@@ -134,18 +130,6 @@ void TitleWidget::setWindowBorderWidth(int borderWidth)
 // 绘制标题栏背景色;
 void TitleWidget::paintEvent(QPaintEvent *event)
 {
-    // 是否设置标题透明;
-//    if (!m_isTransparent)
-//    {
-//        //设置背景色;
-//        QPainter painter(this);
-//        QPainterPath pathBack;
-//        pathBack.setFillRule(Qt::WindingFill);
-//        pathBack.addRoundedRect(QRect(0, 0, this->width(), this->height()), 3, 3);
-//        painter.setRenderHint(QPainter::Antialiasing, true);
-//        painter.fillPath(pathBack, QBrush(QColor(m_colorR, m_colorG, m_colorB)));
-//    }
-
     if (this->width() != (this->parentWidget()->width() - m_windowBorderWidth))
     {
         this->setFixedWidth(this->parentWidget()->width() - m_windowBorderWidth);

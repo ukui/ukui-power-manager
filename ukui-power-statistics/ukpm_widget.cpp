@@ -15,7 +15,7 @@
  * along with this program; if not, see <http://www.gnu.org/licenses/&gt;.
  *
  */
-#include "ukpm-widget.h"
+#include "ukpm_widget.h"
 #include "customtype.h"
 #include "sys/time.h"
 #include <float.h>
@@ -363,6 +363,48 @@ void UkpmWidget::onShow()
     this->show();
 }
 
+QString UkpmWidget::getSufix(uint tim, char c)
+{
+    QString strValue;
+    if('s'==c)
+        strValue = QString::number(tim) + " " + tr("s");
+    else if('m'==c)
+        strValue = QString::number(tim) + " " + tr("m");
+    else if('h'==c)
+        strValue = QString::number(tim,'f', 1) + " " + tr("h");
+    return strValue;
+}
+
+QString UkpmWidget::up_device_kind_to_string (UpDeviceKind type_enum)
+{
+    switch (type_enum) {
+    case UP_DEVICE_KIND_LINE_POWER:
+        return ("line-power");
+    case UP_DEVICE_KIND_BATTERY:
+        return ("battery");
+    case UP_DEVICE_KIND_UPS:
+        return ("ups");
+    case UP_DEVICE_KIND_MONITOR:
+        return ("monitor");
+    case UP_DEVICE_KIND_MOUSE:
+        return ("mouse");
+    case UP_DEVICE_KIND_KEYBOARD:
+        return ("keyboard");
+    case UP_DEVICE_KIND_PDA:
+        return ("pda");
+    case UP_DEVICE_KIND_PHONE:
+        return ("phone");
+    case UP_DEVICE_KIND_MEDIA_PLAYER:
+        return ("media-player");
+    case UP_DEVICE_KIND_TABLET:
+        return ("tablet");
+    case UP_DEVICE_KIND_COMPUTER:
+        return ("computer");
+    default:
+        return ("unknown");
+    }
+}
+
 void UkpmWidget::onActivatedIcon(QSystemTrayIcon::ActivationReason reason)
 {
     switch (reason) {
@@ -383,7 +425,6 @@ void UkpmWidget::onActivatedIcon(QSystemTrayIcon::ActivationReason reason)
 
 void UkpmWidget::addListRow(QString attr,QString value)
 {
-
     QList<QStandardItem *> list;
     list << new QStandardItem(attr) << new QStandardItem(value);
     model->insertRow(model->rowCount(),list);
@@ -1638,6 +1679,7 @@ void UkpmWidget::onitemSelectionChanged()
 
 void UkpmWidget::choose_history_graph(int choice)
 {
+    Q_UNUSED(choice);
     QPushButton *checkedButton = qobject_cast<QPushButton*>(his_group->checkedButton());
     QString name = checkedButton->objectName();
     if(name == "his_data_btn")
@@ -1660,6 +1702,7 @@ void UkpmWidget::choose_history_graph(int choice)
 
 void UkpmWidget::choose_stat_graph(int choice)
 {
+    Q_UNUSED(choice);
     QPushButton *checkedButton = qobject_cast<QPushButton*>(sum_group->checkedButton());
     QString name = checkedButton->objectName();
     if(name == "sum_data_btn")

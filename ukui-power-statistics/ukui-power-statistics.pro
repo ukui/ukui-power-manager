@@ -34,17 +34,17 @@ SOURCES += \
     customtype.cpp \
     eggunique.cpp \
     main.cpp \
-    ukpm-widget.cpp \
     titlewidget.cpp \
-    device.cpp
+    device.cpp \
+    ukpm_widget.cpp
 
 HEADERS += \
     customtype.h \
     eggunique.h \
-    statistics-common.h \
-    ukpm-widget.h \
+    statistics_common.h \
     titlewidget.h \
-    device.h
+    device.h \
+    ukpm_widget.h
 
 RESOURCES += \
     resource.qrc

@@ -22,7 +22,7 @@
 #include <QDBusConnection>
 #include <QDebug>
 
-#include "engine-common.h"
+#include "engine_common.h"
 
 EngineDevice* EngineDevice::instance = NULL;
 
@@ -585,7 +585,7 @@ QString EngineDevice::engine_get_summary ()
  *
  * Return value: The time string, e.g. "2 hours 3 minutes"
  **/
-QString EngineDevice::gpm_get_timestring (int time_secs)
+QString EngineDevice::engine_get_timestring (int time_secs)
 {
     int  hours;
     int  minutes;
@@ -649,7 +649,7 @@ QString EngineDevice::engine_get_device_predict(DEVICE* dv)
     QString kind_desc;
     uint time_to_full_round;
     uint time_to_empty_round;
-    QString time_to_full_str;
+//    QString time_to_full_str;
     QString time_to_empty_str;
     UpDeviceKind kind;
     UpDeviceState state;
@@ -678,7 +678,6 @@ QString EngineDevice::engine_get_device_predict(DEVICE* dv)
         return result;
     }
 
-
     time_to_full_round = precision_round_down (time_to_full, GPM_UP_TIME_PRECISION);
     time_to_empty_round = precision_round_down (time_to_empty, GPM_UP_TIME_PRECISION);
 
@@ -686,7 +685,7 @@ QString EngineDevice::engine_get_device_predict(DEVICE* dv)
         result = tr("fully charged");
 
 //        if (kind == UP_DEVICE_KIND_BATTERY && time_to_empty_round > GPM_UP_TEXT_MIN_TIME) {
-//            time_to_empty_str = gpm_get_timestring (time_to_empty_round);
+//            time_to_empty_str = engine_get_timestring (time_to_empty_round);
 //            result = time_to_empty_str;
 
 //        } else {
@@ -696,7 +695,7 @@ QString EngineDevice::engine_get_device_predict(DEVICE* dv)
     } else if (state == UP_DEVICE_STATE_DISCHARGING) {
 
         if (time_to_empty_round > GPM_UP_TEXT_MIN_TIME) {
-            time_to_empty_str = gpm_get_timestring (time_to_empty_round);
+            time_to_empty_str = engine_get_timestring (time_to_empty_round);
             result = time_to_empty_str;
 
         } else {
@@ -710,15 +709,15 @@ QString EngineDevice::engine_get_device_predict(DEVICE* dv)
 //            time_to_empty_round > GPM_UP_TEXT_MIN_TIME) {
 
 //            /* display both discharge and charge time */
-//            time_to_full_str = gpm_get_timestring (time_to_full_round);
-//            time_to_empty_str = gpm_get_timestring (time_to_empty_round);
+//            time_to_full_str = engine_get_timestring (time_to_full_round);
+//            time_to_empty_str = engine_get_timestring (time_to_empty_round);
 
 //            /* TRANSLATORS: the device is charging, and we have a time to full and empty */
 //            result = time_to_full_str;
 //        } else if (time_to_full_round > GPM_UP_TEXT_MIN_TIME) {
 
 //            /* display only charge time */
-//            time_to_full_str = gpm_get_timestring (time_to_full_round);
+//            time_to_full_str = engine_get_timestring (time_to_full_round);
 
 //            /* TRANSLATORS: device is charging, and we have a time to full and a percentage */
 //            result = time_to_full_str;
@@ -795,7 +794,7 @@ QString EngineDevice::engine_get_device_summary(DEVICE* dv)
     if (state == UP_DEVICE_STATE_FULLY_CHARGED) {
 
         if (kind == UP_DEVICE_KIND_BATTERY && time_to_empty_round > GPM_UP_TEXT_MIN_TIME) {
-            time_to_empty_str = gpm_get_timestring (time_to_empty_round);
+            time_to_empty_str = engine_get_timestring (time_to_empty_round);
             result = QString("Battery is fully charged.\nProvides %1 laptop runtime").arg(time_to_empty_str);
         } else {
             result = QString("%1 is fully charged").arg(kind_desc);
@@ -804,7 +803,7 @@ QString EngineDevice::engine_get_device_summary(DEVICE* dv)
     } else if (state == UP_DEVICE_STATE_DISCHARGING) {
 
         if (time_to_empty_round > GPM_UP_TEXT_MIN_TIME) {
-            time_to_empty_str = gpm_get_timestring (time_to_empty_round);
+            time_to_empty_str = engine_get_timestring (time_to_empty_round);
             result = QString("%1 %2 remaining (%3%)").arg(kind_desc).arg(time_to_empty_str).arg(percentage);
 
         } else {
@@ -818,8 +817,8 @@ QString EngineDevice::engine_get_device_summary(DEVICE* dv)
             time_to_empty_round > GPM_UP_TEXT_MIN_TIME) {
 
             /* display both discharge and charge time */
-            time_to_full_str = gpm_get_timestring (time_to_full_round);
-            time_to_empty_str = gpm_get_timestring (time_to_empty_round);
+            time_to_full_str = engine_get_timestring (time_to_full_round);
+            time_to_empty_str = engine_get_timestring (time_to_empty_round);
 
             /* TRANSLATORS: the device is charging, and we have a time to full and empty */
             result = QString("%1 %2 until charged (%3%)\nProvides %4 battery runtime")
@@ -828,7 +827,7 @@ QString EngineDevice::engine_get_device_summary(DEVICE* dv)
         } else if (time_to_full_round > GPM_UP_TEXT_MIN_TIME) {
 
             /* display only charge time */
-            time_to_full_str = gpm_get_timestring (time_to_full_round);
+            time_to_full_str = engine_get_timestring (time_to_full_round);
 
             /* TRANSLATORS: device is charging, and we have a time to full and a percentage */
             result = QString("%1 %2 until charged (%3%)").arg(kind_desc).arg(time_to_full_str).arg(percentage);

@@ -34,7 +34,6 @@
 #include <QStackedWidget>
 #include <QTableWidget>
 #include <QSplitter>
-#include "QLabel"
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QComboBox>
@@ -64,7 +63,7 @@
 #include <QWidgetAction>
 #include <QCategoryAxis>
 #include "customtype.h"
-#include "statistics-common.h"
+#include "statistics_common.h"
 #include "device.h"
 #include <QButtonGroup>
 #include <QScatterSeries>
@@ -77,8 +76,6 @@
 #define DBUS_OBJECT "/org/freedesktop/UPower"
 #define DBUS_INTERFACE "org.freedesktop.DBus.Properties"
 #define DBUS_INTERFACE_PARAM "org.freedesktop.UPower.Device"
-
-
 
 enum SUMTYPE
 {
@@ -103,65 +100,18 @@ class UkpmWidget : public QWidget
 public:
     UkpmWidget(QWidget *parent = 0);
     ~UkpmWidget();
-    void setUI();
     void setHistoryTab();
     void setSumTab();
-    void connectSlots();
     QList<QPointF> setdata(); //设置图表数据的函数接口
     void getAll(DEV *dc);
     void calcTime(QString &attr, uint time);
     void getDevices();
-    void addNewUI(QDBusObjectPath &path, UpDeviceKind newKind);
     int parseArguments();
     QString getWidgetAxis(uint value);
-    void setupBtrDetail();
     QString device_kind_to_localised_text(UpDeviceKind kind, uint number);
-
-    QString getSufix(uint tim, char c)
-    {
-        QString strValue;
-        if('s'==c)
-            strValue = QString::number(tim) + " " + tr("s");
-        else if('m'==c)
-            strValue = QString::number(tim) + " " + tr("m");
-        else if('h'==c)
-            strValue = QString::number(tim,'f', 1) + " " + tr("h");
-        return strValue;
-    }
-    QString boolToString(bool ret)
-    {
-        return ret ? tr("yes") : tr("no");
-    }
-    QString up_device_kind_to_string (UpDeviceKind type_enum)
-    {
-        switch (type_enum) {
-        case UP_DEVICE_KIND_LINE_POWER:
-            return ("line-power");
-        case UP_DEVICE_KIND_BATTERY:
-            return ("battery");
-        case UP_DEVICE_KIND_UPS:
-            return ("ups");
-        case UP_DEVICE_KIND_MONITOR:
-            return ("monitor");
-        case UP_DEVICE_KIND_MOUSE:
-            return ("mouse");
-        case UP_DEVICE_KIND_KEYBOARD:
-            return ("keyboard");
-        case UP_DEVICE_KIND_PDA:
-            return ("pda");
-        case UP_DEVICE_KIND_PHONE:
-            return ("phone");
-        case UP_DEVICE_KIND_MEDIA_PLAYER:
-            return ("media-player");
-        case UP_DEVICE_KIND_TABLET:
-            return ("tablet");
-        case UP_DEVICE_KIND_COMPUTER:
-            return ("computer");
-        default:
-            return ("unknown");
-        }
-    }
-
+    QString getSufix(uint tim, char c);
+    QString boolToString(bool ret){ return ret ? tr("yes") : tr("no"); }
+    QString up_device_kind_to_string (UpDeviceKind type_enum);
     void ukpm_update_info_data_page(DEV *device, int page);
     void ukpm_update_info_page_stats(DEV *device);
     void ukpm_update_info_page_details(DEV *device);
@@ -171,15 +121,14 @@ public:
     void draw_history_graph(QString type);
     void draw_stats_graph(QString type);
     void addListRow(QString attr, QString value);
-    void setInfoUI();
     QList<QPointF> getHistory(QString type, uint timeSpan);
-    void ukpm_set_graph_data(QList<QPointF> list, bool use_smoothed, bool use_points);
     QList<QPointF> getStatics(QString stat_type);
     void getProperty(QString path, DEV &dev);
     void setupUI();
     void setDetailTab();
     bool set_selected_device(QString name);
-
+    int calculate_up_number(float value, int div);
+    int calculate_down_number(float value, int div);
 public Q_SLOTS:
     void onActivatedIcon(QSystemTrayIcon::ActivationReason reason);
     void onShow();
@@ -203,13 +152,11 @@ public Q_SLOTS:
     void onitemSelectionChanged();
     void choose_history_graph(int choice);
     void choose_stat_graph(int choice);
+
 public:
     uint timeSpan, resolution;
     QListWidget *listWidget;
     QStackedWidget *stackedWidget;// *hisStack, *sumStack;
-
-    HISTYPE mHISTYPE;
-    SUMTYPE mSUMTYPE;
     QChart *hisChart;
     QChartView *hisChartView;
     QLineSeries *hisSeries;
@@ -238,10 +185,8 @@ public:
     QList<QDBusObjectPath> deviceNames;
     QList<DEVICE*> devices;
     QMap<QDBusObjectPath,QListWidgetItem*> listItem;
-//    QMap<DEVICE*,QListWidgetItem*> dev_item;
     QMap<QListWidgetItem*,DEVICE*> dev_item;
     QString batterySvr,acSvr;
-    bool iconflag;
     QGSettings *settings;
     TitleWidget *title;
     QColor plotcolor;
@@ -250,14 +195,11 @@ public:
     QWidget *his_widget;
     QWidget *stat_widget;
     QTabWidget *tab_widget;
-    bool checked,points;
     QComboBox *stat_type;
     DEV *current_device;
     QStandardItemModel* model;
     QTableView *tableView;
     int index_old;
-    int calculate_up_number(float value, int div);
-    int calculate_down_number(float value, int div);
 };
 
 #endif // UKPM_WIDGET_H

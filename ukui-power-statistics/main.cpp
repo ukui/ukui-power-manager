@@ -18,7 +18,7 @@
 #include <QApplication>
 #include <QTranslator>
 #include <eggunique.h>
-#include "ukpm-widget.h"
+#include "ukpm_widget.h"
 #include <QCommandLineOption>
 #include <QCommandLineParser>
 

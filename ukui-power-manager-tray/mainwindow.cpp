@@ -304,46 +304,48 @@ void MainWindow::set_window_position( )
     totalHeight = screenGeometry.height();
     totalWidth = screenGeometry.width();
 
+    int number = QGuiApplication::screens().size();
 //    qDebug()<<"trayIcon:"<<trayIcon->geometry();
-    if (totalWidth == availableWidth && totalHeight == availableHeight)
+    if (number > 1)
     {
-        QDesktopWidget* desktopWidget = QApplication::desktop();
-        QRect deskMainRect = desktopWidget->availableGeometry(0);//获取可用桌面大小
-        QRect screenMainRect = desktopWidget->screenGeometry(0);//获取设备屏幕大小
-        QRect deskDupRect = desktopWidget->availableGeometry(1);//获取可用桌面大小
-        QRect screenDupRect = desktopWidget->screenGeometry(1);//获取设备屏幕大小
+//        QDesktopWidget* desktopWidget = QApplication::desktop();
+        QRect main_rect = QGuiApplication::screens().at(0)->geometry();//获取设备屏幕大小
+        QRect copy_rect = QGuiApplication::screens().at(1)->geometry();//获取设备屏幕大小
         int n = getTaskbarPos("position");
         int m = getTaskbarHeight("height");
         if(n == 0){
             //任务栏在下侧
+            availableWidth = main_rect.width();
+            availableHeight = main_rect.height()-m;
+            this->setGeometry(availableWidth-this->width()-3,availableHeight-this->height()-3,this->width(),this->height());
 //            if (availableWidth - rect.x() - 3 < this->width())
-//                this->setGeometry(availableWidth-this->width()-3,availableHeight-this->height()-m-3,this->width(),this->height());
+//                this->setGeometry(availableWidth-this->width()-3,availableHeight-this->height()-3,this->width(),this->height());
 //            else
-//                this->setGeometry(rect.x(),availableHeight-this->height()-m-3,this->width(),this->height());
-            this->move(availableGeometry.x() + availableGeometry.width() - this->width(), availableGeometry.height() - this->height() - m);
-
+//                this->setGeometry(rect.x(),availableHeight-this->height()-3,this->width(),this->height());
         }else if(n == 1){
             //任务栏在上侧
+            this->setGeometry(availableWidth-this->width()-3,m+3,this->width(),this->height());
 //            if (availableWidth - rect.x() - 3 < this->width())
 //                this->setGeometry(availableWidth-this->width()-3,m+3,this->width(),this->height());
 //            else
 //                this->setGeometry(rect.x(),m+3,this->width(),this->height());
-            this->move(availableGeometry.x() + availableGeometry.width() - this->width(), screenGeometry.height() - availableGeometry.height() + m);
-
         } else if (n == 2){
             //任务栏在左侧
-            if (screenGeometry.x() == 0){
-                this->move(screenGeometry.width() - availableGeometry.width() + m, screenMainRect.height() - this->height());//主屏在左侧
-            }else{
-                this->move(screenGeometry.width() - availableGeometry.width() + m,screenDupRect.y() + screenDupRect.height() - this->height());//主屏在右侧
-            }
+            availableWidth = main_rect.width()-m;
+            availableHeight = main_rect.height();
+            if (availableHeight - rect.y() -3 > this->height() )
+                this->setGeometry(m + 3,rect.y(),this->width(),this->height());
+            else
+                this->setGeometry(m+3,availableHeight - this->height() -3,this->width(),this->height());
         } else if (n == 3){
             //任务栏在右侧
-            if (screenGeometry.x() == 0){//主屏在左侧
-                this->move(screenMainRect.width() + screenDupRect.width() - this->width() - m, screenDupRect.y() + screenDupRect.height() - this->height());
-            }else{//主屏在右侧
-                this->move(availableGeometry.x() + availableGeometry.width() - this->width() - m, screenMainRect.height() - this->height());
-            }
+            availableWidth = copy_rect.x() + copy_rect.width()-m;
+            availableHeight = copy_rect.height();
+            if (availableHeight - rect.y() -3 > this->height() )
+                this->setGeometry(availableWidth - this->width() - 3,rect.y(),this->width(),this->height());
+            else
+                this->setGeometry(availableWidth - this->width() - 3,availableHeight - this->height() -3,this->width(),this->height());
+
         }
     }
     else if(totalWidth == availableWidth )//down and up
@@ -399,8 +401,6 @@ void MainWindow::onActivatedIcon(QSystemTrayIcon::ActivationReason reason)
 void MainWindow::initData()
 {
     want_percent = false;
-    saving = false;
-    healthing = false;
     pressQss = "QLabel{background-color:#3593b5;}";
     releaseQss = "QLabel{background-color:#283138;}";
 }

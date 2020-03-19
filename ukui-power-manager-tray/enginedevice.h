@@ -73,7 +73,6 @@ Q_SIGNALS:
     void one_device_remove(DEVICE *dev);
 public Q_SLOTS:
     void power_device_change_callback(QDBusMessage msg, QString path);
-
     void engine_policy_settings_cb(const QString &str);
     void mypower_device_add(QString msg);
     void mypower_device_removed(QString msg);
@@ -81,24 +80,13 @@ public:
     QGSettings *settings;
     QList<DEVICE*> devices;
     QString previous_icon;
-    QString privious_sum;
     QString previous_summary;
 
-    bool use_time_primary;
-    bool time_is_accurate;
-
-    uint			 low_percentage;
-    uint			 critical_percentage;
-    uint			 action_percentage;
-    uint			 low_time;
-    uint			 critical_time;
-    uint			 action_time;
     DEVICE *composite_device;
     GpmIconPolicy icon_policy;
     bool power_device_recalculate_icon();
     void power_device_recalculate_state();
     QString power_device_get_icon_exact(UpDeviceKind device_kind, UpDeviceLevel warning, bool use_state);
-    bool gpm_engine_recalculate_summary();
     bool engine_recalculate_summary();
     void power_device_cold_plug();
     void getProperty(QString path, DEV &dev);
@@ -116,7 +104,7 @@ public:
     void putAttributes(QMap<QString, QVariant> &map, DEV &btrDetailData);
     QString engine_get_state_text(UpDeviceState state);
     QString engine_get_device_predict(DEVICE *dv);
-    QString gpm_get_timestring(int time_secs);
+    QString engine_get_timestring(int time_secs);
 };
 
 #endif // ENGINEDEVICE_H

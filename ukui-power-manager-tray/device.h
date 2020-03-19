@@ -19,7 +19,7 @@
 #define DEVICE_H
 
 #include <QDBusMessage>
-#include "engine-common.h"
+#include "engine_common.h"
 
 struct DEV
 {

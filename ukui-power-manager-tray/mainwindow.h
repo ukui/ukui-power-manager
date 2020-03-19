@@ -73,7 +73,6 @@ public Q_SLOTS:
     void remove_one_device(DEVICE *device);
     void activate_power_statistic();
 private:
-//    QGSettings *setting;
     QSystemTrayIcon* trayIcon;
     QList<QDBusObjectPath> deviceNames;
     EngineDevice* ed;
@@ -83,13 +82,9 @@ private:
     QWidgetAction *show_percentage;
     QLabel *percent_label;
     QWidgetAction *set_bright;
-    QScrollArea *scroll_area;
     Ui::MainWindow *ui;
-    QWidget *pow_widget;
     QString releaseQss;
     QString pressQss;
-    bool saving;
-    bool healthing;
     QMap<DEVICE*,QListWidgetItem*> device_item_map;
     int dev_number;
 protected:

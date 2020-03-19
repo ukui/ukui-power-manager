@@ -72,13 +72,6 @@
 #define GPM_SETTINGS_NETWORKMANAGER_SLEEP		"network-sleep"
 #define GPM_SETTINGS_IDLE_CHECK_CPU			"check-type-cpu"
 
-/* lock */
-#define GPM_SETTINGS_LOCK_USE_SCREENSAVER		"lock-use-screensaver"
-#define GPM_SETTINGS_LOCK_ON_BLANK_SCREEN		"lock-blank-screen"
-#define GPM_SETTINGS_LOCK_ON_SUSPEND			"lock-suspend"
-#define GPM_SETTINGS_LOCK_ON_HIBERNATE			"lock-hibernate"
-#define GPM_SETTINGS_LOCK_KEYRING_SUSPEND		"lock-keyring-suspend"
-#define GPM_SETTINGS_LOCK_KEYRING_HIBERNATE		"lock-keyring-hibernate"
 
 /* notify */
 #define GPM_SETTINGS_NOTIFY_LOW_CAPACITY		"notify-low-capacity"
@@ -120,11 +113,6 @@
 #define GPM_SETTINGS_INFO_PAGE_NUMBER			"info-page-number"
 #define GPM_SETTINGS_INFO_LAST_DEVICE			"info-last-device"
 
-/* mate-screensaver */
-#define GS_SETTINGS_SCHEMA				"org.ukui.screensaver"
-#define GS_SETTINGS_PREF_LOCK_ENABLED			"lock-enabled"
-
-// kobe
 #if __aarch64__
 #define ARCH64                                  TRUE
 #else

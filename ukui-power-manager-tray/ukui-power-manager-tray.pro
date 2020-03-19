@@ -35,16 +35,15 @@ SOURCES += \
         mainwindow.cpp \
     customtype.cpp \
     device.cpp \
-    engine-common.cpp \
     enginedevice.cpp \
     device_form.cpp
 
 HEADERS += \
     customstyle.h \
+    engine_common.h \
         mainwindow.h \
     customtype.h \
     device.h \
-    engine-common.h \
     enginedevice.h \
     device_form.h
 

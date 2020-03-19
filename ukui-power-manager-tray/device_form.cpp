@@ -32,7 +32,6 @@ DeviceForm::DeviceForm(QWidget *parent) :
     setAttribute(Qt::WA_StyledBackground,true);
     ed = EngineDevice::getInstance();
     set_timer();
-//    connect(ed,SLOT(signal_device_change(DEVICE*)),this,SLOT(slot_device_change(DEVICE*)));
 }
 
 DeviceForm::~DeviceForm()
@@ -190,7 +189,6 @@ void DeviceForm::paintEvent(QPaintEvent *event)
 
 void DeviceForm::set_device(DEVICE *dev)
 {
-
     if(dev == nullptr)
         return;
     m_device = dev;
@@ -198,7 +196,6 @@ void DeviceForm::set_device(DEVICE *dev)
     slot_device_change(dev);
     connect(ed,SIGNAL(signal_device_change(DEVICE*)),this,SLOT(slot_device_change(DEVICE*)));
 
-//    connect(m_device,SIGNAL(device_property_changed(QDBusMessage,QString)),this,SLOT(device_change_slot()));
 }
 
 void DeviceForm::slot_device_change(DEVICE* device)

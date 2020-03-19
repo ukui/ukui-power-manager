@@ -18,7 +18,7 @@
 #ifndef DEVICE_H
 #define DEVICE_H
 
-#include "statistics-common.h"
+#include "statistics_common.h"
 #include "QDBusMessage"
 
 class DEVICE : public QObject

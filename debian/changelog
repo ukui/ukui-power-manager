@@ -1,3 +1,19 @@
+ukui-power-manager (2.0.1-1) unstable; urgency=medium
+
+  * New upstream release.
+    - Fix the focus issue.
+    - Fix the wrong layout in English.
+    - Fix the wrong popup place in multi-screen.
+    - Update the icon at the beginning.
+    - Adjust the right-click menu.
+    - Adjust the style.
+    - Add support for device addition/removal.
+    - Add charging effects.
+    - Show icon when battery is charging.
+    - Alway show predict time.
+
+ -- handsome_feng <jianfengli@ubuntukylin.com>  Fri, 20 Mar 2020 20:54:20 +0800
+
 ukui-power-manager (2.0.0-1) unstable; urgency=medium
 
   * New upstream release.

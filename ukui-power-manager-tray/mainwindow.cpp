@@ -411,13 +411,7 @@ void MainWindow::initUi()
 //    this->setWindowFlags(Qt::CustomizeWindowHint | Qt::FramelessWindowHint | Qt::SplashScreen);
     setAttribute(Qt::WA_StyledBackground,true);
     setAttribute(Qt::WA_TranslucentBackground);
-    QPainterPath path;
-    auto rect = this->rect();
-    rect.adjust(0,0,0,0);
-    path.addRoundedRect(rect,6,6);
-    setProperty("blurRegion",QRegion(path.toFillPolygon().toPolygon()));
 
-    setWindowOpacity(0.90);
     dev_number = get_engine_dev_number();
 //    dev_number = 3;
     resize(360,72 + 8 + 82*(dev_number>3?3:dev_number));
@@ -452,14 +446,13 @@ void MainWindow::initUi()
                                         "QPushButton::pressed {background-color:rgba(255,255,255,0);color:rgba(61,107,229,1);font-size:12px;}"
                                         );
     setStyleSheet("#centralWidget {"
-                  "background-color:rgba(19,19,20);"
+                  "background-color:rgba(19,19,20,0.7);"
                   "border-radius:6px;}"
                   );
 
     get_power_list();
 
     menu = new QMenu(this);
-    menu->setWindowOpacity(0.90);
     menu->setAttribute(Qt::WA_TranslucentBackground);
     menu->setWindowFlag(Qt::FramelessWindowHint);
     set_preference  = new QWidgetAction(menu);
@@ -534,7 +527,7 @@ void MainWindow::initUi()
     menu->addAction(set_preference);
 
     trayIcon->setContextMenu(menu);
-    qApp->setStyle(new CustomStyle());
+//    qApp->setStyle(new CustomStyle());
 }
 
 int MainWindow::get_engine_dev_number()
@@ -682,14 +675,16 @@ bool MainWindow::event(QEvent *event)
     return QWidget::event(event);
 }
 
-//void MainWindow::paintEvent(QPaintEvent *event)
-//{
-//    QStyleOption opt;
-//    opt.init(this);
-//    QPainter p(this);
-//    style()->drawPrimitive(QStyle::PE_Widget,&opt,&p,this);
-//    QWidget::paintEvent(event);
-//}
+void MainWindow::paintEvent(QPaintEvent *event)
+{
+    QPainter p(this);
+    p.setPen(Qt::NoPen);
+    QPainterPath path;
+    path.addRoundedRect(rect(),6,6);
+    p.setRenderHint(QPainter::Antialiasing);
+    setProperty("blurRegion",QRegion(path.toFillPolygon().toPolygon()));
+    QWidget::paintEvent(event);
+}
 
 MainWindow::~MainWindow()
 {

@@ -224,7 +224,7 @@ gpm_idle_evaluate (GpmIdle *idle)
 	/* set up blank callback even when session is not idle,
 	 * but only if we actually want to blank. */
 	if (idle->priv->timeout_blank_id == 0 &&
-	    idle->priv->timeout_blank != 0) {
+	    idle->priv->timeout_blank != 0 && is_idle) {
 		egg_debug ("setting up blank callback for %is", idle->priv->timeout_blank);
 		idle->priv->timeout_blank_id = g_timeout_add_seconds (idle->priv->timeout_blank,
 								      (GSourceFunc) gpm_idle_blank_cb, idle);

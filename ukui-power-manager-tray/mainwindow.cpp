@@ -264,7 +264,7 @@ QIcon MainWindow::get_percent_icon(QIcon icon)
 
 void MainWindow::set_brightness_func()
 {
-    QProcess::startDetached(QString("ukui-control-center -d &"));
+    QProcess::startDetached(QString("ukui-control-center -m &"));
 
 }
 
@@ -435,7 +435,7 @@ void MainWindow::initUi()
     ui->power_title->setText(tr("PowerManagement"));
     ui->power_title->setAlignment(Qt::AlignLeft);
 
-    connect(ui->statistic_button,SIGNAL(clicked()),this,SLOT(activate_power_statistic()));
+    connect(ui->statistic_button,SIGNAL(released()),this,SLOT(activate_power_statistic()));
 
     ui->statistic_button->setText(tr("Stats"));//adapt to chinese
     ui->statistic_button->setFixedWidth(54);
@@ -472,7 +472,7 @@ void MainWindow::initUi()
     hbox_preference->addWidget(preference_text);
     preference_widget->setLayout(hbox_preference);
     preference_widget->setFocusPolicy(Qt::NoFocus);
-    preference_widget->setFixedSize(QSize(246,36));
+    preference_widget->setFixedSize(QSize(244,36));
     hbox_preference->setSpacing(10);
     set_preference->setDefaultWidget(preference_widget);
     preference_widget->setStyleSheet("QWidget{background:transparent;border:0px;border-radius:4px}\
@@ -491,7 +491,7 @@ void MainWindow::initUi()
     hbox_percent->addWidget(percent_text);
     percent_widget->setLayout(hbox_percent);
     percent_widget->setFocusPolicy(Qt::NoFocus);
-    percent_widget->setFixedSize(QSize(246,36));
+    percent_widget->setFixedSize(QSize(244,36));
 
     hbox_percent->setSpacing(10);
     show_percentage->setDefaultWidget(percent_widget);
@@ -511,7 +511,7 @@ void MainWindow::initUi()
     hbox_bright->addWidget(bright_text);
     bright_widget->setLayout(hbox_bright);
     bright_widget->setFocusPolicy(Qt::NoFocus);
-    bright_widget->setFixedSize(QSize(246,36));
+    bright_widget->setFixedSize(QSize(244,36));
     hbox_bright->setSpacing(10);
     set_bright->setDefaultWidget(bright_widget);
     bright_widget->setStyleSheet("QWidget{background:transparent;border:0px;border-radius:4px}"
@@ -527,6 +527,7 @@ void MainWindow::initUi()
     menu->addAction(set_preference);
 
     trayIcon->setContextMenu(menu);
+    trayIcon->setToolTip(tr("PowerManager"));
 //    qApp->setStyle(new CustomStyle());
 }
 

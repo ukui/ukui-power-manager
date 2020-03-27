@@ -682,7 +682,10 @@ QString EngineDevice::engine_get_device_predict(DEVICE* dv)
     time_to_empty_round = precision_round_down (time_to_empty, GPM_UP_TIME_PRECISION);
 
     if (state == UP_DEVICE_STATE_FULLY_CHARGED) {
-        result = tr("fully charged");
+        if(percentage >= 100)
+            result = tr("fully charged");
+        else
+            result = tr("charging");
 
 //        if (kind == UP_DEVICE_KIND_BATTERY && time_to_empty_round > GPM_UP_TEXT_MIN_TIME) {
 //            time_to_empty_str = engine_get_timestring (time_to_empty_round);

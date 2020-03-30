@@ -1272,7 +1272,6 @@ void UkpmWidget::setSumTab()
     QHBoxLayout *bottomLayout = new QHBoxLayout;
     QFormLayout *topFormLayout = new QFormLayout;
 
-    graphicType->setFixedWidth(80);
     graphicType->setFixedHeight(30);
     sumTypeCombox->setFixedWidth(200);
     sumTypeCombox->setFixedHeight(30);

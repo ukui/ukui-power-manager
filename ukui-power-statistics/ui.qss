@@ -165,14 +165,19 @@ QScrollBar::sub-page:vertical {
 }
 
 QComboBox {
-    font-size:12px;
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
     combobox-popup: 0;
     background-color:#EDEDED;
+    font-size:12px;
 
+}
+
+QComboBox QAbstractItemView
+{
+    font-size:12px;
 }
 
 QComboBox QAbstractItemView::item
@@ -182,7 +187,6 @@ QComboBox QAbstractItemView::item
     border-radius: 2px;
     selection-background-color: lightgray;
     color:black;
-    font-size:12px;
 }
 
 QComboBox::popup:on

@@ -22,6 +22,7 @@
 #include <QStyleOption>
 #include <QPainter>
 #include <QMouseEvent>
+#include <QDir>
 
 DeviceForm::DeviceForm(QWidget *parent) :
     QWidget(parent),
@@ -104,7 +105,14 @@ void DeviceForm::setKind(QString kind)
 
 void DeviceForm::setRemain(QString remain)
 {
-    ui->remaintext->setText(tr("RemainTime"));
+    if(mDev.State == UP_DEVICE_STATE_DISCHARGING)
+    {
+        ui->remaintext->setText(tr("RemainTime"));
+    }
+    else
+    {
+        ui->remaintext->setText("");
+    }
     ui->remaindata->setText(remain);
 }
 
@@ -123,7 +131,6 @@ void DeviceForm::widget_property_change()
     setIcon(icon_name);
     setPercent(percentage);
     slider_changed(percent_number);
-
     setKind(kind);
     setRemain(predict);
 }
@@ -205,24 +212,37 @@ void DeviceForm::slot_device_change(DEVICE* device)
     if(device->m_dev.path != path)
         return;
     icon_name = ed->engine_get_device_icon(device);
-//    qDebug()<<"slot_device_change------"<<icon_name;
     percentage = QString::number(device->m_dev.Percentage, 'f',0)+"%";
     percent_number = int (device->m_dev.Percentage);
     kind = ed->engine_kind_to_localised_text(device->m_dev.kind,0);
     predict = ed->engine_get_device_predict(device);
+    mDev = device->m_dev;
     widget_property_change();
 }
- void DeviceForm::slider_changed(int value)
- {
-     ui->progressBar->setValue(value);
-     ui->progressBar->setStyleSheet(QString(""
-         "	QProgressBar {"
-         "	border-radius: 2px;"
-         ""
-         "}"
-         "QProgressBar::chunk {"
-             "border-radius:2px;"
-             "	background-color: "
-             "%1;"
-         "}").arg(calculate_value(value,ui->progressBar->maximum())));
- }
+
+void DeviceForm::slider_changed(int value)
+{
+    ui->progressBar->setValue(value);
+    ui->progressBar->setStyleSheet(QString(""
+     "	QProgressBar {"
+     "	border-radius: 2px;"
+     ""
+     "}"
+     "QProgressBar::chunk {"
+         "border-radius:2px;"
+         "	background-color: "
+         "%1;"
+     "}").arg(calculate_value(value,ui->progressBar->maximum())));
+}
+
+void DeviceForm::device_adjust_battery_parameters()
+{
+    QDir power_dir("/sys/class/power_supply/");
+    if( ! power_dir.exists())
+        return;
+    /*fix here*/
+    for(auto dir_name : power_dir.entryList(QDir::Dirs))
+    {
+
+    }
+}

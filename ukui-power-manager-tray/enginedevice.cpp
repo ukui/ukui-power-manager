@@ -134,13 +134,10 @@ void EngineDevice::mypower_device_removed(QString msg)
 
 void EngineDevice::power_device_add(QDBusMessage msg)
 {
-
     /* assign warning */
     /* check capacity */
     /* get device properties */
-    /* add old state for transitions */
 
-    /*connect notify signals*/
     QDBusObjectPath objectPath;
     const QDBusArgument &arg = msg.arguments().at(0).value<QDBusArgument>();
     arg >> objectPath;
@@ -686,6 +683,7 @@ QString EngineDevice::engine_get_device_predict(DEVICE* dv)
             result = tr("fully charged");
         else
             result = tr("charging");
+        result = tr("fully charged");
 
 //        if (kind == UP_DEVICE_KIND_BATTERY && time_to_empty_round > GPM_UP_TEXT_MIN_TIME) {
 //            time_to_empty_str = engine_get_timestring (time_to_empty_round);
@@ -1009,7 +1007,6 @@ QString EngineDevice::engine_get_device_icon (DEVICE *device)
     } else if (kind == UP_DEVICE_KIND_UPS) {
         if (!is_present) {
             /* battery missing */
-//            result.sprintf ("gpm-%s-missing", prefix);
             result.sprintf ("gpm-%s-missing", prefix.toStdString().c_str());
 
         } else if (state == UP_DEVICE_STATE_FULLY_CHARGED) {
@@ -1032,7 +1029,7 @@ QString EngineDevice::engine_get_device_icon (DEVICE *device)
             result = QString ("gpm-%1-empty").arg(prefix);
 
         } else if (state == UP_DEVICE_STATE_FULLY_CHARGED) {
-                    result = QString ("gpm-%1-charged").arg(prefix);
+            result = QString ("gpm-%1-charged").arg(prefix);
         } else if (state == UP_DEVICE_STATE_CHARGING) {
             index_str = engine_get_device_icon_index (percentage);
             result = QString("gpm-%1-%2-charging").arg(prefix).arg(index_str);

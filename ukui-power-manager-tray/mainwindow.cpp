@@ -31,11 +31,14 @@
 #include <customstyle.h>
 #include <QDBusReply>
 
-#define POWER_SCHEMA "org.ukui.power-manager"
-#define POWER_SCHEMA_KEY "power-manager"
-#define PANEL_DBUS_SERVICE "com.ukui.panel.desktop"
-#define PANEL_DBUS_PATH "/"
-#define PANEL_DBUS_INTERFACE "com.ukui.panel.desktop"
+#define POWER_SCHEMA                "org.ukui.power-manager"
+#define POWER_SCHEMA_KEY            "power-manager"
+#define PANEL_DBUS_SERVICE          "com.ukui.panel.desktop"
+#define PANEL_DBUS_PATH             "/"
+#define PANEL_DBUS_INTERFACE        "com.ukui.panel.desktop"
+#define PANEL_SETTINGS              "org.ukui.panel.settings"
+#define PANEL_SETTINGS_KEY_HEIGHT   "panelsize"
+#define PANEL_SETTINGS_KEY_POSITION "panelposition"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -305,14 +308,19 @@ void MainWindow::set_window_position( )
     totalWidth = screenGeometry.width();
 
     int number = QGuiApplication::screens().size();
-//    qDebug()<<"trayIcon:"<<trayIcon->geometry();
     if (number > 1)
     {
-//        QDesktopWidget* desktopWidget = QApplication::desktop();
         QRect main_rect = QGuiApplication::screens().at(0)->geometry();//获取设备屏幕大小
         QRect copy_rect = QGuiApplication::screens().at(1)->geometry();//获取设备屏幕大小
-        int n = getTaskbarPos("position");
-        int m = getTaskbarHeight("height");
+        int n = 0;
+        int m = 46;
+        if(QGSettings::isSchemaInstalled(PANEL_SETTINGS))
+        {
+            QGSettings panel_set(PANEL_SETTINGS);
+            n = panel_set.get(PANEL_SETTINGS_KEY_POSITION).toInt();
+            m = panel_set.get(PANEL_SETTINGS_KEY_HEIGHT).toInt();
+        }
+
         if(n == 0){
             //任务栏在下侧
             availableWidth = main_rect.width();

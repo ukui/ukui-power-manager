@@ -1075,6 +1075,103 @@ QString EngineDevice::engine_get_device_icon (DEVICE *device)
     return result;
 }
 
+QString EngineDevice::engine_get_dev_icon (DEV dev)
+{
+    QString prefix;
+    QString index_str;
+    UpDeviceKind kind;
+    UpDeviceState state;
+    bool is_present;
+    QString result;
+    qreal percentage;
+
+    kind = dev.kind;
+    state = dev.State;
+    percentage = dev.Percentage;
+    is_present = dev.IsPresent;
+    /* get correct icon prefix */
+    prefix = engine_kind_to_string (kind);
+
+        if (kind == UP_DEVICE_KIND_BATTERY) {
+        if (!is_present) {
+            /* battery missing */
+            result = QString ("gpm-%1-missing").arg(prefix);
+
+        } else if (state == UP_DEVICE_STATE_EMPTY) {
+            result = QString ("gpm-%1-empty").arg(prefix);
+
+        } else if (state == UP_DEVICE_STATE_FULLY_CHARGED) {
+            result = QString ("gpm-%1-charged").arg(prefix);
+        } else if (state == UP_DEVICE_STATE_CHARGING) {
+            index_str = engine_get_device_icon_index (percentage);
+            result = QString("gpm-%1-%2-charging").arg(prefix).arg(index_str);
+
+        } else if (state == UP_DEVICE_STATE_DISCHARGING) {
+            index_str = engine_get_device_icon_index (percentage);
+            result = QString("gpm-%1-%2").arg(prefix).arg(index_str);
+
+        } else if (state == UP_DEVICE_STATE_PENDING_CHARGE) {
+            index_str = engine_get_device_icon_index (percentage);
+            result = QString("gpm-%1-%2-charging").arg(prefix).arg(index_str);
+
+        } else if (state == UP_DEVICE_STATE_PENDING_DISCHARGE) {
+            index_str = engine_get_device_icon_index (percentage);
+            result = QString("gpm-%1-%2").arg(prefix).arg(index_str);
+
+        } else {
+            result =  ("gpm-battery-missing");
+        }
+    }
+    if (result.isNull()) {
+        result =  ("dialog-warning");
+    }
+    return result;
+}
+
+QString EngineDevice::engine_get_dev_predict(DEV dev)
+{
+    QString result;
+    QString kind_desc;
+    uint time_to_empty_round;
+    QString time_to_empty_str;
+    UpDeviceKind kind;
+    UpDeviceState state;
+    double percentage;
+    bool is_present;
+    uint time_to_full;
+    uint time_to_empty;
+
+    kind = dev.kind;
+    is_present = dev.IsPresent;
+    state = dev.State;
+    percentage = dev.Percentage;
+
+    time_to_empty = dev.TimeToEmpty;
+    time_to_full = dev.TimeToFull;
+    if (!is_present)
+        return NULL;
+
+    kind_desc = engine_kind_to_localised_text (kind, 1);
+
+    time_to_empty_round = precision_round_down (time_to_empty, GPM_UP_TIME_PRECISION);
+
+    if (state == UP_DEVICE_STATE_FULLY_CHARGED) {
+        result = tr("fully charged");
+    } else if (state == UP_DEVICE_STATE_DISCHARGING) {
+        if (time_to_empty_round > GPM_UP_TEXT_MIN_TIME) {
+            time_to_empty_str = engine_get_timestring (time_to_empty_round);
+            result = time_to_empty_str;
+        } else {
+            result = tr("discharging(%1%)").arg(percentage);
+        }
+    } else if (state == UP_DEVICE_STATE_CHARGING) {
+        result = tr("charging");
+    }  else {
+        result = QString("%1(%2%)").arg(kind_desc).arg(percentage);
+    }
+    return result;
+}
+
 QString EngineDevice::engine_get_state_text (UpDeviceState state)
 {
     QString state_text;

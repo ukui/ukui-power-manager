@@ -59,6 +59,7 @@ public:
     void set_timer();
     void set_charge_animation(bool flag);
     void device_adjust_battery_parameters();
+    static QString device_get_ac_online();
 protected:
     void paintEvent(QPaintEvent *event);
 //    void leaveEvent(QEvent *event);

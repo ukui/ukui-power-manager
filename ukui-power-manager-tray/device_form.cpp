@@ -217,6 +217,7 @@ void DeviceForm::slot_device_change(DEVICE* device)
     kind = ed->engine_kind_to_localised_text(device->m_dev.kind,0);
     predict = ed->engine_get_device_predict(device);
     mDev = device->m_dev;
+    device_adjust_battery_parameters();
     widget_property_change();
 }
 
@@ -235,14 +236,49 @@ void DeviceForm::slider_changed(int value)
      "}").arg(calculate_value(value,ui->progressBar->maximum())));
 }
 
-void DeviceForm::device_adjust_battery_parameters()
+QString DeviceForm::device_get_ac_online()
 {
     QDir power_dir("/sys/class/power_supply/");
-    if( ! power_dir.exists())
-        return;
-    /*fix here*/
-    for(auto dir_name : power_dir.entryList(QDir::Dirs))
-    {
+    if(!power_dir.exists())
+        return QString();
 
+    for(auto dir_name : power_dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot))
+    {
+        auto enter_name = power_dir.absoluteFilePath(dir_name);
+        QDir new_power_dir(enter_name);
+        for(auto file : new_power_dir.entryList(QDir::Files))
+        {
+            if(file == "online")
+            {
+                QFile absolute_file(new_power_dir.absoluteFilePath(file));
+                if(absolute_file.open(QIODevice::ReadOnly | QIODevice::Text))
+                {
+                    QByteArray ba = absolute_file.readAll();
+                    absolute_file.close();
+                    QString ac_online(ba);
+                    ac_online = ac_online.simplified();
+//                    qDebug()<<"QString-----"<<ac_online;
+                    return ac_online;
+                }
+            }
+        }
     }
+    return QString();
+}
+
+void DeviceForm::device_adjust_battery_parameters()
+{
+    if(mDev.kind != UP_DEVICE_KIND_BATTERY)
+        return;
+    //fix state is full ,but percentage is not reach 100;
+    if(mDev.State != UP_DEVICE_STATE_FULLY_CHARGED)
+        return;
+    QString online = device_get_ac_online();
+    if((online == "1") && (percentage<100))
+    {
+        mDev.State = UP_DEVICE_STATE_CHARGING;
+        icon_name = ed->engine_get_dev_icon(mDev);
+        predict = ed->engine_get_dev_predict(mDev);
+    }
+
 }

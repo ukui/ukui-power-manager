@@ -105,6 +105,8 @@ public:
     QString engine_get_state_text(UpDeviceState state);
     QString engine_get_device_predict(DEVICE *dv);
     QString engine_get_timestring(int time_secs);
+    QString engine_get_dev_icon(DEV dev);
+    QString engine_get_dev_predict(DEV dev);
 };
 
 #endif // ENGINEDEVICE_H

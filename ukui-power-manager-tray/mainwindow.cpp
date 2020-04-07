@@ -307,6 +307,7 @@ void MainWindow::set_window_position( )
     totalHeight = screenGeometry.height();
     totalWidth = screenGeometry.width();
 
+    int distance = 2;
     int number = QGuiApplication::screens().size();
     if (number > 1)
     {
@@ -314,74 +315,64 @@ void MainWindow::set_window_position( )
         QRect copy_rect = QGuiApplication::screens().at(1)->geometry();//获取设备屏幕大小
         int n = 0;
         int m = 46;
-        if(QGSettings::isSchemaInstalled(PANEL_SETTINGS))
-        {
-            QGSettings panel_set(PANEL_SETTINGS);
-            n = panel_set.get(PANEL_SETTINGS_KEY_POSITION).toInt();
-            m = panel_set.get(PANEL_SETTINGS_KEY_HEIGHT).toInt();
-        }
-
+//        if(QGSettings::isSchemaInstalled(PANEL_SETTINGS))
+//        {
+//            QGSettings panel_set(PANEL_SETTINGS);
+//            n = panel_set.get(PANEL_SETTINGS_KEY_POSITION).toInt();
+//            m = panel_set.get(PANEL_SETTINGS_KEY_HEIGHT).toInt();
+//        }
+        n = getTaskbarPos("position");
+        m = getTaskbarHeight("height");
         if(n == 0){
             //任务栏在下侧
-            availableWidth = main_rect.width();
-            availableHeight = main_rect.height()-m;
-            this->setGeometry(availableWidth-this->width()-3,availableHeight-this->height()-3,this->width(),this->height());
-//            if (availableWidth - rect.x() - 3 < this->width())
-//                this->setGeometry(availableWidth-this->width()-3,availableHeight-this->height()-3,this->width(),this->height());
-//            else
-//                this->setGeometry(rect.x(),availableHeight-this->height()-3,this->width(),this->height());
+            availableWidth = screenGeometry.x()+screenGeometry.width();
+            availableHeight = screenGeometry.y()+screenGeometry.height();
+            setGeometry(availableWidth-this->width()-distance,availableHeight-this->height()-m-distance,this->width(),this->height());
+
         }else if(n == 1){
             //任务栏在上侧
-            this->setGeometry(availableWidth-this->width()-3,m+3,this->width(),this->height());
-//            if (availableWidth - rect.x() - 3 < this->width())
-//                this->setGeometry(availableWidth-this->width()-3,m+3,this->width(),this->height());
-//            else
-//                this->setGeometry(rect.x(),m+3,this->width(),this->height());
+            availableWidth = screenGeometry.x()+screenGeometry.width();
+            availableHeight = screenGeometry.y()+screenGeometry.height();
+            setGeometry(availableWidth-this->width()-distance,screenGeometry.y()+m+distance,this->width(),this->height());
+
         } else if (n == 2){
             //任务栏在左侧
-            availableWidth = main_rect.width()-m;
-            availableHeight = main_rect.height();
-            if (availableHeight - rect.y() -3 > this->height() )
-                this->setGeometry(m + 3,rect.y(),this->width(),this->height());
-            else
-                this->setGeometry(m+3,availableHeight - this->height() -3,this->width(),this->height());
+            availableWidth = screenGeometry.x()+screenGeometry.width();
+            availableHeight = screenGeometry.y()+screenGeometry.height();
+            setGeometry(screenGeometry.x()+m+distance,availableHeight-this->height()-distance,this->width(),this->height());
         } else if (n == 3){
             //任务栏在右侧
-            availableWidth = copy_rect.x() + copy_rect.width()-m;
-            availableHeight = copy_rect.height();
-            if (availableHeight - rect.y() -3 > this->height() )
-                this->setGeometry(availableWidth - this->width() - 3,rect.y(),this->width(),this->height());
-            else
-                this->setGeometry(availableWidth - this->width() - 3,availableHeight - this->height() -3,this->width(),this->height());
-
+            availableWidth = screenGeometry.x()+screenGeometry.width();
+            availableHeight = screenGeometry.y()+screenGeometry.height();
+            setGeometry(availableWidth-this->width()-m-distance,availableHeight-this->height()-distance,this->width(),this->height());
         }
     }
     else if(totalWidth == availableWidth )//down and up
     {
         if (rect.y() > availableHeight/2){
-            if (availableWidth - rect.x() - 3 < this->width())
-                this->setGeometry(availableWidth-this->width()-3,availableHeight-this->height()-3,this->width(),this->height());
+            if (availableWidth - rect.x() - distance < this->width())
+                this->setGeometry(availableWidth-this->width()-distance,availableHeight-this->height()-distance,this->width(),this->height());
             else
-                this->setGeometry(rect.x(),availableHeight-this->height()-3,this->width(),this->height());
+                this->setGeometry(rect.x(),availableHeight-this->height()-distance,this->width(),this->height());
         }else{
-            if (availableWidth - rect.x() - 3 < this->width())
-                this->setGeometry(availableWidth-this->width()-3,totalHeight-availableHeight+3,this->width(),this->height());
+            if (availableWidth - rect.x() - distance < this->width())
+                this->setGeometry(availableWidth-this->width()-distance,totalHeight-availableHeight+distance,this->width(),this->height());
             else
-                this->setGeometry(rect.x(),totalHeight-availableHeight+3,this->width(),this->height());
+                this->setGeometry(rect.x(),totalHeight-availableHeight+distance,this->width(),this->height());
         }
     }
     else if (totalHeight == availableHeight)//right and left
     {
         if (rect.x() > availableWidth/2){
-            if (availableHeight - rect.y() -3 > this->height() )
-                this->setGeometry(availableWidth - this->width() - 3,rect.y(),this->width(),this->height());
+            if (availableHeight - rect.y() -distance > this->height() )
+                this->setGeometry(availableWidth - this->width() - distance,rect.y(),this->width(),this->height());
             else
-                this->setGeometry(availableWidth - this->width() - 3,totalHeight - this->height() -3,this->width(),this->height());
+                this->setGeometry(availableWidth - this->width() - distance,totalHeight - this->height() -distance,this->width(),this->height());
         } else {
-            if (availableHeight - rect.y() -3 > this->height() )
-                this->setGeometry(totalWidth - availableWidth + 3,rect.y(),this->width(),this->height());
+            if (availableHeight - rect.y() -distance > this->height() )
+                this->setGeometry(totalWidth - availableWidth + distance,rect.y(),this->width(),this->height());
             else
-                this->setGeometry(totalWidth-availableWidth+3,totalHeight - this->height() -3,this->width(),this->height());
+                this->setGeometry(totalWidth-availableWidth+distance,totalHeight - this->height() -distance,this->width(),this->height());
         }
     }
 }

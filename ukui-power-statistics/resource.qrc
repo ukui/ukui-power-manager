@@ -26,5 +26,11 @@
         <file>icon/closeWhite.png</file>
         <file>icon/close.png</file>
         <file>icon/downpx.png</file>
+        <file>icon/help-symbolic_white.png</file>
+        <file>icon/help-symbolic.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>icon/help-symbolic_white.png</file>
+        <file>icon/help-symbolic.png</file>
     </qresource>
 </RCC>

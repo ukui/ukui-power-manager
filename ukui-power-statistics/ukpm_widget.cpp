@@ -1422,7 +1422,8 @@ void UkpmWidget::setDetailTab()
     tableView->setColumnWidth(0,100);
     tableView->horizontalHeader()->setStretchLastSection(true);
 
-    tableView->verticalHeader()->setDefaultSectionSize(26);
+    tableView->verticalHeader()->setMinimumSectionSize(0);
+    tableView->verticalHeader()->setDefaultSectionSize(31);
     tableView->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
 //    tableView->setRowHeight(0,26);
 //    tableView->setRowHeight(1,26);

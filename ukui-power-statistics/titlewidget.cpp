@@ -228,7 +228,7 @@ ToolButton::ToolButton(ButtonType type)
     switch (type) {
     case HELP:
         setStyleSheet("QToolButton {border-radius:4px;background-color:#E7E7E7;}");
-        setIcon(QIcon(":/resource/icon/help.png"));
+        setIcon(QIcon(":/resource/icon/help-symbolic.png"));
         break;
     case CLOSE:
         setStyleSheet("QToolButton {border-radius:4px;background-color:#E7E7E7;}");
@@ -246,7 +246,7 @@ void ToolButton::mousePressEvent(QMouseEvent *event)
     {
         setStyleSheet("QToolButton {border-radius:4px;background-color:#3257CA;}");
         if(mType == HELP)
-            setIcon(QIcon(":/resource/icon/help_white.png"));
+            setIcon(QIcon(":/resource/icon/help-symbolic_white.png"));
         else
             setIcon(QIcon(":/resource/icon/closeWhite.png"));
 
@@ -258,7 +258,7 @@ void ToolButton::enterEvent(QEvent *event)
 {
     setStyleSheet("QToolButton {border-radius:4px;background-color:#3D6BE5;}");
     if(mType == HELP)
-        setIcon(QIcon(":/resource/icon/help_white.png"));
+        setIcon(QIcon(":/resource/icon/help-symbolic_white.png"));
     else
         setIcon(QIcon(":/resource/icon/closeWhite.png"));
     QToolButton::enterEvent(event);
@@ -268,7 +268,7 @@ void ToolButton::leaveEvent(QEvent *event)
 {
     setStyleSheet("QToolButton {border-radius:4px;background-color:#E7E7E7;}");
     if(mType == HELP)
-        setIcon(QIcon(":/resource/icon/help.png"));
+        setIcon(QIcon(":/resource/icon/help-symbolic.png"));
     else
         setIcon(QIcon(":/resource/icon/close.png"));
     QToolButton::leaveEvent(event);

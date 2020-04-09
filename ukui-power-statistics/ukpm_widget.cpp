@@ -19,6 +19,7 @@
 #include "customtype.h"
 #include "sys/time.h"
 #include <float.h>
+#include <QGraphicsDropShadowEffect>
 
 #define GPM_HISTORY_RATE_TEXT			"Rate"
 #define GPM_HISTORY_CHARGE_TEXT			"Charge"
@@ -272,9 +273,17 @@ void UkpmWidget::getDevices()
 
             if(kindEnum == UP_DEVICE_KIND_LINE_POWER || kindEnum == UP_DEVICE_KIND_BATTERY || kindEnum == UP_DEVICE_KIND_COMPUTER)
             {
-                item = new QListWidgetItem(QIcon(":/resource/icon/"+icon+".png"),label);
+                DeviceWidget *dw = new DeviceWidget;
+                dw->setAttribute(Qt::WA_DeleteOnClose);
+                dw->set_device_icon(":/resource/icon/"+icon+".png");
+                dw->set_device_text(false,label);
+//                item = new QListWidgetItem(QIcon(":/resource/icon/"+icon+".png"),label);
+                item = new QListWidgetItem;
+                item->setSizeHint(QSize(150,36));
+                dw->setFixedSize(item->sizeHint());
                 listItem.insert(deviceNames.at(i),item);
                 listWidget->addItem(item);
+                listWidget->setItemWidget(item,dw);
             }
             else
                 return;
@@ -1080,7 +1089,7 @@ void UkpmWidget::draw_history_graph(QString type)
         else
         {
             starty = 0;
-            stopy = 60*60*6;
+            stopy = 60*10;
         }
 
         axisY->setMin(starty);
@@ -1124,7 +1133,7 @@ void UkpmWidget::draw_history_graph(QString type)
         else
         {
             starty = 0;
-            stopy = 60*60*6;
+            stopy = 60*10;
         }
 
 
@@ -1272,9 +1281,9 @@ void UkpmWidget::setSumTab()
     QHBoxLayout *bottomLayout = new QHBoxLayout;
     QFormLayout *topFormLayout = new QFormLayout;
 
-    graphicType->setFixedHeight(30);
+    graphicType->setFixedHeight(36);
     sumTypeCombox->setFixedWidth(200);
-    sumTypeCombox->setFixedHeight(30);
+    sumTypeCombox->setFixedHeight(36);
     topFormLayout->addRow(graphicType,sumTypeCombox);
     topFormLayout->setSpacing(0);
     topFormLayout->setContentsMargins(0,0,0,0);
@@ -1294,7 +1303,7 @@ void UkpmWidget::setSumTab()
     sumChart->setAxisX(x);
     sumChart->setAxisY(y);
 
-    QFont font("Times");
+    QFont font = x->labelsFont();
     font.setPixelSize(12);
     x->setLabelsFont(font);
     y->setLabelsFont(font);
@@ -1391,9 +1400,7 @@ void UkpmWidget::setDetailTab()
     tab_widget->addTab(detail_widget,tr("detail"));
 
     tableView  = new QTableView();
-    tableView->horizontalHeader()->setStretchLastSection(true);
-    tableView->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft);
-    tableView->verticalHeader()->hide();
+
     //背景网格线设置
     //显示
     tableView->setShowGrid(false);
@@ -1407,6 +1414,20 @@ void UkpmWidget::setDetailTab()
     model = new QStandardItemModel();
 
     tableView->setModel(model);
+//    tableView->horizontalHeader()->setDefaultSectionSize(100);
+//    tableView->horizontalHeader()->setStretchLastSection(true);
+    tableView->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft);
+//    tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Fixed);
+    tableView->setColumnWidth(0,100);
+    tableView->horizontalHeader()->setStretchLastSection(true);
+
+    tableView->verticalHeader()->setDefaultSectionSize(26);
+    tableView->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
+//    tableView->setRowHeight(0,26);
+//    tableView->setRowHeight(1,26);
+    tableView->verticalHeader()->hide();
+
     QVBoxLayout *lay = new QVBoxLayout();
     lay->addWidget(tableView);
     detail_widget->setLayout(lay);
@@ -1427,10 +1448,10 @@ void UkpmWidget::setHistoryTab()
     typeCombox->setObjectName("m_typeCombox");
     spanCombox = new QComboBox(his_widget);
     spanCombox->addItems(QStringList()<<tr("ten minutes")<<tr("two hours")<<tr("six hours")<<tr("one day")<<tr("one week"));
-    graphicType->setFixedHeight(30);
-    timeLabel->setFixedHeight(30);
-    typeCombox->setFixedHeight(30);
-    spanCombox->setFixedHeight(30);
+    graphicType->setFixedHeight(36);
+    timeLabel->setFixedHeight(36);
+    typeCombox->setFixedHeight(36);
+    spanCombox->setFixedHeight(36);
 
     QListView * typeView = new QListView(typeCombox);
     typeView->setStyleSheet("QListView::item:selected {background: #EDEDED }");
@@ -1487,7 +1508,7 @@ void UkpmWidget::setHistoryTab()
     axisY = new QCategoryAxis();
     xtime->setTitleText(tr("elapsed time"));
     xtime->setReverse(true);
-    QFont font("Times");
+    QFont font = xtime->labelsFont();
     font.setPixelSize(12);
     xtime->setLabelsFont(font);
     axisY->setLabelsFont(font);
@@ -1658,19 +1679,26 @@ void UkpmWidget::onitemSelectionChanged()
         auto iterator = dev_item.find(tmp);
         if(iterator != dev_item.end())
         {
+            QWidget *wid = listWidget->itemWidget(tmp);
+            DeviceWidget *dw = qobject_cast<DeviceWidget*>(wid);
+
             DEVICE *device = dev_item.value(tmp);
             QString icon = up_device_kind_to_string(device->m_dev->kind);
             if(tmp != cur)
             {
                 icon = ":/resource/icon/" + icon + ".png";
+                dw->set_device_icon(icon);
+                dw->set_device_text(false);
             }
             else
             {
                 icon = ":/resource/icon/" + icon + "w" + ".png";
+                dw->set_device_text(true);
+                dw->set_device_icon(icon);
+
                 current_device = device->m_dev;
                 ukpm_update_info_data(current_device);
             }
-            tmp->setIcon(QIcon(icon));
         }
     }
 
@@ -2042,42 +2070,60 @@ void UkpmWidget::deviceRemoved(QDBusMessage  msg)
 void UkpmWidget::setupUI()
 {
     QDesktopWidget *deskdop = QApplication::desktop();
-    setFixedSize(860,580);
+    setFixedSize(870,590);
     move((deskdop->width() - this->width())/2, (deskdop->height() - this->height())/2);
 
     setWindowFlags(Qt::FramelessWindowHint);
     setAttribute(Qt::WA_TranslucentBackground);
-    QSplitter *mainsplitter = new QSplitter(Qt::Horizontal,this);//splittering into two parts
+
+    QFrame *frame = new QFrame(this);
+    frame->setObjectName("main_frame");
+    frame->setStyleSheet("QFrame#main_frame{background-color: transparent;border-radius:6px}"); //设置圆角与背景透明
+    frame->setGeometry(5, 5, this->width() - 5, this->height() - 5);//设置有效范围框
+    QGraphicsDropShadowEffect *shadow_effect = new QGraphicsDropShadowEffect(this);
+    shadow_effect->setOffset(0, 0);
+    shadow_effect->setColor(Qt::gray);
+    shadow_effect->setBlurRadius(10);
+    frame->setGraphicsEffect(shadow_effect);
+
+    QSplitter *mainsplitter = new QSplitter(Qt::Horizontal);//splittering into two parts
     listWidget = new QListWidget(mainsplitter);
     listWidget->setObjectName("m_listWidget");
     listWidget->setFixedWidth(180);
-//    listWidget->setSpacing(10);
+    listWidget->setSpacing(7);
+    listWidget->setSelectionMode(QAbstractItemView::SingleSelection);
     tab_widget =  new QTabWidget(mainsplitter);
 //    tab_widget->setFixedWidth(600);
 //    QList<int> list_src;
 //    list_src.append(180);
 //    list_src.append(600);
 //    mainsplitter->setSizes(list_src);
-//    mainsplitter->handle(1)->setDisabled(true);
     QVBoxLayout *vlayout = new QVBoxLayout;
-    QFrame *header = new QFrame(this);
+    QFrame *header = new QFrame(frame);
     header->setFixedHeight(TITLE_HEIGHT+30);
+
     QLabel *header_head = new QLabel(header);
-    header_head->setGeometry(0,0,180,62);
+    header_head->setGeometry(0,0,180,TITLE_HEIGHT+30);
     header_head->setStyleSheet("background-color:#F7F7F7;");
     header->setWindowFlags(Qt::FramelessWindowHint);
     header->setStyleSheet("QFrame{padding-bottom:30px;background-color:white;border-top-right-radius:6px;"
                           "border-top-left-radius:6px;border-bottom-right-radius:0px;border-bottom-left-radius:0px;}");
     mainsplitter->setStyleSheet("QSplitter{ background-color:white;border-top-right-radius:0px;"
                           "border-top-left-radius:0px;border-bottom-right-radius:6px;border-bottom-left-radius:6px;}");
+    QSplitterHandle* splitter_handle = mainsplitter->handle(1);
+    if(splitter_handle)
+        splitter_handle->setDisabled(true);
     vlayout->addWidget(header);
     vlayout->addWidget(mainsplitter);
     vlayout->setSpacing(0);
     vlayout->setContentsMargins(0,0,0,0);
 //    this->setStyleSheet("QWidget {background:white}");
-    setLayout(vlayout);//main layout of the UI
+    frame->setLayout(vlayout);//main layout of the UI
+    QVBoxLayout *mainlay = new QVBoxLayout;
+    this->setLayout(mainlay);
+    mainlay->addWidget(frame);
     title = new TitleWidget(this);
-    title->move(0,0);
+    title->move(10,10);
 
     setDetailTab();
     setHistoryTab();
@@ -2094,7 +2140,11 @@ void UkpmWidget::setupUI()
 
         QString icon = up_device_kind_to_string(current_device->kind);
         icon = ":/resource/icon/" + icon + "w" + ".png";
-        default_item->setIcon(QIcon(icon));
+        QWidget *wid = listWidget->itemWidget(default_item);
+        DeviceWidget *dw = qobject_cast<DeviceWidget *>(wid);
+        dw->set_device_icon(icon);
+        dw->set_device_text(true);
+//        default_item->setIcon(QIcon(icon));
         ukpm_update_info_data (current_device);
     }
 

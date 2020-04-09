@@ -23,9 +23,9 @@
 #include <QPushButton>
 #include <QToolButton>
 
-#define BUTTON_HEIGHT 22        // 按钮高度;
+#define BUTTON_HEIGHT 30        // 按钮高度;
 #define BUTTON_WIDTH 30         // 按钮宽度;
-#define TITLE_HEIGHT 32         // 标题栏高度;
+#define TITLE_HEIGHT 36         // 标题栏高度;
 
 class TitleWidget : public QWidget
 {
@@ -83,4 +83,40 @@ private:
     // 标题栏是否透明;
     bool m_isTransparent;
 };
+
+enum ButtonType
+{
+    HELP,
+    CLOSE,
+};
+
+class ToolButton : public QToolButton
+{
+    Q_OBJECT
+public:
+    explicit ToolButton(ButtonType type);
+protected:
+    virtual void mousePressEvent(QMouseEvent *event) override;
+    virtual void enterEvent(QEvent *event) override;
+    virtual void leaveEvent(QEvent *event) override;
+private:
+    ButtonType mType;
+};
+
+class DeviceWidget : public QWidget
+{
+    Q_OBJECT
+public:
+    explicit DeviceWidget(QWidget *parent=nullptr);
+protected:
+//    virtual void paintEvent(QPaintEvent *event);
+private:
+    QLabel *icon;
+    QLabel *content;
+    QString m_text;
+public:
+    void set_device_icon(QString name);
+    void set_device_text(bool flag,QString text = "");
+};
+
 #endif // TITLEWIDGET_H

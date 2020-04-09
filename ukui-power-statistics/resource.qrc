@@ -21,5 +21,10 @@
         <file>icon/1px_delete_click.png</file>
         <file>icon/1px_delete_hover.png</file>
         <file>icon/ukui-power-statistics.png</file>
+        <file>icon/help_white.png</file>
+        <file>icon/help.png</file>
+        <file>icon/closeWhite.png</file>
+        <file>icon/close.png</file>
+        <file>icon/downpx.png</file>
     </qresource>
 </RCC>

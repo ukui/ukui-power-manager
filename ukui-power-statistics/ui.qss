@@ -12,7 +12,9 @@ QTableView,QTableWidget
 {
     border:1px solid #E0DDDC;   /*边框为1像素，灰色*/
     padding-bottom:40px;
-    font:12px;
+    font:14px;
+    color:#000000;
+    opacity:0.85;
 }
 
 QTableView::item:hover
@@ -25,8 +27,11 @@ QHeaderView::section
 {
     border:0px solid #E0DDDC;   /*先把边框宽度设为0，即隐藏所有表头边框*/
     background-color: white;
-    font:12px;
+    font:14px;
+    height: 30px;
+
 }
+
 
 /*QTabWidget*/
 QTabWidget::pane { /* The tab widget frame */
@@ -48,7 +53,8 @@ QTabBar::tab {
     padding:3px;
     padding-right: 40px;
     font:14px bold;
-    color:#404040;
+    color:#000000;
+    opacity:0.85;
     height:32px;
 }
 
@@ -74,26 +80,27 @@ QLabel {
 }
 
 QLabel#labelhelp {
-    border-image:url(:/resource/icon/__con.png);
+    border-image:url(:/resource/icon/help.png);
 }
 QLabel#labelhelp:hover {
-    border-image:url(:/resource/icon/__hover.png);
+    border-image:url(:/resource/icon/help_white.png);
 }
 QLabel#labelhelp:pressed {
-    border-image:url(:/resource/icon/__click.png);
+    border-image:url(:/resource/icon/help_white.png);
 }
 QLabel#labelclose {
-    border-image:url(:/resource/icon/1px_delete_con.png);
+    border-image:url(:/resource/icon/close.png);
 }
 QLabel#labelclose:hover {
-    border-image:url(:/resource/icon/1px_delete_hover.png);
+    border-image:url(:/resource/icon/closeWhite.png);
 }
 QLabel#labelclose:pressed {
-    border-image:url(:/resource/icon/1px_delete_click.png);
+    border-image:url(:/resource/icon/closeWhite.png);
 }
-QFrame {
-    border: 0px;
 
+QFrame
+{
+    border: 0px;
 }
 
 /* Customize tooltips. */
@@ -133,7 +140,6 @@ QCheckBox::indicator:unchecked:pressed {
     border-image:url(:/resource/icon/undetermine.png);
 }
 
-
 QScrollBar {
     background:#f1f1f1;
     width:8px;
@@ -165,19 +171,20 @@ QScrollBar::sub-page:vertical {
 }
 
 QComboBox {
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
     combobox-popup: 0;
     background-color:#EDEDED;
-    font-size:12px;
-
+    font-size:14px;
+    color:#000000;
+    opacity:0.85;
 }
 
 QComboBox QAbstractItemView
 {
-    font-size:12px;
+    font-size:14px;
 }
 
 QComboBox QAbstractItemView::item
@@ -199,9 +206,9 @@ QComboBox::popup:on
 }
 
 QComboBox::drop-down {
-    image:url(:/resource/icon/down.png);
+    image:url(:/resource/icon/downpx.png);
     subcontrol-position: right centor;
-    padding-right:15px;
+    padding-right:16px;
 }
 
 
@@ -216,9 +223,7 @@ QComboBox::drop-down {
 #m_listWidget::item {
 
     height:36px;
-    width:160px;
-    margin-bottom:5px;
-    margin-top:5px;
+    width:150px;
 
 }
 
@@ -229,13 +234,15 @@ QComboBox::drop-down {
 }
 
 #m_sumGraphicType, #m_graphicType, #m_timeLabel{
-    font-size:12px;
+    font-size:14px;
+    color:#000000;
+    opacity:0.85;
     background-color:#EDEDED;
-    border-top-left-radius: 3px; /* same radius as the QComboBox */
-    border-bottom-left-radius: 3px;
+    border-top-left-radius: 4px; /* same radius as the QComboBox */
+    border-bottom-left-radius: 4px;
     border-top-right-radius: 0px; /* same radius as the QComboBox */
     border-bottom-right-radius: 0px;
-    padding-left: 8px;
+    padding-left: 16px;
     margin:0px;
     width:60px;
 }

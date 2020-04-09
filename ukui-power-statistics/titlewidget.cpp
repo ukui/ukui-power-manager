@@ -20,6 +20,9 @@
 #include <QPainter>
 #include <QFile>
 #include <QMouseEvent>
+#include <QStyleOption>
+#include <QPainter>
+
 //#include <QX11Info>
 //#include <X11/Xlib.h>
 
@@ -33,6 +36,7 @@ TitleWidget::TitleWidget(QWidget *parent)
     , m_isTransparent(false)
 {
     // 初始化;
+    setWindowBorderWidth(20);
     initControl();
     connectSlots();
 
@@ -45,18 +49,20 @@ void TitleWidget::initControl()
     m_pTitleContent = new QLabel(this);
     m_pTitleContent->setObjectName("TitleContent");
 
-    m_pButtonHelp = new QToolButton;
-    m_pButtonClose = new QToolButton;
+    m_pButtonHelp = new ToolButton(HELP);
+    m_pButtonClose = new ToolButton(CLOSE);
 
     m_pButtonHelp->setFixedSize(QSize(BUTTON_WIDTH, BUTTON_HEIGHT));
     m_pButtonClose->setFixedSize(QSize(BUTTON_WIDTH, BUTTON_HEIGHT));
-
-    m_help = new QLabel(m_pButtonHelp);
-    m_close = new QLabel(m_pButtonClose);
-    m_help->setObjectName("labelhelp");
-    m_close->setObjectName("labelclose");
-    m_help->setFixedSize(QSize(BUTTON_WIDTH, BUTTON_HEIGHT));
-    m_close->setFixedSize(QSize(BUTTON_WIDTH, BUTTON_HEIGHT));
+//    m_pButtonHelp->setObjectName("toolhelp");
+//    m_pButtonClose->setObjectName("toolclose");
+//    m_pButtonHelp->setIcon(QIcon(":/resource/icon/help.png"));
+//    m_help = new QLabel(m_pButtonHelp);
+//    m_close = new QLabel(m_pButtonClose);
+//    m_help->setObjectName("labelhelp");
+//    m_close->setObjectName("labelclose");
+//    m_help->setFixedSize(QSize(BUTTON_WIDTH, BUTTON_HEIGHT));
+//    m_close->setFixedSize(QSize(BUTTON_WIDTH, BUTTON_HEIGHT));
 
     QHBoxLayout* mylayout = new QHBoxLayout(this);
     mylayout->setContentsMargins(0,0,0,0);
@@ -66,9 +72,9 @@ void TitleWidget::initControl()
     QSpacerItem *spacer = new QSpacerItem(100,TITLE_HEIGHT,QSizePolicy::Expanding,QSizePolicy::Fixed);
     mylayout->addSpacerItem(spacer);
     mylayout->addWidget(m_pButtonHelp);
-    mylayout->addSpacing(10);
+    mylayout->addSpacing(4);
     mylayout->addWidget(m_pButtonClose);
-    mylayout->addSpacing(10);
+    mylayout->addSpacing(3);
 
     m_pTitleContent->setText(tr("Power Information"));
     m_pTitleContent->setStyleSheet("QLabel {font-size:14px;color:black}");
@@ -216,3 +222,100 @@ void TitleWidget::onButtonCloseClicked()
 }
 
 
+ToolButton::ToolButton(ButtonType type)
+{
+    mType = type;
+    switch (type) {
+    case HELP:
+        setStyleSheet("QToolButton {border-radius:4px;background-color:#E7E7E7;}");
+        setIcon(QIcon(":/resource/icon/help.png"));
+        break;
+    case CLOSE:
+        setStyleSheet("QToolButton {border-radius:4px;background-color:#E7E7E7;}");
+        setIcon(QIcon(":/resource/icon/close.png"));
+        break;
+    default:
+        break;
+    }
+
+}
+
+void ToolButton::mousePressEvent(QMouseEvent *event)
+{
+    if(event->buttons()==Qt::LeftButton)
+    {
+        setStyleSheet("QToolButton {border-radius:4px;background-color:#3257CA;}");
+        if(mType == HELP)
+            setIcon(QIcon(":/resource/icon/help_white.png"));
+        else
+            setIcon(QIcon(":/resource/icon/closeWhite.png"));
+
+    }
+    QToolButton::mousePressEvent(event);
+}
+
+void ToolButton::enterEvent(QEvent *event)
+{
+    setStyleSheet("QToolButton {border-radius:4px;background-color:#3D6BE5;}");
+    if(mType == HELP)
+        setIcon(QIcon(":/resource/icon/help_white.png"));
+    else
+        setIcon(QIcon(":/resource/icon/closeWhite.png"));
+    QToolButton::enterEvent(event);
+}
+
+void ToolButton::leaveEvent(QEvent *event)
+{
+    setStyleSheet("QToolButton {border-radius:4px;background-color:#E7E7E7;}");
+    if(mType == HELP)
+        setIcon(QIcon(":/resource/icon/help.png"));
+    else
+        setIcon(QIcon(":/resource/icon/close.png"));
+    QToolButton::leaveEvent(event);
+
+}
+
+DeviceWidget::DeviceWidget(QWidget *parent):QWidget(parent)
+{
+    QHBoxLayout *layout = new QHBoxLayout;
+    layout->setSpacing(5);
+    layout->setContentsMargins(0,0,0,0);
+    icon = new QLabel(this);
+    content = new QLabel(this);
+    layout->addWidget(icon);
+    layout->addWidget(content);
+    layout->addStretch();
+    setLayout(layout);
+//    setFixedSize(150,36);
+}
+
+//void DeviceWidget::paintEvent(QPaintEvent *event)
+//{
+//    Q_UNUSED(event);
+//    QStyleOption opt;
+//    opt.init(this);
+//    QPainter p(this);
+//    style()->drawPrimitive(QStyle::PE_Widget,&opt,&p,this);
+//}
+
+void DeviceWidget::set_device_icon(QString name)
+{
+    icon->setPixmap(QPixmap(name));
+}
+
+void DeviceWidget::set_device_text(bool flag,QString text)
+{
+    if(!text.isEmpty())
+    {
+        m_text = text;
+    }
+    QFont font((content->font()));
+    font.setPixelSize(14);
+    QFontMetrics metric(font);
+    QString metric_text = metric.elidedText(m_text,Qt::ElideRight,120);
+    content->setText(metric_text);
+    if(flag)
+        content->setStyleSheet("QLabel {color:white}");
+    else
+        content->setStyleSheet("QLabel {color:black}");
+}

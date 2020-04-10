@@ -1266,7 +1266,7 @@ void UkpmWidget::setSumTab()
     sumTypeCombox->setView(listView);
 
     sum_line_btn = new QPushButton(tr("show line"),stat_widget);
-    sum_data_btn = new QPushButton(tr("show data points"),stat_widget);
+    sum_data_btn = new QPushButton(tr("show points"),stat_widget);
     sum_line_btn->setObjectName("sum_line_btn");
     sum_data_btn->setObjectName("sum_data_btn");
     sum_line_btn->setFixedSize(100,32);
@@ -1462,7 +1462,7 @@ void UkpmWidget::setHistoryTab()
     spanCombox->setView(spanView);
 
     his_line_btn = new QPushButton(tr("show line"),his_widget);
-    his_data_btn = new QPushButton(tr("show data points"),his_widget);
+    his_data_btn = new QPushButton(tr("show points"),his_widget);
     his_line_btn->setObjectName("his_line_btn");
     his_data_btn->setObjectName("his_data_btn");
     his_line_btn->setFixedSize(100,32);

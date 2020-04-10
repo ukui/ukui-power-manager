@@ -26,85 +26,85 @@
 <context>
     <name>UkpmWidget</name>
     <message>
-        <location filename="ukpm-widget.cpp" line="103"/>
+        <location filename="ukpm_widget.cpp" line="104"/>
         <source>AC adapter</source>
         <translation>AC adapter</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="107"/>
+        <location filename="ukpm_widget.cpp" line="108"/>
         <source>Laptop battery</source>
         <translation>Laptop battery</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="111"/>
+        <location filename="ukpm_widget.cpp" line="112"/>
         <source>UPS</source>
         <translation>UPS</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="115"/>
+        <location filename="ukpm_widget.cpp" line="116"/>
         <source>Monitor</source>
         <translation>Monitor</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="119"/>
+        <location filename="ukpm_widget.cpp" line="120"/>
         <source>Mouse</source>
         <translation>Mouse</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="123"/>
+        <location filename="ukpm_widget.cpp" line="124"/>
         <source>Keyboard</source>
         <translation>Keyboard</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="127"/>
+        <location filename="ukpm_widget.cpp" line="128"/>
         <source>PDA</source>
         <translation>PDA</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="131"/>
+        <location filename="ukpm_widget.cpp" line="132"/>
         <source>Cell phone</source>
         <translation>Cell phone</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="135"/>
+        <location filename="ukpm_widget.cpp" line="136"/>
         <source>Media player</source>
         <translation>Media player</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="139"/>
+        <location filename="ukpm_widget.cpp" line="140"/>
         <source>Tablet</source>
         <translation>Tablet</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="143"/>
+        <location filename="ukpm_widget.cpp" line="144"/>
         <source>Computer</source>
         <translation>Computer</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="201"/>
-        <location filename="ukpm-widget.cpp" line="307"/>
-        <location filename="ukpm-widget.cpp" line="1928"/>
+        <location filename="ukpm_widget.cpp" line="202"/>
+        <location filename="ukpm_widget.cpp" line="316"/>
+        <location filename="ukpm_widget.cpp" line="2010"/>
         <source>Charging</source>
         <translation>Charging</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="204"/>
-        <location filename="ukpm-widget.cpp" line="310"/>
-        <location filename="ukpm-widget.cpp" line="1931"/>
+        <location filename="ukpm_widget.cpp" line="205"/>
+        <location filename="ukpm_widget.cpp" line="319"/>
+        <location filename="ukpm_widget.cpp" line="2013"/>
         <source>Discharging</source>
         <translation>Discharging</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="207"/>
-        <location filename="ukpm-widget.cpp" line="313"/>
-        <location filename="ukpm-widget.cpp" line="1934"/>
+        <location filename="ukpm_widget.cpp" line="208"/>
+        <location filename="ukpm_widget.cpp" line="322"/>
+        <location filename="ukpm_widget.cpp" line="2016"/>
         <source>Empty</source>
         <translation>Empty</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="210"/>
-        <location filename="ukpm-widget.cpp" line="316"/>
-        <location filename="ukpm-widget.cpp" line="1937"/>
+        <location filename="ukpm_widget.cpp" line="211"/>
+        <location filename="ukpm_widget.cpp" line="325"/>
+        <location filename="ukpm_widget.cpp" line="2019"/>
         <source>Charged</source>
         <translation>Charged</translation>
     </message>
@@ -133,12 +133,12 @@
         <translation type="vanished">value</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="416"/>
+        <location filename="ukpm_widget.cpp" line="466"/>
         <source>Device</source>
         <translation>Device</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="418"/>
+        <location filename="ukpm_widget.cpp" line="468"/>
         <source>Type</source>
         <translation>Type</translation>
     </message>
@@ -147,17 +147,17 @@
         <translation type="vanished">PowerSupply</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="503"/>
+        <location filename="ukpm_widget.cpp" line="553"/>
         <source>Online</source>
         <translation>Online</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="421"/>
+        <location filename="ukpm_widget.cpp" line="471"/>
         <source>Vendor</source>
         <translation>Vendor</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="423"/>
+        <location filename="ukpm_widget.cpp" line="473"/>
         <source>Model</source>
         <translation>Model</translation>
     </message>
@@ -174,12 +174,12 @@
         <translation type="vanished">IsRechargeable</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="457"/>
+        <location filename="ukpm_widget.cpp" line="507"/>
         <source>State</source>
         <translation>State</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="462"/>
+        <location filename="ukpm_widget.cpp" line="512"/>
         <source>Energy</source>
         <translation>Energy</translation>
     </message>
@@ -196,7 +196,7 @@
         <translation type="vanished">EnergyRate</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="476"/>
+        <location filename="ukpm_widget.cpp" line="526"/>
         <source>Voltage</source>
         <translation>Voltage</translation>
     </message>
@@ -209,12 +209,12 @@
         <translation type="vanished">TimeToEmpty</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="494"/>
+        <location filename="ukpm_widget.cpp" line="544"/>
         <source>Percentage</source>
         <translation>Percentage</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="499"/>
+        <location filename="ukpm_widget.cpp" line="549"/>
         <source>Capacity</source>
         <translation>Capacity</translation>
     </message>
@@ -235,28 +235,28 @@
         <translation type="vanished">Statistics</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="1210"/>
-        <location filename="ukpm-widget.cpp" line="1373"/>
+        <location filename="ukpm_widget.cpp" line="1259"/>
+        <location filename="ukpm_widget.cpp" line="1441"/>
         <source>graphic type:</source>
         <translation>graphic type:</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="1213"/>
+        <location filename="ukpm_widget.cpp" line="1262"/>
         <source>charge</source>
         <translation>charge</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="1213"/>
+        <location filename="ukpm_widget.cpp" line="1262"/>
         <source>charge-accurency</source>
         <translation>charge-accurency</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="1213"/>
+        <location filename="ukpm_widget.cpp" line="1262"/>
         <source>discharge</source>
         <translation>discharge</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="1213"/>
+        <location filename="ukpm_widget.cpp" line="1262"/>
         <source>discharge-accurency</source>
         <translation>discharge-accurency</translation>
     </message>
@@ -277,215 +277,215 @@
         <translation type="vanished">History</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="1375"/>
+        <location filename="ukpm_widget.cpp" line="1443"/>
         <source>time span:</source>
         <translation>time span:</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="1380"/>
+        <location filename="ukpm_widget.cpp" line="1448"/>
         <source>rate</source>
         <translation>rate</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="1380"/>
+        <location filename="ukpm_widget.cpp" line="1448"/>
         <source>energy</source>
         <translation>energy</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="1380"/>
+        <location filename="ukpm_widget.cpp" line="1448"/>
         <source>charge-time</source>
         <translation>charge-time</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="1380"/>
+        <location filename="ukpm_widget.cpp" line="1448"/>
         <source>discharge-time</source>
         <translation>discharge-time</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="1383"/>
+        <location filename="ukpm_widget.cpp" line="1451"/>
         <source>ten minutes</source>
         <translation>ten minutes</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="1383"/>
+        <location filename="ukpm_widget.cpp" line="1451"/>
         <source>two hours</source>
         <translation>two hours</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="1383"/>
+        <location filename="ukpm_widget.cpp" line="1451"/>
         <source>six hours</source>
         <translation>six hours</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="1383"/>
+        <location filename="ukpm_widget.cpp" line="1451"/>
         <source>one day</source>
         <translation>one day</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="1383"/>
+        <location filename="ukpm_widget.cpp" line="1451"/>
         <source>one week</source>
         <translation>one week</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="1439"/>
+        <location filename="ukpm_widget.cpp" line="1510"/>
         <source>elapsed time</source>
         <translation>elapsed time</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="711"/>
-        <location filename="ukpm-widget.cpp" line="800"/>
+        <location filename="ukpm_widget.cpp" line="761"/>
+        <location filename="ukpm_widget.cpp" line="850"/>
         <source>adjust factor</source>
         <translation>adjust factor</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="213"/>
-        <location filename="ukpm-widget.cpp" line="319"/>
-        <location filename="ukpm-widget.cpp" line="1940"/>
+        <location filename="ukpm_widget.cpp" line="214"/>
+        <location filename="ukpm_widget.cpp" line="328"/>
+        <location filename="ukpm_widget.cpp" line="2022"/>
         <source>PendingCharge</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="216"/>
-        <location filename="ukpm-widget.cpp" line="322"/>
-        <location filename="ukpm-widget.cpp" line="1943"/>
+        <location filename="ukpm_widget.cpp" line="217"/>
+        <location filename="ukpm_widget.cpp" line="331"/>
+        <location filename="ukpm_widget.cpp" line="2025"/>
         <source>PendingDischarge</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="413"/>
+        <location filename="ukpm_widget.cpp" line="463"/>
         <source>Attribute</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="413"/>
+        <location filename="ukpm_widget.cpp" line="463"/>
         <source>Value</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="425"/>
+        <location filename="ukpm_widget.cpp" line="475"/>
         <source>Serial number</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="427"/>
+        <location filename="ukpm_widget.cpp" line="477"/>
         <source>Supply</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="436"/>
+        <location filename="ukpm_widget.cpp" line="486"/>
         <source>Refreshed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="444"/>
+        <location filename="ukpm_widget.cpp" line="494"/>
         <source>Present</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="450"/>
+        <location filename="ukpm_widget.cpp" line="500"/>
         <source>Rechargeable</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="464"/>
+        <location filename="ukpm_widget.cpp" line="514"/>
         <source>Energy when full</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="465"/>
+        <location filename="ukpm_widget.cpp" line="515"/>
         <source>Energy (design)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="481"/>
+        <location filename="ukpm_widget.cpp" line="531"/>
         <source>Time to full</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="485"/>
+        <location filename="ukpm_widget.cpp" line="535"/>
         <source>Time to empty</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="521"/>
+        <location filename="ukpm_widget.cpp" line="571"/>
         <source>history</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="532"/>
+        <location filename="ukpm_widget.cpp" line="582"/>
         <source>statistics</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="714"/>
-        <location filename="ukpm-widget.cpp" line="757"/>
-        <location filename="ukpm-widget.cpp" line="803"/>
-        <location filename="ukpm-widget.cpp" line="846"/>
+        <location filename="ukpm_widget.cpp" line="764"/>
+        <location filename="ukpm_widget.cpp" line="807"/>
+        <location filename="ukpm_widget.cpp" line="853"/>
+        <location filename="ukpm_widget.cpp" line="896"/>
         <source>battery power</source>
         <translation>battery power</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="754"/>
-        <location filename="ukpm-widget.cpp" line="840"/>
+        <location filename="ukpm_widget.cpp" line="804"/>
+        <location filename="ukpm_widget.cpp" line="890"/>
         <source>Predict Accurency</source>
         <translation>Predict Accurency</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="1219"/>
-        <location filename="ukpm-widget.cpp" line="1392"/>
+        <location filename="ukpm_widget.cpp" line="1268"/>
+        <location filename="ukpm_widget.cpp" line="1464"/>
         <source>show line</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="1220"/>
-        <location filename="ukpm-widget.cpp" line="1393"/>
-        <source>show data points</source>
+        <location filename="ukpm_widget.cpp" line="1269"/>
+        <location filename="ukpm_widget.cpp" line="1465"/>
+        <source>show points</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="1345"/>
+        <location filename="ukpm_widget.cpp" line="1400"/>
         <source>detail</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="470"/>
-        <location filename="ukpm-widget.cpp" line="978"/>
+        <location filename="ukpm_widget.cpp" line="520"/>
+        <location filename="ukpm_widget.cpp" line="1028"/>
         <source>Rate</source>
         <translation>Rate</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="995"/>
+        <location filename="ukpm_widget.cpp" line="1044"/>
         <source>Charge</source>
         <translation>Charge</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.cpp" line="1016"/>
-        <location filename="ukpm-widget.cpp" line="1059"/>
+        <location filename="ukpm_widget.cpp" line="1065"/>
+        <location filename="ukpm_widget.cpp" line="1108"/>
         <source>Predict Time</source>
         <translation>Predict Time</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.h" line="124"/>
+        <location filename="ukpm_widget.cpp" line="379"/>
         <source>s</source>
         <translation>s</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.h" line="126"/>
+        <location filename="ukpm_widget.cpp" line="381"/>
         <source>m</source>
         <translation>m</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.h" line="128"/>
+        <location filename="ukpm_widget.cpp" line="383"/>
         <source>h</source>
         <translation>h</translation>
     </message>
     <message>
-        <location filename="ukpm-widget.h" line="133"/>
+        <location filename="ukpm_widget.h" line="113"/>
         <source>yes</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ukpm-widget.h" line="133"/>
+        <location filename="ukpm_widget.h" line="113"/>
         <source>no</source>
         <translation></translation>
     </message>

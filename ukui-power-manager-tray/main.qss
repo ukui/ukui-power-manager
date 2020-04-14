@@ -1,4 +1,4 @@
-QMenu {
+/*QMenu {
     color: #ffffff;
     background-color:rgba(19,19,20,0.70);
     padding-top: 6px;
@@ -9,7 +9,6 @@ QMenu {
     border-radius: 6px;
     width: 250px;
     height: 128px;
-
 }
 
 QMenu::item {
@@ -17,7 +16,6 @@ QMenu::item {
     width: 246px;
     height: 36px;
     border-radius: 4px;
-
 }
 
 QMenu::separator {
@@ -27,17 +25,9 @@ QMenu::separator {
 
 QMenu::item:selected{
     background-color: rgba(255,255,255,0.15);
-}
+}*/
 
-QToolTip {
-    background:rgba(26,26,26,0.7);
-    font:14px;
-    color:rgba(255,255,255,1);
-    border-radius:3px;
-    border:1px solid rgba(255,255,255,0.2);
-    padding: 0px 4px;
-    outline:none;
-}
+
 
 QLabel {
     height:15px;

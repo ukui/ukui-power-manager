@@ -55,6 +55,7 @@ public:
     int getTaskbarHeight(QString str);
     int getTaskbarPos(QString str);
     void set_window_position();
+    void create_menu_item();
 public Q_SLOTS:
     void iconThemeChanged();
     void onActivatedIcon(QSystemTrayIcon::ActivationReason reason);
@@ -77,16 +78,18 @@ private:
     QList<QDBusObjectPath> deviceNames;
     EngineDevice* ed;
 
-    QMenu *menu;
-    QWidgetAction *set_preference;
-    QWidgetAction *show_percentage;
     QLabel *percent_label;
-    QWidgetAction *set_bright;
     Ui::MainWindow *ui;
-    QString releaseQss;
-    QString pressQss;
+
+    QMenu *menu;
+//    QWidgetAction *set_preference;
+//    QWidgetAction *show_percentage;
+//    QWidgetAction *set_bright;
+//    QString releaseQss;
+//    QString pressQss;
     QMap<DEVICE*,QListWidgetItem*> device_item_map;
     int dev_number;
+    QGSettings *setting = nullptr;
 protected:
     bool event(QEvent *event);
     void paintEvent(QPaintEvent *event);

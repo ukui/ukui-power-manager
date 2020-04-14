@@ -32,6 +32,8 @@
 #include <QDBusReply>
 
 #define POWER_SCHEMA                "org.ukui.power-manager"
+#define UKUI_STYLE                  "org.ukui.style"
+#define UKUI_STYLE_STYLE_NAME       "style-name"
 #define POWER_SCHEMA_KEY            "power-manager"
 #define PANEL_DBUS_SERVICE          "com.ukui.panel.desktop"
 #define PANEL_DBUS_PATH             "/"
@@ -47,8 +49,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ed = EngineDevice::getInstance();
     ui->setupUi(this);
     initData();
-//    setting = new QGSettings(POWER_SCHEMA);
-//    connect(setting,SIGNAL(changed(const QString &)),this,SLOT(iconThemeChanged()));
+//    if(QGSettings::isSchemaInstalled(UKUI_STYLE))
+//    {
+//        setting = new QGSettings(UKUI_STYLE);
+//        connect(setting,SIGNAL(changed(const QString &)),this,SLOT(iconThemeChanged()));
+//    }
 
     trayIcon = new QSystemTrayIcon(this);
     connect(trayIcon,SIGNAL(activated(QSystemTrayIcon::ActivationReason)),this,SLOT(onActivatedIcon(QSystemTrayIcon::ActivationReason)));
@@ -400,8 +405,8 @@ void MainWindow::onActivatedIcon(QSystemTrayIcon::ActivationReason reason)
 void MainWindow::initData()
 {
     want_percent = false;
-    pressQss = "QLabel{background-color:#3593b5;}";
-    releaseQss = "QLabel{background-color:#283138;}";
+//    pressQss = "QLabel{background-color:#3593b5;}";
+//    releaseQss = "QLabel{background-color:#283138;}";
 }
 
 void MainWindow::initUi()
@@ -454,80 +459,104 @@ void MainWindow::initUi()
     menu = new QMenu(this);
     menu->setAttribute(Qt::WA_TranslucentBackground);
     menu->setWindowFlag(Qt::FramelessWindowHint);
-    set_preference  = new QWidgetAction(menu);
-    show_percentage = new QWidgetAction(menu);
-    set_bright = new QWidgetAction(menu);
+    menu->setWindowOpacity(0.7);
+//    set_preference  = new QWidgetAction(menu);
+//    show_percentage = new QWidgetAction(menu);
+//    set_bright = new QWidgetAction(menu);
 
-    QHBoxLayout *hbox_preference = new QHBoxLayout;
-    QLabel *preference_label = new QLabel(this);
-    QLabel *preference_text = new QLabel(this);
-    QWidget *preference_widget = new QWidget(this);
-    preference_label->setFixedSize(QSize(16,16));
-    preference_label->setPixmap(QPixmap(":/apps/setting.svg"));
-    preference_text->setText(tr("SetPower"));
-    preference_label->setStyleSheet("QLabel{background:transparent;border:0px;}");
-    preference_text->setStyleSheet("QLabel{background:transparent;border:0px;}");
-    hbox_preference->addWidget(preference_label);
-    hbox_preference->addWidget(preference_text);
-    preference_widget->setLayout(hbox_preference);
-    preference_widget->setFocusPolicy(Qt::NoFocus);
-    preference_widget->setFixedSize(QSize(244,36));
-    hbox_preference->setSpacing(10);
-    set_preference->setDefaultWidget(preference_widget);
-    preference_widget->setStyleSheet("QWidget{background:transparent;border:0px;border-radius:4px}\
-                                     QWidget:hover{background-color:rgba(255,255,255,0.15);}");
+//    QHBoxLayout *hbox_preference = new QHBoxLayout;
+//    QLabel *preference_label = new QLabel(this);
+//    QLabel *preference_text = new QLabel(this);
+//    QWidget *preference_widget = new QWidget(this);
+//    preference_label->setFixedSize(QSize(16,16));
+//    preference_label->setPixmap(QPixmap(":/apps/setting.svg"));
+//    preference_text->setText(tr("SetPower"));
+//    preference_label->setStyleSheet("QLabel{background:transparent;border:0px;}");
+//    preference_text->setStyleSheet("QLabel{background:transparent;border:0px;}");
+//    hbox_preference->addWidget(preference_label);
+//    hbox_preference->addWidget(preference_text);
+//    preference_widget->setLayout(hbox_preference);
+//    preference_widget->setFocusPolicy(Qt::NoFocus);
+//    preference_widget->setFixedSize(QSize(244,36));
+//    hbox_preference->setSpacing(10);
+//    set_preference->setDefaultWidget(preference_widget);
+//    preference_widget->setStyleSheet("QWidget{background:transparent;border:0px;border-radius:4px}\
+//                                     QWidget:hover{background-color:rgba(255,255,255,0.15);}");
 
-    QHBoxLayout *hbox_percent = new QHBoxLayout;
-    percent_label = new QLabel(this);
-    QLabel *percent_text = new QLabel(this);
-    QWidget *percent_widget = new QWidget(this);
-    percent_label->setFixedSize(QSize(16,16));
-    percent_label->setPixmap(QPixmap(":/apps/tick.png"));
-    percent_text->setText(tr("ShowPercentage"));
-    percent_label->setStyleSheet("QLabel{background:transparent;border:0px;}");
-    percent_text->setStyleSheet("QLabel{background:transparent;border:0px;}");
-    hbox_percent->addWidget(percent_label);
-    hbox_percent->addWidget(percent_text);
-    percent_widget->setLayout(hbox_percent);
-    percent_widget->setFocusPolicy(Qt::NoFocus);
-    percent_widget->setFixedSize(QSize(244,36));
+//    QHBoxLayout *hbox_percent = new QHBoxLayout;
+//    percent_label = new QLabel(this);
+//    QLabel *percent_text = new QLabel(this);
+//    QWidget *percent_widget = new QWidget(this);
+//    percent_label->setFixedSize(QSize(16,16));
+//    percent_label->setPixmap(QPixmap(":/apps/tick.png"));
+//    percent_text->setText(tr("ShowPercentage"));
+//    percent_label->setStyleSheet("QLabel{background:transparent;border:0px;}");
+//    percent_text->setStyleSheet("QLabel{background:transparent;border:0px;}");
+//    hbox_percent->addWidget(percent_label);
+//    hbox_percent->addWidget(percent_text);
+//    percent_widget->setLayout(hbox_percent);
+//    percent_widget->setFocusPolicy(Qt::NoFocus);
+//    percent_widget->setFixedSize(QSize(244,36));
 
-    hbox_percent->setSpacing(10);
-    show_percentage->setDefaultWidget(percent_widget);
-    percent_widget->setStyleSheet("QWidget{background:transparent;border:0px;border-radius:4px}\
-                                  QWidget:hover{background-color:rgba(255,255,255,0.15);}");
+//    hbox_percent->setSpacing(10);
+//    show_percentage->setDefaultWidget(percent_widget);
+//    percent_widget->setStyleSheet("QWidget{background:transparent;border:0px;border-radius:4px}\
+//                                  QWidget:hover{background-color:rgba(255,255,255,0.15);}");
 
-    QHBoxLayout *hbox_bright= new QHBoxLayout;
-    QLabel *bright_label = new QLabel(this);
-    QLabel *bright_text = new QLabel(this);
-    QWidget *bright_widget = new QWidget(this);
-    bright_label->setFixedSize(QSize(16,16));
-    bright_label->setPixmap(QPixmap(":/apps/setting.svg"));
-    bright_text->setText(tr("SetBrightness"));
-    bright_label->setStyleSheet("QLabel{background:transparent;border:0px;}");
-    bright_text->setStyleSheet("QLabel{background:transparent;border:0px;}");
-    hbox_bright->addWidget(bright_label);
-    hbox_bright->addWidget(bright_text);
-    bright_widget->setLayout(hbox_bright);
-    bright_widget->setFocusPolicy(Qt::NoFocus);
-    bright_widget->setFixedSize(QSize(244,36));
-    hbox_bright->setSpacing(10);
-    set_bright->setDefaultWidget(bright_widget);
-    bright_widget->setStyleSheet("QWidget{background:transparent;border:0px;border-radius:4px}"
-                                 "QWidget:hover{background-color:rgba(255,255,255,0.15);}");
+//    QHBoxLayout *hbox_bright= new QHBoxLayout;
+//    QLabel *bright_label = new QLabel(this);
+//    QLabel *bright_text = new QLabel(this);
+//    QWidget *bright_widget = new QWidget(this);
+//    bright_label->setFixedSize(QSize(16,16));
+//    bright_label->setPixmap(QPixmap(":/apps/setting.svg"));
+//    bright_text->setText(tr("SetBrightness"));
+//    bright_label->setStyleSheet("QLabel{background:transparent;border:0px;}");
+//    bright_text->setStyleSheet("QLabel{background:transparent;border:0px;}");
+//    hbox_bright->addWidget(bright_label);
+//    hbox_bright->addWidget(bright_text);
+//    bright_widget->setLayout(hbox_bright);
+//    bright_widget->setFocusPolicy(Qt::NoFocus);
+//    bright_widget->setFixedSize(QSize(244,36));
+//    hbox_bright->setSpacing(10);
+//    set_bright->setDefaultWidget(bright_widget);
+//    bright_widget->setStyleSheet("QWidget{background:transparent;border:0px;border-radius:4px}"
+//                                 "QWidget:hover{background-color:rgba(255,255,255,0.15);}");
 
-    connect(set_preference,&QAction::triggered,this,&MainWindow::set_preference_func);
-    connect(set_bright,&QAction::triggered,this,&MainWindow::set_brightness_func);
-    connect(show_percentage,&QAction::triggered,this,&MainWindow::show_percentage_func);
-    menu->addAction(show_percentage);
-    menu->addSeparator();
-    menu->addAction(set_bright);
-    menu->addSeparator();
-    menu->addAction(set_preference);
-
+//    connect(set_preference,&QAction::triggered,this,&MainWindow::set_preference_func);
+//    connect(set_bright,&QAction::triggered,this,&MainWindow::set_brightness_func);
+//    connect(show_percentage,&QAction::triggered,this,&MainWindow::show_percentage_func);
+//    menu->addAction(show_percentage);
+//    menu->addSeparator();
+//    menu->addAction(set_bright);
+//    menu->addSeparator();
+//    menu->addAction(set_preference);
+    create_menu_item();
     trayIcon->setContextMenu(menu);
     trayIcon->setToolTip(tr("PowerManager"));
 //    qApp->setStyle(new CustomStyle());
+}
+
+void MainWindow::create_menu_item()
+{
+    QAction *pset_preference  = new QAction(menu);
+    QAction *pshow_percentage = new QAction(menu);
+    QAction *pset_bright = new QAction(menu);
+
+    pset_preference->setIcon(QIcon(":/apps/setting.svg"));
+    pset_preference->setText(tr("SetPower"));
+
+    pshow_percentage->setIcon(QIcon(":/apps/tick.png"));
+    pshow_percentage->setText(tr("ShowPercentage"));
+
+    pset_bright->setIcon(QIcon(":/apps/setting.svg"));
+    pset_bright->setText(tr("SetBrightness"));
+
+    connect(pset_preference,&QAction::triggered,this,&MainWindow::set_preference_func);
+    connect(pset_bright,&QAction::triggered,this,&MainWindow::set_brightness_func);
+    connect(pshow_percentage,&QAction::triggered,this,&MainWindow::show_percentage_func);
+    menu->addAction(pshow_percentage);
+    menu->addAction(pset_bright);
+    menu->addAction(pset_preference);
 }
 
 int MainWindow::get_engine_dev_number()
@@ -661,8 +690,10 @@ void MainWindow::activate_power_statistic()
 void MainWindow::iconThemeChanged()
 {
     qDebug()<<"icon theme changed";
-//    QVariant var = setting->get(POWER_SCHEMA_KEY);
-//    QString value = var.value<QString>();
+//    QString new_theme = setting->get(UKUI_STYLE_STYLE_NAME).toString();
+//    QIcon::setThemeName(new_theme);
+//    qDebug()<<new_theme;
+
 }
 
 bool MainWindow::event(QEvent *event)

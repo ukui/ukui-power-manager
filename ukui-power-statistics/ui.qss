@@ -29,7 +29,8 @@ QHeaderView::section
     background-color: white;
     font:14px;
     height: 30px;
-
+    color:#000000;
+    opacity:0.85;
 }
 
 

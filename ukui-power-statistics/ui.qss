@@ -28,7 +28,7 @@ QHeaderView::section
     border:0px solid #E0DDDC;   /*先把边框宽度设为0，即隐藏所有表头边框*/
     background-color: white;
     font:14px;
-    height: 30px;
+    height: 26px;
     color:#000000;
     opacity:0.85;
 }
@@ -148,7 +148,8 @@ QScrollBar {
     width:8px;
 }
 QScrollBar::handle{
-    background:#3E3A3A;
+    /*background:#3E3A3A;*/
+    background-color:rgba(72,72,76,1);
     border-radius:3px;
     height:30px;
 }

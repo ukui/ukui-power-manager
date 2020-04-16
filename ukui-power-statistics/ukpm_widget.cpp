@@ -461,7 +461,8 @@ ukpm_update_info_page_details (DEV* device)
     model->clear();
     QStringList header;
     header << tr("Attribute") << tr("Value");
-    model->setHorizontalHeaderLabels(header);
+//    model->setHorizontalHeaderLabels(header);
+    addListRow(tr("Attribute"),tr("Value"));
 
     addListRow(tr("Device"),device_path);
     /* TRANSLATORS: the device ID of the current device, e.g. "battery0" */
@@ -1255,7 +1256,7 @@ void UkpmWidget::ukpm_update_info_page_stats (DEV* device)
 
 void UkpmWidget::setSumTab()
 {
-    stat_widget = new QWidget(this);
+    stat_widget = new QWidget();
     QLabel *graphicType = new QLabel(tr("graphic type:"),stat_widget);
     graphicType->setObjectName("m_sumGraphicType");
     sumTypeCombox = new QComboBox(stat_widget);
@@ -1396,7 +1397,7 @@ void UkpmWidget::showSumDataPoint(bool flag)
 
 void UkpmWidget::setDetailTab()
 {
-    detail_widget = new QWidget(this);
+    detail_widget = new QWidget();
     tab_widget->addTab(detail_widget,tr("detail"));
 
     tableView  = new QTableView();
@@ -1405,31 +1406,30 @@ void UkpmWidget::setDetailTab()
     //显示
     tableView->setShowGrid(false);
     //网格背景画笔
-    //ui->tableView->setGridStyle(Qt::DashLine);
     tableView->setGridStyle(Qt::DotLine);
     //排序功能
-    tableView->setSortingEnabled(true);
+//    tableView->setSortingEnabled(true);
     tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     tableView->setSelectionMode(QAbstractItemView::NoSelection);
     model = new QStandardItemModel();
 
     tableView->setModel(model);
-//    tableView->horizontalHeader()->setDefaultSectionSize(100);
 //    tableView->horizontalHeader()->setStretchLastSection(true);
-    tableView->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft);
+//    tableView->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft);
 //    tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Fixed);
     tableView->setColumnWidth(0,100);
     tableView->horizontalHeader()->setStretchLastSection(true);
+    tableView->horizontalHeader()->hide();
 
     tableView->verticalHeader()->setMinimumSectionSize(0);
-    tableView->verticalHeader()->setDefaultSectionSize(31);
+    tableView->verticalHeader()->setDefaultSectionSize(26);
     tableView->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
 //    tableView->setRowHeight(0,26);
-//    tableView->setRowHeight(1,26);
     tableView->verticalHeader()->hide();
 
     QVBoxLayout *lay = new QVBoxLayout();
+    lay->setContentsMargins(0,10,0,0);
     lay->addWidget(tableView);
     detail_widget->setLayout(lay);
 //    detail_widget->hide();
@@ -1437,7 +1437,7 @@ void UkpmWidget::setDetailTab()
 
 void UkpmWidget::setHistoryTab()
 {
-    his_widget = new QWidget(this);
+    his_widget = new QWidget();
     QLabel *graphicType = new QLabel(tr("graphic type:"),his_widget);
     graphicType->setScaledContents(true);
     QLabel *timeLabel = new QLabel(tr("time span:"),his_widget);
@@ -1848,6 +1848,7 @@ void UkpmWidget::upStatsType(int index)
 
 void UkpmWidget::onPageChanged(int index)
 {
+//    tab_widget->setCurrentIndex(index);
     if(index != index_old)
     {
         settings->set(GPM_SETTINGS_INFO_PAGE_NUMBER,index);

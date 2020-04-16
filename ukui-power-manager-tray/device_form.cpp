@@ -274,7 +274,7 @@ void DeviceForm::device_adjust_battery_parameters()
     if(mDev.State != UP_DEVICE_STATE_FULLY_CHARGED)
         return;
     QString online = device_get_ac_online();
-    if((online == "1") && (percentage<100))
+    if((online == "1") && (percent_number<100))
     {
         mDev.State = UP_DEVICE_STATE_CHARGING;
         icon_name = ed->engine_get_dev_icon(mDev);

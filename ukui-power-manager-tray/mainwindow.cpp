@@ -288,11 +288,11 @@ void MainWindow::show_percentage_func()
     want_percent = !want_percent;
     if(want_percent)
     {
-        percent_label->setPixmap(QPixmap(":/apps/tick.png"));
+//        percent_label->setPixmap(QPixmap(":/apps/tick.png"));
         onIconChanged(ed->previous_icon);
     }
     else {
-        percent_label->setPixmap(QPixmap());
+//        percent_label->setPixmap(QPixmap());
         onIconChanged(ed->previous_icon);
     }
 
@@ -459,7 +459,7 @@ void MainWindow::initUi()
     menu = new QMenu(this);
     menu->setAttribute(Qt::WA_TranslucentBackground);
     menu->setWindowFlag(Qt::FramelessWindowHint);
-    menu->setWindowOpacity(0.7);
+//    menu->setWindowOpacity(0.7);
 //    set_preference  = new QWidgetAction(menu);
 //    show_percentage = new QWidgetAction(menu);
 //    set_bright = new QWidgetAction(menu);

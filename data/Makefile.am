@@ -1,4 +1,4 @@
-SUBDIRS = icons
+#SUBDIRS = icons
 
 
 @INTLTOOL_DESKTOP_RULE@

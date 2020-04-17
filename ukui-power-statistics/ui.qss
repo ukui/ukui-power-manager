@@ -33,26 +33,23 @@ QHeaderView::section
     opacity:0.85;
 }
 
-
 /*QTabWidget*/
-QTabWidget::pane { /* The tab widget frame */
-      border-top: 2px solid #F7F7F7;
-      margin-right:40px;
-  }
 
-/* Style the tab using the tab sub-control. Note that
-  it reads QTabBar _not_ QTabWidget */
-QTabBar {
-    font:15px;
-    font:bold;
+QTabWidget::pane
+{ /* The tab widget frame */
+    border-top: 2px solid #F7F7F7;
+    margin-right:40px;
+    margin-left:40px;
 }
+
+/* Style the tab using the tab sub-control. */
 
 QTabBar::tab {
     border:2px;
     border-bottom:1px;
     border-color:#C2C7CB;
     padding:3px;
-    padding-right:40px;
+    margin-left:40px;
     font:15px;
     font-weight:500;
     color:#000000;
@@ -148,8 +145,8 @@ QScrollBar {
     width:8px;
 }
 QScrollBar::handle{
-    /*background:#3E3A3A;*/
-    background-color:rgba(72,72,76,1);
+    background:#8c8c8c;
+    /*background-color:rgba(72,72,76,1);*/
     border-radius:3px;
     height:30px;
 }
@@ -189,15 +186,22 @@ QComboBox {
 QComboBox QAbstractItemView
 {
     font-size:14px;
+    padding:4px 0px 4px 0px;
+    border:1px solid #c2c3c8;
+    border-radius:4px;
+    background-color:#FFFFFF;
+    color:#000000;
 }
 
 QComboBox QAbstractItemView::item
 {
-    height:30px;
-    background-color:white;
-    border-radius: 2px;
-    selection-background-color: lightgray;
-    color:black;
+    height:36px;
+}
+
+QComboBox QAbstractItemView::item:selected
+{
+    background-color:#ebedef;
+    color:#000000;
 }
 
 QComboBox::popup:on
@@ -225,10 +229,8 @@ QComboBox::drop-down {
 }
 
 #m_listWidget::item {
-
     height:36px;
     width:150px;
-
 }
 
 #m_listWidget::item:selected {
@@ -256,6 +258,6 @@ QChart {
 }
 
 QSplitter {
-    width:40px;
-    background-color:white;
+    width:0px;
+    background-color:transparent;
 }

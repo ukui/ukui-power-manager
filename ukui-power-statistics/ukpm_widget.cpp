@@ -1263,7 +1263,6 @@ void UkpmWidget::setSumTab()
     sumTypeCombox->addItems(QStringList()<<tr("charge")<<tr("charge-accurency")<<tr("discharge")<<tr("discharge-accurency"));
 
     QListView * listView = new QListView(sumTypeCombox);
-    listView->setStyleSheet("QListView::item:selected {background: #EDEDED }");
     sumTypeCombox->setView(listView);
 
     sum_line_btn = new QPushButton(tr("show line"),stat_widget);
@@ -1455,10 +1454,8 @@ void UkpmWidget::setHistoryTab()
     spanCombox->setFixedHeight(36);
 
     QListView * typeView = new QListView(typeCombox);
-    typeView->setStyleSheet("QListView::item:selected {background: #EDEDED }");
     typeCombox->setView(typeView);
     QListView * spanView = new QListView(spanCombox);
-    spanView->setStyleSheet("QListView::item:selected {background: #EDEDED }");
     spanCombox->setView(spanView);
 
     his_line_btn = new QPushButton(tr("show line"),his_widget);
@@ -2114,7 +2111,11 @@ void UkpmWidget::setupUI()
                           "border-top-left-radius:0px;border-bottom-right-radius:6px;border-bottom-left-radius:6px;}");
     QSplitterHandle* splitter_handle = mainsplitter->handle(1);
     if(splitter_handle)
+    {
         splitter_handle->setDisabled(true);
+        splitter_handle->setHidden(true);
+
+    }
     vlayout->addWidget(header);
     vlayout->addWidget(mainsplitter);
     vlayout->setSpacing(0);

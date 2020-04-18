@@ -227,11 +227,11 @@ ToolButton::ToolButton(ButtonType type)
     mType = type;
     switch (type) {
     case HELP:
-        setStyleSheet("QToolButton {border-radius:4px;background-color:#E7E7E7;}");
+        setStyleSheet("QToolButton {border-radius:4px;}");
         setIcon(QIcon(":/resource/icon/help-symbolic.png"));
         break;
     case CLOSE:
-        setStyleSheet("QToolButton {border-radius:4px;background-color:#E7E7E7;}");
+        setStyleSheet("QToolButton {border-radius:4px;}");
         setIcon(QIcon(":/resource/icon/close.png"));
         break;
     default:
@@ -266,7 +266,7 @@ void ToolButton::enterEvent(QEvent *event)
 
 void ToolButton::leaveEvent(QEvent *event)
 {
-    setStyleSheet("QToolButton {border-radius:4px;background-color:#E7E7E7;}");
+    setStyleSheet("QToolButton {border-radius:4px;}");
     if(mType == HELP)
         setIcon(QIcon(":/resource/icon/help-symbolic.png"));
     else

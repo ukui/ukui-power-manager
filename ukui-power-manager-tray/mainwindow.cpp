@@ -539,22 +539,22 @@ void MainWindow::initUi()
 void MainWindow::create_menu_item()
 {
     QAction *pset_preference  = new QAction(menu);
-    QAction *pshow_percentage = new QAction(menu);
+//    QAction *pshow_percentage = new QAction(menu);
     QAction *pset_bright = new QAction(menu);
 
     pset_preference->setIcon(QIcon(":/apps/setting.svg"));
     pset_preference->setText(tr("SetPower"));
 
-    pshow_percentage->setIcon(QIcon(":/apps/tick.png"));
-    pshow_percentage->setText(tr("ShowPercentage"));
+//    pshow_percentage->setIcon(QIcon(":/apps/tick.png"));
+//    pshow_percentage->setText(tr("ShowPercentage"));
 
     pset_bright->setIcon(QIcon(":/apps/setting.svg"));
     pset_bright->setText(tr("SetBrightness"));
 
     connect(pset_preference,&QAction::triggered,this,&MainWindow::set_preference_func);
     connect(pset_bright,&QAction::triggered,this,&MainWindow::set_brightness_func);
-    connect(pshow_percentage,&QAction::triggered,this,&MainWindow::show_percentage_func);
-    menu->addAction(pshow_percentage);
+//    connect(pshow_percentage,&QAction::triggered,this,&MainWindow::show_percentage_func);
+//    menu->addAction(pshow_percentage);
     menu->addAction(pset_bright);
     menu->addAction(pset_preference);
 }

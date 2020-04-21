@@ -106,21 +106,6 @@ QProgressBar {
     border-radius:2px;
 }
 
-QWidget{
-    border:0px;
-}
-
-QWidget:focus {
-    outline: none;
-}
-
-QWidget#widget {
-    margin-left: 0px;
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 0px;
-}
-
 QMainWindow#centralWidget {
     background-color:rgba(19,19,20,0.7);
     border-radius:6px;

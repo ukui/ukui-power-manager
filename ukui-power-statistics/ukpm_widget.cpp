@@ -20,6 +20,7 @@
 #include "sys/time.h"
 #include <float.h>
 #include <QGraphicsDropShadowEffect>
+#include <QtMath>
 
 #define GPM_HISTORY_RATE_TEXT			"Rate"
 #define GPM_HISTORY_CHARGE_TEXT			"Charge"
@@ -1428,7 +1429,7 @@ void UkpmWidget::setDetailTab()
     tableView->verticalHeader()->hide();
 
     QVBoxLayout *lay = new QVBoxLayout();
-    lay->setContentsMargins(0,10,0,0);
+    lay->setContentsMargins(0,15,0,0);
     lay->addWidget(tableView);
     detail_widget->setLayout(lay);
 //    detail_widget->hide();
@@ -2069,7 +2070,7 @@ void UkpmWidget::deviceRemoved(QDBusMessage  msg)
 void UkpmWidget::setupUI()
 {
     QDesktopWidget *deskdop = QApplication::desktop();
-    setFixedSize(870,590);
+    setFixedSize(860,580);
     move((deskdop->width() - this->width())/2, (deskdop->height() - this->height())/2);
 
     setWindowFlags(Qt::FramelessWindowHint);
@@ -2077,19 +2078,19 @@ void UkpmWidget::setupUI()
 
     QFrame *frame = new QFrame(this);
     frame->setObjectName("main_frame");
-    frame->setStyleSheet("QFrame#main_frame{background-color: transparent;border-radius:6px}"); //设置圆角与背景透明
-    frame->setGeometry(5, 5, this->width() - 5, this->height() - 5);//设置有效范围框
-    QGraphicsDropShadowEffect *shadow_effect = new QGraphicsDropShadowEffect(this);
-    shadow_effect->setOffset(0, 0);
-    shadow_effect->setColor(Qt::gray);
-    shadow_effect->setBlurRadius(10);
-    frame->setGraphicsEffect(shadow_effect);
+    frame->setStyleSheet("QFrame#main_frame{background-color: white;border-radius:6px;border:1px solid #c2c3c8;}"); //设置圆角与背景透明
+//    frame->setGeometry(5, 5, this->width() - 5, this->height() - 5);//设置有效范围框
+//    QGraphicsDropShadowEffect *shadow_effect = new QGraphicsDropShadowEffect(this);
+//    shadow_effect->setOffset(0, 0);
+//    shadow_effect->setColor(Qt::gray);
+//    shadow_effect->setBlurRadius(10);
+//    frame->setGraphicsEffect(shadow_effect);
 
     QSplitter *mainsplitter = new QSplitter(Qt::Horizontal);//splittering into two parts
     listWidget = new QListWidget(mainsplitter);
     listWidget->setObjectName("m_listWidget");
     listWidget->setFixedWidth(180);
-    listWidget->setSpacing(7);
+    listWidget->setSpacing(8);
     listWidget->setSelectionMode(QAbstractItemView::SingleSelection);
     tab_widget =  new QTabWidget(mainsplitter);
 //    tab_widget->setFixedWidth(600);
@@ -2123,10 +2124,11 @@ void UkpmWidget::setupUI()
 //    this->setStyleSheet("QWidget {background:white}");
     frame->setLayout(vlayout);//main layout of the UI
     QVBoxLayout *mainlay = new QVBoxLayout;
+    mainlay->setContentsMargins(0,0,0,0);
     this->setLayout(mainlay);
     mainlay->addWidget(frame);
     title = new TitleWidget(this);
-    title->move(10,10);
+    title->move(0,0);
 
     setDetailTab();
     setHistoryTab();
@@ -2153,3 +2155,13 @@ void UkpmWidget::setupUI()
 
 }
 
+void UkpmWidget::paintEvent(QPaintEvent *event)
+{
+    QPainter p(this);
+    p.setPen(Qt::NoPen);
+    QPainterPath path;
+    path.addRoundedRect(rect(),6,6);
+    p.setRenderHint(QPainter::Antialiasing);
+    setProperty("blurRegion",QRegion(path.toFillPolygon().toPolygon()));
+    QWidget::paintEvent(event);
+}

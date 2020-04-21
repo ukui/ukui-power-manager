@@ -36,7 +36,7 @@ TitleWidget::TitleWidget(QWidget *parent)
     , m_isTransparent(false)
 {
     // 初始化;
-    setWindowBorderWidth(20);
+    setWindowBorderWidth(0);
     initControl();
     connectSlots();
 
@@ -279,7 +279,7 @@ DeviceWidget::DeviceWidget(QWidget *parent):QWidget(parent)
 {
     QHBoxLayout *layout = new QHBoxLayout;
     layout->setSpacing(5);
-    layout->setContentsMargins(0,0,0,0);
+    layout->setContentsMargins(8,0,8,0);
     icon = new QLabel(this);
     content = new QLabel(this);
     layout->addWidget(icon);
@@ -312,7 +312,7 @@ void DeviceWidget::set_device_text(bool flag,QString text)
     QFont font((content->font()));
     font.setPixelSize(14);
     QFontMetrics metric(font);
-    QString metric_text = metric.elidedText(m_text,Qt::ElideRight,120);
+    QString metric_text = metric.elidedText(m_text,Qt::ElideRight,100);
     content->setText(metric_text);
     if(flag)
         content->setStyleSheet("QLabel {color:white}");

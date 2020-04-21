@@ -223,9 +223,7 @@ QComboBox::drop-down {
 #m_listWidget {
     font-size:14px;
     background-color: #F7F7F7;
-    padding-left: 10px;
-    padding-right: 10px;
-    border-bottom-left-radius: 4px;
+    border-bottom-left-radius: 6px;
 }
 
 #m_listWidget::item {

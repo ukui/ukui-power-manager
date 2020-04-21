@@ -200,6 +200,8 @@ public:
     QStandardItemModel* model;
     QTableView *tableView;
     int index_old;
+protected:
+    void paintEvent(QPaintEvent *event);
 };
 
 #endif // UKPM_WIDGET_H

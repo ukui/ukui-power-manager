@@ -20,6 +20,7 @@
 #include <QDBusObjectPath>
 #include <QDBusMessage>
 #include <QDBusConnection>
+#include <QDBusInterface>
 #include <QDebug>
 
 #include "engine_common.h"
@@ -67,13 +68,20 @@ EngineDevice::EngineDevice(QObject *parent) : QObject(parent)
 
     power_device_get_devices();
     QDBusConnection::systemBus().connect(DBUS_SERVICE,DBUS_OBJECT,DBUS_SERVICE,
-                                         QString("device-added"),this,SLOT(power_device_add(QDBusMessage)));
+                                         ("DeviceAdded"),this,SLOT(power_device_add(QDBusObjectPath)));
     QDBusConnection::systemBus().connect(DBUS_SERVICE,DBUS_OBJECT,DBUS_SERVICE,
-                                         QString("device-removed"),this,SLOT(power_device_remove(QDBusMessage)));
+                                         ("DeviceRemoved"),this,SLOT(power_device_remove(QDBusObjectPath)));
     settings = new QGSettings(GPM_SETTINGS_SCHEMA);
     connect(settings,SIGNAL(changed(const QString&)),this,SLOT(engine_policy_settings_cb(const QString&)));
 
-//    QDBusConnection::systemBus().connect(MYDBUS_SERVICE,MYDBUS_OBJECT,MYDBUS_SERVICE,
+//    QDBusInterface *interface = new QDBusInterface(DBUS_SERVICE,DBUS_OBJECT,DBUS_SERVICE,QDBusConnection::systemBus(),this);
+//    if(interface->isValid())
+//    {
+//        qDebug()<<("init ok when create qdbusinterface");
+//        connect(interface,SIGNAL(DeviceAdded(QString)),this,SLOT(mypower_device_add(QString)));
+//        connect(interface,SIGNAL(DeviceRemoved(QString)),this,SLOT(mypower_device_removed(QString)));
+//    }
+    //    QDBusConnection::systemBus().connect(MYDBUS_SERVICE,MYDBUS_OBJECT,MYDBUS_SERVICE,
 //                                         QString("deviceadded"),this,SLOT(mypower_device_add(QString)));
 //    QDBusConnection::systemBus().connect(MYDBUS_SERVICE,MYDBUS_OBJECT,MYDBUS_SERVICE,
 //                                         QString("deviceremoved"),this,SLOT(mypower_device_removed(QString)));
@@ -102,47 +110,13 @@ void EngineDevice::engine_policy_settings_cb(const QString& str)
     power_device_recalculate_icon();
 }
 
-void EngineDevice::mypower_device_add(QString msg)
-{
-    DEVICE *dev = new DEVICE;
-    dev->m_dev.path = msg;
-    dev->m_dev.kind = UP_DEVICE_KIND_BATTERY;
-    dev->m_dev.warnlevel = (UpDeviceLevel)1;
-    dev->m_dev.Capacity = 88;
-    dev->m_dev.State = (UpDeviceState)1;
-
-    /*add to array*/
-    devices.append(dev);
-    /*connect notify signals*/
-    connect(dev,SIGNAL(device_property_changed(QDBusMessage,QString)),this,SLOT(power_device_change_callback(QDBusMessage,QString)));
-    /*recaculate state*/
-    Q_EMIT one_device_add(dev);
-}
-
-void EngineDevice::mypower_device_removed(QString msg)
-{
-    Q_FOREACH (auto item, devices)
-    {
-        if(item->m_dev.path == msg)
-        {
-            devices.removeOne(item);
-            Q_EMIT one_device_remove(item);
-            break;
-        }
-    }
-}
-
-void EngineDevice::power_device_add(QDBusMessage msg)
+void EngineDevice::power_device_add(QDBusObjectPath msg)
 {
     /* assign warning */
     /* check capacity */
     /* get device properties */
-
-    QDBusObjectPath objectPath;
-    const QDBusArgument &arg = msg.arguments().at(0).value<QDBusArgument>();
-    arg >> objectPath;
-
-    QDBusMessage msgTmp = QDBusMessage::createMethodCall(DBUS_SERVICE,objectPath.path(),
+//    qDebug()<<"EngineDevice::power_device_add";
+    QDBusMessage msgTmp = QDBusMessage::createMethodCall(DBUS_SERVICE,msg.path(),
             "org.freedesktop.DBus.Properties","GetAll");
     msgTmp << DBUS_INTERFACE_DEV;
     QDBusMessage res = QDBusConnection::systemBus().call(msgTmp);
@@ -153,15 +127,36 @@ void EngineDevice::power_device_add(QDBusMessage msg)
         dbusArg >> map;
         UpDeviceKind kind = (UpDeviceKind)map.value("Type").toInt();
 
-        if(kind != UP_DEVICE_KIND_LINE_POWER && kind != UP_DEVICE_KIND_BATTERY && kind != UP_DEVICE_KIND_COMPUTER)
+        if(kind != UP_DEVICE_KIND_LINE_POWER && kind != UP_DEVICE_KIND_BATTERY && kind != UP_DEVICE_KIND_PHONE && kind != UP_DEVICE_KIND_COMPUTER)
             return;
 
         DEVICE *dev = new DEVICE;
-        dev->m_dev.path = objectPath.path();
+        dev->m_dev.path = msg.path();
         dev->m_dev.kind = kind;
         dev->m_dev.warnlevel = (UpDeviceLevel)map.value("WarningLevel").toUInt();
-        dev->m_dev.Capacity = map.value(QString("Capacity")).toDouble();
-        dev->m_dev.State = (UpDeviceState)map.value("State").toUInt();
+
+        dev->m_dev.Type = engine_kind_to_localised_text ((UpDeviceKind)map.value(QString("Type")).toInt(),1);
+        dev->m_dev.Model = map.value(QString("Model")).toString();
+        dev->m_dev.Device = map.value(QString("NativePath")).toString();
+        dev->m_dev.Capacity = (map.value(QString("Capacity")).toDouble());
+        dev->m_dev.Energy = QString::number(map.value(QString("Energy")).toDouble(), 'f', 1)+ " Wh";
+        dev->m_dev.EnergyEmpty= QString::number(map.value(QString("EnergyEmpty")).toDouble(), 'f', 1)+ " Wh";
+        dev->m_dev.EnergyFull = QString::number(map.value(QString("EnergyFull")).toDouble(), 'f', 1)+ " Wh";
+        dev->m_dev.EnergyRate = QString::number(map.value(QString("EnergyRate")).toDouble(), 'f', 1) + " W";
+
+        dev->m_dev.IsPresent = (map.value(QString("IsPresent")).toBool());
+//        qDebug()<<"EngineDevice ispresent:"<<dev->m_dev.IsPresent;
+//        QDBusVariant dbusv = qvariant_cast<QDBusVariant>(map.value(QString("IsPresent")));
+//        dev->m_dev.IsPresent = dbusv.variant().toBool();
+//        qDebug()<<"gdbus EngineDevice ispresent:"<<dev->m_dev.IsPresent;
+
+        dev->m_dev.PowerSupply = boolToString(map.value(QString("PowerSupply")).toBool());
+        dev->m_dev.Percentage = map.value(QString("Percentage")).toDouble();
+        dev->m_dev.Percentage = ( (float)( (int)( (dev->m_dev.Percentage + 0.05) * 10 ) ) ) / 10;
+        dev->m_dev.Online = boolToString(map.value(QString("Online")).toBool());
+        dev->m_dev.State = (UpDeviceState)map.value(QString("State")).toInt();
+        dev->m_dev.TimeToEmpty = map.value(QString("TimeToEmpty")).toLongLong();
+        dev->m_dev.TimeToFull = map.value(QString("TimeToFull")).toLongLong();
 
         /*add to array*/
         devices.append(dev);
@@ -175,8 +170,9 @@ void EngineDevice::power_device_add(QDBusMessage msg)
     }
 }
 
-void EngineDevice::power_device_remove(QDBusMessage msg)
+void EngineDevice::power_device_remove(QDBusObjectPath msg)
 {
+//    qDebug()<<"EngineDevice power_device_remove";
     Q_FOREACH (auto item, devices)
     {
         if(item->m_dev.path == msg.path())
@@ -220,6 +216,7 @@ void EngineDevice::getProperty(QString path,DEV& dev)
         dev.EnergyFull = QString::number(map.value(QString("EnergyFull")).toDouble(), 'f', 1)+ " Wh";
         dev.EnergyRate = QString::number(map.value(QString("EnergyRate")).toDouble(), 'f', 1) + " W";
         dev.IsPresent = (map.value(QString("IsPresent")).toBool());
+//        qDebug()<< "EngineDevice::getProperty::"<<dev.IsPresent;
         dev.PowerSupply = boolToString(map.value(QString("PowerSupply")).toBool());
         dev.Percentage = map.value(QString("Percentage")).toDouble();
         dev.Percentage = ( (float)( (int)( (dev.Percentage + 0.05) * 10 ) ) ) / 10;
@@ -268,11 +265,13 @@ void EngineDevice::putAttributes(QMap<QString,QVariant>& map,DEV &btrDetailData)
     {
         btrDetailData.Percentage = map.value(QString("Percentage")).toDouble();
         btrDetailData.Percentage = ( (float)( (int)( (btrDetailData.Percentage + 0.05) * 10 ) ) ) / 10;
-
     }
 
     if(map.contains("PowerSupply"))
         btrDetailData.PowerSupply = (map.value(QString("PowerSupply")).toBool()) ? tr("Yes") :tr("No");
+
+    if(map.contains("IsPresent"))
+        btrDetailData.IsPresent = (map.value(QString("IsPresent")).toBool());
 }
 
 void EngineDevice::power_device_change_callback(QDBusMessage msg,QString path)
@@ -663,7 +662,10 @@ QString EngineDevice::engine_get_device_predict(DEVICE* dv)
     time_to_empty = dv->m_dev.TimeToEmpty;
     time_to_full = dv->m_dev.TimeToFull;
     if (!is_present)
+    {
+        qDebug()<<"phone not present when get predict .........";
         return NULL;
+    }
 
     kind_desc = engine_kind_to_localised_text (kind, 1);
 
@@ -941,7 +943,7 @@ QString EngineDevice::engine_kind_to_localised_text (UpDeviceKind kind, uint num
         break;
     case UP_DEVICE_KIND_PHONE:
         /* TRANSLATORS: cell phone (mobile...) */
-        text =  ("Cell phone");
+        text =  tr("Cell phone");
         break;
     case UP_DEVICE_KIND_MEDIA_PLAYER:
         /* TRANSLATORS: media player, mp3 etc */
@@ -1057,6 +1059,7 @@ QString EngineDevice::engine_get_device_icon (DEVICE *device)
         if (!is_present) {
             /* battery missing */
             result = QString ("gpm-%1-000").arg(prefix);
+            qDebug()<<"phone not present device .........";
 
         } else if (state == UP_DEVICE_STATE_FULLY_CHARGED) {
             result = QString ("gpm-%1-100").arg(prefix);
@@ -1064,6 +1067,9 @@ QString EngineDevice::engine_get_device_icon (DEVICE *device)
         } else if (state == UP_DEVICE_STATE_DISCHARGING) {
             index_str = engine_get_device_icon_index (percentage);
             result = QString("gpm-%1-%2").arg(prefix).arg(index_str);
+        } else if (state == UP_DEVICE_STATE_CHARGING) {
+            index_str = engine_get_device_icon_index (percentage);
+            result = QString("gpm-%1-%2-charging").arg(prefix).arg(index_str);
         }
     }
 

@@ -606,6 +606,7 @@ void MainWindow::get_power_list()
         QListWidgetItem *list_item = new QListWidgetItem(ui->listWidget);
         list_item->setSizeHint(QSize(324,82));
         ui->listWidget->setItemWidget(list_item,df);
+        device_item_map.insert(dv,list_item);
     }
 
 //    for(int i = 0; i < 2; i++)
@@ -629,6 +630,7 @@ void MainWindow::get_power_list()
 
 void MainWindow::add_one_device(DEVICE *device)
 {
+//    qDebug()<< "mainwindow::"<<device->m_dev.IsPresent<<device->m_dev.Type;
     DeviceForm *df = new DeviceForm(this);
     df->set_device(device);
     QListWidgetItem *list_item = new QListWidgetItem(ui->listWidget);
@@ -651,7 +653,7 @@ void MainWindow::add_one_device(DEVICE *device)
 
 void MainWindow::remove_one_device(DEVICE *device)
 {
-
+//    qDebug()<<"mainwindow begin to find and remove device";
     if(device_item_map.contains(device))
     {
         QListWidgetItem *del_item = device_item_map.value(device);

@@ -570,7 +570,7 @@ void UkpmWidget::ukpm_update_info_data (DEV* device)
     if (has_history)
     {
         if(index == -1)
-            tab_widget->addTab(his_widget,tr("history"));
+            tab_widget->addTab(his_widget,tr(" history "));
     }
     else
     {
@@ -581,7 +581,7 @@ void UkpmWidget::ukpm_update_info_data (DEV* device)
     if (has_statistics)
     {
         if(-1 == index)
-            tab_widget->addTab(stat_widget,tr("statistics"));
+            tab_widget->addTab(stat_widget,tr(" statistics "));
     }
     else
     {
@@ -1398,7 +1398,7 @@ void UkpmWidget::showSumDataPoint(bool flag)
 void UkpmWidget::setDetailTab()
 {
     detail_widget = new QWidget();
-    tab_widget->addTab(detail_widget,tr("detail"));
+    tab_widget->addTab(detail_widget,tr(" detail "));
 
     tableView  = new QTableView();
 
@@ -2087,12 +2087,21 @@ void UkpmWidget::setupUI()
 //    frame->setGraphicsEffect(shadow_effect);
 
     QSplitter *mainsplitter = new QSplitter(Qt::Horizontal);//splittering into two parts
+    QHBoxLayout *deviceLay = new QHBoxLayout;
+    deviceLay->setContentsMargins(0,0,40,0);
+    deviceLay->setSpacing(40);
     listWidget = new QListWidget(mainsplitter);
     listWidget->setObjectName("m_listWidget");
     listWidget->setFixedWidth(180);
     listWidget->setSpacing(8);
     listWidget->setSelectionMode(QAbstractItemView::SingleSelection);
-    tab_widget =  new QTabWidget(mainsplitter);
+    deviceLay->addWidget(listWidget);
+    tab_widget =  new QTabWidget(this);
+//    QHBoxLayout *barlay = new QHBoxLayout;
+//    barlay->setContentsMargins(0,0,0,0);
+//    tab_widget->tabBar()->setLayout(barlay);
+    deviceLay->addWidget(tab_widget);
+
 //    tab_widget->setFixedWidth(600);
 //    QList<int> list_src;
 //    list_src.append(180);
@@ -2108,17 +2117,18 @@ void UkpmWidget::setupUI()
     header->setWindowFlags(Qt::FramelessWindowHint);
     header->setStyleSheet("QFrame{padding-bottom:30px;background-color:white;border-top-right-radius:6px;"
                           "border-top-left-radius:6px;border-bottom-right-radius:0px;border-bottom-left-radius:0px;}");
-    mainsplitter->setStyleSheet("QSplitter{ background-color:white;border-top-right-radius:0px;"
-                          "border-top-left-radius:0px;border-bottom-right-radius:6px;border-bottom-left-radius:6px;}");
-    QSplitterHandle* splitter_handle = mainsplitter->handle(1);
-    if(splitter_handle)
-    {
-        splitter_handle->setDisabled(true);
-        splitter_handle->setHidden(true);
+//    mainsplitter->setStyleSheet("QSplitter{ background-color:white;border-top-right-radius:0px;"
+//                          "border-top-left-radius:0px;border-bottom-right-radius:6px;border-bottom-left-radius:6px;}");
+//    QSplitterHandle* splitter_handle = mainsplitter->handle(1);
+//    if(splitter_handle)
+//    {
+//        splitter_handle->setDisabled(true);
+//        splitter_handle->setHidden(true);
 
-    }
+//    }
     vlayout->addWidget(header);
-    vlayout->addWidget(mainsplitter);
+//    vlayout->addWidget(mainsplitter);
+    vlayout->addLayout(deviceLay);
     vlayout->setSpacing(0);
     vlayout->setContentsMargins(0,0,0,0);
 //    this->setStyleSheet("QWidget {background:white}");

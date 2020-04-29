@@ -38,8 +38,8 @@ QHeaderView::section
 QTabWidget::pane
 { /* The tab widget frame */
     border-top: 2px solid #F7F7F7;
-    margin-right:40px;
-    margin-left:40px;
+    text-align:left;
+
 }
 
 /* Style the tab using the tab sub-control. */
@@ -49,13 +49,13 @@ QTabBar::tab {
     border-bottom:1px;
     border-color:#C2C7CB;
     padding:3px;
-    margin-left:40px;
     font:15px;
     font-weight:500;
     color:#000000;
     opacity:0.85;
     height:32px;
     text-align:left;
+    margin-right:40px;
 }
 
 QTabBar::tab:selected { /* The tab widget frame */

@@ -663,7 +663,7 @@ QString EngineDevice::engine_get_device_predict(DEVICE* dv)
     time_to_full = dv->m_dev.TimeToFull;
     if (!is_present)
     {
-        qDebug()<<"phone not present when get predict .........";
+//        qDebug()<<"phone not present when get predict .........";
         return NULL;
     }
 
@@ -1059,7 +1059,7 @@ QString EngineDevice::engine_get_device_icon (DEVICE *device)
         if (!is_present) {
             /* battery missing */
             result = QString ("gpm-%1-000").arg(prefix);
-            qDebug()<<"phone not present device .........";
+//            qDebug()<<"phone not present device .........";
 
         } else if (state == UP_DEVICE_STATE_FULLY_CHARGED) {
             result = QString ("gpm-%1-100").arg(prefix);

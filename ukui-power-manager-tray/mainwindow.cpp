@@ -418,7 +418,7 @@ void MainWindow::initUi()
 
     dev_number = get_engine_dev_number();
 //    dev_number = 3;
-    resize(360,72 + 8 + 82*(dev_number>3?3:dev_number));
+    resize(360,76 + 8 + 82*(dev_number>3?3:dev_number));
 
     ui->listWidget->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->listWidget->setSpacing(0);
@@ -427,7 +427,7 @@ void MainWindow::initUi()
     ui->mainVerticalLayout->setSpacing(0);
     ui->horizontalLayout->setContentsMargins(0,0,4,0);
     ui->horizontalLayout->setSpacing(0);
-    ui->widget->setFixedHeight(26);
+    ui->widget->setFixedHeight(30);
     if(dev_number > 3)
     {
         ui->listWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
@@ -437,7 +437,7 @@ void MainWindow::initUi()
         ui->listWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     }
     ui->power_title->setText(tr("PowerManagement"));
-    ui->power_title->setAlignment(Qt::AlignLeft);
+    ui->power_title->setAlignment(Qt::AlignLeft|Qt::AlignVCenter);
 
     connect(ui->statistic_button,SIGNAL(released()),this,SLOT(activate_power_statistic()));
 
@@ -644,7 +644,7 @@ void MainWindow::add_one_device(DEVICE *device)
     }
     else
     {
-        resize(360,72 + 8 + 82*dev_number);
+        resize(360,76 + 8 + 82*dev_number);
         ui->listWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         move(pos().x(),pos().y()-82);
     }
@@ -676,7 +676,7 @@ void MainWindow::remove_one_device(DEVICE *device)
             ui->listWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
             if(dev_number < 3)
             {
-                resize(360,72 + 8 + 82*dev_number);
+                resize(360,76 + 8 + 82*dev_number);
                 move(pos().x(),pos().y()+82);
             }
         }

@@ -246,9 +246,15 @@ void ToolButton::mousePressEvent(QMouseEvent *event)
     {
         setStyleSheet("QToolButton {border-radius:4px;background-color:#3257CA;}");
         if(mType == HELP)
+        {
+            setStyleSheet("QToolButton {border-radius:4px;background-color:#3257CA;}");
             setIcon(QIcon(":/resource/icon/help-symbolic_white.png"));
+        }
         else
+        {
+            setStyleSheet("QToolButton {border-radius:4px;background-color:#d73435;}");
             setIcon(QIcon(":/resource/icon/closeWhite.png"));
+        }
 
     }
     QToolButton::mousePressEvent(event);
@@ -256,11 +262,16 @@ void ToolButton::mousePressEvent(QMouseEvent *event)
 
 void ToolButton::enterEvent(QEvent *event)
 {
-    setStyleSheet("QToolButton {border-radius:4px;background-color:#3D6BE5;}");
     if(mType == HELP)
+    {
+        setStyleSheet("QToolButton {border-radius:4px;background-color:#3D6BE5;}");
         setIcon(QIcon(":/resource/icon/help-symbolic_white.png"));
+    }
     else
+    {
+        setStyleSheet("QToolButton {border-radius:4px;background-color:#f04134;}");
         setIcon(QIcon(":/resource/icon/closeWhite.png"));
+    }
     QToolButton::enterEvent(event);
 }
 

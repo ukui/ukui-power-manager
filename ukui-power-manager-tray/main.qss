@@ -40,7 +40,7 @@ QLabel {
 }
 
 QLabel#power_title {
-    height:20px;
+    height:40px;
     font-size:20px;
     font-family:Noto Sans CJK SC;
     font-weight:400;

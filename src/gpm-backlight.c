@@ -72,6 +72,7 @@ struct GpmBacklightPrivate
 	GTimer			*idle_timer;
 	guint			 idle_dim_timeout;
 	guint			 master_percentage;
+	GDBusProxy		*proxy;
 };
 
 enum {
@@ -166,6 +167,97 @@ gpm_backlight_set_brightness (GpmBacklight *backlight, guint percentage, GError 
 	return ret;
 }
 
+static void
+gpm_backlight_brightness_interact_panel (GpmBacklight *backlight, gint *x, gint *y, gint w, gint h, gint startx, gint starty)
+{
+        GVariant *position;
+	GVariant *res;
+        GVariant *height;
+        gint pos;
+        gint ht;
+        GError *error = NULL;
+        position = g_dbus_proxy_call_sync (backlight->priv->proxy, "GetPanelPosition",g_variant_new("(s)","position"),G_DBUS_CALL_FLAGS_NONE,-1,NULL,&error);
+	if(position == NULL)
+	{
+		if(error != NULL)
+			g_error_free (error);
+		*x = startx + w/100;
+                *y = starty + h*4/100;
+                return;
+	}
+	else
+	{
+		g_variant_get (position, "(i)", &pos);
+		g_variant_unref (position);
+	}
+        /*res = g_dbus_proxy_call_sync (backlight->priv->proxy, "GetPanelPosition",g_variant_new("(s)","position"),G_DBUS_CALL_FLAGS_NONE,-1,NULL,&error);
+        if(error == NULL && res != NULL)
+	{
+		g_variant_get(res,"(i)",&pos);
+                g_variant_unref (res);
+                g_variant_unref (position);
+        }
+	else if(error != NULL)
+	{
+		g_message("failed to get position");
+		g_error_free (error);
+		*x = startx + w/100;
+                *y = starty + h*4/100;
+		return;
+	}
+
+        height = g_dbus_proxy_call_sync (backlight->priv->proxy, "GetPanelHeight",NULL,G_DBUS_CALL_FLAGS_NONE,-1,NULL,&error);
+        if(height == NULL)
+        {
+                g_message("failed to get height");
+                g_error_free (error);
+                g_variant_unref (position);
+                *x = startx + w/100;
+                *y = starty + h*4/100;
+                return;
+        }
+        g_variant_get (position, "(i)", &pos);
+
+        g_variant_unref (position);
+        g_variant_unref (height);*/
+
+        switch (pos)
+        {
+        case 0:
+        {
+                *x = startx + w/100;
+                *y = starty + h*4/100;
+                break;
+        }
+        case 1:
+        {
+                *x = startx + w/100;
+                *y = starty + h*96/100 - 300;
+                break;
+        }
+        case 2:
+        {
+                *x = startx + w*99/100 - 64;
+                *y = starty + h*4/100;
+                break;
+        }
+        case 3:
+        {
+                *x = startx + w/100;
+                *y = starty + h*4/100;
+                break;
+        }
+        default:
+        {
+                *x = startx + w/100;
+                *y = starty + h*4/100;
+                break;
+        }
+
+        }
+        return;
+}
+                                                                                                                                                                                                 
 /**
  * gpm_backlight_dialog_init:
  *
@@ -217,6 +309,14 @@ gpm_backlight_dialog_show (GpmBacklight *backlight)
         GdkDeviceManager *device_manager;
         GdkDevice     *device;
 
+	GtkStyleContext *context = gtk_widget_get_style_context (GTK_WIDGET (backlight->priv->popup));
+        gtk_style_context_save (context);
+        GtkCssProvider *provider = gtk_css_provider_new ();
+        gtk_css_provider_load_from_data(provider,".volume-box {border-radius:6px;background:rgba(0,0,0,0.55);}",-1,NULL);
+        gtk_style_context_add_provider (context,GTK_STYLE_PROVIDER(provider),GTK_STYLE_PROVIDER_PRIORITY_USER);
+        gtk_style_context_add_class(context,"volume-box");
+
+	g_object_unref (provider);
 	/*
 	 * get the window size
 	 * if the window hasn't been mapped, it doesn't necessarily
@@ -260,9 +360,14 @@ gpm_backlight_dialog_show (GpmBacklight *backlight)
 	screen_w = geometry.width;
 	screen_h = geometry.height;
 
-	x = ((screen_w - orig_w) / 2) + geometry.x;
-	y = geometry.y + (screen_h / 2) + (screen_h / 2 - orig_h) / 2;
-
+	//x = ((screen_w - orig_w) / 2) + geometry.x;
+	//y = geometry.y + (screen_h / 2) + (screen_h / 2 - orig_h) / 2;
+	if (backlight->priv->proxy == NULL){
+		x = geometry.x + screen_w / 100;
+		y = geometry.y + (screen_h * 4) / 100;
+	}
+	else
+		gpm_backlight_brightness_interact_panel(backlight,&x,&y,screen_w,screen_h,geometry.x,geometry.y);
 	gtk_window_move (GTK_WINDOW (backlight->priv->popup), x, y);
 
 	gtk_widget_show (backlight->priv->popup);
@@ -715,7 +820,8 @@ gpm_backlight_finalize (GObject *object)
 	g_object_unref (backlight->priv->idle);
 	g_object_unref (backlight->priv->brightness);
         //g_object_unref (backlight->priv->console);
-
+	if (backlight->priv->proxy != NULL)
+		g_object_unref (backlight->priv->proxy);
 	g_return_if_fail (backlight->priv != NULL);
 	G_OBJECT_CLASS (gpm_backlight_parent_class)->finalize (object);
 }
@@ -800,8 +906,9 @@ gpm_backlight_init (GpmBacklight *backlight)
 
 	/* use a visual widget */
 	backlight->priv->popup = msd_media_keys_window_new ();
+	/*brightness icon---jh*/
 	msd_media_keys_window_set_action_custom (MSD_MEDIA_KEYS_WINDOW (backlight->priv->popup),
-						 "gpm-brightness-lcd",
+						 "display-brightness-symbolic",
 						 TRUE);
         gtk_window_set_position (GTK_WINDOW (backlight->priv->popup), GTK_WIN_POS_NONE);
 
@@ -818,6 +925,23 @@ gpm_backlight_init (GpmBacklight *backlight)
 
 	/* sync at startup */
 	gpm_backlight_brightness_evaluate_and_set (backlight, FALSE, TRUE);
+
+	GError *error = NULL;
+	//different from qdbus
+	backlight->priv->proxy = g_dbus_proxy_new_for_bus_sync (G_BUS_TYPE_SESSION,G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES,
+					       NULL,
+					       "com.ukui.panel.desktop",
+					       "/",
+					       "com.ukui.panel.desktop",					       
+					       NULL,
+					       &error );
+	if(backlight->priv->proxy == NULL)
+	{
+		if(error != NULL){
+			egg_debug ("error connecting to dbus - %s",error->message);
+			g_error_free (error);
+		}
+	}
 }
 
 /**

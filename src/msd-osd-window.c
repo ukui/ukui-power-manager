@@ -463,7 +463,8 @@ msd_osd_window_init (MsdOsdWindow *window)
                 scale = MIN (scalew, scaleh);
                 size = 130 * MAX (1, scale);
 
-                gtk_window_set_default_size (GTK_WINDOW (window), size, size);
+		/*window size---jh*/
+                gtk_window_set_default_size (GTK_WINDOW (window), 64, 300);
 
                 window->priv->fade_out_alpha = 1.0;
         } else {

@@ -49,6 +49,59 @@ struct MsdMediaKeysWindowPrivate
 
 G_DEFINE_TYPE (MsdMediaKeysWindow, msd_media_keys_window, MSD_TYPE_OSD_WINDOW)
 
+
+static void
+msd_osd_window_draw_rounded_rectangle (cairo_t* cr,
+                                       gdouble  aspect,
+                                       gdouble  x,
+                                       gdouble  y,
+                                       gdouble  corner_radius,
+                                       gdouble  width,
+                                       gdouble  height)
+{
+        gdouble radius = corner_radius / aspect;
+
+        cairo_move_to (cr, x + radius, y);
+
+        cairo_line_to (cr,
+                       x + width - radius,
+                       y);
+        cairo_arc (cr,
+                   x + width - radius,
+                   y + radius,
+                   radius,
+                   -90.0f * G_PI / 180.0f,
+                   0.0f * G_PI / 180.0f);
+        cairo_line_to (cr,
+                       x + width,
+                       y + height - radius);
+        cairo_arc (cr,
+                   x + width - radius,
+                   y + height - radius,
+                   radius,
+                   0.0f * G_PI / 180.0f,
+                   90.0f * G_PI / 180.0f);
+        cairo_line_to (cr,
+                       x + radius,
+                       y + height);
+        cairo_arc (cr,
+                   x + radius,
+                   y + height - radius,
+                   radius,
+                   90.0f * G_PI / 180.0f,
+                   180.0f * G_PI / 180.0f);
+        cairo_line_to (cr,
+                       x,
+                       y + radius);
+        cairo_arc (cr,
+                   x + radius,
+                   y + radius,
+                   radius,
+                   180.0f * G_PI / 180.0f,
+                   270.0f * G_PI / 180.0f);
+        cairo_close_path (cr);
+}
+
 static void
 volume_controls_set_visible (MsdMediaKeysWindow *window,
                              gboolean            visible)
@@ -402,6 +455,62 @@ draw_volume_boxes (MsdMediaKeysWindow *window,
                    double              height)
 {
         gdouble   x1;
+	gdouble   y1;
+        GtkStyleContext *context;
+	gdouble   bar_width = 6;
+	gdouble   bar_height = 200;
+
+        height = round (height) - 1;
+        width = round (width) - 1;
+        x1 = round ((width - 1) * percentage);
+	y1 = round (_y0 + (height-1)*(1-percentage));
+	gdouble prog = 32 + bar_height*(1-percentage);
+        context = gtk_widget_get_style_context (GTK_WIDGET (window));
+
+        /* bar background */
+        gtk_style_context_save (context);
+
+	/*cairo_set_source_rgba(cr, 0, 0, 0, 0.2);
+        cairo_rectangle(cr,29, 32, bar_width, 200);	
+        cairo_fill (cr);*/
+
+	cairo_save(cr);
+	cairo_set_source_rgba(cr, 0, 0, 0, 0.2);
+	msd_osd_window_draw_rounded_rectangle (cr, 1.0, 29, 32, 3, bar_width, 200);
+        cairo_fill (cr);
+	cairo_restore (cr);
+
+
+        gtk_style_context_restore (context);
+
+        /* bar progress */
+        if (percentage < 0.01)
+                return;
+
+        gtk_style_context_save (context);
+        /*cairo_set_source_rgba(cr, 1, 1, 1, 0.8);
+        cairo_rectangle(cr,29, prog, bar_width, (bar_height)*percentage);
+        cairo_fill (cr);*/	
+	
+	cairo_save(cr);
+	cairo_set_source_rgba(cr, 1, 1, 1, 0.8);
+	msd_osd_window_draw_rounded_rectangle (cr, 1.0, 29, prog, 3, bar_width, (bar_height)*percentage);
+        cairo_fill (cr);
+	cairo_restore (cr);
+
+        gtk_style_context_restore (context);
+}
+
+static void
+draw_volume_boxes2 (MsdMediaKeysWindow *window,
+                   cairo_t            *cr,
+                   double              percentage,
+                   double              _x0,
+                   double              _y0,
+                   double              width,
+                   double              height)
+{
+        gdouble   x1;
         GtkStyleContext *context;
 
         height = round (height) - 1;
@@ -531,7 +640,15 @@ render_custom (MsdMediaKeysWindow *window,
         GdkPixbuf         *pixbuf;
         int                icon_size;
 
-        icon_size = (int)width;
+	//icon_size = (int)width;
+        icon_size = (int)24;	
+	/*cairo_save(cr);
+	cairo_set_source_rgba(cr, 0, 0, 0, 0.55);
+	msd_osd_window_draw_rounded_rectangle (cr, 1.0, 0, 0, 4, 64, 300);
+        cairo_fill (cr);
+	cairo_restore (cr);*/
+	_x0 = 20;
+	_y0 = 255;
 
         pixbuf = load_pixbuf (window, window->priv->icon_name, icon_size);
 

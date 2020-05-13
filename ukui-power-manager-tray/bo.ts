@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1">
+<TS version="2.1" language="bo">
 <context>
     <name>DeviceForm</name>
     <message>
@@ -82,6 +82,14 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="enginedevice.cpp" line="687"/>
+        <location filename="enginedevice.cpp" line="710"/>
+        <location filename="enginedevice.cpp" line="1174"/>
+        <location filename="enginedevice.cpp" line="1186"/>
+        <source>charging</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="enginedevice.cpp" line="705"/>
         <location filename="enginedevice.cpp" line="1171"/>
         <source>discharging(%1%)</source>
@@ -148,14 +156,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="687"/>
-        <location filename="enginedevice.cpp" line="710"/>
-        <location filename="enginedevice.cpp" line="1174"/>
-        <location filename="enginedevice.cpp" line="1186"/>
-        <source>charging</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="enginedevice.cpp" line="1189"/>
         <source>discharging</source>
         <translation type="unfinished"></translation>
@@ -191,16 +191,6 @@
     <message>
         <location filename="mainwindow.ui" line="95"/>
         <source>PushButton</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="546"/>
-        <source>SetPower</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="mainwindow.cpp" line="552"/>
-        <source>SetBrightness</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -261,7 +251,6 @@
     <message>
         <location filename="mainwindow.cpp" line="444"/>
         <source>Stats</source>
-        <oldsource>Statistics</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -269,13 +258,23 @@
         <source>PowerManager</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="mainwindow.cpp" line="546"/>
+        <source>SetPower</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="552"/>
+        <source>SetBrightness</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>S:</name>
     <message>
-        <location filename="enginedevice.cpp" line="583"/>
+        <location filename="enginedevice.cpp" line="826"/>
         <source></source>
-        <comment>tablet device</comment>
+        <comment>the device is charging, and we have a time to full and empty</comment>
         <translation></translation>
     </message>
 </context>

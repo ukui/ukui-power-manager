@@ -40,8 +40,11 @@ int main(int argc, char *argv[])
     QString locale = QLocale::system().name();
     QTranslator translator;
     QString qmfile = QString(":/locale/%1.qm").arg(locale);
-    translator.load(qmfile);
-    a.installTranslator(&translator);
+    if(locale == "zh_CN")
+    {
+        translator.load(qmfile);
+        a.installTranslator(&translator);
+    }
     a.setWindowIcon(QIcon(":/resource/icon/ukui-power-statistics.png"));
     UkpmWidget *w = new UkpmWidget;
     if(!device.isEmpty())

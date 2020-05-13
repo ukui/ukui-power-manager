@@ -33,64 +33,64 @@
 <context>
     <name>EngineDevice</name>
     <message>
-        <location filename="enginedevice.cpp" line="244"/>
+        <location filename="enginedevice.cpp" line="237"/>
         <source>yes</source>
         <translation>是</translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="244"/>
+        <location filename="enginedevice.cpp" line="237"/>
         <source>no</source>
         <translation>不</translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="279"/>
+        <location filename="enginedevice.cpp" line="271"/>
         <source>Yes</source>
         <translation>是</translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="279"/>
+        <location filename="enginedevice.cpp" line="271"/>
         <source>No</source>
         <translation>不</translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="601"/>
+        <location filename="enginedevice.cpp" line="596"/>
         <source>Unknown time</source>
         <translation>未知</translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="607"/>
-        <location filename="enginedevice.cpp" line="628"/>
+        <location filename="enginedevice.cpp" line="602"/>
+        <location filename="enginedevice.cpp" line="623"/>
         <source>minute</source>
         <translation>分钟</translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="609"/>
-        <location filename="enginedevice.cpp" line="630"/>
+        <location filename="enginedevice.cpp" line="604"/>
+        <location filename="enginedevice.cpp" line="625"/>
         <source>minutes</source>
         <translation>分钟</translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="620"/>
-        <location filename="enginedevice.cpp" line="632"/>
+        <location filename="enginedevice.cpp" line="615"/>
+        <location filename="enginedevice.cpp" line="627"/>
         <source>hour</source>
         <translation>小时</translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="622"/>
-        <location filename="enginedevice.cpp" line="634"/>
+        <location filename="enginedevice.cpp" line="617"/>
+        <location filename="enginedevice.cpp" line="629"/>
         <source>hours</source>
         <translation>小时</translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="687"/>
-        <location filename="enginedevice.cpp" line="690"/>
-        <location filename="enginedevice.cpp" line="1166"/>
+        <location filename="enginedevice.cpp" line="685"/>
+        <location filename="enginedevice.cpp" line="688"/>
+        <location filename="enginedevice.cpp" line="1165"/>
         <source>fully charged</source>
         <translation>已充满</translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="707"/>
-        <location filename="enginedevice.cpp" line="1172"/>
+        <location filename="enginedevice.cpp" line="705"/>
+        <location filename="enginedevice.cpp" line="1171"/>
         <source>discharging(%1%)</source>
         <translation>放电(%1%)</translation>
     </message>
@@ -99,90 +99,90 @@
         <translation type="vanished">充电(%1%)</translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="920"/>
+        <location filename="enginedevice.cpp" line="918"/>
         <source>AC adapter</source>
         <translation>交流电源适配器</translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="924"/>
+        <location filename="enginedevice.cpp" line="922"/>
         <source>Laptop battery</source>
         <translation>笔记本电池</translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="928"/>
+        <location filename="enginedevice.cpp" line="926"/>
         <source>UPS</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="932"/>
+        <location filename="enginedevice.cpp" line="930"/>
         <source>Monitor</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="936"/>
+        <location filename="enginedevice.cpp" line="934"/>
         <source>Mouse</source>
         <translation>鼠标</translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="940"/>
+        <location filename="enginedevice.cpp" line="938"/>
         <source>Keyboard</source>
         <translation>键盘</translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="944"/>
+        <location filename="enginedevice.cpp" line="942"/>
         <source>PDA</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="948"/>
+        <location filename="enginedevice.cpp" line="946"/>
         <source>Cell phone</source>
         <translation>手机</translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="952"/>
+        <location filename="enginedevice.cpp" line="950"/>
         <source>Media player</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="956"/>
+        <location filename="enginedevice.cpp" line="954"/>
         <source>Tablet</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="960"/>
+        <location filename="enginedevice.cpp" line="958"/>
         <source>Computer</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="964"/>
+        <location filename="enginedevice.cpp" line="962"/>
         <source>unrecognised</source>
         <translation>未识别</translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="689"/>
-        <location filename="enginedevice.cpp" line="712"/>
-        <location filename="enginedevice.cpp" line="1175"/>
-        <location filename="enginedevice.cpp" line="1187"/>
+        <location filename="enginedevice.cpp" line="687"/>
+        <location filename="enginedevice.cpp" line="710"/>
+        <location filename="enginedevice.cpp" line="1174"/>
+        <location filename="enginedevice.cpp" line="1186"/>
         <source>charging</source>
         <translation>正在充电</translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="1190"/>
+        <location filename="enginedevice.cpp" line="1189"/>
         <source>discharging</source>
         <translation>放电</translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="1193"/>
+        <location filename="enginedevice.cpp" line="1192"/>
         <source>empty</source>
         <translation>电量空</translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="1196"/>
+        <location filename="enginedevice.cpp" line="1195"/>
         <source>fully</source>
         <translation>电量满</translation>
     </message>
     <message>
-        <location filename="enginedevice.cpp" line="1199"/>
+        <location filename="enginedevice.cpp" line="1198"/>
         <source>other</source>
         <translation>其他</translation>
     </message>
@@ -200,7 +200,7 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="92"/>
+        <location filename="mainwindow.ui" line="95"/>
         <source>PushButton</source>
         <translation></translation>
     </message>

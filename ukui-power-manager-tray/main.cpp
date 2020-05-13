@@ -51,8 +51,11 @@ int main(int argc, char *argv[])
     QString locale = QLocale::system().name();
     QTranslator translator;
     QString qmfile = QString(":/%1.qm").arg(locale);
-    translator.load(qmfile);
-    a.installTranslator(&translator);
+    if(locale == "zh_CN")
+    {
+        translator.load(qmfile);
+        a.installTranslator(&translator);
+    }
     QFile file(":/main.qss");
     file.open(QFile::ReadOnly);
     qApp->setStyleSheet(file.readAll());

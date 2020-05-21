@@ -71,15 +71,10 @@ const QDBusArgument &operator>>(const QDBusArgument &argument, QList<StructUdu> 
 }
 
 /**
- * egg_precision_round_up:
+ * precision_round_up:
  * @value: The input value
  * @smallest: The smallest increment allowed
  *
- * 101, 10	110
- * 95,  10	100
- * 0,   10	0
- * 112, 10	120
- * 100, 10	100
  **/
 int precision_round_up (float value, int smallest)
 {
@@ -97,15 +92,10 @@ int precision_round_up (float value, int smallest)
 }
 
 /**
- * egg_precision_round_down:
+ * precision_round_down:
  * @value: The input value
  * @smallest: The smallest increment allowed
  *
- * 101, 10	100
- * 95,  10	90
- * 0,   10	0
- * 112, 10	110
- * 100, 10	100
  **/
 int precision_round_down (float value, int smallest)
 {

@@ -1335,13 +1335,6 @@ void UkpmWidget::setSumTab()
 
     QVBoxLayout *vLayout = new QVBoxLayout;
 
-//    sumStack = new QStackedWidget;
-//    QLabel *nodata = new QLabel;
-//    nodata->setText(tr("no data to show."));
-//    nodata->setAlignment(Qt::AlignCenter);
-//    sumStack->addWidget(nodata);
-//    sumStack->addWidget(sumChartView);
-
     vLayout->addLayout(topFormLayout);
     vLayout->addWidget(sumChartView);
     vLayout->addLayout(bottomLayout);
@@ -1407,16 +1400,11 @@ void UkpmWidget::setDetailTab()
     tableView->setShowGrid(false);
     //网格背景画笔
     tableView->setGridStyle(Qt::DotLine);
-    //排序功能
-//    tableView->setSortingEnabled(true);
     tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     tableView->setSelectionMode(QAbstractItemView::NoSelection);
     model = new QStandardItemModel();
 
     tableView->setModel(model);
-//    tableView->horizontalHeader()->setStretchLastSection(true);
-//    tableView->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft);
-//    tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Fixed);
     tableView->setColumnWidth(0,100);
     tableView->horizontalHeader()->setStretchLastSection(true);
@@ -1425,14 +1413,12 @@ void UkpmWidget::setDetailTab()
     tableView->verticalHeader()->setMinimumSectionSize(0);
     tableView->verticalHeader()->setDefaultSectionSize(26);
     tableView->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
-//    tableView->setRowHeight(0,26);
     tableView->verticalHeader()->hide();
 
     QVBoxLayout *lay = new QVBoxLayout();
     lay->setContentsMargins(0,15,0,0);
     lay->addWidget(tableView);
     detail_widget->setLayout(lay);
-//    detail_widget->hide();
 }
 
 void UkpmWidget::setHistoryTab()
@@ -1525,26 +1511,19 @@ void UkpmWidget::setHistoryTab()
 
     hisChart->setPlotAreaBackgroundBrush(plotcolor);
     hisChart->setPlotAreaBackgroundVisible(true);
-//    hisChart->setPlotAreaBackgroundPen(QPen(QColor("#2f3032"),1));
     hisChartView = new QChartView(hisChart);
     hisChartView->setRenderHint(QPainter::Antialiasing);
     hisChartView->setContentsMargins(0,0,0,0);
     hisChart->setContentsMargins(0,20,0,0);
     hisChart->setMargins(QMargins(0,0,0,0));
     QVBoxLayout *vLayout = new QVBoxLayout;
-//    hisStack = new QStackedWidget;
-//    QLabel *nodata = new QLabel;
-//    nodata->setText(tr("no data to show."));
-//    nodata->setAlignment(Qt::AlignCenter);
-//    hisStack->addWidget(nodata);
-//    hisStack->addWidget(hisChartView);
+
     vLayout->setSpacing(0);
     vLayout->addLayout(topLayout);
     vLayout->addWidget(hisChartView);
     vLayout->addLayout(bottomLayout);
     vLayout->setContentsMargins(0,20,0,32);
     his_widget->setLayout(vLayout);
-//    tab_widget->addTab(his_widget,tr("history"));
     his_widget->hide();
     ukpm_set_choice_history();
 }
@@ -1846,7 +1825,6 @@ void UkpmWidget::upStatsType(int index)
 
 void UkpmWidget::onPageChanged(int index)
 {
-//    tab_widget->setCurrentIndex(index);
     if(index != index_old)
     {
         settings->set(GPM_SETTINGS_INFO_PAGE_NUMBER,index);
@@ -2079,12 +2057,6 @@ void UkpmWidget::setupUI()
     QFrame *frame = new QFrame(this);
     frame->setObjectName("main_frame");
     frame->setStyleSheet("QFrame#main_frame{background-color: white;border-radius:6px;border:1px solid #c2c3c8;}"); //设置圆角与背景透明
-//    frame->setGeometry(5, 5, this->width() - 5, this->height() - 5);//设置有效范围框
-//    QGraphicsDropShadowEffect *shadow_effect = new QGraphicsDropShadowEffect(this);
-//    shadow_effect->setOffset(0, 0);
-//    shadow_effect->setColor(Qt::gray);
-//    shadow_effect->setBlurRadius(10);
-//    frame->setGraphicsEffect(shadow_effect);
 
     QSplitter *mainsplitter = new QSplitter(Qt::Horizontal);//splittering into two parts
     QHBoxLayout *deviceLay = new QHBoxLayout;
@@ -2097,16 +2069,8 @@ void UkpmWidget::setupUI()
     listWidget->setSelectionMode(QAbstractItemView::SingleSelection);
     deviceLay->addWidget(listWidget);
     tab_widget =  new QTabWidget(this);
-//    QHBoxLayout *barlay = new QHBoxLayout;
-//    barlay->setContentsMargins(0,0,0,0);
-//    tab_widget->tabBar()->setLayout(barlay);
     deviceLay->addWidget(tab_widget);
 
-//    tab_widget->setFixedWidth(600);
-//    QList<int> list_src;
-//    list_src.append(180);
-//    list_src.append(600);
-//    mainsplitter->setSizes(list_src);
     QVBoxLayout *vlayout = new QVBoxLayout;
     QFrame *header = new QFrame(frame);
     header->setFixedHeight(TITLE_HEIGHT+30);
@@ -2117,21 +2081,11 @@ void UkpmWidget::setupUI()
     header->setWindowFlags(Qt::FramelessWindowHint);
     header->setStyleSheet("QFrame{padding-bottom:30px;background-color:white;border-top-right-radius:6px;"
                           "border-top-left-radius:6px;border-bottom-right-radius:0px;border-bottom-left-radius:0px;}");
-//    mainsplitter->setStyleSheet("QSplitter{ background-color:white;border-top-right-radius:0px;"
-//                          "border-top-left-radius:0px;border-bottom-right-radius:6px;border-bottom-left-radius:6px;}");
-//    QSplitterHandle* splitter_handle = mainsplitter->handle(1);
-//    if(splitter_handle)
-//    {
-//        splitter_handle->setDisabled(true);
-//        splitter_handle->setHidden(true);
 
-//    }
     vlayout->addWidget(header);
-//    vlayout->addWidget(mainsplitter);
     vlayout->addLayout(deviceLay);
     vlayout->setSpacing(0);
     vlayout->setContentsMargins(0,0,0,0);
-//    this->setStyleSheet("QWidget {background:white}");
     frame->setLayout(vlayout);//main layout of the UI
     QVBoxLayout *mainlay = new QVBoxLayout;
     mainlay->setContentsMargins(0,0,0,0);
@@ -2159,7 +2113,6 @@ void UkpmWidget::setupUI()
         DeviceWidget *dw = qobject_cast<DeviceWidget *>(wid);
         dw->set_device_icon(icon);
         dw->set_device_text(true);
-//        default_item->setIcon(QIcon(icon));
         ukpm_update_info_data (current_device);
     }
 

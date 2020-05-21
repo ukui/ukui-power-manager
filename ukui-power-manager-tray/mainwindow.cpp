@@ -49,21 +49,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ed = EngineDevice::getInstance();
     ui->setupUi(this);
     initData();
-//    if(QGSettings::isSchemaInstalled(UKUI_STYLE))
-//    {
-//        setting = new QGSettings(UKUI_STYLE);
-//        connect(setting,SIGNAL(changed(const QString &)),this,SLOT(iconThemeChanged()));
-//    }
 
     trayIcon = new QSystemTrayIcon(this);
     connect(trayIcon,SIGNAL(activated(QSystemTrayIcon::ActivationReason)),this,SLOT(onActivatedIcon(QSystemTrayIcon::ActivationReason)));
     connect(ed,SIGNAL(icon_changed(QString)),this,SLOT(onIconChanged(QString)));
     connect(ed,SIGNAL(engine_signal_summary_change(QString)),this,SLOT(onSumChanged(QString)));
-//    connect(ed,SIGNAL(engine_signal_charge_low(DEV)),this,SLOT(low_battery_notify(DEV)));
-//    connect(ed,SIGNAL(engine_signal_charge_critical(DEV)),this,SLOT(critical_battery_notify(DEV)));
-//    connect(ed,SIGNAL(engine_signal_charge_action(DEV)),this,SLOT(action_battery_notify(DEV)));
-//    connect(ed,SIGNAL(engine_signal_discharge(DEV)),this,SLOT(discharge_notify(DEV)));
-//    connect(ed,SIGNAL(engine_signal_fullycharge(DEV)),this,SLOT(full_charge_notify(DEV)));
 
     connect(ed,SIGNAL(one_device_add(DEVICE*)),this,SLOT(add_one_device(DEVICE *)));
     connect(ed,SIGNAL(one_device_remove(DEVICE*)),this,SLOT(remove_one_device(DEVICE*)));
@@ -177,22 +167,6 @@ void MainWindow::action_battery_notify(DEV dev)
 
 void MainWindow::onIconChanged(QString str)
 {
-    /*if(!str.isNull())
-    {
-        QIcon icon = QIcon::fromTheme(str);
-        trayIcon->setIcon(icon);
-        trayIcon->show();
-
-        str = ":/status/"+str+".png";
-        QPixmap a(str);
-        a = a.scaled(32,80);
-        QIcon icon(a);
-        trayIcon->setIcon(icon);
-        trayIcon->show();
-    }
-    else {
-        trayIcon->hide();
-    }*/
 
     want_percent = false;
     if(!str.isNull())
@@ -220,7 +194,6 @@ QPixmap MainWindow::set_percent_pixmap(QString text)
 {
     QFont m_font("Arial");
     QFontMetrics fmt(m_font);
-//    QPixmap result(fmt.width(text), fmt.height());
     QPixmap result(fmt.width(text), 32);
 
     QRect rect(0,0,fmt.width(text), 32);
@@ -228,7 +201,6 @@ QPixmap MainWindow::set_percent_pixmap(QString text)
     QPainter painter(&result);
     painter.setFont(m_font);
     painter.setPen(QColor(255,255,255));
-    //painter.drawText(const QRectF(fmt.width(text), fmt.height()),Qt::AlignLeft, text);
     painter.drawText(rect,Qt::AlignVCenter|Qt::AlignLeft,text);
 
     return result;
@@ -262,10 +234,6 @@ QIcon MainWindow::get_percent_icon(QIcon icon)
 
   painter_h.end();
 
-//  QFile file("percent.png");
-//  file.open(QIODevice::WriteOnly);
-//  result_image_h.save(&file,"PNG");
-//  file.close();
   QIcon result_icon = QIcon(result_image_h);
   return result_icon;
 }
@@ -320,12 +288,7 @@ void MainWindow::set_window_position( )
         QRect copy_rect = QGuiApplication::screens().at(1)->geometry();//获取设备屏幕大小
         int n = 0;
         int m = 46;
-//        if(QGSettings::isSchemaInstalled(PANEL_SETTINGS))
-//        {
-//            QGSettings panel_set(PANEL_SETTINGS);
-//            n = panel_set.get(PANEL_SETTINGS_KEY_POSITION).toInt();
-//            m = panel_set.get(PANEL_SETTINGS_KEY_HEIGHT).toInt();
-//        }
+
         n = getTaskbarPos("position");
         m = getTaskbarHeight("height");
         if(n == 0){
@@ -405,19 +368,15 @@ void MainWindow::onActivatedIcon(QSystemTrayIcon::ActivationReason reason)
 void MainWindow::initData()
 {
     want_percent = false;
-//    pressQss = "QLabel{background-color:#3593b5;}";
-//    releaseQss = "QLabel{background-color:#283138;}";
 }
 
 void MainWindow::initUi()
 {
     setWindowFlags(Qt::FramelessWindowHint|Qt::Popup);
-//    this->setWindowFlags(Qt::CustomizeWindowHint | Qt::FramelessWindowHint | Qt::SplashScreen);
     setAttribute(Qt::WA_StyledBackground,true);
     setAttribute(Qt::WA_TranslucentBackground);
 
     dev_number = get_engine_dev_number();
-//    dev_number = 3;
     resize(360,76 + 8 + 82*(dev_number>3?3:dev_number));
 
     ui->listWidget->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -459,105 +418,26 @@ void MainWindow::initUi()
     menu = new QMenu(this);
     menu->setAttribute(Qt::WA_TranslucentBackground);
     menu->setWindowFlag(Qt::FramelessWindowHint);
-//    menu->setWindowOpacity(0.7);
-//    set_preference  = new QWidgetAction(menu);
-//    show_percentage = new QWidgetAction(menu);
-//    set_bright = new QWidgetAction(menu);
 
-//    QHBoxLayout *hbox_preference = new QHBoxLayout;
-//    QLabel *preference_label = new QLabel(this);
-//    QLabel *preference_text = new QLabel(this);
-//    QWidget *preference_widget = new QWidget(this);
-//    preference_label->setFixedSize(QSize(16,16));
-//    preference_label->setPixmap(QPixmap(":/apps/setting.svg"));
-//    preference_text->setText(tr("SetPower"));
-//    preference_label->setStyleSheet("QLabel{background:transparent;border:0px;}");
-//    preference_text->setStyleSheet("QLabel{background:transparent;border:0px;}");
-//    hbox_preference->addWidget(preference_label);
-//    hbox_preference->addWidget(preference_text);
-//    preference_widget->setLayout(hbox_preference);
-//    preference_widget->setFocusPolicy(Qt::NoFocus);
-//    preference_widget->setFixedSize(QSize(244,36));
-//    hbox_preference->setSpacing(10);
-//    set_preference->setDefaultWidget(preference_widget);
-//    preference_widget->setStyleSheet("QWidget{background:transparent;border:0px;border-radius:4px}\
-//                                     QWidget:hover{background-color:rgba(255,255,255,0.15);}");
-
-//    QHBoxLayout *hbox_percent = new QHBoxLayout;
-//    percent_label = new QLabel(this);
-//    QLabel *percent_text = new QLabel(this);
-//    QWidget *percent_widget = new QWidget(this);
-//    percent_label->setFixedSize(QSize(16,16));
-//    percent_label->setPixmap(QPixmap(":/apps/tick.png"));
-//    percent_text->setText(tr("ShowPercentage"));
-//    percent_label->setStyleSheet("QLabel{background:transparent;border:0px;}");
-//    percent_text->setStyleSheet("QLabel{background:transparent;border:0px;}");
-//    hbox_percent->addWidget(percent_label);
-//    hbox_percent->addWidget(percent_text);
-//    percent_widget->setLayout(hbox_percent);
-//    percent_widget->setFocusPolicy(Qt::NoFocus);
-//    percent_widget->setFixedSize(QSize(244,36));
-
-//    hbox_percent->setSpacing(10);
-//    show_percentage->setDefaultWidget(percent_widget);
-//    percent_widget->setStyleSheet("QWidget{background:transparent;border:0px;border-radius:4px}\
-//                                  QWidget:hover{background-color:rgba(255,255,255,0.15);}");
-
-//    QHBoxLayout *hbox_bright= new QHBoxLayout;
-//    QLabel *bright_label = new QLabel(this);
-//    QLabel *bright_text = new QLabel(this);
-//    QWidget *bright_widget = new QWidget(this);
-//    bright_label->setFixedSize(QSize(16,16));
-//    bright_label->setPixmap(QPixmap(":/apps/setting.svg"));
-//    bright_text->setText(tr("SetBrightness"));
-//    bright_label->setStyleSheet("QLabel{background:transparent;border:0px;}");
-//    bright_text->setStyleSheet("QLabel{background:transparent;border:0px;}");
-//    hbox_bright->addWidget(bright_label);
-//    hbox_bright->addWidget(bright_text);
-//    bright_widget->setLayout(hbox_bright);
-//    bright_widget->setFocusPolicy(Qt::NoFocus);
-//    bright_widget->setFixedSize(QSize(244,36));
-//    hbox_bright->setSpacing(10);
-//    set_bright->setDefaultWidget(bright_widget);
-//    bright_widget->setStyleSheet("QWidget{background:transparent;border:0px;border-radius:4px}"
-//                                 "QWidget:hover{background-color:rgba(255,255,255,0.15);}");
-
-//    connect(set_preference,&QAction::triggered,this,&MainWindow::set_preference_func);
-//    connect(set_bright,&QAction::triggered,this,&MainWindow::set_brightness_func);
-//    connect(show_percentage,&QAction::triggered,this,&MainWindow::show_percentage_func);
-//    menu->addAction(show_percentage);
-//    menu->addSeparator();
-//    menu->addAction(set_bright);
-//    menu->addSeparator();
-//    menu->addAction(set_preference);
     create_menu_item();
     trayIcon->setContextMenu(menu);
     trayIcon->setToolTip(tr("PowerManager"));
-//    qApp->setStyle(new CustomStyle());
 }
 
 void MainWindow::create_menu_item()
 {
     QAction *pset_preference  = new QAction(menu);
-//    QAction *pshow_percentage = new QAction(menu);
     QAction *pset_bright = new QAction(menu);
 
     QIcon icon = QIcon::fromTheme("document-page-setup");
     pset_preference->setIcon(icon);
-//    pset_preference->setIcon(QIcon(":/apps/setting.svg"));
     pset_preference->setText(tr("SetPower"));
 
-//    pshow_percentage->setIcon(QIcon(":/apps/tick.png"));
-//    pshow_percentage->setText(tr("ShowPercentage"));
-
-//    pset_bright->setIcon(QIcon(":/apps/setting.svg"));
     pset_bright->setIcon(icon);
     pset_bright->setText(tr("SetBrightness"));
 
     connect(pset_preference,&QAction::triggered,this,&MainWindow::set_preference_func);
     connect(pset_bright,&QAction::triggered,this,&MainWindow::set_brightness_func);
-//    connect(pshow_percentage,&QAction::triggered,this,&MainWindow::show_percentage_func);
-//    menu->addAction(pshow_percentage);
     menu->addAction(pset_bright);
     menu->addAction(pset_preference);
 }
@@ -588,21 +468,6 @@ void MainWindow::get_power_list()
         dv = ed->devices.at(i);
         if(dv->m_dev.kind == UP_DEVICE_KIND_LINE_POWER)
             continue;
-        /*QString icon_name = ed->engine_get_device_icon(dv);
-        QString percentage = QString::number(dv->m_dev.Percentage, 'f',0)+"%";
-        bool is_charging = false;
-        QString text;
-        if(icon_name.contains("charging"))
-            is_charging = true;
-        if (is_charging)
-        {
-            text = QString("%1% available power").arg(percentage);
-            text.append("\n");
-            text.append("(The power is connected and is charging)");
-        }
-        else
-            text = QString("%1% available power").arg(percentage);*/
-
 
         DeviceForm *df = new DeviceForm(this);
         df->set_device(dv);
@@ -612,28 +477,10 @@ void MainWindow::get_power_list()
         device_item_map.insert(dv,list_item);
     }
 
-//    for(int i = 0; i < 2; i++)
-//    {
-//        QString icon_name = "gpm-battery-080-charging.png";
-//        QString percentage = QString::number(92.0, 'f',0)+"%";
-//        QString state_text = "charging";
-//        QString predict = "1 hour 5 minutes";
-//        DeviceForm *df= new DeviceForm(this);
-//        df->setIcon(icon_name);
-//        df->setPercent(percentage);
-//        df->slider_changed(int(40));
-//        df->setKind(state_text);
-//        df->setRemain(predict);
-//        QListWidgetItem *list_item = new QListWidgetItem(ui->listWidget);
-//        list_item->setSizeHint(QSize(324,82));
-//        ui->listWidget->setItemWidget(list_item,df);
-//    }
-
 }
 
 void MainWindow::add_one_device(DEVICE *device)
 {
-//    qDebug()<< "mainwindow::"<<device->m_dev.IsPresent<<device->m_dev.Type;
     DeviceForm *df = new DeviceForm(this);
     df->set_device(device);
     QListWidgetItem *list_item = new QListWidgetItem(ui->listWidget);
@@ -656,7 +503,6 @@ void MainWindow::add_one_device(DEVICE *device)
 
 void MainWindow::remove_one_device(DEVICE *device)
 {
-//    qDebug()<<"mainwindow begin to find and remove device";
     if(device_item_map.contains(device))
     {
         QListWidgetItem *del_item = device_item_map.value(device);
@@ -695,10 +541,6 @@ void MainWindow::activate_power_statistic()
 void MainWindow::iconThemeChanged()
 {
     qDebug()<<"icon theme changed";
-//    QString new_theme = setting->get(UKUI_STYLE_STYLE_NAME).toString();
-//    QIcon::setThemeName(new_theme);
-//    qDebug()<<new_theme;
-
 }
 
 bool MainWindow::event(QEvent *event)

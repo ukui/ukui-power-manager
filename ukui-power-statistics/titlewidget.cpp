@@ -54,15 +54,6 @@ void TitleWidget::initControl()
 
     m_pButtonHelp->setFixedSize(QSize(BUTTON_WIDTH, BUTTON_HEIGHT));
     m_pButtonClose->setFixedSize(QSize(BUTTON_WIDTH, BUTTON_HEIGHT));
-//    m_pButtonHelp->setObjectName("toolhelp");
-//    m_pButtonClose->setObjectName("toolclose");
-//    m_pButtonHelp->setIcon(QIcon(":/resource/icon/help.png"));
-//    m_help = new QLabel(m_pButtonHelp);
-//    m_close = new QLabel(m_pButtonClose);
-//    m_help->setObjectName("labelhelp");
-//    m_close->setObjectName("labelclose");
-//    m_help->setFixedSize(QSize(BUTTON_WIDTH, BUTTON_HEIGHT));
-//    m_close->setFixedSize(QSize(BUTTON_WIDTH, BUTTON_HEIGHT));
 
     QHBoxLayout* mylayout = new QHBoxLayout(this);
     mylayout->setContentsMargins(0,0,0,0);
@@ -105,8 +96,6 @@ void TitleWidget::setTitleIcon(QString filePath, QSize IconSize)
 {
     Q_UNUSED(filePath);
     Q_UNUSED(IconSize);
-//    QPixmap titleIcon(filePath);
-//    m_pIcon->setPixmap(titleIcon.scaled(IconSize));
 }
 
 // 设置标题内容;
@@ -297,17 +286,7 @@ DeviceWidget::DeviceWidget(QWidget *parent):QWidget(parent)
     layout->addWidget(content);
     layout->addStretch();
     setLayout(layout);
-//    setFixedSize(150,36);
 }
-
-//void DeviceWidget::paintEvent(QPaintEvent *event)
-//{
-//    Q_UNUSED(event);
-//    QStyleOption opt;
-//    opt.init(this);
-//    QPainter p(this);
-//    style()->drawPrimitive(QStyle::PE_Widget,&opt,&p,this);
-//}
 
 void DeviceWidget::set_device_icon(QString name)
 {

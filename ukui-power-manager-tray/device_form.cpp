@@ -29,7 +29,6 @@ DeviceForm::DeviceForm(QWidget *parent) :
     ui(new Ui::DeviceForm)
 {
     ui->setupUi(this);
-//    mov = new QMovie(":/charging.gif");
     setAttribute(Qt::WA_StyledBackground,true);
     ed = EngineDevice::getInstance();
     set_timer();
@@ -79,7 +78,6 @@ void DeviceForm::setIcon(QString name)
         return;
     }
     set_charge_animation(false);
-//    QIcon icon = QIcon::fromTheme(name);
     QIcon icon = QIcon(":/charging/0.png");
     QPixmap pixmap = icon.pixmap(QSize(32,32));
     ui->icon->setPixmap(pixmap);
@@ -257,7 +255,6 @@ QString DeviceForm::device_get_ac_online()
                     absolute_file.close();
                     QString ac_online(ba);
                     ac_online = ac_online.simplified();
-//                    qDebug()<<"QString-----"<<ac_online;
                     return ac_online;
                 }
             }

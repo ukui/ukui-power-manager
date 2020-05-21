@@ -23,11 +23,7 @@
 
 #define	GPM_DBUS_SERVICE		"org.ukui.PowerManager"
 #define	GPM_DBUS_INTERFACE		"org.ukui.PowerManager"
-#define	GPM_DBUS_INTERFACE_BACKLIGHT	"org.ukui.PowerManager.Backlight"
-#define	GPM_DBUS_INTERFACE_KBD_BACKLIGHT	"org.ukui.PowerManager.KbdBacklight"
 #define	GPM_DBUS_PATH			"/org/ukui/PowerManager"
-#define	GPM_DBUS_PATH_BACKLIGHT		"/org/ukui/PowerManager/Backlight"
-#define GPM_DBUS_PATH_KBD_BACKLIGHT    "/org/ukui/PowerManager/KbdBacklight"
 
 /* common descriptions of this program */
 #define GPM_NAME 			_("Power Manager")
@@ -35,68 +31,6 @@
 
 /* schema location */
 #define GPM_SETTINGS_SCHEMA				"org.ukui.power-manager"
-
-/* actions */
-#define GPM_SETTINGS_ACTION_CRITICAL_UPS		"action-critical-ups"
-#define GPM_SETTINGS_ACTION_CRITICAL_BATT		"action-critical-battery"
-#define GPM_SETTINGS_ACTION_LOW_UPS			"action-low-ups"
-#define GPM_SETTINGS_ACTION_SLEEP_TYPE_AC		"action-sleep-type-ac"
-#define GPM_SETTINGS_ACTION_SLEEP_TYPE_BATT		"action-sleep-type-battery"
-#define GPM_SETTINGS_SLEEP_WHEN_CLOSED			"event-when-closed-battery"
-
-/* backlight stuff */
-#define GPM_SETTINGS_BACKLIGHT_ENABLE			"backlight-enable"
-#define GPM_SETTINGS_BACKLIGHT_BATTERY_REDUCE		"backlight-battery-reduce"
-#define GPM_SETTINGS_DPMS_METHOD_AC			"dpms-method-ac"
-#define GPM_SETTINGS_DPMS_METHOD_BATT			"dpms-method-battery"
-#define GPM_SETTINGS_IDLE_BRIGHTNESS			"idle-brightness"
-#define GPM_SETTINGS_IDLE_DIM_AC			"idle-dim-ac"
-#define GPM_SETTINGS_IDLE_DIM_BATT			"idle-dim-battery"
-#define GPM_SETTINGS_IDLE_DIM_TIME			"idle-dim-time"
-#define GPM_SETTINGS_BRIGHTNESS_AC			"brightness-ac"
-#define GPM_SETTINGS_BRIGHTNESS_DIM_BATT		"brightness-dim-battery"
-
-/* keyboard backlight */
-#define GPM_SETTINGS_KBD_BACKLIGHT_BATT_REDUCE     "kbd-backlight-battery-reduce"
-#define GPM_SETTINGS_KBD_BRIGHTNESS_ON_AC      "kbd-brightness-on-ac"
-#define GPM_SETTINGS_KBD_BRIGHTNESS_DIM_BY_ON_BATT      "kbd-brightness-dim-by-on-battery"
-#define GPM_SETTINGS_KBD_BRIGHTNESS_DIM_BY_ON_IDLE "kbd-brightness-dim-by-on-idle"
-
-/* buttons */
-#define GPM_SETTINGS_BUTTON_LID_AC			"button-lid-ac"
-#define GPM_SETTINGS_BUTTON_LID_BATT			"button-lid-battery"
-#define GPM_SETTINGS_BUTTON_SUSPEND			"button-suspend"
-#define GPM_SETTINGS_BUTTON_HIBERNATE			"button-hibernate"
-#define GPM_SETTINGS_BUTTON_POWER			"button-power"
-
-/* general */
-#define GPM_SETTINGS_USE_TIME_POLICY			"use-time-for-policy"
-#define GPM_SETTINGS_NETWORKMANAGER_SLEEP		"network-sleep"
-#define GPM_SETTINGS_IDLE_CHECK_CPU			"check-type-cpu"
-
-/* notify */
-#define GPM_SETTINGS_NOTIFY_LOW_CAPACITY		"notify-low-capacity"
-#define GPM_SETTINGS_NOTIFY_DISCHARGING			"notify-discharging"
-#define GPM_SETTINGS_NOTIFY_FULLY_CHARGED		"notify-fully-charged"
-#define GPM_SETTINGS_NOTIFY_SLEEP_FAILED		"notify-sleep-failed"
-#define GPM_SETTINGS_NOTIFY_SLEEP_FAILED_URI		"notify-sleep-failed-uri"
-#define GPM_SETTINGS_NOTIFY_LOW_POWER			"notify-low-power"
-
-/* thresholds */
-#define GPM_SETTINGS_PERCENTAGE_LOW			"percentage-low"
-#define GPM_SETTINGS_PERCENTAGE_CRITICAL		"percentage-critical"
-#define GPM_SETTINGS_PERCENTAGE_ACTION			"percentage-action"
-#define GPM_SETTINGS_TIME_LOW				"time-low"
-#define GPM_SETTINGS_TIME_CRITICAL			"time-critical"
-#define GPM_SETTINGS_TIME_ACTION			"time-action"
-
-/* timeout */
-#define GPM_SETTINGS_SLEEP_COMPUTER_AC			"sleep-computer-ac"
-#define GPM_SETTINGS_SLEEP_COMPUTER_BATT		"sleep-computer-battery"
-#define GPM_SETTINGS_SLEEP_COMPUTER_UPS			"sleep-computer-ups"
-#define GPM_SETTINGS_SLEEP_DISPLAY_AC			"sleep-display-ac"
-#define GPM_SETTINGS_SLEEP_DISPLAY_BATT			"sleep-display-battery"
-#define GPM_SETTINGS_SLEEP_DISPLAY_UPS			"sleep-display-ups"
 
 /* ui */
 #define GPM_SETTINGS_ICON_POLICY			"icon-policy"

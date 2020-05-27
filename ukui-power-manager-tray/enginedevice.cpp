@@ -454,7 +454,7 @@ QString EngineDevice::power_device_get_icon()
         return icon;
     }
     /* we fallback to the ac_adapter icon */
-    return QString("gpm-ac-adapter");
+    return QString("battery-full-symbolic");
 }
 /**
  * power_device_get_icon_exact:
@@ -938,15 +938,23 @@ QString EngineDevice::engine_kind_to_localised_text (UpDeviceKind kind, uint num
 QString EngineDevice::engine_get_device_icon_index (qreal percentage)
 {
     if (percentage < 10)
-        return "000";
+        return "10";
+    else if (percentage < 20)
+        return "20";
     else if (percentage < 30)
-        return "020";
+        return "30";
+    else if (percentage < 40)
+        return "40";
     else if (percentage < 50)
-        return "040";
+        return "50";
+    else if (percentage < 60)
+        return "60";
     else if (percentage < 70)
-        return "060";
+        return "70";
+    else if (percentage < 80)
+        return "80";
     else if (percentage < 90)
-        return "080";
+        return "90";
     return "100";
 }
 
@@ -994,33 +1002,36 @@ QString EngineDevice::engine_get_device_icon (DEVICE *device)
         }
     } else if (kind == UP_DEVICE_KIND_BATTERY) {
         if (!is_present) {
-            /* battery missing */
-            result = QString ("gpm-%1-missing").arg(prefix);
+            /* battery missing: battery-missing-symbolic*/
+            result = QString ("%1-missing-symbolic").arg(prefix);
 
         } else if (state == UP_DEVICE_STATE_EMPTY) {
-            result = QString ("gpm-%1-empty").arg(prefix);
+            /* battery-empty-symbolic */
+            result = QString ("%1-empty-symbolic").arg(prefix);
 
         } else if (state == UP_DEVICE_STATE_FULLY_CHARGED) {
-            result = QString ("gpm-%1-charged").arg(prefix);
+            /* battery-full-charged-symbolic */
+            result = QString ("%1-full-charged-symbolic").arg(prefix);
         } else if (state == UP_DEVICE_STATE_CHARGING) {
             index_str = engine_get_device_icon_index (percentage);
-            result = QString("gpm-%1-%2-charging").arg(prefix).arg(index_str);
+            /* battery-level-percent-charging-symbolic */
+            result = QString("%1-level-%2-charging-symbolic").arg(prefix).arg(index_str);
 
         } else if (state == UP_DEVICE_STATE_DISCHARGING) {
             index_str = engine_get_device_icon_index (percentage);
-            result = QString("gpm-%1-%2").arg(prefix).arg(index_str);
+            result = QString("%1-level-%2-symbolic").arg(prefix).arg(index_str);
 
         } else if (state == UP_DEVICE_STATE_PENDING_CHARGE) {
             index_str = engine_get_device_icon_index (percentage);
             /* FIXME: do new grey icons */
-            result = QString("gpm-%1-%2-charging").arg(prefix).arg(index_str);
+            result = QString("%1-level-%2-charging-symbolic").arg(prefix).arg(index_str);
 
         } else if (state == UP_DEVICE_STATE_PENDING_DISCHARGE) {
             index_str = engine_get_device_icon_index (percentage);
-            result = QString("gpm-%1-%2").arg(prefix).arg(index_str);
+            result = QString("%1-level-%2-symbolic").arg(prefix).arg(index_str);
 
         } else {
-            result =  ("gpm-battery-missing");
+            result =  ("battery-missing-symbolic");
         }
 
     } else if (kind == UP_DEVICE_KIND_MOUSE ||
@@ -1067,35 +1078,40 @@ QString EngineDevice::engine_get_dev_icon (DEV dev)
     prefix = engine_kind_to_string (kind);
 
         if (kind == UP_DEVICE_KIND_BATTERY) {
-        if (!is_present) {
-            /* battery missing */
-            result = QString ("gpm-%1-missing").arg(prefix);
+            if (!is_present) {
+                /* battery missing: battery-missing-symbolic*/
+                result = QString ("%1-missing-symbolic").arg(prefix);
 
-        } else if (state == UP_DEVICE_STATE_EMPTY) {
-            result = QString ("gpm-%1-empty").arg(prefix);
+            } else if (state == UP_DEVICE_STATE_EMPTY) {
+                /* battery-empty-symbolic */
+                result = QString ("%1-empty-symbolic").arg(prefix);
 
-        } else if (state == UP_DEVICE_STATE_FULLY_CHARGED) {
-            result = QString ("gpm-%1-charged").arg(prefix);
-        } else if (state == UP_DEVICE_STATE_CHARGING) {
-            index_str = engine_get_device_icon_index (percentage);
-            result = QString("gpm-%1-%2-charging").arg(prefix).arg(index_str);
+            } else if (state == UP_DEVICE_STATE_FULLY_CHARGED) {
+                /* battery-full-charged-symbolic */
+                result = QString ("%1-full-charged-symbolic").arg(prefix);
+            } else if (state == UP_DEVICE_STATE_CHARGING) {
+                index_str = engine_get_device_icon_index (percentage);
+                /* battery-level-percent-charging-symbolic */
+                result = QString("%1-level-%2-charging-symbolic").arg(prefix).arg(index_str);
 
-        } else if (state == UP_DEVICE_STATE_DISCHARGING) {
-            index_str = engine_get_device_icon_index (percentage);
-            result = QString("gpm-%1-%2").arg(prefix).arg(index_str);
+            } else if (state == UP_DEVICE_STATE_DISCHARGING) {
+                index_str = engine_get_device_icon_index (percentage);
+                result = QString("%1-level-%2-symbolic").arg(prefix).arg(index_str);
 
-        } else if (state == UP_DEVICE_STATE_PENDING_CHARGE) {
-            index_str = engine_get_device_icon_index (percentage);
-            result = QString("gpm-%1-%2-charging").arg(prefix).arg(index_str);
+            } else if (state == UP_DEVICE_STATE_PENDING_CHARGE) {
+                index_str = engine_get_device_icon_index (percentage);
+                /* FIXME: do new grey icons */
+                result = QString("%1-level-%2-charging-symbolic").arg(prefix).arg(index_str);
 
-        } else if (state == UP_DEVICE_STATE_PENDING_DISCHARGE) {
-            index_str = engine_get_device_icon_index (percentage);
-            result = QString("gpm-%1-%2").arg(prefix).arg(index_str);
+            } else if (state == UP_DEVICE_STATE_PENDING_DISCHARGE) {
+                index_str = engine_get_device_icon_index (percentage);
+                result = QString("%1-level-%2-symbolic").arg(prefix).arg(index_str);
 
-        } else {
-            result =  ("gpm-battery-missing");
+            } else {
+                result =  ("battery-missing-symbolic");
+            }
+
         }
-    }
     if (result.isNull()) {
         result =  ("dialog-warning");
     }

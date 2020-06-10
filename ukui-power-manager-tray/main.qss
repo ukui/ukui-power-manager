@@ -80,7 +80,7 @@ QLabel#remaindata
     font-size:11px;
     font-family:Noto Sans CJK SC;
     font-weight:400;
-    color:rgba(255,255,255,0.91);
+    color:rgba(255,255,255,0.35);
 }
 
 QPushButton#statistic_button

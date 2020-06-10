@@ -22,7 +22,7 @@
   </enum>
   <schema id="org.ukui.power-manager" path="/org/ukui/power-manager/">
     <key name="action-sleep-type-battery" enum="org.ukui.power-manager.ActionType">
-      <default>'hibernate'</default>
+      <default>'suspend'</default>
       <summary>Whether to hibernate, suspend or do nothing when inactive</summary>
       <description>The type of sleeping that should be performed when the computer is inactive.</description>
     </key>

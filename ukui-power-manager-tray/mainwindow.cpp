@@ -350,12 +350,14 @@ void MainWindow::onActivatedIcon(QSystemTrayIcon::ActivationReason reason)
 {
     switch(reason) {
         case QSystemTrayIcon::Trigger: {
-                set_window_position();
                 if (!this->isHidden()) {
                     this->hide();
                 }
                 else
-                    this->show();
+                {
+                    this->showNormal();
+                    set_window_position();
+                }
                 break;
         }
 

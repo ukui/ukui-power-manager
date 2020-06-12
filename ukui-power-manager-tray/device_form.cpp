@@ -103,14 +103,15 @@ void DeviceForm::setKind(QString kind)
 
 void DeviceForm::setRemain(QString remain)
 {
-    if(mDev.State == UP_DEVICE_STATE_DISCHARGING)
-    {
-        ui->remaintext->setText(tr("RemainTime"));
-    }
-    else
-    {
-        ui->remaintext->setText("");
-    }
+//    if(mDev.State == UP_DEVICE_STATE_DISCHARGING)
+//    {
+//        ui->remaintext->setText(tr("RemainTime"));
+//    }
+//    else
+//    {
+//        ui->remaintext->setText("");
+//    }
+    ui->remaintext->setText("");
     ui->remaindata->setText(remain);
 }
 

@@ -164,8 +164,6 @@ void EngineDevice::power_device_remove(QDBusObjectPath msg)
             Q_EMIT one_device_remove(item);
             break;
         }
-
-
     }
 
 }
@@ -531,11 +529,13 @@ QString EngineDevice::engine_get_summary ()
     QString tooltip;
     QString part;
     bool is_present;
+    UpDeviceKind kind;
 
     Q_FOREACH (device, devices) {
         is_present = device->m_dev.IsPresent;
         state = device->m_dev.State;
-        if (!is_present)
+        kind = device->m_dev.kind;
+        if ((!is_present)||(kind != UP_DEVICE_KIND_BATTERY))
             continue;
         if (state == UP_DEVICE_STATE_EMPTY)
             continue;
@@ -667,15 +667,15 @@ QString EngineDevice::engine_get_device_predict(DEVICE* dv)
 
     } else if (state == UP_DEVICE_STATE_DISCHARGING) {
 
-        if (time_to_empty_round > GPM_UP_TEXT_MIN_TIME) {
-            time_to_empty_str = engine_get_timestring (time_to_empty_round);
-            result = time_to_empty_str;
+//        if (time_to_empty_round > GPM_UP_TEXT_MIN_TIME) {
+//            time_to_empty_str = engine_get_timestring (time_to_empty_round);
+//            result = time_to_empty_str;
 
-        } else {
-            result = tr("discharging(%1%)").arg(percentage);
+//        } else {
+//            result = tr("discharging(%1%)").arg(percentage);
 
-        }
-
+//        }
+        result = tr("not charging");
     } else if (state == UP_DEVICE_STATE_CHARGING) {
         result = tr("charging");
 //        if (time_to_full_round > GPM_UP_TEXT_MIN_TIME &&
@@ -741,87 +741,28 @@ QString EngineDevice::engine_get_device_summary(DEVICE* dv)
 
     kind_desc = engine_kind_to_localised_text (kind, 1);
 
-    if (kind == UP_DEVICE_KIND_MOUSE ||
-        kind == UP_DEVICE_KIND_KEYBOARD ||
-        kind == UP_DEVICE_KIND_PDA)
-    {
-        result = QString("%1 (%2%)").arg(kind_desc).arg(percentage);
-        return result;
-    }
-
-    /* we care if we are on AC */
-    if (kind == UP_DEVICE_KIND_PHONE) {
-        if (state == UP_DEVICE_STATE_CHARGING || state != UP_DEVICE_STATE_DISCHARGING) {
-
-            result = QString("%1 charging (%2%)").arg(kind_desc).arg(percentage);
-            return result;
-        }
-        result = QString("%1 (%2%)").arg(kind_desc).arg(percentage);
-
-        return result;
-    }
-
-    time_to_full_round = precision_round_down (time_to_full, GPM_UP_TIME_PRECISION);
-    time_to_empty_round = precision_round_down (time_to_empty, GPM_UP_TIME_PRECISION);
-
     if (state == UP_DEVICE_STATE_FULLY_CHARGED) {
 
-        if (kind == UP_DEVICE_KIND_BATTERY && time_to_empty_round > GPM_UP_TEXT_MIN_TIME) {
-            time_to_empty_str = engine_get_timestring (time_to_empty_round);
-            result = QString("Battery is fully charged.\nProvides %1 laptop runtime").arg(time_to_empty_str);
-        } else {
-            result = QString("%1 is fully charged").arg(kind_desc);
-        }
+        result = tr("%1% available, charged").arg(percentage);
 
     } else if (state == UP_DEVICE_STATE_DISCHARGING) {
 
-        if (time_to_empty_round > GPM_UP_TEXT_MIN_TIME) {
-            time_to_empty_str = engine_get_timestring (time_to_empty_round);
-            result = QString("%1 %2 remaining (%3%)").arg(kind_desc).arg(time_to_empty_str).arg(percentage);
-
-        } else {
-            result = QString("%1 discharging (%2%)").arg(kind_desc).arg(percentage);
-
-        }
+        result = tr("%1% available, not charging").arg(percentage);
 
     } else if (state == UP_DEVICE_STATE_CHARGING) {
 
-        if (time_to_full_round > GPM_UP_TEXT_MIN_TIME &&
-            time_to_empty_round > GPM_UP_TEXT_MIN_TIME) {
-
-            /* display both discharge and charge time */
-            time_to_full_str = engine_get_timestring (time_to_full_round);
-            time_to_empty_str = engine_get_timestring (time_to_empty_round);
-
-            /* TRANSLATORS: the device is charging, and we have a time to full and empty */
-            result = QString("%1 %2 until charged (%3%)\nProvides %4 battery runtime")
-                    .arg(kind_desc).arg(time_to_full_str).arg(percentage).arg(time_to_empty_str);
-
-        } else if (time_to_full_round > GPM_UP_TEXT_MIN_TIME) {
-
-            /* display only charge time */
-            time_to_full_str = engine_get_timestring (time_to_full_round);
-
-            /* TRANSLATORS: device is charging, and we have a time to full and a percentage */
-            result = QString("%1 %2 until charged (%3%)").arg(kind_desc).arg(time_to_full_str).arg(percentage);
-
-        } else {
-
-            /* TRANSLATORS: device is charging, but we only have a percentage */
-            result = QString("%1 charging (%2%)").arg(kind_desc).arg(percentage);
-
-        }
+        result = tr("%1% available, charging").arg(percentage);
 
     } else if (state == UP_DEVICE_STATE_PENDING_DISCHARGE) {
 
         /* TRANSLATORS: this is only shown for laptops with multiple batteries */
-        result = QString("%1 waiting to discharge (%2%)").arg(kind_desc).arg(percentage);
+        result = tr("%1 waiting to discharge (%2%)").arg(kind_desc).arg(percentage);
 
 
     } else if (state == UP_DEVICE_STATE_PENDING_CHARGE) {
 
         /* TRANSLATORS: this is only shown for laptops with multiple batteries */
-        result = QString("%1 waiting to charge (%2%)").arg(kind_desc).arg(percentage);
+        result = tr("%1 waiting to charge (%2%)").arg(kind_desc).arg(percentage);
 
     } else {
         printf ("in an undefined state we are not charging or "

@@ -66,7 +66,7 @@ MainWindow::MainWindow(QWidget *parent) :
 void MainWindow::onSumChanged(QString str)
 {
     Q_UNUSED(str);
-//    trayIcon->setToolTip(str);
+    trayIcon->setToolTip(str);
 }
 
 void MainWindow::discharge_notify(DEV dev)

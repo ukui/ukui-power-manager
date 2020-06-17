@@ -21,6 +21,7 @@
 #include <float.h>
 #include <QGraphicsDropShadowEffect>
 #include <QtMath>
+#include <QStyleFactory>
 
 #define GPM_HISTORY_RATE_TEXT			"Rate"
 #define GPM_HISTORY_CHARGE_TEXT			"Charge"
@@ -1394,7 +1395,9 @@ void UkpmWidget::setDetailTab()
     tab_widget->addTab(detail_widget,tr(" detail "));
 
     tableView  = new QTableView();
-
+    model = new QStandardItemModel();
+    tableView->setModel(model);
+    tableView->setFocusPolicy(Qt::NoFocus);
     //背景网格线设置
     //显示
     tableView->setShowGrid(false);
@@ -1402,9 +1405,7 @@ void UkpmWidget::setDetailTab()
     tableView->setGridStyle(Qt::DotLine);
     tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     tableView->setSelectionMode(QAbstractItemView::NoSelection);
-    model = new QStandardItemModel();
 
-    tableView->setModel(model);
     tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Fixed);
     tableView->setColumnWidth(0,100);
     tableView->horizontalHeader()->setStretchLastSection(true);
@@ -2069,6 +2070,7 @@ void UkpmWidget::setupUI()
     listWidget->setSelectionMode(QAbstractItemView::SingleSelection);
     deviceLay->addWidget(listWidget);
     tab_widget =  new QTabWidget(this);
+    tab_widget->setStyle(QStyleFactory::create("fusion"));
     deviceLay->addWidget(tab_widget);
 
     QVBoxLayout *vlayout = new QVBoxLayout;

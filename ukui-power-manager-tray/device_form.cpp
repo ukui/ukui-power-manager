@@ -78,15 +78,22 @@ void DeviceForm::set_charge_animation(bool flag)
 
 void DeviceForm::setIcon(QString name)
 {
-    if(name.contains("charging"))
+    if(animation_list.size()>1)
     {
-        set_charge_animation(true);
-        return;
+        if(name.contains("charging"))
+        {
+            set_charge_animation(true);
+            return;
+        }
     }
     set_charge_animation(false);
 
     QString icon_str = QString(":/charging/%1/0.png").arg(statics_icon_pre);
     QIcon icon = QIcon(icon_str);
+    if(icon.isNull())
+    {
+        icon = QIcon(":/charging/battery/0.png");
+    }
     QPixmap pixmap = icon.pixmap(QSize(32,32));
     ui->icon->setPixmap(pixmap);
 }

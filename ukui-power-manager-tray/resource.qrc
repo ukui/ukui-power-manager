@@ -14,30 +14,30 @@
         <file>apps/tick.png</file>
         <file>apps/tick.svg</file>
         <file>charging.gif</file>
-        <file>charging/0.png</file>
-        <file>charging/1.png</file>
-        <file>charging/10.png</file>
-        <file>charging/11.png</file>
-        <file>charging/12.png</file>
-        <file>charging/13.png</file>
-        <file>charging/14.png</file>
-        <file>charging/15.png</file>
-        <file>charging/16.png</file>
-        <file>charging/17.png</file>
-        <file>charging/18.png</file>
-        <file>charging/19.png</file>
-        <file>charging/2.png</file>
-        <file>charging/20.png</file>
-        <file>charging/21.png</file>
-        <file>charging/22.png</file>
-        <file>charging/23.png</file>
-        <file>charging/24.png</file>
-        <file>charging/3.png</file>
-        <file>charging/4.png</file>
-        <file>charging/5.png</file>
-        <file>charging/6.png</file>
-        <file>charging/7.png</file>
-        <file>charging/8.png</file>
-        <file>charging/9.png</file>
+        <file>charging/battery/0.png</file>
+        <file>charging/battery/1.png</file>
+        <file>charging/battery/2.png</file>
+        <file>charging/battery/3.png</file>
+        <file>charging/battery/4.png</file>
+        <file>charging/battery/5.png</file>
+        <file>charging/battery/6.png</file>
+        <file>charging/battery/7.png</file>
+        <file>charging/battery/8.png</file>
+        <file>charging/battery/9.png</file>
+        <file>charging/battery/10.png</file>
+        <file>charging/battery/11.png</file>
+        <file>charging/battery/12.png</file>
+        <file>charging/battery/13.png</file>
+        <file>charging/battery/14.png</file>
+        <file>charging/battery/15.png</file>
+        <file>charging/battery/16.png</file>
+        <file>charging/battery/17.png</file>
+        <file>charging/battery/18.png</file>
+        <file>charging/battery/19.png</file>
+        <file>charging/battery/20.png</file>
+        <file>charging/battery/21.png</file>
+        <file>charging/battery/22.png</file>
+        <file>charging/battery/23.png</file>
+        <file>charging/battery/24.png</file>
     </qresource>
 </RCC>

@@ -60,7 +60,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     initUi();
     ed->engine_policy_settings_cb("iconPolicy");
-
+    ed->engine_recalculate_summary();
 }
 
 void MainWindow::onSumChanged(QString str)
@@ -423,7 +423,7 @@ void MainWindow::initUi()
 
     create_menu_item();
     trayIcon->setContextMenu(menu);
-    trayIcon->setToolTip(tr("PowerManager"));
+//    trayIcon->setToolTip(tr("PowerManager"));
 }
 
 void MainWindow::create_menu_item()

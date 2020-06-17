@@ -237,6 +237,7 @@ void EngineDevice::putAttributes(QMap<QString,QVariant>& map,DEV &btrDetailData)
     if(map.contains("State"))
     {
         btrDetailData.State = (UpDeviceState)map.value(QString("State")).toInt();
+        //qDebug()<< "state:" << btrDetailData.State;
     }
     if(map.contains("Percentage"))
     {
@@ -517,8 +518,6 @@ bool EngineDevice::engine_recalculate_summary ()
 
 /**
  * engine_get_summary:
- * @engine: This engine class instance
- * @string: The returned string
  *
  * Returns the complete tooltip ready for display
  **/
@@ -708,6 +707,7 @@ QString EngineDevice::engine_get_device_predict(DEVICE* dv)
         result = QString("%1(%2%)").arg(kind_desc).arg(percentage);
     }
     return result;
+    qDebug ()<< "result:" << result;
 }
 
 /**

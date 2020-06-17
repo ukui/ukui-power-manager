@@ -31,7 +31,7 @@ DeviceForm::DeviceForm(QWidget *parent) :
     ui->setupUi(this);
     setAttribute(Qt::WA_StyledBackground,true);
     ed = EngineDevice::getInstance();
-    set_timer();
+    //set_timer();
 }
 
 DeviceForm::~DeviceForm()
@@ -39,16 +39,22 @@ DeviceForm::~DeviceForm()
     delete ui;
 }
 
-void DeviceForm::set_timer()
+void DeviceForm::set_timer(UpDeviceKind kind)
 {
     charge_animation = new QTimer(this);
-    connect(charge_animation,&QTimer::timeout,this,&DeviceForm::begin_charge_animation);
 
+    statics_icon_pre = ed->engine_kind_to_string(kind);
     for(int i = 0; i<=24; i++)
     {
-        QString filename = QString(":/charging/%1.png").arg(i);
-        animation_list.append(QPixmap(filename));
+        QString filename = QString(":/charging/%1/%2.png").arg(statics_icon_pre).arg(i);
+        QPixmap apix = QPixmap(filename);
+        if(!apix.isNull())
+        {
+            animation_list.append(apix);
+        }
     }
+    connect(charge_animation,&QTimer::timeout,this,&DeviceForm::begin_charge_animation);
+
 }
 
 void DeviceForm::set_charge_animation(bool flag)
@@ -78,14 +84,17 @@ void DeviceForm::setIcon(QString name)
         return;
     }
     set_charge_animation(false);
-    QIcon icon = QIcon(":/charging/0.png");
+
+    QString icon_str = QString(":/charging/%1/0.png").arg(statics_icon_pre);
+    QIcon icon = QIcon(icon_str);
     QPixmap pixmap = icon.pixmap(QSize(32,32));
     ui->icon->setPixmap(pixmap);
 }
 
 void DeviceForm::begin_charge_animation()
 {
-    ui->icon->setPixmap(animation_list.at(charging_index));
+    if(charging_index < animation_list.size())
+        ui->icon->setPixmap(animation_list.at(charging_index));
     charging_index ++;
     if(charging_index > 24)
         charging_index = 0;
@@ -199,6 +208,9 @@ void DeviceForm::set_device(DEVICE *dev)
         return;
     m_device = dev;
     path = dev->m_dev.path;
+    /*prepare for device icon animation*/
+    UpDeviceKind kind = dev->m_dev.kind;
+    set_timer(kind);
     slot_device_change(dev);
     connect(ed,SIGNAL(signal_device_change(DEVICE*)),this,SLOT(slot_device_change(DEVICE*)));
 
@@ -215,8 +227,9 @@ void DeviceForm::slot_device_change(DEVICE* device)
     percent_number = int (device->m_dev.Percentage);
     kind = ed->engine_kind_to_localised_text(device->m_dev.kind,0);
     predict = ed->engine_get_device_predict(device);
+    qDebug () << "predict:" << predict;
     mDev = device->m_dev;
-    device_adjust_battery_parameters();
+//    device_adjust_battery_parameters();
     widget_property_change();
 }
 

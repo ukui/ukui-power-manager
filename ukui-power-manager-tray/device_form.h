@@ -43,6 +43,7 @@ public Q_SLOTS:
     void begin_charge_animation();
 public:
     QString icon_name;
+    QString statics_icon_pre;
     QString kind;
     QString percentage;
     int percent_number;
@@ -56,7 +57,7 @@ public:
     void setIcon(QString name);
     QString calculate_value(int nValue, int nTotal);
     void set_device(DEVICE *dev);
-    void set_timer();
+    void set_timer(UpDeviceKind kind);
     void set_charge_animation(bool flag);
     void device_adjust_battery_parameters();
     static QString device_get_ac_online();

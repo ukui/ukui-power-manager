@@ -516,7 +516,10 @@ void MainWindow::remove_one_device(DEVICE *device)
             df->deleteLater();
         //erase map
         device_item_map.remove(device);
+        device->deleteLater();
+        device = NULL;
         delete del_item;
+        del_item = NULL;
         dev_number --;
         if(dev_number > 3)
         {

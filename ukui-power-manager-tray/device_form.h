@@ -48,7 +48,7 @@ public:
     QString percentage;
     int percent_number;
     QString predict;
-    DEVICE *m_device;
+//    DEVICE *m_device;
     EngineDevice *ed;
     QString path;
     void setRemain(QString remain);

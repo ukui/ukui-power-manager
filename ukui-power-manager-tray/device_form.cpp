@@ -36,6 +36,11 @@ DeviceForm::DeviceForm(QWidget *parent) :
 
 DeviceForm::~DeviceForm()
 {
+    if(charge_animation)
+    {
+       charge_animation->deleteLater();
+       charge_animation = NULL;
+    }
     delete ui;
 }
 
@@ -213,7 +218,7 @@ void DeviceForm::set_device(DEVICE *dev)
 {
     if(dev == nullptr)
         return;
-    m_device = dev;
+//    m_device = dev;
     path = dev->m_dev.path;
     /*prepare for device icon animation*/
     UpDeviceKind kind = dev->m_dev.kind;

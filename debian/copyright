@@ -76,50 +76,7 @@ Copyright:  2006, William Jon McCann <mccann@jhu.edu>
             2009, Novell, Inc
 License: LGPL-2+
 
-Files: data/icons/22x22/actions/Makefile.am
-       data/icons/22x22/actions/*.png
-       data/icons/22x22/apps/Makefile.am
-       data/icons/22x22/apps/*.png
-       data/icons/22x22/status/Makefile.am
-       data/icons/22x22/status/*.png
-       data/icons/22x22/Makefile.am
-       data/icons/16x16/actions/Makefile.am
-       data/icons/16x16/actions/*.png
-       data/icons/16x16/apps/Makefile.am
-       data/icons/16x16/apps/*.png
-       data/icons/16x16/status/Makefile.am
-       data/icons/16x16/status/*.png
-       data/icons/16x16/Makefile.am
-       data/icons/scalable/actions/Makefile.am
-       data/icons/scalable/actions/*.svg
-       data/icons/scalable/apps/Makefile.am
-       data/icons/scalable/apps/*.svg
-       data/icons/scalable/status/Makefile.am
-       data/icons/scalable/status/*.svg
-       data/icons/scalable/Makefile.am
-       data/icons/32x32/actions/Makefile.am
-       data/icons/32x32/actions/*.png
-       data/icons/32x32/apps/Makefile.am
-       data/icons/32x32/apps/*.png
-       data/icons/32x32/status/Makefile.am
-       data/icons/32x32/status/*.png
-       data/icons/32x32/Makefile.am
-       data/icons/24x24/actions/Makefile.am
-       data/icons/24x24/actions/*.png
-       data/icons/24x24/apps/Makefile.am
-       data/icons/24x24/apps/*.png
-       data/icons/24x24/status/Makefile.am
-       data/icons/24x24/status/*.png
-       data/icons/24x24/Makefile.am
-       data/icons/48x48/actions/Makefile.am
-       data/icons/48x48/actions/*.png
-       data/icons/48x48/apps/Makefile.am
-       data/icons/48x48/apps/*.png
-       data/icons/48x48/status/Makefile.am
-       data/icons/48x48/status/*.png
-       data/icons/48x48/Makefile.am
-       data/icons/Makefile.am
-       data/Makefile.am
+Files: data/Makefile.am
        data/*.ui
        data/*.in
        data/*.1

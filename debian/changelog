@@ -1,7 +1,7 @@
 ukui-power-manager (2.0.2-1) unstable; urgency=medium
 
-  * New upsteam bugfix release:
-    - Wont start sleep timer when session is not idle.
+  * New upstream bugfix release:
+    - Won't start sleep timer when session is not idle.
     - Fix the wrong parameters when invoke ukui-control-center.
     - Set EnableHighDpiScalling to avoid high dpi issue.
     - Fix the wrong style of tooltip.

@@ -832,7 +832,7 @@ msgstr ""
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:125
 msgid "power policy mode"
-msgstr ""
+msgstr "Güç politikası modu"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:126
 msgid "When to show the notification icon"
@@ -1277,11 +1277,11 @@ msgstr "Yardım sayfasına bakın"
 
 #: ../src/gpm-manager.c:654
 msgid "Suspend failed for some reason (maybe dbus error)"
-msgstr ""
+msgstr "Askıya alma bir nedenden dolayı başarısız oldu (belki dbus hatası)"
 
 #: ../src/gpm-manager.c:692
 msgid "Hibernate failed for some reason (maybe dbus error)"
-msgstr ""
+msgstr "Hazırda bekletme bir nedenle başarısız oldu (belki dbus hatası)"
 
 #. TRANSLATORS: this is the ukui-screensaver throttle
 #: ../src/gpm-manager.c:904
@@ -1601,7 +1601,7 @@ msgstr ""
 #, c-format
 msgid ""
 "Battery power is too low, please plug in the power to ensure the normal use"
-msgstr ""
+msgstr "Pil gücü çok düşük, normal kullanımı sağlamak için lütfen fişe takın"
 
 #. TRANSLATORS: computer will shutdown without saving data
 #: ../src/gpm-manager.c:1802
@@ -1966,7 +1966,7 @@ msgstr "Seri ATA"
 #. TRANSLATORS: this is the old-style ATA interface
 #: ../src/gpm-statistics.c:938
 msgid "ATA host controller"
-msgstr "ATA host controller"
+msgstr "ATA ana bilgisayar denetleyicisi"
 
 #. TRANSLATORS: 802.11 wireless adaptor
 #: ../src/gpm-statistics.c:941
@@ -2104,7 +2104,7 @@ msgstr "İşlemci"
 
 #: ../src/gpm-tray-icon.c:266
 msgid "Copyright © 2011-2017 UKUI developers"
-msgstr ""
+msgstr "Telif Hakkı © 2011-2017 UKUI geliştiricileri"
 
 #. Translators should localize the following string
 #. * which will be displayed at the bottom of the about
@@ -2120,11 +2120,13 @@ msgid ""
 "%.1f%% available power\n"
 "(The power is connected and is charging)"
 msgstr ""
+"%.1f%% mevcut güç\n"
+"(Güç bağlı ve şarj oluyor)"
 
 #: ../src/gpm-tray-icon.c:406
 #, c-format
 msgid "%.1f%% available power"
-msgstr ""
+msgstr "%.1f%% mevcut güç"
 
 #. TRANSLATORS: % is a timestring, e.g. "6 hours 10 minutes"
 #: ../src/gpm-tray-icon.c:485
@@ -2140,16 +2142,16 @@ msgstr "_Tercihler"
 #. powerpolicy
 #: ../src/gpm-tray-icon.c:547
 msgid "_Performance Mode"
-msgstr ""
+msgstr "_Performans Modu"
 
 #: ../src/gpm-tray-icon.c:551
 msgid "_Save Mode"
-msgstr ""
+msgstr "_Kaydetme Modu"
 
 #: ../src/gpm-tray-icon.c:703
 #, fuzzy
 msgid "Power Preferences"
-msgstr "UKUI Güç Tercihleri"
+msgstr "Güç Tercihleri"
 
 #. TRANSLATORS: device not present
 #: ../src/gpm-upower.c:211

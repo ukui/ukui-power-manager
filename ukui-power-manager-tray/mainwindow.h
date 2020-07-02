@@ -90,6 +90,7 @@ private:
     QMap<DEVICE*,QListWidgetItem*> device_item_map;
     int dev_number;
     QGSettings *setting = nullptr;
+    double get_window_opacity();
 protected:
     bool event(QEvent *event);
     void paintEvent(QPaintEvent *event);

@@ -355,6 +355,13 @@ void MainWindow::onActivatedIcon(QSystemTrayIcon::ActivationReason reason)
                 }
                 else
                 {
+                    double transparent = get_window_opacity();
+                    QString style_string = QString("#centralWidget {"
+                                                   "background-color:rgba(19,19,20,%1);"
+                                                   "border-radius:6px;}").arg(transparent);
+                    //qDebug()<<style_string;
+                    setStyleSheet(style_string);
+
                     this->showNormal();
                     set_window_position();
                 }
@@ -410,10 +417,11 @@ void MainWindow::initUi()
                                         "QPushButton::hover {background-color:rgba(255,255,255,0);color:rgba(151,175,241,1);font-size:14px;}"
                                         "QPushButton::pressed {background-color:rgba(255,255,255,0);color:rgba(61,107,229,1);font-size:12px;}"
                                         );
-    setStyleSheet("#centralWidget {"
-                  "background-color:rgba(19,19,20,0.7);"
-                  "border-radius:6px;}"
-                  );
+    double transparent = get_window_opacity();
+    QString style_string = QString("#centralWidget {"
+                                   "background-color:rgba(19,19,20,%1);"
+                                   "border-radius:6px;}").arg(transparent);
+    setStyleSheet(style_string);
 
     get_power_list();
 
@@ -595,3 +603,17 @@ int MainWindow::getTaskbarHeight(QString str)
     return reply;
 }
 
+double MainWindow::get_window_opacity()
+{
+    double t = 0.7;
+    if (QGSettings::isSchemaInstalled("org.ukui.control-center.personalise"))
+    {
+
+        QGSettings settings("org.ukui.control-center.personalise");
+        QStringList keys = settings.keys();
+        if(keys.contains("transparency")){
+           t = settings.get("transparency").toDouble();
+        }
+    }
+    return t;
+}

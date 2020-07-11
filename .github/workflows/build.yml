@@ -27,7 +27,6 @@ jobs:
       - name: Configure & Make
         run: |
           ./autogen.sh;
-          ./configure;
           make -j$(nproc);
 
   debian:
@@ -42,11 +41,10 @@ jobs:
       - name: Update apt repository
         run: apt-get update -y
       - name: Install build dependcies
-        run: apt-get install -y build-essential qt5-default qttools5-dev-tools debhelper-compat qtbase5-dev intltool libcanberra-gtk3-dev libdbus-glib-1-dev libgcrypt20-dev libglib2.0-dev libgtk-3-dev libnotify-dev libtool-bin libupower-glib-dev libwnck-3-dev libx11-dev libxext-dev libxml-parser-perl libxrandr-dev mate-common pkg-config xmlto yelp-tools libqt5charts5-dev libqt5x11extras5-dev libgsettings-qt-dev libgnome-keyring-dev
+        run: apt-get install -y build-essential qt5-default qttools5-dev-tools debhelper-compat qtbase5-dev intltool libcanberra-gtk3-dev libdbus-glib-1-dev libgcrypt20-dev libglib2.0-dev libgtk-3-dev libnotify-dev libtool-bin libupower-glib-dev libwnck-3-dev libx11-dev libxext-dev libxml-parser-perl libxrandr-dev mate-common pkg-config xmlto yelp-tools libqt5charts5-dev libqt5x11extras5-dev libgsettings-qt-dev
       - name: Configure & Make
         run: |
-          ./autogen.sh;
-          ./configure;
+          ./autogen.sh --without-keyring;
           make -j$(nproc);
   
   fedora:
@@ -63,7 +61,6 @@ jobs:
           ln -sf /usr/bin/lrelease-qt5 /usr/bin/lrelease;
           ln -sf /usr/bin/qmake-qt5 /usr/bin/qmake;
           ./autogen.sh;
-          ./configure;
           make -j$(nproc);
 
   ubuntu:
@@ -78,9 +75,8 @@ jobs:
       - name: Update apt repository
         run: apt-get update -y
       - name: Install build dependcies
-        run: apt-get install -y build-essential qt5-default qttools5-dev-tools debhelper-compat qtbase5-dev intltool libcanberra-gtk3-dev libdbus-glib-1-dev libgcrypt20-dev libglib2.0-dev libgtk-3-dev libnotify-dev libtool-bin libupower-glib-dev libwnck-3-dev libx11-dev libxext-dev libxml-parser-perl libxrandr-dev mate-common pkg-config xmlto yelp-tools libqt5charts5-dev libqt5x11extras5-dev libgsettings-qt-dev libgnome-keyring-dev
+        run: apt-get install -y build-essential qt5-default qttools5-dev-tools debhelper-compat qtbase5-dev intltool libcanberra-gtk3-dev libdbus-glib-1-dev libgcrypt20-dev libglib2.0-dev libgtk-3-dev libnotify-dev libtool-bin libupower-glib-dev libwnck-3-dev libx11-dev libxext-dev libxml-parser-perl libxrandr-dev mate-common pkg-config xmlto yelp-tools libqt5charts5-dev libqt5x11extras5-dev libgsettings-qt-dev
       - name: Configure & Make
         run: |
-          ./autogen.sh;
-          ./configure;
+          ./autogen.sh --without-keyring;
           make -j$(nproc);

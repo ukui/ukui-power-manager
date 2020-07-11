@@ -1,0 +1,82 @@
+name: Check build
+
+on:
+  push:
+    branches:
+      - master
+    
+  pull_request:
+    branches:
+      - master
+
+  schedule:
+    - cron: '0 0 * * *'
+  
+jobs:
+  archlinux:
+    name: on Archlinux
+    runs-on: ubuntu-20.04
+    container: docker.io/library/archlinux:latest
+    steps:
+      - name: Checkout ukui-power-manager source code
+        uses: actions/checkout@v2
+      - name: Refresh pacman repository
+        run: pacman -Sy
+      - name: Install build dependencies
+        run: pacman -S --noconfirm base-devel qt5-tools dbus-glib gtk3 libgnome-keyring libnotify upower intltool mate-common yelp-tools libxrandr libx11 libxext xorgproto glib2
+      - name: Configure & Make
+        run: |
+          ./autogen.sh;
+          make -j$(nproc);
+
+  debian:
+    name: on Debian Sid
+    runs-on: ubuntu-20.04
+    container: docker.io/library/debian:sid
+    env:
+      DEBIAN_FRONTEND: noninteractive
+    steps:
+      - name: Checkout ukui-power-manager source code
+        uses: actions/checkout@v2
+      - name: Update apt repository
+        run: apt-get update -y
+      - name: Install build dependcies
+        run: apt-get install -y build-essential qt5-default qttools5-dev-tools debhelper-compat qtbase5-dev intltool libcanberra-gtk3-dev libdbus-glib-1-dev libgcrypt20-dev libglib2.0-dev libgtk-3-dev libnotify-dev libtool-bin libupower-glib-dev libwnck-3-dev libx11-dev libxext-dev libxml-parser-perl libxrandr-dev mate-common pkg-config xmlto yelp-tools libqt5charts5-dev libqt5x11extras5-dev libgsettings-qt-dev
+      - name: Configure & Make
+        run: |
+          ./autogen.sh --without-keyring;
+          make -j$(nproc);
+  
+  fedora:
+    name: on Fedora 32
+    runs-on: ubuntu-20.04
+    container: docker.io/library/fedora:32
+    steps:
+      - name: Checkout ukui-power-manager source code
+        uses: actions/checkout@v2
+      - name: Install build dependencies
+        run: dnf install -y which gcc gcc-c++ make cmake cmake-rpm-macros autoconf automake intltool rpm-build qt5-rpm-macros  gtk3-devel libwnck3-devel qt5-qtbase-devel intltool libcanberra-devel libcanberra-gtk3 glib2-devel dbus-glib-devel libnotify-devel libtool libgcrypt-devel upower-devel libX11-devel libXext-devel libXrandr-devel perl-XML-Parser qt5-qtx11extras-devel gsettings-qt-devel mate-common mate-desktop-devel qt5-qtcharts-devel xmlto yelp-tools libgnome-keyring-devel
+      - name: Configure & Make
+        run: |
+          ln -sf /usr/bin/lrelease-qt5 /usr/bin/lrelease;
+          ln -sf /usr/bin/qmake-qt5 /usr/bin/qmake;
+          ./autogen.sh;
+          make -j$(nproc);
+
+  ubuntu:
+    name: on Ubuntu 20.04
+    runs-on: ubuntu-20.04
+    container: docker.io/library/ubuntu:focal
+    env:
+      DEBIAN_FRONTEND: noninteractive
+    steps:
+      - name: Checkout ukui-power-manager source code
+        uses: actions/checkout@v2
+      - name: Update apt repository
+        run: apt-get update -y
+      - name: Install build dependcies
+        run: apt-get install -y build-essential qt5-default qttools5-dev-tools debhelper-compat qtbase5-dev intltool libcanberra-gtk3-dev libdbus-glib-1-dev libgcrypt20-dev libglib2.0-dev libgtk-3-dev libnotify-dev libtool-bin libupower-glib-dev libwnck-3-dev libx11-dev libxext-dev libxml-parser-perl libxrandr-dev mate-common pkg-config xmlto yelp-tools libqt5charts5-dev libqt5x11extras5-dev libgsettings-qt-dev
+      - name: Configure & Make
+        run: |
+          ./autogen.sh --without-keyring;
+          make -j$(nproc);

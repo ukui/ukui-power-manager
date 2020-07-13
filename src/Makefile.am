@@ -114,8 +114,6 @@ ukui_power_preferences_CFLAGS =			\
 ukui_power_manager_SOURCES =				\
 	gpm-dpms.h					\
 	gpm-dpms.c					\
-	gpm-phone.h					\
-	gpm-phone.c					\
 	gpm-backlight.h					\
 	gpm-backlight.c					\
 	gpm-idle.h					\
@@ -166,6 +164,7 @@ ukui_power_manager_LDADD =				\
 ukui_power_manager_CFLAGS =				\
 	$(WARNINGFLAGS)					\
 	$(NULL)
+	
 
 if HAVE_TESTS
 ukui_power_self_test_SOURCES =				\
@@ -229,9 +228,6 @@ ukui_power_self_test_CFLAGS = -DEGG_TEST $(AM_CFLAGS) $(WARNINGFLAGS)
 endif
 
 BUILT_SOURCES = 					\
-	org.ukui.PowerManager.h			\
-	org.ukui.PowerManager.Backlight.h		\
-	org.ukui.PowerManager.KbdBacklight.h \
 	gpm-marshal.c					\
 	gpm-marshal.h					\
 	$(NULL)
@@ -243,26 +239,6 @@ gpm-marshal.c: gpm-marshal.list
 gpm-marshal.h: gpm-marshal.list
 	@GLIB_GENMARSHAL@ $< --prefix=gpm_marshal --header > $@
 
-org.ukui.PowerManager.h: org.ukui.PowerManager.xml
-	libtool --mode=execute dbus-binding-tool	\
-		--prefix=gpm_manager			\
-		--mode=glib-server			\
-		--output=org.ukui.PowerManager.h	\
-		$(srcdir)/org.ukui.PowerManager.xml
-
-org.ukui.PowerManager.Backlight.h: org.ukui.PowerManager.Backlight.xml
-	libtool --mode=execute dbus-binding-tool	\
-		--prefix=gpm_backlight			\
-		--mode=glib-server			\
-		--output=org.ukui.PowerManager.Backlight.h	\
-		$(srcdir)/org.ukui.PowerManager.Backlight.xml
-
-org.ukui.PowerManager.KbdBacklight.h: org.ukui.PowerManager.KbdBacklight.xml
-	libtool --mode=execute dbus-binding-tool	\
-		--prefix=gpm_kbd_backlight			\
-		--mode=glib-server			\
-		--output=org.ukui.PowerManager.KbdBacklight.h	\
-		$(srcdir)/org.ukui.PowerManager.KbdBacklight.xml
 
 clean-local:
 	rm -f *~

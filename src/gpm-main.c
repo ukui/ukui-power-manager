@@ -33,18 +33,19 @@
 #include <glib.h>
 #include <glib/gi18n.h>
 #include <gtk/gtk.h>
-#include <dbus/dbus-glib.h>
-#include <dbus/dbus-glib-lowlevel.h>
+//#include <dbus/dbus-glib.h>
+//#include <dbus/dbus-glib-lowlevel.h>
 
 #include "gpm-icon-names.h"
 #include "gpm-common.h"
 #include "gpm-manager.h"
 #include "gpm-session.h"
 
-#include "org.ukui.PowerManager.h"
+//#include "org.ukui.PowerManager.h"
 
 #include "egg-debug.h"
 
+#if 0
 /**
  * gpm_object_register:
  * @connection: What we want to register to
@@ -99,6 +100,7 @@ gpm_object_register (DBusGConnection *connection,
 
 	return TRUE;
 }
+#endif
 
 /**
  * timed_exit_cb:
@@ -154,8 +156,8 @@ int
 main (int argc, char *argv[])
 {
 	GMainLoop *loop;
-	DBusGConnection *system_connection;
-	DBusGConnection *session_connection;
+//	DBusGConnection *system_connection;
+//	DBusGConnection *session_connection;
 	gboolean verbose = FALSE;
 	gboolean version = FALSE;
 	gboolean timed_exit = FALSE;
@@ -184,7 +186,7 @@ main (int argc, char *argv[])
 	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
 	textdomain (GETTEXT_PACKAGE);
 
-	dbus_g_thread_init ();
+//	dbus_g_thread_init ();
 
 	context = g_option_context_new (N_("UKUI Power Manager"));
 	/* TRANSLATORS: program name, a simple app to view pending updates */
@@ -194,11 +196,11 @@ main (int argc, char *argv[])
 	g_option_context_parse (context, &argc, &argv, NULL);
 
 	if (version) {
-		g_print ("Version %s\n", VERSION);
+		//g_print ("Version %s\n", VERSION);
 		goto unref_program;
 	}
 
-	dbus_g_thread_init ();
+//	dbus_g_thread_init ();
 
 	gtk_init (&argc, &argv);
 	egg_debug_init (verbose);
@@ -206,7 +208,7 @@ main (int argc, char *argv[])
 	egg_debug ("UKUI %s %s", GPM_NAME, VERSION);
 
 	/* check dbus connections, exit if not valid */
-	system_connection = dbus_g_bus_get (DBUS_BUS_SYSTEM, &error);
+/*	system_connection = dbus_g_bus_get (DBUS_BUS_SYSTEM, &error);
 	if (error) {
 		egg_warning ("%s", error->message);
 		g_error_free (error);
@@ -224,7 +226,7 @@ main (int argc, char *argv[])
 			   "dbus session service.\n\n"
 			   "This is usually started automatically in X "
 			   "or ukui startup when you start a new session.");
-	}
+	}*/
 
 	/* add application specific icons to search path */
 	gtk_icon_theme_append_search_path (gtk_icon_theme_get_default (),
@@ -232,22 +234,25 @@ main (int argc, char *argv[])
 
 	loop = g_main_loop_new (NULL, FALSE);
 
+	//g_message("start--------------");
 	/* optionally register with the session */
 	session = gpm_session_new ();
 	g_signal_connect (session, "stop", G_CALLBACK (gpm_main_stop_cb), loop);
 	g_signal_connect (session, "query-end-session", G_CALLBACK (gpm_main_query_end_session_cb), loop);
 	g_signal_connect (session, "end-session", G_CALLBACK (gpm_main_end_session_cb), loop);
+	
 	gpm_session_register_client (session, "ukui-power-manager", getenv ("DESKTOP_AUTOSTART_ID"));
 
 	/* create a new gui object */
 	manager = gpm_manager_new ();
 
-	if (!gpm_object_register (session_connection, G_OBJECT (manager))) {
+	// do it later
+	// register to be a policy agent, just like kpackagekit does 
+	/*if (!gpm_object_register (session_connection, G_OBJECT (manager))) {
 		egg_error ("%s is already running in this session.", GPM_NAME);
 		goto unref_program;
 	}
 
-	/* register to be a policy agent, just like kpackagekit does */
 	ret = dbus_bus_request_name(dbus_g_connection_get_connection(system_connection),
 				    "org.freedesktop.Policy.Power",
 				    DBUS_NAME_FLAG_REPLACE_EXISTING, NULL);
@@ -260,7 +265,7 @@ main (int argc, char *argv[])
 		break;
 	default:
 		break;
-	};
+	};*/
 
 	/* Only timeout and close the mainloop if we have specified it
 	 * on the command line */

@@ -44,7 +44,7 @@
 #endif /* WITH_KEYRING */
 
 #include "egg-debug.h"
-//#include "egg-console-kit.h"
+#include "egg-console-kit.h"
 
 #include "gpm-screensaver.h"
 #include "gpm-common.h"

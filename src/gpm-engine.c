@@ -878,7 +878,7 @@ gpm_engine_coldplug_idle_cb (GpmEngine *engine)
 	}
 #endif
 	/* connected mobile phones */
-	gpm_phone_coldplug (engine->priv->phone);
+	//gpm_phone_coldplug (engine->priv->phone);
 
 	gpm_engine_recalculate_state (engine);
 
@@ -1222,9 +1222,9 @@ phone_device_refresh_cb (GpmPhone *phone, guint idx, GpmEngine *engine)
 			      NULL);
 
 		if (kind == UP_DEVICE_KIND_PHONE) {
-			is_present = gpm_phone_get_present (phone, idx);
-			state = gpm_phone_get_on_ac (phone, idx) ? UP_DEVICE_STATE_CHARGING : UP_DEVICE_STATE_DISCHARGING;
-			percentage = gpm_phone_get_percentage (phone, idx);
+			//is_present = gpm_phone_get_present (phone, idx);
+			//state = gpm_phone_get_on_ac (phone, idx) ? UP_DEVICE_STATE_CHARGING : UP_DEVICE_STATE_DISCHARGING;
+			//percentage = gpm_phone_get_percentage (phone, idx);
 			break;
 		}
 	}
@@ -1262,13 +1262,13 @@ gpm_engine_init (GpmEngine *engine)
 	g_signal_connect (engine->priv->settings, "changed",
 			  G_CALLBACK (gpm_engine_settings_key_changed_cb), engine);
 
-	engine->priv->phone = gpm_phone_new ();
+	/*engine->priv->phone = gpm_phone_new ();
 	g_signal_connect (engine->priv->phone, "device-added",
 			  G_CALLBACK (phone_device_added_cb), engine);
 	g_signal_connect (engine->priv->phone, "device-removed",
 			  G_CALLBACK (phone_device_removed_cb), engine);
 	g_signal_connect (engine->priv->phone, "device-refresh",
-			  G_CALLBACK (phone_device_refresh_cb), engine);
+			  G_CALLBACK (phone_device_refresh_cb), engine);*/
 
 	/* create a fake virtual composite battery */
 #if UP_CHECK_VERSION(0, 99, 0)

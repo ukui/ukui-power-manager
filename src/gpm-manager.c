@@ -38,8 +38,8 @@
 #include <glib/gi18n.h>
 #include <gio/gunixfdlist.h>
 #include <gtk/gtk.h>
-#include <dbus/dbus-glib.h>
-#include <dbus/dbus-glib-lowlevel.h>
+//#include <dbus/dbus-glib.h>
+//#include <dbus/dbus-glib-lowlevel.h>
 #include <canberra-gtk.h>
 #include <libupower-glib/upower.h>
 #include <libnotify/notify.h>
@@ -62,8 +62,8 @@
 #include "gpm-engine.h"
 #include "gpm-upower.h"
 
-#include "org.ukui.PowerManager.Backlight.h"
-#include "org.ukui.PowerManager.KbdBacklight.h"
+//#include "org.ukui.PowerManager.Backlight.h"
+//#include "org.ukui.PowerManager.KbdBacklight.h"
 
 static void     gpm_manager_finalize	(GObject	 *object);
 
@@ -2033,13 +2033,13 @@ static void
 gpm_manager_init (GpmManager *manager)
 {
 	gboolean check_type_cpu;
-	DBusGConnection *connection;
-	GDBusConnection *g_connection;
+	//DBusGConnection *connection;
+	//GDBusConnection *g_connection;
 	GError *error = NULL;
 
 	manager->priv = GPM_MANAGER_GET_PRIVATE (manager);
-	connection = dbus_g_bus_get (DBUS_BUS_SESSION, &error);
-	g_connection = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, &error);
+	//connection = dbus_g_bus_get (DBUS_BUS_SESSION, &error);
+	//g_connection = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, &error);
 
 	/* We want to inhibit the systemd suspend options, and take care of them ourselves */
 	if (LOGIND_RUNNING()) {
@@ -2096,22 +2096,21 @@ gpm_manager_init (GpmManager *manager)
 
 	/* try an start an interactive service */
 	manager->priv->backlight = gpm_backlight_new ();
-	if (manager->priv->backlight != NULL) {
-		/* add the new brightness lcd DBUS interface */
+	/*if (manager->priv->backlight != NULL) {
 		dbus_g_object_type_install_info (GPM_TYPE_BACKLIGHT,
 						 &dbus_glib_gpm_backlight_object_info);
 		dbus_g_connection_register_g_object (connection, GPM_DBUS_PATH_BACKLIGHT,
 						     G_OBJECT (manager->priv->backlight));
-	}
+	}*/
 
     manager->priv->kbd_backlight = gpm_kbd_backlight_new ();
-    if (manager->priv->kbd_backlight != NULL) {
+    /*if (manager->priv->kbd_backlight != NULL) {
     	dbus_g_object_type_install_info (GPM_TYPE_KBD_BACKLIGHT,
 						 &dbus_glib_gpm_kbd_backlight_object_info);
 		dbus_g_connection_register_g_object (connection, GPM_DBUS_PATH_KBD_BACKLIGHT,
 						     G_OBJECT (manager->priv->kbd_backlight));
     
-    }
+    }*/
 
 	manager->priv->idle = gpm_idle_new ();
 	g_signal_connect (manager->priv->idle, "idle-changed",

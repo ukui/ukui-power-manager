@@ -118,7 +118,6 @@ PKG_CHECK_MODULES(GLIB, glib-2.0 >= $GLIB_REQUIRED gobject-2.0 gio-2.0 >= $GIO_R
 PKG_CHECK_MODULES(CANBERRA, libcanberra-gtk3 >= $CANBERRA_REQUIRED)
 
 PKG_CHECK_MODULES(DBUS,[
- dbus-glib-1 >= $DBUS_GLIB_REQUIRED
  dbus-1 >= $DBUS_REQUIRED
  gthread-2.0])
 

@@ -21,6 +21,7 @@
 #include <QSharedMemory>
 #include <QDebug>
 #include <QTranslator>
+#include <KWindowEffects>
 
 int main(int argc, char *argv[])
 {
@@ -63,6 +64,7 @@ int main(int argc, char *argv[])
 //    QIcon::setThemeName("ukui-icon-theme-default");
 //    QIcon::setThemeName("ukui-icon-theme");
     MainWindow w;
+    KWindowEffects::enableBlurBehind(w.winId(),true);
     w.hide();
 
     return a.exec();

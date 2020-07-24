@@ -1022,7 +1022,7 @@ gpm_engine_device_changed_cb (UpClient *client, UpDevice *device, GpmEngine *eng
 	warning = gpm_engine_get_warning (engine, device);
 
         //kobe
-        if (GPM_ENGINE_FIRST_START){
+        /*if (GPM_ENGINE_FIRST_START){
             GPM_ENGINE_FIRST_START = FALSE;
             if (warning == GPM_ENGINE_WARNING_LOW) {
                 egg_debug ("** EMIT: charge-low");
@@ -1034,7 +1034,6 @@ gpm_engine_device_changed_cb (UpClient *client, UpDevice *device, GpmEngine *eng
                 egg_debug ("** EMIT: charge-action");
                 g_signal_emit (engine, signals [CHARGE_ACTION], 0, device);
             }
-            //save new state
             g_object_set_data (G_OBJECT(device), "engine-warning-old", GUINT_TO_POINTER(warning));
         }
         else {
@@ -1049,7 +1048,6 @@ gpm_engine_device_changed_cb (UpClient *client, UpDevice *device, GpmEngine *eng
                     egg_debug ("** EMIT: charge-action");
                     g_signal_emit (engine, signals [CHARGE_ACTION], 0, device);
                 }
-                //save new state
                 g_object_set_data (G_OBJECT(device), "engine-warning-old", GUINT_TO_POINTER(warning));
             }
             else {
@@ -1060,8 +1058,8 @@ gpm_engine_device_changed_cb (UpClient *client, UpDevice *device, GpmEngine *eng
                     g_signal_emit (engine, signals [CHARGE_CRITICAL_NOTIFY], 0, device);
                 }
             }
-        }
-        /*if (warning != warning_old) {
+        }*/
+        if (warning != warning_old) {
 		if (warning == GPM_ENGINE_WARNING_LOW) {
 			egg_debug ("** EMIT: charge-low");
 			g_signal_emit (engine, signals [CHARGE_LOW], 0, device);
@@ -1074,14 +1072,14 @@ gpm_engine_device_changed_cb (UpClient *client, UpDevice *device, GpmEngine *eng
 		}
                 //save new state
 		g_object_set_data (G_OBJECT(device), "engine-warning-old", GUINT_TO_POINTER(warning));
-        }*/
+        }
 	//jiangh
-	static gboolean notice_once = TRUE;
+	/*static gboolean notice_once = TRUE;
 	if ( (TimeToFull == 0) && (notice_once) && (percentage < 3.0) )
 	{
 		g_signal_emit_by_name(engine,"close-notify");
 		notice_once = FALSE;
-	}
+	}*/
 	gpm_engine_recalculate_state (engine);
 }
 

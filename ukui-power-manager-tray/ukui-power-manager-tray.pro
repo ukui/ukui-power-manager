@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui dbus
+QT       += core gui dbus KWindowSystem
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 

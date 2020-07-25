@@ -22,10 +22,11 @@
 #include <QDebug>
 #include <QTranslator>
 #include <KWindowEffects>
+#include <QDesktopWidget>
 
 int main(int argc, char *argv[])
 {
-    QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+//    QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QApplication a(argc, argv);
     QSharedMemory mem("SingleApp-ukui-power-manager-tray");
     if(mem.attach())
@@ -48,7 +49,12 @@ int main(int argc, char *argv[])
         qWarning()<<QStringLiteral("program is already running! exit!");
         exit(0);
     }
-
+if (QApplication::desktop()->width()>=2560){
+#if (QT_VERSION >= QT_VERSION_CHECK(5,6,0))
+    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+    QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+#endif
+}
     QString locale = QLocale::system().name();
     QTranslator translator;
     QString qmfile = QString(":/%1.qm").arg(locale);

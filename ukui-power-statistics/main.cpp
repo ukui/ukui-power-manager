@@ -31,7 +31,12 @@ int main(int argc, char *argv[])
         return 0;
     }
     QApplication a(argc, argv);
-
+    if (QApplication::desktop()->width()>=2560){
+    #if (QT_VERSION >= QT_VERSION_CHECK(5,6,0))
+        QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+        QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+    #endif
+    }
     QCommandLineParser parser;
     QCommandLineOption op("device","device","device","");
     parser.addOption(op);

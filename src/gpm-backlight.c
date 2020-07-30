@@ -644,26 +644,24 @@ gpm_backlight_notify_system_idle_changed (GpmBacklight *backlight, gboolean is_i
 
 	if (is_idle == FALSE) {
 		egg_debug ("we have just been idle for %lfs", elapsed);
-
+		gpm_idle_set_timeout_dim (backlight->priv->idle, backlight->priv->idle_dim_timeout);
 		/* The user immediatly undimmed the screen!
 		 * We should double the timeout to avoid this happening again */
-		if (elapsed < 10) {
-			/* double the event time */
+		/*if (elapsed < 10) {
 			backlight->priv->idle_dim_timeout *= 2.0;
 			egg_debug ("increasing idle dim time to %is", backlight->priv->idle_dim_timeout);
 			gpm_idle_set_timeout_dim (backlight->priv->idle, backlight->priv->idle_dim_timeout);
-		}
+		}*/
 
 		/* We reset the dimming after 2 minutes of idle,
 		 * as the user will have changed tasks */
-		if (elapsed > 2*60) {
-			/* reset back to our default dimming */
+		/*if (elapsed > 2*60) {
 			backlight->priv->idle_dim_timeout =
 				g_settings_get_int (backlight->priv->settings,
 					   GPM_SETTINGS_IDLE_DIM_TIME);
 			egg_debug ("resetting idle dim time to %is", backlight->priv->idle_dim_timeout);
 			gpm_idle_set_timeout_dim (backlight->priv->idle, backlight->priv->idle_dim_timeout);
-		}
+		}*/
 	} else {
 		egg_debug ("we were active for %lfs", elapsed);
 	}

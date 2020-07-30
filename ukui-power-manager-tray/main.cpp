@@ -23,10 +23,32 @@
 #include <QTranslator>
 #include <KWindowEffects>
 #include <QDesktopWidget>
+#include <X11/Xlib.h>
 
 int main(int argc, char *argv[])
 {
 //    QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+    Display *display = XOpenDisplay(NULL);
+    if (NULL == display) {
+	qDebug() << "Can't open display!";
+	return -1;
+    }
+    Screen *screen = DefaultScreenOfDisplay(display);
+    if (NULL == screen) {
+	qDebug() << "Get default screen failed!";
+        return -1;
+    }
+    int width = screen->width;
+
+    if (width > 2560) {
+        #if (QT_VERSION >= QT_VERSION_CHECK(5, 6, 0))
+                QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+                QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+        #endif
+    }
+
+    XCloseDisplay(display);
+
     QApplication a(argc, argv);
     QSharedMemory mem("SingleApp-ukui-power-manager-tray");
     if(mem.attach())
@@ -49,12 +71,7 @@ int main(int argc, char *argv[])
         qWarning()<<QStringLiteral("program is already running! exit!");
         exit(0);
     }
-if (QApplication::desktop()->width()>=2560){
-#if (QT_VERSION >= QT_VERSION_CHECK(5,6,0))
-    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-    QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
-#endif
-}
+
     QString locale = QLocale::system().name();
     QTranslator translator;
     QString qmfile = QString(":/%1.qm").arg(locale);

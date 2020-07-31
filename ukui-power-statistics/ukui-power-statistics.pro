@@ -28,7 +28,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 TRANSLATIONS += zh_CN.ts en.ts bo.ts
 
 CONFIG += c++11 link_pkgconfig
-PKGCONFIG += gsettings-qt
+PKGCONFIG += gsettings-qt x11
 
 SOURCES += \
     customtype.cpp \

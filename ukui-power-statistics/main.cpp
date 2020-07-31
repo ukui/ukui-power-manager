@@ -21,7 +21,7 @@
 #include "ukpm_widget.h"
 #include <QCommandLineOption>
 #include <QCommandLineParser>
-
+#include <X11/Xlib.h>
 
 int main(int argc, char *argv[])
 {
@@ -30,13 +30,29 @@ int main(int argc, char *argv[])
     {
         return 0;
     }
-    QApplication a(argc, argv);
-    if (QApplication::desktop()->width()>=2560){
-    #if (QT_VERSION >= QT_VERSION_CHECK(5,6,0))
-        QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-        QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
-    #endif
+
+    Display *display = XOpenDisplay(NULL);
+    if (NULL == display) {
+    qDebug() << "Can't open display!";
+    return -1;
     }
+    Screen *screen = DefaultScreenOfDisplay(display);
+    if (NULL == screen) {
+    qDebug() << "Get default screen failed!";
+        return -1;
+    }
+    int width = screen->width;
+
+    if (width > 2560) {
+        #if (QT_VERSION >= QT_VERSION_CHECK(5, 6, 0))
+                QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+                QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+        #endif
+    }
+
+    XCloseDisplay(display);
+
+    QApplication a(argc, argv);
     QCommandLineParser parser;
     QCommandLineOption op("device","device","device","");
     parser.addOption(op);

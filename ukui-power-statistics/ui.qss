@@ -59,12 +59,11 @@ QTabBar::tab {
 }
 
 QTabBar::tab:selected { /* The tab widget frame */
-    color:#3D6BE5;
+    color:#3257CA;
 }
 
-QTabBar::tab-bar:selected { /* The tab widget frame */
-    border-bottom:1px;
-    border-bottom-color:#3D6BE5;
+QTabBar::tab:hover { /* The tab widget frame */
+    color:#3D6BE5;
 }
 
 /*QTabBar::tab:selected {

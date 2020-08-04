@@ -1612,14 +1612,16 @@ QString UkpmWidget::getWidgetAxis(uint value)
         if(hours ==0)
             text.sprintf("%dd",days);
         else
-            text.sprintf("%dd%dh",days,hours);
+//            text.sprintf("%dd%dh",days,hours);
+            text.sprintf("%.1fd",days+hours*1.0/24);
     }
     else if(hours > 0)
     {
         if(minutes ==0)
             text.sprintf("%dh",hours);
         else
-            text.sprintf("%dh%dm",hours,minutes);
+//            text.sprintf("%dh%dm",hours,minutes);
+            text.sprintf("%.1fh",(hours+minutes*1.0/60));
     }
     else if(minutes > 0)
     {

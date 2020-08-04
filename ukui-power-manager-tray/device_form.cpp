@@ -239,7 +239,7 @@ void DeviceForm::slot_device_change(DEVICE* device)
     percent_number = int (device->m_dev.Percentage);
     kind = ed->engine_kind_to_localised_text(device->m_dev.kind,0);
     predict = ed->engine_get_device_predict(device);
-    qDebug () << "predict:" << predict;
+//    qDebug () << "predict:" << predict;
     mDev = device->m_dev;
 //    device_adjust_battery_parameters();
     widget_property_change();

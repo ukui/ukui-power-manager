@@ -167,12 +167,12 @@
       <description>Whether to use the screen lock setting of ukui-screensaver to decide if the screen is locked after a hibernate, suspend or blank screen.</description>
     </key>
     <key name="lock-blank-screen" type="b">
-      <default>true</default>
+      <default>false</default>
       <summary>Lock screen when blanked</summary>
       <description>Whether the screen is locked when the screen is turned off. Only used if lock-use-screensaver is false.</description>
     </key>
     <key name="lock-suspend" type="b">
-      <default>true</default>
+      <default>false</default>
       <summary>Lock screen on suspend</summary>
       <description>Whether the screen is locked when the computer wakes up from a suspend. Only used if lock-use-screensaver is false.</description>
     </key>

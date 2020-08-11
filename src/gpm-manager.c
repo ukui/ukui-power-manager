@@ -738,11 +738,19 @@ gpm_manager_perform_policy (GpmManager  *manager, const gchar *policy_key, const
 		gpm_control_shutdown (manager->priv->control, NULL);
 
 	} else if (policy == GPM_ACTION_POLICY_INTERACTIVE) {
-		GpmSession *session;
-		egg_debug ("logout, reason: %s", reason);
-		session = gpm_session_new ();
-		gpm_session_logout (session);
-		g_object_unref (session);
+		char * cmd = NULL;
+		gboolean ret;
+		cmd = g_strdup_printf ("/usr/bin/ukui-session-tools");
+		ret = g_spawn_command_line_async (cmd,NULL);
+		g_free (cmd);
+		if(!ret)
+		{
+			GpmSession *session;
+			egg_debug ("logout, reason: %s", reason);
+			session = gpm_session_new ();
+			gpm_session_logout (session);
+			g_object_unref (session);
+		}
 	} else {
 		egg_warning ("unknown action %i", policy);
 	}

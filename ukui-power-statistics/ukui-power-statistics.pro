@@ -25,7 +25,35 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # In order to do so, uncomment the following line.
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
-TRANSLATIONS += zh_CN.ts en.ts bo.ts
+TRANSLATIONS+=\
+    translations/ukui-power-statistics_bo.ts \
+    translations/ukui-power-statistics_zh_CN.ts \
+    translations/ukui-power-statistics_tr.ts
+
+QM_FILES_INSTALL_PATH = /usr/share/ukui-power-manager/statistics/translations/
+
+# CONFIG += lrelase not work for qt5.6, add those from lrelease.prf for compatibility
+qtPrepareTool(QMAKE_LRELEASE, lrelease)
+lrelease.name = lrelease
+lrelease.input = TRANSLATIONS
+lrelease.output = ${QMAKE_FILE_IN_BASE}.qm
+lrelease.commands = $$QMAKE_LRELEASE ${QMAKE_FILE_IN} -qm ${QMAKE_FILE_OUT}
+lrelease.CONFIG = no_link
+QMAKE_EXTRA_COMPILERS += lrelease
+PRE_TARGETDEPS += compiler_lrelease_make_all
+
+for (translation, TRANSLATIONS) {
+    translation = $$basename(translation)
+    QM_FILES += $$OUT_PWD/$$replace(translation, \\..*$, .qm)
+}
+qm_files.files = $$QM_FILES
+qm_files.path = $$QM_FILES_INSTALL_PATH
+qm_files.CONFIG = no_check_exist
+INSTALLS += qm_files
+
+# So we can access it from main.cpp
+DEFINES += QM_FILES_INSTALL_PATH='\\"$${QM_FILES_INSTALL_PATH}\\"'
+
 
 CONFIG += c++11 link_pkgconfig
 PKGCONFIG += gsettings-qt x11

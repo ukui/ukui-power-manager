@@ -58,14 +58,20 @@ int main(int argc, char *argv[])
     parser.addOption(op);
     parser.parse(a.arguments());
     QString device = parser.value(op);
-    QString locale = QLocale::system().name();
+//    QString locale = QLocale::system().name();
+//    QTranslator translator;
+//    QString qmfile = QString(":/locale/%1.qm").arg(locale);
+//    if(locale == "zh_CN")
+//    {
+//        translator.load(qmfile);
+//        a.installTranslator(&translator);
+//    }
     QTranslator translator;
-    QString qmfile = QString(":/locale/%1.qm").arg(locale);
-    if(locale == "zh_CN")
-    {
-        translator.load(qmfile);
+    if (translator.load(QLocale(),"ukui-power-statistics","_",QM_FILES_INSTALL_PATH))
         a.installTranslator(&translator);
-    }
+    else
+        qDebug()<<"load ukui-power-manager-statistics qm file error";
+
     a.setWindowIcon(QIcon(":/resource/icon/ukui-power-statistics.png"));
     UkpmWidget *w = new UkpmWidget;
     if(!device.isEmpty())

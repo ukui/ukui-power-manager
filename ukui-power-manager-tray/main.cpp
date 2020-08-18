@@ -24,6 +24,7 @@
 #include <KWindowEffects>
 #include <QDesktopWidget>
 #include <X11/Xlib.h>
+#include <QFileInfo>
 
 int main(int argc, char *argv[])
 {
@@ -72,19 +73,25 @@ int main(int argc, char *argv[])
         exit(0);
     }
 
-    QString locale = QLocale::system().name();
+//    QString locale = QLocale::system().name();
+//    QTranslator translator;
+//    QString qmfile = QString("/usr/share/ukui-power-manager/tray/translations/%1.qm").arg(locale);
+//    QFileInfo fl(qmfile);
+//    if (fl.exists()) {
+//        translator.load(qmfile);
+//        a.installTranslator(&translator);
+//    }
     QTranslator translator;
-    QString qmfile = QString(":/%1.qm").arg(locale);
-    if(locale == "zh_CN")
-    {
-        translator.load(qmfile);
+    if (translator.load(QLocale(),"ukui-power-manager-tray","_",QM_FILES_INSTALL_PATH))
         a.installTranslator(&translator);
-    }
+    else
+        qDebug()<<"load ukui-power-manager-tray qm file error";
+
     QFile file(":/main.qss");
     file.open(QFile::ReadOnly);
+//    QIcon::setThemeName("ukui-icon-theme-default");
     qApp->setStyleSheet(file.readAll());
     file.close();
-//    QIcon::setThemeName("ukui-icon-theme-default");
 //    QIcon::setThemeName("ukui-icon-theme");
     MainWindow w;
     KWindowEffects::enableBlurBehind(w.winId(),true);

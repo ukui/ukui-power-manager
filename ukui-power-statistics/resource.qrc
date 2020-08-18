@@ -1,8 +1,5 @@
 <RCC>
-    <qresource prefix="/locale">
-        <file>zh_CN.qm</file>
-        <file>en.qm</file>
-    </qresource>
+    <qresource prefix="/locale"/>
     <qresource prefix="/images"/>
     <qresource prefix="/resource">
         <file>ui.qss</file>

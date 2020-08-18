@@ -1,8 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qss</file>
-        <file>en.qm</file>
-        <file>zh_CN.qm</file>
         <file>apps/bright.png</file>
         <file>apps/health.png</file>
         <file>apps/mate-brightness-applet.png</file>

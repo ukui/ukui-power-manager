@@ -1,7 +1,8 @@
 [Desktop Entry]
 _Name=Power Manager Tray
+Name[zh_CN]=电源管理程序
 _Comment=Power management tray
-Icon=ukui-power-manager-tray
+Icon=ukui-power-manager
 Exec=ukui-power-manager-tray
 Terminal=false
 Type=Application

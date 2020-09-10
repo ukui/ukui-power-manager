@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated />
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="db9b5ebf-a142-4bf8-a9cc-850585266d96" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/powerperformance.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/misc/misc.c" beforeDir="false" afterPath="$PROJECT_DIR$/misc/misc.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/misc/misc.h" beforeDir="false" afterPath="$PROJECT_DIR$/misc/misc.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/powersave" beforeDir="false" afterPath="$PROJECT_DIR$/powersave" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/powersave.c" beforeDir="false" afterPath="$PROJECT_DIR$/powersave.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usbAutoSuspend/usb.c" beforeDir="false" afterPath="$PROJECT_DIR$/usbAutoSuspend/usb.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usbAutoSuspend/usb.h" beforeDir="false" afterPath="$PROJECT_DIR$/usbAutoSuspend/usb.h" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1h1t67olhF4DwpdPRsJJkUkCqcE" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="cf.first.check.clang-format" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="db9b5ebf-a142-4bf8-a9cc-850585266d96" name="Default Changelist" comment="" />
+      <created>1599190248188</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1599190248188</updated>
+      <workItem from="1599190249395" duration="13167000" />
+      <workItem from="1599440508984" duration="4895000" />
+      <workItem from="1599450305406" duration="5931000" />
+      <workItem from="1599526498700" duration="2871000" />
+      <workItem from="1599614009040" duration="6553000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="LAST_COMMIT_MESSAGE" value="" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="485" y="256" width="620" height="421" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1599204487587">
+      <screen x="0" y="27" width="1600" height="873" />
+    </state>
+    <state x="485" y="256" width="620" height="421" key="#com.intellij.fileTypes.FileTypeChooser/0.27.1600.873@0.27.1600.873" timestamp="1599204487587" />
+    <state x="580" y="373" width="430" height="187" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599618032832">
+      <screen x="0" y="27" width="1600" height="873" />
+    </state>
+    <state x="580" y="373" width="430" height="187" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.27.1600.873@0.27.1600.873" timestamp="1599618032832" />
+    <state x="491" y="120" width="617" height="686" key="find.popup" timestamp="1599461603552">
+      <screen x="0" y="27" width="1600" height="873" />
+    </state>
+    <state x="491" y="120" width="617" height="686" key="find.popup/0.27.1600.873@0.27.1600.873" timestamp="1599461603552" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/powersave.c</url>
+          <line>16</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

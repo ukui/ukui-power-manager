@@ -30,7 +30,7 @@
 #include <QFile>
 #include <customstyle.h>
 #include <QDBusReply>
-
+#include <unistd.h>
 #define POWER_SCHEMA                "org.ukui.power-manager"
 #define UKUI_STYLE                  "org.ukui.style"
 #define UKUI_STYLE_STYLE_NAME       "style-name"
@@ -49,18 +49,48 @@ MainWindow::MainWindow(QWidget *parent) :
     ed = EngineDevice::getInstance();
     ui->setupUi(this);
     initData();
-
+    const QByteArray id(POWER_SCHEMA);
+    if (QGSettings::isSchemaInstalled(id)){
+        settings = new QGSettings(id);
+    }
     trayIcon = new QSystemTrayIcon(this);
     connect(trayIcon,SIGNAL(activated(QSystemTrayIcon::ActivationReason)),this,SLOT(onActivatedIcon(QSystemTrayIcon::ActivationReason)));
     connect(ed,SIGNAL(icon_changed(QString)),this,SLOT(onIconChanged(QString)));
     connect(ed,SIGNAL(engine_signal_summary_change(QString)),this,SLOT(onSumChanged(QString)));
-
+    connect(ed,SIGNAL(engine_signal_charge_low(DEV)),this,SLOT(low_battery_notify(DEV)));
+    connect(ed,SIGNAL(engine_signal_charge_critical(DEV)),this,SLOT(critical_battery_notify(DEV)));
+    connect(ed,SIGNAL(engine_signal_charge_action(DEV)),this,SLOT(action_battery_notify(DEV)));
+    connect(ed,SIGNAL(engine_signal_discharge(DEV)),this,SLOT(discharge_notify(DEV)));
+    connect(ed,SIGNAL(engine_signal_fullycharge(DEV)),this,SLOT(full_charge_notify(DEV)));
     connect(ed,SIGNAL(one_device_add(DEVICE*)),this,SLOT(add_one_device(DEVICE *)));
     connect(ed,SIGNAL(one_device_remove(DEVICE*)),this,SLOT(remove_one_device(DEVICE*)));
-
+    connect(timer,SIGNAL(timeout()), this, SLOT(power_mode_change(void)));
+    timer->start(5000);
+    chdir("../power-save/");
+    system("make");
     initUi();
     ed->engine_policy_settings_cb("iconPolicy");
     ed->engine_recalculate_summary();
+
+}
+
+void MainWindow::power_mode_change(){
+    int acDisplayTime = settings->get("sleep-display-ac").toInt();
+    int batDisplayTime = settings->get("sleep-display-battery").toInt();
+    if(oriAcDisplayTime == acDisplayTime && oriBatDisplayTime == batDisplayTime){
+        return;
+    }else{
+        oriAcDisplayTime = acDisplayTime;
+        oriBatDisplayTime = batDisplayTime;
+    }
+    if(acDisplayTime == 1200 && batDisplayTime == 1200 && powersave == 0){
+        powersave = 1;
+        system("../power-save/powersave");
+    }else if(acDisplayTime != 1200 || batDisplayTime != 1200){
+        powersave = 0;
+        system("../power-save/powerperformance");
+    }
+
 }
 
 void MainWindow::onSumChanged(QString str)
@@ -77,14 +107,16 @@ void MainWindow::discharge_notify(DEV dev)
                          "org.freedesktop.Notifications",
                          QDBusConnection::sessionBus());
     QList<QVariant> args;
-    args<<(QCoreApplication::applicationName())
+    //args<<(QCoreApplication::applicationName())
+    args<<"电源管理器"
     <<((unsigned int) 0)
-    <<QString("qweq")
-    <<tr("discharge notify notification")
+//    <<QString("battery-level-100-symbolic")
+    <<ed->power_device_get_icon()
+    <<tr("discharged notification")
     <<tr("battery is discharging!")
     <<QStringList()
     <<QVariantMap()
-    <<(int)-1;
+    <<(int)3000;
     iface.callWithArgumentList(QDBus::AutoDetect,"Notify",args);
 }
 
@@ -96,9 +128,11 @@ void MainWindow::full_charge_notify(DEV dev)
                          "org.freedesktop.Notifications",
                          QDBusConnection::sessionBus());
     QList<QVariant> args;
-    args<<(QCoreApplication::applicationName())
+    //args<<(QCoreApplication::applicationName())
+    args<<"电源管理器"
     <<((unsigned int) 0)
-    <<QString("qweq")
+//    <<QString("battery-level-100-symbolic")
+      <<ed->power_device_get_icon()
     <<tr("fullly charged notification")
     <<tr("battery is fullly charged!")
     <<QStringList()
@@ -115,9 +149,11 @@ void MainWindow::low_battery_notify(DEV dev)
                          "org.freedesktop.Notifications",
                          QDBusConnection::sessionBus());
     QList<QVariant> args;
-    args<<(QCoreApplication::applicationName())
+    //args<<(QCoreApplication::applicationName())
+    args<<"电源管理器"
     <<((unsigned int) 0)
-    <<QString("qweq")
+//    <<QString("battery-level-10-symbolic")
+      <<ed->power_device_get_icon()
     <<tr("low battery notification")
     <<tr("battery is low,please plug in!")
     <<QStringList()
@@ -134,9 +170,10 @@ void MainWindow::critical_battery_notify(DEV dev)
                          "org.freedesktop.Notifications",
                          QDBusConnection::sessionBus());
     QList<QVariant> args;
-    args<<(QCoreApplication::applicationName())
+    //args<<(QCoreApplication::applicationName())
+    args<<"电源管理器"
     <<((unsigned int) 0)
-    <<QString("qweq")
+    <<ed->power_device_get_icon()
     <<tr("critical battery notification")
     <<tr("battery is critical low,please plug in!")
     <<QStringList()
@@ -154,9 +191,10 @@ void MainWindow::action_battery_notify(DEV dev)
                          "org.freedesktop.Notifications",
                          QDBusConnection::sessionBus());
     QList<QVariant> args;
-    args<<(QCoreApplication::applicationName())
+//    args<<(QCoreApplication::applicationName())
+    args<<"电源管理器"
     <<((unsigned int) 0)
-    <<QString("qweq")
+    <<ed->power_device_get_icon()
     <<tr("very low battery notification")
     <<tr("battery is very low,please plug in!")
     <<QStringList()
@@ -427,7 +465,7 @@ void MainWindow::initUi()
 
     menu = new QMenu(this);
     menu->setAttribute(Qt::WA_TranslucentBackground);
-    menu->setWindowFlag(Qt::FramelessWindowHint);
+    //menu->setWindowFlag(Qt::FramelessWindowHint);
 
     create_menu_item();
     trayIcon->setContextMenu(menu);
@@ -491,6 +529,7 @@ void MainWindow::get_power_list()
 
 void MainWindow::add_one_device(DEVICE *device)
 {
+
     DeviceForm *df = new DeviceForm(this);
     df->set_device(device);
     QListWidgetItem *list_item = new QListWidgetItem(ui->listWidget);
@@ -513,6 +552,8 @@ void MainWindow::add_one_device(DEVICE *device)
 
 void MainWindow::remove_one_device(DEVICE *device)
 {
+qDebug()<<"iouiouiouiouio";
+    discharge_notify(device->m_dev);
     if(device_item_map.contains(device))
     {
         QListWidgetItem *del_item = device_item_map.value(device);

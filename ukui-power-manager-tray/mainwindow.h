@@ -32,7 +32,7 @@
 #include <QListWidgetItem>
 #include <QWidgetAction>
 #include <QLabel>
-
+#include <QTimer>
 namespace Ui {
 class MainWindow;
 }
@@ -62,7 +62,7 @@ public Q_SLOTS:
     void set_preference_func();
     void show_percentage_func();
     void set_brightness_func();
-
+    void power_mode_change();
     void onIconChanged(QString str);
     void onSumChanged(QString str);
     void low_battery_notify(DEV dev);
@@ -77,10 +77,13 @@ private:
     QSystemTrayIcon* trayIcon;
     QList<QDBusObjectPath> deviceNames;
     EngineDevice* ed;
-
+    QGSettings * settings;
     QLabel *percent_label;
     Ui::MainWindow *ui;
-
+    QTimer *timer = new QTimer(this);
+    int powersave=0;
+    int oriAcDisplayTime=0;
+    int oriBatDisplayTime=0;
     QMenu *menu;
 //    QWidgetAction *set_preference;
 //    QWidgetAction *show_percentage;

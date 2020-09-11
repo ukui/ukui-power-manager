@@ -81,9 +81,13 @@ int main(int argc, char *argv[])
 //        translator.load(qmfile);
 //        a.installTranslator(&translator);
 //    }
+
     QTranslator translator;
-    if (translator.load(QLocale(),"ukui-power-manager-tray","_",QM_FILES_INSTALL_PATH))
+    qDebug()<<QM_FILES_INSTALL_PATH;
+    qDebug()<<QLocale();
+    if (translator.load(QLocale(),"ukui-power-manager-tray_zh_CN.qm",QM_FILES_INSTALL_PATH)){
         a.installTranslator(&translator);
+    }
     else
         qDebug()<<"load ukui-power-manager-tray qm file error";
 

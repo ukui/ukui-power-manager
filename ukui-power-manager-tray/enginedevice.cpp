@@ -160,12 +160,12 @@ void EngineDevice::power_device_remove(QDBusObjectPath msg)
     {
         if(item->m_dev.path == msg.path())
         {
+                qDebug()<<"mkmkmkmkmk";
             devices.removeOne(item);
             Q_EMIT one_device_remove(item);
             break;
         }
     }
-
 }
 
 

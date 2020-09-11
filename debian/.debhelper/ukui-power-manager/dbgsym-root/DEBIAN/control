@@ -1,0 +1,13 @@
+Package: ukui-power-manager-dbgsym
+Package-Type: ddeb
+Source: ukui-power-manager
+Version: 0.1.0.0kord-1
+Auto-Built-Package: debug-symbols
+Architecture: amd64
+Maintainer: Kylin Team <team+kylin@tracker.debian.org>
+Installed-Size: 1747
+Depends: ukui-power-manager (= 0.1.0.0kord-1)
+Section: debug
+Priority: optional
+Description: debug symbols for ukui-power-manager
+Build-Ids: 523fdbceaf23e654d7d9b5ae04c466b72830db55

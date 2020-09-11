@@ -1,3 +1,0 @@
-[D-BUS Service]
-Name=org.ukui.PowerManager
-Exec=@servicedir@/ukui-power-manager

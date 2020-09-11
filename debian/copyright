@@ -1,178 +1,20 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: ukui-power-manager
-Upstream-Contact: Xiang Li <lixiang@kylinos.cn>
-Source: https://github.com/ukui/ukui-power-manager/
+Upstream-Contact: Ubuntu Kylin Team <ubuntukylin-members@lists.launchpad.net>
+Source: https://github.com/KylinAppCenter/ukui-system-monitor
 
-Files: src/egg-discrete.c
-       src/gpm-brightness.c
-       src/gpm-common.h
-       src/gpm-engine.c
-       src/gpm-engine.h
-Copyright: 2005-2010, Richard Hughes <richard@hughsie.com>
-           2013-2017, Xiang Li <lixiang@kylinos.cn>
-License: GPL-2+
+Files: *
+Copyright: 2013-2017, National University of Defense Technology(NUDT) & Tianjin Kylin Ltd.
+License: GPL-3
+ his program is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public License as
+ published by the Free Software Foundation; either version 2 of
+ the License, or (at your option) any later version.
 
-Files: src/gpm-manager.c
-       src/gpm-tray-icon.c
-Copyright: 2004-2005, William Jon McCann <mccann@jhu.edu>
-           2005-2009, Richard Hughes <richard@hughsie.com>
-           2013-2017, Xiang Li <lixiang@kylinos.cn>
-License: GPL-2+
-
-Files: src/egg-array-float.c
-       src/egg-array-float.h
-       src/egg-color.c
-       src/egg-color.h
-       src/egg-console-kit.c
-       src/egg-console-kit.h
-       src/egg-debug.c
-       src/egg-debug.h
-       src/egg-discrete.h
-       src/egg-idletime.c
-       src/egg-idletime.h
-       src/egg-precision.c
-       src/egg-precision.h
-       src/egg-test.c
-       src/egg-test.h
-       src/gpm-backlight-helper.c
-       src/gpm-brightness.h
-       src/gpm-button.c
-       src/gpm-button.h
-       src/gpm-common.c
-       src/gpm-control.c
-       src/gpm-load.c
-       src/gpm-load.h
-       src/gpm-networkmanager.c
-       src/gpm-networkmanager.h
-       src/gpm-phone.c
-       src/gpm-phone.h
-       src/gpm-prefs-core.h
-       src/gpm-screensaver.c
-       src/gpm-screensaver.h
-       src/gpm-self-test.c
-       src/gpm-session.c
-       src/gpm-session.h
-       src/gpm-upower.c
-       src/gpm-upower.h
-Copyright: 2005-2010, Richard Hughes <richard@hughsie.com>
-License: GPL-2+
-
-Files: src/gpm-backlight.c
-       src/gpm-backlight.h
-       src/gpm-control.h
-       src/gpm-dpms.c
-       src/gpm-dpms.h
-       src/gpm-idle.c
-       src/gpm-idle.h
-       src/gpm-manager.h
-       src/gpm-tray-icon.h
-Copyright: 2004-2005, William Jon McCann <mccann@jhu.edu>
-           2005-2009, Richard Hughes <richard@hughsie.com>
-License: GPL-2+
-
-Files: src/msd-osd-window.c
-       src/msd-osd-window.h
-Copyright:  2006, William Jon McCann <mccann@jhu.edu>
-            2009, Novell, Inc
-License: LGPL-2+
-
-Files: data/Makefile.am
-       data/*.ui
-       data/*.in
-       data/*.1
-       po/LINGUAS
-       po/POTFILES.*
-       po/gnome-copyrights.txt
-       policy/Makefile.am
-       policy/*.in2
-       src/Makefile.am
-       src/gpm-marshal.list
-       src/*.xml
-       AUTHORS
-       ChangeLog
-       Makefile.am
-       NEWS
-       README
-       autogen.sh
-       configure.ac
-Copyright: 2018, Xiang Li <lixiang@kylinos.cn>
-License: GPL-2+
-Comment:
- Using license from COPYING file.
-
-Files: src/gpm-kbd-backlight.c
-       src/gpm-kbd-backlight.h
-Copyright: 2010, Alex Launi <alex launi canonical com>
-License: GPL-2+
-
-Files: src/gpm-prefs-core.c
-       src/gpm-prefs.c
-Copyright: 2005, Jaap Haitsma <jaap@haitsma.org>
-           2005, William Jon McCann <mccann@jhu.edu>
-           2005-2009, Richard Hughes <richard@hughsie.com>
-           2013-2017, Xiang Li <lixiang@kylinos.cn>
-License: GPL-2+
-
-Files: src/gsd-media-keys-window.c
-       src/gsd-media-keys-window.h
-Copyright: 2006-2007, William Jon McCann <mccann@jhu.edu>
-License: GPL-2+
-
-Files: src/gpm-main.c
-Copyright: 2003, David Zeuthen, <david@fubar.dk>
-           2004, Benjamin Kahn, <xkahn@zoned.net>
-           2005-2007, Richard Hughes <richard@hughsie.com>
-License: GPL-2+
-
-Files: src/gpm-icon-names.h
-Copyright: 2002, Jorn Baayen
-           2003-2004, Colin Walters <walters@verbum.org>
-           2005-2007, Richard Hughes <richard@hughsie.com>
-License: GPL-2+
-
-Files: po/*.po
-Copyright: 2005-2010, Free Software Foundation, Inc.
-           2005-2006, Adam Weinberger <adamw@gnome.org>
-           2005-2009, Richard Hughes <richard@hughsie.com>
-           2005-2010, THE ukui-power-manager'S COPYRIGHT HOLDER
-           2006–2010, The Gnome Project.
-           2006, Sharif FarsiWeb, Inc.
-           2006-2007, Rosetta Contributors and Canonical Ltd.
-           2008, Ihar Hrachyshka
-           2009, The Gnome Foundation.
-License: GPL-2+
-Comment:
- Using license from COPYING file.
-
-Files: help/*
-Copyright: Amanpreet Singh Alam <aalam@users.sf.net>
-           Daniel Nylander <po@danielnylander.se>
-           Gabor Kelemen <kelemeng@mate.hu>
-           Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>
-           Joan Duran <jodufi@gmail.com>
-           Jorge González <jorgegonz@svn.gnome.org>
-           Kaarina V. Sauna-aho <kaarina.v.sauna-aho@nomovok.com>
-           Mario Blättermann <mariobl@gnome.org>
-           Milo Casagrande <milo@ubuntu.com>
-           Pavel Shylenok <uriel@tut.by>
-           Philip Withnall <philip@tecnocode.co.uk>
-           Robert-André Mauchin <zebob.m@pengzone.org>
-           Simos Xenitellis <simos@gnome.org>
-           Yannig Marchegay (Kokoyaya) <yannig@marchegay.org>
-           YunQiang Su <wzssyqa@gmail.com>
-License: GFDL-1.1+
-
+# If you want to use GPL v2 or later for the /debian/* files use
+# the following clauses, or change it to suit. Delete these two lines
 Files: debian/*
-Copyright: 2011-2014, Stefano Karapetsas <stefano@karapetsas.com>
-           2014, Mike Gabriel <sunweaver@debian.org>
-           2020, handsome_feng <jianfengli@Ubuntukylin.com>
-License: GPL-2+
-
-Files: ukui-power-manager-tray/*
-	   ukui-power-statistics/*
-Copyright: 2020, Tianjin KYLIN Information Technology Co., Ltd.
-License: GPL-2+
-
+Copyright: 2020 tang <tangguang tangguang@tj.kylinos.cn>
 License: GPL-2+
  This package is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -181,39 +23,20 @@ License: GPL-2+
  .
  This package is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- GNU Genaral Public License for more details.
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
  .
- You should have received a copy og the GNU General Public License
- along with this program. If not, see <http://www.gnu.org/licenses/>
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <https://www.gnu.org/licenses/>
  .
  On Debian systems, the complete text of the GNU General
  Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".
 
-License: LGPL-2+
- This library is free software; you can redistribute it and/or
- modify it under the terms of the GNU Library General Public
- License as published by the Free Software Foundation; either
- version 2 of the License, or (at your option) any later version.
- .
- This library is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- Library General Public License for more details.
- .
- You should have received a copy of the GNU Library General Public
- License along with this library; if not, write to the Free Software
- Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
- .
- On Debian systems, the complete text of the GNU Library General
- Public License version 2 can be found in "/usr/share/common-licenses/LGPL-2".
-
-License: GFDL-1.1+
- Permission is granted to copy, distribute and/or modify this
- document under the terms of the GNU Free Documentation
- License (GFDL), Version 1.1 or any later version published
- by the Free Software Foundation with no Invariant Sections,
- no Front-Cover Texts, and no Back-Cover Texts.
- .
- On Debian systems, the complete text of the GNU Free Documentation License
- version 1.2 can be found in "/usr/share/common-licenses/GFDL-1.2".
+# Please also look if there are files or directories which have a
+# different copyright/license attached and list them here.
+# Please avoid picking licenses with terms that are more restrictive than the
+# packaged work, as it may make Debian's contributions unacceptable upstream.
+#
+# If you need, there are some extra license texts available in two places:
+#   /usr/share/debhelper/dh_make/licenses/
+#   /usr/share/common-licenses/

@@ -28,7 +28,6 @@ Build-Depends: debhelper-compat (= 12),
                libqt5x11extras5-dev,
                libgsettings-qt-dev,
                libkf5windowsystem-dev,
-	       qttools5-dev-tools,
 Standards-Version: 4.5.0
 Rules-Requires-Root: no
 Homepage: http://www.ukui.org/
@@ -56,19 +55,3 @@ Description: power management tool for the UKUI desktop
  events, display brightness, CPU, graphics card and hard disk drive
  power saving, and can trigger suspend-to-RAM, hibernate or shutdown
  events, all integrated to other components of the UKUI desktop.
-
-Package: ukui-power-manager-common
-Architecture: all
-Depends: ${misc:Depends},
-Description: power management tool for the UKUI desktop (common files)
- UKUI Power Manager is a session daemon for the UKUI desktop
- that takes care of system or desktop events related to power, and
- triggers actions accordingly. Its philosophy is to completely hide
- these complex tasks and only show some settings important to the user.
- .
- The UKUI power manager displays and manages battery status, power plug
- events, display brightness, CPU, graphics card and hard disk drive
- power saving, and can trigger suspend-to-RAM, hibernate or shutdown
- events, all integrated to other components of the UKUI desktop.
- .
- This package contains the architecture independent files.

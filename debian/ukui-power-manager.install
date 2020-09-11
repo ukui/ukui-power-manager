@@ -1,6 +1,0 @@
-etc/xdg/
-usr/bin/
-usr/sbin/ukui-power-backlight-helper
-usr/share/applications/
-usr/share/dbus-1/
-usr/share/polkit-1/

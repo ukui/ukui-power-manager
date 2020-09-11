@@ -1,50 +1,5 @@
-ukui-power-manager (2.0.2-1) unstable; urgency=medium
+ukui-power-manager (0.1.0.0kord-1) unstable; urgency=medium
 
-  * New upstream bugfix release:
-    - Won't start sleep timer when session is not idle.
-    - Fix the wrong parameters when invoke ukui-control-center.
-    - Set EnableHighDpiScalling to avoid high dpi issue.
-    - Fix the wrong style of tooltip.
+  * Initial release.
 
- -- handsome_feng <jianfengli@ubuntukylin.com>  Mon, 30 Mar 2020 17:54:36 +0800
-
-ukui-power-manager (2.0.1-1) unstable; urgency=medium
-
-  * New upstream release.
-    - Fix the focus issue.
-    - Fix the wrong layout in English.
-    - Fix the wrong popup place in multi-screen.
-    - Update the icon at the beginning.
-    - Adjust the right-click menu.
-    - Adjust the style.
-    - Add support for device addition/removal.
-    - Add charging effects.
-    - Show icon when battery is charging.
-    - Alway show predict time.
-
- -- handsome_feng <jianfengli@ubuntukylin.com>  Fri, 20 Mar 2020 20:54:20 +0800
-
-ukui-power-manager (2.0.0-1) unstable; urgency=medium
-
-  * New upstream release.
-    - Display line_power and battery in qt way.
-  * d/control:
-    - Bump standards-version to 4.5.0.
-    - Bump compat level to 12.
-    - Set Rules-Requires-Root to no.
-    - Refresh the build-depends.
-
- -- handsome_feng <jianfengli@ubuntukylin.com>  Mon, 03 Feb 2020 16:12:24 +0800
-
-kui-power-manager (1.1.2-1) unstable; urgency=medium
-
-  * Fix the error that can't open preferences dialog. (LP: #1764669)
-  * Drop the depends on libgnome-keyring. (LP: #1767165)
-
- -- handsome_feng <jianfengli@ubuntukylin.com>  Mon, 24 Dec 2018 11:47:10 +0800
-
-ukui-power-manager (1.1.1-1) unstable; urgency=medium
-
-  * Initial release. (Closes: #903946)
-
- -- handsome_feng <jianfengli@ubuntukylin.com>  Tue, 17 Jul 2018 13:34:54 +0800
+ -- jianghong <jianghong@tj.kylinos.cn>  Fri, 17 Apr 2020 10:26:07 +0800

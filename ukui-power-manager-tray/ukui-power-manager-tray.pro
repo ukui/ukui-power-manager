@@ -29,7 +29,7 @@ TRANSLATIONS+=\
     translations/ukui-power-manager-tray_zh_CN.ts \
     translations/ukui-power-manager-tray_tr.ts
 
-QM_FILES_INSTALL_PATH = /usr/share/ukui-power-manager-tray/translations/
+QM_FILES_INSTALL_PATH = /usr/share/ukui-power-manager/tray/translations/
 
 # CONFIG += lrelase not work for qt5.6, add those from lrelease.prf for compatibility
 qtPrepareTool(QMAKE_LRELEASE, lrelease)
@@ -53,6 +53,13 @@ INSTALLS += qm_files
 # So we can access it from main.cpp
 DEFINES += QM_FILES_INSTALL_PATH='\\"$${QM_FILES_INSTALL_PATH}\\"'
 
+desktop.files = $$PWD/../data/*.desktop
+desktop.path = /etc/xdg/autostart
+INSTALLS += desktop
+
+GESCHE.files = $$PWD/../data/*.xml
+GESCHE.path = /usr/share/glib-2.0/schemas/
+INSTALLS += GESCHE
 
 CONFIG += c++11 no_keywords link_pkgconfig
 PKGCONFIG +=  gsettings-qt x11

@@ -303,10 +303,10 @@ gpm_idle_set_timeout_dim (GpmIdle *idle, guint timeout)
 	if (idle->priv->timeout_dim != timeout) {
 		idle->priv->timeout_dim = timeout;
 
-		/*if (timeout > 0)
+		if (timeout > 0)
 			egg_idletime_alarm_set (idle->priv->idletime, GPM_IDLE_IDLETIME_ID, timeout * 1000);
 		else
-			egg_idletime_alarm_remove (idle->priv->idletime, GPM_IDLE_IDLETIME_ID);*/
+			egg_idletime_alarm_remove (idle->priv->idletime, GPM_IDLE_IDLETIME_ID);
 	}
 	return TRUE;
 }

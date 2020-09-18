@@ -6,6 +6,7 @@ Icon=ukui-power-manager
 Exec=ukui-power-manager-tray
 Terminal=false
 Type=Application
+NoDisplay=true
 Categories=
 OnlyShowIn=UKUI;
 X-UKUI-Bugzilla-Bugzilla=UKUI

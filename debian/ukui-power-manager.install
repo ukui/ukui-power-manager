@@ -4,3 +4,6 @@ usr/sbin/ukui-power-backlight-helper
 usr/share/applications/
 usr/share/dbus-1/
 usr/share/polkit-1/
+data/99-upower-wake-up-usb-device.rules lib/udev/rules.d/
+
+

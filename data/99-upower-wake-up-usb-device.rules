@@ -1,0 +1,2 @@
+SUBSYSTEMS=="usb", ATTRS{product}=="*Mouse",ATTR{power/wakeup}="enabled"
+SUBSYSTEMS=="usb", ATTRS{product}=="*Keyboard",ATTR{power/wakeup}="enabled"

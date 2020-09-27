@@ -74,8 +74,8 @@ Q_SIGNALS:
 public Q_SLOTS:
     void power_device_change_callback(QDBusMessage msg, QString path);
     void engine_policy_settings_cb(const QString &str);
-    void mypower_device_add(QString msg);
-    void mypower_device_removed(QString msg);
+    void power_device_add(QDBusObjectPath msg);
+    void power_device_remove(QDBusObjectPath msg);
 public:
     QGSettings *settings;
     QList<DEVICE*> devices;
@@ -94,8 +94,7 @@ public:
     QString engine_kind_to_string(UpDeviceKind type_enum);
     QString engine_kind_to_localised_text(UpDeviceKind kind, uint number);
     void power_device_get_devices();
-    void power_device_add(QDBusMessage msg);
-    void power_device_remove(QDBusMessage msg);
+
     QString boolToString(bool ret);
     QString engine_get_device_summary(DEVICE *dv);
     QString engine_get_device_icon_index(qreal percentage);

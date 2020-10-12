@@ -72,7 +72,9 @@ int main(int argc, char *argv[])
     else
         qDebug()<<"load ukui-power-manager-statistics qm file error";
 
-    a.setWindowIcon(QIcon(":/resource/icon/ukui-power-statistics.png"));
+    QIcon icon = QIcon::fromTheme("ukui-power-statistics");
+    a.setWindowIcon(icon);
+//    a.setWindowIcon(QIcon(":/resource/icon/ukui-power-statistics.png"));
     UkpmWidget *w = new UkpmWidget;
     if(!device.isEmpty())
     {

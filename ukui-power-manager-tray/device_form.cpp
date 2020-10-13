@@ -23,6 +23,7 @@
 #include <QPainter>
 #include <QMouseEvent>
 #include <QDir>
+#include "mainwindow.h"
 
 DeviceForm::DeviceForm(QWidget *parent) :
     QWidget(parent),
@@ -30,8 +31,19 @@ DeviceForm::DeviceForm(QWidget *parent) :
 {
     ui->setupUi(this);
     setAttribute(Qt::WA_StyledBackground,true);
+    setWindowFlags(Qt::FramelessWindowHint);
     ed = EngineDevice::getInstance();
-    //set_timer();
+
+    ui->remaindata->setFixedHeight(11);
+    QFont font = ui->remaindata->font();
+    font.setPixelSize(11);
+    ui->remaindata->setFont(font);
+//    QPalette pal = this->palette();
+//    QColor color = this->palette().color(QPalette::Text);
+//    color.setAlphaF(0.5);
+//    pal.setColor(QPalette::Text,color);
+//    ui->remaindata->setPalette(pal);
+
 }
 
 DeviceForm::~DeviceForm()
@@ -161,6 +173,11 @@ void DeviceForm::paintEvent(QPaintEvent *event)
     opt.init(this);
     QPainter p(this);
     style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
+    p.setBrush(opt.palette.color(QPalette::Base));
+    p.setPen(Qt::NoPen);
+    p.setOpacity(0.0);
+    p.setRenderHint(QPainter::Antialiasing);
+    p.drawRoundedRect(rect(),6,6);
     QWidget::paintEvent(event);
 }
 
@@ -247,17 +264,33 @@ void DeviceForm::slot_device_change(DEVICE* device)
 
 void DeviceForm::slider_changed(int value)
 {
+//    value = 17;
+    QPalette palette;
     ui->progressBar->setValue(value);
-    ui->progressBar->setStyleSheet(QString(""
-     "	QProgressBar {"
-     "	border-radius: 2px;"
-     ""
-     "}"
-     "QProgressBar::chunk {"
-         "border-radius:2px;"
-         "	background-color: "
-         "%1;"
-     "}").arg(calculate_value(value,ui->progressBar->maximum())));
+    if (value <= 10) {
+        palette= ui->progressBar->palette();
+        palette.setBrush(QPalette::Highlight, QBrush(QColor(240, 65, 52, 255)));
+        ui->progressBar->setPalette(palette);
+    } else if (value <= 20){
+        palette= ui->progressBar->palette();
+        palette.setBrush(QPalette::Highlight, QBrush(QColor(248,163,76,255)));
+        ui->progressBar->setPalette(palette);
+    }
+    else{
+        palette= ui->progressBar->palette();
+        palette.setBrush(QPalette::Highlight, QBrush(QColor(61,107,229,255)));
+        ui->progressBar->setPalette(palette);
+    }
+//    ui->progressBar->setStyleSheet(QString(""
+//     "	QProgressBar {"
+//     "	border-radius: 2px;"
+//     ""
+//     "}"
+//     "QProgressBar::chunk {"
+//         "border-radius:2px;"
+//         "	background-color: "
+//         "%1;"
+//     "}").arg(calculate_value(value,ui->progressBar->maximum())));
 }
 
 QString DeviceForm::device_get_ac_online()

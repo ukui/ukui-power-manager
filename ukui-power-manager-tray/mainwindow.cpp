@@ -42,6 +42,7 @@
 #define PANEL_SETTINGS_KEY_HEIGHT   "panelsize"
 #define PANEL_SETTINGS_KEY_POSITION "panelposition"
 
+double MainWindow::transparent = 0.7;
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -58,6 +59,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ed,SIGNAL(one_device_add(DEVICE*)),this,SLOT(add_one_device(DEVICE *)));
     connect(ed,SIGNAL(one_device_remove(DEVICE*)),this,SLOT(remove_one_device(DEVICE*)));
 
+    get_window_style();
     initUi();
     ed->engine_policy_settings_cb("iconPolicy");
     ed->engine_recalculate_summary();
@@ -280,7 +282,7 @@ void MainWindow::set_window_position( )
     totalHeight = screenGeometry.height();
     totalWidth = screenGeometry.width();
 
-    int distance = 2;
+    int distance = 8;
     int number = QGuiApplication::screens().size();
     if (number > 1)
     {
@@ -348,6 +350,7 @@ void MainWindow::set_window_position( )
 
 void MainWindow::onActivatedIcon(QSystemTrayIcon::ActivationReason reason)
 {
+    QString style_string;
     switch(reason) {
         case QSystemTrayIcon::Trigger: {
                 if (!this->isHidden()) {
@@ -355,12 +358,21 @@ void MainWindow::onActivatedIcon(QSystemTrayIcon::ActivationReason reason)
                 }
                 else
                 {
-                    double transparent = get_window_opacity();
-                    QString style_string = QString("#centralWidget {"
-                                                   "background-color:rgba(19,19,20,%1);"
-                                                   "border-radius:6px;}").arg(transparent);
-                    //qDebug()<<style_string;
-                    setStyleSheet(style_string);
+                    transparent = get_window_opacity();
+//                    if(style_nm == "ukui-dark")
+//                    {
+//                        style_string = QString("#centralWidget {"
+//                                                       "background-color:rgba(19,19,20,%1);"
+//                                                       "border-radius:6px;}").arg(transparent);
+//                    }
+//                    else
+//                    {
+//                        style_string = QString("#centralWidget {"
+//                                                       "background-color:rgba(255,255,255,%1);"
+//                                                       "border-radius:6px;}").arg(transparent);
+
+//                    }
+//                    setStyleSheet(style_string);
 
                     this->showNormal();
                     set_window_position();
@@ -384,6 +396,12 @@ void MainWindow::initUi()
     setWindowFlags(Qt::FramelessWindowHint|Qt::Popup);
     setAttribute(Qt::WA_StyledBackground,true);
     setAttribute(Qt::WA_TranslucentBackground);
+
+    QPainterPath path;
+    QRect rect = this->rect();
+    rect.adjust(1,1,-1,-1);
+    path.addRoundedRect(rect,6,6);
+    setProperty("blurRegion",QRegion(path.toFillPolygon().toPolygon()));
 
     dev_number = get_engine_dev_number();
     resize(360,76 + 8 + 82*(dev_number>3?3:dev_number));
@@ -417,11 +435,11 @@ void MainWindow::initUi()
                                         "QPushButton::hover {background-color:rgba(255,255,255,0);color:rgba(151,175,241,1);font-size:14px;}"
                                         "QPushButton::pressed {background-color:rgba(255,255,255,0);color:rgba(61,107,229,1);font-size:12px;}"
                                         );
-    double transparent = get_window_opacity();
-    QString style_string = QString("#centralWidget {"
-                                   "background-color:rgba(19,19,20,%1);"
-                                   "border-radius:6px;}").arg(transparent);
-    setStyleSheet(style_string);
+    transparent = get_window_opacity();
+//    QString style_string = QString("#centralWidget {"
+//                                   "background-color:rgba(19,19,20,%1);"
+//                                   "border-radius:6px;}").arg(transparent);
+//    setStyleSheet(style_string);
 
     get_power_list();
 
@@ -568,12 +586,15 @@ bool MainWindow::event(QEvent *event)
 
 void MainWindow::paintEvent(QPaintEvent *event)
 {
+//    transparent = get_window_opacity();
     QPainter p(this);
+    QStyleOption opt;
+    opt.init(this);
+    p.setBrush(opt.palette.color(QPalette::Base));
     p.setPen(Qt::NoPen);
-    QPainterPath path;
-    path.addRoundedRect(rect(),6,6);
+    p.setOpacity(transparent);
     p.setRenderHint(QPainter::Antialiasing);
-    setProperty("blurRegion",QRegion(path.toFillPolygon().toPolygon()));
+    p.drawRoundedRect(rect(),6,6);
     QWidget::paintEvent(event);
 }
 
@@ -616,4 +637,31 @@ double MainWindow::get_window_opacity()
         }
     }
     return t;
+}
+
+QString MainWindow::get_window_style()
+{
+    style_nm = "ukui-dark";
+    if (QGSettings::isSchemaInstalled(GPM_SETTINGS_SCHEMA_STYLE))
+    {
+        style_set = new QGSettings(GPM_SETTINGS_SCHEMA_STYLE);
+        connect(style_set,SIGNAL(changed(const QString&)),this,SLOT(style_name_settings_cb(const QString&)));
+
+        QStringList keys = style_set->keys();
+        if(keys.contains(GPM_SETTINGS_STYLE_NAME)){
+           style_nm = style_set->get(GPM_SETTINGS_STYLE_NAME).toString();
+        }
+    }
+    return style_nm;
+}
+
+void MainWindow::style_name_settings_cb(const QString&)
+{
+    QVariant var =style_set->get(GPM_SETTINGS_STYLE_NAME);
+    style_nm = var.value<QString>();
+    Q_EMIT style_modify(style_nm);
+//    if(style_nm == "ukui-dark")
+//        ;
+//    else if(style_nm == "ukui-white")
+//        ;
 }

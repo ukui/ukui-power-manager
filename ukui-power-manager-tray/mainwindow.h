@@ -45,17 +45,20 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+    bool want_percent;
+    static double transparent;
     void initUi();
     void get_power_list();
     void initData();
     int get_engine_dev_number();
     QPixmap set_percent_pixmap(QString str);
     QIcon get_percent_icon(QIcon icon);
-    bool want_percent;
+
     int getTaskbarHeight(QString str);
     int getTaskbarPos(QString str);
     void set_window_position();
     void create_menu_item();
+    QString get_window_style();
 public Q_SLOTS:
     void iconThemeChanged();
     void onActivatedIcon(QSystemTrayIcon::ActivationReason reason);
@@ -73,6 +76,7 @@ public Q_SLOTS:
     void add_one_device(DEVICE *device);
     void remove_one_device(DEVICE *device);
     void activate_power_statistic();
+    void style_name_settings_cb(const QString &);
 private:
     QSystemTrayIcon* trayIcon;
     QList<QDBusObjectPath> deviceNames;
@@ -89,14 +93,14 @@ private:
 //    QString pressQss;
     QMap<DEVICE*,QListWidgetItem*> device_item_map;
     int dev_number;
-    QGSettings *setting = nullptr;
+    QGSettings *style_set = nullptr;
+    QString style_nm;
     double get_window_opacity();
 protected:
     bool event(QEvent *event);
     void paintEvent(QPaintEvent *event);
-private Q_SLOTS:
-
-
+Q_SIGNALS:
+    void style_modify(QString name);
 };
 
 #endif // MAINWINDOW_H

@@ -33,6 +33,8 @@
 /* schema location */
 #define GPM_SETTINGS_SCHEMA		"org.ukui.power-manager"
 #define GPM_SETTINGS_KEY_POLICY         "icon-policy"
+#define GPM_SETTINGS_SCHEMA_STYLE		"org.ukui.style"
+#define GPM_SETTINGS_STYLE_NAME        "style-name"
 
 /* actions */
 #define GPM_SETTINGS_ACTION_CRITICAL_UPS		"action-critical-ups"

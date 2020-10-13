@@ -64,7 +64,8 @@ SOURCES += \
     customtype.cpp \
     device.cpp \
     enginedevice.cpp \
-    device_form.cpp
+    device_form.cpp \
+    remainlabel.cpp
 
 HEADERS += \
     customstyle.h \
@@ -73,7 +74,8 @@ HEADERS += \
     customtype.h \
     device.h \
     enginedevice.h \
-    device_form.h
+    device_form.h \
+    remainlabel.h
 
 FORMS += \
         mainwindow.ui \

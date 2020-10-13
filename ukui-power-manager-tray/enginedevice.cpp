@@ -74,7 +74,6 @@ EngineDevice::EngineDevice(QObject *parent) : QObject(parent)
     settings = new QGSettings(GPM_SETTINGS_SCHEMA);
     connect(settings,SIGNAL(changed(const QString&)),this,SLOT(engine_policy_settings_cb(const QString&)));
 
-
 }
 
 void EngineDevice::engine_policy_settings_cb(const QString& str)

@@ -89,7 +89,6 @@ int main(int argc, char *argv[])
 
     QFile file(":/main.qss");
     file.open(QFile::ReadOnly);
-//    QIcon::setThemeName("ukui-icon-theme-default");
     qApp->setStyleSheet(file.readAll());
     file.close();
 //    QIcon::setThemeName("ukui-icon-theme");

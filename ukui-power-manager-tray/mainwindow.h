@@ -99,6 +99,7 @@ private:
 protected:
     bool event(QEvent *event);
     void paintEvent(QPaintEvent *event);
+//    bool eventFilter(QObject *watched, QEvent *event);
 Q_SIGNALS:
     void style_modify(QString name);
 };

@@ -63,6 +63,7 @@ MainWindow::MainWindow(QWidget *parent) :
     initUi();
     ed->engine_policy_settings_cb("iconPolicy");
     ed->engine_recalculate_summary();
+//    installEventFilter(this);
 }
 
 void MainWindow::onSumChanged(QString str)
@@ -500,6 +501,7 @@ void MainWindow::get_power_list()
         DeviceForm *df = new DeviceForm(this);
         df->set_device(dv);
         QListWidgetItem *list_item = new QListWidgetItem(ui->listWidget);
+        list_item->setFlags(Qt::NoItemFlags);
         list_item->setSizeHint(QSize(324,82));
         ui->listWidget->setItemWidget(list_item,df);
         device_item_map.insert(dv,list_item);
@@ -513,6 +515,7 @@ void MainWindow::add_one_device(DEVICE *device)
     df->set_device(device);
     QListWidgetItem *list_item = new QListWidgetItem(ui->listWidget);
     list_item->setSizeHint(QSize(324,82));
+    list_item->setFlags(Qt::NoItemFlags);
     ui->listWidget->setItemWidget(list_item,df);
     device_item_map.insert(device,list_item);
     dev_number ++;
@@ -583,6 +586,17 @@ bool MainWindow::event(QEvent *event)
     }
     return QWidget::event(event);
 }
+
+//bool MainWindow::eventFilter(QObject *watched, QEvent *event)
+//{
+//    if(QEvent::WindowDeactivate == event->type())
+//    {
+//        hide();
+//        return true;
+//    }
+//    else
+//        return QWidget::eventFilter(watched,event);
+//}
 
 void MainWindow::paintEvent(QPaintEvent *event)
 {

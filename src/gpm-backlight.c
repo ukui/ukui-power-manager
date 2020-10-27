@@ -429,7 +429,7 @@ gpm_backlight_brightness_evaluate_and_set (GpmBacklight *backlight, gboolean int
 	if (use_initial) {
 		egg_debug ("Setting initial brightness level");
 		battery_reduce = g_settings_get_boolean (backlight->priv->settings, GPM_SETTINGS_BACKLIGHT_BATTERY_REDUCE);
-        battery_reduce = false;
+        	battery_reduce = FALSE;
 		if (on_battery && battery_reduce) {
 			value = g_settings_get_int (backlight->priv->settings, GPM_SETTINGS_BRIGHTNESS_DIM_BATT);
 			if (value > 100) {

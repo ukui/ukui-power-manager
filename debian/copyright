@@ -169,7 +169,8 @@ Copyright: 2011-2014, Stefano Karapetsas <stefano@karapetsas.com>
 License: GPL-2+
 
 Files: ukui-power-manager-tray/*
-	   ukui-power-statistics/*
+       ukui-power-statistics/*
+       data/99-upower-wake-up-usb-device.rules
 Copyright: 2020, Tianjin KYLIN Information Technology Co., Ltd.
 License: GPL-2+
 

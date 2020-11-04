@@ -426,7 +426,7 @@ void MainWindow::initUi()
     ui->power_title->setText(tr("PowerManagement"));
     ui->power_title->setAlignment(Qt::AlignLeft|Qt::AlignVCenter);
 
-    connect(ui->statistic_button,SIGNAL(released()),this,SLOT(activate_power_statistic()));
+//    connect(ui->statistic_button,SIGNAL(released()),this,SLOT(activate_power_statistic()));
 
     ui->statistic_button->setText(tr("Stats"));//adapt to chinese
     ui->statistic_button->setFixedWidth(54);
@@ -436,6 +436,8 @@ void MainWindow::initUi()
                                         "QPushButton::hover {background-color:rgba(255,255,255,0);color:rgba(151,175,241,1);font-size:14px;}"
                                         "QPushButton::pressed {background-color:rgba(255,255,255,0);color:rgba(61,107,229,1);font-size:12px;}"
                                         );
+    ui->statistic_button->setCheckable (false);
+    ui->statistic_button->setVisible (false);
     transparent = get_window_opacity();
 //    QString style_string = QString("#centralWidget {"
 //                                   "background-color:rgba(19,19,20,%1);"

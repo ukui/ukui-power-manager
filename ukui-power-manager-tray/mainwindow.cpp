@@ -30,6 +30,7 @@
 #include <QFile>
 #include <customstyle.h>
 #include <QDBusReply>
+#include <QPainterPath>
 
 #define POWER_SCHEMA                "org.ukui.power-manager"
 #define UKUI_STYLE                  "org.ukui.style"

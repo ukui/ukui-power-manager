@@ -22,6 +22,7 @@
 #include <QGraphicsDropShadowEffect>
 #include <QtMath>
 #include <QStyleFactory>
+#include <QPainterPath>
 
 #define GPM_HISTORY_RATE_TEXT			"Rate"
 #define GPM_HISTORY_CHARGE_TEXT			"Charge"

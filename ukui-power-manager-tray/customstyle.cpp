@@ -16,7 +16,7 @@
  *
  */
 #include "customstyle.h"
-
+#include <QPainterPath>
 
 CustomStyle::CustomStyle(const QString &proxyStyleName, QObject *parent) : QProxyStyle (proxyStyleName)
 {

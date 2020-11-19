@@ -100,6 +100,10 @@ License: GPL-2+
 Comment:
  Using license from COPYING file.
 
+Files: .github/workflows/build.yml
+Copyright:2020, Burgess Chang<open@brsvh.org>
+License: GPL-2+
+
 Files: src/gpm-kbd-backlight.c
        src/gpm-kbd-backlight.h
 Copyright: 2010, Alex Launi <alex launi canonical com>

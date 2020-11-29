@@ -1238,7 +1238,7 @@ static void
 gpm_manager_engine_close_notify_cb (GpmEngine *engine, GpmManager *manager)
 {
 	if (gpm_manager_is_inhibit_valid (manager, FALSE, "policy action") == FALSE)
-		return FALSE;
+		exit(0);
 	
 	GpmSession *session;
 	// egg_debug ("logout, reason: too low battery!");

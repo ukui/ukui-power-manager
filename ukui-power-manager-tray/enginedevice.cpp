@@ -614,7 +614,7 @@ QString EngineDevice::engine_get_device_predict(DEVICE* dv)
     QString kind_desc;
     uint time_to_full_round;
     uint time_to_empty_round;
-//    QString time_to_full_str;
+    QString time_to_full_str;
     QString time_to_empty_str;
     UpDeviceKind kind;
     UpDeviceState state;
@@ -676,6 +676,7 @@ QString EngineDevice::engine_get_device_predict(DEVICE* dv)
         result = tr("not charging");
     } else if (state == UP_DEVICE_STATE_CHARGING) {
         result = tr("charging");
+        
 //        if (time_to_full_round > GPM_UP_TEXT_MIN_TIME &&
 //            time_to_empty_round > GPM_UP_TEXT_MIN_TIME) {
 
@@ -750,7 +751,14 @@ QString EngineDevice::engine_get_device_summary(DEVICE* dv)
 
     } else if (state == UP_DEVICE_STATE_CHARGING) {
 
-        result = tr("%1% available, charging").arg(percentage);
+	time_to_full_round = precision_round_down (time_to_full, GPM_UP_TIME_PRECISION);
+	if (time_to_full_round > GPM_UP_TEXT_MIN_TIME)
+	{
+		time_to_full_str = engine_get_timestring (time_to_full_round);
+        	result = tr("%1% available, %2 until charged").arg(percentage).arg(time_to_full_str);
+	}
+	else
+        	result = tr("%1% available, charging").arg(percentage);
 
     } else if (state == UP_DEVICE_STATE_PENDING_DISCHARGE) {
 

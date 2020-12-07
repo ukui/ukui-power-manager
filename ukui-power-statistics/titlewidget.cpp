@@ -23,9 +23,6 @@
 #include <QStyleOption>
 #include <QPainter>
 
-//#include <QX11Info>
-//#include <X11/Xlib.h>
-
 TitleWidget::TitleWidget(QWidget *parent)
     : QWidget(parent)
     , m_colorR(153)
@@ -156,35 +153,8 @@ void TitleWidget::mouseMoveEvent(QMouseEvent *event)
         QPoint widgetPos = this->parentWidget()->pos();
         m_startMovePos = event->globalPos();
         this->parentWidget()->move(widgetPos.x() + movePoint.x(), widgetPos.y() + movePoint.y());
-//        moveWindow();
     }
     return QWidget::mouseMoveEvent(event);
-}
-
-void TitleWidget::moveWindow(void)
-{
-//    Display *display = QX11Info::display();
-//    Atom netMoveResize = XInternAtom(display, "_NET_WM_MOVERESIZE", False);
-//    XEvent xEvent;
-//    const auto pos = QCursor::pos();
-
-//    memset(&xEvent, 0, sizeof(XEvent));
-//    xEvent.xclient.type = ClientMessage;
-//    xEvent.xclient.message_type = netMoveResize;
-//    xEvent.xclient.display = display;
-//    xEvent.xclient.window = this->winId();
-//    xEvent.xclient.format = 32;
-//    xEvent.xclient.data.l[0] = pos.x();
-//    xEvent.xclient.data.l[1] = pos.y();
-//    xEvent.xclient.data.l[2] = 8;
-//    xEvent.xclient.data.l[3] = Button1;
-//    xEvent.xclient.data.l[4] = 0;
-
-//    XUngrabPointer(display, CurrentTime);
-//    XSendEvent(display, QX11Info::appRootWindow(QX11Info::appScreen()),
-//               False, SubstructureNotifyMask | SubstructureRedirectMask,
-//               &xEvent);
-//    XFlush(display);
 }
 
 // 加载本地样式文件;

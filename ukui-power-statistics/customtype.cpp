@@ -22,7 +22,6 @@ void registerCustomType()
 {
     qDBusRegisterMetaType<StructUdu>();
     qDBusRegisterMetaType<QList<StructUdu>>();
-
 }
 
 

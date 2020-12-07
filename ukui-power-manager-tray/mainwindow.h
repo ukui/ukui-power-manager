@@ -86,11 +86,7 @@ private:
     Ui::MainWindow *ui;
 
     QMenu *menu;
-//    QWidgetAction *set_preference;
-//    QWidgetAction *show_percentage;
-//    QWidgetAction *set_bright;
-//    QString releaseQss;
-//    QString pressQss;
+
     QMap<DEVICE*,QListWidgetItem*> device_item_map;
     int dev_number;
     QGSettings *style_set = nullptr;
@@ -99,7 +95,6 @@ private:
 protected:
     bool event(QEvent *event);
     void paintEvent(QPaintEvent *event);
-//    bool eventFilter(QObject *watched, QEvent *event);
 Q_SIGNALS:
     void style_modify(QString name);
 };

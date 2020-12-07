@@ -64,7 +64,6 @@ MainWindow::MainWindow(QWidget *parent) :
     initUi();
     ed->engine_policy_settings_cb("iconPolicy");
     ed->engine_recalculate_summary();
-//    installEventFilter(this);
 }
 
 void MainWindow::onSumChanged(QString str)
@@ -260,11 +259,9 @@ void MainWindow::show_percentage_func()
     want_percent = !want_percent;
     if(want_percent)
     {
-//        percent_label->setPixmap(QPixmap(":/apps/tick.png"));
         onIconChanged(ed->previous_icon);
     }
     else {
-//        percent_label->setPixmap(QPixmap());
         onIconChanged(ed->previous_icon);
     }
 
@@ -361,20 +358,6 @@ void MainWindow::onActivatedIcon(QSystemTrayIcon::ActivationReason reason)
                 else
                 {
                     transparent = get_window_opacity();
-//                    if(style_nm == "ukui-dark")
-//                    {
-//                        style_string = QString("#centralWidget {"
-//                                                       "background-color:rgba(19,19,20,%1);"
-//                                                       "border-radius:6px;}").arg(transparent);
-//                    }
-//                    else
-//                    {
-//                        style_string = QString("#centralWidget {"
-//                                                       "background-color:rgba(255,255,255,%1);"
-//                                                       "border-radius:6px;}").arg(transparent);
-
-//                    }
-//                    setStyleSheet(style_string);
 
                     this->showNormal();
                     set_window_position();
@@ -427,8 +410,6 @@ void MainWindow::initUi()
     ui->power_title->setText(tr("PowerManagement"));
     ui->power_title->setAlignment(Qt::AlignLeft|Qt::AlignVCenter);
 
-//    connect(ui->statistic_button,SIGNAL(released()),this,SLOT(activate_power_statistic()));
-
     ui->statistic_button->setText(tr("Stats"));//adapt to chinese
     ui->statistic_button->setFixedWidth(54);
     ui->statistic_button->setStyleSheet("QPushButton{border:0px;width:54px;"
@@ -440,10 +421,6 @@ void MainWindow::initUi()
     ui->statistic_button->setCheckable (false);
     ui->statistic_button->setVisible (false);
     transparent = get_window_opacity();
-//    QString style_string = QString("#centralWidget {"
-//                                   "background-color:rgba(19,19,20,%1);"
-//                                   "border-radius:6px;}").arg(transparent);
-//    setStyleSheet(style_string);
 
     get_power_list();
 
@@ -453,7 +430,6 @@ void MainWindow::initUi()
 
     create_menu_item();
     trayIcon->setContextMenu(menu);
-//    trayIcon->setToolTip(tr("PowerManager"));
 }
 
 void MainWindow::create_menu_item()
@@ -590,20 +566,8 @@ bool MainWindow::event(QEvent *event)
     return QWidget::event(event);
 }
 
-//bool MainWindow::eventFilter(QObject *watched, QEvent *event)
-//{
-//    if(QEvent::WindowDeactivate == event->type())
-//    {
-//        hide();
-//        return true;
-//    }
-//    else
-//        return QWidget::eventFilter(watched,event);
-//}
-
 void MainWindow::paintEvent(QPaintEvent *event)
 {
-//    transparent = get_window_opacity();
     QPainter p(this);
     QStyleOption opt;
     opt.init(this);
@@ -677,8 +641,5 @@ void MainWindow::style_name_settings_cb(const QString&)
     QVariant var =style_set->get(GPM_SETTINGS_STYLE_NAME);
     style_nm = var.value<QString>();
     Q_EMIT style_modify(style_nm);
-//    if(style_nm == "ukui-dark")
-//        ;
-//    else if(style_nm == "ukui-white")
-//        ;
+
 }

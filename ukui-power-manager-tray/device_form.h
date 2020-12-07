@@ -48,7 +48,6 @@ public:
     QString percentage;
     int percent_number;
     QString predict;
-//    DEVICE *m_device;
     EngineDevice *ed;
     QString path;
     void setRemain(QString remain);
@@ -63,9 +62,7 @@ public:
     static QString device_get_ac_online();
 protected:
     void paintEvent(QPaintEvent *event);
-//    void leaveEvent(QEvent *event);
-//    void enterEvent(QEvent *event);
-//    void mousePressEvent(QMouseEvent *event);
+
 private:
     Ui::DeviceForm *ui;
     QTimer *charge_animation;

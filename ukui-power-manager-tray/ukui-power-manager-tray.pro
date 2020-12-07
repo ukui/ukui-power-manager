@@ -64,8 +64,7 @@ SOURCES += \
     customtype.cpp \
     device.cpp \
     enginedevice.cpp \
-    device_form.cpp \
-    remainlabel.cpp
+    device_form.cpp
 
 HEADERS += \
     customstyle.h \
@@ -74,14 +73,11 @@ HEADERS += \
     customtype.h \
     device.h \
     enginedevice.h \
-    device_form.h \
-    remainlabel.h
+    device_form.h
 
 FORMS += \
         mainwindow.ui \
     deviceform.ui
-
-# Default rules for deployment.
 
 RESOURCES += \
     resource.qrc

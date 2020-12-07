@@ -52,7 +52,6 @@ public:
     // 加载样式文件;
     void loadStyleSheet(const QString &sheetName);
 
-    void moveWindow();
 Q_SIGNALS:
     // 按钮触发的信号;
 
@@ -108,8 +107,7 @@ class DeviceWidget : public QWidget
     Q_OBJECT
 public:
     explicit DeviceWidget(QWidget *parent=nullptr);
-protected:
-//    virtual void paintEvent(QPaintEvent *event);
+
 private:
     QLabel *icon;
     QLabel *content;

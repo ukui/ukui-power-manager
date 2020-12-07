@@ -280,7 +280,6 @@ void UkpmWidget::getDevices()
                 dw->setAttribute(Qt::WA_DeleteOnClose);
                 dw->set_device_icon(":/resource/icon/"+icon+".png");
                 dw->set_device_text(false,label);
-//                item = new QListWidgetItem(QIcon(":/resource/icon/"+icon+".png"),label);
                 item = new QListWidgetItem;
                 item->setSizeHint(QSize(150,36));
                 dw->setFixedSize(item->sizeHint());
@@ -464,7 +463,6 @@ ukpm_update_info_page_details (DEV* device)
     model->clear();
     QStringList header;
     header << tr("Attribute") << tr("Value");
-//    model->setHorizontalHeaderLabels(header);
     addListRow(tr("Attribute"),tr("Value"));
 
     addListRow(tr("Device"),device_path);
@@ -514,7 +512,6 @@ ukpm_update_info_page_details (DEV* device)
     if (dev.kind == UP_DEVICE_KIND_BATTERY) {
 
         addListRow (tr("Energy"), dev.Energy);
-        //addListRow (tr("Energy when empty"), dev.EnergyEmpty);
         addListRow (tr("Energy when full"), dev.EnergyFull);
         addListRow (tr("Energy (design)"), dev.EnergyFullDesign);
     }
@@ -892,7 +889,6 @@ void UkpmWidget::draw_stats_graph(QString type)
         sumSeries->replace(data);
         sumSpline->replace(data);
         y->setTitleText(tr("Predict Accurency"));
-//        y->setRange(0,100);
         y->setRange(starty,stopy);
         y->setLabelFormat("%d%");
         y->setTickCount(10);
@@ -1030,13 +1026,11 @@ void UkpmWidget::draw_history_graph(QString type)
         axisY->setMax(stopy);
         axisY->setStartValue(starty);
         axisY->setTitleText(tr("Rate"));
-//        axisY->setLabelFormat("%6.1fw");
         axisY->setLabelsPosition(QCategoryAxis::AxisLabelsPositionOnValue);
         for(int i = 0; i < 11; i++)
         {
             QString str;
             str.sprintf("%9.1fw",starty+i*(stopy-starty)/10.0);
-//            str_new = QString("%1").arg(str,6,QLatin1Char(' '));SSSSSS
             axisY->append(str,starty+i*(stopy-starty)/10.0);
         }
 
@@ -1166,9 +1160,6 @@ void UkpmWidget::draw_history_graph(QString type)
         xtime->append(getWidgetAxis(i*timeSpan/10),i*timeSpan/10);
     }
     xtime->setLabelsPosition(QCategoryAxis::AxisLabelsPositionOnValue);
-//    settings->setInt(GPM_SETTINGS_INFO_HISTORY_TIME,timeSpan);
-//    hisStack->setCurrentIndex(1);
-
 }
 
 void UkpmWidget::ukpm_set_choice_history()
@@ -1253,8 +1244,6 @@ void UkpmWidget::ukpm_update_info_page_stats (DEV* device)
         type = "discharging";
     }
     draw_stats_graph (type);
-//    ukpm_set_choice_sum();
-
 }
 
 void UkpmWidget::setSumTab()
@@ -1400,7 +1389,6 @@ void UkpmWidget::setDetailTab()
     tableView->setModel(model);
     tableView->setFocusPolicy(Qt::NoFocus);
     //背景网格线设置
-    //显示
     tableView->setShowGrid(false);
     //网格背景画笔
     tableView->setGridStyle(Qt::DotLine);
@@ -1613,7 +1601,6 @@ QString UkpmWidget::getWidgetAxis(uint value)
         if(hours ==0)
             text.sprintf("%dd",days);
         else
-//            text.sprintf("%dd%dh",days,hours);
             text.sprintf("%.1fd",days+hours*1.0/24);
     }
     else if(hours > 0)
@@ -1621,7 +1608,6 @@ QString UkpmWidget::getWidgetAxis(uint value)
         if(minutes ==0)
             text.sprintf("%dh",hours);
         else
-//            text.sprintf("%dh%dm",hours,minutes);
             text.sprintf("%.1fh",(hours+minutes*1.0/60));
     }
     else if(minutes > 0)

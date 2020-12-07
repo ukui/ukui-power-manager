@@ -38,12 +38,6 @@ DeviceForm::DeviceForm(QWidget *parent) :
     QFont font = ui->remaindata->font();
     font.setPixelSize(11);
     ui->remaindata->setFont(font);
-//    QPalette pal = this->palette();
-//    QColor color = this->palette().color(QPalette::Text);
-//    color.setAlphaF(0.5);
-//    pal.setColor(QPalette::Text,color);
-//    ui->remaindata->setPalette(pal);
-
 }
 
 DeviceForm::~DeviceForm()
@@ -136,27 +130,9 @@ void DeviceForm::setKind(QString kind)
 
 void DeviceForm::setRemain(QString remain)
 {
-//    if(mDev.State == UP_DEVICE_STATE_DISCHARGING)
-//    {
-//        ui->remaintext->setText(tr("RemainTime"));
-//    }
-//    else
-//    {
-//        ui->remaintext->setText("");
-//    }
     ui->remaintext->setText("");
     ui->remaindata->setText(remain);
 }
-
-//void DeviceForm::mousePressEvent(QMouseEvent *event)
-//{
-//    if(event->buttons() == Qt::LeftButton)
-//    {
-//        QString cmd = QString("ukui-power-statistics --device %1 &").arg(path);
-//        qDebug()<<cmd;
-//        system(cmd.toStdString().c_str());
-//    }
-//}
 
 void DeviceForm::widget_property_change()
 {
@@ -180,29 +156,6 @@ void DeviceForm::paintEvent(QPaintEvent *event)
     p.drawRoundedRect(rect(),6,6);
     QWidget::paintEvent(event);
 }
-
-// void DeviceForm::enterEvent(QEvent *event)
-// {
-//     Q_UNUSED(event);
-//     setStyleSheet(
-//                 "background:rgba(61,107,229,1);"
-//                 "border-radius:2px;"
-//     );
-// }
-
-// void DeviceForm::leaveEvent(QEvent *event)
-// {
-//     Q_UNUSED(event);
-//     setStyleSheet(
-//                 "QWidget {background-color:rgba(19,19,20,90%);}"
-//                 "QProgressBar {"
-//                 "width:284px;"
-//                 "height:4px;"
-//                 "background:rgba(255,255,255,0.1);"
-//                 "border-radius:2px;}"
-
-//     );
-// }
 
  QString DeviceForm::calculate_value(int nValue,int nTotal)
  {
@@ -235,7 +188,6 @@ void DeviceForm::set_device(DEVICE *dev)
 {
     if(dev == nullptr)
         return;
-//    m_device = dev;
     path = dev->m_dev.path;
     /*prepare for device icon animation*/
     UpDeviceKind kind = dev->m_dev.kind;
@@ -256,15 +208,12 @@ void DeviceForm::slot_device_change(DEVICE* device)
     percent_number = int (device->m_dev.Percentage);
     kind = ed->engine_kind_to_localised_text(device->m_dev.kind,0);
     predict = ed->engine_get_device_predict(device);
-//    qDebug () << "predict:" << predict;
     mDev = device->m_dev;
-//    device_adjust_battery_parameters();
     widget_property_change();
 }
 
 void DeviceForm::slider_changed(int value)
 {
-//    value = 17;
     QPalette palette;
     ui->progressBar->setValue(value);
     if (value <= 10) {
@@ -281,16 +230,6 @@ void DeviceForm::slider_changed(int value)
         palette.setBrush(QPalette::Highlight, QBrush(QColor(61,107,229,255)));
         ui->progressBar->setPalette(palette);
     }
-//    ui->progressBar->setStyleSheet(QString(""
-//     "	QProgressBar {"
-//     "	border-radius: 2px;"
-//     ""
-//     "}"
-//     "QProgressBar::chunk {"
-//         "border-radius:2px;"
-//         "	background-color: "
-//         "%1;"
-//     "}").arg(calculate_value(value,ui->progressBar->maximum())));
 }
 
 QString DeviceForm::device_get_ac_online()

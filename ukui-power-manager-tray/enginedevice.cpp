@@ -655,59 +655,16 @@ QString EngineDevice::engine_get_device_predict(DEVICE* dv)
             result = tr("charging");
         result = tr("fully charged");
 
-//        if (kind == UP_DEVICE_KIND_BATTERY && time_to_empty_round > GPM_UP_TEXT_MIN_TIME) {
-//            time_to_empty_str = engine_get_timestring (time_to_empty_round);
-//            result = time_to_empty_str;
-
-//        } else {
-//            result = tr("fully charged");
-//        }
-
     } else if (state == UP_DEVICE_STATE_DISCHARGING) {
 
-//        if (time_to_empty_round > GPM_UP_TEXT_MIN_TIME) {
-//            time_to_empty_str = engine_get_timestring (time_to_empty_round);
-//            result = time_to_empty_str;
-
-//        } else {
-//            result = tr("discharging(%1%)").arg(percentage);
-
-//        }
         result = tr("not charging");
     } else if (state == UP_DEVICE_STATE_CHARGING) {
         result = tr("charging");
         
-//        if (time_to_full_round > GPM_UP_TEXT_MIN_TIME &&
-//            time_to_empty_round > GPM_UP_TEXT_MIN_TIME) {
-
-//            /* display both discharge and charge time */
-//            time_to_full_str = engine_get_timestring (time_to_full_round);
-//            time_to_empty_str = engine_get_timestring (time_to_empty_round);
-
-//            /* TRANSLATORS: the device is charging, and we have a time to full and empty */
-//            result = time_to_full_str;
-//        } else if (time_to_full_round > GPM_UP_TEXT_MIN_TIME) {
-
-//            /* display only charge time */
-//            time_to_full_str = engine_get_timestring (time_to_full_round);
-
-//            /* TRANSLATORS: device is charging, and we have a time to full and a percentage */
-//            result = time_to_full_str;
-
-//        } else {
-
-//            /* TRANSLATORS: device is charging, but we only have a percentage */
-//            result = tr("charging(%1%)").arg(percentage);
-
-//        }
-
     }  else {
-//        printf ("in an undefined state we are not charging or "
-//                 "discharging and the batteries are also not charged");
         result = QString("%1(%2%)").arg(kind_desc).arg(percentage);
     }
     return result;
-    qDebug ()<< "result:" << result;
 }
 
 /**

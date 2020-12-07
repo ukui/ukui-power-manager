@@ -28,7 +28,6 @@ namespace
         data.append(key.toUtf8());
         data.append(salt.toUtf8());
         data = QCryptographicHash::hash(data, QCryptographicHash::Sha1).toHex();
-
         return data;
     }
 

@@ -28,7 +28,6 @@
 
 int main(int argc, char *argv[])
 {
-//    QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     Display *display = XOpenDisplay(NULL);
     if (NULL == display) {
 	qDebug() << "Can't open display!";
@@ -73,14 +72,6 @@ int main(int argc, char *argv[])
         exit(0);
     }
 
-//    QString locale = QLocale::system().name();
-//    QTranslator translator;
-//    QString qmfile = QString("/usr/share/ukui-power-manager/tray/translations/%1.qm").arg(locale);
-//    QFileInfo fl(qmfile);
-//    if (fl.exists()) {
-//        translator.load(qmfile);
-//        a.installTranslator(&translator);
-//    }
     QTranslator translator;
     if (translator.load(QLocale(),"ukui-power-manager-tray","_",QM_FILES_INSTALL_PATH))
         a.installTranslator(&translator);
@@ -91,7 +82,6 @@ int main(int argc, char *argv[])
     file.open(QFile::ReadOnly);
     qApp->setStyleSheet(file.readAll());
     file.close();
-//    QIcon::setThemeName("ukui-icon-theme");
     MainWindow w;
     KWindowEffects::enableBlurBehind(w.winId(),true);
     w.hide();

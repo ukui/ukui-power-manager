@@ -552,6 +552,7 @@ static gpm_tray_set_theme(GtkWidget *widget, const gchar *data)
     gtk_css_provider_load_from_data(provider,data,-1,NULL);
     gtk_style_context_add_provider(context,GTK_STYLE_PROVIDER(provider),GTK_STYLE_PROVIDER_PRIORITY_USER);
     g_object_unref(provider);
+    return 0;
 }
 
 /**

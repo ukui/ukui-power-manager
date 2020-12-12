@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: UKUI Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-21 19:39+0800\n"
-"PO-Revision-Date: 2020-12-12 19:39+0000\n"
+"PO-Revision-Date: 2020-12-13 23:58+0000\n"
 "Last-Translator: roxfr <roxfr@outlook.fr>\n"
 "Language-Team: French <https://weblate.ubuntukylin.com/projects/"
 "ukui-power-manager/ukui-power-manager/fr/>\n"
@@ -95,12 +95,12 @@ msgstr ""
 #: ../applets/brightness/brightness-applet.c:1068
 #: ../applets/inhibit/inhibit-applet.c:638
 msgid "_About"
-msgstr "À _propos"
+msgstr "_À propos"
 
 #: ../applets/brightness/brightness-applet.c:1071
 #: ../applets/inhibit/inhibit-applet.c:641
 msgid "_Help"
-msgstr "Aid_e"
+msgstr "_Aide"
 
 #: ../applets/brightness/org.ukui.BrightnessApplet.ukui-panel-applet.in.in.h:1
 msgid "Brightness Applet Factory"
@@ -978,7 +978,7 @@ msgstr "<b>Actions</b>"
 
 #: ../data/gpm-prefs.ui.h:3
 msgid "Put computer to _sleep when inactive for:"
-msgstr "Mettre l'_ordinateur en veille si inactif depuis :"
+msgstr "Mettre l'ordinateur en _veille si inactif depuis :"
 
 #: ../data/gpm-prefs.ui.h:4
 msgid "When laptop lid is cl_osed:"
@@ -990,7 +990,7 @@ msgstr "<b>Affichage</b>"
 
 #: ../data/gpm-prefs.ui.h:6
 msgid "Put _display to sleep when inactive for:"
-msgstr "Mettre l'é_cran en veille si inactif depuis :"
+msgstr "Mettre l'_écran en veille si inactif depuis :"
 
 #: ../data/gpm-prefs.ui.h:7
 msgid "Set display _brightness to:"
@@ -1331,7 +1331,7 @@ msgstr "L'erreur a été signalée comme :"
 #. TRANSLATORS: button text, visit the suspend help website
 #: ../src/gpm-manager.c:617
 msgid "Visit help page"
-msgstr "Consultez la page d'aide"
+msgstr "Visiter la page d'aide"
 
 #: ../src/gpm-manager.c:654
 msgid "Suspend failed for some reason (maybe dbus error)"
@@ -1548,7 +1548,7 @@ msgstr "Le niveau de la batterie du portable est très faible"
 #. TRANSLATORS: tell the use to insert the plug, as we're not going to do anything
 #: ../src/gpm-manager.c:1505
 msgid "Plug in your AC adapter to avoid losing data."
-msgstr "Branchez votre adaptateur secteur pour éviter de perdre des données."
+msgstr "Brancher votre adaptateur secteur pour éviter de perdre des données."
 
 #. TRANSLATORS: give the user a ultimatum
 #: ../src/gpm-manager.c:1509
@@ -1585,7 +1585,7 @@ msgid ""
 "Approximately <b>%s</b> of remaining UPS power (%.0f%%). Restore AC power to "
 "your computer to avoid losing data."
 msgstr ""
-"Il reste environ <b>%s</b> d'énergie sur l'onduleur (%.0f %%). Rétablissez "
+"Il reste environ <b>%s</b> d'énergie sur l'onduleur (%.0f %%). Rétablir "
 "votre alimentation secteur pour éviter de perdre des données."
 
 #. TRANSLATORS: the device is just going to stop working

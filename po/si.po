@@ -8,14 +8,16 @@ msgstr ""
 "Project-Id-Version: UKUI Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-21 19:39+0800\n"
-"PO-Revision-Date: 2017-10-07 11:02+0000\n"
-"Last-Translator: monsta <monsta@inbox.ru>\n"
-"Language-Team: Sinhala (http://www.transifex.com/mate/UKUI/language/si/)\n"
+"PO-Revision-Date: 2021-03-03 20:59+0000\n"
+"Last-Translator: helabasa <R45XvezA@pm.me>\n"
+"Language-Team: Sinhala <https://weblate.ubuntukylin.com/projects/"
+"ukui-power-manager/ukui-power-manager/si/>\n"
 "Language: si\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Weblate 4.3.2\n"
 
 #: ../applets/brightness/brightness-applet.c:110
 msgid "Power Manager Brightness Applet"
@@ -2209,10 +2211,11 @@ msgstr[1] ""
 
 #. TRANSLATORS: a monitor is a device to measure voltage and current
 #: ../src/gpm-upower.c:499
+#, fuzzy
 msgid "Monitor"
 msgid_plural "Monitors"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "තිරය"
+msgstr[1] "තිර"
 
 #. TRANSLATORS: wireless mice with internal batteries
 #: ../src/gpm-upower.c:503
@@ -2225,8 +2228,8 @@ msgstr[1] ""
 #: ../src/gpm-upower.c:507
 msgid "Keyboard"
 msgid_plural "Keyboards"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "යතුරු පුවරුව"
+msgstr[1] "යතුරු පුවරු"
 
 #. TRANSLATORS: portable device
 #: ../src/gpm-upower.c:511
@@ -2301,7 +2304,7 @@ msgstr ""
 #. TRANSLATORS: battery state
 #: ../src/gpm-upower.c:646
 msgid "Empty"
-msgstr ""
+msgstr "හිස්"
 
 #. TRANSLATORS: battery state
 #: ../src/gpm-upower.c:654

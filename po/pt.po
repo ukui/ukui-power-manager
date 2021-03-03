@@ -13,14 +13,16 @@ msgstr ""
 "Project-Id-Version: UKUI Desktop Environment\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-11-21 19:39+0800\n"
-"PO-Revision-Date: 2017-10-07 11:02+0000\n"
-"Last-Translator: monsta <monsta@inbox.ru>\n"
-"Language-Team: Portuguese (http://www.transifex.com/mate/UKUI/language/pt/)\n"
+"PO-Revision-Date: 2021-03-01 15:59+0000\n"
+"Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
+"Language-Team: Portuguese <https://weblate.ubuntukylin.com/projects/"
+"ukui-power-manager/ukui-power-manager/pt/>\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Weblate 4.3.2\n"
 
 #: ../applets/brightness/brightness-applet.c:110
 msgid "Power Manager Brightness Applet"
@@ -664,7 +666,7 @@ msgstr "O tipo de gráfico a apresentar por defeito na janela de estatísticas."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:94
 msgid "The index of the page number to show by default"
-msgstr "O índice do número de página a mostrar por defeito."
+msgstr "O índice do número de página a mostrar por defeito"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:95
 msgid ""
@@ -732,7 +734,7 @@ msgid ""
 "valid when use-time-for-policy is true."
 msgstr ""
 "O tempo restante em segundos de bateria quando está considerada fraca. "
-"Apenas válida quando use-time-for-policy  é verdadeira."
+"Apenas válida quando use-time-for-policy é verdadeira."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:106
 msgid "The time remaining when critical"
@@ -744,7 +746,7 @@ msgid ""
 "Only valid when use-time-for-policy is true."
 msgstr ""
 "O tempo restante em segundos de bateria quando está em estado crítico. "
-"Apenas válida quando use-time-for-policy  é verdadeira."
+"Apenas válida quando use-time-for-policy é verdadeira."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:108
 msgid "The time remaining when action is taken"
@@ -756,7 +758,7 @@ msgid ""
 "Only valid when use-time-for-policy is true."
 msgstr ""
 "O tempo restante em segundos de bateria quando é realizada uma ação crítica. "
-"Apenas válida quando use-time-for-policy  é verdadeira."
+"Apenas válida quando use-time-for-policy é verdadeira."
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:110
 msgid "Sleep timeout computer when on battery"
@@ -851,7 +853,7 @@ msgstr ""
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:125
 msgid "power policy mode"
-msgstr ""
+msgstr "modo de política de energia"
 
 #: ../data/org.ukui.power-manager.gschema.xml.in.h:126
 msgid "When to show the notification icon"
@@ -1296,11 +1298,11 @@ msgstr "Consultar a página de ajuda"
 
 #: ../src/gpm-manager.c:654
 msgid "Suspend failed for some reason (maybe dbus error)"
-msgstr ""
+msgstr "Suspender falhou por alguma razão (talvez erro de dbus)"
 
 #: ../src/gpm-manager.c:692
 msgid "Hibernate failed for some reason (maybe dbus error)"
-msgstr ""
+msgstr "Hibernar falhou por alguma razão (talvez erro de dbus)"
 
 #. TRANSLATORS: this is the ukui-screensaver throttle
 #: ../src/gpm-manager.c:904
@@ -1624,6 +1626,8 @@ msgstr ""
 msgid ""
 "Battery power is too low, please plug in the power to ensure the normal use"
 msgstr ""
+"A energia da bateria é demasiado baixa, ligue a corrente para garantir a "
+"utilização normal"
 
 #. TRANSLATORS: computer will shutdown without saving data
 #: ../src/gpm-manager.c:1802
@@ -1637,15 +1641,14 @@ msgstr ""
 #. TRANSLATORS: computer will suspend
 #. kobe
 #: ../src/gpm-manager.c:1809
-#, fuzzy
 msgid ""
 "The battery is below the critical level and this computer is about to "
 "suspend.<b>NOTE:</b> A small amount of power is required to keep your "
 "computer in a suspended state."
 msgstr ""
-"A bateria está abaixo do nível grave e o computador está prestes a suspender-"
-"se.<br><b>NOTA:</b> É necessária uma pequena quantidade de energia para "
-"manter o computador num estado suspenso."
+"A bateria está abaixo do nível crítico e o computador está prestes a "
+"suspender-se.<b>NOTA:</b> É necessária uma pequena quantidade de energia "
+"para manter o computador num estado suspenso."
 
 #. TRANSLATORS: computer will hibernate
 #: ../src/gpm-manager.c:1816
@@ -2127,7 +2130,7 @@ msgstr "Processador"
 
 #: ../src/gpm-tray-icon.c:266
 msgid "Copyright © 2011-2017 UKUI developers"
-msgstr ""
+msgstr "Direitos de autor © 2011-2017 Programadores UKUI"
 
 #. Translators should localize the following string
 #. * which will be displayed at the bottom of the about
@@ -2143,11 +2146,13 @@ msgid ""
 "%.1f%% available power\n"
 "(The power is connected and is charging)"
 msgstr ""
+"%.1f%% energia disponível\n"
+"(A energia está ligada e está a carregar)"
 
 #: ../src/gpm-tray-icon.c:406
 #, c-format
 msgid "%.1f%% available power"
-msgstr ""
+msgstr "%.1f%% energia disponível"
 
 #. TRANSLATORS: % is a timestring, e.g. "6 hours 10 minutes"
 #: ../src/gpm-tray-icon.c:485
@@ -2163,16 +2168,15 @@ msgstr "_Preferências"
 #. powerpolicy
 #: ../src/gpm-tray-icon.c:547
 msgid "_Performance Mode"
-msgstr ""
+msgstr "Modo de desem_penho"
 
 #: ../src/gpm-tray-icon.c:551
 msgid "_Save Mode"
-msgstr ""
+msgstr "_Modo de poupança"
 
 #: ../src/gpm-tray-icon.c:703
-#, fuzzy
 msgid "Power Preferences"
-msgstr "Preferências de Energia do UKUI"
+msgstr "Preferências de Energia"
 
 #. TRANSLATORS: device not present
 #: ../src/gpm-upower.c:211

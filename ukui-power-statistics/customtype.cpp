@@ -24,7 +24,6 @@ void registerCustomType()
     qDBusRegisterMetaType<QList<StructUdu>>();
 }
 
-
 QDBusArgument &operator<<(QDBusArgument &argument, const StructUdu &structudp)
 {
     argument.beginStructure();

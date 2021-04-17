@@ -39,7 +39,6 @@ TitleWidget::TitleWidget(QWidget *parent)
 
 }
 
-
 // 初始化控件;
 void TitleWidget::initControl()
 {
@@ -274,6 +273,7 @@ void DeviceWidget::set_device_text(bool flag,QString text)
     QFontMetrics metric(font);
     QString metric_text = metric.elidedText(m_text,Qt::ElideRight,100);
     content->setText(metric_text);
+    content->setFont(font);
     if(flag)
         content->setStyleSheet("QLabel {color:white}");
     else

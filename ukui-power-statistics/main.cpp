@@ -22,13 +22,19 @@
 #include <QCommandLineOption>
 #include <QCommandLineParser>
 #include <X11/Xlib.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
 int main(int argc, char *argv[])
 {
-    EggUnique uniq("4822-6fcc-4567-8334");
-    if(!uniq.tryToRun())
+    QStringList homePath = QStandardPaths::standardLocations(QStandardPaths::HomeLocation);
+    int fd = open (QString(homePath.at(0) + "/.config/ukui-power-statistics%1.lock").arg(getenv("DISPLAY")).toUtf8().data(),O_WRONLY|O_CREAT|O_TRUNC,S_IRUSR|S_IWUSR);
+    if(fd < 0)  exit(1);
+    if(lockf(fd,F_TLOCK,0))
     {
-        return 0;
+        qDebug()<<"cant lock single file, ukui-power-statistics is already running";
+        exit(0);
     }
 
     Display *display = XOpenDisplay(NULL);

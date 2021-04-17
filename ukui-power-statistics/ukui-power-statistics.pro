@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui dbus charts
+#QT       += x11extras
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 

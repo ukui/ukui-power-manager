@@ -20,17 +20,14 @@
 
 namespace
 {
-
     QString generateKeyHash(const QString& key, const QString& salt)
     {
         QByteArray data;
-
         data.append(key.toUtf8());
         data.append(salt.toUtf8());
         data = QCryptographicHash::hash(data, QCryptographicHash::Sha1).toHex();
         return data;
     }
-
 }
 
 
@@ -72,7 +69,6 @@ bool EggUnique::tryToRun()
 {
     if (isAnotherRunning())   // Extra check
         return false;
-
     memLock.acquire();
     const bool result = sharedMem.create(sizeof(quint64));
     memLock.release();
@@ -81,7 +77,6 @@ bool EggUnique::tryToRun()
         release();
         return false;
     }
-
     return true;
 }
 

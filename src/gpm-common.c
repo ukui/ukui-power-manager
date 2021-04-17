@@ -39,42 +39,43 @@
  *
  * Return value: The time string, e.g. "2 hours 3 minutes"
  **/
-gchar *gpm_get_timestring(guint time_secs)
+gchar *
+gpm_get_timestring (guint time_secs)
 {
-    char *timestring = NULL;
-    gint hours;
-    gint minutes;
+	char* timestring = NULL;
+	gint  hours;
+	gint  minutes;
 
-    /* Add 0.5 to do rounding */
-    minutes = (int) ((time_secs / 60.0) + 0.5);
+	/* Add 0.5 to do rounding */
+	minutes = (int) ( ( time_secs / 60.0 ) + 0.5 );
 
-    if (minutes == 0) {
-	timestring = g_strdup(_("Unknown time"));
+	if (minutes == 0) {
+		timestring = g_strdup (_("Unknown time"));
+		return timestring;
+	}
+
+	if (minutes < 60) {
+		timestring = g_strdup_printf (ngettext ("%i minute",
+							"%i minutes",
+							minutes), minutes);
+		return timestring;
+	}
+
+	hours = minutes / 60;
+	minutes = minutes % 60;
+
+	if (minutes == 0)
+		timestring = g_strdup_printf (ngettext (
+				"%i hour",
+				"%i hours",
+				hours), hours);
+	else
+		/* TRANSLATOR: "%i %s %i %s" are "%i hours %i minutes"
+		 * Swap order with "%2$s %2$i %1$s %1$i if needed */
+		timestring = g_strdup_printf (_("%i %s %i %s"),
+				hours, ngettext ("hour", "hours", hours),
+				minutes, ngettext ("minute", "minutes", minutes));
 	return timestring;
-    }
-
-    if (minutes < 60) {
-	timestring = g_strdup_printf(ngettext("%i minute",
-					      "%i minutes",
-					      minutes), minutes);
-	return timestring;
-    }
-
-    hours = minutes / 60;
-    minutes = minutes % 60;
-
-    if (minutes == 0)
-	timestring = g_strdup_printf(ngettext("%i hour",
-					      "%i hours", hours), hours);
-    else
-	/* TRANSLATOR: "%i %s %i %s" are "%i hours %i minutes"
-	 * Swap order with "%2$s %2$i %1$s %1$i if needed */
-	timestring = g_strdup_printf(_("%i %s %i %s"),
-				     hours, ngettext("hour", "hours",
-						     hours), minutes,
-				     ngettext("minute", "minutes",
-					      minutes));
-    return timestring;
 }
 
 /**
@@ -87,20 +88,20 @@ gchar *gpm_get_timestring(guint time_secs)
  *
  * Return value: The discrete value for this percentage.
  **/
-guint gpm_discrete_from_percent(guint percentage, guint levels)
+guint
+gpm_discrete_from_percent (guint percentage, guint levels)
 {
     /* for levels < 10 min value is 0 */
     gint factor;
     factor = levels < 10 ? 0 : 1;
     /* check we are in range */
     if (percentage > 100)
-	return levels;
+        return levels;
     if (levels == 0) {
-	g_warning("levels is 0!");
-	return 0;
+        g_warning ("levels is 0!");
+        return 0;
     }
-    return (guint) ((((gfloat) percentage * (gfloat) (levels - factor)) /
-		     100.0f) + 0.5f);
+    return (guint) ((((gfloat) percentage * (gfloat) (levels - factor)) / 100.0f) + 0.5f);
 }
 
 /**
@@ -112,20 +113,20 @@ guint gpm_discrete_from_percent(guint percentage, guint levels)
  *
  * Return value: The percentage for this discrete value.
  **/
-guint gpm_discrete_to_percent(guint discrete, guint levels)
+guint
+gpm_discrete_to_percent (guint discrete, guint levels)
 {
     /* for levels < 10 min value is 0 */
     gint factor;
     factor = levels < 10 ? 0 : 1;
     /* check we are in range */
     if (discrete > levels)
-	return 100;
+        return 100;
     if (levels == 0) {
-	g_warning("levels is 0!");
-	return 0;
+        g_warning ("levels is 0!");
+        return 0;
     }
-    return (guint) (((gfloat) discrete *
-		     (100.0f / (gfloat) (levels - factor))) + 0.5f);
+    return (guint) (((gfloat) discrete * (100.0f / (gfloat) (levels - factor))) + 0.5f);
 }
 
 
@@ -133,34 +134,32 @@ guint gpm_discrete_to_percent(guint discrete, guint levels)
  * gpm_help_display:
  * @link_id: Subsection of ukui-power-manager help section
  **/
-void gpm_help_display(const gchar * link_id)
+void
+gpm_help_display (const gchar *link_id)
 {
-    GError *error = NULL;
-    gchar *uri;
+	GError *error = NULL;
+	gchar *uri;
 
-    if (link_id != NULL)
-	uri = g_strconcat("help:ukui-power-manager/", link_id, NULL);
-    else
-	uri = g_strdup("help:ukui-power-manager");
+	if (link_id != NULL)
+		uri = g_strconcat ("help:ukui-power-manager/", link_id, NULL);
+	else
+		uri = g_strdup ("help:ukui-power-manager");
 
 #if GTK_CHECK_VERSION (3, 22, 0)
-    gtk_show_uri_on_window(NULL, uri, GDK_CURRENT_TIME, &error);
+	gtk_show_uri_on_window (NULL, uri, GDK_CURRENT_TIME, &error);
 #else
-    gtk_show_uri(NULL, uri, GDK_CURRENT_TIME, &error);
+	gtk_show_uri (NULL, uri, GDK_CURRENT_TIME, &error);
 #endif
 
-    if (error != NULL) {
-	GtkWidget *d;
-	d = gtk_message_dialog_new(NULL,
-				   GTK_DIALOG_MODAL |
-				   GTK_DIALOG_DESTROY_WITH_PARENT,
-				   GTK_MESSAGE_ERROR, GTK_BUTTONS_OK, "%s",
-				   error->message);
-	gtk_dialog_run(GTK_DIALOG(d));
-	gtk_widget_destroy(d);
-	g_error_free(error);
-    }
-    g_free(uri);
+	if (error != NULL) {
+		GtkWidget *d;
+		d = gtk_message_dialog_new (NULL, GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
+					    GTK_MESSAGE_ERROR, GTK_BUTTONS_OK, "%s", error->message);
+		gtk_dialog_run (GTK_DIALOG(d));
+		gtk_widget_destroy (d);
+		g_error_free (error);
+	}
+	g_free (uri);
 }
 
 /***************************************************************************
@@ -169,13 +168,15 @@ void gpm_help_display(const gchar * link_id)
 #ifdef EGG_TEST
 #include "egg-test.h"
 
-void gpm_common_test(gpointer data)
+void
+gpm_common_test (gpointer data)
 {
-    EggTest *test = (EggTest *) data;
-    if (egg_test_start(test, "GpmCommon") == FALSE)
-	return;
+	EggTest *test = (EggTest *) data;
+	if (egg_test_start (test, "GpmCommon") == FALSE)
+		return;
 
-    egg_test_end(test);
+	egg_test_end (test);
 }
 
 #endif
+

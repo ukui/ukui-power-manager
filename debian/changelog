@@ -1,44 +1,8 @@
-ukui-power-manager (2.1.29hw12~rc1) v101; urgency=medium
+ukui-power-manager (2.1.29~rc1) v101; urgency=medium
 
-  * 9A0控制面板拖到最黑屏问题
+  * 去除CPU自动调频 
 
- -- zhangxinyu1 <zhangxinyu1@kylinos.cn>  Sat, 17 Apr 2021 11:02:50 +0800
-
-ukui-power-manager (2.1.29hw7) v101; urgency=medium
-
-  * Repair Zoom 200 Power Management Location is not
-
- -- zhangxinyu1 <zhangxinyu1@kylinos.cn>  Thu, 25 Mar 2021 15:31:27 +0800
-
-ukui-power-manager (2.1.29hw5) v101; urgency=medium
-
-  * #43757 #43852
-
- -- zhangxinyu1 <zhangxinyu1@kylinos.cn>  Tue, 23 Mar 2021 11:45:53 +0800
-
-ukui-power-manager (2.1.29hw4) v101; urgency=medium
-
-  *  电源管理dpms kscreen-doctor改动
-
- -- zhangxinyu1 <zhangxinyu1@kylinos.cn>  Sat, 20 Mar 2021 18:29:46 +0800
-
-ukui-power-manager (2.1.29hw3) v101; urgency=medium
-
-  * 990 华为省电接口改写
-
- -- zhangxinyu1 <zhangxinyu1@kylinos.cn>  Wed, 10 Mar 2021 20:53:49 +0800
-
-ukui-power-manager (2.1.29hw2) v101; urgency=medium
-
-  * 990 wayland 双屏托盘显示处理
-
- -- zhangxinyu1 <zhangxinyu1@kylinos.cn>  Sat, 06 Mar 2021 15:46:51 +0800
-
-ukui-power-manager (2.1.29hw1) v101; urgency=medium
-
-  * 电源按键的处理，忽略ｓ３回来的一次按键.
-
- -- jianghong <jianghong@kylinos.cn>  Mon, 01 Mar 2021 17:10:28 +0800
+ -- zhangxinyu1 <zhangxinyu1@kylinos.cn>  Sat, 17 Apr 2021 10:10:55 +0800
 
 ukui-power-manager (2.1.28) v101; urgency=medium
 

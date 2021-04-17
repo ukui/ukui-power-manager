@@ -25,12 +25,17 @@
 #include <glib.h>
 
 G_BEGIN_DECLS
-    guint egg_discrete_from_percent(guint percentage, guint levels);
-guint egg_discrete_to_percent(guint discrete, guint levels);
-gfloat egg_discrete_to_fraction(guint discrete, guint levels);
+
+guint		 egg_discrete_from_percent		(guint		 percentage,
+							 guint		 levels);
+guint		 egg_discrete_to_percent		(guint		 discrete,
+							 guint		 levels);
+gfloat		 egg_discrete_to_fraction		(guint		 discrete,
+							 guint		 levels);
 #ifdef EGG_TEST
-void egg_discrete_test(gpointer data);
+void		 egg_discrete_test			(gpointer	 data);
 #endif
 
 G_END_DECLS
-#endif				/* __EGG_DISCRETE_H */
+
+#endif /* __EGG_DISCRETE_H */

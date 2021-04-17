@@ -25,6 +25,7 @@
 #include <glib.h>
 
 G_BEGIN_DECLS
+
 #define	EGG_COLOR_WHITE			0xffffff
 #define	EGG_COLOR_BLACK			0x000000
 #define	EGG_COLOR_RED			0xff0000
@@ -41,12 +42,18 @@ G_BEGIN_DECLS
 #define	EGG_COLOR_DARK_MAGENTA		0x600060
 #define	EGG_COLOR_DARK_YELLOW		0x606000
 #define	EGG_COLOR_DARK_GREY		0x606060
-    guint32 egg_color_from_rgb(guint8 red, guint8 green, guint8 blue);
-void egg_color_to_rgb(guint32 color,
-		      guint8 * red, guint8 * green, guint8 * blue);
+
+guint32		 egg_color_from_rgb			(guint8		 red,
+							 guint8		 green,
+							 guint8		 blue);
+void		 egg_color_to_rgb			(guint32	 color,
+							 guint8		*red,
+							 guint8		*green,
+							 guint8		*blue);
 #ifdef EGG_TEST
-void egg_color_test(gpointer data);
+void		 egg_color_test				(gpointer	 data);
 #endif
 
 G_END_DECLS
-#endif				/* __EGG_COLOR_H */
+
+#endif /* __EGG_COLOR_H */

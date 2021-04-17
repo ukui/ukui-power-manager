@@ -32,25 +32,13 @@
 
 int main(int argc, char *argv[])
 {
-    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-    QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
-    #if (QT_VERSION >= QT_VERSION_CHECK(5,14,0))
-        QApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
-    #endif
-    QStringList homePath =
-	QStandardPaths::standardLocations(QStandardPaths::HomeLocation);
-    int fd =
-	open(QString
-	     (homePath.at(0) +
-	      "/.config/ukui-power-manager-tray%1.lock").
-	     arg(getenv("DISPLAY")).toUtf8().data(),
-	     O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
-    if (fd < 0)
-	exit(1);
-    if (lockf(fd, F_TLOCK, 0)) {
-	qDebug() <<
-	    "cant lock single file, ukui-power-manager-tray is already running";
-	exit(0);
+    QStringList homePath = QStandardPaths::standardLocations(QStandardPaths::HomeLocation);
+    int fd = open (QString(homePath.at(0) + "/.config/ukui-power-manager-tray%1.lock").arg(getenv("DISPLAY")).toUtf8().data(),O_WRONLY|O_CREAT|O_TRUNC,S_IRUSR|S_IWUSR);
+    if(fd < 0)  exit(1);
+    if(lockf(fd,F_TLOCK,0))
+    {
+        qDebug()<<"cant lock single file, ukui-power-manager-tray is already running";
+        exit(0);
     }
 
     Display *display = XOpenDisplay(NULL);
@@ -61,21 +49,26 @@ int main(int argc, char *argv[])
     Screen *screen = DefaultScreenOfDisplay(display);
     if (NULL == screen) {
 	qDebug() << "Get default screen failed!";
-	return -1;
+        return -1;
     }
     int width = screen->width;
 
+    if (width > 2560) {
+        #if (QT_VERSION >= QT_VERSION_CHECK(5, 6, 0))
+                QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+                QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+        #endif
+    }
 
     XCloseDisplay(display);
 
     QApplication a(argc, argv);
     QTranslator translator;
-    if (translator.
-	load(QLocale(), "ukui-power-manager-tray", "_",
-	     QM_FILES_INSTALL_PATH)) {
-	a.installTranslator(&translator);
-    } else
-	qDebug() << "load ukui-power-manager-tray qm file error";
+    if (translator.load(QLocale(),"ukui-power-manager-tray","_",QM_FILES_INSTALL_PATH)){
+        a.installTranslator(&translator);
+    }
+    else
+        qDebug()<<"load ukui-power-manager-tray qm file error";
 
     QFile file(":/main.qss");
     file.open(QFile::ReadOnly);
@@ -83,7 +76,7 @@ int main(int argc, char *argv[])
     qApp->setStyleSheet(file.readAll());
     file.close();
     MainWindow w;
-    KWindowEffects::enableBlurBehind(w.winId(), true);
+    KWindowEffects::enableBlurBehind(w.winId(),true);
     w.hide();
 
     return a.exec();

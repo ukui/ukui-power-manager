@@ -32,30 +32,37 @@
 
 #define DBUS_INTERFACE_PRO "org.freedesktop.DBus.Properties"
 #define DBUS_INTERFACE_DEV "org.freedesktop.UPower.Device"
-class EngineDevice:public QObject {
-  Q_OBJECT private:
-    static EngineDevice *instance;
-    explicit EngineDevice(QObject * parent = nullptr);
-    class Deconstructor {
-      public:
-	~Deconstructor() {
-	    if (instance) {
-		delete instance;
-		 instance = nullptr;
-	    }
-    }};
+class EngineDevice : public QObject
+{
+    Q_OBJECT
+private:
+    static EngineDevice* instance;
+    explicit EngineDevice(QObject *parent = nullptr);
+    class  Deconstructor
+    {
+    public:
+         ~Deconstructor() {
+            if(instance)
+            {
+                delete instance;
+                instance = nullptr;
+            }
+        }
+    };
     static Deconstructor deconstructor;
 
-  public:
-    static EngineDevice *getInstance() {
-	if (instance == nullptr) {
-	    instance = new EngineDevice;
+public:
+    static EngineDevice* getInstance()
+    {
+        if(instance==nullptr)
+        {
+            instance = new EngineDevice;
 
-	}
-	return instance;
+        }
+        return instance;
     }
 
-  Q_SIGNALS:
+Q_SIGNALS:
     void icon_changed(QString);
     void engine_signal_discharge(DEV dv);
     void engine_signal_charge(DEV dv);
@@ -64,48 +71,45 @@ class EngineDevice:public QObject {
     void engine_signal_charge_critical(DEV dv);
     void engine_signal_charge_action(DEV dv);
     void engine_signal_summary_change(QString summary);
-    void signal_device_change(DEVICE * device);
-    void one_device_add(DEVICE * dev);
-    void one_device_remove(DEVICE * dev);
-    public Q_SLOTS:
-	void power_device_change_callback(QDBusMessage msg, QString path);
-    void engine_policy_settings_cb(const QString & str);
+    void signal_device_change(DEVICE *device);
+    void one_device_add(DEVICE *dev);
+    void one_device_remove(DEVICE *dev);
+public Q_SLOTS:
+    void power_device_change_callback(QDBusMessage msg, QString path);
+    void engine_policy_settings_cb(const QString &str);
     void power_device_add(QDBusObjectPath msg);
     void power_device_remove(QDBusObjectPath msg);
-  public:
-    QGSettings * settings;
-    QList < DEVICE * >devices;
+public:
+    QGSettings *settings;
+    QList<DEVICE*> devices;
     QString previous_icon;
     QString previous_summary;
 
     DEVICE *composite_device;
     GpmIconPolicy icon_policy;
-    int low_percentage;
-    int critical_percentage;
-    int action_percentage;
+    int			 low_percentage;
+    int			 critical_percentage;
+    int			 action_percentage;
 
     bool power_device_recalculate_icon();
     void power_device_recalculate_state();
-    QString power_device_get_icon_exact(UpDeviceKind device_kind,
-					UpDeviceLevel warning,
-					bool use_state);
+    QString power_device_get_icon_exact(UpDeviceKind device_kind, UpDeviceLevel warning, bool use_state);
     bool engine_recalculate_summary();
     void power_device_cold_plug();
-    void getProperty(QString path, DEV & dev);
+    void getProperty(QString path, DEV &dev);
     QString engine_get_summary();
     QString engine_kind_to_string(UpDeviceKind type_enum);
     QString engine_kind_to_localised_text(UpDeviceKind kind, uint number);
     void power_device_get_devices();
 
     QString boolToString(bool ret);
-    QString engine_get_device_summary(DEVICE * dv);
+    QString engine_get_device_summary(DEVICE *dv);
     QString engine_get_device_icon_index(qreal percentage);
     QString power_device_get_icon();
-    QString engine_get_device_icon(DEVICE * device);
-    void putAttributes(QMap < QString, QVariant > &map,
-		       DEV & btrDetailData);
+    QString engine_get_device_icon(DEVICE *device);
+    void putAttributes(QMap<QString, QVariant> &map, DEV &btrDetailData);
     QString engine_get_state_text(UpDeviceState state);
-    QString engine_get_device_predict(DEVICE * dv);
+    QString engine_get_device_predict(DEVICE *dv);
     QString engine_get_timestring(int time_secs);
     QString engine_get_dev_icon(DEV dev);
     QString engine_get_dev_predict(DEV dev);
@@ -113,4 +117,4 @@ class EngineDevice:public QObject {
     UpDeviceLevel engine_get_warning(DEV dev);
 };
 
-#endif				// ENGINEDEVICE_H
+#endif // ENGINEDEVICE_H

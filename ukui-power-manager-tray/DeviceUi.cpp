@@ -17,16 +17,15 @@
  */
 #include"DeviceUi.h"
 
-void DeviceUi::uiInit(QWidget * DeviceForm)
+void DeviceUi::uiInit(QWidget *DeviceForm)
 {
     if (DeviceForm->objectName().isEmpty())
-	DeviceForm->setObjectName(QString::fromUtf8("DeviceForm"));
+        DeviceForm->setObjectName(QString::fromUtf8("DeviceForm"));
     DeviceForm->resize(324, 82);
     QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
     sizePolicy.setHorizontalStretch(0);
     sizePolicy.setVerticalStretch(0);
-    sizePolicy.setHeightForWidth(DeviceForm->sizePolicy().
-				 hasHeightForWidth());
+    sizePolicy.setHeightForWidth(DeviceForm->sizePolicy().hasHeightForWidth());
     DeviceForm->setSizePolicy(sizePolicy);
     DeviceForm->setMinimumSize(QSize(324, 82));
     DeviceForm->setMaximumSize(QSize(324, 82));
@@ -39,18 +38,14 @@ void DeviceUi::uiInit(QWidget * DeviceForm)
     percentage = new QLabel(DeviceForm);
     percentage->setObjectName(QString::fromUtf8("percentage"));
     percentage->setGeometry(QRect(183, 1, 141, 11));
-    percentage->
-	setAlignment(Qt::AlignRight | Qt::AlignTrailing | Qt::
-		     AlignVCenter);
+    percentage->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
     remaintext = new QLabel(DeviceForm);
     remaintext->setObjectName(QString::fromUtf8("remaintext"));
     remaintext->setGeometry(QRect(41, 39, 91, 12));
     remaindata = new QLabel(DeviceForm);
     remaindata->setObjectName(QString::fromUtf8("remaindata"));
     remaindata->setGeometry(QRect(183, 35, 141, 16));
-    remaindata->
-	setAlignment(Qt::AlignRight | Qt::AlignTrailing | Qt::
-		     AlignVCenter);
+    remaindata->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
     progressBar = new QProgressBar(DeviceForm);
     progressBar->setObjectName(QString::fromUtf8("progressBar"));
     progressBar->setGeometry(QRect(40, 24, 284, 4));

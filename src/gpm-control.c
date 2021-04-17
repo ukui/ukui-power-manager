@@ -34,14 +34,14 @@
 #include <sys/wait.h>
 #ifdef HAVE_UNISTD_H
 #include <unistd.h>
-#endif				/* HAVE_UNISTD_H */
+#endif /* HAVE_UNISTD_H */
 
 #include <gio/gio.h>
 #include <glib/gi18n.h>
 
 #ifdef WITH_KEYRING
 #include <gnome-keyring.h>
-#endif				/* WITH_KEYRING */
+#endif /* WITH_KEYRING */
 
 #include "egg-debug.h"
 #include "egg-console-kit.h"
@@ -53,31 +53,33 @@
 
 #define GPM_CONTROL_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), GPM_TYPE_CONTROL, GpmControlPrivate))
 
-struct GpmControlPrivate {
-    GSettings *settings;
+struct GpmControlPrivate
+{
+	GSettings		*settings;
 };
 
 enum {
-    RESUME,
-    SLEEP,
-    LAST_SIGNAL
+	RESUME,
+	SLEEP,
+	LAST_SIGNAL
 };
 
-static guint signals[LAST_SIGNAL] = { 0 };
-
+static guint signals [LAST_SIGNAL] = { 0 };
 static gpointer gpm_control_object = NULL;
 
-G_DEFINE_TYPE(GpmControl, gpm_control, G_TYPE_OBJECT)
+G_DEFINE_TYPE (GpmControl, gpm_control, G_TYPE_OBJECT)
+
 /**
  * gpm_control_error_quark:
  * Return value: Our personal error quark.
  **/
-GQuark gpm_control_error_quark(void)
+GQuark
+gpm_control_error_quark (void)
 {
-    static GQuark quark = 0;
-    if (!quark)
-	quark = g_quark_from_static_string("gpm_control_error");
-    return quark;
+	static GQuark quark = 0;
+	if (!quark)
+		quark = g_quark_from_static_string ("gpm_control_error");
+	return quark;
 }
 
 /**
@@ -87,38 +89,43 @@ GQuark gpm_control_error_quark(void)
  *
  * Return value: fd, -1 on error
  **/
-static gboolean gpm_control_systemd_shutdown(void)
-{
-    GError *error = NULL;
-    GDBusProxy *proxy;
-    GVariant *res = NULL;
+static gboolean
+gpm_control_systemd_shutdown (void) {
+	GError *error = NULL;
+	GDBusProxy *proxy;
+	GVariant *res = NULL;
 
-    egg_debug("Requesting systemd to shutdown");
-    proxy = g_dbus_proxy_new_for_bus_sync(G_BUS_TYPE_SYSTEM,
-					  G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES,
-					  NULL,
-					  "org.freedesktop.login1",
-					  "/org/freedesktop/login1",
-					  "org.freedesktop.login1.Manager",
-					  NULL, &error);
-    //append all our arguments
-    if (proxy == NULL) {
-	egg_error("Error connecting to dbus - %s", error->message);
-	g_error_free(error);
-	return FALSE;
-    }
+	egg_debug ("Requesting systemd to shutdown");
+	proxy = g_dbus_proxy_new_for_bus_sync (G_BUS_TYPE_SYSTEM,
+					       G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES,
+					       NULL,
+					       "org.freedesktop.login1",
+					       "/org/freedesktop/login1",
+					       "org.freedesktop.login1.Manager",
+					       NULL,
+					       &error );
+	//append all our arguments
+	if (proxy == NULL) {
+		egg_error("Error connecting to dbus - %s", error->message);
+		g_error_free (error);
+		return FALSE;
+	}
 
-    res = g_dbus_proxy_call_sync(proxy, "PowerOff",
-				 g_variant_new("(b)", FALSE),
-				 G_DBUS_CALL_FLAGS_NONE, -1, NULL, &error);
-    if (error != NULL) {
-	egg_error("Error in dbus - %s", error->message);
-	g_error_free(error);
-	return FALSE;
-    }
+	res = g_dbus_proxy_call_sync (proxy, "PowerOff",
+				      g_variant_new( "(b)", FALSE),
+				      G_DBUS_CALL_FLAGS_NONE,
+				      -1,
+				      NULL,
+				      &error
+				      );
+	if (error != NULL) {
+		egg_error ("Error in dbus - %s", error->message);
+		g_error_free (error);
+		return FALSE;
+	}
 
-    g_variant_unref(res);
-    return TRUE;
+	g_variant_unref(res);
+	return TRUE;
 }
 
 /**
@@ -127,20 +134,21 @@ static gboolean gpm_control_systemd_shutdown(void)
  *
  * Shuts down the computer
  **/
-gboolean gpm_control_shutdown(GpmControl * control, GError ** error)
+gboolean
+gpm_control_shutdown (GpmControl *control, GError **error)
 {
-    gboolean ret;
-    //EggConsoleKit *console;
+	gboolean ret;
+        //EggConsoleKit *console;
 
-    if (LOGIND_RUNNING()) {
-	ret = gpm_control_systemd_shutdown();
-    } else {
-	ret = FALSE;
-	/*console = egg_console_kit_new ();
-	   ret = egg_console_kit_stop (console, error);
-	   g_object_unref (console); */
-    }
-    return ret;
+	if (LOGIND_RUNNING()) {
+		ret = gpm_control_systemd_shutdown ();
+	} else {
+                ret = FALSE;
+                /*console = egg_console_kit_new ();
+		ret = egg_console_kit_stop (console, error);
+                g_object_unref (console);*/
+	}
+	return ret;
 }
 
 /**
@@ -155,358 +163,351 @@ gboolean gpm_control_shutdown(GpmControl * control, GError ** error)
  * Return value: TRUE if we should lock.
  **/
 gboolean
-gpm_control_get_lock_policy(GpmControl * control, const gchar * policy)
+gpm_control_get_lock_policy (GpmControl *control, const gchar *policy)
 {
-    gboolean do_lock;
-    gboolean use_ss_setting;
-    const char *const *schemas;
-    gboolean schema_exists;
-    gint i;
+	gboolean do_lock;
+	gboolean use_ss_setting;
+	const char * const *schemas;
+	gboolean schema_exists;
+	gint i;
 
-    /* Check if the ukui-screensaver schema exists before trying to read
-       the lock setting to prevent crashing. See GNOME bug #651225. */
-    schemas = g_settings_list_schemas();
-    schema_exists = FALSE;
-    for (i = 0; schemas[i] != NULL; i++) {
-	if (g_strcmp0(schemas[i], GS_SETTINGS_SCHEMA) == 0) {
-	    schema_exists = TRUE;
-	    break;
+	/* Check if the ukui-screensaver schema exists before trying to read
+	   the lock setting to prevent crashing. See GNOME bug #651225. */
+	schemas = g_settings_list_schemas ();
+	schema_exists = FALSE;
+	for (i = 0; schemas[i] != NULL; i++) {
+		if (g_strcmp0 (schemas[i], GS_SETTINGS_SCHEMA) == 0) {
+			schema_exists = TRUE;
+			break;
+		}
 	}
-    }
 
-    /* This allows us to over-ride the custom lock settings set
-       with a system default set in ukui-screensaver.
-       See bug #331164 for all the juicy details. :-) */
-    use_ss_setting =
-	g_settings_get_boolean(control->priv->settings,
-			       GPM_SETTINGS_LOCK_USE_SCREENSAVER);
-    if (use_ss_setting && schema_exists) {
-	GSettings *settings_ss;
-	settings_ss = g_settings_new(GS_SETTINGS_SCHEMA);
-	do_lock =
-	    g_settings_get_boolean(settings_ss,
-				   GS_SETTINGS_PREF_LOCK_ENABLED);
-	egg_debug("Using ScreenSaver settings (%i)", do_lock);
-	g_object_unref(settings_ss);
-    } else {
-	do_lock = g_settings_get_boolean(control->priv->settings, policy);
-	egg_debug("Using custom locking settings (%i)", do_lock);
-    }
-    return do_lock;
+	/* This allows us to over-ride the custom lock settings set
+	   with a system default set in ukui-screensaver.
+	   See bug #331164 for all the juicy details. :-) */
+	use_ss_setting = g_settings_get_boolean (control->priv->settings, GPM_SETTINGS_LOCK_USE_SCREENSAVER);
+	if (use_ss_setting && schema_exists) {
+		GSettings *settings_ss;
+		settings_ss = g_settings_new (GS_SETTINGS_SCHEMA);
+		do_lock = g_settings_get_boolean (settings_ss, GS_SETTINGS_PREF_LOCK_ENABLED);
+		egg_debug ("Using ScreenSaver settings (%i)", do_lock);
+		g_object_unref (settings_ss);
+	} else {
+		do_lock = g_settings_get_boolean (control->priv->settings, policy);
+		egg_debug ("Using custom locking settings (%i)", do_lock);
+	}
+	return do_lock;
 }
 
 /**
  * gpm_control_suspend:
  **/
-gboolean gpm_control_suspend(GpmControl * control, GError ** error)
+gboolean
+gpm_control_suspend (GpmControl *control, GError **error)
 {
-    gboolean allowed = FALSE;
-    gboolean ret = FALSE;
-    gboolean do_lock;
-    gboolean nm_sleep;
-    //EggConsoleKit *console;
-    GpmScreensaver *screensaver;
-    guint32 throttle_cookie = 0;
+	gboolean allowed = FALSE;
+	gboolean ret = FALSE;
+	gboolean do_lock;
+	gboolean nm_sleep;
+        //EggConsoleKit *console;
+	GpmScreensaver *screensaver;
+	guint32 throttle_cookie = 0;
 #ifdef WITH_KEYRING
-    gboolean lock_gnome_keyring;
-    GnomeKeyringResult keyres;
-#endif				/* WITH_KEYRING */
+	gboolean lock_gnome_keyring;
+	GnomeKeyringResult keyres;
+#endif /* WITH_KEYRING */
 
-    GError *dbus_error = NULL;
-    GDBusProxy *proxy;
-    GVariant *res = NULL;
+	GError *dbus_error = NULL;
+	GDBusProxy *proxy;
+	GVariant *res = NULL;
 
-    screensaver = gpm_screensaver_new();
+	screensaver = gpm_screensaver_new ();
 
-    /*if (!LOGIND_RUNNING()) {
-       console = egg_console_kit_new ();
-       egg_console_kit_can_suspend (console, &allowed, NULL);
-       g_object_unref (console);
+        /*if (!LOGIND_RUNNING()) {
+		console = egg_console_kit_new ();
+		egg_console_kit_can_suspend (console, &allowed, NULL);
+		g_object_unref (console);
 
-       if (!allowed) {
-       egg_debug ("cannot suspend as not allowed from policy");
-       g_set_error_literal (error, GPM_CONTROL_ERROR, GPM_CONTROL_ERROR_GENERAL, "Cannot suspend");
-       goto out;
-       }
-       } */
+		if (!allowed) {
+			egg_debug ("cannot suspend as not allowed from policy");
+			g_set_error_literal (error, GPM_CONTROL_ERROR, GPM_CONTROL_ERROR_GENERAL, "Cannot suspend");
+			goto out;
+		}
+        }*/
 
 #ifdef WITH_KEYRING
-    /* we should perhaps lock keyrings when sleeping #375681 */
-    lock_gnome_keyring =
-	g_settings_get_boolean(control->priv->settings,
-			       GPM_SETTINGS_LOCK_KEYRING_SUSPEND);
-    if (lock_gnome_keyring) {
-	keyres = gnome_keyring_lock_all_sync();
-	if (keyres != GNOME_KEYRING_RESULT_OK)
-	    egg_warning("could not lock keyring");
-    }
-#endif				/* WITH_KEYRING */
+	/* we should perhaps lock keyrings when sleeping #375681 */
+	lock_gnome_keyring = g_settings_get_boolean (control->priv->settings, GPM_SETTINGS_LOCK_KEYRING_SUSPEND);
+	if (lock_gnome_keyring) {
+		keyres = gnome_keyring_lock_all_sync ();
+		if (keyres != GNOME_KEYRING_RESULT_OK)
+			egg_warning ("could not lock keyring");
+	}
+#endif /* WITH_KEYRING */
 
-    do_lock =
-	gpm_control_get_lock_policy(control, GPM_SETTINGS_LOCK_ON_SUSPEND);
-    do_lock = FALSE;
-    if (do_lock) {
-	throttle_cookie =
-	    gpm_screensaver_add_throttle(screensaver, "suspend");
-	gpm_screensaver_lock(screensaver);
-    }
+	do_lock = gpm_control_get_lock_policy (control, GPM_SETTINGS_LOCK_ON_SUSPEND);
+	if (do_lock) {
+		throttle_cookie = gpm_screensaver_add_throttle (screensaver, "suspend");
+		gpm_screensaver_lock (screensaver);
+	}
 
-    nm_sleep =
-	g_settings_get_boolean(control->priv->settings,
-			       GPM_SETTINGS_NETWORKMANAGER_SLEEP);
-    if (nm_sleep)
-	gpm_networkmanager_sleep();
+	nm_sleep = g_settings_get_boolean (control->priv->settings, GPM_SETTINGS_NETWORKMANAGER_SLEEP);
+	if (nm_sleep)
+		gpm_networkmanager_sleep ();
 
-    /* Do the suspend */
-    egg_debug("emitting sleep");
-    g_signal_emit(control, signals[SLEEP], 0, GPM_CONTROL_ACTION_SUSPEND);
+	/* Do the suspend */
+	egg_debug ("emitting sleep");
+	g_signal_emit (control, signals [SLEEP], 0, GPM_CONTROL_ACTION_SUSPEND);
 
-    if (LOGIND_RUNNING()) {
-	/* sleep via logind */
-	proxy = g_dbus_proxy_new_for_bus_sync(G_BUS_TYPE_SYSTEM,
-					      G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES,
+	if (LOGIND_RUNNING()) {
+		/* sleep via logind */
+		proxy = g_dbus_proxy_new_for_bus_sync (G_BUS_TYPE_SYSTEM,
+						       G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES,
+						       NULL,
+						       "org.freedesktop.login1",
+						       "/org/freedesktop/login1",
+						       "org.freedesktop.login1.Manager",
+						       NULL,
+						       &dbus_error );
+		if (proxy == NULL) {
+			egg_error("Error connecting to dbus - %s", dbus_error->message);
+			g_error_free (dbus_error);
+			ret = FALSE;
+			goto out;
+		}
+		res = g_dbus_proxy_call_sync (proxy, "Suspend",
+					      g_variant_new( "(b)",FALSE),
+					      G_DBUS_CALL_FLAGS_NONE,
+					      -1,
 					      NULL,
-					      "org.freedesktop.login1",
-					      "/org/freedesktop/login1",
-					      "org.freedesktop.login1.Manager",
-					      NULL, &dbus_error);
-	if (proxy == NULL) {
-	    egg_error("Error connecting to dbus - %s",
-		      dbus_error->message);
-	    g_error_free(dbus_error);
-	    ret = FALSE;
-	    goto out;
+					      &dbus_error
+					      );
+		if (dbus_error != NULL ) {
+			egg_debug ("Error in dbus - %s", dbus_error->message);
+			g_error_free (dbus_error);
+			ret = TRUE;
+		}
+		else {
+			g_variant_unref(res);
+			ret = TRUE;
+		}
+		g_object_unref(proxy);
 	}
-	res = g_dbus_proxy_call_sync(proxy, "Suspend",
-				     g_variant_new("(b)", FALSE),
-				     G_DBUS_CALL_FLAGS_NONE,
-				     -1, NULL, &dbus_error);
-	if (dbus_error != NULL) {
-	    egg_debug("Error in dbus - %s", dbus_error->message);
-	    g_error_free(dbus_error);
-	    ret = TRUE;
-	} else {
-	    g_variant_unref(res);
-	    ret = TRUE;
+	else {
+                /*console = egg_console_kit_new ();
+		ret = egg_console_kit_suspend (console, error);
+                g_object_unref (console);*/
 	}
-	g_object_unref(proxy);
-    } else {
-	/*console = egg_console_kit_new ();
-	   ret = egg_console_kit_suspend (console, error);
-	   g_object_unref (console); */
-    }
 
-    egg_debug("emitting resume");
-    g_signal_emit(control, signals[RESUME], 0, GPM_CONTROL_ACTION_SUSPEND);
+	egg_debug ("emitting resume");
+	g_signal_emit (control, signals [RESUME], 0, GPM_CONTROL_ACTION_SUSPEND);
 
-    if (do_lock) {
-	gpm_screensaver_poke(screensaver);
-	if (throttle_cookie)
-	    gpm_screensaver_remove_throttle(screensaver, throttle_cookie);
-    }
+	if (do_lock) {
+		gpm_screensaver_poke (screensaver);
+		if (throttle_cookie)
+			gpm_screensaver_remove_throttle (screensaver, throttle_cookie);
+	}
 
-    nm_sleep =
-	g_settings_get_boolean(control->priv->settings,
-			       GPM_SETTINGS_NETWORKMANAGER_SLEEP);
-    if (nm_sleep)
-	gpm_networkmanager_wake();
+	nm_sleep = g_settings_get_boolean (control->priv->settings, GPM_SETTINGS_NETWORKMANAGER_SLEEP);
+	if (nm_sleep)
+		gpm_networkmanager_wake ();
 
-  out:
-    g_object_unref(screensaver);
-    return ret;
+out:
+	g_object_unref (screensaver);
+	return ret;
 }
 
 /**
  * gpm_control_hibernate:
  **/
-gboolean gpm_control_hibernate(GpmControl * control, GError ** error)
+gboolean
+gpm_control_hibernate (GpmControl *control, GError **error)
 {
-    gboolean allowed = FALSE;
-    gboolean ret = FALSE;
-    gboolean do_lock;
-    gboolean nm_sleep;
-    //EggConsoleKit *console;
-    GpmScreensaver *screensaver;
-    guint32 throttle_cookie = 0;
+	gboolean allowed = FALSE;
+	gboolean ret = FALSE;
+	gboolean do_lock;
+	gboolean nm_sleep;
+        //EggConsoleKit *console;
+	GpmScreensaver *screensaver;
+	guint32 throttle_cookie = 0;
 #ifdef WITH_KEYRING
-    gboolean lock_gnome_keyring;
-    GnomeKeyringResult keyres;
-#endif				/* WITH_KEYRING */
+	gboolean lock_gnome_keyring;
+	GnomeKeyringResult keyres;
+#endif /* WITH_KEYRING */
 
-    GError *dbus_error = NULL;
-    GDBusProxy *proxy;
-    GVariant *res = NULL;
+	GError *dbus_error = NULL;
+	GDBusProxy *proxy;
+	GVariant *res = NULL;
 
-    screensaver = gpm_screensaver_new();
+	screensaver = gpm_screensaver_new ();
 
-    /*if (!LOGIND_RUNNING()) {
-       console = egg_console_kit_new ();
-       egg_console_kit_can_hibernate (console, &allowed, NULL);
-       g_object_unref (console);
+        /*if (!LOGIND_RUNNING()) {
+		console = egg_console_kit_new ();
+		egg_console_kit_can_hibernate (console, &allowed, NULL);
+		g_object_unref (console);
 
-       if (!allowed) {
-       egg_debug ("cannot hibernate as not allowed from policy");
-       g_set_error_literal (error, GPM_CONTROL_ERROR, GPM_CONTROL_ERROR_GENERAL, "Cannot hibernate");
-       goto out;
-       }
-       } */
+		if (!allowed) {
+			egg_debug ("cannot hibernate as not allowed from policy");
+			g_set_error_literal (error, GPM_CONTROL_ERROR, GPM_CONTROL_ERROR_GENERAL, "Cannot hibernate");
+			goto out;
+		}
+        }*/
 
 #ifdef WITH_KEYRING
-    /* we should perhaps lock keyrings when sleeping #375681 */
-    lock_gnome_keyring =
-	g_settings_get_boolean(control->priv->settings,
-			       GPM_SETTINGS_LOCK_KEYRING_HIBERNATE);
-    if (lock_gnome_keyring) {
-	keyres = gnome_keyring_lock_all_sync();
-	if (keyres != GNOME_KEYRING_RESULT_OK) {
-	    egg_warning("could not lock keyring");
+	/* we should perhaps lock keyrings when sleeping #375681 */
+	lock_gnome_keyring = g_settings_get_boolean (control->priv->settings, GPM_SETTINGS_LOCK_KEYRING_HIBERNATE);
+	if (lock_gnome_keyring) {
+		keyres = gnome_keyring_lock_all_sync ();
+		if (keyres != GNOME_KEYRING_RESULT_OK) {
+			egg_warning ("could not lock keyring");
+		}
 	}
-    }
-#endif				/* WITH_KEYRING */
+#endif /* WITH_KEYRING */
 
-    do_lock =
-	gpm_control_get_lock_policy(control,
-				    GPM_SETTINGS_LOCK_ON_HIBERNATE);
-    if (do_lock) {
-	throttle_cookie =
-	    gpm_screensaver_add_throttle(screensaver, "hibernate");
-	gpm_screensaver_lock(screensaver);
-    }
+	do_lock = gpm_control_get_lock_policy (control, GPM_SETTINGS_LOCK_ON_HIBERNATE);
+	if (do_lock) {
+		throttle_cookie = gpm_screensaver_add_throttle (screensaver, "hibernate");
+		gpm_screensaver_lock (screensaver);
+	}
 
-    nm_sleep =
-	g_settings_get_boolean(control->priv->settings,
-			       GPM_SETTINGS_NETWORKMANAGER_SLEEP);
-    if (nm_sleep)
-	gpm_networkmanager_sleep();
+	nm_sleep = g_settings_get_boolean (control->priv->settings, GPM_SETTINGS_NETWORKMANAGER_SLEEP);
+	if (nm_sleep)
+		gpm_networkmanager_sleep ();
 
-    egg_debug("emitting sleep");
-    g_signal_emit(control, signals[SLEEP], 0,
-		  GPM_CONTROL_ACTION_HIBERNATE);
+	egg_debug ("emitting sleep");
+	g_signal_emit (control, signals [SLEEP], 0, GPM_CONTROL_ACTION_HIBERNATE);
 
-    if (LOGIND_RUNNING()) {
-	/* sleep via logind */
-	proxy = g_dbus_proxy_new_for_bus_sync(G_BUS_TYPE_SYSTEM,
-					      G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES,
+	if (LOGIND_RUNNING()) {
+		/* sleep via logind */
+		proxy = g_dbus_proxy_new_for_bus_sync (G_BUS_TYPE_SYSTEM,
+						       G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES,
+						       NULL,
+						       "org.freedesktop.login1",
+						       "/org/freedesktop/login1",
+						       "org.freedesktop.login1.Manager",
+						       NULL,
+						       &dbus_error );
+		if (proxy == NULL) {
+			egg_error("Error connecting to dbus - %s", dbus_error->message);
+			g_error_free (dbus_error);
+			ret = FALSE;
+			goto out;
+		}
+		res = g_dbus_proxy_call_sync (proxy, "Hibernate",
+					      g_variant_new( "(b)",FALSE),
+					      G_DBUS_CALL_FLAGS_NONE,
+					      -1,
 					      NULL,
-					      "org.freedesktop.login1",
-					      "/org/freedesktop/login1",
-					      "org.freedesktop.login1.Manager",
-					      NULL, &dbus_error);
-	if (proxy == NULL) {
-	    egg_error("Error connecting to dbus - %s",
-		      dbus_error->message);
-	    g_error_free(dbus_error);
-	    ret = FALSE;
-	    goto out;
+					      &dbus_error
+					      );
+		if (dbus_error != NULL ) {
+			egg_debug ("Error in dbus - %s", dbus_error->message);
+			g_error_free (dbus_error);
+			ret = TRUE;
+		}
+		else {
+			g_variant_unref(res);
+			ret = TRUE;
+		}
 	}
-	res = g_dbus_proxy_call_sync(proxy, "Hibernate",
-				     g_variant_new("(b)", FALSE),
-				     G_DBUS_CALL_FLAGS_NONE,
-				     -1, NULL, &dbus_error);
-	if (dbus_error != NULL) {
-	    egg_debug("Error in dbus - %s", dbus_error->message);
-	    g_error_free(dbus_error);
-	    ret = TRUE;
-	} else {
-	    g_variant_unref(res);
-	    ret = TRUE;
+	else {
+                /*console = egg_console_kit_new ();
+		ret = egg_console_kit_hibernate (console, error);
+                g_object_unref (console);*/
 	}
-    } else {
-	/*console = egg_console_kit_new ();
-	   ret = egg_console_kit_hibernate (console, error);
-	   g_object_unref (console); */
-    }
 
-    egg_debug("emitting resume");
-    g_signal_emit(control, signals[RESUME], 0,
-		  GPM_CONTROL_ACTION_HIBERNATE);
+	egg_debug ("emitting resume");
+	g_signal_emit (control, signals [RESUME], 0, GPM_CONTROL_ACTION_HIBERNATE);
 
-    if (do_lock) {
-	gpm_screensaver_poke(screensaver);
-	if (throttle_cookie)
-	    gpm_screensaver_remove_throttle(screensaver, throttle_cookie);
-    }
+	if (do_lock) {
+		gpm_screensaver_poke (screensaver);
+		if (throttle_cookie)
+			gpm_screensaver_remove_throttle (screensaver, throttle_cookie);
+	}
 
-    nm_sleep =
-	g_settings_get_boolean(control->priv->settings,
-			       GPM_SETTINGS_NETWORKMANAGER_SLEEP);
-    if (nm_sleep)
-	gpm_networkmanager_wake();
+	nm_sleep = g_settings_get_boolean (control->priv->settings, GPM_SETTINGS_NETWORKMANAGER_SLEEP);
+	if (nm_sleep)
+		gpm_networkmanager_wake ();
 
-  out:
-    g_object_unref(screensaver);
-    return ret;
+out:
+	g_object_unref (screensaver);
+	return ret;
 }
 
 /**
  * gpm_control_finalize:
  **/
-static void gpm_control_finalize(GObject * object)
+static void
+gpm_control_finalize (GObject *object)
 {
-    GpmControl *control;
+	GpmControl *control;
 
-    g_return_if_fail(object != NULL);
-    g_return_if_fail(GPM_IS_CONTROL(object));
-    control = GPM_CONTROL(object);
+	g_return_if_fail (object != NULL);
+	g_return_if_fail (GPM_IS_CONTROL (object));
+	control = GPM_CONTROL (object);
 
-    g_object_unref(control->priv->settings);
+	g_object_unref (control->priv->settings);
 
-    g_return_if_fail(control->priv != NULL);
-    G_OBJECT_CLASS(gpm_control_parent_class)->finalize(object);
+	g_return_if_fail (control->priv != NULL);
+	G_OBJECT_CLASS (gpm_control_parent_class)->finalize (object);
 }
 
 /**
  * gpm_control_class_init:
  **/
-static void gpm_control_class_init(GpmControlClass * klass)
+static void
+gpm_control_class_init (GpmControlClass *klass)
 {
-    GObjectClass *object_class = G_OBJECT_CLASS(klass);
-    object_class->finalize = gpm_control_finalize;
+	GObjectClass *object_class = G_OBJECT_CLASS (klass);
+	object_class->finalize = gpm_control_finalize;
 
-    signals[RESUME] =
-	g_signal_new("resume",
-		     G_TYPE_FROM_CLASS(object_class),
-		     G_SIGNAL_RUN_LAST,
-		     G_STRUCT_OFFSET(GpmControlClass, resume),
-		     NULL,
-		     NULL,
-		     g_cclosure_marshal_VOID__INT,
-		     G_TYPE_NONE, 1, G_TYPE_INT);
-    signals[SLEEP] =
-	g_signal_new("sleep",
-		     G_TYPE_FROM_CLASS(object_class),
-		     G_SIGNAL_RUN_LAST,
-		     G_STRUCT_OFFSET(GpmControlClass, sleep),
-		     NULL,
-		     NULL,
-		     g_cclosure_marshal_VOID__INT,
-		     G_TYPE_NONE, 1, G_TYPE_INT);
+	signals [RESUME] =
+		g_signal_new ("resume",
+			      G_TYPE_FROM_CLASS (object_class),
+			      G_SIGNAL_RUN_LAST,
+			      G_STRUCT_OFFSET (GpmControlClass, resume),
+			      NULL,
+			      NULL,
+			      g_cclosure_marshal_VOID__INT,
+			      G_TYPE_NONE, 1, G_TYPE_INT);
+	signals [SLEEP] =
+		g_signal_new ("sleep",
+			      G_TYPE_FROM_CLASS (object_class),
+			      G_SIGNAL_RUN_LAST,
+			      G_STRUCT_OFFSET (GpmControlClass, sleep),
+			      NULL,
+			      NULL,
+			      g_cclosure_marshal_VOID__INT,
+			      G_TYPE_NONE, 1, G_TYPE_INT);
 
-    g_type_class_add_private(klass, sizeof(GpmControlPrivate));
+	g_type_class_add_private (klass, sizeof (GpmControlPrivate));
 }
 
 /**
  * gpm_control_init:
  * @control: This control class instance
  **/
-static void gpm_control_init(GpmControl * control)
+static void
+gpm_control_init (GpmControl *control)
 {
-    control->priv = GPM_CONTROL_GET_PRIVATE(control);
+	control->priv = GPM_CONTROL_GET_PRIVATE (control);
 
-    control->priv->settings = g_settings_new(GPM_SETTINGS_SCHEMA);
+	control->priv->settings = g_settings_new (GPM_SETTINGS_SCHEMA);
 }
 
 /**
  * gpm_control_new:
  * Return value: A new control class instance.
  **/
-GpmControl *gpm_control_new(void)
+GpmControl *
+gpm_control_new (void)
 {
-    if (gpm_control_object != NULL) {
-	g_object_ref(gpm_control_object);
-    } else {
-	gpm_control_object = g_object_new(GPM_TYPE_CONTROL, NULL);
-	g_object_add_weak_pointer(gpm_control_object, &gpm_control_object);
-    }
-    return GPM_CONTROL(gpm_control_object);
+	if (gpm_control_object != NULL) {
+		g_object_ref (gpm_control_object);
+	} else {
+		gpm_control_object = g_object_new (GPM_TYPE_CONTROL, NULL);
+		g_object_add_weak_pointer (gpm_control_object, &gpm_control_object);
+	}
+	return GPM_CONTROL (gpm_control_object);
 }
+

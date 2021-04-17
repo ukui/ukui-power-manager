@@ -21,7 +21,8 @@
 #include <QDBusMessage>
 #include "engine_common.h"
 
-struct DEV {
+struct DEV
+{
     UpDeviceKind kind;
     UpDeviceLevel warnlevel;
     QString Device;
@@ -59,17 +60,20 @@ struct DEV {
     int stop_y;
 };
 
-class DEVICE:public QObject {
-  Q_OBJECT public:
-    explicit DEVICE(QObject * parent = nullptr);
+class DEVICE : public QObject
+{
+    Q_OBJECT
+public:
+    explicit DEVICE(QObject *parent = nullptr);
     ~DEVICE();
-    Q_SIGNALS:
-	void device_property_changed(QDBusMessage msg, QString path);
+Q_SIGNALS:
+    void device_property_changed(QDBusMessage msg,QString path);
 
 
-    public Q_SLOTS: void handleChanged(QDBusMessage msg);
-  public:
-     DEV m_dev;
+public Q_SLOTS:
+    void handleChanged(QDBusMessage msg);
+public:
+    DEV m_dev;
 };
 
-#endif				// DEVICE_H
+#endif // DEVICE_H

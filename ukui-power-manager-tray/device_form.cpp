@@ -23,18 +23,19 @@
 #include <QMouseEvent>
 #include <QDir>
 
-DeviceForm::DeviceForm(QWidget * parent):QWidget(parent)
+DeviceForm::DeviceForm(QWidget *parent) :QWidget(parent)
 {
     ui->uiInit(this);
-    setAttribute(Qt::WA_StyledBackground, true);
+    setAttribute(Qt::WA_StyledBackground,true);
     ed = EngineDevice::getInstance();
 }
 
 DeviceForm::~DeviceForm()
 {
-    if (charge_animation) {
-	charge_animation->deleteLater();
-	charge_animation = NULL;
+    if(charge_animation)
+    {
+       charge_animation->deleteLater();
+       charge_animation = NULL;
     }
     delete ui;
 }
@@ -44,59 +45,66 @@ void DeviceForm::set_timer(UpDeviceKind kind)
     charge_animation = new QTimer(this);
 
     statics_icon_pre = ed->engine_kind_to_string(kind);
-    for (int i = 0; i <= 24; i++) {
-	QString filename =
-	    QString(":/charging/%1/%2.png").arg(statics_icon_pre).arg(i);
-	QPixmap apix = QPixmap(filename);
-	if (!apix.isNull()) {
-	    animation_list.append(apix);
-	}
+    for(int i = 0; i<=24; i++)
+    {
+        QString filename = QString(":/charging/%1/%2.png").arg(statics_icon_pre).arg(i);
+        QPixmap apix = QPixmap(filename);
+        if(!apix.isNull())
+        {
+            animation_list.append(apix);
+        }
     }
-    connect(charge_animation, &QTimer::timeout, this,
-	    &DeviceForm::begin_charge_animation);
+    connect(charge_animation,&QTimer::timeout,this,&DeviceForm::begin_charge_animation);
 }
 
 void DeviceForm::set_charge_animation(bool flag)
 {
-    if (flag) {
-	if (!charge_animation->isActive()) {
-	    charging_index = 0;
-	    charge_animation->start(200);
-	}
-    } else {
-	if (charge_animation->isActive()) {
-	    charge_animation->stop();
-	}
+    if(flag)
+    {
+        if(!charge_animation->isActive())
+        {
+            charging_index = 0;
+            charge_animation->start(200);
+        }
+    }
+    else
+    {
+        if(charge_animation->isActive())
+        {
+            charge_animation->stop();
+        }
     }
 }
 
 void DeviceForm::setIcon(QString name)
 {
-    if (animation_list.size() > 1) {
-	if (name.contains("charging")) {
-	    set_charge_animation(true);
-	    return;
-	}
+    if(animation_list.size()>1)
+    {
+        if(name.contains("charging"))
+        {
+            set_charge_animation(true);
+            return;
+        }
     }
     set_charge_animation(false);
 
-    QString icon_str =
-	QString(":/charging/%1/0.png").arg(statics_icon_pre);
+    QString icon_str = QString(":/charging/%1/0.png").arg(statics_icon_pre);
     QIcon icon = QIcon(icon_str);
-    if (icon.isNull()) {
-	icon = QIcon(":/charging/battery/0.png");
+    if(icon.isNull())
+    {
+        icon = QIcon(":/charging/battery/0.png");
     }
-    QPixmap pixmap = icon.pixmap(QSize(32, 32));
+    QPixmap pixmap = icon.pixmap(QSize(32,32));
     ui->icon->setPixmap(pixmap);
 }
 
 void DeviceForm::begin_charge_animation()
 {
-    if (charging_index < animation_list.size())
-	ui->icon->setPixmap(animation_list.at(charging_index));
-    charging_index++;
-    if (charging_index > 24)
-	charging_index = 0;
+    if(charging_index < animation_list.size())
+        ui->icon->setPixmap(animation_list.at(charging_index));
+    charging_index ++;
+    if(charging_index > 24)
+        charging_index = 0;
 }
 
 void DeviceForm::setPercent(QString perct)
@@ -142,7 +150,7 @@ void DeviceForm::widget_property_change()
     setRemain(predict);
 }
 
-void DeviceForm::paintEvent(QPaintEvent * event)
+void DeviceForm::paintEvent(QPaintEvent *event)
 {
     QStyleOption opt;
     opt.init(this);
@@ -174,52 +182,57 @@ void DeviceForm::paintEvent(QPaintEvent * event)
 //     );
 // }
 
-QString DeviceForm::calculate_value(int nValue, int nTotal)
+ QString DeviceForm::calculate_value(int nValue,int nTotal)
+ {
+     QString strStyle = "";
+     int value1 = nTotal * 0.1;
+     if (nValue > value1)
+     {
+
+         if (nValue > (value1 * 2))
+         {
+
+             strStyle = QString("rgba(61,107,229,1)");
+
+         }
+         else
+         {
+
+             strStyle = QString("rgba(248,163,76,1)");
+
+         }
+     }
+     else
+     {
+         strStyle = "rgba(240, 65, 52, 1)";
+     }
+     return strStyle;
+ }
+
+void DeviceForm::set_device(DEVICE *dev)
 {
-    QString strStyle = "";
-    int value1 = nTotal * 0.1;
-    if (nValue > value1) {
-
-	if (nValue > (value1 * 2)) {
-
-	    strStyle = QString("rgba(61,107,229,1)");
-
-	} else {
-
-	    strStyle = QString("rgba(248,163,76,1)");
-
-	}
-    } else {
-	strStyle = "rgba(240, 65, 52, 1)";
-    }
-    return strStyle;
-}
-
-void DeviceForm::set_device(DEVICE * dev)
-{
-    if (dev == nullptr)
-	return;
+    if(dev == nullptr)
+        return;
 //    m_device = dev;
     path = dev->m_dev.path;
-    /*prepare for device icon animation */
+    /*prepare for device icon animation*/
     UpDeviceKind kind = dev->m_dev.kind;
     set_timer(kind);
     slot_device_change(dev);
-    connect(ed, SIGNAL(signal_device_change(DEVICE *)), this,
-	    SLOT(slot_device_change(DEVICE *)));
+    connect(ed,SIGNAL(signal_device_change(DEVICE*)),this,SLOT(slot_device_change(DEVICE*)));
 
 }
 
-void DeviceForm::slot_device_change(DEVICE * device)
+void DeviceForm::slot_device_change(DEVICE* device)
 {
-    if (device == nullptr)
-	return;
-    if (device->m_dev.path != path)
-	return;
+    if(device == nullptr)
+        return;
+    if(device->m_dev.path != path)
+        return;
     icon_name = ed->engine_get_device_icon(device);
-    percentage = QString::number(device->m_dev.Percentage, 'f', 0) + "%";
+    percentage = QString::number(device->m_dev.Percentage, 'f',0)+"%";
     percent_number = int (device->m_dev.Percentage);
-    kind = ed->engine_kind_to_localised_text(device->m_dev.kind, 0);
+    kind = ed->engine_kind_to_localised_text(device->m_dev.kind,0);
     predict = ed->engine_get_device_predict(device);
 //    qDebug () << "predict:" << predict;
     mDev = device->m_dev;
@@ -231,59 +244,59 @@ void DeviceForm::slider_changed(int value)
 {
     ui->progressBar->setValue(value);
     ui->progressBar->setStyleSheet(QString(""
-					   "	QProgressBar {"
-					   "	border-radius: 2px;"
-					   ""
-					   "}"
-					   "QProgressBar::chunk {"
-					   "border-radius:2px;"
-					   "	background-color: "
-					   "%1;"
-					   "}").
-				   arg(calculate_value
-				       (value,
-					ui->progressBar->maximum())));
+     "	QProgressBar {"
+     "	border-radius: 2px;"
+     ""
+     "}"
+     "QProgressBar::chunk {"
+         "border-radius:2px;"
+         "	background-color: "
+         "%1;"
+     "}").arg(calculate_value(value,ui->progressBar->maximum())));
 }
 
 QString DeviceForm::device_get_ac_online()
 {
     QDir power_dir("/sys/class/power_supply/");
-    if (!power_dir.exists())
-	return QString();
+    if(!power_dir.exists())
+        return QString();
 
-  for (auto dir_name:power_dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot))
+    for(auto dir_name : power_dir.entryList(QDir::Dirs | QDir::NoDotAndDotDot))
     {
-	auto enter_name = power_dir.absoluteFilePath(dir_name);
-	QDir new_power_dir(enter_name);
-      for (auto file:new_power_dir.entryList(QDir::Files)) {
-	    if (file == "online") {
-		QFile absolute_file(new_power_dir.absoluteFilePath(file));
-		if (absolute_file.
-		    open(QIODevice::ReadOnly | QIODevice::Text)) {
-		    QByteArray ba = absolute_file.readAll();
-		    absolute_file.close();
-		    QString ac_online(ba);
-		    ac_online = ac_online.simplified();
-		    return ac_online;
-		}
-	    }
-	}
+        auto enter_name = power_dir.absoluteFilePath(dir_name);
+        QDir new_power_dir(enter_name);
+        for(auto file : new_power_dir.entryList(QDir::Files))
+        {
+            if(file == "online")
+            {
+                QFile absolute_file(new_power_dir.absoluteFilePath(file));
+                if(absolute_file.open(QIODevice::ReadOnly | QIODevice::Text))
+                {
+                    QByteArray ba = absolute_file.readAll();
+                    absolute_file.close();
+                    QString ac_online(ba);
+                    ac_online = ac_online.simplified();
+                    return ac_online;
+                }
+            }
+        }
     }
     return QString();
 }
 
 void DeviceForm::device_adjust_battery_parameters()
 {
-    if (mDev.kind != UP_DEVICE_KIND_BATTERY)
-	return;
+    if(mDev.kind != UP_DEVICE_KIND_BATTERY)
+        return;
     //fix state is full ,but percentage is not reach 100;
-    if (mDev.State != UP_DEVICE_STATE_FULLY_CHARGED)
-	return;
+    if(mDev.State != UP_DEVICE_STATE_FULLY_CHARGED)
+        return;
     QString online = device_get_ac_online();
-    if ((online == "1") && (percent_number < 100)) {
-	mDev.State = UP_DEVICE_STATE_CHARGING;
-	icon_name = ed->engine_get_dev_icon(mDev);
-	predict = ed->engine_get_dev_predict(mDev);
+    if((online == "1") && (percent_number<100))
+    {
+        mDev.State = UP_DEVICE_STATE_CHARGING;
+        icon_name = ed->engine_get_dev_icon(mDev);
+        predict = ed->engine_get_dev_predict(mDev);
     }
 
 }

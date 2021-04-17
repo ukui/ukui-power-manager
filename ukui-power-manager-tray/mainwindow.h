@@ -34,11 +34,13 @@
 #include <QLabel>
 #include <QTimer>
 #include "MainUi.h"
-#include <QDBusInterface>
 
-class MainWindow:public QMainWindow {
-  Q_OBJECT public:
-    explicit MainWindow(QWidget * parent = 0);
+class MainWindow : public QMainWindow
+{
+    Q_OBJECT
+
+public:
+    explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
     void initUi();
@@ -53,7 +55,8 @@ class MainWindow:public QMainWindow {
     void set_window_position();
     void create_menu_item();
     bool device_get_backlight();
-    public Q_SLOTS: void iconThemeChanged();
+public Q_SLOTS:
+    void iconThemeChanged();
     void onActivatedIcon(QSystemTrayIcon::ActivationReason reason);
     void set_preference_func();
     void show_percentage_func();
@@ -66,37 +69,37 @@ class MainWindow:public QMainWindow {
     void action_battery_notify(DEV dev);
     void discharge_notify(DEV dev);
     void full_charge_notify(DEV dev);
-    void add_one_device(DEVICE * device);
-    void remove_one_device(DEVICE * device);
+    void add_one_device(DEVICE *device);
+    void remove_one_device(DEVICE *device);
     void activate_power_statistic();
     void charge_notify(DEV dev);
-  private:
-     QSystemTrayIcon * trayIcon;
-     QList < QDBusObjectPath > deviceNames;
-    EngineDevice *ed;
-    QGSettings *settings;
-    QDBusInterface *mDbusXrandInter;
+private:
+    QSystemTrayIcon* trayIcon;
+    QList<QDBusObjectPath> deviceNames;
+    EngineDevice* ed;
+    QGSettings * settings;
     QLabel *percent_label;
-    MainUi *ui = new MainUi;
+    MainUi* ui = new MainUi;
 //    QTimer *timer = new QTimer(this);
-    int powersave = 0;
-    int oriAcDisplayTime = 0;
-    int oriBatDisplayTime = 0;
+    int powersave=0;
+    int oriAcDisplayTime=0;
+    int oriBatDisplayTime=0;
     QMenu *menu;
 //    QWidgetAction *set_preference;
 //    QWidgetAction *show_percentage;
 //    QWidgetAction *set_bright;
 //    QString releaseQss;
 //    QString pressQss;
-     QMap < DEVICE *, QListWidgetItem * >device_item_map;
+    QMap<DEVICE*,QListWidgetItem*> device_item_map;
     int dev_number;
     QGSettings *setting = nullptr;
     double get_window_opacity();
-    int getScreenGeometry(QString methodName);
+protected:
+    bool event(QEvent *event);
+    void paintEvent(QPaintEvent *event);
+private Q_SLOTS:
 
-  protected:
-    bool event(QEvent * event);
-    void paintEvent(QPaintEvent * event);
-private Q_SLOTS:};
 
-#endif				// MAINWINDOW_H
+};
+
+#endif // MAINWINDOW_H

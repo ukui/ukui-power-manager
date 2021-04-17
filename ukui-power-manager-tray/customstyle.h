@@ -24,10 +24,11 @@
  * 需要注意QStyle与QSS并不兼容，因为QSS本身其实上也是QStyle的一种实现，对一个控件而言，本身理论上只能
  * 在同一时间调用唯一一个QStyle进行绘制。
  */
-class CustomStyle:public QProxyStyle {
-  Q_OBJECT public:
-    explicit CustomStyle(const QString & proxyStyleName =
-			 "windows", QObject * parent = nullptr);
+class CustomStyle : public QProxyStyle
+{
+    Q_OBJECT
+public:
+    explicit CustomStyle(const QString &proxyStyleName = "windows", QObject *parent = nullptr);
 
     /*!
      * \brief drawComplexControl
@@ -45,11 +46,7 @@ class CustomStyle:public QProxyStyle {
      * 包括背景的绘制，子控件的位置和状态计算，子控件的绘制等。
      * 所以，你需要对这个控件有足够的了解之后再尝试直接重写这个接口。
      */
-    virtual void drawComplexControl(QStyle::ComplexControl control,
-				    const QStyleOptionComplex * option,
-				    QPainter * painter,
-				    const QWidget * widget =
-				    nullptr) const;
+    virtual void drawComplexControl(QStyle::ComplexControl control, const QStyleOptionComplex *option, QPainter *painter, const QWidget *widget = nullptr) const;
     /*!
      * \brief drawControl
      * \param element 比如按钮，对应CE枚举类型
@@ -65,18 +62,9 @@ class CustomStyle:public QProxyStyle {
      * 它本身不能完全称之为一个主题，如果你直接使用它，你的控件将不能被正常绘制，因为它有可能只是
      * 在特定的时候执行了特定却未实现的绘制方法，它更像一个框架或者规范。
      */
-    virtual void drawControl(QStyle::ControlElement element,
-			     const QStyleOption * option,
-			     QPainter * painter, const QWidget * widget =
-			     nullptr) const;
-    virtual void drawItemPixmap(QPainter * painter,
-				const QRect & rectangle, int alignment,
-				const QPixmap & pixmap) const;
-    virtual void drawItemText(QPainter * painter, const QRect & rectangle,
-			      int alignment, const QPalette & palette,
-			      bool enabled, const QString & text,
-			      QPalette::ColorRole textRole =
-			      QPalette::NoRole) const;
+    virtual void drawControl(QStyle::ControlElement element, const QStyleOption *option, QPainter *painter, const QWidget *widget = nullptr) const;
+    virtual void drawItemPixmap(QPainter *painter, const QRect &rectangle, int alignment, const QPixmap &pixmap) const;
+    virtual void drawItemText(QPainter *painter, const QRect &rectangle, int alignment, const QPalette &palette, bool enabled, const QString &text, QPalette::ColorRole textRole = QPalette::NoRole) const;
     /*!
      * \brief drawPrimitive
      * \param element 背景绘制，对应PE枚举类型
@@ -88,34 +76,13 @@ class CustomStyle:public QProxyStyle {
      * 我们一般需要判断控件的状态来绘制不同的背景，
      * 比如按钮的hover和点击效果。
      */
-    virtual void drawPrimitive(QStyle::PrimitiveElement element,
-			       const QStyleOption * option,
-			       QPainter * painter, const QWidget * widget =
-			       nullptr) const;
-    virtual QPixmap generatedIconPixmap(QIcon::Mode iconMode,
-					const QPixmap & pixmap,
-					const QStyleOption * option) const;
-    virtual QStyle::SubControl hitTestComplexControl(QStyle::
-						     ComplexControl
-						     control,
-						     const
-						     QStyleOptionComplex *
-						     option,
-						     const QPoint &
-						     position,
-						     const QWidget *
-						     widget =
-						     nullptr) const;
-    virtual QRect itemPixmapRect(const QRect & rectangle, int alignment,
-				 const QPixmap & pixmap) const;
-    virtual QRect itemTextRect(const QFontMetrics & metrics,
-			       const QRect & rectangle, int alignment,
-			       bool enabled, const QString & text) const;
+    virtual void drawPrimitive(QStyle::PrimitiveElement element, const QStyleOption *option, QPainter *painter, const QWidget *widget = nullptr) const;
+    virtual QPixmap generatedIconPixmap(QIcon::Mode iconMode, const QPixmap &pixmap, const QStyleOption *option) const;
+    virtual QStyle::SubControl hitTestComplexControl(QStyle::ComplexControl control, const QStyleOptionComplex *option, const QPoint &position, const QWidget *widget = nullptr) const;
+    virtual QRect itemPixmapRect(const QRect &rectangle, int alignment, const QPixmap &pixmap) const;
+    virtual QRect itemTextRect(const QFontMetrics &metrics, const QRect &rectangle, int alignment, bool enabled, const QString &text) const;
     //virtual int layoutSpacing(QSizePolicy::ControlType control1, QSizePolicy::ControlType control2, Qt::Orientation orientation, const QStyleOption *option, const QWidget *widget);
-    virtual int pixelMetric(QStyle::PixelMetric metric,
-			    const QStyleOption * option =
-			    nullptr, const QWidget * widget =
-			    nullptr) const;
+    virtual int pixelMetric(QStyle::PixelMetric metric, const QStyleOption *option = nullptr, const QWidget *widget = nullptr) const;
 
     /*!
      * \brief polish
@@ -125,19 +92,14 @@ class CustomStyle:public QProxyStyle {
      * 另外，polish是对动画和特效实现而言十分重要的一个方法，
      * 通过polish我们能够使widget和特效和动画形成对应关系。
      */
-    virtual void polish(QWidget * widget);
-    virtual void polish(QApplication * application);
-    virtual void polish(QPalette & palette);
-    virtual void unpolish(QWidget * widget);
-    virtual void unpolish(QApplication * application);
+    virtual void polish(QWidget *widget);
+    virtual void polish(QApplication *application);
+    virtual void polish(QPalette &palette);
+    virtual void unpolish(QWidget *widget);
+    virtual void unpolish(QApplication *application);
 
-    virtual QSize sizeFromContents(QStyle::ContentsType type,
-				   const QStyleOption * option,
-				   const QSize & contentsSize,
-				   const QWidget * widget = nullptr) const;
-    virtual QIcon standardIcon(QStyle::StandardPixmap standardIcon,
-			       const QStyleOption * option,
-			       const QWidget * widget) const;
+    virtual QSize sizeFromContents(QStyle::ContentsType type, const QStyleOption *option, const QSize &contentsSize, const QWidget *widget = nullptr) const;
+    virtual QIcon standardIcon(QStyle::StandardPixmap standardIcon, const QStyleOption *option, const QWidget *widget) const;
     virtual QPalette standardPalette() const;
     /*!
      * \brief styleHint
@@ -149,11 +111,7 @@ class CustomStyle:public QProxyStyle {
      * \details
      * styleHint比较特殊，通过它我们能够改变一些控件的绘制流程或者方式，比如说QMenu是否可以滚动。
      */
-    virtual int styleHint(QStyle::StyleHint hint,
-			  const QStyleOption * option =
-			  nullptr, const QWidget * widget =
-			  nullptr, QStyleHintReturn * returnData =
-			  nullptr) const;
+    virtual int	styleHint(QStyle::StyleHint hint, const QStyleOption *option = nullptr, const QWidget *widget = nullptr, QStyleHintReturn *returnData = nullptr) const;
     /*!
      * \brief subControlRect
      * \param control
@@ -165,10 +123,7 @@ class CustomStyle:public QProxyStyle {
      * subControlRect返回子控件的位置和大小信息，这个方法一般在内置流程中调用，
      * 如果我们要重写某个绘制方法，可能需要用到它
      */
-    virtual QRect subControlRect(QStyle::ComplexControl control,
-				 const QStyleOptionComplex * option,
-				 QStyle::SubControl subControl,
-				 const QWidget * widget = nullptr) const;
+    virtual QRect subControlRect(QStyle::ComplexControl control, const QStyleOptionComplex *option, QStyle::SubControl subControl, const QWidget *widget = nullptr) const;
     /*!
      * \brief subElementRect
      * \param element
@@ -178,15 +133,15 @@ class CustomStyle:public QProxyStyle {
      * \details
      * 与subControlRect类似
      */
-    virtual QRect subElementRect(QStyle::SubElement element,
-				 const QStyleOption * option,
-				 const QWidget * widget = nullptr) const;
+    virtual QRect subElementRect(QStyle::SubElement element, const QStyleOption *option, const QWidget *widget = nullptr) const;
 
-  Q_SIGNALS: public Q_SLOTS: private:
-    void drawScrollbar(ComplexControl control,
-		       const QStyleOptionComplex * option,
-		       QPainter * painter, const QWidget * widget) const;
+Q_SIGNALS:
+
+public Q_SLOTS:
+
+private:
+    void drawScrollbar( ComplexControl control, const QStyleOptionComplex *option, QPainter *painter, const QWidget *widget ) const;
 };
 
 
-#endif				// CUSTOMSTYLE_H
+#endif // CUSTOMSTYLE_H

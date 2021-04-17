@@ -22,7 +22,6 @@
 #include <QDBusConnection>
 #include <QDBusArgument>
 #include <QDebug>
-#include "huawei.h"
 #include "policy_config.h"
 
 #define PERFORMANCE          0
@@ -37,27 +36,21 @@
  * PowerPolicy:
  * main class construction. connecting to service of org.freedesktop.UPower. getting the status of onbattery.
  **/
-PowerPolicy::PowerPolicy(QObject * parent):QObject(parent)
+PowerPolicy::PowerPolicy(QObject *parent) : QObject(parent)
 {
 
-    connect(this, SIGNAL(onbattery_change(bool)), this,
-	    SLOT(onbattery_change_slot(bool)));
-    QDBusConnection::systemBus().connect(DBUS_SERVICE, DBUS_OBJECT,
-					 DBUS_INTERFACE,
-					 QString("PropertiesChanged"),
-					 this,
-					 SLOT(onPropertiesSlot
-					      (QDBusMessage)));
-    QDBusMessage msg =
-	QDBusMessage::createMethodCall(DBUS_SERVICE, DBUS_OBJECT,
-				       DBUS_INTERFACE, "Get");
-    msg << DBUS_SERVICE << "OnBattery";
+    connect(this,SIGNAL(onbattery_change(bool)),this,SLOT(onbattery_change_slot(bool)));
+    QDBusConnection::systemBus().connect(DBUS_SERVICE,DBUS_OBJECT,DBUS_INTERFACE,
+                                         QString("PropertiesChanged"),this,SLOT(onPropertiesSlot(QDBusMessage)));
+    QDBusMessage msg = QDBusMessage::createMethodCall(DBUS_SERVICE,DBUS_OBJECT,DBUS_INTERFACE,"Get");
+    msg<<DBUS_SERVICE<<"OnBattery";
     QDBusMessage res = QDBusConnection::systemBus().call(msg);
-    if (res.type() == QDBusMessage::ReplyMessage) {
-	QVariant v = res.arguments().at(0);
-	QDBusVariant dv = qvariant_cast < QDBusVariant > (v);
-	QVariant result = dv.variant();
-	onbattery = result.toBool();
+    if(res.type()==QDBusMessage::ReplyMessage)
+    {
+        QVariant v = res.arguments().at(0);
+        QDBusVariant dv = qvariant_cast<QDBusVariant>(v);
+        QVariant result = dv.variant();
+        onbattery = result.toBool();
     }
 }
 
@@ -69,13 +62,13 @@ PowerPolicy::PowerPolicy(QObject * parent):QObject(parent)
  **/
 void PowerPolicy::onPropertiesSlot(QDBusMessage msg)
 {
-    const QDBusArgument & arg =
-	msg.arguments().at(1).value < QDBusArgument > ();
-    QMap < QString, QVariant > map;
+    const QDBusArgument &arg = msg.arguments().at(1).value<QDBusArgument>();
+    QMap<QString,QVariant> map;
     arg >> map;
-    if (map.contains("OnBattery")) {
-	onbattery = map.value(QString("OnBattery")).toBool();
-	Q_EMIT onbattery_change(onbattery);
+    if(map.contains("OnBattery"))
+    {
+        onbattery=map.value(QString("OnBattery")).toBool();
+        Q_EMIT onbattery_change(onbattery);
     }
 
 }
@@ -89,17 +82,21 @@ void PowerPolicy::onPropertiesSlot(QDBusMessage msg)
 void PowerPolicy::onbattery_change_slot(bool flag)
 {
     int option = 0;
-    if (!enable_auto) {
-	return;
+    if (!enable_auto)
+    {
+        return;
     }
 
     /**change mode**/
-    if (flag) {
-	process(POWERSAVE);	//from ac to battery
-	option = POWERSAVE;
-    } else {
-	process(PERFORMANCE);	//from battery to ac
-	option = PERFORMANCE;
+    if(flag)
+    {
+        process(POWERSAVE);//from ac to battery
+        option = POWERSAVE;
+    }
+    else
+    {
+        process(PERFORMANCE);//from battery to ac
+        option = PERFORMANCE;
     }
     Q_EMIT ModeChanged(option);
 
@@ -113,10 +110,11 @@ void PowerPolicy::onbattery_change_slot(bool flag)
  **/
 bool PowerPolicy::change_auto_switch(bool flag)
 {
-    if (enable_auto != flag) {
+    if (enable_auto != flag)
+    {
 
-	enable_auto = flag;
-	return true;
+        enable_auto = flag;
+        return true;
     }
     return false;
 }
@@ -129,16 +127,15 @@ bool PowerPolicy::change_auto_switch(bool flag)
  **/
 QString PowerPolicy::control(int opt)
 {
-    QDBusMessage msg =
-	QDBusMessage::createMethodCall(DBUS_SERVICE, DBUS_OBJECT,
-				       DBUS_INTERFACE, "Get");
-    msg << DBUS_SERVICE << "OnBattery";
+    QDBusMessage msg = QDBusMessage::createMethodCall(DBUS_SERVICE,DBUS_OBJECT,DBUS_INTERFACE,"Get");
+    msg<<DBUS_SERVICE<<"OnBattery";
     QDBusMessage res = QDBusConnection::systemBus().call(msg);
-    if (res.type() == QDBusMessage::ReplyMessage) {
-	QVariant v = res.arguments().at(0);
-	QDBusVariant dv = qvariant_cast < QDBusVariant > (v);
-	QVariant result = dv.variant();
-	onbattery = result.toBool();
+    if(res.type()==QDBusMessage::ReplyMessage)
+    {
+        QVariant v = res.arguments().at(0);
+        QDBusVariant dv = qvariant_cast<QDBusVariant>(v);
+        QVariant result = dv.variant();
+        onbattery = result.toBool();
     }
 
     process(opt);
@@ -154,39 +151,33 @@ QString PowerPolicy::control(int opt)
  **/
 int PowerPolicy::process(int option)
 {
-    if (onbattery) {
-	desire_status = 2;
-    } else {
-	desire_status = 1;
-    }
-    if (option == 0)		//外部０是性能，内部１是性能。外部2表示内部省电２。
+    if(onbattery)
     {
-	desire_mode = 1;
-    } else if (option == 2) {
-	desire_mode = 2;
-    } else {
+        desire_status = 2;
+    }
+    else
+    {
+        desire_status = 1;
+    }
+    if(option==0)//外部０是性能，内部１是性能。外部2表示内部省电２。
+    {
+        desire_mode = 1;
+    }
+    else if (option==2) {
+        desire_mode = 2;
+    }
+    else {
 	return -1;
     }
 
     int status = desire_status;
     int mode = desire_mode;
-    if (is990()) {
-	char is_save[1024] = { 0 };
-	if (mode == 2)
-	    strcpy(is_save, "powersave");
-	else
-	    strcpy(is_save, "performance");
-	cpuFreqAdjust(is_save);
-	gpuFreqAdjust(is_save);
-	pcieAdjust(is_save);
+    set_cpu_scaling_gover_speed_mode(status,mode);
+    //set_drm_mode(status,mode);
+    set_pcie_aspm_mode(status,mode);
+    set_sata_alsm_mode(status,mode);
+    set_audio_mode(status,mode);
 
-    } else {
-	set_cpu_scaling_gover_speed_mode(status, mode);
-	//set_drm_mode(status,mode);
-	set_pcie_aspm_mode(status, mode);
-	set_sata_alsm_mode(status, mode);
-	set_audio_mode(status, mode);
-    }
     return 0;
 }
 
@@ -232,37 +223,46 @@ int PowerPolicy::process_shell(int option)
     QString power_status;
     QString power_mode;
     QString cmd;
-    if (onbattery)
-	power_status = "BAT";
+    if(onbattery)
+        power_status = "BAT";
     else {
-	power_status = "AC";
+        power_status = "AC";
     }
 
-    if (option == 0) {
-	power_mode = "PERFORMANCE";
-    } else {
-	power_mode = "POWERSAVE";
+    if(option==0)
+    {
+        power_mode = "PERFORMANCE";
     }
-    cmd =
-	QString("/usr/bin/power_policy.sh") + " " + power_status + " " +
-	power_mode;
+    else {
+        power_mode = "POWERSAVE";
+    }
+    cmd = QString("/usr/bin/power_policy.sh") + " " + power_status + " " + power_mode;
     int rv = system(cmd.toStdString().c_str());
-    if (WIFEXITED(rv)) {
-	if (0 == WEXITSTATUS(rv)) {
-	    ret.sprintf("command succeed");
-	    return 0;
-	} else {
-	    if (127 == WEXITSTATUS(rv)) {
-		ret.sprintf("command not found");
-		return WEXITSTATUS(rv);
-	    } else {
-		ret.sprintf("command failed");
-		return WEXITSTATUS(rv);
-	    }
-	}
-    } else {
-	ret.sprintf("subprocess exit failed");
-	return -1;
+    if (WIFEXITED(rv))
+    {
+         if (0 == WEXITSTATUS(rv))
+         {
+              ret.sprintf("command succeed");
+              return 0;
+         }
+         else
+         {
+              if(127 == WEXITSTATUS(rv))
+              {
+                   ret.sprintf("command not found");
+                   return WEXITSTATUS(rv);
+              }
+              else
+              {
+                   ret.sprintf("command failed");
+                   return WEXITSTATUS(rv);
+              }
+         }
+     }
+    else
+    {
+         ret.sprintf("subprocess exit failed");
+         return -1;
     }
 
 }
@@ -276,27 +276,36 @@ int PowerPolicy::process_shell(int option)
 int PowerPolicy::script_process(QString cmd)
 {
     int rv = system(cmd.toStdString().c_str());
-    if (WIFEXITED(rv)) {
-	printf("subprocess exited, exit code: %d\n", WEXITSTATUS(rv));
-	if (0 == WEXITSTATUS(rv)) {
-	    // if command returning 0 means succeed
-	    printf("command succeed");
-	    ret.sprintf("command succeed");
-	} else {
-	    if (127 == WEXITSTATUS(rv)) {
-		printf("command not found\n");
-		ret.sprintf("command not found");
-		return WEXITSTATUS(rv);
-	    } else {
-		printf("command failed: %s\n", strerror(WEXITSTATUS(rv)));
-		ret.sprintf("command failed");
-		return WEXITSTATUS(rv);
-	    }
-	}
-    } else {
-	printf("subprocess exit failed");
-	ret.sprintf("subprocess exit failed");
-	return -1;
+    if (WIFEXITED(rv))
+    {
+         printf("subprocess exited, exit code: %d\n", WEXITSTATUS(rv));
+         if (0 == WEXITSTATUS(rv))
+         {
+              // if command returning 0 means succeed
+              printf("command succeed");
+              ret.sprintf("command succeed");
+         }
+         else
+         {
+              if(127 == WEXITSTATUS(rv))
+              {
+                   printf("command not found\n");
+                   ret.sprintf("command not found");
+                   return WEXITSTATUS(rv);
+              }
+              else
+              {
+                   printf("command failed: %s\n", strerror(WEXITSTATUS(rv)));
+                   ret.sprintf("command failed");
+                   return WEXITSTATUS(rv);
+              }
+         }
+     }
+    else
+    {
+         printf("subprocess exit failed");
+         ret.sprintf("subprocess exit failed");
+         return -1;
     }
     return -1;
 
@@ -307,13 +316,15 @@ QVariantList PowerPolicy::return_variantlist()
     QVariantList value;
     QVariant cnt;
     struct dbus_demo_example_struct demo[3];
-    for (int i = 0; i < 3; i++) {
-	demo[i].drv_ID = 1;
-	demo[i].name = "";
-	demo[i].full_name = "";
-	demo[i].notify_mid = 2;
-	cnt = QVariant::fromValue(demo[i]);
-	value << cnt;
+    for(int i = 0; i < 3; i++)
+    {
+        demo[i].drv_ID = 1;
+        demo[i].name   = "";
+        demo[i].full_name = "";
+        demo[i].notify_mid = 2;
+        cnt = QVariant::fromValue(demo[i]);
+        value << cnt;
     }
     return value;
 }
+

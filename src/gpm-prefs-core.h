@@ -25,29 +25,34 @@
 #include <glib-object.h>
 
 G_BEGIN_DECLS
+
 #define GPM_TYPE_PREFS		(gpm_prefs_get_type ())
 #define GPM_PREFS(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), GPM_TYPE_PREFS, GpmPrefs))
 #define GPM_PREFS_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), GPM_TYPE_PREFS, GpmPrefsClass))
 #define GPM_IS_PREFS(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), GPM_TYPE_PREFS))
 #define GPM_IS_PREFS_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), GPM_TYPE_PREFS))
 #define GPM_PREFS_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), GPM_TYPE_PREFS, GpmPrefsClass))
+
 typedef struct GpmPrefsPrivate GpmPrefsPrivate;
 
-typedef struct {
-    GObject parent;
-    GpmPrefsPrivate *priv;
+typedef struct
+{
+	GObject		 parent;
+	GpmPrefsPrivate *priv;
 } GpmPrefs;
 
-typedef struct {
-    GObjectClass parent_class;
-    void (*action_help) (GpmPrefs * prefs);
-    void (*action_close) (GpmPrefs * prefs);
+typedef struct
+{
+	GObjectClass	parent_class;
+	void		(* action_help)			(GpmPrefs	*prefs);
+	void		(* action_close)		(GpmPrefs	*prefs);
 } GpmPrefsClass;
 
-GType gpm_prefs_get_type(void);
-GpmPrefs *gpm_prefs_new(void);
-GtkWidget *gpm_window(GpmPrefs * prefs);
-void gpm_prefs_activate_window(GtkApplication * app, GpmPrefs * prefs);
+GType		 gpm_prefs_get_type			(void);
+GpmPrefs	*gpm_prefs_new				(void);
+GtkWidget	*gpm_window				(GpmPrefs	*prefs);
+void		 gpm_prefs_activate_window		(GtkApplication *app, GpmPrefs	*prefs);
 
 G_END_DECLS
-#endif				/* __GPMPREFS_H */
+
+#endif	/* __GPMPREFS_H */

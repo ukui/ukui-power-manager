@@ -22,7 +22,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#include <config.h>
+#  include <config.h>
 #endif
 
 #include <stdlib.h>
@@ -40,9 +40,10 @@
  *
  * What to do when help is requested
  **/
-static void gpm_prefs_help_cb(GpmPrefs * prefs)
+static void
+gpm_prefs_help_cb (GpmPrefs *prefs)
 {
-    gpm_help_display("preferences");
+	gpm_help_display ("preferences");
 }
 
 /**
@@ -51,63 +52,65 @@ static void gpm_prefs_help_cb(GpmPrefs * prefs)
  *
  * We have been asked to show the window
  **/
-static void gpm_prefs_activated_cb(GtkApplication * app, GpmPrefs * prefs)
+static void
+gpm_prefs_activated_cb (GtkApplication *app, GpmPrefs *prefs)
 {
-    gpm_prefs_activate_window(app, prefs);
+	gpm_prefs_activate_window (app, prefs);
 }
 
 /**
  * main:
  **/
-int main(int argc, char **argv)
+int
+main (int argc, char **argv)
 {
-    gboolean verbose = FALSE;
-    GOptionContext *context;
-    GpmPrefs *prefs = NULL;
-    gboolean ret;
-    GtkApplication *app;
-    GtkWidget *window;
-    gint status;
+	gboolean verbose = FALSE;
+	GOptionContext *context;
+	GpmPrefs *prefs = NULL;
+	gboolean ret;
+	GtkApplication *app;
+	GtkWidget *window;
+	gint status;
 
-    const GOptionEntry options[] = {
-	{"verbose", '\0', 0, G_OPTION_ARG_NONE, &verbose,
-	 N_("Show extra debugging information"), NULL},
-	{NULL}
-    };
+	const GOptionEntry options[] = {
+		{ "verbose", '\0', 0, G_OPTION_ARG_NONE, &verbose,
+		  N_("Show extra debugging information"), NULL },
+		{ NULL}
+	};
 
-    context = g_option_context_new(N_("UKUI Power Preferences"));
+	context = g_option_context_new (N_("UKUI Power Preferences"));
 
-    bindtextdomain(GETTEXT_PACKAGE, UKUILOCALEDIR);
-    bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
-    textdomain(GETTEXT_PACKAGE);
+	bindtextdomain (GETTEXT_PACKAGE, UKUILOCALEDIR);
+	bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+	textdomain (GETTEXT_PACKAGE);
 
-    g_option_context_set_translation_domain(context, GETTEXT_PACKAGE);
-    g_option_context_add_main_entries(context, options, GETTEXT_PACKAGE);
-    g_option_context_add_group(context, gtk_get_option_group(FALSE));
-    g_option_context_parse(context, &argc, &argv, NULL);
+	g_option_context_set_translation_domain(context, GETTEXT_PACKAGE);
+	g_option_context_add_main_entries (context, options, GETTEXT_PACKAGE);
+	g_option_context_add_group (context, gtk_get_option_group (FALSE));
+	g_option_context_parse (context, &argc, &argv, NULL);
 
-    egg_debug_init(verbose);
+	egg_debug_init (verbose);
 
-    gdk_init(&argc, &argv);
-    app = gtk_application_new("org.ukui.PowerManager.Preferences", 0);
+	gdk_init (&argc, &argv);
+	app = gtk_application_new("org.ukui.PowerManager.Preferences", 0);
 
-    prefs = gpm_prefs_new();
+	prefs = gpm_prefs_new ();
 
-    window = gpm_window(prefs);
-    g_signal_connect(app, "activate",
-		     G_CALLBACK(gpm_prefs_activated_cb), prefs);
-    g_signal_connect(prefs, "action-help",
-		     G_CALLBACK(gpm_prefs_help_cb), prefs);
-    g_signal_connect_swapped(prefs, "action-close",
-			     G_CALLBACK(gtk_widget_destroy), window);
+	window = gpm_window (prefs);
+	g_signal_connect (app, "activate",
+			  G_CALLBACK (gpm_prefs_activated_cb), prefs);
+	g_signal_connect (prefs, "action-help",
+			  G_CALLBACK (gpm_prefs_help_cb), prefs);
+	g_signal_connect_swapped (prefs, "action-close",
+			  G_CALLBACK (gtk_widget_destroy), window);
 
-    status = g_application_run(G_APPLICATION(app), argc, argv);
-    g_object_unref(prefs);
+	status = g_application_run (G_APPLICATION (app), argc, argv);
+	g_object_unref (prefs);
 
-    g_object_unref(app);
+	g_object_unref (app);
 
 /* seems to not work...
 	g_option_context_free (context); */
 
-    return status;
+	return status;
 }

@@ -25,49 +25,58 @@
 #include <glib-object.h>
 
 G_BEGIN_DECLS
+
 #define GPM_TYPE_SESSION		(gpm_session_get_type ())
 #define GPM_SESSION(o)			(G_TYPE_CHECK_INSTANCE_CAST ((o), GPM_TYPE_SESSION, GpmSession))
 #define GPM_SESSION_CLASS(k)		(G_TYPE_CHECK_CLASS_CAST((k), GPM_TYPE_SESSION, GpmSessionClass))
 #define GPM_IS_SESSION(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), GPM_TYPE_SESSION))
 #define GPM_IS_SESSION_CLASS(k)		(G_TYPE_CHECK_CLASS_TYPE ((k), GPM_TYPE_SESSION))
 #define GPM_SESSION_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), GPM_TYPE_SESSION, GpmSessionClass))
+
 typedef struct GpmSessionPrivate GpmSessionPrivate;
 
-typedef struct {
-    GObject parent;
-    GpmSessionPrivate *priv;
+typedef struct
+{
+	GObject			 parent;
+	GpmSessionPrivate	*priv;
 } GpmSession;
 
-typedef struct {
-    GObjectClass parent_class;
-    void (*idle_changed) (GpmSession * session, gboolean is_idle);
-    void (*inhibited_changed) (GpmSession * session,
-			       gboolean is_idle_inhibited,
-			       gboolean is_suspend_inhibited);
-    /* just exit */
-    void (*stop) (GpmSession * session);
-    /* reply with EndSessionResponse */
-    void (*query_end_session) (GpmSession * session, guint flags);
-    /* reply with EndSessionResponse */
-    void (*end_session) (GpmSession * session, guint flags);
-    void (*cancel_end_session) (GpmSession * session);
-    void (*control_changed) (GpmSession * session, gboolean is_idle);
+typedef struct
+{
+	GObjectClass	parent_class;
+	void		(* idle_changed)		(GpmSession	*session,
+							 gboolean	 is_idle);
+    void		(* inhibited_changed)		(GpmSession	*session,
+							 gboolean	 is_idle_inhibited,
+							 gboolean        is_suspend_inhibited);
+	/* just exit */
+	void		(* stop)			(GpmSession	*session);
+	/* reply with EndSessionResponse */
+	void		(* query_end_session)		(GpmSession	*session,
+							 guint		 flags);
+	/* reply with EndSessionResponse */
+	void		(* end_session)			(GpmSession	*session,
+							 guint		 flags);
+	void		(* cancel_end_session)		(GpmSession	*session);
+    void		(* control_changed)		(GpmSession	*session,
+                             gboolean	 is_idle);
 } GpmSessionClass;
 
-GType gpm_session_get_type(void);
-GpmSession *gpm_session_new(void);
+GType		 gpm_session_get_type			(void);
+GpmSession	*gpm_session_new			(void);
 
-gboolean gpm_session_logout(GpmSession * session);
-gboolean gpm_session_get_idle(GpmSession * session);
-gboolean gpm_session_get_lock(GpmSession * session);
-gboolean gpm_session_get_idle_inhibited(GpmSession * session);
-gboolean gpm_session_get_suspend_inhibited(GpmSession * session);
-gboolean gpm_session_register_client(GpmSession * session,
-				     const gchar * app_id,
-				     const gchar * client_startup_id);
-gboolean gpm_session_end_session_response(GpmSession * session,
-					  gboolean is_okay,
-					  const gchar * reason);
+gboolean	 gpm_session_logout			(GpmSession	*session);
+gboolean	 gpm_session_get_idle			(GpmSession	*session);
+gboolean	 gpm_session_get_lock			(GpmSession	*session);
+gboolean	 gpm_session_get_idle_inhibited		(GpmSession	*session);
+gboolean	 gpm_session_get_suspend_inhibited	(GpmSession	*session);
+gboolean	 gpm_session_register_client		(GpmSession	*session,
+							 const gchar	*app_id,
+							 const gchar	*client_startup_id);
+gboolean	 gpm_session_end_session_response	(GpmSession	*session,
+							 gboolean	 is_okay,
+							 const gchar	*reason);
 
 G_END_DECLS
-#endif				/* __GPM_SESSION_H */
+
+#endif	/* __GPM_SESSION_H */

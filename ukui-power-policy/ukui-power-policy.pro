@@ -12,8 +12,7 @@ TEMPLATE = app
 SOURCES += main.cpp \
     powerpolicy.cpp \
     gsettings.cpp \
-    policy_config.cpp \
-    huawei.cpp
+    policy_config.cpp
 
 target.path = /usr/bin
 INSTALLS += target
@@ -38,5 +37,4 @@ HEADERS += \
     powerpolicy.h \
     dbus_struct.h \
     gsettings.h \
-    policy_config.h \
-    huawei.h
+    policy_config.h

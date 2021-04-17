@@ -23,95 +23,80 @@
 #include <QDBusInterface>
 #include <QDebug>
 
-EngineDevice *EngineDevice::instance = NULL;
+EngineDevice* EngineDevice::instance = NULL;
 
 void EngineDevice::power_device_get_devices()
 {
-    QList < QDBusObjectPath > deviceNames;
+    QList<QDBusObjectPath> deviceNames;
 
-    /* call enum dbus */
-    QDBusMessage msg =
-	QDBusMessage::createMethodCall(DBUS_SERVICE, DBUS_OBJECT,
-				       DBUS_INTERFACE, "EnumerateDevices");
+    /* call enum dbus*/
+    QDBusMessage msg = QDBusMessage::createMethodCall(DBUS_SERVICE,DBUS_OBJECT,
+            DBUS_INTERFACE,"EnumerateDevices");
     QDBusMessage res = QDBusConnection::systemBus().call(msg);
 
-    if (res.type() == QDBusMessage::ReplyMessage) {
-	const QDBusArgument & dbusArg =
-	    res.arguments().at(0).value < QDBusArgument > ();
-	dbusArg >> deviceNames;
-    } else {
+    if(res.type() == QDBusMessage::ReplyMessage)
+    {
+        const QDBusArgument &dbusArg = res.arguments().at(0).value<QDBusArgument>();
+        dbusArg >> deviceNames;
+    }
+    else {
     }
     int len = deviceNames.size();
-    for (int i = 0; i < len; i++) {
-	DEVICE *device = new DEVICE;
-	device->m_dev.path = deviceNames.at(i).path();
-	getProperty(device->m_dev.path, device->m_dev);
-	/* connect the nofity signal to changecallback */
-	QDBusConnection::systemBus().connect(DBUS_SERVICE,
-					     device->m_dev.path,
-					     DBUS_INTERFACE_PRO,
-					     QString("PropertiesChanged"),
-					     device,
-					     SLOT(handleChanged
-						  (QDBusMessage)));
-	connect(device,
-		SIGNAL(device_property_changed(QDBusMessage, QString)),
-		this,
-		SLOT(power_device_change_callback(QDBusMessage, QString)));
+    for(int i = 0; i < len; i++)
+    {
+        DEVICE *device = new DEVICE;
+        device->m_dev.path = deviceNames.at(i).path();
+        getProperty(device->m_dev.path,device->m_dev);
+        /* connect the nofity signal to changecallback */
+        QDBusConnection::systemBus().connect(DBUS_SERVICE,device->m_dev.path,DBUS_INTERFACE_PRO,
+                                             QString("PropertiesChanged"),device,SLOT(handleChanged(QDBusMessage)));
+        connect(device,SIGNAL(device_property_changed(QDBusMessage,QString)),this,SLOT(power_device_change_callback(QDBusMessage,QString)));
 
-	/* add to device list */
-	devices.append(device);
+        /* add to device list*/
+        devices.append(device);
     }
 
 }
 
-EngineDevice::EngineDevice(QObject * parent):QObject(parent)
+EngineDevice::EngineDevice(QObject *parent) : QObject(parent)
 {
     icon_policy = GPM_ICON_POLICY_PRESENT;
 
     power_device_get_devices();
-    QDBusConnection::systemBus().connect(DBUS_SERVICE, DBUS_OBJECT,
-					 DBUS_SERVICE, ("DeviceAdded"),
-					 this,
-					 SLOT(power_device_add
-					      (QDBusObjectPath)));
-    QDBusConnection::systemBus().connect(DBUS_SERVICE, DBUS_OBJECT,
-					 DBUS_SERVICE, ("DeviceRemoved"),
-					 this,
-					 SLOT(power_device_remove
-					      (QDBusObjectPath)));
+    QDBusConnection::systemBus().connect(DBUS_SERVICE,DBUS_OBJECT,DBUS_SERVICE,
+                                         ("DeviceAdded"),this,SLOT(power_device_add(QDBusObjectPath)));
+    QDBusConnection::systemBus().connect(DBUS_SERVICE,DBUS_OBJECT,DBUS_SERVICE,
+                                         ("DeviceRemoved"),this,SLOT(power_device_remove(QDBusObjectPath)));
     settings = new QGSettings(GPM_SETTINGS_SCHEMA);
-    connect(settings, SIGNAL(changed(const QString &)), this,
-	    SLOT(engine_policy_settings_cb(const QString &)));
+    connect(settings,SIGNAL(changed(const QString&)),this,SLOT(engine_policy_settings_cb(const QString&)));
 
     low_percentage = settings->get(GPM_SETTINGS_PERCENTAGE_LOW).toInt();
-    critical_percentage =
-	settings->get(GPM_SETTINGS_PERCENTAGE_CRITICAL).toInt();
-    action_percentage =
-	settings->get(GPM_SETTINGS_PERCENTAGE_ACTION).toInt();
-    if (action_percentage >= critical_percentage) {
-	action_percentage = critical_percentage - 1;
+    critical_percentage = settings->get(GPM_SETTINGS_PERCENTAGE_CRITICAL).toInt();
+    action_percentage = settings->get(GPM_SETTINGS_PERCENTAGE_ACTION).toInt();
+    if (action_percentage >= critical_percentage)
+    {
+        action_percentage = critical_percentage - 1;
     }
 }
 
-void EngineDevice::engine_policy_settings_cb(const QString & str)
+void EngineDevice::engine_policy_settings_cb(const QString& str)
 {
-    if (str != "iconPolicy")
-	return;
-    QVariant var = settings->get(GPM_SETTINGS_KEY_POLICY);
-    QString icon_policy_str = var.value < QString > ();
-    if (icon_policy_str == "always")
-	icon_policy = GPM_ICON_POLICY_ALWAYS;
-    else if (icon_policy_str == "present")
-	icon_policy = GPM_ICON_POLICY_PRESENT;
-    else if (icon_policy_str == "charge")
-	icon_policy = GPM_ICON_POLICY_CHARGE;
-    else if (icon_policy_str == "low")
-	icon_policy = GPM_ICON_POLICY_LOW;
-    else if (icon_policy_str == "critical")
-	icon_policy = GPM_ICON_POLICY_CRITICAL;
-    else if (icon_policy_str == "never")
-	icon_policy = GPM_ICON_POLICY_NEVER;
+    if(str != "iconPolicy")
+        return;
+    QVariant var =settings->get(GPM_SETTINGS_KEY_POLICY);
+    QString icon_policy_str = var.value<QString>();
+    if(icon_policy_str == "always")
+        icon_policy = GPM_ICON_POLICY_ALWAYS;
+    else if(icon_policy_str == "present")
+        icon_policy = GPM_ICON_POLICY_PRESENT;
+    else if(icon_policy_str == "charge")
+        icon_policy = GPM_ICON_POLICY_CHARGE;
+    else if(icon_policy_str == "low")
+        icon_policy = GPM_ICON_POLICY_LOW;
+    else if(icon_policy_str == "critical")
+        icon_policy = GPM_ICON_POLICY_CRITICAL;
+    else if(icon_policy_str == "never")
+        icon_policy = GPM_ICON_POLICY_NEVER;
 
     power_device_recalculate_icon();
 }
@@ -121,148 +106,105 @@ void EngineDevice::power_device_add(QDBusObjectPath msg)
     /* assign warning */
     /* check capacity */
     /* get device properties */
-    QDBusMessage msgTmp =
-	QDBusMessage::createMethodCall(DBUS_SERVICE, msg.path(),
-				       "org.freedesktop.DBus.Properties",
-				       "GetAll");
+    QDBusMessage msgTmp = QDBusMessage::createMethodCall(DBUS_SERVICE,msg.path(),
+            "org.freedesktop.DBus.Properties","GetAll");
     msgTmp << DBUS_INTERFACE_DEV;
     QDBusMessage res = QDBusConnection::systemBus().call(msgTmp);
-    if (res.type() == QDBusMessage::ReplyMessage) {
-	const QDBusArgument & dbusArg =
-	    res.arguments().at(0).value < QDBusArgument > ();
-	QMap < QString, QVariant > map;
-	dbusArg >> map;
-	UpDeviceKind kind = (UpDeviceKind) map.value("Type").toInt();
+    if(res.type() == QDBusMessage::ReplyMessage)
+    {
+        const QDBusArgument &dbusArg = res.arguments().at(0).value<QDBusArgument>();
+        QMap<QString,QVariant> map;
+        dbusArg >> map;
+        UpDeviceKind kind = (UpDeviceKind)map.value("Type").toInt();
 
-	if (kind != UP_DEVICE_KIND_LINE_POWER
-	    && kind != UP_DEVICE_KIND_BATTERY)
-	    return;
+        if(kind != UP_DEVICE_KIND_LINE_POWER && kind != UP_DEVICE_KIND_BATTERY)
+            return;
 
-	DEVICE *dev = new DEVICE;
-	dev->m_dev.path = msg.path();
-	dev->m_dev.kind = kind;
-	dev->m_dev.warnlevel =
-	    (UpDeviceLevel) map.value("WarningLevel").toUInt();
+        DEVICE *dev = new DEVICE;
+        dev->m_dev.path = msg.path();
+        dev->m_dev.kind = kind;
+        dev->m_dev.warnlevel = (UpDeviceLevel)map.value("WarningLevel").toUInt();
 
-	dev->m_dev.Type =
-	    engine_kind_to_localised_text((UpDeviceKind) map.
-					  value(QString("Type")).toInt(),
-					  1);
-	dev->m_dev.Model = map.value(QString("Model")).toString();
-	dev->m_dev.Device = map.value(QString("NativePath")).toString();
-	dev->m_dev.Capacity = (map.value(QString("Capacity")).toDouble());
-	dev->m_dev.Energy =
-	    QString::number(map.value(QString("Energy")).toDouble(), 'f',
-			    1) + " Wh";
-	dev->m_dev.EnergyEmpty =
-	    QString::number(map.value(QString("EnergyEmpty")).toDouble(),
-			    'f', 1) + " Wh";
-	dev->m_dev.EnergyFull =
-	    QString::number(map.value(QString("EnergyFull")).toDouble(),
-			    'f', 1) + " Wh";
-	dev->m_dev.EnergyRate =
-	    QString::number(map.value(QString("EnergyRate")).toDouble(),
-			    'f', 1) + " W";
+        dev->m_dev.Type = engine_kind_to_localised_text ((UpDeviceKind)map.value(QString("Type")).toInt(),1);
+        dev->m_dev.Model = map.value(QString("Model")).toString();
+        dev->m_dev.Device = map.value(QString("NativePath")).toString();
+        dev->m_dev.Capacity = (map.value(QString("Capacity")).toDouble());
+        dev->m_dev.Energy = QString::number(map.value(QString("Energy")).toDouble(), 'f', 1)+ " Wh";
+        dev->m_dev.EnergyEmpty= QString::number(map.value(QString("EnergyEmpty")).toDouble(), 'f', 1)+ " Wh";
+        dev->m_dev.EnergyFull = QString::number(map.value(QString("EnergyFull")).toDouble(), 'f', 1)+ " Wh";
+        dev->m_dev.EnergyRate = QString::number(map.value(QString("EnergyRate")).toDouble(), 'f', 1) + " W";
 
-	dev->m_dev.IsPresent = (map.value(QString("IsPresent")).toBool());
+        dev->m_dev.IsPresent = (map.value(QString("IsPresent")).toBool());
 
-	dev->m_dev.PowerSupply =
-	    boolToString(map.value(QString("PowerSupply")).toBool());
-	dev->m_dev.Percentage =
-	    map.value(QString("Percentage")).toDouble();
-	dev->m_dev.Percentage =
-	    ((float) ((int) ((dev->m_dev.Percentage + 0.05) * 10))) / 10;
-	dev->m_dev.Online =
-	    boolToString(map.value(QString("Online")).toBool());
-	dev->m_dev.State =
-	    (UpDeviceState) map.value(QString("State")).toInt();
-	dev->m_dev.TimeToEmpty =
-	    map.value(QString("TimeToEmpty")).toLongLong();
-	dev->m_dev.TimeToFull =
-	    map.value(QString("TimeToFull")).toLongLong();
+        dev->m_dev.PowerSupply = boolToString(map.value(QString("PowerSupply")).toBool());
+        dev->m_dev.Percentage = map.value(QString("Percentage")).toDouble();
+        dev->m_dev.Percentage = ( (float)( (int)( (dev->m_dev.Percentage + 0.05) * 10 ) ) ) / 10;
+        dev->m_dev.Online = boolToString(map.value(QString("Online")).toBool());
+        dev->m_dev.State = (UpDeviceState)map.value(QString("State")).toInt();
+        dev->m_dev.TimeToEmpty = map.value(QString("TimeToEmpty")).toLongLong();
+        dev->m_dev.TimeToFull = map.value(QString("TimeToFull")).toLongLong();
 
-	/*add to array */
-	devices.append(dev);
-	QDBusConnection::systemBus().connect(DBUS_SERVICE, dev->m_dev.path,
-					     DBUS_INTERFACE_PRO,
-					     QString("PropertiesChanged"),
-					     dev,
-					     SLOT(handleChanged
-						  (QDBusMessage)));
-	/*connect notify signals */
-	connect(dev,
-		SIGNAL(device_property_changed(QDBusMessage, QString)),
-		this,
-		SLOT(power_device_change_callback(QDBusMessage, QString)));
-	/*recaculate state */
-	Q_EMIT one_device_add(dev);
+        /*add to array*/
+        devices.append(dev);
+        QDBusConnection::systemBus().connect(DBUS_SERVICE,dev->m_dev.path,DBUS_INTERFACE_PRO,
+                                             QString("PropertiesChanged"),dev,SLOT(handleChanged(QDBusMessage)));
+        /*connect notify signals*/
+        connect(dev,SIGNAL(device_property_changed(QDBusMessage,QString)),this,SLOT(power_device_change_callback(QDBusMessage,QString)));
+        /*recaculate state*/
+        Q_EMIT one_device_add(dev);
 
     }
 }
 
 void EngineDevice::power_device_remove(QDBusObjectPath msg)
 {
-    Q_FOREACH(auto item, devices) {
-	if (item->m_dev.path == msg.path()) {
-	    devices.removeOne(item);
-	    Q_EMIT one_device_remove(item);
-	    break;
-	}
+    Q_FOREACH (auto item, devices)
+    {
+        if(item->m_dev.path == msg.path())
+        {
+            devices.removeOne(item);
+            Q_EMIT one_device_remove(item);
+            break;
+        }
     }
 }
 
 
-void EngineDevice::getProperty(QString path, DEV & dev)
+void EngineDevice::getProperty(QString path,DEV& dev)
 {
-    QDBusMessage msg = QDBusMessage::createMethodCall(DBUS_SERVICE, path,
-						      DBUS_INTERFACE_PRO,
-						      "GetAll");
+    QDBusMessage msg = QDBusMessage::createMethodCall(DBUS_SERVICE,path,
+            DBUS_INTERFACE_PRO,"GetAll");
     msg << DBUS_INTERFACE_DEV;
     QDBusMessage res = QDBusConnection::systemBus().call(msg);
 
-    if (res.type() == QDBusMessage::ReplyMessage) {
-	const QDBusArgument & dbusArg =
-	    res.arguments().at(0).value < QDBusArgument > ();
-	QMap < QString, QVariant > map;
-	dbusArg >> map;
+    if(res.type() == QDBusMessage::ReplyMessage)
+    {
+        const QDBusArgument &dbusArg = res.arguments().at(0).value<QDBusArgument>();
+        QMap<QString,QVariant> map;
+        dbusArg >> map;
 
-	dev.kind = (UpDeviceKind) map.value(QString("Type")).toInt();
-	dev.Type =
-	    engine_kind_to_localised_text((UpDeviceKind) map.
-					  value(QString("Type")).toInt(),
-					  1);
-	dev.Model = map.value(QString("Model")).toString();
-	dev.Device = map.value(QString("NativePath")).toString();
+        dev.kind = (UpDeviceKind)map.value(QString("Type")).toInt();
+        dev.Type = engine_kind_to_localised_text ((UpDeviceKind)map.value(QString("Type")).toInt(),1);
+        dev.Model = map.value(QString("Model")).toString();
+        dev.Device = map.value(QString("NativePath")).toString();
 
-	dev.Capacity = (map.value(QString("Capacity")).toDouble());
-	dev.Energy =
-	    QString::number(map.value(QString("Energy")).toDouble(), 'f',
-			    1) + " Wh";
-	dev.EnergyEmpty =
-	    QString::number(map.value(QString("EnergyEmpty")).toDouble(),
-			    'f', 1) + " Wh";
-	dev.EnergyFull =
-	    QString::number(map.value(QString("EnergyFull")).toDouble(),
-			    'f', 1) + " Wh";
-	dev.EnergyRate =
-	    QString::number(map.value(QString("EnergyRate")).toDouble(),
-			    'f', 1) + " W";
-	dev.IsPresent = (map.value(QString("IsPresent")).toBool());
-	dev.PowerSupply =
-	    boolToString(map.value(QString("PowerSupply")).toBool());
-	dev.Percentage = map.value(QString("Percentage")).toDouble();
-	dev.Percentage =
-	    ((float) ((int) ((dev.Percentage + 0.05) * 10))) / 10;
+        dev.Capacity = (map.value(QString("Capacity")).toDouble());
+        dev.Energy = QString::number(map.value(QString("Energy")).toDouble(), 'f', 1)+ " Wh";
+        dev.EnergyEmpty= QString::number(map.value(QString("EnergyEmpty")).toDouble(), 'f', 1)+ " Wh";
+        dev.EnergyFull = QString::number(map.value(QString("EnergyFull")).toDouble(), 'f', 1)+ " Wh";
+        dev.EnergyRate = QString::number(map.value(QString("EnergyRate")).toDouble(), 'f', 1) + " W";
+        dev.IsPresent = (map.value(QString("IsPresent")).toBool());
+        dev.PowerSupply = boolToString(map.value(QString("PowerSupply")).toBool());
+        dev.Percentage = map.value(QString("Percentage")).toDouble();
+        dev.Percentage = ( (float)( (int)( (dev.Percentage + 0.05) * 10 ) ) ) / 10;
 
-	dev.Online = boolToString(map.value(QString("Online")).toBool());
+        dev.Online = boolToString(map.value(QString("Online")).toBool());
 
-	dev.State = (UpDeviceState) map.value(QString("State")).toInt();
+        dev.State = (UpDeviceState)map.value(QString("State")).toInt();
 
-	dev.TimeToEmpty = map.value(QString("TimeToEmpty")).toLongLong();
-	dev.TimeToFull = map.value(QString("TimeToFull")).toLongLong();
-	dev.Voltage =
-	    QString::number(map.value(QString("Voltage")).toDouble(), 'f',
-			    1) + " V";
+        dev.TimeToEmpty = map.value(QString("TimeToEmpty")).toLongLong();
+        dev.TimeToFull = map.value(QString("TimeToFull")).toLongLong();
+        dev.Voltage = QString::number(map.value(QString("Voltage")).toDouble(), 'f', 1) + " V";
     }
 }
 
@@ -272,147 +214,149 @@ QString EngineDevice::boolToString(bool ret)
 }
 
 
-void EngineDevice::putAttributes(QMap < QString, QVariant > &map,
-				 DEV & btrDetailData)
+void EngineDevice::putAttributes(QMap<QString,QVariant>& map,DEV &btrDetailData)
 {
-    if (map.contains("TimeToFull")) {
-	btrDetailData.TimeToFull =
-	    map.value(QString("TimeToFull")).toLongLong();
+    if(map.contains("TimeToFull"))
+    {
+        btrDetailData.TimeToFull= map.value(QString("TimeToFull")).toLongLong();
     }
-    if (map.contains("TimeToEmpty"))
-	btrDetailData.TimeToEmpty =
-	    map.value(QString("TimeToEmpty")).toLongLong();
-    if (map.contains("EnergyRate"))
-	btrDetailData.EnergyRate =
-	    QString::number(map.value(QString("EnergyRate")).toDouble(),
-			    'f', 1) + " W";
-    if (map.contains("Energy"))
-	btrDetailData.Energy =
-	    QString::number(map.value(QString("Energy")).toDouble(), 'f',
-			    1) + " Wh";
-    if (map.contains("Voltage"))
-	btrDetailData.Voltage =
-	    QString::number(map.value(QString("Voltage")).toDouble(), 'f',
-			    1) + " V";
-    if (map.contains("WarnLevel")) {
-	btrDetailData.warnlevel =
-	    (UpDeviceLevel) map.value(QString("WarnLevel")).toInt();
+    if(map.contains("TimeToEmpty"))
+        btrDetailData.TimeToEmpty = map.value(QString("TimeToEmpty")).toLongLong();
+    if(map.contains("EnergyRate"))
+        btrDetailData.EnergyRate = QString::number(map.value(QString("EnergyRate")).toDouble(), 'f', 1) + " W";
+    if(map.contains("Energy"))
+        btrDetailData.Energy = QString::number(map.value(QString("Energy")).toDouble(), 'f', 1)+ " Wh";
+    if(map.contains("Voltage"))
+        btrDetailData.Voltage = QString::number(map.value(QString("Voltage")).toDouble(), 'f', 1) + " V";
+    if(map.contains("WarnLevel"))
+    {
+        btrDetailData.warnlevel = (UpDeviceLevel)map.value(QString("WarnLevel")).toInt();
     }
 
-    if (map.contains("State")) {
-	btrDetailData.State =
-	    (UpDeviceState) map.value(QString("State")).toInt();
-	//qDebug()<< "state:" << btrDetailData.State;
+    if(map.contains("State"))
+    {
+        btrDetailData.State = (UpDeviceState)map.value(QString("State")).toInt();
+        //qDebug()<< "state:" << btrDetailData.State;
     }
-    if (map.contains("Percentage")) {
-	btrDetailData.Percentage =
-	    map.value(QString("Percentage")).toDouble();
-	btrDetailData.Percentage =
-	    ((float) ((int) ((btrDetailData.Percentage + 0.05) * 10))) /
-	    10;
+    if(map.contains("Percentage"))
+    {
+        btrDetailData.Percentage = map.value(QString("Percentage")).toDouble();
+        btrDetailData.Percentage = ( (float)( (int)( (btrDetailData.Percentage + 0.05) * 10 ) ) ) / 10;
     }
 
-    if (map.contains("PowerSupply"))
-	btrDetailData.PowerSupply =
-	    (map.value(QString("PowerSupply")).
-	     toBool())? tr("Yes") : tr("No");
+    if(map.contains("PowerSupply"))
+        btrDetailData.PowerSupply = (map.value(QString("PowerSupply")).toBool()) ? tr("Yes") :tr("No");
 
-    if (map.contains("IsPresent"))
-	btrDetailData.IsPresent =
-	    (map.value(QString("IsPresent")).toBool());
+    if(map.contains("IsPresent"))
+        btrDetailData.IsPresent = (map.value(QString("IsPresent")).toBool());
 }
 
-void EngineDevice::power_device_change_callback(QDBusMessage msg,
-						QString path)
+void EngineDevice::power_device_change_callback(QDBusMessage msg,QString path)
 {
     /* if battery change to display devices */
     /* judge state */
     static bool init_level = true;
-    static UpDeviceLevel level_old;
-    UpDeviceLevel level;
+    static UpDeviceLevel  level_old;
+    UpDeviceLevel  level;
     DEVICE *item = nullptr;
-    Q_FOREACH(auto item_tmp, devices) {
-	if (item_tmp->m_dev.path == path) {
-	    item = item_tmp;
-	    break;
-	}
+    Q_FOREACH (auto item_tmp, devices)
+    {
+        if(item_tmp->m_dev.path == path)
+        {
+            item = item_tmp;
+            break;
+        }
     }
 
-    if (item == nullptr)
-	return;
+    if(item == nullptr)
+        return;
     DEV tmp_dev = item->m_dev;
-    const QDBusArgument & arg =
-	msg.arguments().at(1).value < QDBusArgument > ();
-    QMap < QString, QVariant > map;
+    const QDBusArgument &arg = msg.arguments().at(1).value<QDBusArgument>();
+    QMap<QString,QVariant> map;
     arg >> map;
-    putAttributes(map, item->m_dev);
+    putAttributes(map,item->m_dev);
     Q_EMIT signal_device_change(item);
 
-    if ((item->m_dev.kind != UP_DEVICE_KIND_BATTERY)
-	&& (item->m_dev.kind != UP_DEVICE_KIND_UPS))
-	return;
-    if (item->m_dev.State != tmp_dev.State) {
-	if (item->m_dev.State == UP_DEVICE_STATE_DISCHARGING) {
-	    Q_EMIT engine_signal_discharge(item->m_dev);
-	} else if (item->m_dev.State == UP_DEVICE_STATE_FULLY_CHARGED) {
-	    Q_EMIT engine_signal_fullycharge(item->m_dev);
-	} else if (item->m_dev.State == UP_DEVICE_STATE_CHARGING) {
-	    Q_EMIT engine_signal_charge(item->m_dev);
-	}
-	//save new state
+    if ((item->m_dev.kind != UP_DEVICE_KIND_BATTERY) && (item->m_dev.kind != UP_DEVICE_KIND_UPS))
+            return;
+    if(item->m_dev.State != tmp_dev.State)
+    {
+        if(item->m_dev.State==UP_DEVICE_STATE_DISCHARGING)
+        {
+            Q_EMIT engine_signal_discharge(item->m_dev);
+        }
+        else if (item->m_dev.State==UP_DEVICE_STATE_FULLY_CHARGED)
+        {
+            Q_EMIT engine_signal_fullycharge(item->m_dev);
+        }
+        else if (item->m_dev.State==UP_DEVICE_STATE_CHARGING)
+        {
+            Q_EMIT engine_signal_charge(item->m_dev);
+        }
+        //save new state
     }
-    level = engine_get_warning(item->m_dev);
+    level = engine_get_warning (item->m_dev);
 
-    if (init_level) {
-	level_old = level;
-	init_level = false;
+    if (init_level)
+    {
+        level_old = level;
+        init_level = false;
     }
     /* check the warning state has not changed */
-    if (level != level_old) {
-	if (level == UP_DEVICE_LEVEL_LOW) {
-	    Q_EMIT engine_signal_charge_low(item->m_dev);
-	} else if (level == UP_DEVICE_LEVEL_CRITICAL) {
-	    Q_EMIT engine_signal_charge_critical(item->m_dev);
-	} else if (level == UP_DEVICE_LEVEL_ACTION) {
-	    Q_EMIT engine_signal_charge_action(item->m_dev);
-	}
-	level_old = level;
+    if(level != level_old)
+    {
+        if(level==UP_DEVICE_LEVEL_LOW)
+        {
+            Q_EMIT engine_signal_charge_low(item->m_dev);
+        }
+        else if (level==UP_DEVICE_LEVEL_CRITICAL)
+        {
+            Q_EMIT engine_signal_charge_critical(item->m_dev);
+        }
+        else if(level==UP_DEVICE_LEVEL_ACTION)
+        {
+            Q_EMIT engine_signal_charge_action(item->m_dev);
+        }
+        level_old = level;
     }
 
-    /*recaculate state */
+    /*recaculate state*/
     power_device_recalculate_state();
 }
 
 void EngineDevice::power_device_recalculate_state()
 {
-    /*recaculate icon */
+    /*recaculate icon*/
     power_device_recalculate_icon();
-    /*recaculate sum */
+    /*recaculate sum*/
     engine_recalculate_summary();
 }
 
 bool EngineDevice::power_device_recalculate_icon()
 {
-    /*call a function to obtain icon */
+    /*call a function to obtain icon*/
     QString icon;
     icon = power_device_get_icon();
-    if (icon.isNull()) {
-	if (previous_icon.isNull())
-	    return false;
-	Q_EMIT icon_changed(QString());
-	previous_icon.clear();
-	return true;
+    if(icon.isNull())
+    {
+        if(previous_icon.isNull())
+            return false;
+        Q_EMIT icon_changed(QString());
+        previous_icon.clear();
+        return true;
     }
-    if (previous_icon.isNull()) {
-	Q_EMIT icon_changed(icon);
-	previous_icon = icon;
-	return true;
+    if(previous_icon.isNull())
+    {
+        Q_EMIT icon_changed(icon);
+        previous_icon = icon;
+        return true;
     }
 
-    if (previous_icon != icon) {
-	Q_EMIT icon_changed(icon);
-	previous_icon = icon;
-	return true;
+    if(previous_icon != icon)
+    {
+        Q_EMIT icon_changed(icon);
+        previous_icon = icon;
+        return true;
     }
     return false;
 }
@@ -428,162 +372,137 @@ QString EngineDevice::power_device_get_icon()
 
     /* GPM_ICON_POLICY_NEVER */
     if (icon_policy == GPM_ICON_POLICY_NEVER) {
-	return QString();
+        return QString();
     }
 
     /* we try CRITICAL: BATTERY, UPS, MOUSE, KEYBOARD */
-    if (icon_policy == GPM_ICON_POLICY_CRITICAL
-	|| icon_policy == GPM_ICON_POLICY_ALWAYS) {
-	icon =
-	    power_device_get_icon_exact(UP_DEVICE_KIND_BATTERY,
-					UP_DEVICE_LEVEL_CRITICAL, false);
-	if (!icon.isNull()) {
-	    return icon;
-	}
-	icon =
-	    power_device_get_icon_exact(UP_DEVICE_KIND_UPS,
-					UP_DEVICE_LEVEL_CRITICAL, false);
-	if (!icon.isNull()) {
-	    return icon;
-	}
-	icon =
-	    power_device_get_icon_exact(UP_DEVICE_KIND_MOUSE,
-					UP_DEVICE_LEVEL_CRITICAL, false);
-	if (!icon.isNull()) {
-	    return icon;
-	}
-	icon =
-	    power_device_get_icon_exact(UP_DEVICE_KIND_KEYBOARD,
-					UP_DEVICE_LEVEL_CRITICAL, false);
-	if (!icon.isNull()) {
-	    return icon;
-	}
-	if (icon_policy == GPM_ICON_POLICY_CRITICAL) {
-	    return QString();
-	}
+    if (icon_policy == GPM_ICON_POLICY_CRITICAL || icon_policy == GPM_ICON_POLICY_ALWAYS)
+    {
+        icon = power_device_get_icon_exact (UP_DEVICE_KIND_BATTERY, UP_DEVICE_LEVEL_CRITICAL, false);
+        if (!icon.isNull()) {
+            return icon;
+        }
+        icon = power_device_get_icon_exact (UP_DEVICE_KIND_UPS, UP_DEVICE_LEVEL_CRITICAL, false);
+        if (!icon.isNull()) {
+            return icon;
+        }
+        icon = power_device_get_icon_exact (UP_DEVICE_KIND_MOUSE, UP_DEVICE_LEVEL_CRITICAL, false);
+        if (!icon.isNull()) {
+            return icon;
+        }
+        icon = power_device_get_icon_exact (UP_DEVICE_KIND_KEYBOARD, UP_DEVICE_LEVEL_CRITICAL, false);
+        if (!icon.isNull()) {
+            return icon;
+        }
+        if(icon_policy == GPM_ICON_POLICY_CRITICAL)
+        {
+            return QString();
+        }
     }
 
     /* we try GPM_ENGINE_WARNING_LOW: BATTERY, UPS, MOUSE, KEYBOARD */
-    if (icon_policy == GPM_ICON_POLICY_LOW
-	|| icon_policy == GPM_ICON_POLICY_ALWAYS) {
-	icon =
-	    power_device_get_icon_exact(UP_DEVICE_KIND_BATTERY,
-					UP_DEVICE_LEVEL_LOW, false);
-	if (!icon.isNull()) {
-	    return icon;
-	}
-	icon =
-	    power_device_get_icon_exact(UP_DEVICE_KIND_UPS,
-					UP_DEVICE_LEVEL_LOW, false);
-	if (!icon.isNull()) {
-	    return icon;
-	}
-	icon =
-	    power_device_get_icon_exact(UP_DEVICE_KIND_MOUSE,
-					UP_DEVICE_LEVEL_LOW, false);
-	if (!icon.isNull()) {
-	    return icon;
-	}
-	icon =
-	    power_device_get_icon_exact(UP_DEVICE_KIND_KEYBOARD,
-					UP_DEVICE_LEVEL_LOW, false);
-	if (!icon.isNull()) {
-	    return icon;
-	}
-	if (icon_policy == GPM_ICON_POLICY_LOW) {
-	    return QString();
-	}
+    if (icon_policy == GPM_ICON_POLICY_LOW || icon_policy == GPM_ICON_POLICY_ALWAYS)
+    {
+        icon = power_device_get_icon_exact (UP_DEVICE_KIND_BATTERY, UP_DEVICE_LEVEL_LOW, false);
+        if (!icon.isNull()) {
+            return icon;
+        }
+        icon = power_device_get_icon_exact (UP_DEVICE_KIND_UPS, UP_DEVICE_LEVEL_LOW, false);
+        if (!icon.isNull()) {
+            return icon;
+        }
+        icon = power_device_get_icon_exact (UP_DEVICE_KIND_MOUSE, UP_DEVICE_LEVEL_LOW, false);
+        if (!icon.isNull()) {
+            return icon;
+        }
+        icon = power_device_get_icon_exact (UP_DEVICE_KIND_KEYBOARD, UP_DEVICE_LEVEL_LOW, false);
+        if (!icon.isNull()) {
+            return icon;
+        }
+        if(icon_policy == GPM_ICON_POLICY_LOW)
+        {
+            return QString();
+        }
     }
 
     /* we try (DIS)CHARGING: BATTERY, UPS */
-    if (icon_policy == GPM_ICON_POLICY_CHARGE
-	|| icon_policy == GPM_ICON_POLICY_ALWAYS) {
-	icon =
-	    power_device_get_icon_exact(UP_DEVICE_KIND_BATTERY,
-					UP_DEVICE_LEVEL_NONE, true);
-	if (!icon.isNull()) {
-	    return icon;
-	}
+    if (icon_policy == GPM_ICON_POLICY_CHARGE || icon_policy == GPM_ICON_POLICY_ALWAYS)
+    {
+        icon = power_device_get_icon_exact (UP_DEVICE_KIND_BATTERY, UP_DEVICE_LEVEL_NONE, true);
+        if (!icon.isNull()) {
+            return icon;
+        }
 
-	icon =
-	    power_device_get_icon_exact(UP_DEVICE_KIND_UPS,
-					UP_DEVICE_LEVEL_NONE, true);
-	if (!icon.isNull()) {
-	    return icon;
-	}
-	if (icon_policy == GPM_ICON_POLICY_CHARGE) {
-	    return QString();
-	}
+        icon = power_device_get_icon_exact (UP_DEVICE_KIND_UPS, UP_DEVICE_LEVEL_NONE, true);
+        if (!icon.isNull()) {
+            return icon;
+        }
+        if(icon_policy == GPM_ICON_POLICY_CHARGE)
+        {
+            return QString();
+        }
     }
 
     /* we try PRESENT: BATTERY, UPS */
-    if (icon_policy == GPM_ICON_POLICY_PRESENT
-	|| icon_policy == GPM_ICON_POLICY_ALWAYS) {
-	icon =
-	    power_device_get_icon_exact(UP_DEVICE_KIND_BATTERY,
-					UP_DEVICE_LEVEL_NONE, false);
-	if (!icon.isNull()) {
-	    return icon;
-	}
-	icon =
-	    power_device_get_icon_exact(UP_DEVICE_KIND_UPS,
-					UP_DEVICE_LEVEL_NONE, false);
-	if (!icon.isNull()) {
-	    return icon;
-	}
-	if (icon_policy == GPM_ICON_POLICY_PRESENT) {
-	    return QString();
-	}
+    if (icon_policy == GPM_ICON_POLICY_PRESENT || icon_policy == GPM_ICON_POLICY_ALWAYS)
+    {
+        icon = power_device_get_icon_exact (UP_DEVICE_KIND_BATTERY, UP_DEVICE_LEVEL_NONE, false);
+        if (!icon.isNull()) {
+            return icon;
+        }
+        icon = power_device_get_icon_exact (UP_DEVICE_KIND_UPS, UP_DEVICE_LEVEL_NONE, false);
+        if (!icon.isNull()) {
+            return icon;
+        }
+        if(icon_policy == GPM_ICON_POLICY_PRESENT)
+        {
+            return QString();
+        }
     }
+
     //always
-    icon =
-	power_device_get_icon_exact(UP_DEVICE_KIND_BATTERY,
-				    UP_DEVICE_LEVEL_NONE, false);
+    icon = power_device_get_icon_exact (UP_DEVICE_KIND_BATTERY, UP_DEVICE_LEVEL_NONE, false);
     if (!icon.isNull()) {
-	return icon;
+        return icon;
     }
     /* we fallback to the ac_adapter icon */
     return QString("battery-full-symbolic");
 }
-
 /**
  * power_device_get_icon_exact:
  *
  * Returns the icon
  **/
-QString EngineDevice::power_device_get_icon_exact(UpDeviceKind device_kind,
-						  UpDeviceLevel warning,
-						  bool use_state)
+QString EngineDevice::power_device_get_icon_exact (UpDeviceKind device_kind, UpDeviceLevel warning, bool use_state)
 {
     DEVICE *device;
     UpDeviceLevel warning_temp;
     UpDeviceState state;
     /* do we have specific device types? */
-    Q_FOREACH(device, devices) {
+    Q_FOREACH (device, devices) {
 
-	state = device->m_dev.State;
-	warning_temp = device->m_dev.warnlevel;
-	if ((device->m_dev.kind == device_kind)
-	    && (device->m_dev.IsPresent)) {
-	    if (warning != UP_DEVICE_LEVEL_NONE) {
-		if (warning_temp == warning) {
-		    composite_device = device;
-		    return engine_get_device_icon(device);
-		}
-		continue;
-	    }
-	    if (use_state) {
+        state = device->m_dev.State;
+        warning_temp = device->m_dev.warnlevel;
+        if ((device->m_dev.kind == device_kind) && (device->m_dev.IsPresent)) {
+            if (warning != UP_DEVICE_LEVEL_NONE) {
+                if (warning_temp == warning) {
+                    composite_device = device;
+                    return engine_get_device_icon (device);
+                }
+                continue;
+            }
+            if (use_state) {
 //                if (state == UP_DEVICE_STATE_CHARGING || state == UP_DEVICE_STATE_DISCHARGING) {
-		if (state == UP_DEVICE_STATE_DISCHARGING) {
-		    composite_device = device;
-		    return engine_get_device_icon(device);
-		}
+                if ( state == UP_DEVICE_STATE_DISCHARGING) {
+                    composite_device = device;
+                    return engine_get_device_icon (device);
+                }
 
-		continue;
-	    }
-	    composite_device = device;
-	    return engine_get_device_icon(device);
-	}
+                continue;
+            }
+            composite_device = device;
+            return engine_get_device_icon (device);
+        }
     }
     return QString();
 }
@@ -591,21 +510,21 @@ QString EngineDevice::power_device_get_icon_exact(UpDeviceKind device_kind,
 /**
  * engine_recalculate_summary:
  */
-bool EngineDevice::engine_recalculate_summary()
+bool EngineDevice::engine_recalculate_summary ()
 {
     QString summary;
 
-    summary = engine_get_summary();
+    summary = engine_get_summary ();
     if (previous_summary.isNull()) {
-	previous_summary = summary;
-	Q_EMIT engine_signal_summary_change(summary);
-	return true;
+        previous_summary = summary;
+        Q_EMIT engine_signal_summary_change(summary);
+        return true;
     }
 
     if (previous_summary != summary) {
-	previous_summary = summary;
-	Q_EMIT engine_signal_summary_change(summary);
-	return true;
+        previous_summary = summary;
+        Q_EMIT engine_signal_summary_change(summary);
+        return true;
     }
     return false;
 }
@@ -615,7 +534,7 @@ bool EngineDevice::engine_recalculate_summary()
  *
  * Returns the complete tooltip ready for display
  **/
-QString EngineDevice::engine_get_summary()
+QString EngineDevice::engine_get_summary ()
 {
     DEVICE *device;
     UpDeviceState state;
@@ -624,17 +543,17 @@ QString EngineDevice::engine_get_summary()
     bool is_present;
     UpDeviceKind kind;
 
-    Q_FOREACH(device, devices) {
-	is_present = device->m_dev.IsPresent;
-	state = device->m_dev.State;
-	kind = device->m_dev.kind;
-	if ((!is_present) || (kind != UP_DEVICE_KIND_BATTERY))
-	    continue;
-	if (state == UP_DEVICE_STATE_EMPTY)
-	    continue;
-	part = engine_get_device_summary(device);
-	if (!part.isNull())
-	    tooltip = QString("%1").arg(part);
+    Q_FOREACH (device, devices) {
+        is_present = device->m_dev.IsPresent;
+        state = device->m_dev.State;
+        kind = device->m_dev.kind;
+        if ((!is_present)||(kind != UP_DEVICE_KIND_BATTERY))
+            continue;
+        if (state == UP_DEVICE_STATE_EMPTY)
+            continue;
+        part = engine_get_device_summary (device);
+        if (!part.isNull())
+            tooltip = QString("%1").arg(part);
     }
     return tooltip;
 }
@@ -645,53 +564,54 @@ QString EngineDevice::engine_get_summary()
  *
  * Return value: The time string, e.g. "2 hours 3 minutes"
  **/
-QString EngineDevice::engine_get_timestring(int time_secs)
+QString EngineDevice::engine_get_timestring (int time_secs)
 {
-    int hours;
-    int minutes;
+    int  hours;
+    int  minutes;
     QString result;
     QString tmp;
     QString hour_str;
     QString minute_str;
     /* Add 0.5 to do rounding */
-    minutes = (int) ((time_secs / 60.0) + 0.5);
+    minutes = (int) ( ( time_secs / 60.0 ) + 0.5 );
 
     if (minutes == 0) {
-	result = (tr("Unknown time"));
-	return result;
+        result = (tr("Unknown time"));
+        return result;
     }
 
     if (minutes < 60) {
-	if (minutes == 1)
-	    minute_str = tr("minute");
-	else
-	    minute_str = tr("minutes");
-	result = QString("%1 %2").arg(minutes).arg(minute_str);
-	return result;
+        if(minutes==1)
+            minute_str = tr("minute");
+        else
+            minute_str=tr("minutes");
+        result=QString("%1 %2").arg(minutes).arg(minute_str);
+        return result;
     }
 
     hours = minutes / 60;
     minutes = minutes % 60;
 
-    if (minutes == 0) {
-	if (hours == 1)
-	    hour_str = tr("hour");
-	else
-	    hour_str = tr("hours");
-	result = QString("%1 %2").arg(hours).arg(hour_str);
-    } else {
-	if (minutes == 1)
-	    minute_str = tr("minute");
-	else
-	    minute_str = tr("minutes");
-	if (hours == 1)
-	    hour_str = tr("hour");
-	else
-	    hour_str = tr("hours");
+    if (minutes == 0)
+    {
+        if(hours == 1)
+            hour_str = tr("hour");
+        else
+            hour_str = tr("hours");
+        result=QString("%1 %2").arg(hours).arg(hour_str);
+    }
+    else
+    {
+        if(minutes==1)
+            minute_str = tr("minute");
+        else
+            minute_str=tr("minutes");
+        if(hours == 1)
+            hour_str = tr("hour");
+        else
+            hour_str = tr("hours");
 
-	result =
-	    QString("%1 %2 %3 %4").arg(hours).arg(hour_str).arg(minutes).
-	    arg(minute_str);
+        result = QString("%1 %2 %3 %4").arg(hours).arg(hour_str).arg(minutes).arg(minute_str);
 
     }
     return result;
@@ -701,7 +621,7 @@ QString EngineDevice::engine_get_timestring(int time_secs)
 /**
  * engine_get_device_predict:
  **/
-QString EngineDevice::engine_get_device_predict(DEVICE * dv)
+QString EngineDevice::engine_get_device_predict(DEVICE* dv)
 {
     QString result;
 
@@ -723,29 +643,30 @@ QString EngineDevice::engine_get_device_predict(DEVICE * dv)
 
     time_to_empty = dv->m_dev.TimeToEmpty;
     time_to_full = dv->m_dev.TimeToFull;
-    if (!is_present) {
-	return NULL;
+    if (!is_present)
+    {
+        return NULL;
     }
 
-    kind_desc = engine_kind_to_localised_text(kind, 1);
+    kind_desc = engine_kind_to_localised_text (kind, 1);
 
     if (kind == UP_DEVICE_KIND_MOUSE ||
-	kind == UP_DEVICE_KIND_KEYBOARD || kind == UP_DEVICE_KIND_PDA) {
-	result = QString("%1(%2%)").arg(kind_desc).arg(percentage);
-	return result;
+        kind == UP_DEVICE_KIND_KEYBOARD ||
+        kind == UP_DEVICE_KIND_PDA)
+    {
+        result = QString("%1(%2%)").arg(kind_desc).arg(percentage);
+        return result;
     }
 
-    time_to_full_round =
-	precision_round_down(time_to_full, GPM_UP_TIME_PRECISION);
-    time_to_empty_round =
-	precision_round_down(time_to_empty, GPM_UP_TIME_PRECISION);
+    time_to_full_round = precision_round_down (time_to_full, GPM_UP_TIME_PRECISION);
+    time_to_empty_round = precision_round_down (time_to_empty, GPM_UP_TIME_PRECISION);
 
     if (state == UP_DEVICE_STATE_FULLY_CHARGED) {
-	if (percentage >= 100)
-	    result = tr("fully charged");
-	else
-	    result = tr("charging");
-	result = tr("fully charged");
+        if(percentage >= 100)
+            result = tr("fully charged");
+        else
+            result = tr("charging");
+        result = tr("fully charged");
 
 //        if (kind == UP_DEVICE_KIND_BATTERY && time_to_empty_round > GPM_UP_TEXT_MIN_TIME) {
 //            time_to_empty_str = engine_get_timestring (time_to_empty_round);
@@ -765,9 +686,9 @@ QString EngineDevice::engine_get_device_predict(DEVICE * dv)
 //            result = tr("discharging(%1%)").arg(percentage);
 
 //        }
-	result = tr("not charging");
+        result = tr("not charging");
     } else if (state == UP_DEVICE_STATE_CHARGING) {
-	result = tr("charging");
+        result = tr("charging");
 //        if (time_to_full_round > GPM_UP_TEXT_MIN_TIME &&
 //            time_to_empty_round > GPM_UP_TEXT_MIN_TIME) {
 
@@ -792,10 +713,10 @@ QString EngineDevice::engine_get_device_predict(DEVICE * dv)
 
 //        }
 
-    } else {
+    }  else {
 //        printf ("in an undefined state we are not charging or "
 //                 "discharging and the batteries are also not charged");
-	result = QString("%1(%2%)").arg(kind_desc).arg(percentage);
+        result = QString("%1(%2%)").arg(kind_desc).arg(percentage);
     }
     return result;
 }
@@ -803,7 +724,7 @@ QString EngineDevice::engine_get_device_predict(DEVICE * dv)
 /**
  * engine_get_device_summary:
  **/
-QString EngineDevice::engine_get_device_summary(DEVICE * dv)
+QString EngineDevice::engine_get_device_summary(DEVICE* dv)
 {
     QString kind_desc;
     int time_to_full_round;
@@ -827,85 +748,81 @@ QString EngineDevice::engine_get_device_summary(DEVICE * dv)
     time_to_empty = dv->m_dev.TimeToEmpty;
     time_to_full = dv->m_dev.TimeToFull;
     if (!is_present)
-	return NULL;
+        return NULL;
 
-    kind_desc = engine_kind_to_localised_text(kind, 1);
+    kind_desc = engine_kind_to_localised_text (kind, 1);
 
     if (state == UP_DEVICE_STATE_FULLY_CHARGED) {
 
-	result = tr("%1% available, charged").arg(percentage);
+        result = tr("%1% available, charged").arg(percentage);
 
     } else if (state == UP_DEVICE_STATE_DISCHARGING) {
 
-	result = tr("%1% available, not charging").arg(percentage);
+        result = tr("%1% available, not charging").arg(percentage);
 
     } else if (state == UP_DEVICE_STATE_CHARGING) {
 
-	result = tr("%1% available, charging").arg(percentage);
+        result = tr("%1% available, charging").arg(percentage);
 
     } else if (state == UP_DEVICE_STATE_PENDING_DISCHARGE) {
 
-	/* TRANSLATORS: this is only shown for laptops with multiple batteries */
-	result =
-	    tr("%1 waiting to discharge (%2%)").arg(kind_desc).
-	    arg(percentage);
+        /* TRANSLATORS: this is only shown for laptops with multiple batteries */
+        result = tr("%1 waiting to discharge (%2%)").arg(kind_desc).arg(percentage);
 
 
     } else if (state == UP_DEVICE_STATE_PENDING_CHARGE) {
 
-	/* TRANSLATORS: this is only shown for laptops with multiple batteries */
-	result =
-	    tr("%1 waiting to charge (%2%)").arg(kind_desc).
-	    arg(percentage);
+        /* TRANSLATORS: this is only shown for laptops with multiple batteries */
+        result = tr("%1 waiting to charge (%2%)").arg(kind_desc).arg(percentage);
 
     } else {
-	printf("in an undefined state we are not charging or "
-	       "discharging and the batteries are also not charged");
-	result = QString("%1 (%2%)").arg(kind_desc).arg(percentage);
+        printf ("in an undefined state we are not charging or "
+                 "discharging and the batteries are also not charged");
+        result = QString("%1 (%2%)").arg(kind_desc).arg(percentage);
     }
     return result;
 }
 
 
-QString EngineDevice::engine_kind_to_string(UpDeviceKind type_enum)
+QString EngineDevice::engine_kind_to_string (UpDeviceKind type_enum)
 {
     QString ret;
     switch (type_enum) {
     case UP_DEVICE_KIND_LINE_POWER:
-	ret = "line-power";
-	break;
+        ret = "line-power";
+        break;
     case UP_DEVICE_KIND_BATTERY:
-	ret = "battery";
-	break;
+        ret = "battery";
+        break;
     case UP_DEVICE_KIND_UPS:
-	ret = "ups";
-	break;
+        ret = "ups";
+        break;
     case UP_DEVICE_KIND_MONITOR:
-	ret = "monitor";
-	break;
+        ret = "monitor";
+        break;
     case UP_DEVICE_KIND_MOUSE:
-	ret = "mouse";
-	break;
+        ret = "mouse";
+        break;
     case UP_DEVICE_KIND_KEYBOARD:
-	ret = "keyboard";
-	break;
+        ret = "keyboard";
+        break;
     case UP_DEVICE_KIND_PDA:
-	ret = "pda";
-	break;
+        ret = "pda";
+        break;
     case UP_DEVICE_KIND_PHONE:
-	ret = "phone";
-	break;
+        ret = "phone";
+        break;
     case UP_DEVICE_KIND_MEDIA_PLAYER:
-	ret = "media-player";
-	break;
+        ret = "media-player";
+        break;
     case UP_DEVICE_KIND_TABLET:
-	ret = "tablet";
-	break;
+        ret = "tablet";
+        break;
     case UP_DEVICE_KIND_COMPUTER:
-	ret = "computer";
-	break;
+        ret = "computer";
+        break;
     default:
-	ret = "unknown";
+        ret = "unknown";
     }
     return ret;
 }
@@ -913,84 +830,83 @@ QString EngineDevice::engine_kind_to_string(UpDeviceKind type_enum)
 /**
  * engine_kind_to_localised_text:
  **/
-QString EngineDevice::engine_kind_to_localised_text(UpDeviceKind kind,
-						    uint number)
+QString EngineDevice::engine_kind_to_localised_text (UpDeviceKind kind, uint number)
 {
     Q_UNUSED(number);
     QString text;
     switch (kind) {
     case UP_DEVICE_KIND_LINE_POWER:
 
-	text = tr("AC adapter");
-	break;
+        text =  tr("AC adapter");
+        break;
     case UP_DEVICE_KIND_BATTERY:
-	/* TRANSLATORS: laptop primary battery */
-	text = tr("Laptop battery");
-	break;
+        /* TRANSLATORS: laptop primary battery */
+        text =  tr("Laptop battery");
+        break;
     case UP_DEVICE_KIND_UPS:
-	/* TRANSLATORS: battery-backed AC power source */
-	text = tr("UPS");
-	break;
+        /* TRANSLATORS: battery-backed AC power source */
+        text =  tr("UPS");
+        break;
     case UP_DEVICE_KIND_MONITOR:
-	/* TRANSLATORS: a monitor is a device to measure voltage and current */
-	text = tr("Monitor");
-	break;
+        /* TRANSLATORS: a monitor is a device to measure voltage and current */
+        text =  tr("Monitor");
+        break;
     case UP_DEVICE_KIND_MOUSE:
-	/* TRANSLATORS: wireless mice with internal batteries */
-	text = tr("Mouse");
-	break;
+        /* TRANSLATORS: wireless mice with internal batteries */
+        text =  tr("Mouse");
+        break;
     case UP_DEVICE_KIND_KEYBOARD:
-	/* TRANSLATORS: wireless keyboard with internal battery */
-	text = tr("Keyboard");
-	break;
+        /* TRANSLATORS: wireless keyboard with internal battery */
+        text =  tr("Keyboard");
+        break;
     case UP_DEVICE_KIND_PDA:
-	/* TRANSLATORS: portable device */
-	text = tr("PDA");
-	break;
+        /* TRANSLATORS: portable device */
+        text =  tr("PDA");
+        break;
     case UP_DEVICE_KIND_PHONE:
-	/* TRANSLATORS: cell phone (mobile...) */
-	text = tr("Cell phone");
-	break;
+        /* TRANSLATORS: cell phone (mobile...) */
+        text =  tr("Cell phone");
+        break;
     case UP_DEVICE_KIND_MEDIA_PLAYER:
-	/* TRANSLATORS: media player, mp3 etc */
-	text = tr("Media player");
-	break;
+        /* TRANSLATORS: media player, mp3 etc */
+        text =  tr("Media player");
+        break;
     case UP_DEVICE_KIND_TABLET:
-	/* TRANSLATORS: tablet device */
-	text = tr("Tablet");
-	break;
+        /* TRANSLATORS: tablet device */
+        text =  tr("Tablet");
+        break;
     case UP_DEVICE_KIND_COMPUTER:
-	/* TRANSLATORS: tablet device */
-	text = tr("Computer");
-	break;
+        /* TRANSLATORS: tablet device */
+        text =  tr("Computer");
+        break;
     default:
-	printf("enum unrecognised: %i", kind);
-	text = tr("unrecognised");
+        printf ("enum unrecognised: %i", kind);
+        text = tr ("unrecognised");
     }
     return text;
 }
 
 
-QString EngineDevice::engine_get_device_icon_index(qreal percentage)
+QString EngineDevice::engine_get_device_icon_index (qreal percentage)
 {
     if (percentage < 10)
-	return "10";
+        return "10";
     else if (percentage < 20)
-	return "20";
+        return "20";
     else if (percentage < 30)
-	return "30";
+        return "30";
     else if (percentage < 40)
-	return "40";
+        return "40";
     else if (percentage < 50)
-	return "50";
+        return "50";
     else if (percentage < 60)
-	return "60";
+        return "60";
     else if (percentage < 70)
-	return "70";
+        return "70";
     else if (percentage < 80)
-	return "80";
+        return "80";
     else if (percentage < 90)
-	return "90";
+        return "90";
     return "100";
 }
 
@@ -998,7 +914,7 @@ QString EngineDevice::engine_get_device_icon_index(qreal percentage)
  * engine_get_device_icon:
  *
  **/
-QString EngineDevice::engine_get_device_icon(DEVICE * device)
+QString EngineDevice::engine_get_device_icon (DEVICE *device)
 {
     QString prefix;
     QString index_str;
@@ -1013,98 +929,90 @@ QString EngineDevice::engine_get_device_icon(DEVICE * device)
     percentage = device->m_dev.Percentage;
     is_present = device->m_dev.IsPresent;
     /* get correct icon prefix */
-    prefix = engine_kind_to_string(kind);
+    prefix = engine_kind_to_string (kind);
 
     /* get the icon from some simple rules */
     if (kind == UP_DEVICE_KIND_LINE_POWER) {
-	result = ("gpm-ac-adapter");
+        result =  ("gpm-ac-adapter");
     } else if (kind == UP_DEVICE_KIND_MONITOR) {
-	result = ("gpm-monitor");
+        result =  ("gpm-monitor");
     } else if (kind == UP_DEVICE_KIND_UPS) {
-	if (!is_present) {
-	    /* battery missing */
-	    result.sprintf("gpm-%s-missing", prefix.toStdString().c_str());
+        if (!is_present) {
+            /* battery missing */
+            result.sprintf ("gpm-%s-missing", prefix.toStdString().c_str());
 
-	} else if (state == UP_DEVICE_STATE_FULLY_CHARGED) {
-	    result.sprintf("gpm-%s-100", prefix.toStdString().c_str());
+        } else if (state == UP_DEVICE_STATE_FULLY_CHARGED) {
+            result.sprintf ("gpm-%s-100", prefix.toStdString().c_str());
 
-	} else if (state == UP_DEVICE_STATE_CHARGING) {
-	    index_str = engine_get_device_icon_index(percentage);
-	    result =
-		QString("gpm-%1-%2-charging").arg(prefix).arg(index_str);
+        } else if (state == UP_DEVICE_STATE_CHARGING) {
+            index_str = engine_get_device_icon_index (percentage);
+            result = QString("gpm-%1-%2-charging").arg(prefix).arg(index_str);
 
-	} else if (state == UP_DEVICE_STATE_DISCHARGING) {
-	    index_str = engine_get_device_icon_index(percentage);
-	    result = QString("gpm-%1-%2").arg(prefix).arg(index_str);
-	}
+        } else if (state == UP_DEVICE_STATE_DISCHARGING) {
+            index_str = engine_get_device_icon_index (percentage);
+            result = QString("gpm-%1-%2").arg(prefix).arg(index_str);
+        }
     } else if (kind == UP_DEVICE_KIND_BATTERY) {
-	if (!is_present) {
-	    /* battery missing: battery-missing-symbolic */
-	    result = QString("%1-missing-symbolic").arg(prefix);
+        if (!is_present) {
+            /* battery missing: battery-missing-symbolic*/
+            result = QString ("%1-missing-symbolic").arg(prefix);
 
-	} else if (state == UP_DEVICE_STATE_EMPTY) {
-	    /* battery-empty-symbolic */
-	    result = QString("%1-empty-symbolic").arg(prefix);
+        } else if (state == UP_DEVICE_STATE_EMPTY) {
+            /* battery-empty-symbolic */
+            result = QString ("%1-empty-symbolic").arg(prefix);
 
-	} else if (state == UP_DEVICE_STATE_FULLY_CHARGED) {
-	    /* battery-full-charged-symbolic */
-	    result = QString("%1-full-charged-symbolic").arg(prefix);
-	} else if (state == UP_DEVICE_STATE_CHARGING) {
-	    index_str = engine_get_device_icon_index(percentage);
-	    /* battery-level-percent-charging-symbolic */
-	    result =
-		QString("%1-level-%2-charging-symbolic").arg(prefix).
-		arg(index_str);
+        } else if (state == UP_DEVICE_STATE_FULLY_CHARGED) {
+            /* battery-full-charged-symbolic */
+            result = QString ("%1-full-charged-symbolic").arg(prefix);
+        } else if (state == UP_DEVICE_STATE_CHARGING) {
+            index_str = engine_get_device_icon_index (percentage);
+            /* battery-level-percent-charging-symbolic */
+            result = QString("%1-level-%2-charging-symbolic").arg(prefix).arg(index_str);
 
-	} else if (state == UP_DEVICE_STATE_DISCHARGING) {
-	    index_str = engine_get_device_icon_index(percentage);
-	    result =
-		QString("%1-level-%2-symbolic").arg(prefix).arg(index_str);
+        } else if (state == UP_DEVICE_STATE_DISCHARGING) {
+            index_str = engine_get_device_icon_index (percentage);
+            result = QString("%1-level-%2-symbolic").arg(prefix).arg(index_str);
 
-	} else if (state == UP_DEVICE_STATE_PENDING_CHARGE) {
-	    index_str = engine_get_device_icon_index(percentage);
-	    /* FIXME: do new grey icons */
-	    result =
-		QString("%1-level-%2-charging-symbolic").arg(prefix).
-		arg(index_str);
+        } else if (state == UP_DEVICE_STATE_PENDING_CHARGE) {
+            index_str = engine_get_device_icon_index (percentage);
+            /* FIXME: do new grey icons */
+            result = QString("%1-level-%2-charging-symbolic").arg(prefix).arg(index_str);
 
-	} else if (state == UP_DEVICE_STATE_PENDING_DISCHARGE) {
-	    index_str = engine_get_device_icon_index(percentage);
-	    result =
-		QString("%1-level-%2-symbolic").arg(prefix).arg(index_str);
+        } else if (state == UP_DEVICE_STATE_PENDING_DISCHARGE) {
+            index_str = engine_get_device_icon_index (percentage);
+            result = QString("%1-level-%2-symbolic").arg(prefix).arg(index_str);
 
-	} else {
-	    result = ("battery-missing-symbolic");
-	}
+        } else {
+            result =  ("battery-missing-symbolic");
+        }
 
     } else if (kind == UP_DEVICE_KIND_MOUSE ||
-	       kind == UP_DEVICE_KIND_KEYBOARD ||
-	       kind == UP_DEVICE_KIND_PHONE) {
-	if (!is_present) {
-	    /* battery missing */
-	    result = QString("gpm-%1-000").arg(prefix);
+           kind == UP_DEVICE_KIND_KEYBOARD ||
+           kind == UP_DEVICE_KIND_PHONE) {
+        if (!is_present) {
+            /* battery missing */
+            result = QString ("gpm-%1-000").arg(prefix);
 
-	} else if (state == UP_DEVICE_STATE_FULLY_CHARGED) {
-	    result = QString("gpm-%1-100").arg(prefix);
+        } else if (state == UP_DEVICE_STATE_FULLY_CHARGED) {
+            result = QString ("gpm-%1-100").arg(prefix);
 
-	} else if (state == UP_DEVICE_STATE_DISCHARGING) {
-	    index_str = engine_get_device_icon_index(percentage);
-	    result = QString("gpm-%1-%2").arg(prefix).arg(index_str);
-	} else if (state == UP_DEVICE_STATE_CHARGING) {
-	    index_str = engine_get_device_icon_index(percentage);
-	    result =
-		QString("gpm-%1-%2-charging").arg(prefix).arg(index_str);
-	}
+        } else if (state == UP_DEVICE_STATE_DISCHARGING) {
+            index_str = engine_get_device_icon_index (percentage);
+            result = QString("gpm-%1-%2").arg(prefix).arg(index_str);
+        } else if (state == UP_DEVICE_STATE_CHARGING) {
+            index_str = engine_get_device_icon_index (percentage);
+            result = QString("gpm-%1-%2-charging").arg(prefix).arg(index_str);
+        }
     }
 
     /* nothing matched */
     if (result.isNull()) {
-	result = ("dialog-warning");
+        result =  ("dialog-warning");
     }
     return result;
 }
 
-QString EngineDevice::engine_get_dev_icon(DEV dev)
+QString EngineDevice::engine_get_dev_icon (DEV dev)
 {
     QString prefix;
     QString index_str;
@@ -1119,51 +1027,45 @@ QString EngineDevice::engine_get_dev_icon(DEV dev)
     percentage = dev.Percentage;
     is_present = dev.IsPresent;
     /* get correct icon prefix */
-    prefix = engine_kind_to_string(kind);
+    prefix = engine_kind_to_string (kind);
 
-    if (kind == UP_DEVICE_KIND_BATTERY) {
-	if (!is_present) {
-	    /* battery missing: battery-missing-symbolic */
-	    result = QString("%1-missing-symbolic").arg(prefix);
+        if (kind == UP_DEVICE_KIND_BATTERY) {
+            if (!is_present) {
+                /* battery missing: battery-missing-symbolic*/
+                result = QString ("%1-missing-symbolic").arg(prefix);
 
-	} else if (state == UP_DEVICE_STATE_EMPTY) {
-	    /* battery-empty-symbolic */
-	    result = QString("%1-empty-symbolic").arg(prefix);
+            } else if (state == UP_DEVICE_STATE_EMPTY) {
+                /* battery-empty-symbolic */
+                result = QString ("%1-empty-symbolic").arg(prefix);
 
-	} else if (state == UP_DEVICE_STATE_FULLY_CHARGED) {
-	    /* battery-full-charged-symbolic */
-	    result = QString("%1-full-charged-symbolic").arg(prefix);
-	} else if (state == UP_DEVICE_STATE_CHARGING) {
-	    index_str = engine_get_device_icon_index(percentage);
-	    /* battery-level-percent-charging-symbolic */
-	    result =
-		QString("%1-level-%2-charging-symbolic").arg(prefix).
-		arg(index_str);
+            } else if (state == UP_DEVICE_STATE_FULLY_CHARGED) {
+                /* battery-full-charged-symbolic */
+                result = QString ("%1-full-charged-symbolic").arg(prefix);
+            } else if (state == UP_DEVICE_STATE_CHARGING) {
+                index_str = engine_get_device_icon_index (percentage);
+                /* battery-level-percent-charging-symbolic */
+                result = QString("%1-level-%2-charging-symbolic").arg(prefix).arg(index_str);
 
-	} else if (state == UP_DEVICE_STATE_DISCHARGING) {
-	    index_str = engine_get_device_icon_index(percentage);
-	    result =
-		QString("%1-level-%2-symbolic").arg(prefix).arg(index_str);
+            } else if (state == UP_DEVICE_STATE_DISCHARGING) {
+                index_str = engine_get_device_icon_index (percentage);
+                result = QString("%1-level-%2-symbolic").arg(prefix).arg(index_str);
 
-	} else if (state == UP_DEVICE_STATE_PENDING_CHARGE) {
-	    index_str = engine_get_device_icon_index(percentage);
-	    /* FIXME: do new grey icons */
-	    result =
-		QString("%1-level-%2-charging-symbolic").arg(prefix).
-		arg(index_str);
+            } else if (state == UP_DEVICE_STATE_PENDING_CHARGE) {
+                index_str = engine_get_device_icon_index (percentage);
+                /* FIXME: do new grey icons */
+                result = QString("%1-level-%2-charging-symbolic").arg(prefix).arg(index_str);
 
-	} else if (state == UP_DEVICE_STATE_PENDING_DISCHARGE) {
-	    index_str = engine_get_device_icon_index(percentage);
-	    result =
-		QString("%1-level-%2-symbolic").arg(prefix).arg(index_str);
+            } else if (state == UP_DEVICE_STATE_PENDING_DISCHARGE) {
+                index_str = engine_get_device_icon_index (percentage);
+                result = QString("%1-level-%2-symbolic").arg(prefix).arg(index_str);
 
-	} else {
-	    result = ("battery-missing-symbolic");
-	}
+            } else {
+                result =  ("battery-missing-symbolic");
+            }
 
-    }
+        }
     if (result.isNull()) {
-	result = ("dialog-warning");
+        result =  ("dialog-warning");
     }
     return result;
 }
@@ -1189,68 +1091,67 @@ QString EngineDevice::engine_get_dev_predict(DEV dev)
     time_to_empty = dev.TimeToEmpty;
     time_to_full = dev.TimeToFull;
     if (!is_present)
-	return NULL;
+        return NULL;
 
-    kind_desc = engine_kind_to_localised_text(kind, 1);
+    kind_desc = engine_kind_to_localised_text (kind, 1);
 
-    time_to_empty_round =
-	precision_round_down(time_to_empty, GPM_UP_TIME_PRECISION);
+    time_to_empty_round = precision_round_down (time_to_empty, GPM_UP_TIME_PRECISION);
 
     if (state == UP_DEVICE_STATE_FULLY_CHARGED) {
-	result = tr("fully charged");
+        result = tr("fully charged");
     } else if (state == UP_DEVICE_STATE_DISCHARGING) {
-	if (time_to_empty_round > GPM_UP_TEXT_MIN_TIME) {
-	    time_to_empty_str = engine_get_timestring(time_to_empty_round);
-	    result = time_to_empty_str;
-	} else {
-	    result = tr("discharging(%1%)").arg(percentage);
-	}
+        if (time_to_empty_round > GPM_UP_TEXT_MIN_TIME) {
+            time_to_empty_str = engine_get_timestring (time_to_empty_round);
+            result = time_to_empty_str;
+        } else {
+            result = tr("discharging(%1%)").arg(percentage);
+        }
     } else if (state == UP_DEVICE_STATE_CHARGING) {
-	result = tr("charging");
-    } else {
-	result = QString("%1(%2%)").arg(kind_desc).arg(percentage);
+        result = tr("charging");
+    }  else {
+        result = QString("%1(%2%)").arg(kind_desc).arg(percentage);
     }
     return result;
 }
 
-QString EngineDevice::engine_get_state_text(UpDeviceState state)
+QString EngineDevice::engine_get_state_text (UpDeviceState state)
 {
     QString state_text;
     switch (state) {
     case UP_DEVICE_STATE_CHARGING:
-	state_text = tr("charging");
-	break;
+        state_text = tr("charging");
+        break;
     case UP_DEVICE_STATE_DISCHARGING:
-	state_text = tr("discharging");
-	break;
+        state_text = tr("discharging");
+        break;
     case UP_DEVICE_STATE_EMPTY:
-	state_text = tr("empty");
-	break;
+        state_text = tr("empty");
+        break;
     case UP_DEVICE_STATE_FULLY_CHARGED:
-	state_text = tr("fully");
-	break;
+        state_text = tr("fully");
+        break;
     default:
-	state_text = tr("other");
-	break;
+        state_text = tr("other");
+        break;
     }
-    return state_text;
+    return  state_text;
 }
 
 /**
  * engine_get_warning_percentage:
  **/
-UpDeviceLevel EngineDevice::engine_get_warning_percentage(DEV dev)
+UpDeviceLevel EngineDevice::engine_get_warning_percentage (DEV dev)
 {
     int percentage;
 
     /* get device properties */
     percentage = dev.Percentage;
     if (percentage <= action_percentage)
-	return UP_DEVICE_LEVEL_ACTION;
+        return UP_DEVICE_LEVEL_ACTION;
     if (percentage <= critical_percentage)
-	return UP_DEVICE_LEVEL_CRITICAL;
+        return UP_DEVICE_LEVEL_CRITICAL;
     if (percentage <= low_percentage)
-	return UP_DEVICE_LEVEL_LOW;
+        return UP_DEVICE_LEVEL_LOW;
     return UP_DEVICE_LEVEL_NONE;
 }
 
@@ -1258,7 +1159,7 @@ UpDeviceLevel EngineDevice::engine_get_warning_percentage(DEV dev)
  * engine_get_warning:
  *
  **/
-UpDeviceLevel EngineDevice::engine_get_warning(DEV dev)
+UpDeviceLevel EngineDevice::engine_get_warning (DEV dev)
 {
     UpDeviceKind kind;
     UpDeviceState state;
@@ -1273,18 +1174,18 @@ UpDeviceLevel EngineDevice::engine_get_warning(DEV dev)
 
     /* if the device in question is on ac, don't give a warning */
     if (state == UP_DEVICE_STATE_CHARGING)
-	goto out;
+        goto out;
 
     if (kind == UP_DEVICE_KIND_BATTERY || kind == UP_DEVICE_KIND_UPS) {
-	warning_type = engine_get_warning_percentage(dev);
+        warning_type = engine_get_warning_percentage (dev);
     }
 
     /* If we have no important engines, we should test for discharging */
     if (warning_type == UP_DEVICE_LEVEL_NONE) {
-	if (state == UP_DEVICE_STATE_DISCHARGING)
-	    warning_type = UP_DEVICE_LEVEL_DISCHARGING;
+        if (state == UP_DEVICE_STATE_DISCHARGING)
+            warning_type = UP_DEVICE_LEVEL_DISCHARGING;
     }
 
-  out:
+ out:
     return warning_type;
 }

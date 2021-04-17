@@ -12,9 +12,10 @@
 #include <QtWidgets/QWidget>
 
 
-class MainUi {
-  public:
-    QWidget * centralWidget;
+class MainUi
+{
+public:
+    QWidget *centralWidget;
     QVBoxLayout *mainVerticalLayout;
     QWidget *widget;
     QHBoxLayout *horizontalLayout;
@@ -27,9 +28,9 @@ class MainUi {
     QSpacerItem *verticalSpacer_3;
     QListWidget *listWidget;
 
-    void uiInit(QMainWindow * MainWindow);
+    void uiInit(QMainWindow *MainWindow);
 
 };
 
 
-#endif				// MAINUI_H
+#endif // MAINUI_H

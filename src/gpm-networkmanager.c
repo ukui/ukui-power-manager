@@ -40,49 +40,54 @@
  *
  * Return value: TRUE if NetworkManager is now sleeping.
  **/
-gboolean gpm_networkmanager_sleep(void)
+gboolean
+gpm_networkmanager_sleep (void)
 {
-    //DBusGConnection *connection = NULL;
-    GDBusProxy *nm_proxy = NULL;
-    GError *error = NULL;
+	//DBusGConnection *connection = NULL;
+	GDBusProxy *nm_proxy = NULL;
+	GError *error = NULL;
 
-    nm_proxy = g_dbus_proxy_new_for_bus_sync(G_BUS_TYPE_SYSTEM,
-					     G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES,
-					     NULL,
-					     NM_LISTENER_SERVICE,
-					     NM_LISTENER_PATH,
-					     NM_LISTENER_INTERFACE,
-					     NULL, &error);
-    if (error != NULL) {
-	g_error_free(error);
-	return FALSE;
-    }
-    if (!nm_proxy) {
-	egg_warning("Failed to get name owner");
-	return FALSE;
-    }
-    g_dbus_proxy_call(nm_proxy,
-		      "sleep",
-		      NULL, G_DBUS_CALL_FLAGS_NONE, -1, NULL, NULL, NULL);
+        nm_proxy = g_dbus_proxy_new_for_bus_sync (G_BUS_TYPE_SYSTEM,
+                                      G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES,
+                                      NULL,
+                                      NM_LISTENER_SERVICE,
+                                      NM_LISTENER_PATH,
+                                      NM_LISTENER_INTERFACE,
+                                      NULL,
+                                      &error);
+        if (error != NULL)
+        {
+	        g_error_free (error);
+		return FALSE;
+	}
+	if (!nm_proxy) {
+		egg_warning ("Failed to get name owner");
+		return FALSE;
+	}
+	g_dbus_proxy_call (nm_proxy,
+                           "sleep",
+                           NULL,
+                           G_DBUS_CALL_FLAGS_NONE, -1,
+                           NULL, NULL, NULL);
 
-    /*connection = dbus_g_bus_get (DBUS_BUS_SYSTEM, &error);
-       if (error) {
-       egg_warning ("%s", error->message);
-       g_error_free (error);
-       return FALSE;
-       }
+	/*connection = dbus_g_bus_get (DBUS_BUS_SYSTEM, &error);
+	if (error) {
+		egg_warning ("%s", error->message);
+		g_error_free (error);
+		return FALSE;
+	}
 
-       nm_proxy = dbus_g_proxy_new_for_name (connection,
-       NM_LISTENER_SERVICE,
-       NM_LISTENER_PATH,
-       NM_LISTENER_INTERFACE);
-       if (!nm_proxy) {
-       egg_warning ("Failed to get name owner");
-       return FALSE;
-       }
-       dbus_g_proxy_call_no_reply (nm_proxy, "sleep", G_TYPE_INVALID); */
-    g_object_unref(G_OBJECT(nm_proxy));
-    return TRUE;
+	nm_proxy = dbus_g_proxy_new_for_name (connection,
+			NM_LISTENER_SERVICE,
+			NM_LISTENER_PATH,
+			NM_LISTENER_INTERFACE);
+	if (!nm_proxy) {
+		egg_warning ("Failed to get name owner");
+		return FALSE;
+	}
+	dbus_g_proxy_call_no_reply (nm_proxy, "sleep", G_TYPE_INVALID);*/
+	g_object_unref (G_OBJECT (nm_proxy));
+	return TRUE;
 }
 
 /**
@@ -92,51 +97,56 @@ gboolean gpm_networkmanager_sleep(void)
  *
  * Return value: TRUE if NetworkManager is now awake.
  **/
-gboolean gpm_networkmanager_wake(void)
+gboolean
+gpm_networkmanager_wake (void)
 {
-    //DBusGConnection *connection = NULL;
-    GDBusProxy *nm_proxy = NULL;
-    GError *error = NULL;
+	//DBusGConnection *connection = NULL;
+	GDBusProxy *nm_proxy = NULL;
+	GError *error = NULL;
 
-    /*connection = dbus_g_bus_get (DBUS_BUS_SYSTEM, &error);
-       if (error) {
-       egg_warning ("%s", error->message);
-       g_error_free (error);
-       return FALSE;
-       }
+	/*connection = dbus_g_bus_get (DBUS_BUS_SYSTEM, &error);
+	if (error) {
+		egg_warning ("%s", error->message);
+		g_error_free (error);
+		return FALSE;
+	}
 
-       nm_proxy = dbus_g_proxy_new_for_name (connection,
-       NM_LISTENER_SERVICE,
-       NM_LISTENER_PATH,
-       NM_LISTENER_INTERFACE);
-       if (!nm_proxy) {
-       egg_warning ("Failed to get name owner");
-       return FALSE;
-       }
-       dbus_g_proxy_call_no_reply (nm_proxy, "wake", G_TYPE_INVALID); */
-
-
-
-    nm_proxy = g_dbus_proxy_new_for_bus_sync(G_BUS_TYPE_SYSTEM,
-					     G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES,
-					     NULL,
-					     NM_LISTENER_SERVICE,
-					     NM_LISTENER_PATH,
-					     NM_LISTENER_INTERFACE,
-					     NULL, &error);
-    if (error != NULL) {
-	g_error_free(error);
-	return FALSE;
-    }
-    if (!nm_proxy) {
-	egg_warning("Failed to get name owner");
-	return FALSE;
-    }
-    g_dbus_proxy_call(nm_proxy,
-		      "wake",
-		      NULL, G_DBUS_CALL_FLAGS_NONE, -1, NULL, NULL, NULL);
+	nm_proxy = dbus_g_proxy_new_for_name (connection,
+			NM_LISTENER_SERVICE,
+			NM_LISTENER_PATH,
+			NM_LISTENER_INTERFACE);
+	if (!nm_proxy) {
+		egg_warning ("Failed to get name owner");
+		return FALSE;
+	}
+	dbus_g_proxy_call_no_reply (nm_proxy, "wake", G_TYPE_INVALID);*/
 
 
-    g_object_unref(G_OBJECT(nm_proxy));
-    return TRUE;
+	
+	nm_proxy = g_dbus_proxy_new_for_bus_sync (G_BUS_TYPE_SYSTEM,
+                                      G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES,
+                                      NULL,
+                                      NM_LISTENER_SERVICE,
+                                      NM_LISTENER_PATH,
+                                      NM_LISTENER_INTERFACE,
+                                      NULL,
+                                      &error);
+        if (error != NULL)
+        {
+                g_error_free (error);
+                return FALSE;
+        }
+        if (!nm_proxy) {
+                egg_warning ("Failed to get name owner");
+                return FALSE;
+        }
+        g_dbus_proxy_call (nm_proxy,
+                           "wake",
+                           NULL,
+                           G_DBUS_CALL_FLAGS_NONE, -1,
+                           NULL, NULL, NULL);
+
+
+	g_object_unref (G_OBJECT (nm_proxy));
+	return TRUE;
 }

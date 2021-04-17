@@ -24,47 +24,44 @@
 
 void registerCustomType()
 {
-    qDBusRegisterMetaType < StructUdu > ();
-    qDBusRegisterMetaType < QList < StructUdu >> ();
+    qDBusRegisterMetaType<StructUdu>();
+    qDBusRegisterMetaType<QList<StructUdu>>();
 }
 
-QDBusArgument & operator<<(QDBusArgument & argument,
-			   const StructUdu & structudp)
+QDBusArgument &operator<<(QDBusArgument &argument, const StructUdu &structudp)
 {
     argument.beginStructure();
-    argument << structudp.time << structudp.value << structudp.state;
+    argument<<structudp.time<<structudp.value<<structudp.state;
     argument.endStructure();
     return argument;
 }
 
-const QDBusArgument & operator>>(const QDBusArgument & argument,
-				 StructUdu & structudp)
+const QDBusArgument &operator>>(const QDBusArgument &argument, StructUdu &structudp)
 {
     argument.beginStructure();
-    argument >> structudp.time >> structudp.value >> structudp.state;
+    argument>>structudp.time>>structudp.value>>structudp.state;
     argument.endStructure();
     return argument;
 }
 
-QDBusArgument & operator<<(QDBusArgument & argument,
-			   const QList < StructUdu > &myarray)
+QDBusArgument &operator<<(QDBusArgument &argument, const QList<StructUdu> &myarray)
 {
-    argument.beginArray(qMetaTypeId < StructUdu > ());
-    for (int i = 0; i < myarray.length(); i++)
-	argument << myarray.at(i);
+    argument.beginArray(qMetaTypeId<StructUdu>());
+    for(int i= 0; i<myarray.length(); i++)
+        argument << myarray.at(i);
     argument.endArray();
     return argument;
 }
 
-const QDBusArgument & operator>>(const QDBusArgument & argument,
-				 QList < StructUdu > &myarray)
+const QDBusArgument &operator>>(const QDBusArgument &argument, QList<StructUdu> &myarray)
 {
     argument.beginArray();
     myarray.clear();
-    while (!argument.atEnd()) {
-	StructUdu element;
-	argument >> element;
-	myarray.append(element);
+    while(!argument.atEnd())
+    {
+        StructUdu element;
+        argument>>element;
+        myarray.append(element);
     }
     argument.endArray();
     return argument;
@@ -76,17 +73,17 @@ const QDBusArgument & operator>>(const QDBusArgument & argument,
  * @smallest: The smallest increment allowed
  *
  **/
-int precision_round_up(float value, int smallest)
+int precision_round_up (float value, int smallest)
 {
     float division;
-    if (fabs(value) < 0.01)
-	return 0;
+    if (fabs (value) < 0.01)
+        return 0;
     if (smallest == 0) {
-	printf("divisor zero");
-	return 0;
+        printf ("divisor zero");
+        return 0;
     }
     division = (float) value / (float) smallest;
-    division = ceilf(division);
+    division = ceilf (division);
     division *= smallest;
     return (int) division;
 }
@@ -97,17 +94,17 @@ int precision_round_up(float value, int smallest)
  * @smallest: The smallest increment allowed
  *
  **/
-int precision_round_down(float value, int smallest)
+int precision_round_down (float value, int smallest)
 {
     float division;
-    if (fabs(value) < 0.01)
-	return 0;
+    if (fabs (value) < 0.01)
+        return 0;
     if (smallest == 0) {
-	printf("divisor zero");
-	return 0;
+        printf("divisor zero");
+        return 0;
     }
     division = (float) value / (float) smallest;
-    division = floorf(division);
+    division = floorf (division);
     division *= smallest;
     return (int) division;
 }

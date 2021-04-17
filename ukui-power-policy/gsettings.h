@@ -13,29 +13,35 @@
 #endif
 
 extern "C" {
-#include <gio/gio.h>
-} class QGSettings:public QObject {
-  Q_OBJECT public:
-    explicit QGSettings(QString schema, QObject * parent = 0);
+	#include <gio/gio.h>
+}
 
-  public:
-    QString getString(QString key);
-    int getInt(QString key);
-    bool getBool(QString key);
-     QList < QString > getStringList(QString key);
+class QGSettings : public QObject
+{
+	Q_OBJECT
+
+public:
+    explicit QGSettings(QString schema, QObject *parent = 0);
+
+public:
+	QString getString(QString key);
+	int getInt(QString key);
+	bool getBool(QString key);
+	QList<QString> getStringList(QString key);
     int getEnum(QString key);
 
-    bool setString(QString key, QString value);
-    bool setInt(QString key, int value);
-    bool setBool(QString key, bool value);
-    bool setStringList(QString key, QList < QString > value);
-    static void changedCallback(GSettings * gsettings, const gchar * key,
-				gpointer user_data);
+	bool setString(QString key, QString value);
+	bool setInt(QString key, int value);
+	bool setBool(QString key, bool value);
+	bool setStringList(QString key, QList<QString> value);
+	static void changedCallback(GSettings *gsettings, const gchar *key,
+							gpointer user_data);
 
-     Q_SIGNALS:void valueChanged(QString key);
+Q_SIGNALS:
+	void valueChanged(QString key);
 
-  private:
-     GSettings * gsettings;
+private:
+	GSettings *gsettings;
 };
 
-#endif				// GSETTINGS_H
+#endif // GSETTINGS_H

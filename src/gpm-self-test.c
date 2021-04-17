@@ -30,52 +30,54 @@
 #include "gpm-screensaver.h"
 
 /* prototypes */
-void egg_precision_test(EggTest * test);
-void egg_discrete_test(EggTest * test);
-void egg_color_test(EggTest * test);
-void egg_array_float_test(EggTest * test);
-void egg_idletime_test(EggTest * test);
+void egg_precision_test (EggTest *test);
+void egg_discrete_test (EggTest *test);
+void egg_color_test (EggTest *test);
+void egg_array_float_test (EggTest *test);
+void egg_idletime_test (EggTest *test);
 
-void gpm_common_test(EggTest * test);
-void gpm_idle_test(EggTest * test);
-void gpm_phone_test(EggTest * test);
-void gpm_dpms_test(EggTest * test);
-void gpm_graph_widget_test(EggTest * test);
-void gpm_proxy_test(EggTest * test);
-void gpm_hal_manager_test(EggTest * test);
-void gpm_device_test(EggTest * test);
-void gpm_device_teststore(EggTest * test);
+void gpm_common_test (EggTest *test);
+void gpm_idle_test (EggTest *test);
+void gpm_phone_test (EggTest *test);
+void gpm_dpms_test (EggTest *test);
+void gpm_graph_widget_test (EggTest *test);
+void gpm_proxy_test (EggTest *test);
+void gpm_hal_manager_test (EggTest *test);
+void gpm_device_test (EggTest *test);
+void gpm_device_teststore (EggTest *test);
 
-int main(int argc, char **argv)
+int
+main (int argc, char **argv)
 {
-    EggTest *test;
+	EggTest *test;
 
-    test = egg_test_init();
-    egg_debug_init(TRUE);
+	test = egg_test_init ();
+	egg_debug_init (TRUE);
 
-    /* needed for DPMS checks */
-    gtk_init(&argc, &argv);
+	/* needed for DPMS checks */
+	gtk_init (&argc, &argv);
 
-    /* tests go here */
-    egg_precision_test(test);
-    egg_discrete_test(test);
-    egg_color_test(test);
-    egg_array_float_test(test);
-//      egg_idletime_test (test);
+	/* tests go here */
+	egg_precision_test (test);
+	egg_discrete_test (test);
+	egg_color_test (test);
+	egg_array_float_test (test);
+//	egg_idletime_test (test);
 
-    gpm_common_test(test);
-//      gpm_idle_test (test);
-    gpm_phone_test(test);
-//      gpm_dpms_test (test);
-//      gpm_graph_widget_test (test);
-//      gpm_screensaver_test (test);
+	gpm_common_test (test);
+//	gpm_idle_test (test);
+	gpm_phone_test (test);
+//	gpm_dpms_test (test);
+//	gpm_graph_widget_test (test);
+//	gpm_screensaver_test (test);
 
 #if 0
-    gpm_proxy_test(test);
-    gpm_hal_manager_test(test);
-    gpm_device_test(test);
-    gpm_device_teststore(test);
+	gpm_proxy_test (test);
+	gpm_hal_manager_test (test);
+	gpm_device_test (test);
+	gpm_device_teststore (test);
 #endif
 
-    return (egg_test_finish(test));
+	return (egg_test_finish (test));
 }
+

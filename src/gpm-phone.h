@@ -25,40 +25,52 @@
 #include <glib-object.h>
 
 G_BEGIN_DECLS
+
 #define GPM_TYPE_PHONE		(gpm_phone_get_type ())
 #define GPM_PHONE(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), GPM_TYPE_PHONE, GpmPhone))
 #define GPM_PHONE_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), GPM_TYPE_PHONE, GpmPhoneClass))
 #define GPM_IS_PHONE(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), GPM_TYPE_PHONE))
 #define GPM_IS_PHONE_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), GPM_TYPE_PHONE))
 #define GPM_PHONE_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), GPM_TYPE_PHONE, GpmPhoneClass))
+
 #define UKUI_PHONE_MANAGER_DBUS_SERVICE	"org.gnome.phone"
 #define UKUI_PHONE_MANAGER_DBUS_PATH		"/org/gnome/phone/Manager"
 #define UKUI_PHONE_MANAGER_DBUS_INTERFACE	"org.gnome.phone.Manager"
+
 typedef struct GpmPhonePrivate GpmPhonePrivate;
 
-typedef struct {
-    GObject parent;
-    GpmPhonePrivate *priv;
+typedef struct
+{
+	GObject		       parent;
+	GpmPhonePrivate *priv;
 } GpmPhone;
 
-typedef struct {
-    GObjectClass parent_class;
-    void (*device_added) (GpmPhone * phone, guint idx);
-    void (*device_removed) (GpmPhone * phone, guint idx);
-    void (*device_refresh) (GpmPhone * phone, guint idx);
+typedef struct
+{
+	GObjectClass	parent_class;
+	void		(* device_added)		(GpmPhone	*phone,
+							 guint		 idx);
+	void		(* device_removed)		(GpmPhone	*phone,
+							 guint		 idx);
+	void		(* device_refresh)		(GpmPhone	*phone,
+							 guint		 idx);
 } GpmPhoneClass;
 
-GType gpm_phone_get_type(void);
-GpmPhone *gpm_phone_new(void);
+GType		 gpm_phone_get_type			(void);
+GpmPhone	*gpm_phone_new				(void);
 
-gboolean gpm_phone_get_present(GpmPhone * phone, guint idx);
-guint gpm_phone_get_percentage(GpmPhone * phone, guint idx);
-gboolean gpm_phone_get_on_ac(GpmPhone * phone, guint idx);
-guint gpm_phone_get_num_batteries(GpmPhone * phone);
-gboolean gpm_phone_coldplug(GpmPhone * phone);
+gboolean	 gpm_phone_get_present			(GpmPhone	*phone,
+							 guint		 idx);
+guint		 gpm_phone_get_percentage		(GpmPhone	*phone,
+							 guint		 idx);
+gboolean	 gpm_phone_get_on_ac			(GpmPhone	*phone,
+							 guint		 idx);
+guint		 gpm_phone_get_num_batteries		(GpmPhone	*phone);
+gboolean	 gpm_phone_coldplug			(GpmPhone	*phone);
 #ifdef EGG_TEST
-void gpm_phone_test(gpointer data);
+void		 gpm_phone_test				(gpointer	 data);
 #endif
 
 G_END_DECLS
-#endif				/* __GPMPHONE_H */
+
+#endif	/* __GPMPHONE_H */

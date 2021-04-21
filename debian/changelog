@@ -1,3 +1,9 @@
+ukui-power-manager (2.1.29~rc2) v101; urgency=medium
+
+  * 添加日志打印輸出
+
+ -- zhangxinyu1 <zhangxinyu1@kylinos.cn>  Wed, 21 Apr 2021 17:49:15 +0800
+
 ukui-power-manager (2.1.29~rc1) v101; urgency=medium
 
   * 去除CPU自动调频 

@@ -243,7 +243,8 @@ egg_debug_enabled (void)
 {
 	const gchar *env;
 	env = g_getenv (EGG_VERBOSE);
-	return (g_strcmp0 (env, "1") == 0);
+	//return (g_strcmp0 (env, "1") == 0);
+	return TRUE;
 }
 
 /**

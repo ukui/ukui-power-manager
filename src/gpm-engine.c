@@ -1304,9 +1304,9 @@ gpm_engine_init (GpmEngine *engine)
 	/* we can disable this if the time remaining is inaccurate or just plain wrong */
 	engine->priv->use_time_primary = g_settings_get_boolean (engine->priv->settings, GPM_SETTINGS_USE_TIME_POLICY);
 	if (engine->priv->use_time_primary)
-		//egg_debug ("Using per-time notification policy");
+		egg_debug ("Using per-time notification policy");
 	else
-		//egg_debug ("Using percentage notification policy");
+		egg_debug ("Using percentage notification policy");
 
 	idle_id = g_idle_add ((GSourceFunc) gpm_engine_coldplug_idle_cb, engine);
 	g_source_set_name_by_id (idle_id, "[GpmEngine] coldplug");

@@ -200,7 +200,7 @@ gpm_dpms_set_mode (GpmDpms *dpms, GpmDpmsMode mode, GError **error)
 	g_return_val_if_fail (GPM_IS_DPMS (dpms), FALSE);
 
 	if (mode == GPM_DPMS_MODE_UNKNOWN) {
-		egg_debug ("mode unknown");
+		//egg_debug ("mode unknown");
 		g_set_error (error, GPM_DPMS_ERROR, GPM_DPMS_ERROR_GENERAL,
 			     "Unknown DPMS mode");
 		return FALSE;

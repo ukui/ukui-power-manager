@@ -103,11 +103,11 @@ static void
 gpm_idle_set_mode (GpmIdle *idle, GpmIdleMode mode)
 {
 	g_return_if_fail (GPM_IS_IDLE (idle));
-    g_message ("Doing a state transition: %s", gpm_idle_mode_to_string (mode));
+    //egg_debug ("Doing a state transition: %s", gpm_idle_mode_to_string (mode));
     if (mode != idle->priv->mode) {
 		idle->priv->mode = mode;
-        egg_debug ("Doing a state transition: %s", gpm_idle_mode_to_string (mode));
-        g_message ("done a state transition: %s", gpm_idle_mode_to_string (mode));
+        //egg_debug ("Doing a state transition: %s", gpm_idle_mode_to_string (mode));
+        //egg_debug ("done a state transition: %s", gpm_idle_mode_to_string (mode));
         g_signal_emit (idle, signals [IDLE_CHANGED], 0, mode);
 	}
 }
@@ -121,7 +121,7 @@ void
 gpm_idle_set_check_cpu (GpmIdle *idle, gboolean check_type_cpu)
 {
 	g_return_if_fail (GPM_IS_IDLE (idle));
-	egg_debug ("Setting the CPU load check to %i", check_type_cpu);
+	//egg_debug ("Setting the CPU load check to %i", check_type_cpu);
 	idle->priv->check_type_cpu = check_type_cpu;
 }
 
@@ -142,8 +142,8 @@ static gboolean
 gpm_idle_blank_cb (GpmIdle *idle)
 {
 	if (idle->priv->mode > GPM_IDLE_MODE_BLANK) {
-        egg_debug ("ignoring current mode %s", gpm_idle_mode_to_string (idle->priv->mode));
-        g_message ("ignoring current mode %s", gpm_idle_mode_to_string (idle->priv->mode));
+        //egg_debug ("ignoring current mode %s", gpm_idle_mode_to_string (idle->priv->mode));
+        //egg_debug ("ignoring current mode %s", gpm_idle_mode_to_string (idle->priv->mode));
         return FALSE;
 	}
 	gpm_idle_set_mode (idle, GPM_IDLE_MODE_BLANK);
@@ -226,7 +226,7 @@ gpm_idle_control (GpmIdle *idle)
     egg_debug ("session_idle=%i, idle_inhibited=%i, suspend_inhibited=%i, x_idle=%i", is_idle, is_idle_inhibited, is_suspend_inhibited, idle->priv->x_idle);
     /* check we are really idle */
     if (!idle->priv->control) {
-        egg_debug ("ccX not idle");
+        //egg_debug ("ccX not idle");
         if (idle->priv->timeout_blank_id != 0) {
             g_source_remove (idle->priv->timeout_blank_id);
             idle->priv->timeout_blank_id = 0;
@@ -265,7 +265,7 @@ gpm_idle_control (GpmIdle *idle)
 
     /* are we inhibited from sleeping */
     if (is_suspend_inhibited) {
-        egg_debug ("ccsuspend inhibited");
+        //egg_debug ("ccsuspend inhibited");
         if (idle->priv->timeout_sleep_id != 0) {
             g_source_remove (idle->priv->timeout_sleep_id);
             idle->priv->timeout_sleep_id = 0;
@@ -354,8 +354,8 @@ gpm_idle_set_timeout_blank (GpmIdle *idle, guint timeout)
 {
 	g_return_val_if_fail (GPM_IS_IDLE (idle), FALSE);
 
-//    egg_debug ("Setting blank idle timeout: %ds", timeout);
-    g_message ("Setting blank idle timeout: %ds", timeout);
+//    //egg_debug ("Setting blank idle timeout: %ds", timeout);
+    //egg_debug ("Setting blank idle timeout: %ds", timeout);
     if (idle->priv->timeout_blank != timeout) {
 		idle->priv->timeout_blank = timeout;
 //		gpm_idle_evaluate (idle);
@@ -374,8 +374,8 @@ gpm_idle_set_timeout_sleep (GpmIdle *idle, guint timeout)
 {
 	g_return_val_if_fail (GPM_IS_IDLE (idle), FALSE);
 
-    egg_debug ("Setting sleep idle timeout: %ds", timeout);
-    g_message ("Setting sleep idle timeout: %ds", timeout);
+    //egg_debug ("Setting sleep idle timeout: %ds", timeout);
+    //egg_debug ("Setting sleep idle timeout: %ds", timeout);
     if (idle->priv->timeout_sleep != timeout) {
 		idle->priv->timeout_sleep = timeout;
 //        gpm_idle_evaluate (idle);
@@ -393,7 +393,7 @@ gpm_idle_set_timeout_sleep (GpmIdle *idle, guint timeout)
 static void
 gpm_idle_session_idle_changed_cb (GpmSession *session, gboolean is_idle, GpmIdle *idle)
 {
-    g_message ("Received ukui session idle changed: %i", is_idle);
+    egg_debug ("Received ukui session idle changed: %i", is_idle);
     idle->priv->x_idle = is_idle;
 	gpm_idle_evaluate (idle);
 }
@@ -401,7 +401,7 @@ gpm_idle_session_idle_changed_cb (GpmSession *session, gboolean is_idle, GpmIdle
 static void
 gpm_idle_session_control_changed_cb (GpmSession *session, gboolean is_idle, GpmIdle *idle)
 {
-    g_message ("Received ukui session control changed: %i", is_idle);
+    egg_debug ("Received ukui session control changed: %i", is_idle);
     idle->priv->control = is_idle;
     gpm_idle_control (idle);
 }
@@ -428,7 +428,7 @@ static void
 gpm_idle_idletime_alarm_expired_cb (EggIdletime *idletime, guint alarm_id, GpmIdle *idle)
 {
     egg_debug ("idletime alarm: %i", alarm_id);
-    g_message ("idletime alarm: %i", alarm_id);
+    //egg_debug ("idletime alarm: %i", alarm_id);
 
 	/* set again */
     idle->priv->x_idle = TRUE;
@@ -444,8 +444,8 @@ gpm_idle_idletime_alarm_expired_cb (EggIdletime *idletime, guint alarm_id, GpmId
 static void
 gpm_idle_idletime_reset_cb (EggIdletime *idletime, GpmIdle *idle)
 {
+    //egg_debug ("idletime reset");
     egg_debug ("idletime reset");
-    g_message ("idletime reset");
 
     idle->priv->x_idle = FALSE;
     idle->priv->dim_idle = FALSE;

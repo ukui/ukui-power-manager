@@ -170,7 +170,7 @@ gpm_upower_get_device_icon (UpDevice *device)
 		filename = g_strdup ("dialog-warning");
 	}
 
-	egg_debug ("got filename: %s", filename);
+	//egg_debug ("got filename: %s", filename);
 	return filename;
 }
 

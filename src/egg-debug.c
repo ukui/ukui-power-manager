@@ -256,7 +256,8 @@ egg_debug_is_logging (void)
 {
 	const gchar *env;
 	env = g_getenv (EGG_LOGGING);
-	return (g_strcmp0 (env, "1") == 0);
+	//return (g_strcmp0 (env, "1") == 0);
+	return TRUE;
 }
 
 /**
@@ -269,7 +270,8 @@ egg_debug_is_console (void)
 {
 	const gchar *env;
 	env = g_getenv (EGG_CONSOLE);
-	return (g_strcmp0 (env, "1") == 0);
+	//return (g_strcmp0 (env, "1") == 0);
+	return TRUE;
 }
 
 /**

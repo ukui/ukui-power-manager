@@ -199,7 +199,7 @@ gpm_backlight_brightness_interact_panel (GpmBacklight *backlight, gint *x, gint 
         }
 	else if(error != NULL)
 	{
-		g_message("failed to get position");
+		//egg_debug("failed to get position");
 		g_error_free (error);
 		*x = startx + w/100;
                 *y = starty + h*4/100;
@@ -209,7 +209,7 @@ gpm_backlight_brightness_interact_panel (GpmBacklight *backlight, gint *x, gint 
         height = g_dbus_proxy_call_sync (backlight->priv->proxy, "GetPanelHeight",NULL,G_DBUS_CALL_FLAGS_NONE,-1,NULL,&error);
         if(height == NULL)
         {
-                g_message("failed to get height");
+                //egg_debug("failed to get height");
                 g_error_free (error);
                 g_variant_unref (position);
                 *x = startx + w/100;
@@ -427,7 +427,7 @@ gpm_backlight_brightness_evaluate_and_set (GpmBacklight *backlight, gboolean int
 
 	/* reduce if on battery power if we should */
 	if (use_initial) {
-		egg_debug ("Setting initial brightness level");
+		//egg_debug ("Setting initial brightness level");
 		battery_reduce = g_settings_get_boolean (backlight->priv->settings, GPM_SETTINGS_BACKLIGHT_BATTERY_REDUCE);
 		if (on_battery && battery_reduce) {
 			value = g_settings_get_int (backlight->priv->settings, GPM_SETTINGS_BRIGHTNESS_DIM_BATT);
@@ -440,7 +440,7 @@ gpm_backlight_brightness_evaluate_and_set (GpmBacklight *backlight, gboolean int
 		} else {
 			scale = 1.0f;
 		}
-		egg_debug ("2. battery scale %f, brightness %f", scale, brightness);
+		//egg_debug ("2. battery scale %f, brightness %f", scale, brightness);
 	}
 
 	/* reduce if system is momentarily idle */
@@ -459,7 +459,7 @@ gpm_backlight_brightness_evaluate_and_set (GpmBacklight *backlight, gboolean int
 	} else {
 		scale = 1.0f;
 	}
-	egg_debug ("3. idle scale %f, brightness %f", scale, brightness);
+	//egg_debug ("3. idle scale %f, brightness %f", scale, brightness);
 
 	/* convert to percentage */
 	value = (guint) ((brightness * 100.0f) + 0.5);
@@ -467,7 +467,7 @@ gpm_backlight_brightness_evaluate_and_set (GpmBacklight *backlight, gboolean int
 	/* only do stuff if the brightness is different */
 	gpm_brightness_get (backlight->priv->brightness, &old_value);
 	if (old_value == value) {
-		egg_debug ("values are the same, no action");
+		//egg_debug ("values are the same, no action");
 		return FALSE;
 	}
 
@@ -482,7 +482,7 @@ gpm_backlight_brightness_evaluate_and_set (GpmBacklight *backlight, gboolean int
 	ret = gpm_brightness_set (backlight->priv->brightness, value, &hw_changed);
 	/* we emit a signal for the brightness applet */
 	if (ret && hw_changed) {
-		egg_debug ("emitting brightness-changed : %i", value);
+		//egg_debug ("emitting brightness-changed : %i", value);
 		g_signal_emit (backlight, signals [BRIGHTNESS_CHANGED], 0, value);
 	}
 	return TRUE;
@@ -579,14 +579,14 @@ gpm_backlight_button_pressed_cb (GpmButton *button, const gchar *type, GpmBackli
 			/* if using AC power supply, save the new brightness settings */
 //			g_object_get (backlight->priv->client, "on-battery", &on_battery, NULL);
 //			if (!on_battery) {
-//				egg_debug ("saving brightness for ac supply: %i", percentage);
+//				//egg_debug ("saving brightness for ac supply: %i", percentage);
 //				g_settings_set_double (backlight->priv->settings, GPM_SETTINGS_BRIGHTNESS_AC,
 //						       percentage*1.0);
 //			}
 		}
 		/* we emit a signal for the brightness applet */
 		if (ret && hw_changed) {
-			egg_debug ("emitting brightness-changed : %i", percentage);
+			//egg_debug ("emitting brightness-changed : %i", percentage);
 			g_signal_emit (backlight, signals [BRIGHTNESS_CHANGED], 0, percentage);
 		}
 	} else if (g_strcmp0 (type, GPM_BUTTON_BRIGHT_DOWN) == 0) {
@@ -608,14 +608,14 @@ gpm_backlight_button_pressed_cb (GpmButton *button, const gchar *type, GpmBackli
 			/* if using AC power supply, save the new brightness settings */
 //			g_object_get (backlight->priv->client, "on-battery", &on_battery, NULL);
 //			if (!on_battery) {
-//				egg_debug ("saving brightness for ac supply: %i", percentage);
+//				//egg_debug ("saving brightness for ac supply: %i", percentage);
 //				g_settings_set_double (backlight->priv->settings, GPM_SETTINGS_BRIGHTNESS_AC,
 //						       percentage*1.0);
 //			}
 		}
 		/* we emit a signal for the brightness applet */
 		if (ret && hw_changed) {
-			egg_debug ("emitting brightness-changed : %i", percentage);
+			//egg_debug ("emitting brightness-changed : %i", percentage);
 			g_signal_emit (backlight, signals [BRIGHTNESS_CHANGED], 0, percentage);
 		}
 	} else if (g_strcmp0 (type, GPM_BUTTON_LID_OPEN) == 0) {
@@ -641,7 +641,7 @@ gpm_backlight_notify_system_idle_changed (GpmBacklight *backlight, gboolean is_i
 
 	/* no point continuing */
 	if (backlight->priv->system_is_idle == is_idle) {
-		egg_debug ("state not changed");
+		//egg_debug ("state not changed");
 		return FALSE;
 	}
 
@@ -650,13 +650,13 @@ gpm_backlight_notify_system_idle_changed (GpmBacklight *backlight, gboolean is_i
 	g_timer_reset (backlight->priv->idle_timer);
 
 	if (is_idle == FALSE) {
-		egg_debug ("we have just been idle for %lfs", elapsed);
+		//egg_debug ("we have just been idle for %lfs", elapsed);
 		gpm_idle_set_timeout_dim (backlight->priv->idle, backlight->priv->idle_dim_timeout);
 		/* The user immediatly undimmed the screen!
 		 * We should double the timeout to avoid this happening again */
 		/*if (elapsed < 10) {
 			backlight->priv->idle_dim_timeout *= 2.0;
-			egg_debug ("increasing idle dim time to %is", backlight->priv->idle_dim_timeout);
+			//egg_debug ("increasing idle dim time to %is", backlight->priv->idle_dim_timeout);
 			gpm_idle_set_timeout_dim (backlight->priv->idle, backlight->priv->idle_dim_timeout);
 		}*/
 
@@ -666,14 +666,14 @@ gpm_backlight_notify_system_idle_changed (GpmBacklight *backlight, gboolean is_i
 			backlight->priv->idle_dim_timeout =
 				g_settings_get_int (backlight->priv->settings,
 					   GPM_SETTINGS_IDLE_DIM_TIME);
-			egg_debug ("resetting idle dim time to %is", backlight->priv->idle_dim_timeout);
+			//egg_debug ("resetting idle dim time to %is", backlight->priv->idle_dim_timeout);
 			gpm_idle_set_timeout_dim (backlight->priv->idle, backlight->priv->idle_dim_timeout);
 		}*/
 	} else {
 		egg_debug ("we were active for %lfs", elapsed);
 	}
 
-	egg_debug ("changing powersave idle status to %i", is_idle);
+	//egg_debug ("changing powersave idle status to %i", is_idle);
 	backlight->priv->system_is_idle = is_idle;
 	return TRUE;
 }
@@ -703,7 +703,7 @@ idle_changed_cb (GpmIdle *idle, GpmIdleMode mode, GpmBacklight *backlight)
 
 	/* don't dim or undim the screen unless ConsoleKit/systemd say we are on the active console */
         if (!LOGIND_RUNNING()) {//if (!LOGIND_RUNNING() && !egg_console_kit_is_active (backlight->priv->console)) {
-		egg_debug ("ignoring as not on active console");
+		//egg_debug ("ignoring as not on active console");
 		return;
 	}
 
@@ -943,7 +943,7 @@ gpm_backlight_init (GpmBacklight *backlight)
 	if(backlight->priv->proxy == NULL)
 	{
 		if(error != NULL){
-			egg_debug ("error connecting to dbus - %s",error->message);
+			//egg_debug ("error connecting to dbus - %s",error->message);
 			g_error_free (error);
 		}
 	}

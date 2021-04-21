@@ -32,7 +32,7 @@ AM_CPPFLAGS =						\
 	-DGPM_DATA=\"$(pkgdatadir)\"			\
 	-DGTKBUILDERDIR=\"$(pkgdatadir)\"		\
 	-DUP_DISABLE_DEPRECATED			\
-	-DEGG_LOG_FILE=\""/tmp/gpm.log"\"		\
+	-DEGG_LOG_FILE=\""/tmp/ukui-power-manager.log"\"		\
 	-DEGG_VERBOSE="\"GPM_VERBOSE\""			\
 	-DEGG_LOGGING="\"GPM_LOGGING\""			\
 	-DEGG_CONSOLE="\"GPM_CONSOLE\""			\

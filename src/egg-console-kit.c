@@ -398,7 +398,7 @@ egg_console_kit_active_changed_cb (GDBusProxy *proxy, gchar *sender_name, gchar 
 	gboolean active;
         if(g_strcmp0(signal_name,"ActiveChanged") == 0) {
 	        g_variant_get (parameters,"(b)",&active);
-        	egg_debug ("emitting active: %i", active);
+        	//egg_debug ("emitting active: %i", active);
 		g_signal_emit (console, signals [EGG_CONSOLE_KIT_ACTIVE_CHANGED], 0, active);
 	
         }
@@ -470,7 +470,7 @@ egg_console_kit_init (EggConsoleKit *console)
 	}
 	g_variant_get (u_cookie, "(o)", &console->priv->session_id);
 
-	egg_debug ("ConsoleKit session ID: %s", console->priv->session_id);
+	//egg_debug ("ConsoleKit session ID: %s", console->priv->session_id);
 
 	
 

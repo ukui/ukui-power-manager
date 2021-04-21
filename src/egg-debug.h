@@ -19,8 +19,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-#ifndef __EGG_DEBUG_H
-#define __EGG_DEBUG_H
+#ifndef __egg_debug_H
+#define __egg_debug_H
 
 #include <stdarg.h>
 #include <glib.h>
@@ -80,4 +80,4 @@ void		egg_error_real			(const gchar	*func,
 
 G_END_DECLS
 
-#endif /* __EGG_DEBUG_H */
+#endif /* __egg_debug_H */

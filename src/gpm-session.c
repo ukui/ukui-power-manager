@@ -163,7 +163,7 @@ gpm_session_presence_status_changed_cb (GDBusProxy *proxy, gchar *sender_name, g
 	if(g_strcmp0(signal_name,"StatusChanged") == 0)
 	{
 		g_variant_get (parameters,"(u)",&status);
-        g_message ("status======%d",status);//530
+        //egg_debug ("status======%d",status);//530
 		gboolean is_idle;
         gboolean control;
         if (status == GPM_SESSION_STATUS_ENUM_IDLE)
@@ -171,8 +171,8 @@ gpm_session_presence_status_changed_cb (GDBusProxy *proxy, gchar *sender_name, g
             is_idle = TRUE;
 //		if (is_idle != session->priv->is_idle_old) {
 
-            g_message ("emitting idle-changed : (%i)", is_idle);
-            egg_debug ("emitting idle-changed : (%i)", is_idle);
+            //egg_debug ("emitting idle-changed : (%i)", is_idle);
+            //egg_debug ("emitting idle-changed : (%i)", is_idle);
 //            session->priv->is_lock = (status == GPM_SESSION_STATUS_ENUM_IDLE);
             session->priv->is_idle_old = is_idle;
             g_signal_emit (session, signals [IDLE_CHANGED], 0, is_idle);
@@ -182,8 +182,8 @@ gpm_session_presence_status_changed_cb (GDBusProxy *proxy, gchar *sender_name, g
             is_idle = FALSE;
 //		if (is_idle != session->priv->is_idle_old) {
 
-            g_message ("emitting idle-changed : (%i)", is_idle);
-            egg_debug ("emitting idle-changed : (%i)", is_idle);
+            //egg_debug ("emitting idle-changed : (%i)", is_idle);
+            //egg_debug ("emitting idle-changed : (%i)", is_idle);
 //            session->priv->is_lock = (status == GPM_SESSION_STATUS_ENUM_IDLE);
             session->priv->is_idle_old = is_idle;
             g_signal_emit (session, signals [IDLE_CHANGED], 0, is_idle);
@@ -237,7 +237,7 @@ gpm_session_is_idle (GpmSession *session)
         g_variant_get (u_cookie, "(u)", &tmp);
         g_variant_unref (u_cookie);
 
-	//g_message ("is idle============= %d",tmp);
+	////egg_debug ("is idle============= %d",tmp);
 	/* find out if this change altered the inhibited state */
 	/*ret = dbus_g_proxy_call (session->priv->proxy_prop, "Get", &error,
 				 G_TYPE_STRING, GPM_SESSION_MANAGER_PRESENCE_INTERFACE,
@@ -355,7 +355,7 @@ out:
 static void
 gpm_session_stop_cb (GDBusProxy *proxy, gchar *sender_name, gchar * signal_name, GVariant *parameters, gpointer user_data)
 {
-	egg_debug ("emitting ::stop()");
+	//egg_debug ("emitting ::stop()");
 	GpmSession *session = GPM_SESSION(user_data);
 	if(g_strcmp0(signal_name,"Stop") == 0) {
 		g_signal_emit (session, signals [STOP], 0);
@@ -371,7 +371,7 @@ gpm_session_query_end_session_cb (GDBusProxy *proxy, gchar *sender_name, gchar *
 	GpmSession *session = GPM_SESSION(user_data);
 	guint flags;
 	g_variant_get (parameters,"(u)",&flags);
-	egg_debug ("emitting ::query-end-session(%i)", flags);
+	//egg_debug ("emitting ::query-end-session(%i)", flags);
         if(g_strcmp0(signal_name,"QueryEndSession") == 0) {
 		g_signal_emit (session, signals [QUERY_END_SESSION], 0, flags);
         }
@@ -386,7 +386,7 @@ gpm_session_end_session_cb (GDBusProxy *proxy, gchar *sender_name, gchar * signa
         GpmSession *session = GPM_SESSION(user_data);
         guint flags;
         g_variant_get (parameters,"(u)",&flags);
-	egg_debug ("emitting ::end-session(%i)", flags);
+	//egg_debug ("emitting ::end-session(%i)", flags);
         if(g_strcmp0(signal_name,"EndSession") == 0) {
                 g_signal_emit (session, signals [END_SESSION], 0, flags);
         }
@@ -454,7 +454,7 @@ gpm_session_register_client (GpmSession *session, const gchar *app_id, const gch
 	/* no ukui-session */
 	if (session->priv->proxy == NULL) {
 		egg_warning ("no ukui-session");
-		g_message ("no ukui-session");
+		//egg_debug ("no ukui-session");
 		goto out;
 	}
 
@@ -480,7 +480,7 @@ gpm_session_register_client (GpmSession *session, const gchar *app_id, const gch
 
         if (u_cookie == NULL)
         {
-		egg_debug ("RegisterClient Wrong");
+		//egg_debug ("RegisterClient Wrong");
                 g_error_free (error);
                 return FALSE;
         }
@@ -519,8 +519,8 @@ gpm_session_register_client (GpmSession *session, const gchar *app_id, const gch
 	/* get EndSession */
 
 	g_signal_connect (session->priv->proxy_client_private, "EndSession", G_CALLBACK (gpm_session_end_session_cb), session);
-	//egg_debug ("registered startup '%s' to client id '%s'", client_startup_id, client_id);
-	//g_message ("registered startup '%s' to client id '%s'", client_startup_id, client_id);
+	////egg_debug ("registered startup '%s' to client id '%s'", client_startup_id, client_id);
+	////egg_debug ("registered startup '%s' to client id '%s'", client_startup_id, client_id);
 out:
 	if (client_id)
 		g_free (client_id);
@@ -541,7 +541,7 @@ gpm_session_inhibit_changed_cb (GDBusProxy *proxy, gchar *sender_name, gchar * s
 		is_idle_inhibited = gpm_session_is_idle_inhibited (session);
 		is_suspend_inhibited = gpm_session_is_suspend_inhibited (session);
 		if (is_idle_inhibited != session->priv->is_idle_inhibited_old || is_suspend_inhibited != session->priv->is_suspend_inhibited_old) {
-			egg_debug ("emitting inhibited-changed : idle=(%i), suspend=(%i)", is_idle_inhibited, is_suspend_inhibited);
+			//egg_debug ("emitting inhibited-changed : idle=(%i), suspend=(%i)", is_idle_inhibited, is_suspend_inhibited);
 			session->priv->is_idle_inhibited_old = is_idle_inhibited;
 			session->priv->is_suspend_inhibited_old = is_suspend_inhibited;
 			g_signal_emit (session, signals [INHIBITED_CHANGED], 0, is_idle_inhibited, is_suspend_inhibited);
@@ -694,7 +694,7 @@ gpm_session_init (GpmSession *session)
 	session->priv->is_idle_inhibited_old = gpm_session_is_idle_inhibited (session);
 	session->priv->is_suspend_inhibited_old = gpm_session_is_suspend_inhibited (session);
 	session->priv->is_idle_old = gpm_session_is_idle (session);
-	egg_debug ("idle: %i, idle_inhibited: %i, suspend_inhibited: %i", session->priv->is_idle_old, session->priv->is_idle_inhibited_old, session->priv->is_suspend_inhibited_old);
+	//egg_debug ("idle: %i, idle_inhibited: %i, suspend_inhibited: %i", session->priv->is_idle_old, session->priv->is_idle_inhibited_old, session->priv->is_suspend_inhibited_old);
 }
 
 /**

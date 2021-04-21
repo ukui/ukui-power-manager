@@ -139,7 +139,7 @@ gpm_tray_icon_set_icon (GpmTrayIcon *icon, const gchar *icon_name)
 	g_return_val_if_fail (GPM_IS_TRAY_ICON (icon), FALSE);
 
 	if (icon_name != NULL) {
-		egg_debug ("Setting icon to %s", icon_name);
+		//egg_debug ("Setting icon to %s", icon_name);
 		gtk_status_icon_set_from_icon_name (icon->priv->status_icon,
 		                                    icon_name);
 
@@ -147,7 +147,7 @@ gpm_tray_icon_set_icon (GpmTrayIcon *icon, const gchar *icon_name)
 		gpm_tray_icon_show (icon, FALSE);
 	} else {
 		/* remove icon */
-		egg_debug ("no icon will be displayed");
+		//egg_debug ("no icon will be displayed");
 
 		/* make sure that we are hidden */
 		gpm_tray_icon_show (icon, FALSE);
@@ -209,7 +209,7 @@ gpm_tray_icon_power_policy (gint mode) {
     GDBusProxy *proxy;
     GVariant *res = NULL;
 
-    egg_debug ("Requesting power policy");
+    //egg_debug ("Requesting power policy");
     proxy = g_dbus_proxy_new_for_bus_sync (G_BUS_TYPE_SYSTEM,
                            G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES,
                            NULL,
@@ -220,7 +220,7 @@ gpm_tray_icon_power_policy (gint mode) {
                            &error );
     //append all our arguments
     if (proxy == NULL) {
-        egg_debug("Error connecting to dbus - %s", error->message);
+        //egg_debug("Error connecting to dbus - %s", error->message);
         g_error_free (error);
         return FALSE;
     }
@@ -233,7 +233,7 @@ gpm_tray_icon_power_policy (gint mode) {
                       &error
                       );
     if (error != NULL) {
-        egg_debug ("Error in dbus - %s", error->message);
+        //egg_debug ("Error in dbus - %s", error->message);
         g_error_free (error);
         return FALSE;
     }
@@ -262,7 +262,7 @@ gpm_tray_icon_policy_enable_auto (GpmTrayIcon *icon, gboolean enable) {
                       &error
                       );
     if (error != NULL) {
-        egg_debug ("Error in dbus - %s", error->message);
+        //egg_debug ("Error in dbus - %s", error->message);
         g_error_free (error);
         return FALSE;
     }
@@ -287,7 +287,7 @@ gpm_tray_icon_power_mode_restore (GpmTrayIcon *icon, gint mode) {
                       &error
                       );
     if (error != NULL) {
-        egg_debug ("Error in dbus - %s", error->message);
+        //egg_debug ("Error in dbus - %s", error->message);
         g_error_free (error);
         return FALSE;
     }
@@ -454,7 +454,7 @@ gpm_tray_icon_add_device (GpmTrayIcon *icon, GtkMenu *menu, const GPtrArray *arr
 			continue;
 
 		object_path = up_device_get_object_path (device);
-		egg_debug ("adding device %s", object_path);
+		//egg_debug ("adding device %s", object_path);
 		added++;
 
 		/* generate the label */
@@ -516,7 +516,7 @@ gpm_tray_icon_add_device_ukui (GpmTrayIcon *icon, GtkWidget *vbox, const GPtrArr
             continue;
 
         object_path = up_device_get_object_path (device);
-        egg_debug ("adding device %s", object_path);
+        //egg_debug ("adding device %s", object_path);
         //g_printf("####adding device %s\n", object_path);///org/freedesktop/UPower/devices/battery_BAT1
         added++;
 
@@ -650,7 +650,7 @@ static char* gpm_tray_caculate_theme (GtkWidget *widget)
         sprintf(color_hex_blue,"%x",color.blue/257);
     }
     sprintf(color_hex,"\#%s%s%s",color_hex_red,color_hex_green,color_hex_blue);
-//    g_message("colorhex:%s----------------",color_hex);
+//    //egg_debug("colorhex:%s----------------",color_hex);
     char *script =             "* {"
                                "color: #f2f2f2;"
                                "background-color: #283138;"
@@ -790,7 +790,7 @@ static void
 gpm_tray_icon_popup_cleared_cd (GtkWidget *widget, GpmTrayIcon *icon)
 {
 	g_return_if_fail (GPM_IS_TRAY_ICON (icon));
-	egg_debug ("clear tray");
+	//egg_debug ("clear tray");
 	g_object_ref_sink (widget);
 	g_object_unref (widget);
 }
@@ -825,7 +825,7 @@ gpm_tray_icon_popup_menu (GpmTrayIcon *icon, guint32 timestamp)
 static void
 gpm_tray_icon_popup_menu_cb (GtkStatusIcon *status_icon, guint button, guint32 timestamp, GpmTrayIcon *icon)
 {
-	egg_debug ("icon right clicked");
+	//egg_debug ("icon right clicked");
 
         gpm_tray_icon_popup_menu (icon, timestamp);
         //kobe
@@ -1027,7 +1027,7 @@ gpm_tray_icon_on_power_policy_signal (GDBusProxy *proxy,
        else if(value == MODE_SAVE)
            gpm_set_brightness_for_different_mode (icon,0);
 
-       //g_message ("signal==========%d+%d",mode_choice,value);
+       ////egg_debug ("signal==========%d+%d",mode_choice,value);
        g_settings_set_int (icon->priv->settings, GPM_SETTINGS_MODE_POLICY,value);
        return;
    }
@@ -1066,7 +1066,7 @@ void draw_border (GtkWidget *w, cairo_t *cr, cairo_surface_t *user_data)
 static void
 gpm_tray_icon_activate_cb (GtkStatusIcon *status_icon, GpmTrayIcon *icon)
 {
-	egg_debug ("icon left clicked");
+	//egg_debug ("icon left clicked");
         gpm_tray_icon_popup_menu (icon, gtk_get_current_event_time());
 
         //kobe

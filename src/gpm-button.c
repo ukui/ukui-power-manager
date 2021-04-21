@@ -74,7 +74,7 @@ gpm_button_emit_type (GpmButton *button, const gchar *type)
 	/* did we just have this button before the timeout? */
 	if (g_strcmp0 (type, button->priv->last_button) == 0 &&
 	    g_timer_elapsed (button->priv->timer, NULL) < GPM_BUTTON_DUPLICATE_TIMEOUT) {
-		egg_debug ("ignoring duplicate button %s", type);
+		//egg_debug ("ignoring duplicate button %s", type);
 		return FALSE;
 	}
 
@@ -112,7 +112,7 @@ gpm_button_filter_x_events (GdkXEvent *xevent, GdkEvent *event, gpointer data)
 
 	/* found anything? */
 	if (key == NULL) {
-		egg_debug ("Key %i not found in hash", keycode);
+		//egg_debug ("Key %i not found in hash", keycode);
 		/* pass normal keypresses on, which might help with accessibility access */
 		return GDK_FILTER_CONTINUE;
 	}

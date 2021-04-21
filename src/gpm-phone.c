@@ -143,11 +143,11 @@ gpm_phone_battery_state_changed (DBusGProxy *proxy, guint idx, guint percentage,
 {
 	g_return_if_fail (GPM_IS_PHONE (phone));
 
-	egg_debug ("got BatteryStateChanged %i = %i (%i)", idx, percentage, on_ac);
+	//egg_debug ("got BatteryStateChanged %i = %i (%i)", idx, percentage, on_ac);
 	phone->priv->percentage = percentage;
 	phone->priv->onac = on_ac;
 	phone->priv->present = TRUE;
-	egg_debug ("emitting device-refresh : (%i)", idx);
+	//egg_debug ("emitting device-refresh : (%i)", idx);
 	g_signal_emit (phone, signals [DEVICE_REFRESH], 0, idx);
 }
 
@@ -158,7 +158,7 @@ gpm_phone_num_batteries_changed (DBusGProxy *proxy, guint number, GpmPhone *phon
 {
 	g_return_if_fail (GPM_IS_PHONE (phone));
 
-	egg_debug ("got NumberBatteriesChanged %i", number);
+	//egg_debug ("got NumberBatteriesChanged %i", number);
 	if (number > 1) {
 		egg_warning ("number not 0 or 1, not valid!");
 		return;
@@ -169,7 +169,7 @@ gpm_phone_num_batteries_changed (DBusGProxy *proxy, guint number, GpmPhone *phon
 		phone->priv->present = FALSE;
 		phone->priv->percentage = 0;
 		phone->priv->onac = FALSE;
-		egg_debug ("emitting device-removed : (%i)", 0);
+		//egg_debug ("emitting device-removed : (%i)", 0);
 		g_signal_emit (phone, signals [DEVICE_REMOVED], 0, 0);
 		return;
 	}
@@ -183,7 +183,7 @@ gpm_phone_num_batteries_changed (DBusGProxy *proxy, guint number, GpmPhone *phon
 	phone->priv->present = TRUE;
 	phone->priv->percentage = 0;
 	phone->priv->onac = FALSE;
-	egg_debug ("emitting device-added : (%i)", 0);
+	//egg_debug ("emitting device-added : (%i)", 0);
 	g_signal_emit (phone, signals [DEVICE_ADDED], 0, 0);
 }
 
@@ -236,7 +236,7 @@ gpm_phone_service_appeared_cb (GDBusConnection *connection,
 	g_return_if_fail (GPM_IS_PHONE (phone));
 
 	if (phone->priv->connection == NULL) {
-		egg_debug ("get connection");
+		//egg_debug ("get connection");
 		g_clear_error (&error);
 		phone->priv->connection = dbus_g_bus_get (DBUS_BUS_SESSION, &error);
 		if (error != NULL) {
@@ -247,7 +247,7 @@ gpm_phone_service_appeared_cb (GDBusConnection *connection,
 		}
 	}
 	if (phone->priv->proxy == NULL) {
-		egg_debug ("get proxy");
+		//egg_debug ("get proxy");
 		g_clear_error (&error);
 		phone->priv->proxy = dbus_g_proxy_new_for_name_owner (phone->priv->connection,
 							 UKUI_PHONE_MANAGER_DBUS_SERVICE,
@@ -294,13 +294,13 @@ gpm_phone_service_vanished_cb (GDBusConnection *connection,
 	g_return_if_fail (GPM_IS_PHONE (phone));
 
 	if (phone->priv->proxy != NULL) {
-		egg_debug ("removing proxy");
+		//egg_debug ("removing proxy");
 		g_object_unref (phone->priv->proxy);
 		phone->priv->proxy = NULL;
 		if (phone->priv->present) {
 			phone->priv->present = FALSE;
 			phone->priv->percentage = 0;
-			egg_debug ("emitting device-removed : (%i)", 0);
+			//egg_debug ("emitting device-removed : (%i)", 0);
 			g_signal_emit (phone, signals [DEVICE_REMOVED], 0, 0);
 		}
 	}

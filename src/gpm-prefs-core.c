@@ -126,7 +126,7 @@ gpm_prefs_activate_window (GtkApplication *app, GpmPrefs *prefs)
 static void
 gpm_prefs_help_cb (GtkWidget *widget, GpmPrefs *prefs)
 {
-	egg_debug ("emitting action-help");
+	//egg_debug ("emitting action-help");
 	g_signal_emit (prefs, signals [ACTION_HELP], 0);
 }
 
@@ -190,7 +190,7 @@ gpm_prefs_action_time_changed_cb (GtkWidget *widget, GpmPrefs *prefs)
 	active = gtk_combo_box_get_active (GTK_COMBO_BOX (widget));
 	value = values[active];
 
-	egg_debug ("Changing %s to %i", gpm_pref_key, value);
+	//egg_debug ("Changing %s to %i", gpm_pref_key, value);
 	g_settings_set_int (prefs->priv->settings, gpm_pref_key, value);
 }
 
@@ -237,14 +237,14 @@ gpm_prefs_setup_action_combo (GpmPrefs *prefs, const gchar *widget_name,
 	for (i=0; actions[i] != -1; i++) {
 		policy = actions[i];
 		if (policy == GPM_ACTION_POLICY_SHUTDOWN && !prefs->priv->can_shutdown) {
-			egg_debug ("Cannot add option, as cannot shutdown.");
+			//egg_debug ("Cannot add option, as cannot shutdown.");
 		} else if (policy == GPM_ACTION_POLICY_SHUTDOWN && prefs->priv->can_shutdown) {
 			gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT (widget), _("Shutdown"));
 			g_ptr_array_add(array, GINT_TO_POINTER (policy));
 		} else if (policy == GPM_ACTION_POLICY_SUSPEND && !prefs->priv->can_suspend) {
-			egg_debug ("Cannot add option, as cannot suspend.");
+			//egg_debug ("Cannot add option, as cannot suspend.");
 		} else if (policy == GPM_ACTION_POLICY_HIBERNATE && !prefs->priv->can_hibernate) {
-			egg_debug ("Cannot add option, as cannot hibernate.");
+			//egg_debug ("Cannot add option, as cannot hibernate.");
 		} else if (policy == GPM_ACTION_POLICY_SUSPEND && prefs->priv->can_suspend) {
 			gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT (widget), _("Suspend"));
 			g_ptr_array_add (array, GINT_TO_POINTER (policy));
@@ -339,7 +339,7 @@ gpm_prefs_setup_time_combo (GpmPrefs *prefs, const gchar *widget_name,
 static void
 gpm_prefs_close_cb (GtkWidget *widget, GpmPrefs *prefs)
 {
-	egg_debug ("emitting action-close");
+	//egg_debug ("emitting action-close");
 	g_signal_emit (prefs, signals [ACTION_CLOSE], 0);
 }
 

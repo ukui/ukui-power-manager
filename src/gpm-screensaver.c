@@ -67,7 +67,7 @@ gpm_screensaver_lock (GpmScreensaver *screensaver)
 		return FALSE;
 	}
 
-//	egg_debug ("doing mate-screensaver lock");
+//	//egg_debug ("doing mate-screensaver lock");
 	/*dbus_g_proxy_call_no_reply (screensaver->priv->proxy,
 				    "Lock", G_TYPE_INVALID);*/
         g_dbus_proxy_call (screensaver->priv->proxy,
@@ -89,7 +89,7 @@ gpm_screensaver_lock (GpmScreensaver *screensaver)
 		/* Sleep for 1/10s */
 		g_usleep (1000 * 100);
 		if (sleepcount++ > 30) {
-//			egg_debug ("timeout waiting for ukui-screensaver");
+//			//egg_debug ("timeout waiting for ukui-screensaver");
 			break;
 		}
 	}
@@ -135,7 +135,7 @@ gpm_screensaver_add_throttle (GpmScreensaver *screensaver,
 		egg_warning ("Throttle failed!");
 		return 0;
 	}
-	egg_debug ("adding throttle reason: '%s': id %u", reason, cookie);*/
+	//egg_debug ("adding throttle reason: '%s': id %u", reason, cookie);*/
 
         u_cookie = g_dbus_proxy_call_sync (screensaver->priv->proxy,
                            "Throttle",
@@ -171,14 +171,14 @@ gpm_screensaver_remove_throttle (GpmScreensaver *screensaver, guint cookie)
 		return FALSE;
 	}
 
-	/*egg_debug ("removing throttle: id %u", cookie);
+	/*//egg_debug ("removing throttle: id %u", cookie);
 	ret = dbus_g_proxy_call (screensaver->priv->proxy,
 				 "UnThrottle", &error,
 				 G_TYPE_UINT, cookie,
 				 G_TYPE_INVALID,
 				 G_TYPE_INVALID);
 	if (error) {
-		egg_debug ("ERROR: %s", error->message);
+		//egg_debug ("ERROR: %s", error->message);
 		g_error_free (error);
 	}
 	if (!ret) {
@@ -248,7 +248,7 @@ gpm_screensaver_check_running (GpmScreensaver *screensaver)
 
 	g_variant_get (b_state, "(b)", &ret);
 	g_variant_unref (b_state);
-	g_message ("GetLockState[%d]",ret);
+	//egg_debug ("GetLockState[%d]",ret);
 	return ret;
 }
 
@@ -273,7 +273,7 @@ gpm_screensaver_poke (GpmScreensaver *screensaver)
 		return FALSE;
 	}
 
-	egg_debug ("poke");
+	//egg_debug ("poke");
 	/*dbus_g_proxy_call_no_reply (screensaver->priv->proxy,
 				    "SimulateUserActivity",
 				    G_TYPE_INVALID);*/

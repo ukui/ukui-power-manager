@@ -77,7 +77,7 @@ gpm_object_register (DBusGConnection *connection,
 				 G_TYPE_UINT, &request_name_result,
 				 G_TYPE_INVALID);
 	if (error) {
-		egg_debug ("ERROR: %s", error->message);
+		//egg_debug ("ERROR: %s", error->message);
 		g_error_free (error);
 	}
 	if (!ret) {
@@ -203,9 +203,9 @@ main (int argc, char *argv[])
 //	dbus_g_thread_init ();
 
 	gtk_init (&argc, &argv);
-	egg_debug_init (verbose);
+	//egg_debug_init (verbose);
 
-	egg_debug ("UKUI %s %s", GPM_NAME, VERSION);
+	//egg_debug ("UKUI %s %s", GPM_NAME, VERSION);
 
 	/* check dbus connections, exit if not valid */
 /*	system_connection = dbus_g_bus_get (DBUS_BUS_SYSTEM, &error);
@@ -234,7 +234,7 @@ main (int argc, char *argv[])
 
 	loop = g_main_loop_new (NULL, FALSE);
 
-	//g_message("start--------------");
+	////egg_debug("start--------------");
 	/* optionally register with the session */
 	session = gpm_session_new ();
 	g_signal_connect (session, "stop", G_CALLBACK (gpm_main_stop_cb), loop);
@@ -258,10 +258,10 @@ main (int argc, char *argv[])
 				    DBUS_NAME_FLAG_REPLACE_EXISTING, NULL);
 	switch (ret) {
 	case DBUS_REQUEST_NAME_REPLY_PRIMARY_OWNER:
-		egg_debug ("Successfully acquired interface org.freedesktop.Policy.Power.");
+		//egg_debug ("Successfully acquired interface org.freedesktop.Policy.Power.");
 		break;
 	case DBUS_REQUEST_NAME_REPLY_IN_QUEUE:
-		egg_debug ("Queued for interface org.freedesktop.Policy.Power.");
+		//egg_debug ("Queued for interface org.freedesktop.Policy.Power.");
 		break;
 	default:
 		break;

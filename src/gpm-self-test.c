@@ -52,7 +52,7 @@ main (int argc, char **argv)
 	EggTest *test;
 
 	test = egg_test_init ();
-	egg_debug_init (TRUE);
+	//egg_debug_init (TRUE);
 
 	/* needed for DPMS checks */
 	gtk_init (&argc, &argv);

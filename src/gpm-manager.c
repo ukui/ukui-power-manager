@@ -206,7 +206,7 @@ gpm_manager_play_loop_start (GpmManager *manager, GpmManagerSound action, gboole
 
 	ret = g_settings_get_boolean (manager->priv->settings, GPM_SETTINGS_ENABLE_SOUND);
 	if (!ret && !force) {
-		egg_debug ("ignoring sound due to policy");
+		//egg_debug ("ignoring sound due to policy");
 		return FALSE;
 	}
 
@@ -269,7 +269,7 @@ gpm_manager_play (GpmManager *manager, GpmManagerSound action, gboolean force)
 
 	ret = g_settings_get_boolean (manager->priv->settings, GPM_SETTINGS_ENABLE_SOUND);
 	if (!ret && !force) {
-		egg_debug ("ignoring sound due to policy");
+		//egg_debug ("ignoring sound due to policy");
 		return FALSE;
 	}
 
@@ -401,7 +401,7 @@ gpm_manager_blank_screen (GpmManager *manager, GError **noerror)
 	}
 	gpm_dpms_set_mode (manager->priv->dpms, GPM_DPMS_MODE_OFF, &error);
 	if (error) {
-		egg_debug ("Unable to set DPMS mode: %s", error->message);
+		//egg_debug ("Unable to set DPMS mode: %s", error->message);
 		g_error_free (error);
 		ret = FALSE;
 	}
@@ -425,7 +425,7 @@ gpm_manager_unblank_screen (GpmManager *manager, GError **noerror)
 
 	gpm_dpms_set_mode (manager->priv->dpms, GPM_DPMS_MODE_ON, &error);
 	if (error) {
-		egg_debug ("Unable to set DPMS mode: %s", error->message);
+		//egg_debug ("Unable to set DPMS mode: %s", error->message);
 		g_error_free (error);
 		ret = FALSE;
 	}
@@ -499,7 +499,7 @@ gpm_manager_notify (GpmManager *manager, NotifyNotification **notification_class
 	notify_notification_set_urgency (notification, urgency);
 	g_signal_connect (notification, "closed", G_CALLBACK (gpm_manager_notification_closed_cb), notification_class);
 
-	egg_debug ("notification %p: %s : %s", notification, title, message);
+	//egg_debug ("notification %p: %s : %s", notification, title, message);
 
 	/* try to show */
 	ret = notify_notification_show (notification, &error);
@@ -580,7 +580,7 @@ gpm_manager_sleep_failure (GpmManager *manager, gboolean is_suspend, const gchar
 	/* only show this if specified in settings */
 	show_sleep_failed = g_settings_get_boolean (manager->priv->settings, GPM_SETTINGS_NOTIFY_SLEEP_FAILED);
 
-	egg_debug ("sleep failed");
+	//egg_debug ("sleep failed");
 	gpm_manager_play (manager, GPM_MANAGER_SOUND_SUSPEND_ERROR, TRUE);
 
 	/* only emit if specified in settings */
@@ -728,12 +728,15 @@ gpm_manager_perform_policy (GpmManager  *manager, const gchar *policy_key, const
 	if (policy == GPM_ACTION_POLICY_NOTHING) {
 		egg_debug ("doing nothing, reason: %s", reason);
 	} else if (policy == GPM_ACTION_POLICY_SUSPEND) {
+		egg_debug ("suspend, reason: %s", reason);
 		gpm_manager_action_suspend (manager, reason);
 
 	} else if (policy == GPM_ACTION_POLICY_HIBERNATE) {
+		egg_debug ("hibernate, reason: %s", reason);
 		gpm_manager_action_hibernate (manager, reason);
 
 	} else if (policy == GPM_ACTION_POLICY_BLANK) {
+		egg_debug ("blank, reason: %s", reason);
 		gpm_manager_blank_screen (manager, NULL);
 
 	} else if (policy == GPM_ACTION_POLICY_SHUTDOWN) {
@@ -749,7 +752,7 @@ gpm_manager_perform_policy (GpmManager  *manager, const gchar *policy_key, const
         if (!ret)
         {
             GpmSession *session;
-            egg_debug ("logout, reason: %s", reason);
+            //egg_debug ("logout, reason: %s", reason);
             session = gpm_session_new ();
             gpm_session_logout (session);
             g_object_unref (session);
@@ -883,13 +886,13 @@ gpm_manager_lid_button_pressed (GpmManager *manager, gboolean pressed)
 	}
 
 	if (!manager->priv->on_battery) {
-		egg_debug ("Performing AC policy");
+		//egg_debug ("Performing AC policy");
 		gpm_manager_perform_policy (manager, GPM_SETTINGS_BUTTON_LID_AC,
 					    "The lid has been closed on ac power.");
 		return;
 	}
 
-	egg_debug ("Performing battery policy");
+	//egg_debug ("Performing battery policy");
 	gpm_manager_perform_policy (manager, GPM_SETTINGS_BUTTON_LID_BATT,
 				    "The lid has been closed on battery power.");
 }
@@ -968,7 +971,7 @@ gpm_manager_button_pressed_cb (GpmButton *button, const gchar *type, GpmManager 
 
 	/* ConsoleKit/systemd say we are not on active console */
         if (!LOGIND_RUNNING()) {//if (!LOGIND_RUNNING() && !egg_console_kit_is_active (manager->priv->console)) {
-		egg_debug ("ignoring as not on active console");
+		//egg_debug ("ignoring as not on active console");
 		return;
 	}
 
@@ -1038,7 +1041,7 @@ gpm_manager_client_changed_cb (UpClient *client, GpmManager *manager)
         manager->priv->pre_power_supply_ac = 0;
     }
 	if (on_battery == manager->priv->on_battery) {
-		egg_debug ("same state as before, ignoring");
+		//egg_debug ("same state as before, ignoring");
 		return;
 	}
 
@@ -1052,7 +1055,7 @@ gpm_manager_client_changed_cb (UpClient *client, GpmManager *manager)
 
 	/* if we are playing a critical charge sound loop, stop it */
 	if (!on_battery && manager->priv->critical_alert_timeout_id) {
-		egg_debug ("stopping alert loop due to ac being present");
+		//egg_debug ("stopping alert loop due to ac being present");
 		gpm_manager_play_loop_stop (manager);
 	}
 
@@ -1061,11 +1064,11 @@ gpm_manager_client_changed_cb (UpClient *client, GpmManager *manager)
 
 	/* ConsoleKit/systemd say we are not on active console */
         if (!LOGIND_RUNNING()) {//if (!LOGIND_RUNNING() && !egg_console_kit_is_active (manager->priv->console)) {
-		egg_debug ("ignoring as not on active console");
+		//egg_debug ("ignoring as not on active console");
 		return;
 	}
 
-	egg_debug ("on_battery: %d", on_battery);
+	//egg_debug ("on_battery: %d", on_battery);
 
 	gpm_manager_sync_policy_sleep (manager);
 
@@ -1171,7 +1174,7 @@ gpm_manager_engine_low_capacity_cb (GpmEngine *engine, UpDevice *device, GpmMana
 
 	/* don't show when running under GDM */
 	if (g_getenv ("RUNNING_UNDER_GDM") != NULL) {
-		egg_debug ("running under gdm, so no notification");
+		//egg_debug ("running under gdm, so no notification");
 		goto out;
 	}
 
@@ -1211,13 +1214,13 @@ gpm_manager_engine_fully_charged_cb (GpmEngine *engine, UpDevice *device, GpmMan
 	/* only action this if specified in the setings */
 	ret = g_settings_get_boolean (manager->priv->settings, GPM_SETTINGS_NOTIFY_FULLY_CHARGED);
 	if (!ret) {
-		egg_debug ("no notification");
+		//egg_debug ("no notification");
 		goto out;
 	}
 
 	/* don't show when running under GDM */
 	if (g_getenv ("RUNNING_UNDER_GDM") != NULL) {
-		egg_debug ("running under gdm, so no notification");
+		//egg_debug ("running under gdm, so no notification");
 		goto out;
 	}
 
@@ -1254,7 +1257,7 @@ gpm_manager_engine_close_notify_cb (GpmEngine *engine, GpmManager *manager)
 		return FALSE;
 	
 	GpmSession *session;
-	// egg_debug ("logout, reason: too low battery!");
+	// //egg_debug ("logout, reason: too low battery!");
 	session = gpm_session_new ();
 	gpm_session_logout (session);
 	g_object_unref (session);
@@ -1279,7 +1282,7 @@ gpm_manager_engine_discharging_cb (GpmEngine *engine, UpDevice *device, GpmManag
 	/* only action this if specified in the settings */
 	ret = g_settings_get_boolean (manager->priv->settings, GPM_SETTINGS_NOTIFY_DISCHARGING);
 	if (!ret) {
-		egg_debug ("no notification");
+		//egg_debug ("no notification");
 		goto out;
 	}
 
@@ -1623,7 +1626,7 @@ gpm_manager_engine_charge_critical_cb (GpmEngine *engine, UpDevice *device, GpmM
 
 	case UP_DEVICE_KIND_BATTERY:
 	case UP_DEVICE_KIND_UPS:
-		egg_debug ("critical charge level reached, starting sound loop");
+		//egg_debug ("critical charge level reached, starting sound loop");
 		gpm_manager_play_loop_start (manager,
 					     GPM_MANAGER_SOUND_BATTERY_LOW,
 					     TRUE,
@@ -1768,7 +1771,7 @@ gpm_manager_engine_charge_critical_notify_cb (GpmEngine *engine, UpDevice *devic
 
         case UP_DEVICE_KIND_BATTERY:
         case UP_DEVICE_KIND_UPS:
-            egg_debug ("critical charge level reached, starting sound loop");
+            //egg_debug ("critical charge level reached, starting sound loop");
             gpm_manager_play_loop_start (manager,
                                          GPM_MANAGER_SOUND_BATTERY_LOW,
                                          TRUE,
@@ -1823,7 +1826,7 @@ gpm_manager_engine_charge_action_cb (GpmEngine *engine, UpDevice *device, GpmMan
 			message = g_strdup (_("The battery is below the critical level and "
 					      "this computer will <b>power-off</b> when the "
 					      "battery becomes completely empty."));
-//			g_message ("notify========");
+//			//egg_debug ("notify========");
 			goto noti;
 
 		} else if (policy == GPM_ACTION_POLICY_SUSPEND) {
@@ -1909,7 +1912,7 @@ out:
 static void
 gpm_manager_dpms_mode_changed_cb (GpmDpms *dpms, GpmDpmsMode mode, GpmManager *manager)
 {
-	egg_debug ("DPMS mode changed: %d", mode);
+	//egg_debug ("DPMS mode changed: %d", mode);
 
 	if (mode == GPM_DPMS_MODE_ON)
 		egg_debug ("dpms on");
@@ -1981,7 +1984,7 @@ gpm_manager_systemd_inhibit (GDBusProxy *proxy) {
     const char* arg_why = "Ukui power manager handles these events";
     const char* arg_mode = "block";
 
-	egg_debug ("Inhibiting systemd sleep");
+	//egg_debug ("Inhibiting systemd sleep");
     proxy = g_dbus_proxy_new_for_bus_sync (G_BUS_TYPE_SYSTEM,
                                        G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES,
                                         NULL,
@@ -2012,13 +2015,13 @@ gpm_manager_systemd_inhibit (GDBusProxy *proxy) {
                             );
     if (error == NULL && res != NULL) {
         g_variant_get(res, "(h)", &r);
-	    egg_debug ("Inhibiting systemd sleep res = %i", r);
+	    //egg_debug ("Inhibiting systemd sleep res = %i", r);
         fd = g_unix_fd_list_get (fd_list, r, &error); 
         if (fd == -1) {
-            egg_debug("Failed to get systemd inhibitor");
+            //egg_debug("Failed to get systemd inhibitor");
             return r;
         }
-        egg_debug ("System inhibitor fd is %d", fd);
+        //egg_debug ("System inhibitor fd is %d", fd);
         g_object_unref (fd_list);
         g_variant_unref (res);
     } else if (error != NULL || res == NULL) {
@@ -2026,7 +2029,7 @@ gpm_manager_systemd_inhibit (GDBusProxy *proxy) {
         g_error_free (error);
         return -EIO;
     }
-    egg_debug ("Inhibiting systemd sleep - success");
+    //egg_debug ("Inhibiting systemd sleep - success");
     return r;
 }
 
@@ -2144,12 +2147,12 @@ gpm_manager_init (GpmManager *manager)
 			  G_CALLBACK (gpm_manager_dpms_mode_changed_cb), manager);
 
 	/* use the control object */
-	egg_debug ("creating new control instance");
+	//egg_debug ("creating new control instance");
 	manager->priv->control = gpm_control_new ();
 	g_signal_connect (manager->priv->control, "resume",
 			  G_CALLBACK (gpm_manager_control_resume_cb), manager);
 
-	egg_debug ("creating new tray icon");
+	//egg_debug ("creating new tray icon");
 	manager->priv->tray_icon = gpm_tray_icon_new ();
 
 	/* keep a reference for the notifications */

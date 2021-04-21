@@ -584,7 +584,7 @@ draw_action_volume (MsdMediaKeysWindow *window,
                 speaker_cy = icon_box_y0 + speaker_height / 2;
 
 #if 0
-                g_message ("speaker box: w=%f h=%f cx=%f cy=%f",
+                //egg_debug ("speaker box: w=%f h=%f cx=%f cy=%f",
                            speaker_width,
                            speaker_height,
                            speaker_cx,
@@ -700,12 +700,12 @@ draw_action_custom (MsdMediaKeysWindow *window,
         bright_box_y0 = round (icon_box_height + icon_box_y0);
 
 #if 0
-        g_message ("icon box: w=%f h=%f _x0=%f _y0=%f",
+        //egg_debug ("icon box: w=%f h=%f _x0=%f _y0=%f",
                    icon_box_width,
                    icon_box_height,
                    icon_box_x0,
                    icon_box_y0);
-        g_message ("brightness box: w=%f h=%f _x0=%f _y0=%f",
+        //egg_debug ("brightness box: w=%f h=%f _x0=%f _y0=%f",
                    bright_box_width,
                    bright_box_height,
                    bright_box_x0,

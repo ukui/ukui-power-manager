@@ -8,7 +8,6 @@ QT_INSTALL_DIR:=$(shell pwd)/debian/tmp/
 	dh $@
 override_dh_install:
 	mkdir -p $(QT_INSTALL_DIR) && \
-	make install INSTALL_ROOT=$(QT_INSTALL_DIR) -C ukui-power-statistics/build
 	make install INSTALL_ROOT=$(QT_INSTALL_DIR) -C ukui-power-manager-tray/build
 	make install INSTALL_ROOT=$(QT_INSTALL_DIR) -C ukui-power-policy/build
 	mkdir -p debian/tmp/lib/systemd/system/
@@ -34,9 +33,6 @@ override_dh_auto_configure:
 
 override_dh_auto_build:
 	dh_auto_build
-	mkdir -p ukui-power-statistics/build
-	cd ukui-power-statistics/build && qmake ../
-	make -C ukui-power-statistics/build
 	mkdir -p ukui-power-manager-tray/build
 	cd ukui-power-manager-tray/build && qmake ../
 	make -C ukui-power-manager-tray/build

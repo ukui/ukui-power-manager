@@ -308,85 +308,46 @@ void MainWindow::show_percentage_func()
 
 void MainWindow::set_window_position( )
 {
-    QRect rect;
-    int availableWidth,totalWidth;
-    int availableHeight,totalHeight;
-    rect = trayIcon->geometry();
-    QRect availableGeometry = qApp->primaryScreen()->availableGeometry();
-    QRect screenGeometry = qApp->primaryScreen()->geometry();
-
-    availableWidth = availableGeometry.width();
-    availableHeight = availableGeometry.height();
-    totalHeight = screenGeometry.height();
-    totalWidth = screenGeometry.width();
-
-    int distance = 4;
-    int number = QGuiApplication::screens().size();
-    if (number > 1)
-    {
-        QRect main_rect = QGuiApplication::screens().at(0)->geometry();//获取设备屏幕大小
-        QRect copy_rect = QGuiApplication::screens().at(1)->geometry();//获取设备屏幕大小
-        int n = 0;
-        int m = 46;
-
-        n = getTaskbarPos("position");
-        m = getTaskbarHeight("height");
-        if(n == 0){
-            //任务栏在下侧
-            availableWidth = screenGeometry.x()+screenGeometry.width();
-            availableHeight = screenGeometry.y()+screenGeometry.height();
-            setGeometry(availableWidth-this->width()-distance,availableHeight-this->height()-m-distance,this->width(),this->height());
-
-        }else if(n == 1){
-            //任务栏在上侧
-            availableWidth = screenGeometry.x()+screenGeometry.width();
-            availableHeight = screenGeometry.y()+screenGeometry.height();
-            setGeometry(availableWidth-this->width()-distance,screenGeometry.y()+m+distance,this->width(),this->height());
-
-        } else if (n == 2){
-            //任务栏在左侧
-            availableWidth = screenGeometry.x()+screenGeometry.width();
-            availableHeight = screenGeometry.y()+screenGeometry.height();
-            setGeometry(screenGeometry.x()+m+distance,availableHeight-this->height()-distance,this->width(),this->height());
-        } else if (n == 3){
-            //任务栏在右侧
-            availableWidth = screenGeometry.x()+screenGeometry.width();
-            availableHeight = screenGeometry.y()+screenGeometry.height();
-            setGeometry(availableWidth-this->width()-m-distance,availableHeight-this->height()-distance,this->width(),this->height());
-        }
+#define MARGIN 4
+    QDBusInterface iface("org.ukui.panel",
+                         "/panel/position",
+                         "org.ukui.panel",
+                         QDBusConnection::sessionBus());
+    QDBusReply<QVariantList> reply=iface.call("GetPrimaryScreenGeometry");
+    //reply获取的参数共5个，分别是 主屏可用区域的起点x坐标，主屏可用区域的起点y坐标，主屏可用区域的宽度，主屏可用区域高度，任务栏位置
+    if (!iface.isValid() || !reply.isValid() || reply.value().size()<5) {
+        qCritical() << QDBusConnection::sessionBus().lastError().message();
+        this->setGeometry(0,0,this->width(),this->height());
     }
-    else if(totalWidth == availableWidth )//down and up
-    {
-        if (rect.y() > availableHeight/2){
-            if (availableWidth - rect.x() - distance < this->width())
-                this->setGeometry(availableWidth-this->width()-distance,availableHeight-this->height()-distance,this->width(),this->height());
-            else
-                this->setGeometry(rect.x(),availableHeight-this->height()-distance,this->width(),this->height());
-        }else{
-            if (availableWidth - rect.x() - distance < this->width())
-                this->setGeometry(availableWidth-this->width()-distance,totalHeight-availableHeight+distance,this->width(),this->height());
-            else
-                this->setGeometry(rect.x(),totalHeight-availableHeight+distance,this->width(),this->height());
-        }
-    }
-    else if (totalHeight == availableHeight)//right and left
-    {
-        if (rect.x() > availableWidth/2){
 
-            this->setGeometry(availableWidth - this->width() - distance,rect.y() + rect.height() - this->height(),this->width(),this->height());
+    qDebug()<<reply.value().at(4).toInt();
+    QVariantList position_list=reply.value();
 
-//            if (availableHeight - rect.y() -distance > this->height() )
-//                this->setGeometry(availableWidth - this->width() - distance,rect.y(),this->width(),this->height());
-//            else
-//                this->setGeometry(availableWidth - this->width() - distance,totalHeight - this->height() -distance,this->width(),this->height());
-        } else {
-            this->setGeometry(totalWidth - availableWidth + distance,rect.y() + rect.height() - this->height(),this->width(),this->height());
-
-//            if (availableHeight - rect.y() -distance > this->height() )
-//                this->setGeometry(totalWidth - availableWidth + distance,rect.y(),this->width(),this->height());
-//            else
-//                this->setGeometry(totalWidth-availableWidth+distance,totalHeight - this->height() -distance,this->width(),this->height());
-        }
+    switch(reply.value().at(4).toInt()){
+    case 1:
+        //任务栏位于上方
+        this->setGeometry(position_list.at(0).toInt()+position_list.at(2).toInt()-this->width()-MARGIN,
+                          position_list.at(1).toInt()+MARGIN,
+                          this->width(),this->height());
+        break;
+        //任务栏位于左边
+    case 2:
+        this->setGeometry(position_list.at(0).toInt()+MARGIN,
+                          position_list.at(1).toInt()+reply.value().at(3).toInt()-this->height()-MARGIN,
+                          this->width(),this->height());
+        break;
+        //任务栏位于右边
+    case 3:
+        this->setGeometry(position_list.at(0).toInt()+position_list.at(2).toInt()-this->width()-MARGIN,
+                          position_list.at(1).toInt()+reply.value().at(3).toInt()-this->height()-MARGIN,
+                          this->width(),this->height());
+        break;
+        //任务栏位于下方
+    default:
+        this->setGeometry(position_list.at(0).toInt()+position_list.at(2).toInt()-this->width()-MARGIN,
+                          position_list.at(1).toInt()+reply.value().at(3).toInt()-this->height()-MARGIN,
+                          this->width(),this->height());
+        break;
     }
 }
 

@@ -71,6 +71,7 @@ Q_SIGNALS:
     void engine_signal_charge_critical(DEV dv);
     void engine_signal_charge_action(DEV dv);
     void engine_signal_summary_change(QString summary);
+    void engine_signal_Battery_State(QStringList Battery_State);
     void signal_device_change(DEVICE *device);
     void one_device_add(DEVICE *dev);
     void one_device_remove(DEVICE *dev);
@@ -98,9 +99,12 @@ public:
     void power_device_cold_plug();
     void getProperty(QString path, DEV &dev);
     QString engine_get_summary();
+    QStringList engine_get_state ();
     QString engine_kind_to_string(UpDeviceKind type_enum);
     QString engine_kind_to_localised_text(UpDeviceKind kind, uint number);
     void power_device_get_devices();
+
+    QStringList engine_get_Battery_State(DEVICE* dv);
 
     QString boolToString(bool ret);
     QString engine_get_device_summary(DEVICE *dv);

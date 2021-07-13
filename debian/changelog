@@ -1,3 +1,27 @@
+ukui-power-manager (2.1.29~rc14) v101; urgency=medium
+
+  * BUG:无
+    需求:#6670 #6436 #6431 #6437
+    其他:无
+
+ -- fengzhaoxiang <fengzhaoxiang@kylinos.cn>  Fri, 25 Jun 2021 15:11:47 +0800
+
+ukui-power-manager (2.1.29~rc6) v101; urgency=medium
+  * BUG 号：#57906 #57813 #56054 #58261 #58383 
+  * 需求号：无
+  * 改动说明：1.更改按键调节亮度的显示控件的颜色和透度
+  *           2.修改定时器执行回调函数
+  *           3.修改定时睡眠，定时息屏回调的执行函数                                
+ -- lifa <lifa@kylinos.cn>  Sat, 19 Jun 2021 15:47:16 +0800
+
+ukui-power-manager (2.1.29~rc5) v101; urgency=medium
+
+  * BUG 号: None
+  * 需求号: #6423 
+  * 其他改动说明:无 
+
+ -- zhangxinyu1 <zhangxinyu1@kylinos.cn>  Fri, 04 Jun 2021 19:56:35 +0800
+
 ukui-power-manager (2.1.29~rc2) v101; urgency=medium
 
   * 添加日志打印輸出

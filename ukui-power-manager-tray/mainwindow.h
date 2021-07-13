@@ -23,82 +23,36 @@
 #include <QSystemTrayIcon>
 #include <QMenu>
 #include <QScrollArea>
-#include "enginedevice.h"
 #include <QDBusObjectPath>
 #include <QDBusMessage>
-#include "customtype.h"
 #include <QDBusConnection>
 #include <QMap>
 #include <QListWidgetItem>
 #include <QWidgetAction>
 #include <QLabel>
 #include <QTimer>
-#include "MainUi.h"
+#include <powerwindow.h>
 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
-
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-
     void initUi();
-    void get_power_list();
-    void initData();
-    int get_engine_dev_number();
-    QPixmap set_percent_pixmap(QString str);
-    QIcon get_percent_icon(QIcon icon);
-    bool want_percent;
-    int getTaskbarHeight(QString str);
-    int getTaskbarPos(QString str);
-    void set_window_position();
-    void create_menu_item();
-    bool device_get_backlight();
-public Q_SLOTS:
-    void iconThemeChanged();
-    void onActivatedIcon(QSystemTrayIcon::ActivationReason reason);
-    void set_preference_func();
-    void show_percentage_func();
-    void set_brightness_func();
-    void power_mode_change();
-    void onIconChanged(QString str);
-    void onSumChanged(QString str);
-    void low_battery_notify(DEV dev);
-    void critical_battery_notify(DEV dev);
-    void action_battery_notify(DEV dev);
-    void discharge_notify(DEV dev);
-    void full_charge_notify(DEV dev);
-    void add_one_device(DEVICE *device);
-    void remove_one_device(DEVICE *device);
-    void activate_power_statistic();
-    void charge_notify(DEV dev);
+
 private:
+    powerwindow *powerWindow;
     QSystemTrayIcon* trayIcon;
     QList<QDBusObjectPath> deviceNames;
-    EngineDevice* ed;
     QGSettings * settings;
-    QLabel *percent_label;
-    MainUi* ui = new MainUi;
-//    QTimer *timer = new QTimer(this);
-    int powersave=0;
-    int oriAcDisplayTime=0;
-    int oriBatDisplayTime=0;
     QMenu *menu;
-//    QWidgetAction *set_preference;
-//    QWidgetAction *show_percentage;
-//    QWidgetAction *set_bright;
-//    QString releaseQss;
-//    QString pressQss;
-    QMap<DEVICE*,QListWidgetItem*> device_item_map;
-    int dev_number;
-    QGSettings *setting = nullptr;
-    double get_window_opacity();
-protected:
-    bool event(QEvent *event);
-    void paintEvent(QPaintEvent *event);
-private Q_SLOTS:
 
+private Q_SLOTS:
+    void set_preference_func();
+    void onSumChanged(QString str);
+    void IconChanged(QString str);
+    void onActivatedIcon(QSystemTrayIcon::ActivationReason reason);
 
 };
 

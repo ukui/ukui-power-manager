@@ -354,8 +354,28 @@
       <default>-1</default>
       <summary>power policy mode</summary>
     </key>
-    <key name="power-policy-current" type="i">
+    <key name="power-policy-ac" type="i">
       <default>-1</default>
+      <summary>power policy current</summary>
+    </key>
+    <key name="power-policy-battery" type="i">
+      <default>-1</default>
+      <summary>power policy current</summary>
+    </key>
+    <key name="on-battery-auto-save" type="i">
+      <default>1</default>
+      <summary>power policy current</summary>
+    </key>
+    <key name="low-battery-auto-save" type="i">
+      <default>1</default>
+      <summary>power policy current</summary>
+    </key>
+    <key name="dispaly-left-time-of-charge-and-discharge" type="i">
+      <default>1</default>
+      <summary>power policy current</summary>
+    </key>
+    <key name="power-policy-current" type="i">
+      <default>1</default>
       <summary>power policy current</summary>
     </key>
     <key name="icon-policy" enum="org.ukui.power-manager.IconPolicy">

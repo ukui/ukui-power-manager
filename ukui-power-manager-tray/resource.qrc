@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>main.qss</file>
         <file>apps/bright.png</file>
         <file>apps/health.png</file>
         <file>apps/mate-brightness-applet.png</file>
@@ -111,5 +110,26 @@
         <file>charging/phone/22.png</file>
         <file>charging/phone/23.png</file>
         <file>charging/phone/24.png</file>
+        <file>main.qss</file>
+        <file>charging/battery1/icon-setting1.svg</file>
+        <file>charging/battery1/icon-setting.svg</file>
+        <file>charging/battery1/icon-performance1.svg</file>
+        <file>charging/battery1/icon-performance.svg</file>
+        <file>charging/battery1/icon-ECO-s1.svg</file>
+        <file>charging/battery1/icon-ECO-s.svg</file>
+        <file>charging/battery1/13.svg</file>
+        <file>charging/battery1/12.svg</file>
+        <file>charging/battery1/11.svg</file>
+        <file>charging/battery1/10.svg</file>
+        <file>charging/battery1/9.svg</file>
+        <file>charging/battery1/8.svg</file>
+        <file>charging/battery1/7.svg</file>
+        <file>charging/battery1/6.svg</file>
+        <file>charging/battery1/5.svg</file>
+        <file>charging/battery1/4.svg</file>
+        <file>charging/battery1/3.svg</file>
+        <file>charging/battery1/2.svg</file>
+        <file>charging/battery1/1.svg</file>
+        <file>charging/battery1/0.svg</file>
     </qresource>
 </RCC>

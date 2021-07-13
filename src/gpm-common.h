@@ -124,7 +124,11 @@ G_BEGIN_DECLS
 #define GPM_SETTINGS_AUTO_POLICY			"power-policy-auto"
 #define GPM_SETTINGS_MODE_POLICY			"power-policy-mode"
 #define GPM_SETTINGS_SWITCH_POLICY			"idle-power-switch"
-#define GPM_SETTINGS_CUR_POLICY			    "power-policy-current"
+#define GPM_SETTINGS_AC_POLICY			        "power-policy-ac"
+#define GPM_SETTINGS_BAT_POLICY			        "power-policy-battery"
+#define GPM_SETTINGS_ON_BAT_AUTO_SAVE			        "on-battery-auto-save"
+#define GPM_SETTINGS_LOW_BAT_AUTO_SAVE			        "low-battery-auto-save"
+#define GPM_SETTINGS_DISPLAY_LEFT_TIME			        "dispaly-left-time-of-charge-and-discharge"
 
 /* statistics */
 #define GPM_SETTINGS_INFO_HISTORY_TIME			"info-history-time"

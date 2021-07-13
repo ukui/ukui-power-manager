@@ -81,6 +81,11 @@
 #define GPM_SETTINGS_NOTIFY_SLEEP_FAILED		"notify-sleep-failed"
 #define GPM_SETTINGS_NOTIFY_SLEEP_FAILED_URI		"notify-sleep-failed-uri"
 #define GPM_SETTINGS_NOTIFY_LOW_POWER			"notify-low-power"
+#define GPM_SETTINGS_BAT_POLICY                         "power-policy-battery"
+#define GPM_SETTINGS_ON_BAT_AUTO_SAVE                           "on-battery-auto-save"
+#define GPM_SETTINGS_LOW_BAT_AUTO_SAVE                          "low-battery-auto-save"
+#define GPM_SETTINGS_DISPLAY_LEFT_TIME                          "dispaly-left-time-of-charge-and-discharge"
+
 
 /* thresholds */
 #define GPM_SETTINGS_PERCENTAGE_LOW			"percentage-low"

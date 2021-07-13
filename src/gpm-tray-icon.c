@@ -1147,21 +1147,36 @@ gpm_tray_icon_settings_changed_cb (GSettings *settings, const gchar *key, GpmTra
         auto_enable = g_settings_get_boolean (settings, key);
         gpm_tray_icon_policy_enable_auto(icon, auto_enable);
     }
-    else if (g_strcmp0 (key, GPM_SETTINGS_CUR_POLICY) == 0) {
-        cur_md = g_settings_get_int (settings,key);
-        if(cur_md == 1)//平衡模式
-        {
-            gboolean ret = gpm_tray_icon_power_policy(MODE_PERFORMANCE);
-            g_settings_set_int (icon->priv->settings, GPM_SETTINGS_MODE_POLICY,MODE_PERFORMANCE);
-            mode_choice = MODE_PERFORMANCE;
-        }
-        else if(cur_md == 2)//节能模式
-        {
-            gboolean ret = gpm_tray_icon_power_policy(MODE_SAVE);
-            g_settings_set_int (icon->priv->settings, GPM_SETTINGS_MODE_POLICY,MODE_SAVE);
-            mode_choice = MODE_SAVE;
-        }
-    }
+//    else if (g_strcmp0 (key, GPM_SETTINGS_AC_POLICY) == 0) {
+//        cur_md = g_settings_get_int (settings,key);
+//        if(cur_md == 1)//平衡模式
+//        {
+//            gboolean ret = gpm_tray_icon_power_policy(MODE_PERFORMANCE);
+//            g_settings_set_int (icon->priv->settings, GPM_SETTINGS_MODE_POLICY,MODE_PERFORMANCE);
+//            mode_choice = MODE_PERFORMANCE;
+//        }
+//        else if(cur_md == 2)//节能模式
+//        {
+//            gboolean ret = gpm_tray_icon_power_policy(MODE_SAVE);
+//            g_settings_set_int (icon->priv->settings, GPM_SETTINGS_MODE_POLICY,MODE_SAVE);
+//            mode_choice = MODE_SAVE;
+//        }
+//    }else if (g_strcmp0 (key, GPM_SETTINGS_BAT_POLICY) == 0) {
+//        cur_md = g_settings_get_int (settings,key);
+//        if(cur_md == 1)//平衡模式
+//        {
+//            gboolean ret = gpm_tray_icon_power_policy(MODE_PERFORMANCE);
+//            g_settings_set_int (icon->priv->settings, GPM_SETTINGS_MODE_POLICY,MODE_PERFORMANCE);
+//            mode_choice = MODE_PERFORMANCE;
+//        }
+//        else if(cur_md == 2)//节能模式
+//        {
+//            gboolean ret = gpm_tray_icon_power_policy(MODE_SAVE);
+//            g_settings_set_int (icon->priv->settings, GPM_SETTINGS_MODE_POLICY,MODE_SAVE);
+//            mode_choice = MODE_SAVE;
+//        }
+//    }
+
 }
 
 /**

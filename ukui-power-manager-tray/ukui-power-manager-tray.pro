@@ -58,26 +58,24 @@ CONFIG += c++11 no_keywords link_pkgconfig
 PKGCONFIG +=  gsettings-qt x11
 
 SOURCES += \
-    DeviceUi.cpp \
-    MainUi.cpp \
     customstyle.cpp \
-        main.cpp \
+    device.cpp \
+    device_widget.cpp \
+    enginedevice.cpp \
+    main.cpp \
         mainwindow.cpp \
     customtype.cpp \
-    device.cpp \
-    enginedevice.cpp \
-    device_form.cpp
+    powerwindow.cpp
 
 HEADERS += \
-    DeviceUi.h \
-    MainUi.h \
     customstyle.h \
+    device.h \
+    device_widget.h \
     engine_common.h \
+    enginedevice.h \
         mainwindow.h \
     customtype.h \
-    device.h \
-    enginedevice.h \
-    device_form.h
+    powerwindow.h
 
 FORMS +=
 
@@ -85,3 +83,6 @@ FORMS +=
 
 RESOURCES += \
     resource.qrc
+
+DISTFILES += \
+    main.qss

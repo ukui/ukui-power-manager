@@ -42,6 +42,7 @@ void EngineDevice::power_device_get_devices()
     else {
     }
     int len = deviceNames.size();
+    //qDebug()<<deviceNames.at(1).path();
     for(int i = 0; i < len; i++)
     {
         DEVICE *device = new DEVICE;
@@ -236,7 +237,7 @@ void EngineDevice::putAttributes(QMap<QString,QVariant>& map,DEV &btrDetailData)
     if(map.contains("State"))
     {
         btrDetailData.State = (UpDeviceState)map.value(QString("State")).toInt();
-        //qDebug()<< "state:" << btrDetailData.State;
+        ////qDebug()<< "state:" << btrDetailData.State;
     }
     if(map.contains("Percentage"))
     {
@@ -307,6 +308,9 @@ void EngineDevice::power_device_change_callback(QDBusMessage msg,QString path)
     {
         if(level==UP_DEVICE_LEVEL_LOW)
         {
+		//理论上connect一个dbus，但是代码如狗屎一般，看到这个注释的你好自为之。
+	    int save = settings->get(GPM_SETTINGS_LOW_BAT_AUTO_SAVE).toInt();
+	    if(save)settings->set(GPM_SETTINGS_BAT_POLICY,1);
             Q_EMIT engine_signal_charge_low(item->m_dev);
         }
         else if (level==UP_DEVICE_LEVEL_CRITICAL)
@@ -513,20 +517,66 @@ QString EngineDevice::power_device_get_icon_exact (UpDeviceKind device_kind, UpD
 bool EngineDevice::engine_recalculate_summary ()
 {
     QString summary;
+    QStringList Battery_State;
 
+    Battery_State = engine_get_state();
     summary = engine_get_summary ();
     if (previous_summary.isNull()) {
         previous_summary = summary;
         Q_EMIT engine_signal_summary_change(summary);
+        Q_EMIT engine_signal_Battery_State(Battery_State);
         return true;
     }
 
     if (previous_summary != summary) {
         previous_summary = summary;
         Q_EMIT engine_signal_summary_change(summary);
+        Q_EMIT engine_signal_Battery_State(Battery_State);
         return true;
     }
     return false;
+}
+
+QStringList EngineDevice::engine_get_state()
+{
+    DEVICE *device;
+    UpDeviceState state;
+    QStringList tooltip;
+    QStringList part;
+    bool is_present;
+    UpDeviceKind kind;
+
+    Q_FOREACH (device, devices) {
+        is_present = device->m_dev.IsPresent;
+        state = device->m_dev.State;
+        kind = device->m_dev.kind;
+        if ((!is_present)||(kind != UP_DEVICE_KIND_BATTERY))
+            continue;
+        if (state == UP_DEVICE_STATE_EMPTY)
+            continue;
+        part = engine_get_Battery_State (device);
+        if (!part.isEmpty())
+            tooltip.append(part);
+    }
+    return tooltip;
+}
+
+QStringList EngineDevice::engine_get_Battery_State(DEVICE* dv)
+{
+    UpDeviceState state;
+    double percentage;
+    QStringList result;
+    state = dv->m_dev.State;
+    int EMPTY = dv->m_dev.TimeToEmpty;
+    percentage = dv->m_dev.Percentage;
+    bool is_present;
+    is_present = dv->m_dev.IsPresent;
+    if (!is_present)
+        return result;
+    result.append(QString("%1").arg(percentage));
+    result.append(QString("%1").arg(state));
+    result.append(QString("%1").arg(EMPTY));
+    return result;
 }
 
 /**
@@ -758,11 +808,16 @@ QString EngineDevice::engine_get_device_summary(DEVICE* dv)
 
     } else if (state == UP_DEVICE_STATE_DISCHARGING) {
 
-        result = tr("%1% available, not charging").arg(percentage);
+        result = tr("Left %1h %2m (%3%)").arg(time_to_empty/3600).arg(time_to_empty%60).arg(percentage);
 
     } else if (state == UP_DEVICE_STATE_CHARGING) {
-
-        result = tr("%1% available, charging").arg(percentage);
+	    //需要connect一个dbus才对，可以但没必要，因为我觉得这个需求很扯
+	int is_show = settings->get(GPM_SETTINGS_DISPLAY_LEFT_TIME).toInt();
+	if(is_show){
+		result = tr("Left %1h %2m to full").arg(time_to_full/3600).arg(time_to_full%60);
+	}else{
+        	result = tr("charging (%1%)").arg(percentage);
+	}
 
     } else if (state == UP_DEVICE_STATE_PENDING_DISCHARGE) {
 
@@ -963,7 +1018,14 @@ QString EngineDevice::engine_get_device_icon (DEVICE *device)
 
         } else if (state == UP_DEVICE_STATE_FULLY_CHARGED) {
             /* battery-full-charged-symbolic */
-            result = QString ("%1-full-charged-symbolic").arg(prefix);
+		            /* battery-full-charged-symbolic */
+         //   result = QString("%1-full-charged-symbolic").arg(prefix);
+          index_str = engine_get_device_icon_index(percentage);
+            /* battery-level-percent-charging-symbolic */
+            result =
+                QString("%1-level-%2-charging-symbolic").arg(prefix).
+                arg(index_str);
+            //result = QString ("%1-full-charged-symbolic").arg(prefix);
         } else if (state == UP_DEVICE_STATE_CHARGING) {
             index_str = engine_get_device_icon_index (percentage);
             /* battery-level-percent-charging-symbolic */
@@ -1148,7 +1210,7 @@ UpDeviceLevel EngineDevice::engine_get_warning_percentage (DEV dev)
     percentage = dev.Percentage;
     if (percentage <= action_percentage)
         return UP_DEVICE_LEVEL_ACTION;
-    if (percentage <= critical_percentage)
+    if (percentage <= critical_percentage || percentage <= 10)
         return UP_DEVICE_LEVEL_CRITICAL;
     if (percentage <= low_percentage)
         return UP_DEVICE_LEVEL_LOW;

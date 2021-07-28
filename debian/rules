@@ -14,6 +14,8 @@ override_dh_install:
 	cp data/ukui-power-policy.service debian/tmp/lib/systemd/system/
 	mkdir -p debian/tmp/etc/dbus-1/system.d/
 	cp data/ukui.power.policy.conf debian/tmp/etc/dbus-1/system.d/
+	touch /tmp/ukui-power-manager.log
+	chmod 777 /tmp/ukui-power-manager.log
 	dh_install
 
 override_dh_missing:

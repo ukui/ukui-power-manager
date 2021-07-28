@@ -32,33 +32,31 @@
 
 int main(int argc, char *argv[])
 {
+    QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+    QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+    #if (QT_VERSION >= QT_VERSION_CHECK(5,14,0))
+        QApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
+    #endif
     QStringList homePath = QStandardPaths::standardLocations(QStandardPaths::HomeLocation);
     int fd = open (QString(homePath.at(0) + "/.config/ukui-power-manager-tray%1.lock").arg(getenv("DISPLAY")).toUtf8().data(),O_WRONLY|O_CREAT|O_TRUNC,S_IRUSR|S_IWUSR);
     if(fd < 0)  exit(1);
     if(lockf(fd,F_TLOCK,0))
     {
-        qDebug()<<"cant lock single file, ukui-power-manager-tray is already running";
+        //qDebug()<<"cant lock single file, ukui-power-manager-tray is already running";
         exit(0);
     }
 
     Display *display = XOpenDisplay(NULL);
     if (NULL == display) {
-	qDebug() << "Can't open display!";
+	//qDebug() << "Can't open display!";
 	return -1;
     }
     Screen *screen = DefaultScreenOfDisplay(display);
     if (NULL == screen) {
-	qDebug() << "Get default screen failed!";
+	//qDebug() << "Get default screen failed!";
         return -1;
     }
     int width = screen->width;
-
-    if (width > 2560) {
-        #if (QT_VERSION >= QT_VERSION_CHECK(5, 6, 0))
-                QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-                QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
-        #endif
-    }
 
     XCloseDisplay(display);
 
@@ -70,11 +68,6 @@ int main(int argc, char *argv[])
     else
         qDebug()<<"load ukui-power-manager-tray qm file error";
 
-    QFile file(":/main.qss");
-    file.open(QFile::ReadOnly);
-//    QIcon::setThemeName("ukui-icon-theme-default");
-    qApp->setStyleSheet(file.readAll());
-    file.close();
     MainWindow w;
     KWindowEffects::enableBlurBehind(w.winId(),true);
     w.hide();

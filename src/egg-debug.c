@@ -107,6 +107,7 @@ pk_log_line (const gchar *buffer)
 	/* open a file */
 	if (fd == -1) {
 		/* ITS4: ignore, /var/log/foo is owned by root, and this is just debug text */
+		umask(0);
 		fd = open (EGG_LOG_FILE, O_WRONLY|O_APPEND|O_CREAT, 0777);
 		if (fd == -1)
 			g_error ("could not open log: '%s'", EGG_LOG_FILE);

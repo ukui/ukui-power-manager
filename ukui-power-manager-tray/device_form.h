@@ -24,22 +24,18 @@
 #include <QTimer>
 #include <DeviceUi.h>
 
-class DeviceForm : public QWidget
-{
-    Q_OBJECT
-
-public:
-    explicit DeviceForm(QWidget *parent = nullptr);
+class DeviceForm:public QWidget {
+  Q_OBJECT public:
+    explicit DeviceForm(QWidget * parent = nullptr);
     ~DeviceForm();
 
-public Q_SLOTS:
-    void widget_property_change();
+    public Q_SLOTS:void widget_property_change();
 
     void slider_changed(int value);
-    void slot_device_change(DEVICE *device);
+    void slot_device_change(DEVICE * device);
     void begin_charge_animation();
-public:
-    QString icon_name;
+  public:
+     QString icon_name;
     QString statics_icon_pre;
     QString kind;
     QString percentage;
@@ -53,22 +49,22 @@ public:
     void setPercent(QString perct);
     void setIcon(QString name);
     QString calculate_value(int nValue, int nTotal);
-    void set_device(DEVICE *dev);
+    void set_device(DEVICE * dev);
     void set_timer(UpDeviceKind kind);
     void set_charge_animation(bool flag);
     void device_adjust_battery_parameters();
     static QString device_get_ac_online();
-protected:
-    void paintEvent(QPaintEvent *event);
+  protected:
+    void paintEvent(QPaintEvent * event);
 //    void leaveEvent(QEvent *event);
 //    void enterEvent(QEvent *event);
 //    void mousePressEvent(QMouseEvent *event);
-private:
-    DeviceUi *ui = new DeviceUi;
+  private:
+     DeviceUi * ui = new DeviceUi;
     QTimer *charge_animation;
-    QList<QPixmap> animation_list;
+     QList < QPixmap > animation_list;
     int charging_index;
     DEV mDev;
 };
 
-#endif // DEVICE_FORM_H
+#endif				// DEVICE_FORM_H

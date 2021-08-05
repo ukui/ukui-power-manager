@@ -1,0 +1,37 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# liushuyu011 <liushuyu011@gmail.com>, 2016
+# Wylmer Wang, 2013
+# Mingcong Bai <jeffbai@aosc.xyz>, 2015
+msgid ""
+msgstr ""
+"Project-Id-Version: UKUI Desktop Environment\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-11-21 19:39+0800\n"
+"PO-Revision-Date: 2017-10-07 11:02+0000\n"
+"Last-Translator: monsta <monsta@inbox.ru>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/mate/UKUI/language/"
+"zh_CN/)\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+ #: ../data/ukui-power-preferences.desktop.in.in.h:1
+msgid "Power Management"
+msgstr "གློག་ཁུངས་དོ་དམ།"
+
+#: ../data/ukui-power-preferences.desktop.in.in.h:2
+msgid "Configure power management"
+msgstr "གློག་ཁུངས་དོ་དམ་སྡེབ་སྒྲིག"
+
+
+#: ../data/ukui-power-statistics.desktop.in.in.h:2
+msgid "Observe power management"
+msgstr "གློག་ཁུངས་དོ་དམ་ལྟ་འཛིན།"
+
+

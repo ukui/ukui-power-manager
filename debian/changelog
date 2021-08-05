@@ -1,8 +1,17 @@
-ukui-power-manager (2.1.29-1~0803) unstable; urgency=medium
+ukui-power-manager (3.0.1-1~0804) unstable; urgency=medium
 
   * New upstream release.
 
- -- handsome_feng <jianfengli@ubuntukylin.com>  Tue, 03 Aug 2021 09:19:49 +0800
+ -- handsome_feng <jianfengli@ubuntukylin.com>  Thu, 05 Aug 2021 14:41:52 +0800
+
+ukui-power-manager (3.0.0-1) unstable; urgency=medium
+
+  * New upstream release. (Closes: #975168)
+  * debian/control:
+    - Add ukui-notification-daemon.
+    - Change systemd to systemd | elogind | consolekit.
+
+ -- handsome_feng <jianfengli@ubuntukylin.com>  Wed, 25 Nov 2020 11:49:54 +0800
 
 ukui-power-manager (2.0.2-1) unstable; urgency=medium
 

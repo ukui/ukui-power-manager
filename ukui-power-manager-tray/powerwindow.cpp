@@ -194,7 +194,7 @@ void powerwindow::get_power_list()
             ft.setPointSize(28);
             percentageLabel->setFont(ft);
             percentageLabel->setText(QString("%1%").arg(dv->m_dev.Percentage));
-            powerTimeToEmpty->setText(QString("剩余%1小时%2分钟").arg(dv->m_dev.TimeToEmpty/3600).arg((dv->m_dev.TimeToEmpty/60)%60));
+            powerTimeToEmpty->setText(QString("剩余%1小时%2分钟").arg(dv->m_dev.TimeToEmpty/3600).arg((dv->m_dev.TimeToEmpty%3600)/60));
             //qDebug()<<dv->m_dev.State;
             if(dv->m_dev.State == 1) {
                 powerStateLabel->setVisible(true);

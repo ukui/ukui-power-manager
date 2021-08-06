@@ -808,7 +808,7 @@ QString EngineDevice::engine_get_device_summary(DEVICE* dv)
 
     } else if (state == UP_DEVICE_STATE_DISCHARGING) {
 
-        result = tr("Left %1h %2m (%3%)").arg(time_to_empty/3600).arg((time_to_empty/3600)/60).arg(percentage);
+        result = tr("Left %1h %2m (%3%)").arg(time_to_empty/3600).arg((time_to_empty%3600)/60).arg(percentage);
 
     } else if (state == UP_DEVICE_STATE_CHARGING) {
 	    //需要connect一个dbus才对，可以但没必要，因为我觉得这个需求很扯

@@ -91,7 +91,8 @@ public:
     int			 low_percentage;
     int			 critical_percentage;
     int			 action_percentage;
-
+    int hours(int value);
+    int minutes(int value);
     bool power_device_recalculate_icon();
     void power_device_recalculate_state();
     QString power_device_get_icon_exact(UpDeviceKind device_kind, UpDeviceLevel warning, bool use_state);

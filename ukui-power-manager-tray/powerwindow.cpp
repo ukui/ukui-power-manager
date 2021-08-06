@@ -174,7 +174,20 @@ void powerwindow::initgsetting()
         }
     });
 }
-
+int powerwindow::hours(int value)
+{
+    int second;
+    int hour;
+    hour = second/3600;
+    return hour;
+}
+int powerwindow::minutes(int value)
+{
+    int second;
+    int minute;
+    minute = (second%3600)/60;
+    return minute;
+}
 void powerwindow::get_power_list()
 {
     int size;
@@ -194,7 +207,7 @@ void powerwindow::get_power_list()
             ft.setPointSize(28);
             percentageLabel->setFont(ft);
             percentageLabel->setText(QString("%1%").arg(dv->m_dev.Percentage));
-            powerTimeToEmpty->setText(QString("剩余%1小时%2分钟").arg(dv->m_dev.TimeToEmpty/3600).arg((dv->m_dev.TimeToEmpty%3600)/60));
+            powerTimeToEmpty->setText(QString("剩余%1小时%2分钟").arg(hours(dv->m_dev.TimeToEmpty)).arg(minutes(dv->m_dev.TimeToEmpty)));
             //qDebug()<<dv->m_dev.State;
             if(dv->m_dev.State == 1) {
                 powerStateLabel->setVisible(true);
@@ -236,7 +249,7 @@ void powerwindow::onBatteryChanged(QStringList args)
     int battery = args.at(0).toInt();
     int state = args.at(1).toInt();
     int timeToEmpty = args.at(2).toInt();
-    powerTimeToEmpty->setText(QString(tr("Left %1h %2m")).arg(timeToEmpty/3600).arg((timeToEmpty/60)%60));
+    powerTimeToEmpty->setText(QString(tr("Left %1h %2m")).arg(hours(timeToEmpty)).arg(minutes(timeToEmpty)));
     //setBatteryIcon(battery,state);
     batteryChange(state);
     percentageLabel->setText(QString("%1%").arg(battery));

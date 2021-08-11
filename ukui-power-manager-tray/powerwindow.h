@@ -60,6 +60,8 @@ public:
     void setPosition();
     void setBatteryIcon(int Ele_surplus_int,int state);
     void initgsetting();
+    int hours(int value);
+    int minutes(int value);
     QStringList m_IconBatterChangeList;
 
     QVBoxLayout  *m_pmainlayout    = nullptr;

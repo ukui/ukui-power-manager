@@ -774,6 +774,21 @@ QString EngineDevice::engine_get_device_predict(DEVICE* dv)
 /**
  * engine_get_device_summary:
  **/
+int EngineDevice::hours(int value)
+{
+    int second;
+    int hour;
+    hour = second/3600;
+    return hour;
+}
+int EngineDevice::minutes(int value)
+{
+    int second;
+    int minute;
+    minute = (second%3600)/60;
+    return minute;
+}
+
 QString EngineDevice::engine_get_device_summary(DEVICE* dv)
 {
     QString kind_desc;
@@ -808,13 +823,13 @@ QString EngineDevice::engine_get_device_summary(DEVICE* dv)
 
     } else if (state == UP_DEVICE_STATE_DISCHARGING) {
 
-        result = tr("Left %1h %2m (%3%)").arg(time_to_empty/3600).arg(time_to_empty%60).arg(percentage);
+        result = tr("Left %1h %2m (%3%)").arg(hours(time_to_empty)).arg(minutes(time_to_empty)).arg(percentage);
 
     } else if (state == UP_DEVICE_STATE_CHARGING) {
 	    //需要connect一个dbus才对，可以但没必要，因为我觉得这个需求很扯
 	int is_show = settings->get(GPM_SETTINGS_DISPLAY_LEFT_TIME).toInt();
 	if(is_show){
-		result = tr("Left %1h %2m to full").arg(time_to_full/3600).arg(time_to_full%60);
+        result = tr("Left %1h %2m to full").arg(hours(time_to_full)).arg(minutes(time_to_full));
 	}else{
         	result = tr("charging (%1%)").arg(percentage);
 	}

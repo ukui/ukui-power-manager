@@ -27,22 +27,23 @@
 
 typedef struct EggTest EggTest;
 
-gboolean	 egg_test_start			(EggTest *test, const gchar *name);
-void		 egg_test_end			(EggTest *test);
-void		 egg_test_title			(EggTest *test, const gchar *format, ...);
-void		 egg_test_title_assert		(EggTest *test, const gchar *text, gboolean value);
-void		 egg_test_assert		(EggTest *test, gboolean value);
-void		 egg_test_success		(EggTest *test, const gchar *format, ...);
-void		 egg_test_failed		(EggTest *test, const gchar *format, ...) G_GNUC_NORETURN;
-EggTest		*egg_test_init			(void);
-gint		 egg_test_finish		(EggTest *test);
-guint		 egg_test_elapsed		(EggTest *test);
-void		 egg_test_loop_quit		(EggTest *test);
-void		 egg_test_loop_wait		(EggTest *test, guint timeout);
-void		 egg_test_loop_check		(EggTest *test);
-void		 egg_test_set_user_data		(EggTest *test, gpointer user_data);
-gpointer	 egg_test_get_user_data		(EggTest *test);
-gchar		*egg_test_get_data_file		(const gchar *filename);
+gboolean egg_test_start(EggTest * test, const gchar * name);
+void egg_test_end(EggTest * test);
+void egg_test_title(EggTest * test, const gchar * format, ...);
+void egg_test_title_assert(EggTest * test, const gchar * text,
+			   gboolean value);
+void egg_test_assert(EggTest * test, gboolean value);
+void egg_test_success(EggTest * test, const gchar * format, ...);
+void egg_test_failed(EggTest * test, const gchar * format,
+		     ...) G_GNUC_NORETURN;
+EggTest *egg_test_init(void);
+gint egg_test_finish(EggTest * test);
+guint egg_test_elapsed(EggTest * test);
+void egg_test_loop_quit(EggTest * test);
+void egg_test_loop_wait(EggTest * test, guint timeout);
+void egg_test_loop_check(EggTest * test);
+void egg_test_set_user_data(EggTest * test, gpointer user_data);
+gpointer egg_test_get_user_data(EggTest * test);
+gchar *egg_test_get_data_file(const gchar * filename);
 
-#endif	/* __EGG_TEST_H */
-
+#endif				/* __EGG_TEST_H */

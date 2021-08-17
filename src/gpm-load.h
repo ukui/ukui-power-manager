@@ -25,32 +25,27 @@
 #include <glib-object.h>
 
 G_BEGIN_DECLS
-
 #define GPM_TYPE_LOAD		(gpm_load_get_type ())
 #define GPM_LOAD(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), GPM_TYPE_LOAD, GpmLoad))
 #define GPM_LOAD_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), GPM_TYPE_LOAD, GpmLoadClass))
 #define GPM_IS_LOAD(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), GPM_TYPE_LOAD))
 #define GPM_IS_LOAD_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), GPM_TYPE_LOAD))
 #define GPM_LOAD_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), GPM_TYPE_LOAD, GpmLoadClass))
-
 typedef struct GpmLoadPrivate GpmLoadPrivate;
 
-typedef struct
-{
-	GObject		 parent;
-	GpmLoadPrivate	*priv;
+typedef struct {
+    GObject parent;
+    GpmLoadPrivate *priv;
 } GpmLoad;
 
-typedef struct
-{
-	GObjectClass	parent_class;
+typedef struct {
+    GObjectClass parent_class;
 } GpmLoadClass;
 
-GType		 gpm_load_get_type		(void);
-GpmLoad		*gpm_load_new			(void);
+GType gpm_load_get_type(void);
+GpmLoad *gpm_load_new(void);
 
-gdouble		 gpm_load_get_current		(GpmLoad	*load);
+gdouble gpm_load_get_current(GpmLoad * load);
 
 G_END_DECLS
-
-#endif /* __GPM_LOAD_H */
+#endif				/* __GPM_LOAD_H */

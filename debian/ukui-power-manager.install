@@ -8,4 +8,4 @@ usr/share/polkit-1/
 data/99-upower-wake-up-usb-device.rules lib/udev/rules.d/
 data/power-ignore.conf /etc/systemd/logind.conf.d/
 data/ukui-power-manager /etc/logrotate.d/
-lib/
+lib/systemd/system

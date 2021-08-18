@@ -5,7 +5,6 @@ data/ukui-power-manager.desktop.in.in
 data/ukui-power-manager-tray.desktop.in.in
 [type: gettext/gsettings]data/org.ukui.power-manager.gschema.xml.in
 data/ukui-power-preferences.desktop.in.in
-data/ukui-power-statistics.desktop.in.in
 [type: gettext/glade]data/gpm-feedback-widget.ui
 [type: gettext/glade]data/gpm-statistics.ui
 [type: gettext/glade]data/gpm-prefs.ui

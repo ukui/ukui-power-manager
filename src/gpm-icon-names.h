@@ -25,7 +25,6 @@
 #define __GPM_ICON_NAMES_H
 
 G_BEGIN_DECLS
-
 #define GPM_ICON_APP_ICON			"ukui-power-manager"
 #define GPM_ICON_AC_ADAPTER			"gpm-ac-adapter"
 #define GPM_ICON_BATTERY_CHARGED		"gpm-primary-charged"
@@ -35,7 +34,5 @@ G_BEGIN_DECLS
 #define GPM_ICON_BRIGHTNESS_LCD			"gpm-brightness-lcd"
 #define GPM_ICON_BRIGHTNESS_KBD			"gpm-brightness-kbd"
 #define GPM_ICON_INHIBIT			"gpm-inhibit"
-
-G_END_DECLS
-
-#endif /* __GPM_ICON_NAMES_H */
+    G_END_DECLS
+#endif				/* __GPM_ICON_NAMES_H */

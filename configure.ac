@@ -44,6 +44,8 @@ AC_ARG_ENABLE(extra-warn,
 
 if test "x$enable_extra_warn" = "xyes" && test "$GCC" = "yes"; then
 	WARNINGFLAGS="$WARNINGFLAGS -Wall"
+	WARNINGFLAGS="$WARNINGFLAGS -D_FORTIFY_SOURCE=2"
+	WARNINGFLAGS="$WARNINGFLAGS -O2"
 	WARNINGFLAGS="$WARNINGFLAGS -Wcast-align -Wno-uninitialized"
 	WARNINGFLAGS="$WARNINGFLAGS -Wmissing-declarations"
 #	WARNINGFLAGS="$WARNINGFLAGS -Wredundant-decls"

@@ -1,0 +1,9 @@
+/tmp/ukui-power-manager.log {
+    daily
+    rotate 7
+    compress
+    notifempty
+    maxsize 10M
+    copytruncate
+}
+

@@ -25,21 +25,19 @@
 #include <glib-object.h>
 
 G_BEGIN_DECLS
-
 #define GPM_TYPE_BUTTON		(gpm_button_get_type ())
 #define GPM_BUTTON(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), GPM_TYPE_BUTTON, GpmButton))
 #define GPM_BUTTON_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), GPM_TYPE_BUTTON, GpmButtonClass))
 #define GPM_IS_BUTTON(o)	(G_TYPE_CHECK_INSTANCE_TYPE ((o), GPM_TYPE_BUTTON))
 #define GPM_IS_BUTTON_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), GPM_TYPE_BUTTON))
 #define GPM_BUTTON_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), GPM_TYPE_BUTTON, GpmButtonClass))
-
 typedef struct GpmButtonPrivate GpmButtonPrivate;
 
 #define GPM_BUTTON_POWER		"power"
 #define GPM_BUTTON_SLEEP		"sleep"
 #define GPM_BUTTON_SUSPEND		"suspend"
 #define GPM_BUTTON_HIBERNATE		"hibernate"
-#define GPM_BUTTON_LID_DEP		"lid"		/* Remove when HAL drops input support */
+#define GPM_BUTTON_LID_DEP		"lid"	/* Remove when HAL drops input support */
 #define GPM_BUTTON_LID_OPEN		"lid-up"
 #define GPM_BUTTON_LID_CLOSED		"lid-down"
 #define GPM_BUTTON_BRIGHT_UP		"brightness-up"
@@ -50,24 +48,20 @@ typedef struct GpmButtonPrivate GpmButtonPrivate;
 #define GPM_BUTTON_LOCK			"lock"
 #define GPM_BUTTON_BATTERY		"battery"
 
-typedef struct
-{
-	GObject		 parent;
-	GpmButtonPrivate *priv;
+typedef struct {
+    GObject parent;
+    GpmButtonPrivate *priv;
 } GpmButton;
 
-typedef struct
-{
-	GObjectClass	parent_class;
-	void		(* button_pressed)	(GpmButton	*button,
-						 const gchar	*type);
+typedef struct {
+    GObjectClass parent_class;
+    void (*button_pressed) (GpmButton * button, const gchar * type);
 } GpmButtonClass;
 
-GType		 gpm_button_get_type		(void);
-GpmButton	*gpm_button_new			(void);
-gboolean	 gpm_button_is_lid_closed	(GpmButton *button);
-gboolean	 gpm_button_reset_time		(GpmButton *button);
+GType gpm_button_get_type(void);
+GpmButton *gpm_button_new(void);
+gboolean gpm_button_is_lid_closed(GpmButton * button);
+gboolean gpm_button_reset_time(GpmButton * button);
 
 G_END_DECLS
-
-#endif	/* __GPMBUTTON_H */
+#endif				/* __GPMBUTTON_H */

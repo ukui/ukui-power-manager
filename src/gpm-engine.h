@@ -27,53 +27,39 @@
 #include <libupower-glib/upower.h>
 
 G_BEGIN_DECLS
-
 #define GPM_TYPE_ENGINE		(gpm_engine_get_type ())
 #define GPM_ENGINE(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), GPM_TYPE_ENGINE, GpmEngine))
 #define GPM_ENGINE_CLASS(k)	(G_TYPE_CHECK_CLASS_CAST((k), GPM_TYPE_ENGINE, GpmEngineClass))
 #define GPM_IS_ENGINE(o)	(G_TYPE_CHECK_INSTANCE_TYPE ((o), GPM_TYPE_ENGINE))
 #define GPM_IS_ENGINE_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), GPM_TYPE_ENGINE))
 #define GPM_ENGINE_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), GPM_TYPE_ENGINE, GpmEngineClass))
-
 typedef struct GpmEnginePrivate GpmEnginePrivate;
 
-typedef struct
-{
-	GObject		 parent;
-	GpmEnginePrivate *priv;
+typedef struct {
+    GObject parent;
+    GpmEnginePrivate *priv;
 } GpmEngine;
 
-typedef struct
-{
-	GObjectClass	parent_class;
-	void		(* icon_changed)	(GpmEngine	*engine,
-						 gchar		*icon);
-	void		(* summary_changed)	(GpmEngine	*engine,
-						 gchar		*status);
-	void		(* low_capacity)	(GpmEngine	*engine,
-						 UpDevice	*device);
-	void		(* charge_low)		(GpmEngine	*engine,
-						 UpDevice	*device);
-	void		(* charge_critical)	(GpmEngine	*engine,
-						 UpDevice	*device);
-	void		(* charge_action)	(GpmEngine	*engine,
-						 UpDevice	*device);
-	void		(* fully_charged)	(GpmEngine	*engine,
-						 UpDevice	*device);
-	void		(* discharging)		(GpmEngine	*engine,
-						 UpDevice	*device);
-	void		(* devices_changed)	(GpmEngine	*engine);
-        void            (* charge_critical_notify) (GpmEngine *engine, UpDevice *device);
+typedef struct {
+    GObjectClass parent_class;
+    void (*icon_changed) (GpmEngine * engine, gchar * icon);
+    void (*summary_changed) (GpmEngine * engine, gchar * status);
+    void (*low_capacity) (GpmEngine * engine, UpDevice * device);
+    void (*charge_low) (GpmEngine * engine, UpDevice * device);
+    void (*charge_critical) (GpmEngine * engine, UpDevice * device);
+    void (*charge_action) (GpmEngine * engine, UpDevice * device);
+    void (*fully_charged) (GpmEngine * engine, UpDevice * device);
+    void (*discharging) (GpmEngine * engine, UpDevice * device);
+    void (*devices_changed) (GpmEngine * engine);
+    void (*charge_critical_notify)(GpmEngine * engine, UpDevice * device);
 } GpmEngineClass;
 
-GType		 gpm_engine_get_type		(void);
-GpmEngine	*gpm_engine_new			(void);
-gchar		*gpm_engine_get_icon		(GpmEngine	*engine);
-gchar		*gpm_engine_get_summary		(GpmEngine	*engine);
-GPtrArray	*gpm_engine_get_devices		(GpmEngine	*engine);
-UpDevice	*gpm_engine_get_primary_device	(GpmEngine	*engine);
+GType gpm_engine_get_type(void);
+GpmEngine *gpm_engine_new(void);
+gchar *gpm_engine_get_icon(GpmEngine * engine);
+gchar *gpm_engine_get_summary(GpmEngine * engine);
+GPtrArray *gpm_engine_get_devices(GpmEngine * engine);
+UpDevice *gpm_engine_get_primary_device(GpmEngine * engine);
 
 G_END_DECLS
-
-#endif	/* __GPM_ENGINE_H */
-
+#endif				/* __GPM_ENGINE_H */

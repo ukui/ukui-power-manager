@@ -26,48 +26,38 @@
 #include <glib-object.h>
 
 G_BEGIN_DECLS
-
 #define GPM_TYPE_BACKLIGHT		(gpm_backlight_get_type ())
 #define GPM_BACKLIGHT(o)		(G_TYPE_CHECK_INSTANCE_CAST ((o), GPM_TYPE_BACKLIGHT, GpmBacklight))
 #define GPM_BACKLIGHT_CLASS(k)		(G_TYPE_CHECK_CLASS_CAST((k), GPM_TYPE_BACKLIGHT, GpmBacklightClass))
 #define GPM_IS_BACKLIGHT(o)		(G_TYPE_CHECK_INSTANCE_TYPE ((o), GPM_TYPE_BACKLIGHT))
 #define GPM_IS_BACKLIGHT_CLASS(k)	(G_TYPE_CHECK_CLASS_TYPE ((k), GPM_TYPE_BACKLIGHT))
 #define GPM_BACKLIGHT_GET_CLASS(o)	(G_TYPE_INSTANCE_GET_CLASS ((o), GPM_TYPE_BACKLIGHT, GpmBacklightClass))
-
 typedef struct GpmBacklightPrivate GpmBacklightPrivate;
 
-typedef struct
-{
-	GObject		         parent;
-	GpmBacklightPrivate *priv;
+typedef struct {
+    GObject parent;
+    GpmBacklightPrivate *priv;
 } GpmBacklight;
 
-typedef struct
-{
-	GObjectClass	parent_class;
-	void		(* brightness_changed)		(GpmBacklight	*backlight,
-							 gint		 brightness);
+typedef struct {
+    GObjectClass parent_class;
+    void (*brightness_changed) (GpmBacklight * backlight, gint brightness);
 } GpmBacklightClass;
 
-typedef enum
-{
-	 GPM_BACKLIGHT_ERROR_GENERAL,
-	 GPM_BACKLIGHT_ERROR_DATA_NOT_AVAILABLE,
-	 GPM_BACKLIGHT_ERROR_HARDWARE_NOT_PRESENT
+typedef enum {
+    GPM_BACKLIGHT_ERROR_GENERAL,
+    GPM_BACKLIGHT_ERROR_DATA_NOT_AVAILABLE,
+    GPM_BACKLIGHT_ERROR_HARDWARE_NOT_PRESENT
 } GpmBacklightError;
 
-GType		 gpm_backlight_get_type			(void);
-GQuark		 gpm_backlight_error_quark		(void);
-GpmBacklight	*gpm_backlight_new			(void);
+GType gpm_backlight_get_type(void);
+GQuark gpm_backlight_error_quark(void);
+GpmBacklight *gpm_backlight_new(void);
 
-gboolean	 gpm_backlight_get_brightness		(GpmBacklight	*backlight,
-							 guint		*brightness,
-							 GError		**error);
-gboolean	 gpm_backlight_set_brightness		(GpmBacklight	*backlight,
-							 guint		 brightness,
-							 GError		**error);
+gboolean gpm_backlight_get_brightness(GpmBacklight * backlight,
+				      guint * brightness, GError ** error);
+gboolean gpm_backlight_set_brightness(GpmBacklight * backlight,
+				      guint brightness, GError ** error);
 
 G_END_DECLS
-
-#endif /* __GPM_BACKLIGHT_H */
-
+#endif				/* __GPM_BACKLIGHT_H */

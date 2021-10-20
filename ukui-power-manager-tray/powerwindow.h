@@ -1,6 +1,26 @@
+/*
+ * Copyright (C) 2019 Tianjin KYLIN Information Technology Co., Ltd.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 3, or (at your option)
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, see <http://www.gnu.org/licenses/&gt;.
+ *
+ */
+
+
 #ifndef POWERWINDOW_H
 #define POWERWINDOW_H
 
+#include "engine_common.h"
 #include <QWidget>
 #include <QStyleOption>
 #include <QPainter>
@@ -14,10 +34,8 @@
 #include <QVBoxLayout>
 #include "enginedevice.h"
 #include <QListWidgetItem>
-#include "device_widget.h"
 #include <QSlider>
 #include <QMouseEvent>
-#include <QListWidgetItem>
 #include <QMap>
 #include <QProcess>
 #include <QFont>
@@ -45,7 +63,7 @@ class powerwindow : public QWidget
     Q_OBJECT
 public:
     explicit powerwindow(QWidget *parent = nullptr);
-
+    ~powerwindow();
     enum PanelStatePosition
     {
         PanelDown = 0,
@@ -54,22 +72,17 @@ public:
         PanelRight
     };
 
-
+    void set_window_position();
     void setWindowProperty();
     void initUI();
-    void setPosition();
-    void setBatteryIcon(int Ele_surplus_int,int state);
     void initgsetting();
-    int hours(int value);
-    int minutes(int value);
+    QGSettings *settings;
     QStringList m_IconBatterChangeList;
 
     QVBoxLayout  *m_pmainlayout    = nullptr;
     QHBoxLayout  *m_firstlayout    = nullptr;
-    QHBoxLayout  *m_statelayout    = nullptr;
     QHBoxLayout  *lastlayout       = nullptr;
     QWidget      *m_firstwidget;
-    QWidget      *m_statewidget;
     QWidget      *lastWidget;
 
     QLabel *iconLabel;
@@ -77,11 +90,6 @@ public:
     QLabel *percentageLabel;
     QLabel *powerStateLabel;
     QLabel *powerTimeToEmpty;
-    stateslider *stateSlider;
-    QLabel *enduranceIconLabel;
-    QLabel *enduranceLabel;
-    QLabel *performanceIconLabel;
-    QLabel *performanceLabel;
 
     m_PartLineWidget *line;
 
@@ -100,24 +108,12 @@ private :
     int              m_pPeonySite;                                    // 任务栏位置
     int              deviceNum = 0;
     void paintEvent(QPaintEvent *e);
-    void initPanelDbusGsetting();
-    void listenPanelChange();
-    int connectTaskBarDbus();
-    int getPanelSite();
-    void GetsAvailableAreaScreen();
-    int getTaskbarPos(QString str);
-    int getTaskbarHeight(QString str);
-    int getScreenGeometry(QString methodName);
-    void initset_window_position();
-    void set_window_position();
 private Q_SLOTS:
 
     void set_preference_func();
     void batteryChange(int dev);
     void onBatteryChanged(QStringList args);
 
-    void add_one_device(DEVICE *device);
-    void remove_one_device(DEVICE *device);
     void charge_notify(DEV dev);
     void discharge_notify(DEV dev);
     void action_battery_notify(DEV dev);

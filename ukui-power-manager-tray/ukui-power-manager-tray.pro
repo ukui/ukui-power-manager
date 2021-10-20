@@ -58,31 +58,26 @@ CONFIG += c++11 no_keywords link_pkgconfig
 PKGCONFIG +=  gsettings-qt x11
 
 SOURCES += \
-    customstyle.cpp \
-    device.cpp \
-    device_widget.cpp \
+device.cpp \
     enginedevice.cpp \
     main.cpp \
         mainwindow.cpp \
-    customtype.cpp \
     powerwindow.cpp
 
 HEADERS += \
-    customstyle.h \
-    device.h \
-    device_widget.h \
+device.h  \
     engine_common.h \
     enginedevice.h \
         mainwindow.h \
-    customtype.h \
     powerwindow.h
 
 FORMS +=
+desktop.files += resources/ukui-power-manager-tray.desktop
+
+desktop.path = /etc/xdg/autostart/
+
+INSTALLS += desktop
+
 
 # Default rules for deployment.
 
-RESOURCES += \
-    resource.qrc
-
-DISTFILES += \
-    main.qss

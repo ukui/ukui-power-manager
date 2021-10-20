@@ -31,6 +31,7 @@
 #include <QWidgetAction>
 #include <QLabel>
 #include <QTimer>
+#include <QTime>
 #include <powerwindow.h>
 
 class MainWindow : public QMainWindow
@@ -47,7 +48,7 @@ private:
     QList<QDBusObjectPath> deviceNames;
     QGSettings * settings;
     QMenu *menu;
-
+    QDBusInterface *iface;
 private Q_SLOTS:
     void set_preference_func();
     void onSumChanged(QString str);

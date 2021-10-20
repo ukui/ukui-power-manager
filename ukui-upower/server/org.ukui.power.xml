@@ -1,0 +1,35 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN" "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<node>
+  <interface name="org.ukui.power">
+    <method name="UPowerVersion">
+      <arg type="s" direction="out"/>
+    </method>
+    <method name="CanHibernate">
+      <arg type="s" direction="out"/>
+    </method>
+    <method name="MachineType">
+      <arg type="s" direction="out"/>
+    </method>
+    <method name="OnBattery">
+      <arg type="b" direction="out"/>
+    </method>
+    <method name="DaemonVersion">
+      <arg type="s" direction="out"/>
+    </method>
+    <method name="IconName">
+      <arg type="s" direction="out"/>
+    </method>
+    <method name="Percentage">
+      <arg type="d" direction="out"/>
+    </method>
+    <method name="TimeToFull">
+      <arg type="i" direction="out"/>
+    </method>
+    <method name="TimeToEmpty">
+      <arg type="i" direction="out"/>
+    </method>
+    <method name="IsPresent">
+      <arg type="b" direction="out"/>
+    </method>
+  </interface>
+</node>

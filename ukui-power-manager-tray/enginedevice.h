@@ -21,7 +21,8 @@
 #include "engine_common.h"
 #include <QObject>
 #include <device.h>
-#include "customtype.h"
+#include <QDBusMetaType>
+#include <QDBusVariant>
 #include <QString>
 #include <QGSettings>
 
@@ -32,6 +33,7 @@
 
 #define DBUS_INTERFACE_PRO "org.freedesktop.DBus.Properties"
 #define DBUS_INTERFACE_DEV "org.freedesktop.UPower.Device"
+
 class EngineDevice : public QObject
 {
     Q_OBJECT
@@ -72,14 +74,11 @@ Q_SIGNALS:
     void engine_signal_charge_action(DEV dv);
     void engine_signal_summary_change(QString summary);
     void engine_signal_Battery_State(QStringList Battery_State);
-    void signal_device_change(DEVICE *device);
     void one_device_add(DEVICE *dev);
     void one_device_remove(DEVICE *dev);
 public Q_SLOTS:
     void power_device_change_callback(QDBusMessage msg, QString path);
-    void engine_policy_settings_cb(const QString &str);
-    void power_device_add(QDBusObjectPath msg);
-    void power_device_remove(QDBusObjectPath msg);
+
 public:
     QGSettings *settings;
     QList<DEVICE*> devices;
@@ -88,16 +87,10 @@ public:
 
     DEVICE *composite_device;
     GpmIconPolicy icon_policy;
-    int			 low_percentage;
-    int			 critical_percentage;
-    int			 action_percentage;
-    int hours(int value);
-    int minutes(int value);
     bool power_device_recalculate_icon();
     void power_device_recalculate_state();
     QString power_device_get_icon_exact(UpDeviceKind device_kind, UpDeviceLevel warning, bool use_state);
     bool engine_recalculate_summary();
-    void power_device_cold_plug();
     void getProperty(QString path, DEV &dev);
     QString engine_get_summary();
     QStringList engine_get_state ();
@@ -113,12 +106,8 @@ public:
     QString power_device_get_icon();
     QString engine_get_device_icon(DEVICE *device);
     void putAttributes(QMap<QString, QVariant> &map, DEV &btrDetailData);
-    QString engine_get_state_text(UpDeviceState state);
-    QString engine_get_device_predict(DEVICE *dv);
     QString engine_get_timestring(int time_secs);
     QString engine_get_dev_icon(DEV dev);
-    QString engine_get_dev_predict(DEV dev);
-    UpDeviceLevel engine_get_warning_percentage(DEV dev);
     UpDeviceLevel engine_get_warning(DEV dev);
 };
 

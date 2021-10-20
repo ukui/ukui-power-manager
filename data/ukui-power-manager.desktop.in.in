@@ -2,7 +2,7 @@
 _Name=Power Manager
 _Comment=Power management daemon
 Icon=ukui-power-manager
-Exec=ukui-power-manager
+Exec=
 Terminal=false
 Type=Application
 NoDisplay=true

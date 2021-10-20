@@ -29,13 +29,10 @@ struct DEV
     QString Type;
     QString PowerSupply;
     QString Online;
-    QString Vendor;
     QString Model;
-    QString Refresh;
     QString Energy;
     QString EnergyEmpty;
     QString EnergyFull;
-    QString EnergyFullDesign;
     QString EnergyRate;
     bool IsPresent;
     QString IsRechargeable;
@@ -45,19 +42,9 @@ struct DEV
     qlonglong TimeToFull;
     QString Voltage;
     double Capacity;
-    QString update_time;
-    QString serial;
     QString Technology;
-    bool hasHistory;
-    bool hasStat;
     QString path;
 
-    bool autorange_x;
-    int start_x;
-    int stop_x;
-    bool autorange_y;
-    int start_y;
-    int stop_y;
 };
 
 class DEVICE : public QObject

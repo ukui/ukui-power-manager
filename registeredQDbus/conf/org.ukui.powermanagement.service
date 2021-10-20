@@ -1,0 +1,4 @@
+[D-BUS Service]
+Name=org.ukui.powermanagement
+Exec=/usr/bin/ukui-powermanagement-service
+User=root

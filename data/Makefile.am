@@ -3,7 +3,8 @@
 
 @INTLTOOL_DESKTOP_RULE@
 desktopdir = $(datadir)/applications
-desktop_in_files = ukui-power-preferences.desktop.in
+desktop_in_files = ukui-power-preferences.desktop.in \
+                   ukui-power-statistics.desktop.in
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 
 @INTLTOOL_DESKTOP_RULE@
@@ -15,12 +16,6 @@ autostart_DATA = $(autostart_in_files:.desktop.in=.desktop)
 servicedir       = $(DBUS_SERVICES_DIR)
 service_in_files = org.ukui.PowerManager.service.in
 service_DATA     = $(service_in_files:.service.in=.service)
-
-systemddir       = /lib/systemd/system
-systemd_DATA     = ukui-power-policy.service
-
-dbusdir          = /etc/dbus-1/system.d
-dbus_DATA        = ukui.power.policy.conf
 
 $(service_DATA): $(service_in_files) Makefile
 	@sed -e "s|\@servicedir\@|$(bindir)|" $< > $@
@@ -44,7 +39,7 @@ man_MANS =				\
 	ukui-power-manager.1		\
 	ukui-power-manager-tray.1	\
 	ukui-power-backlight-helper.1	\
-	ukui-power-policy.1		\
+	ukui-power-statistics.1		\
 	ukui-power-preferences.1
 
 EXTRA_DIST =						\
@@ -63,5 +58,6 @@ DISTCLEANFILES =					\
 	ukui-power-manager.desktop			\
 	ukui-power-manager-tray.desktop		\
 	ukui-power-preferences.desktop			\
+	ukui-power-statistics.desktop			\
 	org.ukui.PowerManager.service			\
 	$(gsettings_SCHEMAS)

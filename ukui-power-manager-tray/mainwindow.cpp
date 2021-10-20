@@ -28,33 +28,29 @@
 #include <QPainter>
 #include <QFile>
 #include <QDir>
-#include <customstyle.h>
 #include <QDBusReply>
 #include <unistd.h>
-#define PANEL_DBUS_SERVICE          "com.ukui.panel.desktop"
-#define PANEL_DBUS_PATH             "/"
-#define PANEL_DBUS_INTERFACE        "com.ukui.panel.desktop"
-#define PANEL_SETTINGS              "org.ukui.panel.settings"
-#define PANEL_SETTINGS_KEY_HEIGHT   "panelsize"
-#define PANEL_SETTINGS_KEY_POSITION "panelposition"
+
 
 MainWindow::MainWindow(QWidget *parent) :QMainWindow(parent)
 {
     trayIcon = new QSystemTrayIcon(this);
-    //trayIcon->show();
     EngineDevice* ed;
     ed = EngineDevice::getInstance();
-    connect(ed, SIGNAL(icon_changed(QString)), this,SLOT(IconChanged(QString)));
+  //  connect(ed, SIGNAL(icon_changed(QString)), this,SLOT(IconChanged(QString)));
+    QDBusConnection::sessionBus().connect(QString(),"/","org.ukui.upower",
+                                          "BatteryIcon",this,
+                                          SLOT(IconChanged(QString))
+                                          );
+    iface = new QDBusInterface("org.ukui.upower","/","org.ukui.upower",QDBusConnection::sessionBus());
     connect(ed, SIGNAL(engine_signal_summary_change(QString)), this,SLOT(onSumChanged(QString)));
     initUi();
     connect(trayIcon,SIGNAL(activated(QSystemTrayIcon::ActivationReason)),this,SLOT(onActivatedIcon(QSystemTrayIcon::ActivationReason)));
-
 }
 void MainWindow::onSumChanged(QString str){
 	trayIcon->setToolTip(str);
 }
 void MainWindow::IconChanged(QString str){
-    //qDebug()<<"::::::::"<<str;
     if (!str.isNull()) {
         QIcon icon = QIcon::fromTheme(str);
         trayIcon->setIcon(icon);
@@ -68,6 +64,7 @@ void MainWindow::IconChanged(QString str){
 void MainWindow::onActivatedIcon(QSystemTrayIcon::ActivationReason reason)
 {
     if (reason == 3){
+        powerWindow->set_window_position();
         powerWindow->show();
     }
 }
@@ -85,6 +82,9 @@ void MainWindow::initUi()
     QIcon icon = QIcon::fromTheme("document-page-setup-symbolic");
     pset_preference->setIcon(icon);
     pset_preference->setText(tr("SetPower"));
+    QDBusReply<QString> reply = iface->call("IconName");
+    qDebug()<<reply.value();
+    IconChanged(reply.value());
     connect(pset_preference,&QAction::triggered,this,&MainWindow::set_preference_func);
     menu->addAction(pset_preference);
     powerWindow = new powerwindow();
@@ -99,6 +99,9 @@ void MainWindow::set_preference_func()
 
 MainWindow::~MainWindow()
 {
-
+    delete powerWindow;
+    delete menu;
+    delete trayIcon;
+    delete iface;
 }
 

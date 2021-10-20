@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=Power Manager
+Name[zh_CN]=电源管理器
+Comment=Power management daemon
+Comment[zh_CN]=电源管理守护程序
+Icon=ukui-power-manager
+Exec=ukui-powermanagement
+Terminal=false
+Type=Application
+NoDisplay=true
+Categories=
+OnlyShowIn=UKUI;
+X-UKUI-AutoRestart=true
+

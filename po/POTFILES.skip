@@ -1,7 +1,0 @@
-applets/brightness/org.ukui.BrightnessApplet.ukui-panel-applet.in
-applets/inhibit/org.ukui.InhibitApplet.ukui-panel-applet.in
-data/ukui-power-manager.desktop.in
-data/ukui-power-manager-tray.desktop.in
-data/ukui-power-preferences.desktop.in
-applets/brightness/gpm-common.c
-applets/inhibit/gpm-common.c

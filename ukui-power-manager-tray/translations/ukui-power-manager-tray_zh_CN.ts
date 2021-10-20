@@ -67,19 +67,15 @@
         <translation>小时</translation>
     </message>
     <message>
-        <location filename="../enginedevice.cpp" line="715"/>
-        <location filename="../enginedevice.cpp" line="718"/>
-        <location filename="../enginedevice.cpp" line="1162"/>
         <source>fully charged</source>
-        <translation>已充满</translation>
+        <translation type="vanished">已充满</translation>
     </message>
     <message>
-        <location filename="../enginedevice.cpp" line="738"/>
         <source>not charging</source>
-        <translation>未充电</translation>
+        <translation type="vanished">未充电</translation>
     </message>
     <message>
-        <location filename="../enginedevice.cpp" line="806"/>
+        <location filename="../enginedevice.cpp" line="708"/>
         <source>%1% available, charged</source>
         <translation>%1%可用，已充满</translation>
     </message>
@@ -92,126 +88,122 @@
         <translation type="vanished">%1%可用，正在充电</translation>
     </message>
     <message>
-        <location filename="../enginedevice.cpp" line="824"/>
+        <location filename="../enginedevice.cpp" line="733"/>
         <source>%1 waiting to discharge (%2%)</source>
         <translation>%1 等待放电 (%2%)</translation>
     </message>
     <message>
-        <location filename="../enginedevice.cpp" line="830"/>
+        <location filename="../enginedevice.cpp" line="739"/>
         <source>%1 waiting to charge (%2%)</source>
         <translation>%1 等待充电 (%2%)</translation>
     </message>
     <message>
-        <location filename="../enginedevice.cpp" line="1168"/>
         <source>discharging(%1%)</source>
-        <translation>放电(%1%)</translation>
+        <translation type="vanished">放电(%1%)</translation>
     </message>
     <message>
         <source>charging(%1%)</source>
         <translation type="vanished">充电(%1%)</translation>
     </message>
     <message>
-        <location filename="../enginedevice.cpp" line="894"/>
+        <location filename="../enginedevice.cpp" line="803"/>
         <source>AC adapter</source>
         <translation>交流电源适配器</translation>
     </message>
     <message>
-        <location filename="../enginedevice.cpp" line="898"/>
+        <location filename="../enginedevice.cpp" line="807"/>
         <source>Laptop battery</source>
         <translation>笔记本电池</translation>
     </message>
     <message>
-        <location filename="../enginedevice.cpp" line="902"/>
+        <location filename="../enginedevice.cpp" line="811"/>
         <source>UPS</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../enginedevice.cpp" line="906"/>
+        <location filename="../enginedevice.cpp" line="815"/>
         <source>Monitor</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../enginedevice.cpp" line="910"/>
+        <location filename="../enginedevice.cpp" line="819"/>
         <source>Mouse</source>
         <translation>鼠标</translation>
     </message>
     <message>
-        <location filename="../enginedevice.cpp" line="914"/>
+        <location filename="../enginedevice.cpp" line="823"/>
         <source>Keyboard</source>
         <translation>键盘</translation>
     </message>
     <message>
-        <location filename="../enginedevice.cpp" line="918"/>
+        <location filename="../enginedevice.cpp" line="827"/>
         <source>PDA</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../enginedevice.cpp" line="922"/>
+        <location filename="../enginedevice.cpp" line="831"/>
         <source>Cell phone</source>
         <translation>手机</translation>
     </message>
     <message>
-        <location filename="../enginedevice.cpp" line="926"/>
+        <location filename="../enginedevice.cpp" line="835"/>
         <source>Media player</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../enginedevice.cpp" line="930"/>
+        <location filename="../enginedevice.cpp" line="839"/>
         <source>Tablet</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../enginedevice.cpp" line="934"/>
+        <location filename="../enginedevice.cpp" line="843"/>
         <source>Computer</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../enginedevice.cpp" line="938"/>
+        <location filename="../enginedevice.cpp" line="847"/>
         <source>unrecognised</source>
         <translation>未识别</translation>
     </message>
     <message>
-        <location filename="../enginedevice.cpp" line="717"/>
-        <location filename="../enginedevice.cpp" line="740"/>
-        <location filename="../enginedevice.cpp" line="1171"/>
-        <location filename="../enginedevice.cpp" line="1183"/>
         <source>charging</source>
-        <translation>正在充电</translation>
+        <translation type="vanished">正在充电</translation>
     </message>
     <message>
-        <location filename="../enginedevice.cpp" line="810"/>
+        <location filename="../enginedevice.cpp" line="714"/>
         <source>Left %1h %2m (%3%)</source>
         <translation type="unfinished">剩余 %1小时 %2分钟 (%3%)</translation>
     </message>
     <message>
-        <location filename="../enginedevice.cpp" line="816"/>
+        <location filename="../enginedevice.cpp" line="716"/>
+        <source>%1% available</source>
+        <translation type="unfinished">%1%可用</translation>
+    </message>
+    <message>
+        <location filename="../enginedevice.cpp" line="725"/>
         <source>Left %1h %2m to full</source>
         <translation type="unfinished">剩余%1小时%2分钟充满</translation>
     </message>
     <message>
-        <location filename="../enginedevice.cpp" line="818"/>
+        <location filename="../enginedevice.cpp" line="727"/>
         <source>charging (%1%)</source>
         <translation type="unfinished">正在充电 (%1%)</translation>
     </message>
     <message>
-        <location filename="../enginedevice.cpp" line="1186"/>
         <source>discharging</source>
-        <translation>放电</translation>
+        <translation type="vanished">放电</translation>
     </message>
     <message>
-        <location filename="../enginedevice.cpp" line="1189"/>
         <source>empty</source>
-        <translation>电量空</translation>
+        <translation type="vanished">电量空</translation>
     </message>
     <message>
-        <location filename="../enginedevice.cpp" line="1192"/>
         <source>fully</source>
-        <translation>电量满</translation>
+        <translation type="vanished">电量满</translation>
     </message>
     <message>
-        <location filename="../enginedevice.cpp" line="1195"/>
         <source>other</source>
-        <translation>其他</translation>
+        <translation type="vanished">其他</translation>
     </message>
 </context>
 <context>
@@ -344,86 +336,103 @@
 <context>
     <name>powerwindow</name>
     <message>
-        <location filename="../powerwindow.cpp" line="76"/>
+        <location filename="../powerwindow.cpp" line="90"/>
+        <location filename="../powerwindow.cpp" line="243"/>
         <source>Charging</source>
         <translation type="unfinished">正在充电</translation>
     </message>
     <message>
-        <location filename="../powerwindow.cpp" line="239"/>
+        <location filename="../powerwindow.cpp" line="237"/>
+        <source>Left %1h 
+ %2m</source>
+        <translation type="unfinished">剩余 %1小时
+ %2分钟</translation>
+    </message>
+    <message>
+        <location filename="../powerwindow.cpp" line="240"/>
+        <source>Discharging</source>
+        <translation type="unfinished">正在放电</translation>
+    </message>
+    <message>
+        <location filename="../powerwindow.cpp" line="247"/>
+        <source>fully charged</source>
+        <translation type="unfinished">已充满电</translation>
+    </message>
+    <message>
         <source>Left %1h %2m</source>
-        <translation type="unfinished">剩余 %1小时 %2分钟</translation>
+        <translation type="obsolete">剩余 %1小时 %2分钟</translation>
     </message>
     <message>
         <source>PowerManagement</source>
         <translation type="obsolete">电源管理</translation>
     </message>
     <message>
-        <location filename="../powerwindow.cpp" line="352"/>
-        <location filename="../powerwindow.cpp" line="371"/>
-        <location filename="../powerwindow.cpp" line="406"/>
-        <location filename="../powerwindow.cpp" line="426"/>
-        <location filename="../powerwindow.cpp" line="445"/>
-        <location filename="../powerwindow.cpp" line="464"/>
+        <location filename="../powerwindow.cpp" line="325"/>
+        <location filename="../powerwindow.cpp" line="344"/>
+        <location filename="../powerwindow.cpp" line="379"/>
+        <location filename="../powerwindow.cpp" line="399"/>
+        <location filename="../powerwindow.cpp" line="418"/>
+        <location filename="../powerwindow.cpp" line="437"/>
         <source>Power Manager</source>
         <translation type="unfinished">电源管理器</translation>
     </message>
     <message>
-        <location filename="../powerwindow.cpp" line="355"/>
+        <location filename="../powerwindow.cpp" line="328"/>
         <source>charge notification</source>
         <translation type="unfinished">充电通知</translation>
     </message>
     <message>
-        <location filename="../powerwindow.cpp" line="356"/>
+        <location filename="../powerwindow.cpp" line="329"/>
         <source>battery is charging</source>
         <translation type="unfinished">电池正在充电中</translation>
     </message>
     <message>
-        <location filename="../powerwindow.cpp" line="374"/>
+        <location filename="../powerwindow.cpp" line="347"/>
         <source>discharged notification</source>
         <translation type="unfinished">放电通知</translation>
     </message>
     <message>
-        <location filename="../powerwindow.cpp" line="375"/>
+        <location filename="../powerwindow.cpp" line="348"/>
         <source>battery is discharging</source>
         <translation type="unfinished">电池正在放电中</translation>
     </message>
     <message>
-        <location filename="../powerwindow.cpp" line="410"/>
+        <location filename="../powerwindow.cpp" line="383"/>
         <source>fullly charged notification</source>
         <translation type="unfinished">充满电通知</translation>
     </message>
     <message>
-        <location filename="../powerwindow.cpp" line="411"/>
+        <location filename="../powerwindow.cpp" line="384"/>
         <source>battery is fullly charged</source>
         <translation type="unfinished">电量现在已经充满</translation>
     </message>
     <message>
-        <location filename="../powerwindow.cpp" line="429"/>
+        <location filename="../powerwindow.cpp" line="402"/>
         <source>low battery notification</source>
         <translation type="unfinished">低电量通知</translation>
     </message>
     <message>
-        <location filename="../powerwindow.cpp" line="430"/>
+        <location filename="../powerwindow.cpp" line="403"/>
         <source>battery is low, please plug in power</source>
-        <translation type="unfinished">电量水平低，请插入电源</translation>
+        <translation type="unfinished">电量水平低，请及时充电</translation>
     </message>
     <message>
-        <location filename="../powerwindow.cpp" line="448"/>
+        <location filename="../powerwindow.cpp" line="421"/>
         <source>critical battery notification</source>
         <translation type="unfinished">电量很低</translation>
     </message>
     <message>
-        <location filename="../powerwindow.cpp" line="449"/>
+        <location filename="../powerwindow.cpp" line="422"/>
         <source>battery is critical low,please plug in!</source>
         <translation type="unfinished">电量很低，请充电</translation>
     </message>
     <message>
-        <location filename="../powerwindow.cpp" line="467"/>
+        <location filename="../powerwindow.cpp" line="440"/>
         <source>operation notification</source>
         <translation type="unfinished">低电量操作通知</translation>
     </message>
     <message>
-        <location filename="../powerwindow.cpp" line="468"/>
+        <location filename="../powerwindow.cpp" line="441"/>
         <source>performing low power operation</source>
         <translation type="unfinished">系统将执行设置的操作</translation>
     </message>
@@ -431,7 +440,7 @@
 <context>
     <name>settinglabel</name>
     <message>
-        <location filename="../powerwindow.cpp" line="812"/>
+        <location filename="../powerwindow.cpp" line="785"/>
         <source>PowerSet</source>
         <translation type="unfinished">电源设置</translation>
     </message>

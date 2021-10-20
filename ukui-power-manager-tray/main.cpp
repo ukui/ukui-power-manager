@@ -67,10 +67,27 @@ int main(int argc, char *argv[])
     }
     else
         qDebug()<<"load ukui-power-manager-tray qm file error";
-
-    MainWindow w;
-    KWindowEffects::enableBlurBehind(w.winId(),true);
-    w.hide();
-
-    return a.exec();
+    QDBusInterface iface("org.ukui.upower","/",
+                         "org.ukui.upower",
+                         QDBusConnection::sessionBus());
+    QTime dieTime = QTime::currentTime().addMSecs(2000);
+    while (QTime::currentTime() < dieTime){
+        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+    }
+    QDBusReply<QString> reply = iface.call("MachineType");
+    if(reply.isValid()){
+        if("book" == reply.value()){
+            qDebug()<<"book";
+            MainWindow w;
+            KWindowEffects::enableBlurBehind(w.winId(),true);
+            w.hide();
+            return a.exec();
+        }else {
+           qDebug()<<"pc";
+           return a.exec();
+        }
+    }else {
+        qDebug()<<"upower error";
+        return a.exec();
+    }
 }

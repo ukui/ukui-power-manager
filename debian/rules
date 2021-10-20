@@ -1,39 +1,7 @@
 #!/usr/bin/make -f
 
 export DEB_BUILD_MAINT_OPTIONS = hardening=+all
-DPKG_EXPORT_BUILDFLAGS = 1
-include /usr/share/dpkg/buildflags.mk
-QT_INSTALL_DIR:=$(shell pwd)/debian/tmp/
+export QT_SELECT := qt5
+
 %:
 	dh $@
-override_dh_install:
-	mkdir -p $(QT_INSTALL_DIR) && \
-	make install INSTALL_ROOT=$(QT_INSTALL_DIR) -C ukui-power-manager-tray/build
-	make install INSTALL_ROOT=$(QT_INSTALL_DIR) -C ukui-power-policy/build
-	touch /tmp/ukui-power-manager.log
-	chmod 777 /tmp/ukui-power-manager.log
-	dh_install
-
-override_dh_missing:
-	dh_missing --fail-missing
-
-override_dh_installchangelogs:
-	dh_installchangelogs NEWS
-
-override_dh_auto_configure:
-	# upstream is without configure. autogen.sh will create it
-	NOCONFIGURE=1 ./autogen.sh
-	dh_auto_configure -- \
-		--disable-silent-rules \
-		--libexecdir=/usr/lib/ukui-power-manager \
-		--without-keyring \
-		--enable-deprecated
-
-override_dh_auto_build:
-	dh_auto_build
-	mkdir -p ukui-power-manager-tray/build
-	cd ukui-power-manager-tray/build && qmake ../
-	make -C ukui-power-manager-tray/build
-	mkdir -p ukui-power-policy/build
-	cd ukui-power-policy/build && qmake ../
-	make -C ukui-power-policy/build

@@ -26,7 +26,11 @@
 
 SysdbusRegister::SysdbusRegister()
 {
-    modelName = getCpuInfo();
+    if (1 == getBacklightFileNum()) {
+       modelName = OTHER;
+    } else {
+       modelName = getCpuInfo();
+    }
 }
 
 SysdbusRegister::~SysdbusRegister()
@@ -96,8 +100,9 @@ qulonglong SysdbusRegister::GetMaxBrightness()
     case Phytium:
         maxValue = executeLinuxCmd("cat /sys/class/backlight/ec_bl/max_brightness").toInt();
         break;
-    case Loongson:
-        maxValue = executeLinuxCmd("cat /sys/class/backlight/loongson-gpu/max_brightness").toInt();
+    case Loongson3A5000:
+        maxValue = executeLinuxCmd(QString("cat /sys/class/backlight/%1/max_brightness").
+                                   arg(getBacklightFile(Loongson3A5000))).toInt();
         break;
     case OTHER:
         maxValue = executeLinuxCmd("cat /sys/class/backlight/*/max_brightness").toInt();
@@ -118,8 +123,9 @@ int SysdbusRegister::GetBrightness()
     case Phytium:
         value = executeLinuxCmd("cat /sys/class/backlight/ec_bl/brightness").toInt();
         break;
-    case Loongson:
-        value = executeLinuxCmd("cat /sys/class/backlight/loongson-gpu/brightness").toInt();
+    case Loongson3A5000:
+        value = executeLinuxCmd(QString("cat /sys/class/backlight/%1/brightness").
+                                arg(getBacklightFile(Loongson3A5000))).toInt();
         break;
     case OTHER:
         value = executeLinuxCmd("cat /sys/class/backlight/*/brightness").toInt();
@@ -139,8 +145,9 @@ QString SysdbusRegister::RegulateBrightness(qulonglong brightness)
     case Phytium:
         msg = executeLinuxCmd(QString("echo %1 | tee /sys/class/backlight/ec_bl/brightness").arg(brightness));
         break;
-    case Loongson:
-        msg = executeLinuxCmd(QString("echo %1 | tee /sys/class/backlight/loongson-gpu/brightness").arg(brightness));
+    case Loongson3A5000:
+        msg = executeLinuxCmd(QString("echo %1 | tee /sys/class/backlight/%2/brightness").
+                              arg(brightness).arg(getBacklightFile(Loongson3A5000)));
         break;
     case OTHER:
         msg = executeLinuxCmd(QString("echo %1 | tee /sys/class/backlight/*/brightness").arg(brightness));
@@ -149,6 +156,34 @@ QString SysdbusRegister::RegulateBrightness(qulonglong brightness)
         break;
     }
     return msg;
+}
+
+QString SysdbusRegister::getBacklightFile(int type)
+{
+    if (Loongson3A5000 == type) {
+        QFile loongsonGpuFile("/sys/class/backlight/loongson-gpu");
+        if (loongsonGpuFile.exists()) {
+            return QString("loongson-gpu");
+        } else {
+            return QString("loongson_laptop");
+        }
+    } else {
+        return QString("*");
+    }
+}
+
+int SysdbusRegister::getBacklightFileNum()
+{
+    QDir dir("/sys/class/backlight");
+    QStringList filter;
+    QStringList filterAll;
+    filter << ".*";
+    dir.setNameFilters(filter);
+    QList<QFileInfo> fileInfo = dir.entryInfoList(filter);
+    int num = fileInfo.count();
+    fileInfo = dir.entryInfoList(filterAll);
+    int numAll = fileInfo.count();
+    return numAll - num;
 }
 
 void SysdbusRegister::TurnOffDisplay()
@@ -289,7 +324,7 @@ int SysdbusRegister::getCpuInfo()
             if(-1 == buf.indexOf("3A5000")){
                 return OTHER;
             }else{
-                return Loongson;
+                return Loongson3A5000;
             }
         }else{
             return Phytium;

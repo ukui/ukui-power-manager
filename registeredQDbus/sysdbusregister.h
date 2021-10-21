@@ -23,6 +23,7 @@
 #include <QCoreApplication>
 #include <QProcess>
 #include <QFile>
+#include <QDir>
 #include <QSettings>
 #include <QDBusMessage>
 #include <QtDBus/QDBusInterface>
@@ -59,7 +60,26 @@ private:
     QString canControl(const QString );
 
     //目前用来区分CPU
+    /**
+     * @brief getCpuInfo
+     * 获取CPU信息
+     * @return
+     */
     int getCpuInfo();
+
+    /**
+     * @brief getBacklightFile
+     * 查看backlight中文件
+     * @return
+     */
+    QString getBacklightFile(int);
+
+    /**
+     * @brief getBacklightFileNum
+     * 获取backlight中文件个数
+     * @return
+     */
+    int getBacklightFileNum();
 
     QProcess process;
 
@@ -78,7 +98,7 @@ private:
         Intel,
         ZHAOXIN,
         Phytium,
-        Loongson,
+        Loongson3A5000,
         HUAWEI,
     };
 

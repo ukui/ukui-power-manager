@@ -19,11 +19,11 @@
 #include "powermanagementdamon.h"
 
 #include <QApplication>
-#include <ukui-log4qt.h>
+//#include <ukui-log4qt.h>
 
 int main(int argc, char *argv[])
 {
-    initUkuiLog4qt("ukui-powermanagement");
+//    initUkuiLog4qt("ukui-powermanagement");
     QApplication a(argc, argv);
     PowerManagementDamon w;
     //    w.show();

@@ -5,7 +5,6 @@ Maintainer: kylin Team <team+kylin@tracker.debian.org>
 Uploaders: handsome_feng <jianfengli@ubuntukylin.com>,
 Build-Depends: debhelper-compat (= 12),
                qtbase5-dev,
-               libukui-log4qt-dev,
                qttools5-dev-tools,
                libglib2.0-dev,
                libupower-glib-dev,

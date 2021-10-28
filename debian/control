@@ -2,14 +2,13 @@ Source: ukui-power-manager
 Section: x11
 Priority: optional
 Maintainer: kylin Team <team+kylin@tracker.debian.org>
-Uploaders: hepuyao <hepuyao@kylinos.cn>,
-           lizhuoan <lizhuoan@kylinos.cn>,
+Uploaders: handsome_feng <jianfengli@ubuntukylin.com>,
 Build-Depends: debhelper-compat (= 12),
                qtbase5-dev,
-	       qttools5-dev-tools,
                libukui-log4qt-dev,
+               qttools5-dev-tools,
                libglib2.0-dev,
-	       libupower-glib-dev,
+               libupower-glib-dev,
                libx11-dev,
                libxext-dev,
                libxml-parser-perl,
@@ -18,7 +17,7 @@ Build-Depends: debhelper-compat (= 12),
                libgsettings-qt-dev,
                libkf5windowsystem-dev,
                libqt5x11extras5-dev
-Standards-Version: 4.5.0
+Standards-Version: 4.6.0
 Rules-Requires-Root: no
 Homepage: http://www.ukui.org/
 Vcs-Git: https://github.com/ukui/ukui-power-manager.git
@@ -31,7 +30,6 @@ Depends: dbus-x11,
          upower,
          ${misc:Depends},
          ${shlibs:Depends},
-Replaces: ukui-power-manager-common
 Description: power management tool for the UKUI desktop
  UKUI Power Manager is a session daemon for the UKUI desktop
  that takes care of system or desktop events related to power, and
@@ -43,3 +41,18 @@ Description: power management tool for the UKUI desktop
  power saving, and can trigger suspend-to-RAM, hibernate or shutdown
  events, all integrated to other components of the UKUI desktop.
 
+Package: ukui-power-manager-common
+Architecture: all
+Depends: ${misc:Depends},
+Description: power management tool for the UKUI desktop (common files)
+ UKUI Power Manager is a session daemon for the UKUI desktop
+ that takes care of system or desktop events related to power, and
+ triggers actions accordingly. Its philosophy is to completely hide
+ these complex tasks and only show some settings important to the user.
+ .
+ The UKUI power manager displays and manages battery status, power plug
+ events, display brightness, CPU, graphics card and hard disk drive
+ power saving, and can trigger suspend-to-RAM, hibernate or shutdown
+ events, all integrated to other components of the UKUI desktop.
+ .
+ This package contains the architecture independent files.

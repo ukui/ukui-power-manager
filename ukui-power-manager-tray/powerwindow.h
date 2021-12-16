@@ -83,7 +83,6 @@ public:
     QWidget      *m_firstwidget;
     QWidget      *lastWidget;
 
-    QLabel *iconLabel;
     QPushButton *iconButton;
     QLabel *percentageLabel;
     QLabel *powerStateLabel;
@@ -96,16 +95,24 @@ public:
     QMap<DEVICE*,QListWidgetItem*> device_item_map;
     settinglabel *settingLabel;
     void get_power_list();
-Q_SIGNALS:
 
+protected:
+    void paintEvent(QPaintEvent *e);
 private :
     QDBusInterface   *m_pServiceInterface;                            // 获取任务栏的高度
+    QDBusInterface   *m_iface;
     QGSettings       *m_pPanelSetting = nullptr;
     int              m_nScreenWidth;                                  // 屏幕分辨率的宽
     int              m_nScreenHeight;                                 // 屏幕分辨率的高
     int              m_pPeonySite;                                    // 任务栏位置
     int              deviceNum = 0;
-    void paintEvent(QPaintEvent *e);
+    int              m_sysFontSize;
+    double transparency;
+    QGSettings *transparency_gsettings;
+
+
+    bool eventFilter(QObject *watched, QEvent *event);
+    void watchTranspartency();
 private Q_SLOTS:
 
     void set_preference_func();

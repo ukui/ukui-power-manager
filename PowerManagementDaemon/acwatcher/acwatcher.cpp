@@ -19,8 +19,7 @@
 
 AcWatcher::AcWatcher()
 {
-    // qDebug() << "AcWatcher";
-    // initAcWatcher();
+
 }
 
 AcWatcher::~AcWatcher() {}
@@ -52,7 +51,6 @@ bool AcWatcher::readOnBattery()
     QDBusReply<QVariant> reply = iface.call("Get", "org.freedesktop.UPower", "OnBattery");
     if (reply.isValid()) {
         value = reply.value().toBool();
-        // qDebug() << "使用电池:" << value;
     } else {
         qDebug() << "OnBattery error!";
     }

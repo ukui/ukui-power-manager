@@ -15,14 +15,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 #include "idlenesswatcher.h"
 
 IdlenessWatchcer::IdlenessWatchcer()
 {
-    // qDebug()<<"IdlenessWatchcer";
 
-    // initIdleWatcher();
 }
 
 IdlenessWatchcer::~IdlenessWatchcer()
@@ -32,11 +29,6 @@ IdlenessWatchcer::~IdlenessWatchcer()
     delete mSuspendTimer;
 }
 
-/*
- * ============================================
- *        初始化相关操作
- * ============================================
- */
 void IdlenessWatchcer::initIdleWatcher()
 {
     //初始化gsettings,同时读配置文件
@@ -44,7 +36,6 @@ void IdlenessWatchcer::initIdleWatcher()
 
     initTimer();
 
-    // qDebug()<<"QDBusConnection::sessionBus().connect";
     //监听到空闲信号，开始计时，启动timingBegins函数
     QDBusConnection::sessionBus().connect(
         QString(),
@@ -54,6 +45,12 @@ void IdlenessWatchcer::initIdleWatcher()
         this,
         SLOT(timingBegins(quint32)));
 
+    QDBusConnection::systemBus().connect("org.freedesktop.login1",
+                                         "/org/freedesktop/login1",
+                                         "org.freedesktop.login1.Manager",
+                                         "PrepareForSleep",
+                                         this,
+                                         SLOT(timingStop()));
     connect(mTurnOffDisplayTimer, &QTimer::timeout, [this] {
         turnOffDisplay();
         mTurnOffDisplayTimer->stop();
@@ -71,7 +68,6 @@ void IdlenessWatchcer::initIdleWatcher()
 
 void IdlenessWatchcer::initSettingsConnect()
 {
-    //初始化连接
     readSettings();
     connect(mPowerManagementGsettings, &QGSettings::changed, this, [=] { readSettings(); });
 }
@@ -85,10 +81,7 @@ void IdlenessWatchcer::initTimer()
 
 void IdlenessWatchcer::readSettings()
 {
-    //读配置文件，
-    /*mTurnOffDisplayTime=gsetting获取关闭显示器的秒数
-     * 。。。
-     */
+    //读配置文件
     mTurnOffDisplayTimeBat = mPowerManagementGsettings->get(SLEEP_DISPLAY_BAT_KEY).toInt();
     qDebug() << "mTurnOffDisplayTimeBat" << mTurnOffDisplayTimeBat;
     mTurnOffDisplayTimeAc = mPowerManagementGsettings->get(SLEEP_DISPLAY_AC_KEY).toInt();
@@ -102,24 +95,31 @@ void IdlenessWatchcer::readSettings()
 
 void IdlenessWatchcer::timingBegins(quint32 time)
 {
-    int mTurnOffDisplayTime = 0;
-    int mSuspendTime = 0;
-    mTurnOffDisplayTime = turnOffDisplayTime();
-    mSuspendTime = suspendTime();
+    int mTurnOffDisplayTime = turnOffDisplayTime() - mSessionTime;
+    int mSuspendTime = suspendTime() - mSessionTime;
+    int mBrightnessTime = -1;
     qDebug() << "Idle signal received from SessionManager" << time;
     if (0 != time) {
-        if (0 != mTurnOffDisplayTime) {
+        if (mReduceBrightnessTime >= mSessionTime) {
+           mBrightnessTime = mReduceBrightnessTime - mSessionTime;
+        }
+        if (0 <= mTurnOffDisplayTime) {
             mTurnOffDisplayTimer->start(mTurnOffDisplayTime * 1000);
-            if (mTurnOffDisplayTime > mReduceBrightnessTime && 0 != mReduceBrightnessTime) {
-                mReduceBrightnessTimer->start(mReduceBrightnessTime * 1000);
+            if (mBrightnessTime < mTurnOffDisplayTime && 0 <= mBrightnessTime) {
+                mReduceBrightnessTimer->start(mBrightnessTime * 1000);
             }
         } else {
-            if (0 != mReduceBrightnessTime) {
-                mReduceBrightnessTimer->start(mReduceBrightnessTime * 1000);
+            qDebug() << "TurnOffDisplayTimer not started!";
+            if (0 <= mBrightnessTime) {
+                mReduceBrightnessTimer->start(mBrightnessTime * 1000);
+            } else {
+                qDebug() << "ReduceBrightnessTimer not started!";
             }
         }
-        if (0 != mSuspendTime) {
+        if (0 < mSuspendTime) {
             mSuspendTimer->start(mSuspendTime * 1000);
+        } else {
+            qDebug() << "SuspendTimer not started!";
         }
     } else {
         timingStop();
@@ -166,16 +166,15 @@ int IdlenessWatchcer::suspendTime()
 
 void IdlenessWatchcer::timingStop()
 {
-    mTurnOffDisplayTimer->stop();
-    mSuspendTimer->stop();
-    mReduceBrightnessTimer->stop();
+    qDebug() << "timing stop";
+    if (mTurnOffDisplayTimer->isActive()) {
+        mTurnOffDisplayTimer->stop();
+    } if (mSuspendTimer->isActive()) {
+        mSuspendTimer->stop();
+    } if (mReduceBrightnessTimer->isActive()) {
+        mReduceBrightnessTimer->stop();
+    }
 }
-
-/*
- * ============================================
- *        以下接口为策略下发后的接口调用
- * ============================================
- */
 
 void IdlenessWatchcer::reduceBrightness()
 {

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Ukui-Upower
+Icon=ukui-power-manager
+Exec=ukui-upower
+Terminal=false
+Type=Application
+NoDisplay=true
+Categories=
+OnlyShowIn=UKUI;
+X-UKUI-AutoRestart=true
+

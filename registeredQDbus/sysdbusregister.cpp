@@ -15,7 +15,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 #include "sysdbusregister.h"
 
 #include <QDebug>
@@ -27,15 +26,17 @@
 SysdbusRegister::SysdbusRegister()
 {
     if (1 == getBacklightFileNum()) {
-       modelName = OTHER;
+        modelName = OTHER;
     } else {
-       modelName = getCpuInfo();
+        modelName = getCpuInfo();
     }
+    mSusThenHibSet = new QSettings(QString("/etc/systemd/sleep.conf"), QSettings::IniFormat, this);
+    mSusThenHibSet->setIniCodec("UTF-8");
 }
 
 SysdbusRegister::~SysdbusRegister()
 {
-
+    delete  mSusThenHibSet;
 }
 
 void SysdbusRegister::ExitService()
@@ -46,36 +47,30 @@ void SysdbusRegister::ExitService()
 QString SysdbusRegister::executeLinuxCmd(QString strCmd)
 {
     //调用linux终端命令
-
-    //  QX11Info.display();
-    process.start("bash", QStringList() <<"-c" << strCmd);
-    process.waitForFinished();
-    QString strResult =process.readAllStandardOutput()+process.readAllStandardError();
-    //USD_LOG(LOG_DEBUG,"[%s]-->[%s]",strCmd.toLatin1().data(), strResult.toLatin1().data());
+    mProcess.start("bash", QStringList() << "-c" << strCmd);
+    mProcess.waitForFinished();
+    QString strResult = mProcess.readAllStandardOutput() + mProcess.readAllStandardError();
     return strResult;
 }
 
 QString SysdbusRegister::canControl(const QString control)
 {
-    QDBusInterface iface("org.freedesktop.login1",
-                         "/org/freedesktop/login1",
-                         "org.freedesktop.login1.Manager",
-                         QDBusConnection::systemBus());
+    QDBusInterface iface(
+        "org.freedesktop.login1",
+        "/org/freedesktop/login1",
+        "org.freedesktop.login1.Manager",
+        QDBusConnection::systemBus());
     QDBusReply<QString> reply = iface.call(control);
-    if(reply.isValid()){
-        if("yes" == reply.value()){
+    if (reply.isValid()) {
+        if ("yes" == reply.value()) {
             return reply;
-        }
-        else{
-            QDBusMessage message =QDBusMessage::createSignal("/",
-                                                             "org.ukui.powermanagement.interface",
-                                                             "CanControl");
-            message<<reply.value();
+        } else {
+            QDBusMessage message = QDBusMessage::createSignal("/", "org.ukui.powermanagement.interface", "CanControl");
+            message << reply.value();
             QDBusConnection::systemBus().send(message);
             return reply;
         }
-    }
-    else{
+    } else {
         return "error";
     }
 }
@@ -83,32 +78,34 @@ QString SysdbusRegister::canControl(const QString control)
 void SysdbusRegister::controlLogin1Connection(QString type)
 {
     bool ctrl = 1;
-    QDBusInterface iface("org.freedesktop.login1",
-                         "/org/freedesktop/login1",
-                         "org.freedesktop.login1.Manager",
-                         QDBusConnection::systemBus());
-    iface.call(type,ctrl);
+    QDBusInterface iface(
+        "org.freedesktop.login1",
+        "/org/freedesktop/login1",
+        "org.freedesktop.login1.Manager",
+        QDBusConnection::systemBus());
+    iface.call(type, ctrl);
 }
 
 qulonglong SysdbusRegister::GetMaxBrightness()
 {
     qulonglong maxValue;
     switch (modelName) {
-    case ZHAOXIN:
-        maxValue = executeLinuxCmd("cat /sys/class/backlight/acpi_video1/max_brightness").toInt();
-        break;
-    case Phytium:
-        maxValue = executeLinuxCmd("cat /sys/class/backlight/ec_bl/max_brightness").toInt();
-        break;
-    case Loongson3A5000:
-        maxValue = executeLinuxCmd(QString("cat /sys/class/backlight/%1/max_brightness").
-                                   arg(getBacklightFile(Loongson3A5000))).toInt();
-        break;
-    case OTHER:
-        maxValue = executeLinuxCmd("cat /sys/class/backlight/*/max_brightness").toInt();
-        break;
-    default:
-        break;
+        case ZHAOXIN:
+            maxValue = executeLinuxCmd("cat /sys/class/backlight/acpi_video1/max_brightness").toInt();
+            break;
+        case Phytium:
+            maxValue = executeLinuxCmd("cat /sys/class/backlight/ec_bl/max_brightness").toInt();
+            break;
+        case Loongson3A5000:
+            maxValue = executeLinuxCmd(
+                           QString("cat /sys/class/backlight/%1/max_brightness").arg(getBacklightFile(Loongson3A5000)))
+                           .toInt();
+            break;
+        case OTHER:
+            maxValue = executeLinuxCmd("cat /sys/class/backlight/*/max_brightness").toInt();
+            break;
+        default:
+            break;
     }
     return maxValue;
 }
@@ -117,21 +114,22 @@ int SysdbusRegister::GetBrightness()
 {
     int value;
     switch (modelName) {
-    case ZHAOXIN:
-        value = executeLinuxCmd("cat /sys/class/backlight/acpi_video1/brightness").toInt();
-        break;
-    case Phytium:
-        value = executeLinuxCmd("cat /sys/class/backlight/ec_bl/brightness").toInt();
-        break;
-    case Loongson3A5000:
-        value = executeLinuxCmd(QString("cat /sys/class/backlight/%1/brightness").
-                                arg(getBacklightFile(Loongson3A5000))).toInt();
-        break;
-    case OTHER:
-        value = executeLinuxCmd("cat /sys/class/backlight/*/brightness").toInt();
-        break;
-    default:
-        break;
+        case ZHAOXIN:
+            value = executeLinuxCmd("cat /sys/class/backlight/acpi_video1/brightness").toInt();
+            break;
+        case Phytium:
+            value = executeLinuxCmd("cat /sys/class/backlight/ec_bl/brightness").toInt();
+            break;
+        case Loongson3A5000:
+            value = executeLinuxCmd(
+                        QString("cat /sys/class/backlight/%1/brightness").arg(getBacklightFile(Loongson3A5000)))
+                        .toInt();
+            break;
+        case OTHER:
+            value = executeLinuxCmd("cat /sys/class/backlight/*/brightness").toInt();
+            break;
+        default:
+            break;
     }
     return value;
 }
@@ -140,20 +138,21 @@ QString SysdbusRegister::RegulateBrightness(qulonglong brightness)
 {
     QString msg;
     switch (modelName) {
-    case ZHAOXIN:
-        break;
-    case Phytium:
-        msg = executeLinuxCmd(QString("echo %1 | tee /sys/class/backlight/ec_bl/brightness").arg(brightness));
-        break;
-    case Loongson3A5000:
-        msg = executeLinuxCmd(QString("echo %1 | tee /sys/class/backlight/%2/brightness").
-                              arg(brightness).arg(getBacklightFile(Loongson3A5000)));
-        break;
-    case OTHER:
-        msg = executeLinuxCmd(QString("echo %1 | tee /sys/class/backlight/*/brightness").arg(brightness));
-        break;
-    default:
-        break;
+        case ZHAOXIN:
+            break;
+        case Phytium:
+            msg = executeLinuxCmd(QString("echo %1 | tee /sys/class/backlight/ec_bl/brightness").arg(brightness));
+            break;
+        case Loongson3A5000:
+            msg = executeLinuxCmd(QString("echo %1 | tee /sys/class/backlight/%2/brightness")
+                                      .arg(brightness)
+                                      .arg(getBacklightFile(Loongson3A5000)));
+            break;
+        case OTHER:
+            msg = executeLinuxCmd(QString("echo %1 | tee /sys/class/backlight/*/brightness").arg(brightness));
+            break;
+        default:
+            break;
     }
     return msg;
 }
@@ -187,149 +186,119 @@ int SysdbusRegister::getBacklightFileNum()
 }
 
 void SysdbusRegister::TurnOffDisplay()
-{/*
-    //锁屏目前也由上层处理
-    //system("touch /home/lza/TurnOffDisplay.txt");
-    if("wayland" ==qgetenv("XDG_SESSION_TYPE"))
-    {
-        //system("touch /home/lza/TurnOffDisplay1.txt");
-        //wayland协议需调用以下方式关闭显示器
-        executeLinuxCmd("export QT_QPA_PLATFORM=wayland && kscreen-doctor --dpms off");
-        qDebug()<<"此设备为wayland协议";
-
-    }
-    else
-    {
-//        system("touch /home/lza/TurnOffDisplay2.txt");
-          executeLinuxCmd("xhost +");
-          executeLinuxCmd("xset dpms force off");
-//        RunProcess("xhost +DISPLAY=:0 xset dpms force off");
-        qDebug()<<"此设备为x11协议112";
-    }
-    system("touch /home/lza/TurnOffDisplay3.txt");
-*/
+{
+    //关闭显示器由后台处理
 }
 
 void SysdbusRegister::CpuFreqencyModulation(QString strategy)
 {
-    /*
-     * cpu调频策略
-    */
     int cpuQuantity = executeLinuxCmd("grep -c 'processor' /proc/cpuinfo").toInt();
-    for (int var = 0; var < cpuQuantity ; ++var) {
-        executeLinuxCmd(QString("echo %1 | tee /sys/devices/system/cpu/cpu%2/cpufreq/scaling_governor").arg(strategy).arg(var));
+    for (int var = 0; var < cpuQuantity; ++var) {
+        executeLinuxCmd(
+            QString("echo %1 | tee /sys/devices/system/cpu/cpu%2/cpufreq/scaling_governor").arg(strategy).arg(var));
     }
 }
 
 void SysdbusRegister::GpuFreqencyModulation(int strategy)
 {
-    /*
-     * gpu调频策略
-    */
     QFile radeonFile("/sys/class/drm/card0/device/power_dpm_state");
     QFile amdgpuFile("/sys/class/drm/card0/device/power_dpm_force_performance_level");
-    if(radeonFile.exists()){
+    if (radeonFile.exists()) {
         switch (strategy) {
-        case Performance:
-            //radeonFile.write(QString("performance").toUtf8());
-            executeLinuxCmd(QString("echo performance | tee /sys/class/drm/card0/device/power_dpm_state"));
-            break;
-        case Balance:
-            //radeonFile.write(QString("balanced").toUtf8());
-            executeLinuxCmd(QString("echo balanced | tee /sys/class/drm/card0/device/power_dpm_state"));
-            break;
-        case EnergySaving:
-            //radeonFile.write(QString("battery").toUtf8());
-            executeLinuxCmd(QString("echo battery | tee /sys/class/drm/card0/device/power_dpm_state"));
-            break;
-        default:
-            break;
+            case Performance:
+                executeLinuxCmd(QString("echo performance | tee /sys/class/drm/card0/device/power_dpm_state"));
+                break;
+            case Balance:
+                executeLinuxCmd(QString("echo balanced | tee /sys/class/drm/card0/device/power_dpm_state"));
+                break;
+            case EnergySaving:
+                executeLinuxCmd(QString("echo battery | tee /sys/class/drm/card0/device/power_dpm_state"));
+                break;
+            default:
+                break;
         }
     }
-    if(amdgpuFile.exists()){
-        //amdgpuFile.open(QIODevice::Truncate);
+    if (amdgpuFile.exists()) {
         switch (strategy) {
-        case Performance:
-            //amdgpuFile.write(QString("high").toUtf8());
-            executeLinuxCmd(QString("echo high | tee /sys/class/drm/card0/device/power_dpm_force_performance_level"));
-            break;
-        case Balance:
-            //amdgpuFile.write(QString("auto").toUtf8());
-            executeLinuxCmd(QString("echo auto | tee /sys/class/drm/card0/device/power_dpm_force_performance_level"));
-            break;
-        case EnergySaving:
-            //amdgpuFile.write(QString("low").toUtf8());
-            executeLinuxCmd(QString("echo low | tee /sys/class/drm/card0/device/power_dpm_force_performance_level"));
-            break;
-        default:
-            break;
+            case Performance:
+                executeLinuxCmd(
+                    QString("echo high | tee /sys/class/drm/card0/device/power_dpm_force_performance_level"));
+                break;
+            case Balance:
+                executeLinuxCmd(
+                    QString("echo auto | tee /sys/class/drm/card0/device/power_dpm_force_performance_level"));
+                break;
+            case EnergySaving:
+                executeLinuxCmd(
+                    QString("echo low | tee /sys/class/drm/card0/device/power_dpm_force_performance_level"));
+                break;
+            default:
+                break;
         }
-        //amdgpuFile.close();
     }
 }
 
 void SysdbusRegister::LockScreen()
 {
-    //       system("touch /home/lza/LockScreen.txt && ukui-screensaver-command -l");
-    //        QString cmd = QString("touch /home/lza/LockScreen.txt && ukui-screensaver-command -l");
-    //
-    //锁屏目前由上层处理
+    //锁屏目前由后台处理
 }
 
 void SysdbusRegister::Hibernate()
 {
-    if("yes" == canControl("CanHibernate")){
+    if ("yes" == canControl("CanHibernate")) {
         controlLogin1Connection("Hibernate");
     }
 }
 
 void SysdbusRegister::Suspend()
 {
-    if("yes" == canControl("CanSuspend")){
+    if ("yes" == canControl("CanSuspend")) {
         controlLogin1Connection("Suspend");
     }
 }
 
 void SysdbusRegister::PowerOff()
 {
-    if("yes" == canControl("CanPowerOff")){
+    if ("yes" == canControl("CanPowerOff")) {
         controlLogin1Connection("PowerOff");
     }
 }
 
 void SysdbusRegister::Reboot()
 {
-    if("yes" == canControl("CanReboot")){
+    if ("yes" == canControl("CanReboot")) {
         controlLogin1Connection("Reboot");
     }
 }
 
-//void SysdbusRegister::finished(int exitCode,QProcess::ExitStatus exitStatus)
-//{
-//    /*创建QT的DBus信号*/
-//    QDBusMessage message =QDBusMessage::createSignal("/", "org.ukui.powermanagement.interface", "Suspend");
-//    QDBusConnection::systemBus().send(message);
-//}
+void SysdbusRegister::SuspendThenHibernate()
+{
+    if ("yes" == canControl("CanSuspendThenHibernate")) {
+        mSusThenHibSet->beginGroup("Sleep");
+        mSusThenHibSet->setValue("HibernateDelaySec", 7200);
+        mSusThenHibSet->endGroup();
+        mSusThenHibSet->sync();
+        controlLogin1Connection("SuspendThenHibernate");
+    }
+}
 
 int SysdbusRegister::getCpuInfo()
 {
     QFile file("/proc/cpuinfo");
-    if(!file.open(QIODevice::ReadOnly)){
-        qDebug()<<file.errorString();
+    if (!file.open(QIODevice::ReadOnly)) {
+        qDebug() << file.errorString();
     }
-    buf = file.readAll();
+    mCpuType = file.readAll();
     file.close();
-    if(-1 == buf.indexOf("ZHAOXIN")){
-        if(-1 == buf.indexOf("D2000")){
-            if(-1 == buf.indexOf("3A5000")){
-                return OTHER;
-            }else{
-                return Loongson3A5000;
-            }
-        }else{
-            return Phytium;
-        }
-    }else{
+    if (-1 != mCpuType.indexOf("ZHAOXIN")) {
         return ZHAOXIN;
+    } else if (-1 != mCpuType.indexOf("D2000")) {
+        return Phytium;
+    } else if (-1 != mCpuType.indexOf("3A5000")) {
+        return Loongson3A5000;
+    } else if (-1 != mCpuType.indexOf("FT-2000")) {
+        return Phytium;
+    } else {
+        return OTHER;
     }
 }

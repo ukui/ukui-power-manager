@@ -5,9 +5,10 @@ Maintainer: kylin Team <team+kylin@tracker.debian.org>
 Uploaders: handsome_feng <jianfengli@ubuntukylin.com>,
 Build-Depends: debhelper-compat (= 12),
                qtbase5-dev,
-               qttools5-dev-tools,
+	       qttools5-dev-tools,
+               libukui-log4qt-dev,
                libglib2.0-dev,
-               libupower-glib-dev,
+	       libupower-glib-dev,
                libx11-dev,
                libxext-dev,
                libxml-parser-perl,
@@ -27,11 +28,9 @@ Architecture: any
 Depends: dbus-x11,
          systemd,
          upower,
-         libglib2.0-bin,
          ${misc:Depends},
          ${shlibs:Depends},
-Breaks: ukui-power-manager-common (<< 3.1.0-1)
-Replaces: ukui-power-manager-common (<< 3.1.0-1)
+Replaces: ukui-power-manager-common
 Description: power management tool for the UKUI desktop
  UKUI Power Manager is a session daemon for the UKUI desktop
  that takes care of system or desktop events related to power, and
@@ -42,3 +41,4 @@ Description: power management tool for the UKUI desktop
  events, display brightness, CPU, graphics card and hard disk drive
  power saving, and can trigger suspend-to-RAM, hibernate or shutdown
  events, all integrated to other components of the UKUI desktop.
+

@@ -15,7 +15,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 #include <QCoreApplication>
 #include <QDBusConnection>
 #include <QDBusError>
@@ -24,20 +23,21 @@
 #include <QStandardPaths>
 #include "sysdbusregister.h"
 
-
-int main(int argc, char *argv[]){
+int main(int argc, char *argv[])
+{
 
     QCoreApplication app(argc, argv);
     app.setOrganizationName("Kylin Team");
     app.setApplicationName("ukui-powermanagement-service");
 
     QDBusConnection systemBus = QDBusConnection::systemBus();
-    if (!systemBus.registerService("org.ukui.powermanagement")){
+    if (!systemBus.registerService("org.ukui.powermanagement")) {
         qCritical() << "QDbus register service failed reason:" << systemBus.lastError();
         exit(1);
     }
 
-    if (!systemBus.registerObject("/", new SysdbusRegister(), QDBusConnection::ExportAllSlots | QDBusConnection::ExportAllSignals)){
+    if (!systemBus.registerObject(
+            "/", new SysdbusRegister(), QDBusConnection::ExportAllSlots | QDBusConnection::ExportAllSignals)) {
         qCritical() << "QDbus register object failed reason:" << systemBus.lastError();
         exit(2);
     }

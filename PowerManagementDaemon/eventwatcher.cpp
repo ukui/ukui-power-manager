@@ -20,7 +20,6 @@
 
 EventWatcher::EventWatcher()
 {
-    // qDebug()<<"init evetwatcher";
     const QByteArray id(POWER_MANAGER_SETTINGS);
     mPowerManagementGsettings = new QGSettings(id);
 }
@@ -64,12 +63,11 @@ void EventWatcher::turnOffDisplay()
 {
     if (mPowerManagementGsettings->get(LOCK_BLANK_SCREEN).toBool()) {
         lock();
-        // qDebug()<<"lock success";
+        qDebug()<<"lock success";
     }
     //调用关闭显示器的接口
     if ("wayland" == qgetenv("XDG_SESSION_TYPE")) {
         system("export QT_QPA_PLATFORM=wayland && kscreen-doctor --dpms off");
-        // qDebug()<<"wayland";
     } else {
         system("xset dpms force off");
     }
@@ -80,7 +78,6 @@ void EventWatcher::turnOnDisplay()
 {
     if ("wayland" == qgetenv("XDG_SESSION_TYPE")) {
         system("export QT_QPA_PLATFORM=wayland && kscreen-doctor --dpms on");
-        // qDebug()<<"wayland";
     } else {
         system("xset dpms force on");
     }
@@ -107,7 +104,6 @@ void EventWatcher::hibernate()
 
 void EventWatcher::powerOff()
 {
-    //关机
     controlPowerManagement(POWER_OFF);
     qDebug() << "power off success";
 }
@@ -126,7 +122,6 @@ void EventWatcher::controlPowerManagement(const QString &type, const qulonglong 
     QDBusInterface iface(
         POWER_MANAGEMENT_SERVICE, POWER_MANAGEMENT_PATH, POWER_MANAGEMENT_INTERFACE_NAME, QDBusConnection::systemBus());
     iface.call(type, brightness);
-    // qDebug()<<"控制类型为"<<type;
 }
 
 void EventWatcher::controlPowerManagement(const QString &type, const int &value)
@@ -134,7 +129,6 @@ void EventWatcher::controlPowerManagement(const QString &type, const int &value)
     QDBusInterface iface(
         POWER_MANAGEMENT_SERVICE, POWER_MANAGEMENT_PATH, POWER_MANAGEMENT_INTERFACE_NAME, QDBusConnection::systemBus());
     iface.call(type, value);
-    // qDebug()<<"控制类型为"<<type;
 }
 
 void EventWatcher::controlPowerManagement(const QString &type, const QString &contrl)

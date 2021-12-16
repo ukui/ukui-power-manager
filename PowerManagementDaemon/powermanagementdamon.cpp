@@ -22,15 +22,12 @@
 
 PowerManagementDamon::PowerManagementDamon()
 {
-    //创建空闲管理者对象
-    // Note:使用IdlenessWatchcer idlenesswatcher;的方式会无法调用dbus信号
     eventwatcher = new EventWatcher;
     eventwatcher->initEventWatcher();
     idlenesswatcher = new IdlenessWatchcer;
     idlenesswatcher->initIdleWatcher();
     lidwatcher = new LidWatcher;
     lidwatcher->initLidWatcher();
-    powerwatcher = new PowerWatcher;
     acwatcher = new AcWatcher;
     lowpowerwatcher = new LowPowerWatcher;
     lowpowerwatcher->initLowPowerWatcher();
@@ -44,7 +41,6 @@ PowerManagementDamon::~PowerManagementDamon()
 {
     delete idlenesswatcher;
     delete lidwatcher;
-    delete powerwatcher;
     delete eventwatcher;
     delete acwatcher;
     delete lowpowerwatcher;

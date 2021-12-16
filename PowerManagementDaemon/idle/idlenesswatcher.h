@@ -131,6 +131,12 @@ private:
      */
     int mSuspendTimeAc;
 
+    /**
+     * @brief mSessionTime
+     * mSessionTime进入空闲时间
+     */
+    const int mSessionTime = 60;
+
 private slots:
 
     /**

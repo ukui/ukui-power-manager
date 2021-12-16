@@ -23,7 +23,6 @@
 #include "eventwatcher.h"
 #include "acwatcher/acwatcher.h"
 #include "lowpowerwatcher/lowpowerwatcher.h"
-#include "brightnessbutton/buttonwatcher.h"
 
 class GsettingWatcher : public EventWatcher
 {
@@ -40,7 +39,7 @@ public:
 private:
     enum policy
     {
-        Performance,
+        Performance = 0,
         Balance,
         EnergySaving,
     };
@@ -138,13 +137,9 @@ private:
      */
     bool mLowPrecentState;
 
-    QByteArray buf;
+    QByteArray mCpuMode;
 
     AcWatcher mAcWatcher;
-
-//    LowPowerWatcher mLowPowerWatcher;
-
-    ButtonWatcher mButtonWatcher;
 private slots:
     /**
      * @brief readSettings

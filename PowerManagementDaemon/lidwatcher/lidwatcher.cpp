@@ -20,8 +20,7 @@
 
 LidWatcher::LidWatcher()
 {
-    // qDebug()<<"LidWatcher::LidWatcher";
-    // initLidWatcher();
+
 }
 
 LidWatcher::~LidWatcher() {}

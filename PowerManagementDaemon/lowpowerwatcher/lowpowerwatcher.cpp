@@ -20,30 +20,25 @@
 
 LowPowerWatcher::LowPowerWatcher()
 {
-    // qDebug()<<"LowPowerWatcehr";
-    // initLowPowerWatcher();
+
 }
 
 LowPowerWatcher::~LowPowerWatcher()
 {
-    //    delete mAcWatcher;
     delete mContrlTimer;
 }
 
 void LowPowerWatcher::initLowPowerWatcher()
 {
-    //    mAcWatcher = new AcWatcher;
     mContrlTimer = new QTimer;
     initConnect();
     mPercentageLow = readPercentage();
-    // qDebug()<<"初始化当前电量百分比："<<mPercentageLow;
     if (mSetPercentageLow > mPercentageLow) {
         mLowPowerState = true;
     } else {
         mLowPowerState = false;
     }
     mNotifyState = false;
-    // qDebug()<<"初始化低电量状态："<<mLowPowerState;
 }
 
 void LowPowerWatcher::initConnect()
@@ -55,12 +50,6 @@ void LowPowerWatcher::initConnect()
             veryLowBatteryContrlStop();
         }
     });
-    //    QDBusConnection::systemBus().connect(UPOWER_SERVICE,UPOWER_DISPLAY_PATH,
-    //                                          FREEDESKTOP_UPOWER,
-    //                                          "PropertiesChanged",
-    //                                          this,
-    //                                          SLOT(dealLowPowerMssage(void))
-    //                                          );
     QDBusConnection::sessionBus().connect(
         UKUI_UPOWER_SERVICE,
         UKUI_UPOWER_PATH,
@@ -104,10 +93,9 @@ double LowPowerWatcher::readPercentage()
     QDBusInterface iface(UPOWER_SERVICE, UPOWER_DISPLAY_PATH, FREEDESKTOP_UPOWER, QDBusConnection::systemBus());
     QDBusReply<QVariant> reply = iface.call("Get", "org.freedesktop.UPower.Device", "Percentage");
     if (reply.isValid()) {
-        // qDebug() << "当前电量百分比为:" << reply.value();
         value = reply.value().toDouble();
     } else {
-        // qDebug() << "电量获取异常!";
+         qDebug() << "Power percentage get error!";
     }
     return value;
 }
@@ -118,7 +106,6 @@ void LowPowerWatcher::dealLowBatteryMssage(bool state)
     if (mLowPowerState) {
         lowBatteryNotify();
     }
-    //    emit lowPowerChanged(mLowPowerState);
 }
 
 void LowPowerWatcher::dealVeryLowBatteryMssage(bool state)
@@ -133,33 +120,6 @@ void LowPowerWatcher::dealPowerStateMssage(bool state)
     if (!state) {
         veryLowBatteryContrlStop();
     }
-    //    if(state){
-    //            emit lowPowerChanged(mLowPowerState);
-    //            if(mVeryLowBatteryState && false == mNotifyState){
-    //                veryLowBatteryNotify(mActionCriticalBattery);
-    //            }
-    //                    mPercentageLow = readPercentage();
-    //                    if(mSetPercentageLow > mPercentageLow){
-    //                        if(mLowPowerState != true){
-    //                            mLowPowerState = true;
-    //                            emit lowPowerChanged(mLowPowerState);
-    //                        }
-    //                        if(mPercentageAction > mPercentageLow){
-    //                            if(false == mNotifyState){
-    //                                veryLowBatteryNotify(mActionCriticalBattery);
-    //                            }
-    //                        }
-    //                    }
-    //                    else{
-    //                        if(mLowPowerState != false){
-    //                            mLowPowerState = false;
-    //                            emit lowPowerChanged(mLowPowerState);
-    //                        }
-    //                       }
-    //    }
-    //    else {
-    //        veryLowBatteryContrlStop();
-    //    }
 }
 
 bool LowPowerWatcher::lowPowerState()
@@ -225,10 +185,10 @@ void LowPowerWatcher::notifySend(const QString &type, const QString &arg)
         QDBusConnection::sessionBus());
     QList<QVariant> args;
     QStringList argg;
-    QMap<QString, QVariant> pearMap;
+    QMap<QString, QVariant> pear_map;
     args << tr("电源管理") << ((unsigned int)0) << QString("ukui-power-manager")
          << type //显示的是什么类型的信息//系统升级
          << arg  //显示的具体信息
-         << argg << pearMap << (int)-1;
+         << argg << pear_map << (int)-1;
     iface.callWithArgumentList(QDBus::AutoDetect, "Notify", args);
 }

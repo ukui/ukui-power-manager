@@ -15,14 +15,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 #include "gsettingwatcher.h"
 
-GsettingWatcher::GsettingWatcher()
-{
-    // qDebug()<<"gsetting watcher";
-    // initGsettingWatcher();
-}
+GsettingWatcher::GsettingWatcher() {}
 
 GsettingWatcher::~GsettingWatcher() {}
 
@@ -30,14 +25,13 @@ void GsettingWatcher::initGsettingWatcher()
 {
     initSettingsConnect();
     mAcWatcher.initAcWatcher();
-    mButtonWatcher.initButtonWatcher();
 }
 
 void GsettingWatcher::initSettingsConnect()
 {
     readSettings();
     connect(mPowerManagementGsettings, &QGSettings::changed, this, [=](const QString &key) {
-        if (key == POWER_POLICY_AC || key == POWER_POLICY_BATTERY) {
+        if (key == POWER_POLICY_AC || key == POWER_POLICY_BATTERY || key == LOW_BATTERY_ATUO_SAVE) {
             readSettings();
             setPolicy(mAcWatcher.mPowerState);
         }
@@ -52,9 +46,6 @@ void GsettingWatcher::initSettingsConnect()
         this,
         SLOT(setLowPowerState(bool)));
     setLowPowerState(lowBatteryState());
-    // connect(&mLowPowerWatcher, SIGNAL(lowPowerChanged(bool)), this, SLOT(setLowPowerState(bool)));
-    connect(&mButtonWatcher, SIGNAL(brightnessDown()), this, SLOT(reduceBrightness()));
-    connect(&mButtonWatcher, SIGNAL(brightnessUp()), this, SLOT(increaseBrightness()));
 }
 
 void GsettingWatcher::readSettings()
@@ -87,10 +78,10 @@ void GsettingWatcher::setPolicy(const bool &policyState)
 void GsettingWatcher::setBrightness(const bool &value)
 {
     if (true == value) {
-        // qDebug()<<"亮度降低";
+        // 亮度降低
         reduceBrightness();
     } else {
-        // qDebug()<<"亮度增高";
+        // 亮度增高
         increaseBrightness();
     }
 }
@@ -99,7 +90,7 @@ void GsettingWatcher::setLowPowerState(bool lowPowerState)
 {
     mLowPrecentState = lowPowerState;
     setPolicy(mAcWatcher.readOnBattery());
-    qDebug() << "当前是否为低电量状态：" << mLowPrecentState;
+    qDebug() << "Is it currently in a low battery state：" << mLowPrecentState;
 }
 
 void GsettingWatcher::policyAC()
@@ -112,28 +103,14 @@ void GsettingWatcher::policyBattery()
 {
     if (EnergySaving == mPowerPolicyBattery) {
         setCpuFreq(mPowerPolicyBattery); //控制面板设置节能模式
-        setGpuFreq(EnergySaving);
+        setGpuFreq(mPowerPolicyBattery);
     } else {
-        if (Performance == mPowerPolicyBattery && 0 == mOnBatteryAutoSave) {
-            if (0 == mLowBatteryAutoSave) {
-                setCpuFreq(
-                    mPowerPolicyBattery); //控制面板设置性能模式 使用电池不自动开启平衡模式 低电量不自动开启平衡模式
-                setCpuFreq(Performance);
-            } else {
-                if (!mLowPrecentState) {
-                    setCpuFreq(mPowerPolicyBattery); //控制面板设置性能模式 使用电池不自动开启节能模式
-                                                     //低电量开启平衡模式 非低电量
-                    setGpuFreq(Performance);
-                    // qDebug()<<"性能模式";
-                } else {
-                    setCpuFreq(Balance); //控制面板设置性能模式 低电量自动开启平衡模式 低电量
-                    setGpuFreq(Balance);
-                    // qDebug()<<"平衡模式";
-                }
-            }
+        if (0 == mLowBatteryAutoSave || !mLowPrecentState) {
+            setCpuFreq(mPowerPolicyBattery); //低电量不自动开启平衡模式 或 非低电量
+            setCpuFreq(mPowerPolicyBattery);
         } else {
-            setCpuFreq(Balance); //控制面板设置性能模式 使用电池自动开启平衡模式 or 控制面板设置平衡模式
-            setGpuFreq(Balance);
+            setCpuFreq(EnergySaving); //低电量自动开启省电模式 低电量
+            setGpuFreq(EnergySaving);
         }
     }
 }
@@ -146,8 +123,8 @@ void GsettingWatcher::setCpuFreq(const int &policy)
             break;
         case Balance:
             getCpuFreqMode();
-            if (buf.indexOf("schedutil") == -1) {
-                if (buf.indexOf("ondemand") == -1) {
+            if (-1 == mCpuMode.indexOf("schedutil")) {
+                if (-1 == mCpuMode.indexOf("ondemand")) {
                     controlPowerManagement(CPU_FREQENCY_MODULATION, "powersave");
                 } else {
                     controlPowerManagement(CPU_FREQENCY_MODULATION, "ondemand");
@@ -193,7 +170,6 @@ void GsettingWatcher::reduceBrightness()
             mUserBrightness = 10;
         }
         mBrightness = mUserBrightness * 0.01 * mMaxBrightness;
-        // controlPowerManagement(REGULATE_BRIGHTNESS, mBrightness);
         mPowerManagementGsettings->set(BRIGHTNESS_AC, mUserBrightness);
         qDebug() << "the brightness value is:" << mBrightness;
     } else {
@@ -210,7 +186,6 @@ void GsettingWatcher::increaseBrightness()
             mUserBrightness = 100;
         }
         mBrightness = mUserBrightness * 0.01 * mMaxBrightness;
-        // controlPowerManagement(REGULATE_BRIGHTNESS, mBrightness);
         mPowerManagementGsettings->set(BRIGHTNESS_AC, mUserBrightness);
         qDebug() << "the brightness value is:" << mBrightness;
     } else {
@@ -224,7 +199,6 @@ void GsettingWatcher::getCpuFreqMode()
     if (!file.open(QIODevice::ReadOnly)) {
         qDebug() << file.errorString();
     }
-    buf = file.readAll();
-    // qDebug()<<buf;
+    mCpuMode = file.readAll();
     file.close();
 }

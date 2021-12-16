@@ -16,28 +16,14 @@
  */
 
 
-#ifndef POWERMSGNOTIFICAT_H
-#define POWERMSGNOTIFICAT_H
+#ifndef COMMON_H
+#define COMMON_H
 
-#include <QDBusConnection>
-#include <QDBusInterface>
-#include <QObject>
+#define FREEDESKTOP_UPOWER                  "org.freedesktop.DBus.Properties"
+#define UPOWER_INTERFACE                    "org.freedesktop.UPower"
+#define UPOWER_PATH                         "/org/freedesktop/UPower"
+#define UPOWER_SERVICE                      "org.freedesktop.UPower"
+#define UPOWER_DISPLAY_PATH                 "/org/freedesktop/UPower/devices/DisplayDevice"
+#define UPOWER_DIVICES_SERVICE              "org.freedesktop.UPower.Device"
 
-#include "eventwatcher.h"
-
-class PowerMsgNotificat : public EventWatcher
-{
-    Q_OBJECT
-public:
-    PowerMsgNotificat();
-    ~PowerMsgNotificat();
-    void initPowerMsgNotificat();
-
-private:
-    void notifySend(const QString &type, const QString &arg);
-
-public slots:
-    void msgNotification(QString);
-};
-
-#endif // POWERMSGNOTIFICAT_H
+#endif // COMMON_H

@@ -46,8 +46,6 @@
 #define PERCENTAGE_ACTION        "percentageAction"      //极低电量
 #define ACTION_CRITICAL_BATTERY  "actionCriticalBattery" //极低电量时执行
 
-
-
 //dbus 配置
 #define GNOME_SESSION_MANAGER               "org.gnome.SessionManager.Presence"
 #define SESSION_MANAGER_PATH                "/org/gnome/SessionManager/Presence"
@@ -61,8 +59,6 @@
 #define UPOWER_PATH                         "/org/freedesktop/UPower"
 #define UPOWER_SERVICE                      "org.freedesktop.UPower"
 #define UPOWER_DISPLAY_PATH                 "/org/freedesktop/UPower/devices/DisplayDevice"
-#define SETTINGS_DAEMON_MEDIAKEYS           "org.ukui.SettingsDaemon.MediaKeys"
-#define SETTINGS_DAEMON_MEDIAKEYS_PATH      "/org/ukui/SettingsDaemon/MediaKeys"
 
 //电源管理dbus接口
 #define CPU_FREQENCY_MODULATION     "CpuFreqencyModulation"

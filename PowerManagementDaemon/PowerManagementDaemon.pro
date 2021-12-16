@@ -7,7 +7,7 @@ CONFIG += c++11 link_pkgconfig
 
 PKGCONFIG += gsettings-qt
 
-# LIBS += -lukui-log4qt
+LIBS += -lukui-log4qt
 
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
@@ -22,7 +22,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     acwatcher/acwatcher.cpp \
-    brightnessbutton/buttonwatcher.cpp \
     eventwatcher.cpp \
     gsettingwatcher/gsettingwatcher.cpp \
     lowpowerwatcher/lowpowerwatcher.cpp \
@@ -31,11 +30,9 @@ SOURCES += \
     idle/idlenesswatcher.cpp \
     lidwatcher/lidwatcher.cpp \
     powermsgnotificat/powermsgnotificat.cpp \
-    powerwatcher/powerwatcher.cpp
 
 HEADERS += \
     acwatcher/acwatcher.h \
-    brightnessbutton/buttonwatcher.h \
     eventwatcher.h \
     gsettingwatcher/gsettingwatcher.h \
     lowpowerwatcher/lowpowerwatcher.h \
@@ -44,7 +41,6 @@ HEADERS += \
     lidwatcher/lidwatcher.h \
     common.h \
     powermsgnotificat/powermsgnotificat.h \
-    powerwatcher//powerwatcher.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/usr/bin

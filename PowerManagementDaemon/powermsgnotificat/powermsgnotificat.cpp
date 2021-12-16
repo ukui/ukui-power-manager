@@ -31,11 +31,6 @@ void PowerMsgNotificat::initPowerMsgNotificat()
         QString("CanControl"),
         this,
         SLOT(msgNotification(QString)));
-    //    QDBusConnection::sessionBus().connect(UKUI_UPOWER_SERVICE,UKUI_UPOWER_PATH,
-    //                                          UKUI_UPOWER_INTERFACE,
-    //                                          "LowBatteryState",
-    //                                          this,SLOT(dealLowBatteryNotify(bool))
-    //                                          );
 }
 
 void PowerMsgNotificat::msgNotification(QString msg)
@@ -43,15 +38,6 @@ void PowerMsgNotificat::msgNotification(QString msg)
     QString mType = tr("error message");
     notifySend(mType, msg);
 }
-
-// void PowerMsgNotificat::dealLowBatteryNotify(bool state)
-//{
-//    if(state){
-//        QString mType = "低电量通知";
-//        notifySend(mType,"系统进入低电量状态");
-//    }
-//    qDebug()<<"low power notify";
-//}
 
 void PowerMsgNotificat::notifySend(const QString &type, const QString &arg)
 {
@@ -62,10 +48,10 @@ void PowerMsgNotificat::notifySend(const QString &type, const QString &arg)
         QDBusConnection::sessionBus());
     QList<QVariant> args;
     QStringList argg;
-    QMap<QString, QVariant> pearMap;
+    QMap<QString, QVariant> pear_map;
     args << tr("电源管理") << ((unsigned int)0) << QString("ukui-power-manager")
          << type //显示的是什么类型的信息//系统升级
          << arg  //显示的具体信息
-         << argg << pearMap << (int)-1;
+         << argg << pear_map << (int)-1;
     iface.callWithArgumentList(QDBus::AutoDetect, "Notify", args);
 }

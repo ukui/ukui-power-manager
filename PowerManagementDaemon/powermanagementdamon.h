@@ -21,7 +21,6 @@
 
 #include "idle/idlenesswatcher.h"
 #include "lidwatcher/lidwatcher.h"
-#include "powerwatcher/powerwatcher.h"
 #include "acwatcher/acwatcher.h"
 #include "eventwatcher.h"
 #include "gsettingwatcher/gsettingwatcher.h"
@@ -39,7 +38,6 @@ public:
 private:
     IdlenessWatchcer *idlenesswatcher;
     LidWatcher *lidwatcher;
-    PowerWatcher *powerwatcher;
     EventWatcher *eventwatcher;
     AcWatcher *acwatcher;
     GsettingWatcher *gsettingwatcher;

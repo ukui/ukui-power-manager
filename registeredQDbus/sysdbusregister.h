@@ -59,6 +59,12 @@ private:
 
     QString canControl(const QString );
 
+    /**
+     * @brief setSuspendThenHibernate
+     * 设置S3转S4时间（2小时）
+     */
+    void setSuspendThenHibernate();
+
     //目前用来区分CPU
     /**
      * @brief getCpuInfo
@@ -81,20 +87,21 @@ private:
      */
     int getBacklightFileNum();
 
-    QProcess process;
+    QProcess mProcess;
 
-    QByteArray buf;
+    QByteArray mCpuType;
 
+    QSettings *mSusThenHibSet;
     enum policy
     {
-        Performance,
+        Performance = 0,
         Balance,
         EnergySaving,
     };
 
     enum cpuModelName
     {
-        OTHER,
+        OTHER = 0,
         Intel,
         ZHAOXIN,
         Phytium,
@@ -104,7 +111,6 @@ private:
 
 signals:
     Q_SCRIPTABLE void nameChanged(QString);
-//    Q_SCRIPTABLE void computerinfo(QString);
 
 public slots:
 
@@ -174,8 +180,12 @@ public slots:
      */
     Q_SCRIPTABLE int GetBrightness();
 
-private slots:
-    //void finished(int exitCode,QProcess::ExitStatus exitStatus);
+    /**
+     * @brief SuspendThenHibernate
+     * 睡眠转休眠（时间默认设置为2小时）
+     */
+    Q_SCRIPTABLE void SuspendThenHibernate();
+
 private:
     int modelName;
 };

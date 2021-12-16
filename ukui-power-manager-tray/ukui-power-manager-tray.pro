@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui dbus KWindowSystem
+QT       += core gui dbus KWindowSystem x11extras
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -53,6 +53,7 @@ INSTALLS += qm_files
 # So we can access it from main.cpp
 DEFINES += QM_FILES_INSTALL_PATH='\\"$${QM_FILES_INSTALL_PATH}\\"'
 
+LIBS += -lukui-log4qt
 
 CONFIG += c++11 no_keywords link_pkgconfig
 PKGCONFIG +=  gsettings-qt x11
@@ -61,15 +62,17 @@ SOURCES += \
 device.cpp \
     enginedevice.cpp \
     main.cpp \
-        mainwindow.cpp \
-    powerwindow.cpp
+    powertray.cpp \
+    powerwindow.cpp \
+    xatom-helper.cpp
 
 HEADERS += \
 device.h  \
     engine_common.h \
     enginedevice.h \
-        mainwindow.h \
-    powerwindow.h
+    powertray.h \
+    powerwindow.h \
+    xatom-helper.h
 
 FORMS +=
 desktop.files += resources/ukui-power-manager-tray.desktop

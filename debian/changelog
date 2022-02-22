@@ -1,14 +1,8 @@
-ukui-power-manager (3.1.1.1-1) unstable; urgency=medium
-
-  * fix bug#97475 【电源管理】任务栏电源图标概率性消失
-
- -- Allen <zouchang@kylinos.cn>  Fri, 17 Dec 2021 08:54:18 +0800
-
-ukui-power-manager (3.1.1-1) focal; urgency=medium
+ukui-power-manager (3.1.1-1) unstable; urgency=medium
 
   * New upstream release.
 
- -- Allen <zouchang@kylinos.cn>  Thu, 04 Nov 2021 16:55:26 +0800
+ -- handsome_feng <jianfengli@ubuntukylin.com>  Tue, 22 Feb 2022 16:32:14 +0800
 
 ukui-power-manager (3.1.0-1) unstable; urgency=medium
 
